@@ -1,0 +1,145 @@
+<style>
+    .custom-card1
+    {
+        border-top: 1px solid lightgrey;
+    }
+    .item1
+    {
+        border-color: grey;
+        color: #940909;
+        position: relative;
+        z-index: 2;
+        display: block;
+
+        padding: 16px;
+
+        border-style: solid;
+        font-size: 16px;
+    }
+    .popover{
+        height: 50px !important;
+        width: auto;
+    }
+    .popstyle {
+        border: 0px;
+        width: 10%;
+        height: 1.5em;
+    }
+</style>
+<ion-view >
+    <!-- <ion-nav-bar class="bar-stable" style="background-color: white">
+        <ion-nav-buttons side="left">
+            <button class="button button-clear" ng-click="redirectOnHomeDashBoard()" >
+                <i class="icon ion-ios-arrow-back"></i>
+                Back</button>
+        </ion-nav-buttons>
+    </ion-nav-bar> -->
+    <div class="bar bar-footer " style="background-color:#000; background-size: 100% 0px;">
+        <div class="title" style="height: 20px;">
+            <h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px; margin-bottom: 5px;" >Powered by HR Align</h6></div>
+    </div>
+    <ion-content has-bouncing="false"  style="overflow-y: auto;background-color:#f5f5f5;">
+
+        <!-- <div class="custom-header" style="padding-top:5px;">
+            <center><b><h4><span class="custom-header" style="word-wrap: break-word;">{{empName}} ({{calendarEmpCode}})</span></h4></b></center>
+        </div> -->
+        <div class="custom-header" style="padding-top: 0px;padding-bottom: 0px;">
+          <h4 class="subHeaderClass" style="margin: 0px;"> <span class="backIcon">
+            <i class="icon ion-ios-arrow-back" ng-click="redirectOnBack()"></i></span>
+             <b style="vertical-align: super;">{{empName}} ({{calendarEmpCode}})</b></h4>
+         </div>
+
+        <div  class="item gray_background">
+            <my-calendar display="dateValue" dateformat="'dd-MMM-yyyy'" get-colours="getLeaveColours"  set-fn="setDirectiveFn(theDirFn)"></my-calendar>
+        </div>
+        <div class="list card custom-card" style="margin-top: 12px;">
+            <h5 style="padding: 0 10px;">Day {{day}}: {{description}}</h5>
+        </div>
+        <div  class="list card custom-card">
+
+            <div class="white_background font_size">
+                <div class="row" style="border:0%; padding:0%;margin:0%; padding-left:5%">
+                    <div class="col" style="font-size:small">
+                        <i class="icon ion-record list_bullet_1"><span class="list_element">&nbsp;&nbsp;{{attendenceManagement[0]}}</span></i>
+                    </div>
+                    <div class="col" style="font-size:small">
+                        <i class="icon ion-record list_bullet_2"><span class="list_element">&nbsp;&nbsp;{{attendenceManagement[1]}}</span></i>
+                    </div>
+                    <div class="col" style="font-size:small">
+                        <i class="icon ion-record list_bullet_3"><span class="list_element">&nbsp;&nbsp;{{attendenceManagement[2]}}</span></i>
+                    </div>
+                </div>
+                <div class="row" style="border:0%; padding:0%;margin:0%; padding-left:5%">
+                    <div class="col" style="font-size:small">
+                        <i class="icon ion-record list_bullet_4"><span class="list_element">&nbsp;&nbsp;{{attendenceManagement[3]}}</span></i>
+                    </div>
+                    <div class="col" style="font-size:small">
+                        <i class="icon ion-record list_bullet_5"><span class="list_element">&nbsp;&nbsp;{{attendenceManagement[4]}}</span></i>
+                    </div>
+                    <div class="col" style="font-size:small">
+                        <i class="icon ion-record list_bullet_6"><span class="list_element">&nbsp;&nbsp;{{attendenceManagement[5]}}</span></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row gray_background" style="margin:0%">
+            <div class="col">
+                <div class="card" style="border-style: solid; border-color: #BADBF9; border-width: thin; margin-top:auto;margin-right: auto;   margin-left: auto; margin-bottom:auto; border-radius: 10px">
+                    <div class="card-block">
+                        <h2 class="card-title " style="text-align:center; padding-top:10%; margin-bottom:0%; font-size: x-large; font-weight:bold">{{attendanceTypeCount["WorkingDay"]}}</h2>
+                        <p class="card-text" style="text-align:center">{{timeFormat}}</p>
+                        <h4 class="card-title" style="text-align:center; margin-bottom:5%;font-size: 16px;">{{attendenceType[0]}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="border-style: solid; border-color: #BADBF9; border-width: thin; margin-top:auto;margin-right: auto;   margin-left: auto; margin-bottom:auto; border-radius: 10px">
+                    <div class="card-block">
+                        <h2 class="card-title" style="text-align:center; padding-top:10%; margin-bottom:0%; font-size: x-large; font-weight:bold">{{attendanceTypeCount["PresentDay"]}}</h2>
+                        <p class="card-text" style="text-align:center">{{timeFormat}}</p>
+                        <h4 class="card-title" style="text-align:center; margin-bottom:5%">{{attendenceType[1]}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="border-style: solid; border-color: #BADBF9; border-width: thin; margin-top:auto;margin-right: auto;   margin-left: auto; margin-bottom:auto; border-radius: 10px">
+                    <div class="card-block">
+                        <h2 class="card-title" style="text-align:center; padding-top:10%; margin-bottom:0%; font-size: x-large; font-weight:bold">{{attendanceTypeCount["HoliDay"]}}</h2>
+                        <p class="card-text" style="text-align:center">{{timeFormat}}</p>
+                        <h4 class="card-title" style="text-align:center; margin-bottom:5%">{{attendenceType[2]}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row gray_background" style="margin:0%">
+            <div class="col col-12">
+                <div class="card" style="border-style: solid; border-color: #BADBF9; border-width: thin; margin-top:auto;margin-right: auto;   margin-left: auto; margin-bottom:auto; border-radius: 10px">
+                    <div class="card-block">
+                        <h2 class="card-title " style="text-align:center; padding-top:10%; margin-bottom:0%; font-size: x-large; font-weight:bold">{{attendanceTypeCount["WeeklyOff"]}}</h2>
+                        <p class="card-text" style="text-align:center">{{timeFormat}}</p>
+                        <h4 class="card-title" style="text-align:center; margin-bottom:5%">{{attendenceType[3]}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-12">
+                <div class="card" style="border-style: solid; border-color: #BADBF9; border-width: thin; margin-top:auto;margin-right: auto;   margin-left: auto; margin-bottom:auto; border-radius: 10px">
+                    <div class="card-block">
+                        <h2 class="card-title" style="text-align:center; padding-top:10%; margin-bottom:0%; font-size: x-large; font-weight:bold">{{attendanceTypeCount["Leave"]}}</h2>
+                        <p class="card-text" style="text-align:center">{{timeFormat}}</p>
+                        <h4 class="card-title" style="text-align:center; margin-bottom:5%">{{attendenceType[4]}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-12">
+                <div class="card" style="border-style: solid; border-color: #BADBF9; border-width: thin; margin-top:auto;margin-right: auto;   margin-left: auto; margin-bottom:auto; border-radius: 10px">
+                    <div class="card-block">
+                        <h2 class="card-title" style="text-align:center; padding-top:10%; margin-bottom:0%; font-size: x-large; font-weight:bold">{{attendanceTypeCount["AbsentDay"]}}</h2>
+                        <p class="card-text" style="text-align:center">{{timeFormat}}</p>
+                        <h4 class="card-title" style="text-align:center; margin-bottom:5%">{{attendenceType[5]}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </br>
+    </ion-content>
+</ion-view>

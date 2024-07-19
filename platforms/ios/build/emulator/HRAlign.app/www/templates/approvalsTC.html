@@ -1,0 +1,487 @@
+<style>
+    .custom-item {
+        border: none;
+    }
+    ul.ctcClaimList {
+    width:125%;
+  }
+  ul.ctcClaimList li{
+    font-size:0.8em;
+  }
+  .ctcClaimList b {
+  display: inline-block;
+  width: 40%;
+  position: relative;
+  padding-right: 10px;
+}
+ol,ul{
+  margin-bottom:0px!important;
+}
+
+.ctcClaimList b::after {
+  content: ":";
+  position: absolute;
+  right: 10px;
+}
+    .custom-row {
+        padding: 0px;
+    }
+
+    .custom-padding {
+        padding: 10px;
+    }
+
+    .custom-top {
+        top: 10px;
+        left: 13px;
+    }
+
+    .custom-paddingTop {
+        padding-top: 11px;
+    }
+
+    .custom_OD1 {
+        padding-top: 11px;
+        padding-bottom: 0px;
+    }
+
+    .custom-paddingBottom {
+        padding-bottom: 0px;
+    }
+
+    .cust-col-50 {
+        text-align: center;
+    }
+
+    .custom-grayColor {
+        color: #666;
+    }
+
+    .custom-p {
+        color: #666;
+        font-size: 14px;
+    }
+
+    .cust-card {
+        padding: 50px 0px 0px 0px;
+    }
+
+    .has-header {
+        top: 0px;
+    }
+
+    .bar-subheader {
+        top: 0px;
+    }
+
+    .custom-requestApprove {
+        font-size: 11px;
+        color: green;
+    }
+
+    .custom-requestRejcted {
+        font-size: 11px;
+        color: red;
+    }
+
+    .custom-requestOther {
+        font-size: 11px;
+        color: orange;
+    }
+
+    .custom-fontSize {
+        font-size: 12px;
+    }
+
+    .customBorderRadius {
+        border-top-right-radius: 1em;
+        border-bottom-right-radius: 1em;
+        border-top-left-radius: 1em;
+        border-bottom-left-radius: 1em;
+    }
+
+    .modal-wrapper {
+        position: absolute;
+        top: 25%;
+        display: block;
+        width: 90%;
+        min-height: 35%;
+        padding: 5%;
+    }
+
+    .modal-backdrop-bg {
+        background-color: rgba(255, 255, 255, 0.85);
+    }
+
+    .modal {
+        border-top-right-radius: 1em;
+        border-bottom-right-radius: 1em;
+        border-top-left-radius: 1em;
+        border-bottom-left-radius: 1em;
+    }
+
+    .modal-ion-content {
+        padding: 15px;
+        font-size: 0.85em;
+    }
+
+    .cust-modal-footer {
+        box-shadow: 0px 0px 0px;
+        border: 0px;
+        background-image: none;
+        margin-bottom: 15px;
+    }
+
+    .textareaBox {
+        margin-left: 2%;
+        width: 96%;
+        padding-bottom: 5%;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+</style>
+<ion-view> <ion-content has-bouncing="false"
+                        style="overflow-y: auto;top:0%">
+        <div
+            ng-show="IsTravelAccessible == 'true' || IsODAccessible == 'true' || IsRegularizationAccessible == 'true' || IsShiftChangeAccessible == 'true'"
+            class="tabs-striped tabs-top tabs-icon-top ">
+            <div class="tabs tabs-clear" style="margin-top: 25px; top: 65px;">
+                <a id='tabTravel' ng-show="IsTravelAccessible == 'true'"
+                   class="tab-item active" ng-click="getTravelList();"
+                   style="padding-top: 10px; font-size: 1em;color:black;max-width: 100%;"> Travel
+				   		<!--<sup
+                        ng-show="travelCount != 0" class="badge badge-stable"
+                        style="font-size: 10px; padding: 0px 5px; right: auto; top: 0.4em;background-color: grey; color: white;height: 33%;">{{travelApplicationCount}}
+						</sup>--><br style="color:black;" /> Application
+                </a>
+
+				<a id='tabClaim' ng-show="IsClaimAccessible == 'true'" class="tab-item"
+                        href="" ng-click="getClaimList();"
+                        style="padding-top: 10px; font-size: 1em;color:black;max-width: 100%;"> Claim
+						<!--<sup
+                        ng-show="od != 0" class="badge badge-stable"
+                        style="font-size: 10Px; padding: 0px 5px; right: auto; top: 0.4em;background-color: grey; color: white;height: 33%;">99
+						</sup>--><br style="color:black;"/>Application
+                </a>
+
+            </div>
+        </div>
+		<!--  check for travel and claim access
+        <div
+            ng-show="IsLeaveAccessible == 'false' && IsODAccessible == 'false' && IsRegularizationAccessible == 'false' && IsShiftChangeAccessible == 'false'">
+            <center>
+				<br><br><br>
+                <h4>You are not authorized to access this page</h4>
+            </center>
+        </div>
+		-->
+        <div id="TravelPendingApplicationID" class="cust-card"
+             ng-show="IsTravelAccessible == 'true'">
+            <div>
+                <div class="custom-header"
+                     style="font-size: 20px; margin-bottom: 40px; padding: 0px; padding-left: 15px; padding-top: 10px;margin-top:-8px;">
+                    <h4 class="custom-header" style="margin-top: 0px;" >
+                        <b>Travel Approval</b>
+                    </h4>
+                </div>
+				<br>
+            </div>
+            <label ng-show="IsTravelAccessible == 'true'" class="item item-input" style="margin-top:8px;">
+                <i class="icon ion-search placeholder-icon"></i> <input  type="search" placeholder="Search" ng-model="searchObj.searchTravel" />
+				<!--<span on-tap="clearSearch()">
+				<i class="icon ion-close placeholder-icon" style="text-aling:right;margin-right:15px;"></i>
+				</span> -->
+            </label>
+
+
+      <div class="list card modal-payslip customBorderRadius"
+          ng-repeat="travel in travelAppList| filter:searchObj.searchTravel | orderBy:'-reqDate'"
+				  ng-if="travel.travelStatus=='SENT FOR APPROVAL' || travel.travelStatus=='SENT FOR CANCELLATION'">
+        <div class="item custom-item custom-paddingBottom item-text-wrap">
+		 <div class="row custom-row" style="margin-left:0px;">
+            <div class="col col-100">
+              <ul class="ctcClaimList">
+                <li ng-if="travel.reqDate"><b>Application Date</b>
+                    {{travel.reqDate| date : "dd-MMM-yyyy"}}</li>
+                <li ng-if="travel.travelDate"><b>Travel
+                    Date</b>{{travel.travelDate| date : "dd-MMM-yyyy"}}</li>
+                <li><b>Transaction ID</b>{{travel.travelTransId}}</li>
+                <li><b>Travel Type</b>{{travel.travelType}}</li>
+                <li><h5 class="col-100"
+                                style="font-size:0.9em;margin-top:3px;color:blue;"
+								ng-if="travel.uploadFileName"
+                                ng-click="downloadAttachmnent(travel)" >
+                                Tap to download:&nbsp;&nbsp;{{travel.uploadFileName}}
+                            </h5>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="item custom-item custom_OD1 item-avatar">
+          <!-- <img ng-src="{{travel.photoFileName}}" style="max-width: 50px; max-height: 50px;"> -->
+          <img ng-src="./img/Male.png" style="max-width: 50px; max-height: 50px;">
+				  <div>
+					  <h3 style="font-size: 0.8em;">{{travel.name}} ({{travel.empCode}})</h3>
+            <p style="color:green;" ng-if="travel.travelStatus == 'APPROVED' || travel.travelStatus == 'CANCELLATION APPROVED'">{{travel.travelStatus}}</p>
+            <p style="color:red;" ng-if="travel.travelStatus == 'CANCELLED'">{{travel.travelStatus}}</p>
+            <p style="color:red;" ng-if="travel.travelStatus == 'REJECTED'">{{travel.travelStatus}}</p>
+            <p style="color:red;" ng-if="travel.travelStatus == 'CANCELLATION REJECTED'">{{travel.travelStatus}}</p>
+            <p style="color:orange;" ng-if="travel.travelStatus != 'REJECTED' &&
+						travel.travelStatus != 'APPROVED' && travel.travelStatus != 'CANCELLED' &&
+						travel.travelStatus != 'CANCELLATION APPROVED' && travel.travelStatus != 'CANCELLATION REJECTED'">{{travel.travelStatus}}</p>
+          </div>
+        </div>
+        <div ng-show="travel.travelStatus == 'SENT FOR APPROVAL' || travel.travelStatus == 'SENT FOR CANCELLATION' ">
+          <div class="row custom-row">
+            <div ng-click="onConfirmTravel('hide', 1, travel.travelTransId)"
+                class="col col-50 cust-col-50 buttonLinksColor">Approve</div>
+            <div ng-click="onConfirmTravel('hide', 2, travel.travelTransId)"
+                class="col col-50 cust-col-50 buttonLinksColor">Reject</div>
+            </div>
+          </div>
+          <!--
+		  <div ng-show="travel.travelStatus == 'SENT FOR CANCELLATION'">
+            <div class="row custom-row">
+              <div ng-click="onConfirmTravelCancel(1, travel.travelStatus, travel.travelTransId)"
+                   class="col col-50 cust-col-50 buttonLinksColor">Approve</div>
+                      |
+              <div ng-click="onConfirmTravelCancel(2, travel.travelTransId)"
+                  class="col col-50 cust-col-50 buttonLinksColor">Reject</div>
+              </div>
+
+              <br>
+            </div>
+			-->
+            <div style="margin-bottom: 15px;">
+                <center>
+                 <br>
+                  <button class="button button-small button-outline button-positive" style="width:50%;"
+				  ng-click="showTravelDetailForm(travel);" >Details</button>
+                </center>
+              </div>
+          </div>
+          <div class="list card modal-payslip customBorderRadius"
+                ng-repeat="travel in travelAppList| filter:searchObj.searchTravel | orderBy:'-reqDate'"
+				        ng-if="!(travel.travelStatus=='SENT FOR APPROVAL' || travel.travelStatus=='SENT FOR CANCELLATION')">
+              <div class="item custom-item custom-paddingBottom item-text-wrap">
+                <div class="row custom-row" style="margin-left:0px;">
+                  <div class="col col-100">
+                    <ul class="ctcClaimList">
+                      <li ng-if="travel.reqDate"><b>Application Date</b>
+                          {{travel.reqDate| date : "dd-MMM-yyyy"}}</li>
+                      <li ng-if="travel.travelDate"><b>Travel
+                          Date</b>{{travel.travelDate| date : "dd-MMM-yyyy"}}</li>
+                      <li><b>Transaction ID</b>{{travel.travelTransId}}</li>
+                      <li><b>Travel Type</b>{{travel.travelType}}</li>
+					  <li><h5 class="col-100"
+                                style="font-size:0.9em;margin-top:3px;color:blue;"
+								ng-if="travel.uploadFileName"
+                                ng-click="downloadAttachmnent(travel)" >
+                                Tap to download:&nbsp;&nbsp;{{travel.uploadFileName}}
+                            </h5>
+					</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="item custom-item custom_OD1 item-avatar">
+                <img ng-src="./img/Male.png" style="max-width: 50px; max-height: 50px;">
+              <div>
+                <h3 style="font-size: 0.8em;" ng-if="travel.empCode">{{travel.name}} ({{travel.empCode}})</h3>
+                <h3 style="font-size: 0.8em;" ng-if="!travel.empCode">{{travel.name}} </h3>
+                <p style="color:green;" ng-if="travel.travelStatus == 'APPROVED' || travel.travelStatus == 'CANCELLATION APPROVED'">{{travel.travelStatus}}</p>
+                <p style="color:red;" ng-if="travel.travelStatus == 'CANCELLED'">{{travel.travelStatus}}</p>
+                <p style="color:red;" ng-if="travel.travelStatus == 'REJECTED'">{{travel.travelStatus}}</p>
+                <p style="color:red;" ng-if="travel.travelStatus == 'CANCELLATION REJECTED'">{{travel.travelStatus}}</p>
+                <p style="color:orange;" ng-if="travel.travelStatus != 'REJECTED' &&
+                travel.travelStatus != 'APPROVED' && travel.travelStatus != 'CANCELLED' &&
+                travel.travelStatus != 'CANCELLATION APPROVED' && travel.travelStatus != 'CANCELLATION REJECTED'">{{travel.travelStatus}}</p>
+              </div>
+            </div>
+			<!--
+            <div ng-show="travel.travelStatus == 'SENT FOR APPROVAL'">
+              <div class="row custom-row">
+                <div ng-click="onConfirm('hide', 1, travel.travelTransId)"
+                    class="col col-50 cust-col-50 buttonLinksColor">Approve</div>
+                        |
+                <div ng-click="onConfirm('hide', 2, travel.travelTransId)"
+                    class="col col-50 cust-col-50 buttonLinksColor">Reject</div>
+                </div>
+              </div>
+              <div ng-show="travel.travelStatus == 'SENT FOR CANCELLATION'">
+                <div class="row custom-row">
+                  <div ng-click="onConfirmLeaveCancel(1, travel.travelStatus, travel.travelTransId)"
+                      class="col col-50 cust-col-50 buttonLinksColor">Approve
+                  </div>
+                      |
+                  <div ng-click="onConfirmLeaveCancel(2, travel.travelTransId)"
+                    class="col col-50 cust-col-50 buttonLinksColor">Reject
+                  </div>
+                </div>
+              </div>
+			  -->
+              <div style="margin-bottom: -15px;margin-top: -10px;">
+                  <center>
+                    <br>
+                    <button class="button button-small button-outline button-positive" style="width:50%;"
+					ng-click="showTravelDetailForm(travel);" >Details</button>
+                  </center>
+                </div>
+                <br>
+              <div ng-if="travelAppList.length == 0">
+                <center>
+                  <h4>No Data Available</h4>
+                </center>
+              </div>
+				      <br>
+            </div>
+			  </div>
+
+          <div id="ClaimPendingApplicationID" class="cust-card"
+		            ng-show="IsClaimAccessible == 'true'">
+            <div>
+              <div class="custom-header"
+                  style="font-size: 20px; margin-bottom: 40px; padding: 0px; padding-left: 15px; padding-top: 10px;margin-top:-8px;">
+                <h4 class="custom-header" style="margin-top: 0px;">
+                 <b>Travel Claim Approvals</b>
+                </h4>
+              </div>
+				      <br>
+            </div>
+
+            <label class="item item-input" style="margin-top:8px;"> <i
+                class="icon ion-search placeholder-icon"></i> <input type="search"
+                placeholder="Search" ng-model="searchObj.searchODManager" />
+            </label>
+            <br>
+            <div class="list card modal-payslip customBorderRadius"
+				        ng-if="claim.travelClaimStatus=='SENT FOR APPROVAL' || claim.travelClaimStatus=='SENT FOR CANCELLATION'"
+                ng-repeat="claim in reporteeList| filter: searchObj.searchObj | orderBy:'-reqDate'">
+              <div class="item custom-item custom-paddingBottom item-text-wrap">
+                <div class="row custom-row" style="margin-left:0px;">
+                  <div class="col col-100">
+                    <ul class="ctcClaimList">
+                      <li ng-if="claim.reqDate"><b>Application Date</b>
+                        {{claim.reqDate| date : "dd-MMM-yyyy"}}</li>
+                      <li ng-if="claim.travelDate"><b>Travel Date</b>
+                        {{claim.travelDate| date : "dd-MMM-yyyy"}}</li>
+                      <li><b>Transaction ID</b>{{claim.travelTransId}}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="item custom-item custom_OD1 item-avatar">
+                <!-- <img ng-src="{{claim.photoFileName}}" style="max-width: 50px; max-height: 50px;"> -->
+                <img ng-src="./img/Male.png" style="max-width: 50px; max-height: 50px;">
+              <div>
+						    <h3 style="font-size: 0.8em;">{{claim.name}} </h3>
+                <p style="color:green;" ng-if="claim.travelClaimStatus == 'APPROVED' || claim.travelClaimStatus == 'CANCELLATION APPROVED'">{{claim.travelClaimStatus}}</p>
+                <p style="color:red;" ng-if="claim.travelClaimStatus == 'CANCELLED'">{{claim.travelClaimStatus}}</p>
+                <p style="color:red;" ng-if="claim.travelClaimStatus == 'REJECTED'">{{claim.travelClaimStatus}}</p>
+                <p style="color:red;" ng-if="claim.travelClaimStatus == 'CANCELLATION REJECTED'">{{claim.travelClaimStatus}}</p>
+                <p style="color:orange;" ng-if="claim.travelClaimStatus != 'REJECTED' &&
+                claim.travelClaimStatus != 'APPROVED' && claim.travelClaimStatus != 'CANCELLED' &&
+                claim.travelClaimStatus != 'CANCELLATION APPROVED' && claim.travelClaimStatus != 'CANCELLATION REJECTED'">{{claim.travelClaimStatus}}</p>
+              </div>
+            </div>
+				  <div>
+						<center>
+              <br>
+              <button class="button button-small button-outline button-positive" style="width:50%;" ng-click="showClaimlDetailForm(claim);">Details</button>
+            </center>
+				  </div>
+				  <br>
+				  <!--
+            <div ng-show="claim.travelClaimStatus == 'SENT FOR APPROVAL'">
+              <div class="row custom-row">
+                <div ng-click="onConfirm('hide', 1, travel.travelTransId)"
+                  class="col col-50 cust-col-50 buttonLinksColor">Approve
+                </div>
+                  |
+                <div ng-click="onConfirm('hide', 2, travel.travelTransId)"
+                    class="col col-50 cust-col-50 buttonLinksColor">Reject
+                </div>
+              </div>
+            </div>
+            <div ng-show="claim.travelClaimStatus == 'SENT FOR CANCELLATION'">
+              <div class="row custom-row">
+                <div ng-click="onConfirmTravelCancel(1, travel.travelStatus, travel.travelTransId)"
+                  class="col col-50 cust-col-50 buttonLinksColor">Approve
+                </div>
+                 |
+                <div ng-click="onConfirmTravelCancel(2, travel.travelTransId)"
+                  class="col col-50 cust-col-50 buttonLinksColor">Reject
+                </div>
+              </div>
+            </div>
+				  -->
+        </div>
+	
+        <div class="list card modal-payslip customBorderRadius"
+				    ng-if="!(claim.travelClaimStatus=='SENT FOR APPROVAL' || claim.travelClaimStatus=='SENT FOR CANCELLATION')"
+            ng-repeat="claim in reporteeList| filter: searchObj.searchObj | orderBy:'-reqDate'">
+            <div class="item custom-item custom-paddingBottom item-text-wrap">
+              <div class="row custom-row" style="margin-left: 0px;">
+                <div class="col col-100">
+                  <ul class="ctcClaimList">
+                    <li ng-if="claim.reqDate"><b>Application Date</b>
+                      {{claim.reqDate| date : "dd-MMM-yyyy"}}</li>
+                    <li ng-if="claim.travelDate"><b>Travel Date</b>
+                      {{claim.travelDate| date : "dd-MMM-yyyy"}}</li>
+                    <li><b>Transaction ID</b>{{claim.travelTransId}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="item custom-item custom_OD1 item-avatar">
+              <!-- <img ng-src="{{claim.photoFileName}}" style="max-width: 50px; max-height: 50px;">
+              <img ng-src="{{claim.photoFileName}}" style="max-width: 50px; max-height: 50px;">-->
+            <div>
+              <h3 style="font-size: 0.8em;">{{claim.name}} </h3>
+              <p style="color:green;" ng-if="claim.travelClaimStatus == 'APPROVED' || claim.travelClaimStatus == 'CANCELLATION APPROVED'">{{claim.travelClaimStatus}}</p>
+              <p style="color:red;" ng-if="claim.travelClaimStatus == 'CANCELLED'">{{claim.travelClaimStatus}}</p>
+              <p style="color:red;" ng-if="claim.travelClaimStatus == 'REJECTED'">{{claim.travelClaimStatus}}</p>
+              <p style="color:red;" ng-if="claim.travelClaimStatus == 'CANCELLATION REJECTED'">{{claim.travelClaimStatus}}</p>
+              <p style="color:orange;" ng-if="claim.travelClaimStatus != 'REJECTED' &&
+                claim.travelClaimStatus != 'APPROVED' && claim.travelClaimStatus != 'CANCELLED' &&
+                claim.travelClaimStatus != 'CANCELLATION APPROVED' && claim.travelClaimStatus != 'CANCELLATION REJECTED'">{{claim.travelClaimStatus}}</p>
+            </div>
+          </div>
+				<div>
+					<center>
+					  <br>
+						<button class="button button-small button-outline button-positive" style="width:50%;" ng-click="showClaimlDetailForm(claim);">Details</button>
+					</center>
+				</div>
+				<br>
+			</div>
+			
+      <div ng-if="claim.length == 0">
+        <center>
+          <h4>No Data Available</h4>
+        </center>
+      </div>
+      <br>
+    </div>
+    <!-- hidden field start -->
+			<input type="hidden" name="DateFormat" id="DateFormat" value="${dateFormat}">
+			<input type="hidden" name="reqtrack" id="reqtrack" value="${TRACKERID}">
+			<input type="hidden" name="menuId" id="menuId" value="${menuId}">
+			<input type="hidden" name="buttonRights" id="buttonRights" value="${buttonRights.buttonRights}">
+			<input type="hidden" name="disableHeader" id="disableHeader" value="${disableHeader}">
+			<input type="hidden" name="approverFlag" id="approverFlag" value="${approverFlag}">
+			<input type="hidden" name="status" id="status" value="${status}">
+
+			</ion-content> </ion-view>
+        <script>
+         $(document).ready(function(){
+      $(".ctcClaimList").show();
+  });
+  $("#tabTravel").on("click",function(){
+    $(".ctcClaimList").show();
+  });
+  $("#tabClaim").on("click",function(){
+    $(".ctcClaimList").hide();
+  });
+</script>

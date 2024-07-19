@@ -1,0 +1,179 @@
+<style>
+    #mapp {
+        height: 400px;
+        width: 100%;
+        background-color: brown;
+    }
+    .col-xs-2 {
+		padding: 0 !important;
+	}
+
+	.row {
+		margin-right: 0px !important;
+		margin-left: 0px !important;
+	}
+
+	label {
+		font-weight: normal !important;
+	}
+
+	.col-xs-4,
+	.col-sm-4 {
+		padding: 0 4px !important;
+	}
+
+	
+input{
+}
+ .ui-autocomplete.ui-menu.ui-widget.ui-widget-content.ui-corner-all
+{
+    height: 100px;
+    overflow: auto;
+}
+
+</style>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<ion-view>
+	<ion-content has-bouncing="false"
+		style="position:fixed;bottom:1px;top:44px;">
+		
+		<div class="custom-header" style="padding-top: 10px;">
+			<h4 class="subHeaderClass" style="margin: 0px;"><b>Geo Tracking Report
+				</b></h4>
+		</div>
+		<form name="rpf">
+			<div class="form-group row">
+				<label class="col-sm-4 col-xs-4 col-form-label">Search Employee </label><span
+					class="dividerClass">:</span>
+				<div class="col-sm-8 col-xs-8">
+					<input type="text" ng-model="selectedValues.searchEmpTxt"
+						name="search_emp" id="search_emp"
+						style="margin-top:8px;font-style: italic;"
+						placeholder="Search employee" maxlength="100" class=" form-control"
+						onclick="this.focus();this.select()"/>
+				</div>
+			</div>
+
+			<div class="form-group row" ng-show="1==2">
+				<label class="col-sm-4 col-xs-4 col-form-label">Employee</label><span
+					class="dividerClass">:</span>
+				<div class="col-sm-8 col-xs-8">
+					<select id="empId" class="form-control item-select select"
+						onchange="angular.element(this).scope().f_change('false')" name="empId"
+						ng-options="emp.applicantId as emp.empName for emp in
+						pmsEmployeeStatusList track by $index"
+						ng-model="resultObj.emp">
+						<option value="">Select Employee</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="text-left">
+				<button type="button"
+					onclick="angular.element(this).scope().stopeTR()"
+					class="btn btn-primary mr-10">
+					Show locations
+				</button>
+				<button type="button"
+					onclick="angular.element(this).scope().getdata()"
+					class="btn btn-primary mr-10">
+					Show Track
+				</button>
+				<button type="button"
+					onclick="angular.element(this).scope().saveKIllTIme()"
+					class="btn btn-primary mr-10">
+					Save App Kill Time
+				</button>
+			</div>
+
+			<br>
+			<b>
+				<div id="divList">
+					<p id="geolocation"
+						style="font-size:1em;height:auto;background-color:
+						bisque;">
+
+					</p>
+				</div>
+			</b>
+				<div id="mapp" data-tap-disabled="false"
+				sttke="height:400;background-color:blue"></div>
+	
+
+			
+
+			<br>
+
+			<br><br>
+		</form>
+
+		<script>
+			//url : baseURL + '/common/searchByNameAndCodeForEisCompany.spr',
+	  $(document).ready(
+	  function() {
+	  $(function() {
+	  $("#search_emp").autocomplete({
+	  minLength : 3,
+	  selectfirst : true,
+	  minChars : 1,
+	  matchSubset : 1,
+	  matchContains : 1,
+	  cacheLength : 10,
+	  autoFill : false,
+	  search : function(e, u) {
+	  console.log("fetched project manager list")
+  },
+  source : function(request,response) {
+	//document.getElementById("txtSearchEmp").value = $('#search_emp').val()
+	 angular.element(document.getElementById('search_emp')).scope().filterEmp();
+	 data = angular.element(document.getElementById('search_emp')).scope().pmsEmployeeStatusList
+	if (data.length > 0){
+	var result = new Array(data.length)
+	for (var i= 0; i<data.length;i++ ){
+		var obj = {label:data[i].empName,  value:data[i].applicantId, comId:data[i].empName}
+		result[i] = obj;
+	}
+	alert("result " +result.length)
+	alert(result[0])
+}else{
+	var result = [ {
+		label : "No matches found",
+		value : '-1'
+		} ];
+}
+response(result);
+	  
+												  },
+												  select : function(event, ui) {
+													  var val = "";
+													  var lable = "";
+													  var comId = "";
+													  var hCatId = "";
+													  
+													  if (ui.item.value != "-1"){
+														  
+														this.value = ui.item.label;  
+														//angular.element(document.getElementById('search_emp')).scope().empId = ui.item.value;
+														angular.element(document.getElementById('search_emp')).scope().f_change("false", ui.item.value,ui.item.label);
+														//document.getElementById('search_emp').value = 'rajes' + ui.item.label
+														//ui.item.value = ui.item.label														
+													  }
+							// this.value = ui.item.label;
+							
+							// document.getElementById('selectedEmpIdFromPopUp').value = ui.item.comId;
+							// document.getElementById('searchEmpTxt').value = ui.item.comId;
+							// angular.element(document.getElementById('selectedEmpIdFromPopUp')).scope().empChangedByPopUpSelection();
+													  
+													  
+													  return true;
+												  }
+											  });
+						  });
+			});
+			
+			$(document).ready(function() {
+			  //$("input[id='sarch_emp']").focus().select();
+		  });
+		  </script>
+	</ion-content>
+</ion-view>

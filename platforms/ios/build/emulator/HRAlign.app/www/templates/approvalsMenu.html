@@ -1,0 +1,203 @@
+<style>
+  .tab-item{
+    display: inline-block !important;
+  } 
+   .row {
+    margin: 15px 0px !important;
+    padding: 30px 0px 0px !important;
+    /* box-shadow: 0 1px 5px 0 rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12);
+    -webkit-box-shadow: 0 1px 5px 0 rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12);
+    -moz-box-shadow: 0 1px 5px 0 rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12);
+    -o-box-shadow: 0 1px 5px 0 rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12); */
+  
+  } 
+  .badge.badgeCustom.primary-color{
+    font-size: 13px;
+    padding: 6px 5px 0px 5px;
+    right: auto;
+    top: 1.3em;
+    margin-left: -5px;
+    height: 26%;
+    width: 30px;
+  }
+  .menuIconSection img{
+    max-width: 45px;
+      max-height: 45px;
+  }
+  .menuIconSection .col-xs-4{
+    text-align: center;
+    width: 32.333333%;
+    display: inline-block;
+    padding-top: 40px !important;
+    float: inherit;
+  }
+.menuIconSection .fa,
+[class^="icon-"], [class*=" icon-"]{
+  font-size: 40px;
+  color: #929292;
+}
+  </style>
+  <ion-view>
+    <ion-content has-bouncing="false" style="overflow-y: auto;top:4%" class="requisionSection">
+      <div class="custom-header">
+        <h4 class="subHeaderClass"><b>Approvals</b></h4>
+        <a href="#/app/requestMenu" class="approvalLinkClass">
+          <img src="./img/requisitionNew.png" style="width: 25px; height: 25px; margin-right: 3px;text-align: center;" />
+        </a>
+      </div>
+      <div class="menuIconSection" >
+     <!-- Icon -->
+     <div class="">
+      <div class="col-md-4 col-xs-4" ng-show="isLeaveAccessible == 'true' && showAllMenus == 'true'  ">
+        <div id="" class="">
+          <a  id=""  class="tab-item" ng-click="openLeaveApproval()">
+            <!-- <img  src="./img/leave1.png" />  -->
+            <i class="fa fa-calendar-times-o" aria-hidden="true"></i>
+            <sup class="badge badgeCustom primary-color" ng-show="leave > 0">{{leave}} </sup>
+            <p > Leave </p>
+          </a>
+          
+        </div>
+      </div>
+      <div class="col-md-4 col-xs-4" ng-show="isODAccessible == 'true' && showAllMenus == 'true' ">
+        <div id="" class="">
+          <a  id=""  class="tab-item" ng-click="openODApproval()" >
+            <!-- <img src="./img/od.png" />  -->
+            <i class="icon-calendar-leavemain"></i>
+                <sup class="badge badgeCustom primary-color" ng-show="od > 0">{{od}} </sup>
+                <p> On Duty</p>
+          </a>
+          
+        </div>
+      </div>
+      <div class="col-md-4 col-xs-4" ng-show="isRegularizationAccessible == 'true' && showAllMenus == 'true' ">
+        <div id="" class="">
+          <a  id=""  class="tab-item" ng-click="openAttendanceApproval()" >
+            <!-- <img  src="./img/attendance.png" />  -->
+            <i class="icon-Time_Attendance"></i>
+           <sup class="badge badgeCustom primary-color" ng-show="attendance > 0">{{attendance}} </sup>
+           <p> Attendance</p>
+          </a>
+         
+        </div>
+      </div>
+    <!-- Icon 2 -->
+      <div class="col-md-4 col-xs-4" ng-show="isShiftChangeAccessible == 'true' && showAllMenus == 'true' ">
+        <div id="" class="">
+          <a  id=""  class="tab-item" ng-click="openShiftChangeApproval()" >
+            <!-- <img  src="./img/sift_change.png"/>  -->
+            <i class="fa fa-random" ></i>
+            <sup class="badge badgeCustom primary-color" ng-show="shift > 0">{{shift}}</sup>
+            <p> Shift Change </p>
+          </a>
+         
+        </div>
+      </div>
+      <div class="col-md-4 col-xs-4" ng-show="isTravelAccessible == 'true' && showAllMenus == 'true' ">
+        <div id="" class="">
+          <a  id=""  class="tab-item" ng-click="openTravelApproval()" >
+            <!-- <img src="./img/travel.png" /> -->
+            <i class="icon-airplane-around-earth"></i>
+            <sup class="badge badgeCustom primary-color" ng-show="travelCount > 0">{{travelCount}} </sup>
+            <p> Travel </p>
+          </a>
+          
+        </div>
+      </div>
+      <div class="col-md-4 col-xs-4" 
+      ng-show="(isClaimAccessible == 'true' || isExpenseClaimAccessible =='true') && showAllMenus == 'true' ">
+        <div id="" class="">
+          <a  id=""  class="tab-item" ng-click="openClaimApproval()" >
+            <!-- <img  src="./img/claim1.png"/>  -->
+             <!-- <i class="fa fa-money"></i> -->
+             <i class="icon-claim" aria-hidden="true"></i>
+         <sup class="badge badgeCustom primary-color" ng-show="totalClaimCount > 0">{{totalClaimCount}}</sup>
+         <p> Claim </p>
+          </a>
+         
+        </div>
+      </div>
+    <!-- Icon 3 -->
+      <div class="col-md-4 col-xs-4" ng-show="isTimesheetAccessible == 'true' && showAllMenus == 'true' ">
+        <div id="" class="">
+          <a  id=""  class="tab-item" ng-click="openTimesheetApproval()">
+            <!-- <img  src="./img/time-sheet.png" />  -->
+            <i class="icon-timesheetmain" style="color: black;"></i>
+            <p> Time Sheet </p>
+          </a>
+         
+        </div>
+      </div>
+      <div class="col-md-4 col-xs-4" ng-show="isProjectConfigAccessible == 'true' && showAllMenus == 'true' ">
+        <div id="" class="">
+          <a  id=""  class="tab-item" ng-click="openProjectConfigList()" >
+            <!-- <img src="./img/proj-confi.png" />  -->
+            <i class="fa fa-cogs" aria-hidden="true"></i>
+            <p>Project <br>Configuration</p>
+            
+          </a>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-xs-4" ng-show="IsTransactionAccessible == 'true' && showAllMenus == 'true' ">
+        <div id="" class="">
+          <a  id=""  class="tab-item" ng-click="openTransactionList()" >
+            <i class="fa fa-recycle" aria-hidden="true"></i>
+              <sup class="badge badgeCustom primary-color" ng-show="gIntTransactionRequestCount > 0" >{{gIntTransactionRequestCount}}</sup>  
+          <p> Transaction </p>
+          </a>
+        </div>
+      </div>
+       <!-- Icon 4-->
+       <div class="col-md-4 col-xs-4" ng-show="IsVacancyAccessible == 'true' && showAllMenus == 'true' ">
+        <div id="" class="">
+          <a  id=""  class="tab-item" ng-click="openVacancyList()" >
+            <i class="fa fa-user-plus" aria-hidden="true"></i>
+             <sup class="badge badgeCustom primary-color" ng-show="gIntVacancyRequestCount > 0">{{gIntVacancyRequestCount}}</sup> 
+          <p> Vacancy </p>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-4 col-xs-4" ng-show="IsOfferAccessible == 'true' && showAllMenus == 'true' ">
+        <div id="" class="">
+          <a  id=""  class="tab-item" ng-click="openOfferLetterList()" >
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+            <!-- <sup class="badge badgeCustom primary-color"></sup> -->
+          <p>Offer Letter</p>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-4 col-xs-4" ng-show="IsTrainingRequestAccessible == 'true' && showAllMenus == 'true' ">
+        <div id="" class="">
+          <a  id=""  class="tab-item" ng-click="openTrainingRequestList()" >
+            <i class="fa fa-certificate" aria-hidden="true"></i>
+            <!-- <sup class="badge badgeCustom primary-color">{{}}</sup>  -->
+          <p>Training Request</p>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-4 col-xs-4" ng-show="IsStationeryRequestAccessible == 'true' && showAllMenus == 'true' ">
+        <div id="" class="">
+          <a  id=""  class="tab-item" ng-click="openStationaryRequestList()">
+            <i class="fa fa-book" aria-hidden="true"></i>
+            <!-- <sup class="badge badgeCustom primary-color"></sup> -->
+          <p>Stationery <br>Request</p>
+          </a>
+        </div>
+      </div>
+      
+      <div class="col-md-4 col-xs-4" ng-show=" isPanelMember =='Y' || IsGrievanceAccessible == 'true' ">
+        <div id="" class="">
+          <a  id=""  class="tab-item" ng-click="openGrievanceList()" >
+            <i class="fa fa-indent" aria-hidden="true"></i>
+              <!-- <sup class="badge badgeCustom primary-color" ng-show="gIntTransactionRequestCount > 0" >{{gIntTransactionRequestCount}}</sup>   -->
+          <p> Grievance /<br> Suggestion </p>
+          </a>
+        </div>
+      </div>
+      </div>
+    </div>
+    <br><br>
+
+      </ion-content>
+      </ion-view>

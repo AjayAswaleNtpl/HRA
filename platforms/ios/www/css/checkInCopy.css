@@ -1,0 +1,24 @@
+.custommap {
+
+    height: 250px;
+    width: 100%;
+}
+.popup-container .popup {
+    border-radius: 10px;
+}
+.check-grayBackColor{
+    background: #F2F3F4;
+}
+.check-marginLeft{
+    margin-left: 3%;
+}
+.check-marginRight{
+    margin-right: 3%;
+}
+.check-border-radius{
+    border-radius: 8px;  
+
+}
+.cehck-box-shadow{
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}

@@ -1,0 +1,1182 @@
+<style>
+    .custom-item {
+      border: none;
+    }
+    .anchorRRedirect {
+      position: absolute;
+      top: 212px;
+      right: 14px;
+      font-size: 15px;
+      color: #3b5998;
+    }
+    .listTopMargin {
+      margin-top: 10px;
+    }
+    .travelListTopMargin {
+      margin-top: -40px;
+    }
+    #outer {
+      width: 100%;
+      text-align: center;
+    }
+    .inner {
+      display: inline-block;
+    }
+    ul.ctcClaimList {
+      margin-top: 20px;
+    }
+    ul.ctcClaimList li {
+      font-size: 0.8em;
+      padding: 5px 0px 0px 0px;
+      min-width: 435px;
+    }
+    .ctcClaimList b {
+      display: inline-block;
+      width: 40%;
+      position: relative;
+      padding-right: 10px;
+    }
+    .ctcClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ul.travelClaimList {
+      width: 125%;
+    }
+    ul.travelClaimList li {
+      font-size: 0.8em;
+      padding: 5px 0px 0px 0px;
+      min-width: 435px;
+    }
+    .travelClaimList b {
+      display: inline-block;
+      width: 32%;
+      position: relative;
+      padding-right: 10px;
+    }
+    .travelClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ul.odClaimList {
+      margin-top: 20px;
+    }
+    ul.odClaimList li {
+      font-size: 0.8em;
+      padding: 5px 0px 0px 0px;
+      min-width: 435px;
+    }
+    .odClaimList b {
+      display: inline-block;
+      width: 35%;
+      position: relative;
+      padding-right: 10px;
+    }
+    .odClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ul.attClaimList {
+      width: 125%;
+    }
+    ul.attClaimList li {
+      font-size: 0.8em;
+      padding: 5px 0px 0px 0px;
+      min-width: 435px;
+    }
+    .attClaimList b {
+      display: inline-block;
+      width: 38%;
+      position: relative;
+      padding-right: 10px;
+    }
+    .attClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ol,
+    ul {
+      margin-bottom: 0px !important;
+    }
+    a:focus,
+    a:hover {
+      text-decoration: none;
+    }
+    .tab-item.tab-item-active,
+    .tab-item.active,
+    .tab-item.activated {
+      opacity: 1;
+    }
+    .tab-item {
+      opacity: 0.7;
+    }
+    .custom-row {
+      padding: 0px;
+    }
+    .custom-padding {
+      padding: 5px 10px;
+    }
+    .custom-top {
+      top: 10px;
+      left: 13px;
+    }
+    .custom-paddingTop {
+      padding-top: 11px;
+    }
+    .custom_OD {
+      padding-top: 11px;
+      padding-bottom: 0px;
+    }
+    .custom-paddingBottom {
+      padding-bottom: 0px;
+    }
+    /* .cust-card {
+      padding: 50px 0px 0px 0px;
+    } */
+    .custom-requestApprove {
+      font-size: 11px;
+      color: green;
+    }
+    .custom-requestRejcted {
+      font-size: 11px;
+      color: red;
+    }
+    .custom-requestOther {
+      font-size: 11px;
+      color: orange;
+    }
+    .custom-fontSize {
+      font-size: 12px;
+    }
+    .modal-wrapper {
+      position: absolute;
+      top: 25%;
+      display: block;
+      width: 90%;
+      min-height: 45%;
+      padding: 5%;
+    }
+  
+    .modal-backdrop-bg {
+      background-color: rgba(255, 255, 255, 0.85);
+    }
+  
+    .modal {
+      border-top-right-radius: 1em;
+      border-bottom-right-radius: 1em;
+      border-top-left-radius: 1em;
+      border-bottom-left-radius: 1em;
+    }
+  
+    .modal-ion-content {
+      padding: 15px;
+      font-size: 0.85em;
+    }
+  
+  
+    .badge.badgeCustom {
+      width: 22px;
+      height: 22px;
+      text-align: center;
+      line-height: 18px;
+      display: block;
+      position: absolute;
+      top: 0;
+      color: #fff !important;
+      font-size: 10px !important;
+      padding: 0;
+    }
+    a:focus,
+    a:hover {
+      text-decoration: none;
+    }
+    .tab-item.tab-item-active,
+    .tab-item.active,
+    .tab-item.activated {
+      opacity: 1;
+    }
+    .tab-item {
+      opacity: 0.7;
+    }
+    /* .slick-slide .slide-content {
+    margin: 0 3%;
+    padding: 10px 5px;
+  
+  } */
+  
+    .slick-prev,
+    .slick-next {
+      position: absolute;
+      right: 10%;
+      background: #777;
+      border: none;
+      color: transparent;
+      width: 30px;
+      height: 30px;
+    }
+  
+    .slick-prev:before,
+    .slick-next:before {
+      content: ">";
+      color: #fff;
+      font-size: 25px;
+    }
+  
+    .slick-prev {
+      left: 10%;
+    }
+  
+    .slick-prev:before {
+      content: "<";
+    }
+  
+    .slick-dots {
+      list-style: none;
+      margin: 0 auto;
+      text-align: center;
+      margin-top: 10px;
+    }
+  
+    .slick-dots li {
+      display: inline-block;
+    }
+  
+    .slick-dots li button {
+      transition: 0.2s background-color ease-in-out 0s;
+      border: none;
+      padding: 0;
+      color: transparent;
+      width: 10px;
+      height: 10px;
+      background-color: #777;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+  
+    .slick-dots li.slick-active button {
+      background-color: #0a9dc7;
+    }
+    /* .slick-slider {
+      width: 100%;
+      position: relative;
+      transform: translate(-50%, -50%);
+      top: 0%;
+      left: 50%;
+  } */
+    .slick-slider {
+      width: 100%;
+      position: relative;
+      top: 0%;
+    }
+    /* ===form List=== */
+    /* .customBorderRadius .dividerClass {
+      line-height: 1.5 !important;
+  }
+  .customBorderRadius label {
+      font-size: 13px !important;
+      line-height: 1.5 !important;
+  }
+  .customBorderRadius .row {
+      margin: 0 5px !important;
+      padding: 0 5px !important;
+  }
+  .customBorderRadius.col-xs-8 {
+      font-size: 13px !important;
+  }
+  .customBorderRadius .item-note {
+      padding: 10px 10px 0 0 !important;
+      margin-bottom: 2px !important;
+  } */
+  .inner .btn-pad.claimClass{
+    margin: 14px 4px 5px 10px;
+      padding: 0 8px;
+  }
+  .inner .badge{
+    position: relative;
+    margin: 0 -8px;
+    float: right;
+  }
+  .slick-carousel .fa{
+    font-size: 40px;
+    color: #777676;
+  }
+  .slick-carousel p {
+      color: #212121;
+      margin: 0 0 10px;
+      font-size: 0.83em;
+      text-align: center;
+      margin-left: -2%;
+      margin-top: 0%;
+      margin-bottom: 2px;
+      font-weight: 400;
+  }
+  </style>
+<ion-view>
+    <div class="bar bar-footer hide-on-keyboard-open" style="background-color:#000; background-size: 100% 0px;">
+        <div class="title" style="height: 20px;">
+            <h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px;
+                margin-bottom: 5px;">Powered by HR Align</h6>
+        </div>
+    </div>
+    <ion-content has-bouncing="false" style="overflow-y: auto;top:0%" class="requisionSection">
+        <div class="custom-header" style="padding-top: 0px;padding-bottom: 0px;">
+            <h4 class="subHeaderClass" style="margin: 0px;"> <span class="backIcon">
+              <i class="icon ion-ios-arrow-back" ng-click="redirectOnBack()"></i></span>
+                <b style="vertical-align: super;"> Attendance Application </b></h4>
+                <a ng-if="isARTorFRT == 'true' || isGroupMasterReportee == 'true'" ng-click="goToApprovals()" class="approvalLinkClass">
+                  <img src="./img/approveNew.png" style="width: 25px; height: 25px; margin-right: 3px;text-align: center;" />
+                </a>
+        </div>
+        <div id="RegularizationApplicationIDReq"	ng-show="IsRegularizationAccessible == 'true'"  class="cust-card" >
+            <br />
+            <div class="row custom-row">
+              <div ng-click="getRegularizationRequestListPrevMonth()"  class="col col-35 cust-col-50 buttonLinksColor" style="padding-top:12px;text-align:left;padding-left:40px;"  >
+                <img style="width:30px;height:30px;" src="./img/prev page.png" />
+              </div>
+              <div  class="col col-30 cust-col-50 buttonLinksColor"  style="margin-top: 6px;"  >
+                <center>
+                  <h5 ng-if="requesObjectForYear">  {{monthName}}, {{requesObject.year}} </h5>
+                </center>
+              </div>
+              <div   class="col col-35 cust-col-50 buttonLinksColor"  style="padding-top:12px;text-align:right;padding-right:40px" >
+                <img  ng-if="greyArrowForNextMonth == false"  ng-click="getRegularizationRequestListNextMonth()" style="width:30px;height:30px;"
+                  src="./img/next page.png"/>
+                <img  ng-if="greyArrowForNextMonth == true" style="width:30px;height:30px;" src="./img/next page grey.png"/>
+              </div>
+            </div>
+      
+            <label ng-show="1==2" class="item item-input item-select">
+              <div class="input-label ">
+                Year
+              </div>
+              <select  id="year"   class="form-control"  ng-options="value as value for (key , value) in yearListforAtt"
+                ng-model="requesObjectForYear.yearId"  required  >
+                <option value="">Please Select</option>
+              </select>
+            </label>
+      
+            <label ng-show="1==2" class="item item-input item-select">
+              <div class="input-label ">  Month </div>
+              <select  id="month"  class="form-control" ng-change="getRegularizationRequestList()"
+                ng-options="month.monthValue as month.monthName for month in monthList" ng-model="requesObjectForMonth.month" required >
+                <option value="">Please Select</option>
+              </select>
+            </label>
+      
+            <!-- <label  class="item item-input"  style="padding: 6px 7px 5px 16px!important;"  >
+              <i class="icon ion-search placeholder-icon"></i>
+              <input id="reqSearch3" type="search"  placeholder="Search" ng-model="searchObj.searchRegular"/>
+            </label> -->
+            <div class="search">
+              <span>
+            <input type="submit" value="&#xf002;" class="search-btn fa ib-m">
+             <div class="search-slide ib-m">
+                <input type="search" id="reqSearch3" placeholder="Enter your search" class="ib-m" ng-model="searchObj.searchRegular"/>
+                <div class="search-close ib-m">
+                  <i class="fa fa-times-circle" aria-hidden="true"></i></div>
+              </div>
+            </span>
+            <span class="recentRecord" style="margin-left:12px;font-size: 0.8em; font-style: oblique;">
+              Recent 50 applications.
+            </span>
+              <span class="refreshBtn" style="margin-top: 2%;">
+                <i ng-click="refreshAttList()" class="fa fa-refresh" ></i>
+              </span>
+            </div>
+      
+            <br />
+            <center>
+              <button  id="btnApply" class="button button-small button-outline button-positive"  style="margin-right:-14px;" ng-click="reDirectToAttendanceRegularizationPage()"  >
+                Apply Attendance Regularization
+              </button>
+      
+              <!-- <a class="button button-small button-outline button-positive marginTop" href="#/app/MyApprovalsCombined">Go to Approvals</a> -->
+            </center>
+            <!-- <div class="row" style="margin-bottom: -7% !important;">
+              <div class="col col-75">
+                <p style="margin-left:12px;font-size: 0.8em; font-style: oblique;">
+                  Recent 50 applications.
+                </p>
+              </div>
+              <div class="col col-25">
+                <img  style="width: 25px;height: 25px;margin-left: 40%;margin-top: -5%;"  src="./img/refreshicon.png"  ng-click="refreshAttList()"
+                />
+              </div>
+            </div> -->
+            <!-- <span class="refreshBtn" style="margin-top: -7%;">
+              <i ng-click="refreshAttList()" class="fa fa-refresh" ></i>
+            </span> -->
+      
+            <div   class="list card customBorderRadius"  style="border-radius: 1em;box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3)!important;"
+              ng-repeat="regularisation in missPunchAppliList | filter: searchObj.searchRegular | orderBy:'-regularisation.outTimeDateStr'"
+              ng-if="regularisation.status =='SENT FOR APPROVAL' || regularisation.status =='SENT FOR CANCELLATION'">
+       <div class="remarkcomments">
+                <h2  class="item-note custom-requestApprove" ng-if="regularisation.status == 'APPROVED'
+                || regularisation.status == 'CANCELLATION APPROVED'" >
+                {{regularisation.status}}
+              </h2>
+              <h2  class="item-note custom-requestRejcted"
+                ng-if="regularisation.status == 'CANCELLED'" >
+                {{regularisation.status}}
+              </h2>
+              <h2  class="item-note custom-requestRejcted"
+                ng-if="regularisation.status == 'REJECTED'"  >
+                {{regularisation.status}}
+              </h2>
+              <h2  class="item-note custom-requestRejcted"
+                ng-if="regularisation.status == 'CANCELLATION REJECTED'" >
+                {{regularisation.status}}
+              </h2>
+              <h2  class="item-note custom-requestOther"  ng-if="regularisation.status != 'REJECTED' &&
+                regularisation.status != 'APPROVED' && regularisation.status != 'CANCELLED' &&
+                regularisation.status != 'CANCELLATION APPROVED' && regularisation.status != 'CANCELLATION REJECTED'" >
+                {{regularisation.status}}<br>{{regularisation.approvalPendingFrom}}
+              </h2>
+              </div>
+      
+              <div ng-if="regularisation.othRemarks.indexOf('Mobile Clock') <= -1" >
+              <div class="form-group row" >
+                <label  class="col-sm-4 col-xs-4 col-form-label">Attendance Date</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{regularisation.outTimeDateStr| date : "dd/MM/yyyy"}}
+                </div>
+              </div>
+              <div class="form-group row" >
+                <label  class="col-sm-4 col-xs-4 col-form-label">Actual In Time</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{regularisation.actualInTimeStr}}
+                </div>
+              </div>
+              <div class="form-group row" >
+                <label  class="col-sm-4 col-xs-4 col-form-label">Actual Out Time</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{regularisation.actualOutTimeStr}}
+                </div>
+              </div>
+              <div class="form-group row" >
+                <label  class="col-sm-4 col-xs-4 col-form-label">Modified In Time</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{regularisation.inTimeStr}}
+                </div>
+              </div>
+              <div class="form-group row" >
+                <label  class="col-sm-4 col-xs-4 col-form-label">Modified Out Time</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{regularisation.outTimeStr}}
+                </div>
+              </div>
+              <div class="form-group row" >
+                <label  class="col-sm-4 col-xs-4 col-form-label">Worked Hours</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{regularisation.workedHrs}}
+                </div>
+              </div>
+              <div class="form-group row" >
+                <label  class="col-sm-4 col-xs-4 col-form-label">Shift</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{regularisation.shiftAbbr}}
+                </div>
+              </div>
+              <div class="form-group row" ng-if="regularisation.firstHalf == regularisation.secondHalf">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Attendance Status</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{regularisation.firstHalf}}
+                </div>
+              </div>
+              <div class="form-group row" ng-if="regularisation.firstHalf != regularisation.secondHalf">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Attendance Status</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  First Half:{{regularisation.firstHalf}}-Second Half:{{regularisation.secondHalf}}
+                </div>
+              </div>
+      
+      
+              <div class="form-group row" ng-if="regularisation.remarks != 'OTH'">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Reason</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{regularisation.remarks}}
+                </div>
+              </div>
+              <div class="form-group row" ng-if="regularisation.remarks == 'OTH'">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Reason</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{regularisation.othRemarks}}
+                </div>
+              </div>
+      
+              <div class="form-group row" >
+                <label  class="col-sm-4 col-xs-4 col-form-label">Applicants Remarks</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{regularisation.applicantComments}}
+                </div>
+              </div>
+              <div class="form-group row" >
+                <label  class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8" style="white-space: pre-wrap">{{regularisation.appRemarks}}</div>
+              </div>
+              <div class="form-group row" ng-if="showPunchDetailsFeature=='true'">
+                      <label class="col-sm-4 col-xs-4 col-form-label">Punch Details</label><span
+                          class="dividerClass">:</span>
+                      <div class="col-sm-8 col-xs-8" ng-if="!regularisation.punchStr" 
+                      ng-click="getPunches(regularisation.dtHrapiFormatDate,regularisation.dtHrapiFormatDate,regularisation,'ATTREG')"
+                      style="color: blue">
+                      Show Punches
+                      </div>
+                      <div class="col-sm-8 col-xs-8" ng-show="regularisation.punchStr" 
+                      ng-click="regularisation.punchStr = null;"
+                      style="color: blue;">
+                      Hide Punches
+                      </div>
+              </div>
+              
+              <div class="form-group row" ng-if="regularisation.punchStr" >
+              <div style="overflow: auto;height:150px;width:100%;">
+                      <div class="col-sm-12 col-xs-12" style="white-space: pre-wrap">{{regularisation.punchStr}}
+                      </div>
+              </div>		
+              </div>
+              <br>
+              <div class="form-group row" ng-show="regularisation.geoLocationAddress">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Location Address</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{regularisation.geoLocationAddress}}
+                </div>
+              </div>
+              <br>
+              <div class="text-center" class="item" ng-if="(regularisation.status =='SENT FOR APPROVAL' || 
+                regularisation.status =='APPROVED') && cancelAttReg=='true'" >
+                <button type="button" ng-click="goSendForCancelation(regularisation)"  class="button button-small button-outline button-positive">
+              <i class="fa fa-times mr-5" aria-hidden="true"></i> Cancel Request </button>
+            </div>
+           </div>
+      
+              <div ng-if="regularisation.othRemarks.indexOf('Mobile Clock') > -1">
+                <div class="form-group row" >
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Attendance Date</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    {{regularisation.outTimeDateStr| date : "dd/MM/yyyy"}}
+                  </div>
+                </div>
+                <div class="form-group row" >
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Clock In Time</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    {{regularisation.inTimeStr}}
+                  </div>
+                </div>
+                <div class="form-group row" >
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Clock Out Time</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    {{regularisation.outTimeStr}}
+                  </div>
+                </div>
+                <div class="form-group row" >
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Shift</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    {{regularisation.shiftAbbr}}
+                  </div>
+                </div>
+                <div class="form-group row" ng-if="regularisation.firstHalf == regularisation.secondHalf">
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Attendance Status</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    {{regularisation.firstHalf}}
+                  </div>
+                </div>
+                <div class="form-group row" ng-if="regularisation.firstHalf != regularisation.secondHalf">
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Attendance Status</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    First Half:{{regularisation.firstHalf}}-Second Half:{{regularisation.secondHalf}}
+                  </div>
+                </div>
+                <div class="form-group row" ng-if="regularisation.remarks != 'OTH'">
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Reason</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    {{regularisation.remarks}}
+                  </div>
+                </div>
+                <div class="form-group row" ng-if="regularisation.remarks == 'OTH'">
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Reason</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    {{regularisation.othRemarks}}
+                  </div>
+                </div>
+      
+                <div class="form-group row">
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Applicants Remarks</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    {{regularisation.applicantComments}}
+                  </div>
+                </div>
+                <div class="form-group row" >
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8" style="white-space: pre-wrap">{{regularisation.appRemarks}}</div>
+                </div>
+              <div class="form-group row" ng-if="showPunchDetailsFeature=='true'">
+                      <label class="col-sm-4 col-xs-4 col-form-label">Punch Details</label><span
+                          class="dividerClass">:</span>
+                      <div class="col-sm-8 col-xs-8" ng-if="!regularisation.punchStr" 
+                      ng-click="getPunches(regularisation.dtHrapiFormatDate,regularisation.dtHrapiFormatDate,regularisation,'ATTREG')"
+                      style="color: blue;">
+                      Show Punches
+                      </div>
+                      <div class="col-sm-8 col-xs-8" ng-show="regularisation.punchStr" 
+                      ng-click="regularisation.punchStr = null;"
+                      style="color: blue;">
+                      Hide Punches
+                      </div>
+
+              </div>
+              
+              <div class="form-group row" ng-if="regularisation.punchStr" >
+              <div style="overflow: auto;height:150px;width:100%;">
+                      <div class="col-sm-12 col-xs-12" style="white-space: pre-wrap">{{regularisation.punchStr}}
+                      </div>
+              </div>		
+              </div>
+              <br>
+                <div class="form-group row" ng-show="regularisation.geoLocationAddress">
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Location Address In</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    {{regularisation.geoLocationAddress}}
+                  </div>
+                </div>
+                <div class="form-group row" ng-show="regularisation.outGeoLocationAddress">
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Location Address Out</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    {{regularisation.outGeoLocationAddress}}
+                  </div>
+                </div>
+                <div class="form-group row" ng-show="!regularisation.outGeoLocationAddress">
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Location Address Out</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    No Location Data.
+                  </div>
+                </div>
+      </div>
+       <!-- <div class="item custom-item custom-padding item-text-wrap">
+                <div class="row custom-row"  style="position: absolute;top: 18px;right: 0px;" >
+                  <div class="col col-80">
+                  </div>
+                  <div class="col col-20">
+                    <h2  class="item-note custom-requestApprove" ng-if="regularisation.status == 'APPROVED'
+                                    || regularisation.status == 'CANCELLATION APPROVED'" >
+                      {{regularisation.status}}
+                    </h2>
+                    <h2  class="item-note custom-requestRejcted"
+                      ng-if="regularisation.status == 'CANCELLED'" >
+                      {{regularisation.status}}
+                    </h2>
+                    <h2  class="item-note custom-requestRejcted"
+                      ng-if="regularisation.status == 'REJECTED'"  >
+                      {{regularisation.status}}
+                    </h2>
+                    <h2  class="item-note custom-requestRejcted"
+                      ng-if="regularisation.status == 'CANCELLATION REJECTED'" >
+                      {{regularisation.status}}
+                    </h2>
+                    <h2  class="item-note custom-requestOther"  ng-if="regularisation.status != 'REJECTED' &&
+                                    regularisation.status != 'APPROVED' && regularisation.status != 'CANCELLED' &&
+                                      regularisation.status != 'CANCELLATION APPROVED' && regularisation.status != 'CANCELLATION REJECTED'" >
+                      {{regularisation.status}}<br>{{regularisation.approvalPendingFrom}}
+                    </h2>
+                  </div>
+                </div>
+      
+                <div class="col col-100"  ng-if="regularisation.othRemarks.indexOf('Mobile Clock') <= -1" >
+                  <ul class="attClaimList">
+                    <li>
+                      <b>Attendance Date</b>{{regularisation.outTimeDateStr| date :
+                      "dd/MM/yyyy"}}
+                    </li>
+                    <li><b>Actual In Time</b>{{regularisation.actualInTimeStr}}</li>
+                    <li><b>Actual Out Time</b>{{regularisation.actualOutTimeStr}}</li>
+                    <li><b>Modified In Time</b>{{regularisation.inTimeStr}}</li>
+                    <li><b>Modified Out Time</b>{{regularisation.outTimeStr}}</li>
+                    <li><b>Worked Hours</b>{{regularisation.workedHrs}}</li>
+                    <li><b>Shift</b>{{regularisation.shiftAbbr}}</li>
+                    <li ng-if="regularisation.firstHalf == regularisation.secondHalf"><b>Attendance Status</b>{{regularisation.firstHalf}}</li>
+                    <li ng-if="regularisation.firstHalf != regularisation.secondHalf"><b>Attendance Status</b>First Half:{{regularisation.firstHalf}}-Second Half:{{regularisation.secondHalf}}</li>
+                    <li ng-if="regularisation.remarks != 'OTH'">
+                      <b>Reason</b>{{regularisation.remarks}}
+                    </li>
+                                  <li ng-if="regularisation.remarks == 'OTH'">
+                      <b>Reason</b>{{regularisation.othRemarks}}
+                    </li>
+                    <li>
+                      <b>Applicants Comments</b>{{regularisation.applicantComments}}
+                    </li>
+                    <li><b>Approver Comments</b>{{regularisation.appRemarks}}</li>
+                    <li ng-show="regularisation.geoLocationAddress">
+                      <b>Location Address</b>{{regularisation.geoLocationAddress}}
+                    </li>
+                  </ul>
+                  <div ng-if="(regularisation.status =='SENT FOR APPROVAL' && cancelAttReg=='true') " >
+                    <br />
+                    <center>
+                      <button  class="button button-small button-outline button-positive" style="padding: 2px 5px 2px 5px;"  ng-click="goSendForCancelation(regularisation)" >
+                        Cancel Request
+                      </button>
+                    </center>
+                  </div>
+                </div>
+                <div  class="col col-100"  ng-if="regularisation.othRemarks.indexOf('Mobile Clock') > -1">
+                  <ul class="attClaimList">
+                    <li>
+                      <b>Attendance Date</b>{{regularisation.outTimeDateStr| date :
+                      "dd/MM/yyyy"}}
+                    </li>
+                    <li><b>Clock In Time</b>{{regularisation.actualInTimeStr}}</li>
+                    <li><b>Clock Out Time</b>{{regularisation.actualOutTimeStr}}</li>
+                    <li><b>Shift:</b>{{regularisation.shiftAbbr}}</li>
+                    <li ng-if="regularisation.firstHalf == regularisation.secondHalf"><b>Attendance Status</b>{{regularisation.firstHalf}}</li>
+                    <li ng-if="regularisation.firstHalf != regularisation.secondHalf"><b>Attendance Status</b>First Half:{{regularisation.firstHalf}}-Second Half:{{regularisation.secondHalf}}</li>
+                    <li ng-if="regularisation.remarks != 'OTH'">
+                      <b>Reason</b>{{regularisation.remarks}}
+                    </li>
+                                  <li ng-if="regularisation.remarks == 'OTH'">
+                      <b>Reason</b>{{regularisation.othRemarks}}
+                    </li>
+                    <li>
+                      <b>Applicants Comments</b>{{regularisation.applicantComments}}
+                    </li>
+                    <li><b>Approver Comments</b>{{regularisation.appRemarks}}</li>
+                    <br />
+                    <li ng-show="regularisation.geoLocationAddress">
+                      <b>Location Address In</b>{{regularisation.geoLocationAddress}}
+                    </li>
+                    <br />
+                    <li ng-show="regularisation.outGeoLocationAddress">
+                      <b>Location Address Out</b
+                      >{{regularisation.outGeoLocationAddress}}
+                    </li>
+                    <li ng-show="!regularisation.outGeoLocationAddress">
+                      <b>Location Address Out</b>No Location Data.
+                    </li>
+                  </ul>
+                </div>
+              </div> -->
+            </div>
+      
+            <div  class="list card customBorderRadius" ng-repeat="regularisation in missPunchAppliList | filter: searchObj.searchRegular | orderBy:'-outTimeDateStr'"
+              ng-if="!(regularisation.status =='SENT FOR APPROVAL' || regularisation.status =='SENT FOR CANCELLATION')" >
+      
+              <div class="remarkcomments">
+                <h2  class="item-note custom-requestApprove" ng-if="regularisation.status == 'APPROVED'
+                                    || regularisation.status == 'CANCELLATION APPROVED'"> {{regularisation.status}}</h2>
+                    <h2 class="item-note custom-requestRejcted"  ng-if="regularisation.status == 'CANCELLED'" >
+                      {{regularisation.status}}
+                    </h2>
+                    <h2  class="item-note custom-requestRejcted" ng-if="regularisation.status == 'REJECTED'" >
+                      {{regularisation.status}}
+                    </h2>
+                    <h2  class="item-note custom-requestRejcted"   ng-if="regularisation.status == 'CANCELLATION REJECTED'">
+                      {{regularisation.status}}
+                    </h2>
+                    <h2 class="item-note custom-requestOther"  ng-if="regularisation.status != 'REJECTED' &&
+                                    regularisation.status != 'APPROVED' && regularisation.status != 'CANCELLED' &&
+                                      regularisation.status != 'CANCELLATION APPROVED' && regularisation.status != 'CANCELLATION REJECTED'"  >
+                      {{regularisation.status}}
+                    </h2>
+              </div>
+      
+              <div ng-if="regularisation.othRemarks.indexOf('Mobile Clock') <= -1">
+              <div class="form-group row" >
+                <label  class="col-sm-4 col-xs-4 col-form-label">Attendance Date</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{regularisation.outTimeDateStr| date : "dd/MM/yyyy"}}
+                </div>
+              </div>
+              <div class="form-group row" >
+                <label  class="col-sm-4 col-xs-4 col-form-label">Actual In Time</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{regularisation.actualInTimeStr}}
+                </div>
+              </div>
+              <div class="form-group row" >
+                <label  class="col-sm-4 col-xs-4 col-form-label">Actual Out Time</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{regularisation.outTimeStr}}
+                </div>
+              </div>
+              <div class="form-group row" >
+                <label  class="col-sm-4 col-xs-4 col-form-label">Modified In Time</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{regularisation.inTimeStr}}
+                </div>
+              </div>
+              <div class="form-group row" >
+                <label  class="col-sm-4 col-xs-4 col-form-label">Modified Out Time</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{regularisation.outTimeStr}}
+                </div>
+              </div>
+              <div class="form-group row" >
+                <label  class="col-sm-4 col-xs-4 col-form-label">Worked Hours</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{regularisation.workedHrs}}
+                </div>
+              </div>
+              <div class="form-group row" >
+                <label  class="col-sm-4 col-xs-4 col-form-label">Shift</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{regularisation.shiftAbbr}}
+                </div>
+              </div>
+      
+              <div class="form-group row" ng-if="regularisation.firstHalf == regularisation.secondHalf">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Attendance Status</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{regularisation.firstHalf}}
+                </div>
+              </div>
+              <div class="form-group row" ng-if="regularisation.firstHalf != regularisation.secondHalf">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Attendance Status</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  First Half:{{regularisation.firstHalf}}-Second Half:{{regularisation.secondHalf}}
+                </div>
+              </div>
+      
+              <div class="form-group row" ng-if="regularisation.remarks != 'OTH'">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Reason</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{regularisation.remarks}}
+                </div>
+              </div>
+              <div class="form-group row" ng-if="regularisation.remarks == 'OTH'">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Reason</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{regularisation.othRemarks}}
+                </div>
+              </div>
+              <div class="form-group row" >
+                <label  class="col-sm-4 col-xs-4 col-form-label">Applicants Remarks</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{regularisation.applicantComments}}
+                </div>
+              </div>
+              <div class="form-group row" >
+                <label  class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8" style="white-space: pre-wrap">{{regularisation.appRemarks}}</div>
+              </div>
+              <div class="form-group row" ng-if="showPunchDetailsFeature=='true'">
+                      <label class="col-sm-4 col-xs-4 col-form-label">Punch Details</label><span
+                          class="dividerClass">:</span>
+                      <div class="col-sm-8 col-xs-8" ng-if="!regularisation.punchStr" 
+                      ng-click="getPunches(regularisation.dtHrapiFormatDate,regularisation.dtHrapiFormatDate,regularisation,'ATTREG')"
+                      style="color: blue;">
+                      Show Punches
+                      </div>
+                      <div class="col-sm-8 col-xs-8" ng-show="regularisation.punchStr" 
+                      ng-click="regularisation.punchStr = null;"
+                      style="color: blue;">
+                      Hide Punches
+                      </div>
+
+              </div>
+              
+              <div class="form-group row" ng-if="regularisation.punchStr" >
+              <div style="overflow: auto;height:150px;width:100%;" >
+                      <div class="col-sm-12 col-xs-12" style="white-space: pre-wrap">{{regularisation.punchStr}}
+                      </div>
+              </div>		
+              </div>
+              <div class="form-group row" ng-show="regularisation.geoLocationAddress">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Location Address</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{regularisation.geoLocationAddress}}
+                </div>
+              </div>
+              <br>
+              <div class="text-center" class="item"  ng-if="(regularisation.status =='SENT FOR APPROVAL' || 
+              regularisation.status =='APPROVED') && cancelAttReg=='true' ">
+                <button type="button" ng-click="goSendForCancelation(regularisation)"  class="button button-small button-outline button-positive">
+              <i class="fa fa-times mr-5" aria-hidden="true"></i> Cancel Request </button>
+            </div>
+              </div>
+      <div ng-if="regularisation.othRemarks.indexOf('Mobile Clock') > -1" >
+                <div class="form-group row" >
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Attendance Date</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    {{regularisation.outTimeDateStr| date : "dd/MM/yyyy"}}
+                  </div>
+                </div>
+                <div class="form-group row" >
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Clock In Time</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    {{regularisation.actualInTimeStr}}
+                  </div>
+                </div>
+                <div class="form-group row" >
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Clock Out Time</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    {{regularisation.outTimeStr}}
+                  </div>
+                </div>
+                <div class="form-group row" >
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Shift</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    {{regularisation.shiftAbbr}}
+                  </div>
+                </div>
+                <div class="form-group row" ng-if="regularisation.firstHalf == regularisation.secondHalf">
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Attendance Status</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    {{regularisation.firstHalf}}
+                  </div>
+                </div>
+                <div class="form-group row" ng-if="regularisation.firstHalf != regularisation.secondHalf">
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Attendance Status</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    First Half:{{regularisation.firstHalf}}-Second Half:{{regularisation.secondHalf}}
+                  </div>
+                </div>
+                <div class="form-group row" ng-if="regularisation.remarks != 'OTH'">
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Reason</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    {{regularisation.remarks}}
+                  </div>
+                </div>
+                <div class="form-group row" ng-if="regularisation.remarks == 'OTH'" >
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Reason</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    {{regularisation.othRemarks}}
+                  </div>
+                </div>
+                <div class="form-group row"  >
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Applicants Remarks</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    {{regularisation.applicantComments}}
+                  </div>
+                </div>
+                <div class="form-group row"  >
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8" style="white-space: pre-wrap">{{regularisation.appRemarks}}</div>
+                </div>
+              <div class="form-group row" ng-if="showPunchDetailsFeature=='true'">
+                      <label class="col-sm-4 col-xs-4 col-form-label">Punch Details</label><span
+                          class="dividerClass">:</span>
+                      <div class="col-sm-8 col-xs-8" ng-if="!regularisation.punchStr" 
+                      ng-click="getPunches(regularisation.dtHrapiFormatDate,regularisation.dtHrapiFormatDate,regularisation,'ATTREG')"
+                      style="color: blue;">
+                      Show Punches
+                      </div>
+                      <div class="col-sm-8 col-xs-8" ng-show="regularisation.punchStr" 
+                      ng-click="regularisation.punchStr = null;"
+                      style="color: blue;">
+                      Hide Punches
+                      </div>
+
+              </div>
+              
+              <div class="form-group row" ng-if="regularisation.punchStr" >
+              <div style="overflow: auto;height:150px;width:100%;">
+                      <div class="col-sm-12 col-xs-12" style="white-space: pre-wrap">{{regularisation.punchStr}}
+                      </div>
+              </div>		
+              </div>
+              <br>  
+                <div class="form-group row"  ng-show="regularisation.geoLocationAddress">
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Location Address In</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    {{regularisation.geoLocationAddress}}
+                  </div>
+                </div>
+                <div class="form-group row"  ng-show="regularisation.outGeoLocationAddress">
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Location Address Out</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    {{regularisation.outGeoLocationAddress}}
+                  </div>
+                </div>
+                <div class="form-group row"  ng-show="!regularisation.outGeoLocationAddress">
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Location Address Out</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    No Location Data.
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="item custom-item custom-padding item-text-wrap">
+                <div  class="row custom-row"  style="position: absolute;top: 18px;right: 16px;"   >
+                  <div class="col col-80">
+                  </div>
+                  <div class="col col-20">
+                    <h2  class="item-note custom-requestApprove" ng-if="regularisation.status == 'APPROVED'
+                                    || regularisation.status == 'CANCELLATION APPROVED'"> {{regularisation.status}}</h2>
+                    <h2 class="item-note custom-requestRejcted"  ng-if="regularisation.status == 'CANCELLED'" >
+                      {{regularisation.status}}
+                    </h2>
+                    <h2  class="item-note custom-requestRejcted" ng-if="regularisation.status == 'REJECTED'" >
+                      {{regularisation.status}}
+                    </h2>
+                    <h2  class="item-note custom-requestRejcted"   ng-if="regularisation.status == 'CANCELLATION REJECTED'">
+                      {{regularisation.status}}
+                    </h2>
+                    <h2 class="item-note custom-requestOther"  ng-if="regularisation.status != 'REJECTED' &&
+                                    regularisation.status != 'APPROVED' && regularisation.status != 'CANCELLED' &&
+                                      regularisation.status != 'CANCELLATION APPROVED' && regularisation.status != 'CANCELLATION REJECTED'"  >
+                      {{regularisation.status}}
+                    </h2>
+                  </div>
+                </div>
+      
+                <div
+                  class="col col-100"
+                  ng-if="regularisation.othRemarks.indexOf('Mobile Clock') <= -1" >
+                  <ul class="attClaimList">
+                    <li>
+                      <b>Attendance Date</b>{{regularisation.outTimeDateStr| date :
+                      "dd/MM/yyyy"}}
+                    </li>
+                    <li><b>Actual In Time</b>{{regularisation.actualInTimeStr}}</li>
+                    <li><b>Actual Out Time</b>{{regularisation.actualOutTimeStr}}</li>
+                    <li><b>Modified In Time</b>{{regularisation.inTimeStr}}</li>
+                    <li><b>Modified Out Time</b>{{regularisation.outTimeStr}}</li>
+                    <li><b>Worked Hours</b>{{regularisation.workedHrs}}</li>
+                    <li><b>Shift</b>{{regularisation.shiftAbbr}}</li>
+                    <li><b>Shift</b>{{regularisation.shiftAbbr}}</li>
+                    <li ng-if="regularisation.firstHalf == regularisation.secondHalf"><b>Attendance Status</b>{{regularisation.firstHalf}}</li>
+                    <li ng-if="regularisation.firstHalf != regularisation.secondHalf"><b>Attendance Status</b>First Half:{{regularisation.firstHalf}}-Second Half:{{regularisation.secondHalf}}</li>
+                    <li ng-if="regularisation.remarks != 'OTH'">
+                      <b>Reason</b>{{regularisation.remarks}}
+                    </li>
+                                  <li ng-if="regularisation.remarks == 'OTH'">
+                      <b>Reason</b>{{regularisation.othRemarks}}
+                    </li>
+                    <li>
+                      <b>Applicants Comments</b>{{regularisation.applicantComments}}
+                    </li>
+                    <li><b>Approver Comments</b>{{regularisation.appRemarks}}</li>
+                    <li ng-show="regularisation.geoLocationAddress">
+                      <b>Location Address</b>{{regularisation.geoLocationAddress}}
+                    </li>
+                  </ul>
+                  <div  ng-if="(regularisation.status =='SENT FOR APPROVAL' && cancelAttReg=='true') "  >
+                    <br />
+                    <center>
+                      <button
+                        class="button button-small button-outline button-positive"
+                        ng-click="goSendForCancelation(regularisation)"
+                      >
+                        Cancel
+                      </button>
+                    </center>
+                  </div>
+                </div>
+                <div
+                  class="col col-100"
+                  ng-if="regularisation.othRemarks.indexOf('Mobile Clock') > -1" >
+                  <ul class="attClaimList">
+                    <li>
+                      <b>Attendance Date</b>{{regularisation.outTimeDateStr| date :
+                      "dd/MM/yyyy"}}
+                    </li>
+                    <li><b>Clock In Time</b>{{regularisation.actualInTimeStr}}</li>
+                    <li><b>Clock Out Time</b>{{regularisation.actualOutTimeStr}}</li>
+                    <li><b>Shift:</b>{{regularisation.shiftAbbr}}</li>
+                    <li><b>Shift</b>{{regularisation.shiftAbbr}}</li>
+                    <li ng-if="regularisation.firstHalf == regularisation.secondHalf"><b>Attendance Status</b>{{regularisation.firstHalf}}</li>
+                    <li ng-if="regularisation.firstHalf != regularisation.secondHalf"><b>Attendance Status</b>First Half:{{regularisation.firstHalf}}-Second Half:{{regularisation.secondHalf}}</li>
+                    <li ng-if="regularisation.remarks != 'OTH'">
+                      <b>Reason</b>{{regularisation.remarks}}
+                    </li>
+                                  <li ng-if="regularisation.remarks == 'OTH'">
+                      <b>Reason</b>{{regularisation.othRemarks}}
+                    </li>
+                    <li>
+                      <b>Applicants Comments</b>{{regularisation.applicantComments}}
+                    </li>
+                    <li><b>Approver Comments</b>{{regularisation.appRemarks}}</li>
+                    <br />
+                    <li ng-show="regularisation.geoLocationAddress">
+                      <b>Location Address In</b>{{regularisation.geoLocationAddress}}
+                    </li>
+                    <br />
+                    <li ng-show="regularisation.outGeoLocationAddress">
+                      <b>Location Address Out</b
+                      >{{regularisation.outGeoLocationAddress}}
+                    </li>
+                    <li ng-show="!regularisation.outGeoLocationAddress">
+                      <b>Location Address Out</b>No Location Data.
+                    </li>
+                  </ul>
+                </div>
+              </div> -->
+            </div>
+      
+            <div class="noDataAvailavle" ng-show="IsRegularizationAccessible == 'true'" ng-if="missPunchAppliList.length == 0" >
+              <!-- <center><h4>No Data Available</h4></center> -->
+              <img src="./img/no-result.png" alt="">
+            </div>
+            <br />
+          </div>
+    
+    </ion-content>
+</ion-view>
+<script>
+  var sliBtn = '.search-btn',
+      sliCont = '.search-slide',
+      sliTxt = '.search-slide input[type=text]',
+      sliDis = '.search-close',
+      sliSpd = 300;
+
+  $(sliBtn).click(function(){
+
+    $('.recentRecord').css("display", "none").fadeOut(4000);
+    $(sliCont).animate(
+      {'width':'20.5625em'}, sliSpd);
+    $(sliTxt).focus();
+  });
+  $(sliDis).click(function(){
+    setTimeout(function() {
+      $('.recentRecord').css("display", "inline-block");
+}, 1000);
+
+    $(sliCont).animate(
+      {'width':0}, sliSpd);
+  });
+      </script>
+<script>
+
+
+  $(document).ready(function() {
+   $(".center").slick({
+      dots: true,
+      infinite: false,
+      speed: 300,
+      arrows: false,
+      slidesToShow: 4,
+      slidesToScroll: 2,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 4,
+            slidesToScroll: 2,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 4,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 4,
+            slidesToScroll: 2
+          }
+        }
+      ]
+    });
+  });
+</script>

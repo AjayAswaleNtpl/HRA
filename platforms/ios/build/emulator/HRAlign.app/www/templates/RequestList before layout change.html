@@ -1,0 +1,665 @@
+<style>
+    .custom-item {
+        border: none;
+    }
+
+    .custom-row {
+        padding: 0px;
+    }
+    .custom-padding{
+        padding: 10px;
+    }
+    .custom-top
+    {
+        top:10px;
+        left: 13px;
+    }
+    .custom-paddingTop
+    {
+        padding-top : 11px;
+    }
+    .custom_OD
+    {
+        padding-top : 11px;
+        padding-bottom: 0px;
+    }
+    .custom-paddingBottom
+    {
+        padding-bottom: 0px;
+    }
+    .cust-card {
+        padding: 50px 0px 0px 0px;
+    }
+    .custom-requestApprove
+    {
+        font-size: 11px;
+        color: green;
+    }
+    .custom-requestRejcted
+    {
+        font-size: 11px;
+        color: red;
+    }
+    .custom-requestOther
+    {
+        font-size: 11px;
+        color: orange;
+    }
+    .custom-fontSize
+    {
+        font-size: 12px;
+    }
+    .customBorderRadius
+    {
+        border-top-right-radius: 1em;
+        border-bottom-right-radius: 1em;
+        border-top-left-radius: 1em;
+        border-bottom-left-radius: 1em;
+    }
+
+    .modal-wrapper {
+        position: absolute;
+        top: 25%;
+        display: block;
+        width: 90%;
+        min-height: 45%;
+        padding:  5%;
+    }
+
+    .modal-backdrop-bg {
+        background-color: rgba(255,255,255,0.85);
+    }
+
+    .modal {
+        border-top-right-radius: 1em;
+        border-bottom-right-radius: 1em;
+        border-top-left-radius: 1em;
+        border-bottom-left-radius: 1em;
+    }
+
+    .modal-ion-content {
+        padding: 15px; font-size: 0.85em;
+    }
+
+</style>
+
+<ion-view >
+    <ion-content has-bouncing="false" style="overflow-y: auto;top:0%">
+
+        <div ng-show ="IsLeaveAccessible == 'true' || IsODAccessible == 'true' || IsRegularizationAccessible == 'true' || IsShiftChangeAccessible == 'true'" id="tabhead" class="tabs-striped tabs-top tabs-icon-top /*tabs-background-positive tabs-color-light*/ tabs-clear">
+            <div class="tabs" style="margin-top: 25px;top: 65px;">
+                <a ng-show="IsLeaveAccessible == 'true'" id='tabLeaveReq' class="tab-item " ng-click="getLeaveRequestList()"  style="padding-top: 10px; font-size: 1em;" href="">
+                    Leave <br/>Application
+                </a>
+                <a ng-show="IsODAccessible == 'true'" id='tabODReq'  class="tab-item" ng-click="getODApplicationList()" href="" style="padding-top: 10px; font-size: 1em;">
+                    OD <br/>Application
+                </a>
+                <a ng-show="IsRegularizationAccessible == 'true'" id='tabRegularizationReq' class="tab-item" ng-click="getRegularizationRequestList()" href="" style="padding-top: 10px; font-size: 1em;">
+
+                    Attend. <br/>Regularization
+                </a>
+                <a ng-show="IsShiftChangeAccessible == 'true'" id='tabShiftApplicationReq' class="tab-item" ng-click="getShiftChangeRequestList()" href="" style="padding-top: 10px; font-size: 1em;">
+                    Shift <br/>Change
+                </a>
+            </div>
+        </div>
+        <div ng-show ="IsLeaveAccessible == 'false' && IsODAccessible == 'false' && IsRegularizationAccessible == 'false' && IsShiftChangeAccessible == 'false'">
+		<br><br><br>
+            <center><h4>You are not authorized to access this page</h4></center>
+        </div>
+
+        <div id="leaveApplicationIDReq" class="cust-card" ng-show="IsLeaveAccessible == 'true'">
+            <div>
+                <div class="custom-header" style="font-size: 20px;margin-bottom: 40px;padding: 0px;padding-left: 15px;padding-top: 10px;margin-top:-8px;">
+				<h4 class="custom-header" style="margin-top: 0px;"><b>Requisitions RAJ</b></h4> </div>
+            </div>
+			<br>
+            <label ng-show="IsLeaveAccessible == 'true'" class="item item-input" style="margin-top:8px;">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" placeholder="Search " ng-model="searchObj.searchQuery" />
+            </label>
+            <br>
+            <center>
+                <button class="button button-small button-outline button-positive" ng-click="reDirectToFreshLeavePage()">Apply For Fresh Leave</button>
+            </center>
+            <div class="list card customBorderRadius modal-payslip" 
+			ng-repeat="leave in leaveApplList | filter:searchObj.searchQuery | orderBy:'-leaveFromDate'"
+			ng-if="leave.leaveStatus =='SENT FOR APPROVAL' || leave.leaveStatus =='SENT FOR CANCELLATION'">
+                <div  class="item custom-item custom-padding item-text-wrap">
+                    <div class="row custom-row" ng-click="detailInfoReporty(leave.leaveTransId, leave)">
+                        <div class="col col-80">
+                            <h2 ng-if="!leave.leaveDate" style="font-size: 0.8em;">Leave for {{leave.leaveFromDate| date : "dd-MMM-yyyy"}} to<br>{{leave.leaveToDate| date : "dd-MMM-yyyy"}}</h2>
+                            <h2 ng-if="leave.leaveDate" style="font-size: 0.8em;">Leave for {{leave.leaveFromDate| date : "dd-MMM-yyyy"}}</h2>
+                            <h3 style="font-size: 0.7em;">{{leave.leaveType}}</h3>
+                        </div>
+                        <div class="col col-20">
+                            <h2 style="font-size: 0.6em;" class="item-note custom-requestApprove" ng-if="leave.leaveStatus == 'APPROVED'">
+                                {{leave.leaveStatus}}
+                            </h2>
+                            <h2 style="font-size: 0.6em;" class="item-note custom-requestRejcted" ng-if="leave.leaveStatus == 'REJECTED'">
+                                {{leave.leaveStatus}}
+                            </h2>
+                            <h2 style="font-size: 0.6em;" class="item-note custom-requestOther" ng-if="leave.leaveStatus != 'REJECTED' && leave.leaveStatus != 'APPROVED'">
+                                {{leave.leaveStatus}}
+                            </h2>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="list card customBorderRadius modal-payslip" 
+			ng-repeat="leave in leaveApplList | filter:searchObj.searchQuery | orderBy:'-leaveFromDate'"
+			ng-if="!(leave.leaveStatus =='SENT FOR APPROVAL' || leave.leaveStatus =='SENT FOR CANCELLATION')">
+                <div  class="item custom-item custom-padding item-text-wrap">
+                    <div class="row custom-row" ng-click="detailInfoReporty(leave.leaveTransId, leave)">
+                        <div class="col col-80">
+                            <h2 ng-if="!leave.leaveDate" style="font-size: 0.8em;">Leave for {{leave.leaveFromDate| date : "dd-MMM-yyyy"}} to<br>{{leave.leaveToDate| date : "dd-MMM-yyyy"}}</h2>
+                            <h2 ng-if="leave.leaveDate" style="font-size: 0.8em;">Leave for {{leave.leaveFromDate| date : "dd-MMM-yyyy"}}</h2>
+                            <h3 style="font-size: 0.7em;">{{leave.leaveType}}</h3>
+                        </div>
+                        <div class="col col-20">
+                            <h2 style="font-size: 0.6em;" class="item-note custom-requestApprove" ng-if="leave.leaveStatus == 'APPROVED'">
+                                {{leave.leaveStatus}}
+                            </h2>
+                            <h2 style="font-size: 0.6em;" class="item-note custom-requestRejcted" ng-if="leave.leaveStatus == 'REJECTED'">
+                                {{leave.leaveStatus}}
+                            </h2>
+                            <h2 style="font-size: 0.6em;" class="item-note custom-requestOther" ng-if="leave.leaveStatus != 'REJECTED' && leave.leaveStatus != 'APPROVED'">
+                                {{leave.leaveStatus}}
+                            </h2>
+                        </div>
+                    </div>
+
+                </div>
+            </div>			
+            <div  ng-show="IsLeaveAccessible == 'true'" ng-if="leaveApplList.length == 0">
+                <center><h4>No Data Available </h4></center>
+            </div><br>
+        </div>
+        <div id="ODApplicationIDReq" class="cust-card" ng-show="IsODAccessible == 'true'">
+            <div>
+                <div class="custom-header" style="font-size: 20px;margin-bottom: 40px;padding: 0px;padding-left: 15px;padding-top: 10px;margin-top:-8px;">
+				<h4 class="custom-header" style="margin-top: 0px;"><b>Requisitions</b></h4> </div>
+            </div>
+				<br>
+            <label ng-show="1==2" class="item item-input item-select">
+                <div class="input-label ">
+                    Year
+                </div>
+                <select  id="year" class = "form-control" ng-change="getODApplicationList()" name="LeaveType" ng-options="year for year in yearList"  ng-model = "requesObject1.year" required>
+                    <option value="">Please Select</option>
+                </select>
+            </label>
+
+            <label  ng-show="IsODAccessible == 'true'" class="item item-input" style="margin-top:8px;">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" placeholder="Search" ng-model="searchObj.searchOD"  />
+            </label>
+            <br>
+            <center>
+                <button class="button button-small button-outline button-positive" ng-click="reDirectToODApplictaionPage()">Apply For OD Application</button>
+            </center>
+
+            <div class="list card modal-payslip customBorderRadius" 
+			ng-repeat="odList in ODlList | filter: searchObj.searchOD | orderBy:'-travelDate' |  limitTo : 100"
+			ng-if="odList.status =='SENT FOR APPROVAL' || odList.status =='SENT FOR CANCELLATION'">
+                <div class="item custom-item custom-padding item-text-wrap">
+
+                    <div class="row custom-row">
+                        <div class="col col-75">
+                            <h2 ng-if="!odList.odDate" style="font-size: 0.8em;"><b>From Date: </b>{{odList.travelDate| date : "dd-MMM-yyyy"}} to<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{odList.travelDate_new| date : "dd-MMM-yyyy"}}</h2>
+                            <h2 ng-if="odList.odDate" style="font-size: 0.8em;"><b>Date: </b>{{odList.travelDate| date : "dd-MMM-yyyy"}}<br></h2>
+                            <h2 style="font-size: 0.8em;"><b>Time: </b>{{odList.fromTime}} to {{odList.toTime}}</h2>
+                            <h2 style="font-size: 0.8em;"><b>Place: </b>{{odList.fromPlace}} to {{odList.toPlace}}</h2>
+                            <h2 style="font-size: 0.8em;"><b>Purpose:</b>&nbsp;&nbsp;{{odList.purpose}}</h2>
+                        </div>
+                        <div class="col col-25">
+                            <h2 style="font-size: 0.8em;" class="item-note custom-requestApprove" ng-if="odList.status == 'APPROVED'">
+                                {{odList.status}}
+                            </h2>
+                            <h2 style="font-size: 0.8em;" class="item-note custom-requestRejcted" ng-if="odList.status == 'REJECTED'">
+                                {{odList.status}}
+                            </h2>
+                            <h2 style="font-size: 0.8em;" class="item-note custom-requestOther" ng-if="odList.status != 'REJECTED' && odList.status != 'APPROVED'">
+                                {{odList.status}}
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row custom-row" ng-if="odList.remarks != null || odList.remarks != 'null' || odList.remarks != ''">
+                        <div class="col col-100">
+                            <h2 style="font-size: 0.8em;"><b>Remarks: </b>{{odList.remarks}}</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col col-15"></div>
+                    <div  ng-if="odList.status == 'SAVED AS DRAFT' || odList.status == 'CANCELLED' || odList.status == 'REJECTED' || odList.status == 'CANCELLATION APPROVED'">
+                        <div class="row custom-row">
+                            <div  ng-click="onConfirm(1, odList.status, odList.odID, odList.travelDate)" class="button button-small button-outline button-positive">
+                                Send For Approval
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-15"></div>
+                </div>
+                <div class="row">
+                    <div class="col col-15"></div>
+                    <div  ng-if="odList.status == 'SENT FOR APPROVAL' || odList.status == 'APPROVED' || odList.status == 'CANCELLATION REJECTED'">
+                        <div class="row custom-row">
+                            <div ng-if="odList.status != 'CANCELLED'" ng-click="onConfirm(2, odList.status, odList.odID, odList.travelDate)" class="button button-small button-outline button-positive">
+                                Cancel Request
+                            </div>
+                        </div>
+                    </div>                    
+                    <div class="col col-15"></div>
+                </div>
+            </div>
+            <div class="list card modal-payslip customBorderRadius" 
+			ng-repeat="odList in ODlList | filter: searchObj.searchOD | orderBy:'-travelDate'"
+			ng-if="!(odList.status =='SENT FOR APPROVAL' || odList.status =='SENT FOR CANCELLATION')">
+                <div class="item custom-item custom-padding item-text-wrap">
+
+                    <div class="row custom-row">
+                        <div class="col col-75">
+                            <h2 ng-if="!odList.odDate" style="font-size: 0.8em;"><b>From Date: </b>{{odList.travelDate| date : "dd-MMM-yyyy"}} to<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{odList.travelDate_new| date : "dd-MMM-yyyy"}}</h2>
+                            <h2 ng-if="odList.odDate" style="font-size: 0.8em;"><b>Date: </b>{{odList.travelDate| date : "dd-MMM-yyyy"}}<br></h2>
+                            <h2 style="font-size: 0.8em;"><b>Time: </b>{{odList.fromTime}} to {{odList.toTime}}</h2>
+                            <h2 style="font-size: 0.8em;"><b>Place: </b>{{odList.fromPlace}} to {{odList.toPlace}}</h2>
+                            <h2 style="font-size: 0.8em;"><b>Purpose:</b>&nbsp;&nbsp;{{odList.purpose}}</h2>
+                        </div>
+                        <div class="col col-25">
+                            <h2 style="font-size: 0.8em;" class="item-note custom-requestApprove" ng-if="odList.status == 'APPROVED'">
+                                {{odList.status}}
+                            </h2>
+                            <h2 style="font-size: 0.8em;" class="item-note custom-requestRejcted" ng-if="odList.status == 'REJECTED'">
+                                {{odList.status}}
+                            </h2>
+                            <h2 style="font-size: 0.8em;" class="item-note custom-requestOther" ng-if="odList.status != 'REJECTED' && odList.status != 'APPROVED'">
+                                {{odList.status}}
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row custom-row" ng-if="odList.remarks != null || odList.remarks != 'null' || odList.remarks != ''">
+                        <div class="col col-100">
+                            <h2 style="font-size: 0.8em;"><b>Remarks: </b>{{odList.remarks}}</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col col-15"></div>
+                    <div  ng-if="odList.status == 'SAVED AS DRAFT' || odList.status == 'CANCELLED' || odList.status == 'REJECTED' || odList.status == 'CANCELLATION APPROVED'">
+                        <div class="row custom-row">
+                            <div  ng-click="onConfirm(1, odList.status, odList.odID, odList.travelDate)" class="button button-small button-outline button-positive">
+                                Send For Approval
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-15"></div>
+                </div>
+                <div class="row">
+                    <div class="col col-15"></div>
+                    <div  ng-if="odList.status == 'SENT FOR APPROVAL' || odList.status == 'APPROVED' || odList.status == 'CANCELLATION REJECTED'">
+                        <div class="row custom-row">
+                            <div ng-if="odList.status != 'CANCELLED'" ng-click="onConfirm(2, odList.status, odList.odID, odList.travelDate)" class="button button-small button-outline button-positive">
+                                Cancel Request
+                            </div>
+                        </div>
+                    </div>                    
+                    <div class="col col-15"></div>
+                </div>
+            </div>			
+            <div ng-show="IsODAccessible == 'true'" ng-if="ODlList.length == 0">
+                <center><h4>No Data Available </h4></center>
+            </div><br>
+        </div>
+        <div id="RegularizationApplicationIDReq" ng-show="IsRegularizationAccessible == 'true'" class="cust-card">
+            <div>
+                <div class="custom-header" style="font-size: 20px;margin-bottom: 40px;padding: 0px;padding-left: 15px;padding-top: 10px;margin-top:-8px;">
+				<h4 class="custom-header" style="margin-top: 0px;"><b>Requisitions</b></h4> </div>
+            </div>
+			<br>
+                    <div class="row custom-row" style="margin-top:8px;">
+                        <div
+                            ng-click="getRegularizationRequestListPrevMonth()"
+                            class="col col-35 cust-col-50 buttonLinksColor" style="padding-top:12px;text-align:left;padding-left:40px;">
+							<img style="width:30px;height:30px;" src="./img/prev page.png"/>
+							</div>
+						<div
+                            class="col col-30 cust-col-50 buttonLinksColor">
+							<center>														
+								<h5 ng-if="requesObjectForYear" >{{monthName}}, {{requesObject.year}}</h5>
+							</center>
+						</div>
+                        <div 
+                            class="col col-35 cust-col-50 buttonLinksColor" style="padding-top:12px;text-align:right;padding-right:40px">
+							<img ng-if="greyArrowForNextMonth == false" ng-click="getRegularizationRequestListNextMonth()"style="width:30px;height:30px;" src="./img/next page.png"/> 
+							<img ng-if="greyArrowForNextMonth == true" style="width:30px;height:30px;" src="./img/next page grey.png"/>
+							</div>
+                    </div>
+
+            <label ng-show="1==2" class="item item-input item-select">
+                <div class="input-label ">
+                    Year
+                </div>
+                <select id="year" class = "form-control" ng-options="value as value for (key , value) in yearListforAtt" ng-model = "requesObjectForYear.yearId" required>
+                    <option value="">Please Select</option>
+                </select>
+            </label>
+
+            <label ng-show="1==2" class="item item-input item-select">
+                <div class="input-label ">
+                    Month
+                </div>
+                <select id="month" class = "form-control" ng-change="getRegularizationRequestList()" ng-options="month.monthValue as month.monthName for month in monthList"  ng-model = "requesObjectForMonth.month" required>
+                    <option value="">Please Select</option>
+                </select>
+            </label>
+
+            <label  class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" placeholder="Search" ng-model="searchObj.searchRegular"/>
+            </label>
+            <br>
+            <center>
+                <button class="button button-small button-outline button-positive" ng-click="reDirectToAttendanceRegularizationPage()">Apply Attendance Regularization</button>
+            </center>
+            <div class="list card modal-payslip customBorderRadius" 
+			ng-repeat="regularisation in missPunchAppliList | filter: searchObj.searchRegular | orderBy:'-outTimeDateStr'"
+			ng-if="regularisation.status =='SENT FOR APPROVAL' || regularisation.status =='SENT FOR CANCELLATION'">
+                <div  class="item custom-item custom-padding item-text-wrap">
+                    <div class="row custom-row" ng-click="missPunchdetailInfo(regularisation)">
+                        <div class="col col-80">
+                            <h2 style="font-size: 0.8em;">Date : {{regularisation.outTimeDateStr| date : "dd-MMM-yyyy"}}</h2>
+                        </div>
+                        <div class="col col-20">
+                            <h2 style="font-size: 0.6em;" class="item-note custom-requestApprove" ng-if="regularisation.status == 'APPROVED'">
+                                {{regularisation.status}}
+                            </h2>
+                            <h2 style="font-size: 0.6em;" class="item-note custom-requestRejcted" ng-if="regularisation.status == 'REJECTED'">
+                                {{regularisation.status}}
+                            </h2>
+                            <h2 style="font-size: 0.6em;" class="item-note custom-requestOther" ng-if="regularisation.status != 'REJECTED' && regularisation.status != 'APPROVED'">
+                                {{regularisation.status}}
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="list card modal-payslip customBorderRadius" 
+			ng-repeat="regularisation in missPunchAppliList | filter: searchObj.searchRegular | orderBy:'-outTimeDateStr'"
+			ng-if="!(regularisation.status =='SENT FOR APPROVAL' || regularisation.status =='SENT FOR CANCELLATION')">
+                <div  class="item custom-item custom-padding item-text-wrap">
+                    <div class="row custom-row" ng-click="missPunchdetailInfo(regularisation)">
+                        <div class="col col-80">
+                            <h2 style="font-size: 0.8em;">Date : {{regularisation.outTimeDateStr| date : "dd-MMM-yyyy"}}</h2>
+                        </div>
+                        <div class="col col-20">
+                            <h2 style="font-size: 0.6em;" class="item-note custom-requestApprove" ng-if="regularisation.status == 'APPROVED'">
+                                {{regularisation.status}}
+                            </h2>
+                            <h2 style="font-size: 0.6em;" class="item-note custom-requestRejcted" ng-if="regularisation.status == 'REJECTED'">
+                                {{regularisation.status}}
+                            </h2>
+                            <h2 style="font-size: 0.6em;" class="item-note custom-requestOther" ng-if="regularisation.status != 'REJECTED' && regularisation.status != 'APPROVED'">
+                                {{regularisation.status}}
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+
+            </div>			
+            <div ng-show="IsRegularizationAccessible == 'true'" ng-if="missPunchAppliList.length == 0">
+                <center><h4>No Data Available </h4></center>
+            </div><br>
+        </div>
+        <div id="ShiftChangeRequestIDReq" ng-show="IsShiftChangeAccessible == 'true'" class="cust-card">
+            <div>
+                <div class="custom-header" style="font-size: 20px;margin-bottom: 40px;padding: 0px;padding-left: 15px;padding-top: 10px;margin-top:-8px;">
+				<h4 class="custom-header" style="margin-top: 0px;"><b>Requisitions</b></h4> </div>
+            </div>
+			<br>
+            <label  class="item item-input" style="margin-top:8px;">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" placeholder="Search" ng-model="searchObj.searchShift" />
+            </label>
+            <br>
+            <center>
+                <button class="button button-small button-outline button-positive" ng-click="reDirectToShiftChangePage()">Apply For Shift Change</button>
+            </center>
+            <div class="list card modal-payslip customBorderRadius" 
+			ng-repeat="shiftChangeAppli in shiftChangeAppliList | filter: searchObj.searchShift | orderBy:'-fromDate'"
+			ng-if="shiftChangeAppli.status =='SENT FOR APPROVAL' || shiftChangeAppli.status =='SENT FOR CANCELLATION'">
+                <div class="item custom-item custom-padding item-text-wrap">
+                    <div class="row custom-row" ng-click="shiftChangeDetailInfo(shiftChangeAppli)">
+                        <div class="col col-80">
+                            <h2 style="font-size: 0.8em;">Date : {{shiftChangeAppli.fromDate| date : "dd-MMM-yyyy"}}</h2>
+                            <h2 style="font-size: 0.8em;">For Shift : {{shiftChangeAppli.changedShiftName}}</h2>
+
+                        </div>
+                        <div class="col col-20">
+                            <h2 style="font-size: 0.6em;" class="item-note custom-requestApprove" ng-if="shiftChangeAppli.status == 'APPROVED'">
+                                {{shiftChangeAppli.status}}
+                            </h2>
+                            <h2 style="font-size: 0.6em;" class="item-note custom-requestRejcted" ng-if="shiftChangeAppli.status == 'REJECTED'">
+                                {{shiftChangeAppli.status}}
+                            </h2>
+                            <h2 style="font-size: 0.6em;" class="item-note custom-requestOther" ng-if="shiftChangeAppli.status != 'REJECTED' && shiftChangeAppli.status != 'APPROVED'">
+                                {{shiftChangeAppli.status}}
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row custom-row" ng-if="shiftChangeAppli.reasonToChange != null || shiftChangeAppli.reasonToChange != 'null' || shiftChangeAppli.reasonToChange != ''">
+                        <div class="col col-100">
+                            <p>{{shiftChangeAppli.reasonToChange}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="list card modal-payslip customBorderRadius" 
+			ng-repeat="shiftChangeAppli in shiftChangeAppliList | filter: searchObj.searchShift | orderBy:'-fromDate'"
+			ng-if="!(shiftChangeAppli.status =='SENT FOR APPROVAL' || shiftChangeAppli.status =='SENT FOR CANCELLATION')">
+                <div class="item custom-item custom-padding item-text-wrap">
+                    <div class="row custom-row" ng-click="shiftChangeDetailInfo(shiftChangeAppli)">
+                        <div class="col col-80">
+                            <h2 style="font-size: 0.8em;">Date : {{shiftChangeAppli.fromDate| date : "dd-MMM-yyyy"}}</h2>
+                            <h2 style="font-size: 0.8em;">For Shift : {{shiftChangeAppli.changedShiftName}}</h2>
+
+                        </div>
+                        <div class="col col-20">
+                            <h2 style="font-size: 0.6em;" class="item-note custom-requestApprove" ng-if="shiftChangeAppli.status == 'APPROVED'">
+                                {{shiftChangeAppli.status}}
+                            </h2>
+                            <h2 style="font-size: 0.6em;" class="item-note custom-requestRejcted" ng-if="shiftChangeAppli.status == 'REJECTED'">
+                                {{shiftChangeAppli.status}}
+                            </h2>
+                            <h2 style="font-size: 0.6em;" class="item-note custom-requestOther" ng-if="shiftChangeAppli.status != 'REJECTED' && shiftChangeAppli.status != 'APPROVED'">
+                                {{shiftChangeAppli.status}}
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row custom-row" ng-if="shiftChangeAppli.reasonToChange != null || shiftChangeAppli.reasonToChange != 'null' || shiftChangeAppli.reasonToChange != ''">
+                        <div class="col col-100">
+                            <p>{{shiftChangeAppli.reasonToChange}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>			
+            <div ng-show="IsShiftChangeAccessible == 'true'" ng-if="shiftChangeAppliList.length == 0">
+                <center><h4>No Data Available </h4></center>
+            </div><br>
+        </div>
+
+        <script id="my-modal-shift-change.html" type="text/ng-template">
+            <ion-modal-view style="height: 400px" class="modal-payslip">
+            <ion-content has-bouncing="false">
+ 			<div style="text-align:right;margin-right:8px;" >
+			<img id="imgcrossnoti" ng-src="./img/cross.png" src="./img/cross.png" ng-click="closeModalShiftChange()">
+			</div>
+
+            <div class="row" style="background-color: white">
+            <div class="col" style="color:grey">
+            <b>Date</b>:
+            </div>
+            <div class="col" style="color:grey">
+            {{shiftChangeDetails.fromDate | date : "dd-MMM-yyyy"}}
+            </div>
+            </div>
+            <div class="row" style="background-color: white">
+            <div class="col" style="color:grey">
+            <b>Status</b>:
+            </div>
+            <div class="col" style="color:grey">
+            {{shiftChangeDetails.status}}
+            </div>
+            </div>
+
+            <div class="row" style="background-color: white">
+            <div class="col" style="color:grey">
+            <b>Roster Shift</b>:
+            </div>
+            <div class="col" style="color:grey">
+            {{shiftChangeDetails.rosterShiftName}}
+            </div>
+            </div>
+
+            <div class="row" style="background-color: white">
+            <div class="col" style="color:grey">
+            <b>Shift Change To</b>:
+            </div>
+            <div class="col" style="color:grey">
+            {{shiftChangeDetails.changedShiftName}}
+            </div>
+            </div>
+            <div class="row" style="background-color: white">
+            <div class="col" style="color:grey">
+            <b>Reason for Shift Change</b>:
+            </div>
+            <div class="col" style="color:grey">
+            {{shiftChangeDetails.reasonToChange}}
+            </div>
+            </div>
+			<div style="text-align:center;">
+			<br><br>
+			<button class="button  button-positive" style="width:50%;" ng-click="closeModalShiftChange()">
+			Close
+			</button>
+			</div>
+			
+            </ion-content>
+            </ion-modal-view>
+        </script>
+
+        <script id="my-modal-attend.html" type="text/ng-template">
+            <ion-modal-view style="height: 400px" class="modal-payslip"> 
+            <ion-content has-bouncing="false">
+ 			<div style="text-align:right;margin-right:8px;" >
+			<img id="imgcrossnoti" ng-src="./img/cross.png" src="./img/cross.png" ng-click="closeModalAttend()">
+			</div>
+
+            <div class="row" style="background-color: white">
+            <div class="col" style="color:grey">
+            <b>Date</b>:
+            </div>
+            <div class="col" style="color:grey">
+            {{missPunchDetails.outTimeDateStr | date : "dd-MMM-yyyy"}}
+            </div>
+            </div>
+            <div class="row" style="background-color: white">
+            <div class="col" style="color:grey">
+            <b>Status</b>:
+            </div>
+            <div class="col" style="color:grey">
+            {{missPunchDetails.status}}
+            </div>
+            </div>
+
+            <div class="row" style="background-color: white">
+            <div class="col" style="color:grey">
+            <b>Remarks</b>:
+            </div>
+            <div class="col" style="color:grey">
+            {{fullRemarks}}
+            </div>
+            </div>
+
+            <div class="row" style="background-color: white">
+            <div class="col" style="color:grey">
+            <b>First Half</b>:
+            </div>
+            <div class="col" style="color:grey">
+            {{missPunchDetails.firstHalf}}
+            </div>
+            </div>
+
+            <div class="row" style="background-color: white">
+            <div class="col" style="color:grey">
+            <b>Second Half</b>:
+            </div>
+            <div class="col" style="color:grey">
+            {{missPunchDetails.secondHalf}}
+            </div>
+            </div>
+
+            <div class="row" style="background-color: white">
+            <div class="col" style="color:grey">
+            <b>Modified In Time</b>:
+            </div>
+            <div class="col" style="color:grey">
+            {{missPunchDetails.inTimeStr}}
+            </div>
+            </div>
+            <div class="row" style="background-color: white">
+            <div class="col" style="color:grey">
+            <b>Modified Out Time</b>:
+            </div>
+            <div class="col" style="color:grey">
+            {{missPunchDetails.outTimeStr}}
+            </div>
+            </div>
+            <div class="row" style="background-color: white">
+            <div class="col" style="color:grey">
+            <b>Out Time Date</b>:
+            </div>
+            <div class="col" style="color:grey">
+            {{missPunchDetails.outTimeDateStr | date : "dd-MMM-yyyy"}}
+            </div>
+            </div>
+            <div class="row" style="background-color: white">
+            <div class="col" style="color:grey">
+            <b>Shift</b>:
+            </div>
+            <div class="col" style="color:grey">
+            {{missPunchDetails.shiftAbbr}}
+            </div>
+            </div>
+            <div class="row" style="background-color: white">
+            <div class="col" style="color:grey">
+            <b>Worked Hours</b>:
+            </div>
+            <div class="col" style="color:grey">
+            {{missPunchDetails.workedHrs}}
+            </div>
+            </div>
+            <div ng-if="missPunchDetails.lastAppRemarks.length > 0" class="row" style="background-color: white">
+            <div class="col" style="color:grey">
+            <b>Final Approver Remark</b>:
+            </div>
+            <div class="col" style="color:grey">
+            {{missPunchDetails.lastAppRemarks}}
+            </div>
+            </div>
+			<div style="text-align:center;">
+			<br><br>
+			<button class="button  button-positive" style="width:50%;" ng-click="closeModalAttend()">
+			Close
+			</button>
+			</div>
+			
+            </ion-content>
+            </ion-modal-view>
+        </script>
+    </ion-content>
+</ion-view>

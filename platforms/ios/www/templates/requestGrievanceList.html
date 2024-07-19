@@ -1,0 +1,419 @@
+<style>
+  .custom-item {
+    border: none;
+  }
+  .anchorRRedirect {
+    position: absolute;
+    top: 212px;
+    right: 14px;
+    font-size: 15px;
+    color: #3b5998;
+  }
+  .listTopMargin {
+    margin-top: 10px;
+  }
+  .travelListTopMargin {
+    margin-top: -40px;
+  }
+  #outer {
+    width: 100%;
+    text-align: center;
+  }
+  .inner {
+    display: inline-block;
+  }
+  ul.ctcClaimList {
+    margin-top: 20px;
+  }
+  ul.ctcClaimList li {
+    font-size: 0.8em;
+    padding: 5px 0px 0px 0px;
+    min-width: 435px;
+  }
+  .ctcClaimList b {
+    display: inline-block;
+    width: 40%;
+    position: relative;
+    padding-right: 10px;
+  }
+  .ctcClaimList b::after {
+    content: ":";
+    position: absolute;
+    right: 10px;
+  }
+
+  ul.travelClaimList {
+    width: 125%;
+  }
+  ul.travelClaimList li {
+    font-size: 0.8em;
+    padding: 5px 0px 0px 0px;
+    min-width: 435px;
+  }
+  .travelClaimList b {
+    display: inline-block;
+    width: 32%;
+    position: relative;
+    padding-right: 10px;
+  }
+  .travelClaimList b::after {
+    content: ":";
+    position: absolute;
+    right: 10px;
+  }
+
+  ul.odClaimList {
+    margin-top: 20px;
+  }
+  ul.odClaimList li {
+    font-size: 0.8em;
+    padding: 5px 0px 0px 0px;
+    min-width: 435px;
+  }
+  .odClaimList b {
+    display: inline-block;
+    width: 35%;
+    position: relative;
+    padding-right: 10px;
+  }
+  .odClaimList b::after {
+    content: ":";
+    position: absolute;
+    right: 10px;
+  }
+
+  ul.attClaimList {
+    width: 125%;
+  }
+  ul.attClaimList li {
+    font-size: 0.8em;
+    padding: 5px 0px 0px 0px;
+    min-width: 435px;
+  }
+  .attClaimList b {
+    display: inline-block;
+    width: 38%;
+    position: relative;
+    padding-right: 10px;
+  }
+  .attClaimList b::after {
+    content: ":";
+    position: absolute;
+    right: 10px;
+  }
+
+  ol,
+  ul {
+    margin-bottom: 0px !important;
+  }
+  a:focus,
+  a:hover {
+    text-decoration: none;
+  }
+  .tab-item.tab-item-active,
+  .tab-item.active,
+  .tab-item.activated {
+    opacity: 1;
+  }
+  .tab-item {
+    opacity: 0.7;
+  }
+  .custom-row {
+    padding: 0px;
+  }
+  .custom-padding {
+    padding: 5px 10px;
+  }
+  .custom-top {
+    top: 10px;
+    left: 13px;
+  }
+  .custom-paddingTop {
+    padding-top: 11px;
+  }
+  .custom_OD {
+    padding-top: 11px;
+    padding-bottom: 0px;
+  }
+  .custom-paddingBottom {
+    padding-bottom: 0px;
+  }
+  .cust-card {
+    padding: 50px 0px 0px 0px;
+  }
+  .custom-requestApprove {
+    font-size: 11px;
+    color: green;
+  }
+  .custom-requestRejcted {
+    font-size: 11px;
+    color: red;
+  }
+  .custom-requestOther {
+    font-size: 11px;
+    color: orange;
+  }
+  .custom-fontSize {
+    font-size: 12px;
+  }
+  .modal-wrapper {
+    position: absolute;
+    top: 25%;
+    display: block;
+    width: 90%;
+    min-height: 45%;
+    padding: 5%;
+  }
+
+  .modal-backdrop-bg {
+    background-color: rgba(255, 255, 255, 0.85);
+  }
+
+  .modal {
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+  }
+
+  .modal-ion-content {
+    padding: 15px;
+    font-size: 0.85em;
+  }
+
+
+  .badge.badgeCustom {
+    width: 22px;
+    height: 22px;
+    text-align: center;
+    line-height: 18px;
+    display: block;
+    position: absolute;
+    top: 0;
+    color: #fff !important;
+    font-size: 10px !important;
+    padding: 0;
+  }
+  a:focus,
+  a:hover {
+    text-decoration: none;
+  }
+  .tab-item.tab-item-active,
+  .tab-item.active,
+  .tab-item.activated {
+    opacity: 1;
+  }
+  .tab-item {
+    opacity: 0.7;
+  }
+  /* .slick-slide .slide-content {
+  margin: 0 3%;
+  padding: 10px 5px;
+
+} */
+
+  .slick-prev,
+  .slick-next {
+    position: absolute;
+    right: 10%;
+    background: #777;
+    border: none;
+    color: transparent;
+    width: 30px;
+    height: 30px;
+  }
+
+  .slick-prev:before,
+  .slick-next:before {
+    content: ">";
+    color: #fff;
+    font-size: 25px;
+  }
+
+  .slick-prev {
+    left: 10%;
+  }
+
+  .slick-prev:before {
+    content: "<";
+  }
+
+  .slick-dots {
+    list-style: none;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .slick-dots li {
+    display: inline-block;
+  }
+
+  .slick-dots li button {
+    transition: 0.2s background-color ease-in-out 0s;
+    border: none;
+    padding: 0;
+    color: transparent;
+    width: 10px;
+    height: 10px;
+    background-color: #777;
+    margin-right: 10px;
+    border-radius: 50%;
+  }
+
+  .slick-dots li.slick-active button {
+    background-color: #0a9dc7;
+  }
+  /* .slick-slider {
+    width: 100%;
+    position: relative;
+    transform: translate(-50%, -50%);
+    top: 0%;
+    left: 50%;
+} */
+  .slick-slider {
+    width: 100%;
+    position: relative;
+    top: 0%;
+  }
+  /* ===form List=== */
+  /* .customBorderRadius .dividerClass {
+    line-height: 1.5 !important;
+}
+.customBorderRadius label {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+}
+.customBorderRadius .row {
+    margin: 0 5px !important;
+    padding: 0 5px !important;
+}
+.customBorderRadius.col-xs-8 {
+    font-size: 13px !important;
+}
+.customBorderRadius .item-note {
+    padding: 10px 10px 0 0 !important;
+    margin-bottom: 2px !important;
+} */
+.inner .btn-pad.claimClass{
+  margin: 14px 4px 5px 10px;
+    padding: 0 8px;
+}
+.inner .badge{
+  position: relative;
+  margin: 0 -8px;
+  float: right;
+}
+.slick-carousel .fa{
+  font-size: 40px;
+  color: #777676;
+}
+.slick-carousel p {
+    color: #212121;
+    margin: 0 0 10px;
+    font-size: 0.83em;
+    text-align: center;
+    margin-left: -2%;
+    margin-top: 0%;
+    margin-bottom: 2px;
+    font-weight: 400;
+}
+</style>
+<ion-view>
+    <div class="bar bar-footer hide-on-keyboard-open" style="background-color:#000; background-size: 100% 0px;">
+        <div class="title" style="height: 20px;">
+            <h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px;
+                margin-bottom: 5px;">Powered by HR Align</h6>
+        </div>
+    </div>
+    <ion-content has-bouncing="false" style="overflow-y: auto;top:0%" class="requisionSection">
+        <div class="custom-header" style="padding-top: 0px;padding-bottom: 0px;">
+            <h4 class="subHeaderClass" style="margin: 0px;"> <span class="backIcon">
+              <i class="icon ion-ios-arrow-back" ng-click="redirectOnBack()"></i></span>
+                <b style="vertical-align: super;"> Grievance Application </b></h4>
+                <a ng-if="isARTorFRT == 'true' || isGroupMasterReportee == 'true'" ng-click="goToApprovals()" class="approvalLinkClass">
+                  <img src="./img/approveNew.png" style="width: 25px; height: 25px; margin-right: 3px;text-align: center;" />
+                </a>
+        </div>
+        <div id="leaveApplicationIDReq" class="cust-card" style="margin-top: -16%;" 
+        >
+            <br />
+            
+            <div class="search">
+              <span >
+            <input type="submit" value="&#xf002;" class="search-btn fa ib-m">
+             <div class="search-slide ib-m">
+                <input type="search" id="reqSearch1" placeholder="Enter your search" class="ib-m" ng-model="searchObj.searchQuery"/>
+                <div class="search-close ib-m">
+                  <i class="fa fa-times-circle" aria-hidden="true"></i></div>
+              </div>
+            </span>
+            <span class="recentRecord" style="margin-left:12px;font-size: 0.8em; font-style: oblique;">
+              Recent 50 applications.
+            </span>
+              <span class="refreshBtn" style="margin-top: 2%;">
+                <i ng-click="refreshList()" class="fa fa-refresh" ></i>
+              </span>
+            </div>
+            <br />
+            <center>
+              <button  class="button button-small button-outline button-positive" ng-click="reDirectToFreshGrievancePage()"  >
+                Add Grievance / Suggestion
+              </button>
+      
+              <!-- <a class="button button-small button-outline button-positive marginTop" href="#/app/MyApprovalsCombined">Go to Approvals</a> -->
+            </center>
+            <div  class="list card customBorderRadius animated slideInUp" 
+            ng-repeat="leave in requestList | filter:searchObj.searchQuery | orderBy:'-leave.raisedDate'"
+               >
+      
+              <div class="remarkcomments">
+                <h2  class="item-note custom-requestApprove" ng-if="leave.status == 'CLOSED'"
+                              > {{leave.status}}</h2>
+                <h2  class="item-note custom-requestOther" ng-if="leave.status == 'OPEN'"
+                              > {{leave.status}}</h2>
+            </div>
+      
+            <div class="form-group row">
+              <label  class="col-sm-4 col-xs-4 col-form-label">Application Date</label><span class="dividerClass">:</span>
+              <div  class="col-sm-8 col-xs-8">
+                {{leave.raisedDate| date : "dd/MM/yyyy"}}
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-sm-4 col-xs-4 col-form-label">Grievance / Suggestion</label><span class="dividerClass">:</span>
+              <div  class="col-sm-8 col-xs-8">
+                {{leave.applicationType}}
+              </div>
+            </div>
+            <div class="form-group row" ng-if="!leave.leaveDate">
+              <label  class="col-sm-4 col-xs-4 col-form-label">is Confidential</label><span class="dividerClass">:</span>
+              <div  class="col-sm-8 col-xs-8">
+                {{leave.isConfidencial}}
+              </div>
+            </div>
+            <div class="form-group row" >
+              <label  class="col-sm-4 col-xs-4 col-form-label">Resolved by Panel Member</label><span class="dividerClass">:</span>
+              <div  class="col-sm-8 col-xs-8">
+                {{leave.closedByName}}
+              </div>
+            </div>
+            <br>
+            <div class="text-center" class="item" >
+              <button type="button"  ng-click="selfDetailsFun(leave);"
+              class="button button-small button-outline button-positive">
+            <i class="fa fa-eye mr-5" ></i>Show Details</button>
+      
+            </div>
+            </div>
+      
+            
+            <div class="noDataAvailavle" ng-show="IsGrievanceAccessible == 'true'" ng-if="requestList.length == 0">
+              <!-- <center><h4>No Data Available</h4></center> -->
+              <img src="./img/no-result.png" alt="">
+            </div>
+            <br />
+          </div>
+    
+    </ion-content>
+</ion-view>

@@ -1,0 +1,350 @@
+<style>
+    #mapp {
+        height: 400px;
+        width: 100%;
+        background-color: brown;
+    }
+    .col-xs-2 {
+		padding: 0 !important;
+	}
+
+	.row {
+		margin-right: 0px !important;
+		margin-left: 0px !important;
+	}
+
+	label {
+		font-weight: normal !important;
+	}
+
+	.col-xs-4,
+	.col-sm-4 {
+		padding: 0 4px !important;
+	}
+
+	
+input{
+}
+ .ui-autocomplete.ui-menu.ui-widget.ui-widget-content.ui-corner-all
+{
+    height: 100px;
+    overflow: auto;
+}
+
+
+
+ul, li {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    color:#272424;
+    background-color: #f1f1f6;
+	font-size: small;
+}
+
+.container {
+    padding: 20px 0;
+}
+
+.container h1 {
+    text-align: center;
+}
+
+.timeline {
+    position: relative;
+    margin: 0 auto;
+    width: 90%;
+    
+}
+
+.timeline ul li {
+    margin-bottom: 50px;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.point {
+    min-width: 25px;
+    height: 25px;
+    background-color: red;
+    border-radius: 100%;
+    z-index: 2;
+    border: 2px #333333 solid;
+    position: relative;
+    left: 1px;
+}
+
+@media (max-width: 800px) {
+    .point {
+        min-width: 15px;
+        height: 15px;
+    }
+
+    html, body {
+        font-size: 15px;
+    }
+
+}
+
+@media (max-width: 650px) {
+    html, body {
+        font-size: 14px;
+    }
+    
+    .point {
+        min-width: 12px;
+        height: 12px;
+    }
+
+}
+
+@media (max-width: 450px) {
+    html, body {
+        font-size: 10px;
+    }
+
+    p {
+        padding: 10px !important;
+    }
+}
+
+.timeline ul li .content {
+    width: 50%;
+    padding: 0 20px;
+}
+
+.timeline ul li:nth-child(odd) .content {
+    padding-left: 0;
+}
+
+.timeline ul li:nth-child(odd) .date {
+    padding-right: 0;
+}
+
+.timeline ul li:nth-child(even) .content {
+    padding-right: 0;
+}
+
+.timeline ul li:nth-child(even) .date {
+    padding-left: 0;
+}
+
+.timeline ul li .date {
+    width: 50%;
+    padding: 0 20px;
+    font-weight: normal;
+}
+
+.timeline ul li .date h4 {
+    background-color: #e1ccec;
+    width: 100px;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 10px;
+	font-size: 1.1em;
+}
+
+.timeline ul li .content h3 {
+    padding: 10px 20px;
+    background-color: #be9fe1;
+    margin-bottom: 0;
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.timeline ul li .content p {
+    padding: 10px 20px;
+    background-color: #e1d9ec;
+    margin-top: 0;
+    text-align: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.timeline ul li:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.timeline ul li:nth-child(even) .date h4 {
+    float: right
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 3px;
+    left: 50%;
+    background-color: #333333;
+}
+</style>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<ion-view>
+	<ion-content has-bouncing="false"
+		style="position:fixed;bottom:1px;top:44px;">
+
+		<div class="custom-header" style="padding-top: 10px;">
+			<h4 class="subHeaderClass" style="margin: 0px;"><b>Geo Tracking LOG
+				</b></h4>
+		</div>
+		<form name="rpf">
+           
+			<div class="form-group row">
+				<label class="col-sm-4 col-xs-4 col-form-label">Search Employee </label><span
+					class="dividerClass">:</span>
+				<div class="col-sm-8 col-xs-8">
+					<input type="text" ng-model="selectedValues.searchEmpTxt"
+						name="search_emp_track" id="search_emp_track"
+						style="margin-top:0px;font-style: italic;"
+						placeholder="Search employee" maxlength="100" class=" form-control"
+						onclick="this.focus();this.select()"/>
+				</div>
+				<input type="hidden" name="selectedEmpIdFromPopUp" value=""
+					id="selectedEmpIdFromPopUp" class="form-control"
+					onchange="empChangedByPopUpSelection()" />
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-4 col-xs-4 col-form-label">Date </label><span
+					class="dividerClass">:</span>
+				<div class="col-sm-6 col-xs-6">
+					<input type="text" class="form-control" ng-click="setDate()"
+						id="fromDate" ng-readonly="true"
+						required/>
+				</div>
+				<div class="col-sm-2 col-xs-2">
+					<i style="padding-left: 3%; font-size: 193%;" ng-click="setDate()"
+						class="ion-calendar">&emsp;</i>
+				</div>
+			</div>
+
+			<!-- <div class="form-group row" ng-show="1==2">
+				<label class="col-sm-4 col-xs-4 col-form-label">Employee</label><span
+					class="dividerClass">:</span>
+				<div class="col-sm-8 col-xs-8">
+					<select id="empId" class="form-control item-select select"
+						onchange="angular.element(this).scope().f_change('false')" name="empId"
+						ng-options="emp.applicantId as emp.empName for emp in
+						pmsEmployeeStatusList track by $index"
+						ng-model="resultObj.emp">
+						<option value="">Select Employee</option>
+					</select>
+				</div>
+			</div> -->
+			<div class="text-left">
+				<center>
+				  <!-- <button type="button" 
+					onclick="angular.element(this).scope().registerMyCurrentLocaion()"
+					class="btn btn-primary mr-10">
+					Save My Location
+				</button>  -->
+				
+				<button type="button"
+					onclick="angular.element(this).scope().getdata()"
+					class="btn btn-primary mr-10">
+					Show LOG
+				</button>
+				<input type="hidden" name="jwtt" value="1" id="jwtt"    />
+			    </center>
+				<!-- <button type="button"
+					onclick="angular.element(this).scope().getConsent()"
+					class="btn btn-primary mr-10">
+					get Consent
+				</button>  -->
+			</div>
+
+		
+			<b>
+				<!-- <div id="divList">
+					<p id="geolocation"
+						style="font-size:1em;height:auto;background-color:
+						bisque;">
+
+					</p>
+				</div> -->
+
+				
+
+
+<div id="tl" style="font-size: 1.35em;" >
+  
+</div>
+
+
+			<br>
+			<br><br>
+		</form>
+
+		<script>
+			//url : baseURL + '/common/searchByNameAndCodeForEisCompany.spr',
+			$(document).ready(
+	function() {
+	$(function() {
+	$("#search_emp_track").autocomplete({
+	minLength : 3,
+	selectfirst : true,
+	minChars : 1,
+	matchSubset : 1,
+	matchContains : 1,
+	cacheLength : 10,
+	autoFill : false,
+	search : function(e, u) {
+	console.log("fetched project manager list")
+},
+source : function(request,response) {
+		
+	$.ajax({
+    url : baseURL + '/api/homeDashboard/getReporteeEmployeeDirectoryListWithSeperator.spr',
+		type : "POST",
+		data : {
+		searchText : $('#search_emp_track').val(),
+		},
+		dataType : "json",
+        headers: {
+            'Authorization': 'Bearer ' + $('#jwtt').val()
+        },
+		success : function(
+		data) {
+		if (!data.length) {
+		var result = [ {
+		label : "No matches found",
+		value : ''
+		} ];
+		response(result);
+		} else {
+		response(jQuery
+		.map(data,function(item) {
+			return {
+		label : (item.name).split("@@")[1],
+		value : (item.name).split("@@")[1],
+    comId : (item.name).split("@@")[0],
+	};
+	
+	}));
+	}
+	}
+															});
+												},
+												select : function(event, ui) {
+													var val = "";
+													var lable = "";
+													var comId = "";
+													var hCatId = "";
+                          this.value = ui.item.label;
+                          //alert(ui.item.comId + "   -   "+ ui.item.label)
+                          document.getElementById('selectedEmpIdFromPopUp').value = ui.item.comId;
+                          
+                          //angular.element(document.getElementById('selectedEmpIdFromPopUp')).scope().empChangedByPopUpSelection();
+						  angular.element(this).scope().empChangedByPopUpSelection();
+													//document.getElementById('searchEmpTxt').value = ui.item.comId;
+													
+													return true;
+												}
+											});
+						});
+          });
+		  </script>
+	</ion-content>
+</ion-view>

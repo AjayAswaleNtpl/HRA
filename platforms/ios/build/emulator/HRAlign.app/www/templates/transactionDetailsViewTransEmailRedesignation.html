@@ -1,0 +1,944 @@
+<style>
+    .custom-item {
+      border: none;
+    }
+    .anchorRRedirect {
+      position: absolute;
+      top: 212px;
+      right: 14px;
+      font-size: 15px;
+      color: #3b5998;
+    }
+    .listTopMargin {
+      margin-top: 10px;
+    }
+    .travelListTopMargin {
+      margin-top: -40px;
+    }
+    #outer {
+      width: 100%;
+      text-align: center;
+    }
+    .inner {
+      display: inline-block;
+    }
+    ul.ctcClaimList {
+      margin-top: 20px;
+    }
+    ul.ctcClaimList li {
+      font-size: 0.8em;
+      padding: 5px 0px 0px 0px;
+      min-width: 435px;
+    }
+    .ctcClaimList b {
+      display: inline-block;
+      width: 40%;
+      position: relative;
+      padding-right: 10px;
+    }
+    .ctcClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ul.travelClaimList {
+      width: 125%;
+    }
+    ul.travelClaimList li {
+      font-size: 0.8em;
+      padding: 5px 0px 0px 0px;
+      min-width: 435px;
+    }
+    .travelClaimList b {
+      display: inline-block;
+      width: 32%;
+      position: relative;
+      padding-right: 10px;
+    }
+    .travelClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ul.odClaimList {
+      margin-top: 20px;
+    }
+    ul.odClaimList li {
+      font-size: 0.8em;
+      padding: 5px 0px 0px 0px;
+      min-width: 435px;
+    }
+    .odClaimList b {
+      display: inline-block;
+      width: 35%;
+      position: relative;
+      padding-right: 10px;
+    }
+    .odClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ul.attClaimList {
+      width: 125%;
+    }
+    ul.attClaimList li {
+      font-size: 0.8em;
+      padding: 5px 0px 0px 0px;
+      min-width: 435px;
+    }
+    table, th, td {
+  border: 1px solid black;
+}
+    .attClaimList b {
+      display: inline-block;
+      width: 38%;
+      position: relative;
+      padding-right: 10px;
+    }
+    .attClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ol,
+    ul {
+      margin-bottom: 0px !important;
+    }
+    a:focus,
+    a:hover {
+      text-decoration: none;
+    }
+    .tab-item.tab-item-active,
+    .tab-item.active,
+    .tab-item.activated {
+      opacity: 1;
+    }
+    .tab-item {
+      opacity: 0.7;
+    }
+    .custom-row {
+      padding: 0px;
+    }
+    .custom-padding {
+      padding: 5px 10px;
+    }
+    .custom-top {
+      top: 10px;
+      left: 13px;
+    }
+    .custom-paddingTop {
+      padding-top: 11px;
+    }
+    .custom_OD {
+      padding-top: 11px;
+      padding-bottom: 0px;
+    }
+    .custom-paddingBottom {
+      padding-bottom: 0px;
+    }
+    /* .cust-card {
+      padding: 50px 0px 0px 0px;
+    } */
+    .custom-requestApprove {
+      font-size: 11px;
+      color: green;
+    }
+    .custom-requestRejcted {
+      font-size: 11px;
+      color: red;
+    }
+    .custom-requestOther {
+      font-size: 11px;
+      color: orange;
+    }
+    
+    .custom-fontSize {
+      font-size: 12px;
+    }
+    .modal-wrapper {
+      position: absolute;
+      top: 25%;
+      display: block;
+      width: 90%;
+      min-height: 45%;
+      padding: 5%;
+    }
+  
+    .modal-backdrop-bg {
+      background-color: rgba(255, 255, 255, 0.85);
+    }
+  
+    .modal {
+      border-top-right-radius: 1em;
+      border-bottom-right-radius: 1em;
+      border-top-left-radius: 1em;
+      border-bottom-left-radius: 1em;
+    }
+  
+    .modal-ion-content {
+      padding: 15px;
+      font-size: 0.85em;
+    }
+  
+  
+    .badge.badgeCustom {
+      width: 22px;
+      height: 22px;
+      text-align: center;
+      line-height: 18px;
+      display: block;
+      position: absolute;
+      top: 0;
+      color: #fff !important;
+      font-size: 10px !important;
+      padding: 0;
+    }
+    a:focus,
+    a:hover {
+      text-decoration: none;
+    }
+    .tab-item.tab-item-active,
+    .tab-item.active,
+    .tab-item.activated {
+      opacity: 1;
+    }
+    .tab-item {
+      opacity: 0.7;
+    }
+    /* .slick-slide .slide-content {
+    margin: 0 3%;
+    padding: 10px 5px;
+  
+  } */
+  
+    .slick-prev,
+    .slick-next {
+      position: absolute;
+      right: 10%;
+      background: #777;
+      border: none;
+      color: transparent;
+      width: 30px;
+      height: 30px;
+    }
+  
+    .slick-prev:before,
+    .slick-next:before {
+      content: ">";
+      color: #fff;
+      font-size: 25px;
+    }
+  
+    .slick-prev {
+      left: 10%;
+    }
+  
+    .slick-prev:before {
+      content: "<";
+    }
+  
+    .slick-dots {
+      list-style: none;
+      margin: 0 auto;
+      text-align: center;
+      margin-top: 10px;
+    }
+  
+    .slick-dots li {
+      display: inline-block;
+    }
+  
+    .slick-dots li button {
+      transition: 0.2s background-color ease-in-out 0s;
+      border: none;
+      padding: 0;
+      color: transparent;
+      width: 10px;
+      height: 10px;
+      background-color: #777;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+  
+    .slick-dots li.slick-active button {
+      background-color: #0a9dc7;
+    }
+    /* .slick-slider {
+      width: 100%;
+      position: relative;
+      transform: translate(-50%, -50%);
+      top: 0%;
+      left: 50%;
+  } */
+    .slick-slider {
+      width: 100%;
+      position: relative;
+      top: 0%;
+    }
+    /* ===form List=== */
+    /* .customBorderRadius .dividerClass {
+      line-height: 1.5 !important;
+  }
+  .customBorderRadius label {
+      font-size: 13px !important;
+      line-height: 1.5 !important;
+  }
+  .customBorderRadius .row {
+      margin: 0 5px !important;
+      padding: 0 5px !important;
+  }
+  .customBorderRadius.col-xs-8 {
+      font-size: 13px !important;
+  }
+  .customBorderRadius .item-note {
+      padding: 10px 10px 0 0 !important;
+      margin-bottom: 2px !important;
+  } */
+  .inner .btn-pad.claimClass{
+    margin: 14px 4px 5px 10px;
+      padding: 0 8px;
+  }
+  .inner .badge{
+    position: relative;
+    margin: 0 -8px;
+    float: right;
+  }
+  .slick-carousel .fa{
+    font-size: 40px;
+    color: #777676;
+  }
+  .slick-carousel p {
+      color: #212121;
+      margin: 0 0 10px;
+      font-size: 0.83em;
+      text-align: center;
+      margin-left: -2%;
+      margin-top: 0%;
+      margin-bottom: 2px;
+      font-weight: 400;
+  }
+  /*-------Color Code--------------*/
+.colorClegend {
+	display: block;
+	list-style: none;
+  margin: 11px 0;
+    overflow: hidden;
+    padding: 15px 0px;;
+	text-align: left;
+  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+  -webkit-box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+  -moz-box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+  -o-box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+}
+
+.colorClegend li {
+	position: relative;
+	display: inline-block;
+	/* font-size: 12px; */
+	line-height: 1;
+	color: #aaa;
+	margin-right: 10px;
+}
+
+.colorClegend li:before {
+	display: block;
+	width: 16px;
+	height: 16px;
+	background: #ddd;
+	content: '';
+	float: left;
+	margin-right: 6px;
+}
+
+.colorClegend li.leave:before {
+	background: #8A2BE2;
+}
+
+.colorClegend li.weekoff:before {
+	background: #FFA07A;
+}
+
+.colorClegend li.holiday:before {
+	background: #ff75d0;
+}
+.colorClegend li.app:before {
+	background: #ccffcc;
+}
+
+.colorClegend li.rej:before {
+	background: #ff9999;
+}
+
+.colorClegend li.sent:before {
+	background: #ffffb3;
+}
+.colorClegend li.save:before {
+	background: #b3e6ff;
+}
+.alert {
+    padding: 10px 10px !important;
+    margin-bottom: 0px !important;
+
+}
+select{
+    width: 80%;
+}
+  </style>
+
+
+<ion-view>
+    <div class="bar bar-footer hide-on-keyboard-open" style="background-color:#000; background-size: 100% 0px;">
+        <div class="title" style="height: 20px;">
+            <h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px;
+                margin-bottom: 5px;">Powered by HR Align</h6>
+        </div>
+    </div>
+    <ion-content has-bouncing="false" style="overflow-y: auto;top:0%" class="requisionSection">
+        <div id="mainDiv">
+        <div class="custom-header" style="padding-top: 0px;padding-bottom: -20px;">
+            <h4 class="subHeaderClass" style="margin: 0px;"> <span class="backIcon">
+              <i class="icon ion-ios-arrow-back" ng-click="redirectOnBack()"></i></span>
+                <b style="vertical-align: super;"> Transaction Approval </b></h4>
+                
+        </div>
+        <div id="transDetails" style="padding:5px">
+          <div class="form-group row" style="background: lightgrey;font-weight: 500;">
+            {{transDetailToSend.transName}}&nbsp; - &nbsp;{{transDetailToSend.empName}}&nbsp;({{transDetailToSend.empCode}})		
+          </div>
+            <div>
+                <div><b>Company</b></div>
+                
+                <div class="form-group row">
+                    <label class="col-xs-2 col-sm-2">From</label><span class="dividerClass">:</span>
+                    <div class="col-xs-10 col-sm-10">
+                        {{transRequisitionForm.eisPersonal.company.companyName}}
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label class="col-xs-2 col-sm-2">To</label><span class="dividerClass">:</span>
+                    <div class="col-xs-10 col-sm-10">
+                        {{transRequisitionForm.eisPersonal.company.companyName}}
+                        
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <div>
+                <div><b>Job Profile</b></div>
+                
+                <div class="form-group row">
+                    <label class="col-xs-2 col-sm-2">From</label><span class="dividerClass">:</span>
+                    <div class="col-xs-10 col-sm-10" id="jpHead">
+                       {{transRequisitionForm.transVO.jpid.jpName}}
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label class="col-xs-2 col-sm-2">To</label><span class="dividerClass">:</span>
+                    <div class="col-xs-10 col-sm-10">
+                        <select
+                        id="jpList"
+                        ng-model="transRequisitionForm.transVO.jpId.jpIdTo"
+                        
+                        >
+                        <option ng-repeat="(key,value) in listJobProfile"
+                        value={{value.jpId}}
+                        ng-selected="{{value.jpId==transRequisitionForm.transVO.jpId.jpId}}"
+                        >{{value.jpName}}</option>
+                        <option value="">Please Select</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+            <div ng-repeat="empOrgLevel in transRequisitionForm.empLevelsAppliVOList">
+              <div>
+                <div id="levelName_{{$index}}">{{empOrgLevel.levelName}}</div>
+                <div class="form-group row">
+                    <label class="col-xs-2 col-sm-2">From</label><span class="dividerClass">:</span>
+                
+                <div ng-repeat="ecc in transRequisitionForm.listEisCompanyBean[$index]">
+                    <!-- <label class="col-xs-4 col-sm-4">From</label><span class="dividerClass">:</span> -->
+                    <div  ng-show="ecc.entityId == transRequisitionForm.division && empOrgLevel.levelName == 'Division'" id="division">{{transRequisitionForm.divisionName}}</div>
+                    <div  ng-show="ecc.entityId == transRequisitionForm.department && empOrgLevel.levelName == 'Department'" id="department">{{transRequisitionForm.departmentName}}</div>
+
+                    <div  ng-show="ecc.entityId == transRequisitionForm.subDepartment && empOrgLevel.levelName == 'SubDepartment'" id="subDepartment">{{transRequisitionForm.subDepartmentName}}</div>
+                    <div  ng-show="ecc.entityId == transRequisitionForm.function && empOrgLevel.levelName == 'Function'" id="function">{{transRequisitionForm.functionName}}</div>
+                    <div  ng-show="ecc.entityId == transRequisitionForm.subFunction && empOrgLevel.levelName == 'SubFunction'" id="subFunction">{{transRequisitionForm.subFunctionName}}</div>
+                    <div  ng-show="ecc.entityId == transRequisitionForm.section && empOrgLevel.levelName == 'Section'" id="section">{{transRequisitionForm.sectionName}}</div>
+                    <div  ng-show="ecc.entityId == transRequisitionForm.subSection && empOrgLevel.levelName == 'SubSection'" id="subSection">{{transRequisitionForm.subSectionName}}</div>
+                    <div  ng-show="ecc.entityId == transRequisitionForm.zone && empOrgLevel.levelName == 'Zone'" id="zone">{{transRequisitionForm.zoneName}}</div>
+                    <div  ng-show="ecc.entityId == transRequisitionForm.region && empOrgLevel.levelName == 'Region'" id="region">{{transRequisitionForm.regionName}}</div>
+                    <div  ng-show="ecc.entityId == transRequisitionForm.plant && empOrgLevel.levelName == 'Plant'" id="plant">{{transRequisitionForm.plantName}}</div>
+                    <div  ng-show="ecc.entityId == transRequisitionForm.branch && empOrgLevel.levelName == 'Branch'" id="branch">{{transRequisitionForm.branchName}}</div>
+                    <div  ng-show="ecc.entityId == transRequisitionForm.subDivision && empOrgLevel.levelName == 'SubDivision'" id="subDivision">{{transRequisitionForm.subDivisionName}}</div>
+                </div>
+            </div>
+            </div>
+                
+                <div class="form-group row">
+                    <label class="col-xs-2 col-sm-2">To</label><span class="dividerClass">:</span>
+                    <div class="col-xs-10 col-sm-10">
+                        <select
+                        id="departmentList_{{$index}}"
+                        >
+                        <option ng-repeat="(key,value) in transRequisitionForm.listEisCompanyBean[$index]"
+                            ng-value="value.entityId" 
+                           
+                        >{{value.entityName}}</option>
+                        <!-- ng-selected="{{value.entityId == transRequisitionForm.filteredLevelesAsPerTransaction[$index]}}" -->
+                        <option value="" selected="selected">Please Select</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+<!--
+            <div ng-repeat="empOrgLevel in transRequisitionForm.empLevelsAppliVOList">
+                <div><b>{{empOrgLevel.levelName}}</b></div>
+                <div class="form-group row" 
+                    ng-repeat="value as ecc for (key,value) in transRequisitionForm.listEisCompanyBean[$index]"
+                >
+                <label class="col-xs-4 col-sm-4">From</label><span class="dividerClass">:</span>
+                <div class="col-xs-6 col-sm-6" ng-show="ecc.entityId == transRequisitionForm.division && emporgLevel.levelName == 'Division'">{{transRequisitionForm.divisionName}}</div>
+                <div class="col-xs-6 col-sm-6" ng-show="ecc.entityId == transRequisitionForm.subDepartment && emporgLevel.levelName == 'SubDepartment'">{{transRequisitionForm.subDepartmentName}}</div>
+                <div class="col-xs-6 col-sm-6" ng-show="ecc.entityId == transRequisitionForm.function && emporgLevel.levelName == 'Function'">{{transRequisitionForm.functionName}}</div>
+                <div class="col-xs-6 col-sm-6" ng-show="ecc.entityId == transRequisitionForm.subFunction && emporgLevel.levelName == 'SubFunction'">{{transRequisitionForm.subFunctionName}}</div>
+                <div class="col-xs-6 col-sm-6" ng-show="ecc.entityId == transRequisitionForm.section && emporgLevel.levelName == 'Section'">{{transRequisitionForm.sectionName}}</div>
+                <div class="col-xs-6 col-sm-6" ng-show="ecc.entityId == transRequisitionForm.subSection && emporgLevel.levelName == 'SubSection'">{{transRequisitionForm.subSectionName}}</div>
+                <div class="col-xs-6 col-sm-6" ng-show="ecc.entityId == transRequisitionForm.zone && emporgLevel.levelName == 'Zone'">{{transRequisitionForm.zoneName}}</div>
+                <div class="col-xs-6 col-sm-6" ng-show="ecc.entityId == transRequisitionForm.region && emporgLevel.levelName == 'Region'">{{transRequisitionForm.regionName}}</div>
+                <div class="col-xs-6 col-sm-6" ng-show="ecc.entityId == transRequisitionForm.plant && emporgLevel.levelName == 'Plant'">{{transRequisitionForm.plantName}}</div>
+                <div class="col-xs-6 col-sm-6" ng-show="ecc.entityId == transRequisitionForm.branch && emporgLevel.levelName == 'Branch'">{{transRequisitionForm.branchName}}</div>
+                <div class="col-xs-6 col-sm-6" ng-show="ecc.entityId == transRequisitionForm.subDivision && emporgLevel.levelName == 'SubDivision'">{{transRequisitionForm.subDivisionName}}</div>
+
+                </div>
+                <div class="form-group row">
+                    <label class="col-xs-4 col-sm-4">To</label><span class="dividerClass">:</span>
+                    <div class="col-xs-6 col-sm-6">
+                        <select
+                        id="departmentList"
+                        
+                        ng-model="selectedValues.department"
+                        >
+                        <option ng-repeat="(key,value) in transRequisitionForm.listEisCompanyBean[$index]"
+                            ng-value="value.entityId" 
+                        >{{value.entityName}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        -->
+            <div>
+                <div><b>Grade</b></div>
+                
+                <div class="form-group row">
+                    <label class="col-xs-2 col-sm-2">From</label><span class="dividerClass">:</span>
+                    <div class="col-xs-10 col-sm-10" id="jpGradeHead">
+                        {{transRequisitionForm.jpGradeName}}
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label class="col-xs-2 col-sm-2">To</label><span class="dividerClass">:</span>
+                    <div class="col-xs-10 col-sm-10">
+                        
+                        <select
+                        id="gradeList"
+                       
+                        ng-model="transRequisitionForm.transVO.jpGradeId.gradeDetail.grade.gradeId"
+                        >
+                        <!-- <option value="" selected="selected">Please Select</option> -->
+                        <option ng-repeat="(key,value) in transRequisitionForm.listJpGrade"
+                            ng-value="value.jpGradeId" 
+                            ng-selected="{{value.gradeDetail.grade.gradeId==transRequisitionForm.transVO.jpGradeId.gradeDetail.grade.gradeId}}"
+                            
+
+                        >{{value.gradeDetail.grade.gradeName}}</option>
+                         <option value="">Please Select</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+            <div>
+                <div><b>Country</b></div>
+                
+                <div class="form-group row">
+                    <label class="col-xs-2 col-sm-2">From</label><span class="dividerClass">:</span>
+                    <div class="col-xs-10 col-sm-10" id="countryHead">
+                        {{transactionHistory.location.country.countryName}}
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label class="col-xs-2 col-sm-2">To</label><span class="dividerClass">:</span>
+                    <div class="col-xs-10 col-sm-10">
+                        <select
+                        id="countryList"
+                        
+                        ng-model="selectedValues.country"
+                        >
+                        <option ng-repeat="(key,value) in listcountry"
+                        ng-value="key"
+                        ng-selected="{{value==countryNameOld}}"
+                        >{{value}}</option>
+                        <option value="">Please Select</option>
+
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div>
+                <div><b>Location</b></div>
+                
+                <div class="form-group row">
+                    <label class="col-xs-2 col-sm-2">From</label><span class="dividerClass">:</span>
+                    <div class="col-xs-10 col-sm-10">
+                        {{transRequisitionForm.transVO.location.locationName}}
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label class="col-xs-2 col-sm-2">To</label><span class="dividerClass">:</span>
+                    <div class="col-xs-10 col-sm-10">
+                        <select
+                        id="locationList"
+                        
+                        ng-model="transRequisitionForm.transVO.location.locationId"
+                        ng-options="key as value for (key,value) in transRequisitionForm.locationList"
+                        >
+                        <!-- <option ng-repeat="(key,value) in transRequisitionForm.locationList"
+                            ng-value="key"
+                            ng-selected="key==transRequisitionForm.transVO.location.locationId"
+                        >{{value}}</option> -->
+                        <option value="">Please Select</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div>
+                <div><b>Designation</b></div>
+                
+                <div class="form-group row">
+                    <label class="col-xs-2 col-sm-2">From</label><span class="dividerClass">:</span>
+                    <div class="col-xs-10 col-sm-10" id="designationHead">
+                        {{transRequisitionForm.designation.designationName}}
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label class="col-xs-2 col-sm-2">To</label><span class="dividerClass">:</span>
+                    <div class="col-xs-10 col-sm-10">
+                        <select
+                        id="designationList"
+                        
+                        ng-model="transRequisitionForm.transVO.designation.designationId"
+                        >
+                        <option ng-repeat="(key,value) in listDesignation"
+                            ng-value="value.designationId"
+                            ng-selected="value.designationId==transRequisitionForm.transVO.designation.designationId"
+                        >{{value.designationName}}</option>
+                        <option value="">Please Select</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+            
+            <div>
+                <div><b>ART Company Name</b></div>
+
+
+                
+                <div class="form-group row">
+                    <label class="col-xs-2 col-sm-2">From</label><span class="dividerClass">:</span>
+                    <div class="col-xs-10 col-sm-10">
+                        {{transRequisitionForm.artCompanyName}}
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label class="col-xs-2 col-sm-2">To</label><span class="dividerClass">:</span>
+                    <div class="col-xs-10 col-sm-10">
+                        <select
+                        id="artCompanyList"
+                        
+                        ng-model="transRequisitionForm.artCompanyId"
+                        ng-options="key as value for (key,value) in transRequisitionForm.allCompanyList"
+                        >
+                        <!-- <option ng-repeat="(key,value) in transRequisitionForm.companyList"
+                            ng-value="key"
+                            ng-selected="key==transRequisitionForm.artCompanyId"
+                        >{{value}}</option> -->
+                        <option value="">Please Select</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+            <div>
+                <div><b>ART</b></div>
+
+
+                
+                <div class="form-group row" >
+                    <label class="col-xs-2 col-sm-2">From</label><span class="dividerClass">:</span>
+                    <div class="col-xs-10 col-sm-10" ng-show="transRequisitionForm.artEmp == 'ART Not Defined'">
+                       ART Not Defined
+                    </div>
+                    <div class="col-xs-10 col-sm-10" ng-show="transRequisitionForm.artEmp != 'ART Not Defined'">
+                       {{transRequisitionForm.artEmp}}
+                     </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label class="col-xs-2 col-sm-2">To</label><span class="dividerClass">:</span>
+                    <div class="col-xs-10 col-sm-10">
+                        <input style="display: none;"id="artSelect" class="form-control" type="text" ng-model="nameSearch.name" placeholder="Search ART">
+                        <select
+                        id="ART"
+                        
+                        
+                        >
+                        <!-- <option ng-repeat="(key,value) in art | filter: nameSearch.name"
+                            value={{value.empId}}
+                            ng-selected="value.empId == transRequisitionForm.artEmpId"
+                        >{{value.fullName}} {{value.empCode}}</option> -->
+                      
+                        </select>
+                        <div>
+                            <input type="checkbox" ng-click="changeARTList()" id="artCheck"/>
+                            <label>Not Applicable</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+            <div>
+                <div><b>FRT Company Name</b></div>
+
+
+                
+                <div class="form-group row">
+                    <label class="col-xs-2 col-sm-2">From</label><span class="dividerClass">:</span>
+                    <div class="col-xs-10 col-sm-10">
+                        {{transRequisitionForm.frtCompanyName}}
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label class="col-xs-2 col-sm-2">To</label><span class="dividerClass">:</span>
+                    <div class="col-xs-10 col-sm-10">
+
+                        <select
+                        id="frtCompanyList"
+                        
+                        ng-model="transRequisitionForm.frtCompanyId"
+                        ng-options="key as value for (key,value) in transRequisitionForm.allCompanyList"
+                        >
+                        <!-- <option ng-repeat="(key,value) in transRequisitionForm.companyList"
+                            ng-value="key"
+                            ng-selected="key==transRequisitionForm.frtCompanyId"
+                        >{{value}}</option> -->
+                        <option value="">Please Select</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+            <div>
+                <div><b>FRT</b></div>
+
+
+                
+                <div class="form-group row" >
+                    <label class="col-xs-2 col-sm-2">From</label><span class="dividerClass">:</span>
+                    <div class="col-xs-10 col-sm-10" ng-show="transRequisitionForm.frtEmp == 'FRT Not Defined'">
+                       FRT Not Defined
+                    </div>
+                    <div class="col-xs-10 col-sm-10" ng-show="transRequisitionForm.frtEmp != 'FRT Not Defined'">
+                       {{transRequisitionForm.frtEmp}}
+                     </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label class="col-xs-2 col-sm-2">To</label><span class="dividerClass">:</span>
+                    <div class="col-xs-10 col-sm-10">
+                        <input style="display: none;" id="artSelect" class="form-control" type="text" ng-model="nameSearch.frtName" placeholder="Search FRT">
+
+                        <select
+                        id="FRT"
+                        
+                       
+                        >
+                        <!-- <option ng-repeat="(key,value) in frt | filter: nameSearch.frtName"
+                            value={{value.empId}}
+                            ng-selected="value.empId == transRequisitionForm.frtEmpId"
+                        >{{value.fullName}} {{value.empCode}}</option> -->
+                        </select>
+                        <div>
+                            <input type="checkbox" ng-click="changeFRTList()" id="frtCheck"/>
+                            <label>Not Applicable</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div>
+                <div><b>Cost Center</b></div>
+
+
+                
+                <div class="form-group row" >
+                    <label class="col-xs-2 col-sm-2">From</label><span class="dividerClass">:</span>
+                    <div class="col-xs-10 col-sm-10" >
+                       {{transRequisitionForm.}}
+                     </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label class="col-xs-2 col-sm-2">To</label><span class="dividerClass">:</span>
+                    <div class="col-xs-10 col-sm-10">
+                        <input style="display: none;" id="artSelect" class="form-control" type="text" ng-model="nameSearch.frtName" placeholder="Search FRT">
+
+                        <select
+                        id="FRT"
+                        
+                       
+                        >
+                        <!-- <option ng-repeat="(key,value) in frt | filter: nameSearch.frtName"
+                            value={{value.empId}}
+                            ng-selected="value.empId == transRequisitionForm.frtEmpId"
+                        >{{value.fullName}} {{value.empCode}}</option> -->
+                        </select>
+                        <div>
+                            <input type="checkbox" ng-click="changeFRTList()" id="frtCheck"/>
+                            <label>Not Applicable</label>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+           
+            <hr>
+
+            <div>
+                <div><b>Total CTC</b></div>
+                <div class="form-group row">
+                    <label class="col-xs-2 col-sm-2">From</label><span class="dividerClass">:</span>
+                    <div class="col-xs-10 col-sm-10">{{transRequisitionForm.eisPersonal.eisCompany.presentCTC}}</div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-xs-2 col-sm-2">To</label><span class="dividerClass">:</span>
+                   <div class="col-xs-10 col-sm-10"> 
+                       <input id="totalCTC" readonly="true" value="{{transRequisitionForm.eisPersonal.eisCompany.presentCTC}}">
+                   </div>
+                </div>
+            </div>
+            <div>
+                <div><b>Document Upload File </b></div>
+                <div class="form-group row" ng-show="transRequisitionForm.userUplodfileName != null && transRequisitionForm.userUplodfileName != ''" >
+                    
+                    <a href="" style="color: blue;" ng-click="openFile1(transRequisitionForm)">{{transRequisitionForm.userUplodfileName}}</a>
+                </div>
+                <div class="form-group row" ng-show="transRequisitionForm.userUplodfileName == null || transRequisitionForm.userUplodfileName == ''" >
+                    
+                    None 
+                </div>
+               </div>
+
+               <hr>
+               <div>
+                <div><b>Uploaded File </b></div>
+                <div class="form-group row">
+                    
+                    <a ng-show="transRequisitionForm.fileName != null && transRequisitionForm.fileName != ''" href="" style="color: blue;" ng-click="openFile2(transRequisitionForm)">{{transRequisitionForm.fileName}}</a>
+                    <div ng-show="transRequisitionForm.fileName == null || transRequisitionForm.fileName == ''">
+                        None
+                    </div>
+                </div>
+                
+               </div>
+               <hr>
+               <div>
+                <div><b>Remarks</b></div>
+                <div class="form-group row">
+                    
+                   <div ng-show="transRequisitionForm.transVO.remarks != null && transRequisitionForm.transVO.remarks != ''">
+                    {{transRequisitionForm.transVO.remarks}}
+                   </div>
+                   <div ng-show="transRequisitionForm.transVO.remarks == null || transRequisitionForm.transVO.remarks == ''">
+                    None 
+                   </div>
+                </div>
+                </div>
+                <hr>
+                <div>
+                    <div><b>Approvers</b></div>
+                    <div class="form-group row">
+                        
+                       <div ng-repeat="approver in transRequisitionForm.nxtApproverList">
+                        <div>{{approver}}</div>
+                       </div>
+                    </div>
+                    </div>
+
+                    <hr>
+
+                    <div>
+                        <div><b>{{transRequisitionForm.transAuthVO.masterWorkflowChild.level}} Level Remark</b></div>
+                        <div class="form-group row">
+                            
+                            <textarea id="comments" rows="3" cols="60" maxlength="2000"></textarea>
+                        </div>
+                        </div>
+
+
+
+               
+                        <hr>
+    
+    </div>
+    <div class="form-group row" ng-show="transRequisitionForm.transAuthVO.status == 'S' && canellation != 'SENT FOR CANCELLATION' && cancellation != 'EMPLOYEE CANCELLED'">
+        <div class="col-xs-6 col-sm-6">
+            <button class="btn btn-success" ng-click="goSave('A')"><i class="fa fa-check"></i>Approve</button>
+        </div>
+        <div class="col-xs-6 col-sm-6">
+            <button class="btn btn-danger" ng-click="goSave('R')"><i class="fa fa-times"></i>Reject</button>
+        </div>
+    </div>
+    <br>
+   
+    <div class="form-group row" id="cancellationDiv" style="display: none;">
+       
+        <div class="col-xs-6 col-sm-6">
+            <button class="btn btn-success" ng-click="goCancel('A')"><i class="fa fa-check"></i>Approve</button>
+        </div>
+        <div class="col-xs-6 col-sm-6">
+            <button class="btn btn-danger" ng-click="goCancel('R')"><i class="fa fa-times"></i>Reject</button>
+        </div>
+    </div>
+    <br>
+    <br>
+</div>
+<br>
+<br>
+<br>
+<br>
+
+    </ion-content>
+</ion-view>

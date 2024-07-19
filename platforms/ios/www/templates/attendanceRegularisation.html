@@ -1,0 +1,186 @@
+<style>
+ .col-xs-2 {
+    padding: 0 !important;
+}
+.row {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+label {
+    font-weight: normal !important;
+}
+.logincheckbox{
+        border-color: transparent;
+        text-align: left ;
+        right: auto;
+        background-color: transparent;
+        padding: 3%;
+        padding-left: 50px;
+    } 
+</style>
+<ion-view>
+    <!-- <ion-nav-bar class="bar-stable" style="background-color: white">
+        <ion-nav-buttons side="left">
+            <button class="button button-clear" ng-click="redirectOnBack()" >
+                <i class="icon ion-ios-arrow-back"></i>
+                Back</button>
+        </ion-nav-buttons>
+    </ion-nav-bar> -->
+    <div class="bar bar-footer hide-on-keyboard-open" style="background-color:#000; background-size: 100% 0px;">
+        <div class="title" style="height: 20px;">
+            <h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px; margin-bottom: 5px;" >Powered by HR Align</h6></div>
+    </div>
+    <ion-content has-bouncing="false" class="item-divider grayBackColor" style="overflow-y: auto;">
+            <!-- <div class="custom-header" style="padding: 0px;padding-left: 15px;margin-top:-8px;">
+            <h4 class="custom-header" style="padding-top:5px;"><b>Attendance Regularization</b></h4>
+            </div> -->
+            <div class="custom-header" style="padding-top: 0px;padding-bottom: 0px;">
+                <h4 class="subHeaderClass" style="margin: 0px;"> <span class="backIcon">
+                  <i class="icon ion-ios-arrow-back" ng-click="redirectOnBack()"></i></span>
+                   <b style="vertical-align: super;">Attendance Regularization</b></h4>
+               </div>
+            <!-- <div class="card" >
+                <div class="item item-input">
+                    <span class="input-label" style="min-width: 40%; margin-left: -10px;"><b>Date </b></span>
+                    <input ng-click="setFromDate()" style="padding-left:0px;padding-right:
+                    0px;background-color:white;border: 1px solid #b3b3b3;
+                    text-align:center; width:120px;" id="toDate" type="text"   ng-readonly="true"
+                     ng-model="attendanceRegularObj.selectedDate" required />
+                    <i style="padding-left: 5%; font-size: 193%;" ng-click="setFromDate()" class="ion-calendar">&emsp;</i>
+                </div>
+            </div> -->
+            <div class="cardList">
+            <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Date </label><span class="dividerClass">:</span>
+                <div  class="col-sm-6 col-xs-6">
+                  <input class="form-control" id="toDate" ng-click="setFromDate()" type="text"   ng-readonly="true"
+                  ng-model="attendanceRegularObj.selectedDate" required />
+                </div >
+               <div class="col-sm-2 col-xs-2">
+                <i style="padding-left: 3%; font-size: 193%;"  ng-click="setFromDate()" class="ion-calendar">&emsp;</i>
+               </div>
+              </div>
+
+            <!-- <div class="row " ng-if="onloadResponseObj.status != '-'">
+                <div class="col">
+                    <b>Status : {{onloadResponseObj.status}}</b>
+                </div>
+            </div> -->
+            <div class="form-group row" ng-if="onloadResponseObj.status != '-'">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Status </label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                    <b>{{onloadResponseObj.status}}</b>
+                </div >               
+              </div>
+			 <div style="overflow: auto;min-height: 10px; max-height: 120px;;width:100%;">
+			 <div class="form-group row" ng-if="punchStr" 
+			style="white-space: pre-wrap">Punch Details:<br>{{punchStr}}</div>		
+			</div>
+            <!-- <div class="item item-divider" style="border-width: 0px;">
+                <center>
+                    <button ng-disabled="hidebutton" class="button button-block button-positive" ng-click="editAttendanceRegularization()">Edit</button></center>
+            </div> -->
+            <!-- <div class="text-center">
+                <button ng-disabled="hidebutton" class="button button-block button-positive" ng-click="editAttendanceRegularization()">Edit</button>
+                 </div> -->
+                 <div class="text-center">
+                    <button type="button" ng-disabled="hidebutton" ng-click="editAttendanceRegularization()" class="btn btn-primary mr-10">
+              <i class="fa fa-pencil-square-o mr-5" aria-hidden="true"></i> Edit</button>
+              </div>
+            <form name="credentialsForm" style="margin-top: 15px;" >
+                <label  class="col-sm-4 col-xs-4 col-form-label" style="margin-left: 3px;">Time </label><span class="dividerClass">:</span>
+                    <div class="row ">
+                        <div class="col card-margin">  
+                            <label class="col-form-label">Actual Time In<br>&nbsp; </label>
+                            <input type="text" class="card-width" ng-model="onloadResponseObj.actualInTimeStr" disabled>
+                        </div>
+                        <div class="col">
+                        <label  class="col-form-label">Time In<br> (Modified) </label>
+                            <input ng-if="editable==false" style="background-color:white;border: 1px solid #b3b3b3;" type="text" ng-model="inTimeStr" ng-click="setTimeIn()" class="card-width" ng-readonly="true" ng-disabled="editable" required />
+                            <input ng-if="editable==true"  style="background-color:white;" type="text" ng-model="inTimeStr" ng-click="setTimeIn()" class="card-width" ng-readonly="true" ng-disabled="editable" required />
+                        </div>
+						
+                    </div>
+                    <div class="row ">
+                        <div class="col card-margin">
+                          <label class="col-form-label">Actual Time Out<br>&nbsp; </label>
+                            <input type="text" ng-model="onloadResponseObj.actualOutTimeStr" class="card-width" disabled>
+                        </div>
+                        <div class="col">
+                   <label ng-if="possiblyNightShit == 'true'" class="col-form-label">Time Out Day(+1)<br>(Modified) </label>
+				   <label ng-if="possiblyNightShit == 'false'" class="col-form-label">Time Out<br>(Modified) </label>
+                            <input ng-if="editable==false" style="background-color:white;border: 1px solid #b3b3b3;" type="text" ng-model="outTimeStr" ng-click="setTimeOut()" class="card-width" ng-readonly="true" ng-disabled="editable" required />
+                            <input ng-if="editable==true" style="background-color:white;" type="text" ng-model="outTimeStr" ng-click="setTimeOut()" class="card-width" ng-readonly="true" ng-disabled="editable" required />
+							
+                        </div>
+                    </div>
+                    
+                        <div class="row" ng-if="nextDayFeature =='true' && newDayFlag =='YES'">
+                            <ion-checkbox id="isNextDay" class="logincheckbox"  ng-click="setNextDay()" ng-checked='false' > Next Day</ion-checkbox>
+                            <div ng-if="shiftAbbr" style="    margin-top: 3%;
+                            font-size: 0.9em;
+                            margin-left: 48%;
+                            font-weight: 400;"> Shift:&nbsp; {{shiftAbbr}}</div> 
+                        </div>
+                        
+                    
+              
+                <div class="att-grayBackColor">
+                    <!-- <h4>&nbsp;&nbsp;Reason:</h4>
+                    <select class="card-width att-pading att-leftmargin" ng-model = "attendanceRegularObj.remarks" style=" background:  white;   width: 98%;" required>
+                        <option value="">Please Select</option>
+                        <option ng-repeat="(key,value) in applyingLeaves" value="{{key}}" > {{value}}
+                        </option>
+                    </select> -->
+				    
+                    <!-- <textarea class="card-width att-pading att-leftmargin" 
+                    style="padding-left: 3%;padding-right: 3%;background-color: white;border: 1px solid rgb(179, 179, 179);
+                    margin-top: 3%;width: 98%;" name="txt1" placeholder="Other Reason" ng-if="attendanceRegularObj.remarks=='OTH'"  
+                           ng-maxlength="249" ng-model="attendanceRegularObj.othRemarks">
+					</textarea>					
+					<br>
+					<h4>&nbsp;&nbsp;Applicant Comments:</h4>				
+                    <textarea class="card-width att-pading att-leftmargin" style="padding-left: 3%;padding-right: 3%;
+                    background-color: white;border: 1px solid rgb(179, 179, 179);width:98%;margin-top: 3%;" name="txt2" 
+                           ng-maxlength="249" ng-model="attendanceRegularObj.applicantComments">
+                    </textarea> -->
+                    
+                    
+                    <div class="form-group row">
+                        <label  class="col-sm-4 col-xs-4 col-form-label">Reason </label><span class="dividerClass">:</span>
+                        <div  class="col-sm-8 col-xs-8">
+                            <select class="form-control card-width att-pading att-leftmargin" ng-model = "attendanceRegularObj.remarks" style=" background:  white;   width: 98%;" required>
+                                <option value="">Please Select</option>
+                                <option ng-repeat="(key,value) in applyingLeaves" value="{{key}}" > {{value}}
+                                </option>
+                            </select>
+                        </div >               
+                      </div>
+                      <div class="form-group row">
+                        <label  class="col-sm-4 col-xs-4 col-form-label"> </label>
+                        <div  class="col-sm-8 col-xs-8">
+                            <textarea class="form-control" name="txt1" placeholder="Other Reason" ng-if="attendanceRegularObj.remarks=='OTH'"  
+                           ng-maxlength="249" ng-model="attendanceRegularObj.othRemarks">
+					</textarea>
+                        </div >               
+                      </div>
+                      <div class="form-group row">
+                        <label  class="col-sm-4 col-xs-4 col-form-label">Applicant Remarks </label><span class="dividerClass">:</span>
+                        <div  class="col-sm-8 col-xs-8">
+                            <textarea name="txt2" class="form-control" ng-maxlength="249" ng-model="attendanceRegularObj.applicantComments"></textarea>
+                        </div >               
+                      </div>
+                </div>
+            </form>
+            <!-- <div class="item item-divider" style="border-width: 0px;">
+                <center><button class="button button-block  button-positive"  ng-disabled="credentialsForm.$invalid" ng-click="apply()">Apply</button></center>
+            </div> -->
+            <br>
+            <div class="text-center">
+                <button type="button" ng-disabled="credentialsForm.$invalid" ng-click="apply()" class="btn btn-primary mr-10">
+          <i class="fa fa-paper-plane mr-5" aria-hidden="true"></i>Send for Approval</button>
+          </div>
+      <br><br>
+    </div>
+    </ion-content>
+</ion-view>

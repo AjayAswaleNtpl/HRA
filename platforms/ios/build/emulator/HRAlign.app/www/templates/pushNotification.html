@@ -1,0 +1,93 @@
+<style>
+.col-xs-3 {
+    padding: 0 7px;
+}
+</style>
+<ion-view>
+    <ion-content has-bouncing="false"  style="overflow-y: auto;">
+ 
+		<!-- <div class="custom-header" style="margin-bottom: 40px;padding: 0px;padding-left: 15px;padding-top: 10px;margin-top:-8px;">
+				<h4 class="custom-header" style="margin-top: 8px;"><b>Send Push Notification</b></h4> 
+		</div> -->
+        <div class="custom-header" style="padding-top: 46px;">
+            <h4 class="subHeaderClass" style="margin: 0px;">  <b>Send Push Notification</b></h4>
+           </div>
+
+
+           <!-- <div class="form-group">
+			<label class="col-sm-4 col-xs-4 col-form-label">Select Department</label><span class="dividerClass">:</span>
+			<div class="col-sm-12 col-xs-12">
+                <ion-checkbox ng-click="selectAll()" ng-checked="selectAllChecked"><h3>Select All</h3> </ion-checkbox>
+
+                <ion-checkbox ng-repeat="department in departments"
+                              ng-model="department.checked" 
+                              ng-checked="department.checked"
+                              ng-click="sendNotificationButtonState()">
+                    {{ department.name}}
+                </ion-checkbox>
+				
+			</div>
+            </div> --><br><br>
+            <div class="form-group row">
+                <label  class="col-sm-3 col-xs-3 col-form-label">Department </label><span class="dividerClass">:</span>
+                <div  class="col-sm-9 col-xs-9">
+                    <ion-checkbox ng-click="selectAll()" ng-checked="selectAllChecked"><h3 style="margin-left: 30px;">Select All</h3> </ion-checkbox>
+
+                    <ion-checkbox ng-repeat="department in departments" ng-model="department.checked"  ng-checked="department.checked"
+                                  ng-click="sendNotificationButtonState()">
+                     <span style="margin-left: 30px;">   {{ department.name}}</span>
+                    </ion-checkbox>
+                </div>
+              </div>
+            
+            <div class="form-group row">
+                <label  class="col-sm-3 col-xs-3 col-form-label">Title </label><span class="dividerClass">:</span>
+                <div  class="col-sm-9 col-xs-9">
+                    <input type="text" class="form-control" ng-model="sendNotificationObj.title" required />
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label  class="col-sm-3 col-xs-3 col-form-label">Message </label><span class="dividerClass">:</span>
+                <div  class="col-sm-9 col-xs-9">
+                    <textarea class="form-control" ng-model="sendNotificationObj.message"  rows="5" required> </textarea>
+                </div>
+              </div>
+
+              <br>
+              <div class="text-center">
+              <button type="button" ng-disabled="departmentForm.$invalid || sendNotificationButtonActive" ng-click="sencPushNotification()" class="btn btn-primary mr-10">
+                  <i class="fa fa-paper-plane mr-10" aria-hidden="true"></i>Send  Notification
+              </button>
+              </div>
+
+              <br><br>
+
+
+			
+        <!-- <h4>&nbsp;Select Department</h4>
+        <div class="item">
+            <div class="list">
+                <ion-checkbox ng-click="selectAll()" ng-checked="selectAllChecked"><h3>Select All</h3> </ion-checkbox>
+
+                <ion-checkbox ng-repeat="department in departments"
+                              ng-model="department.checked" 
+                              ng-checked="department.checked"
+                              ng-click="sendNotificationButtonState()">
+                    {{ department.name}}
+                </ion-checkbox>
+                </br>
+                <form name="departmentForm">
+                    <h2><b>&nbsp;&nbsp;Title</b></h2>
+                    <label class="card item item-input" style="margin-top:-1px;martin-top:8px;background-color:white;border: 1px solid #b3b3b3;">
+                        <input type="text"  ng-model="sendNotificationObj.title" required />
+                    </label>
+                    <h2><b>&nbsp;&nbsp;Message</b></h2>
+                    <label class="card item item-input" style="margin-top:-1px;background-color:white;border: 1px solid #b3b3b3;">
+                        <textarea ng-model="sendNotificationObj.message"  rows="5" required> </textarea>
+                    </label>
+                    <button class="button button-full button-positive" ng-disabled="departmentForm.$invalid || sendNotificationButtonActive" ng-click="sencPushNotification()">Send  Notification</button>
+                </form>
+            </div></div> -->
+    </ion-content>
+</ion-view>

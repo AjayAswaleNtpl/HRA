@@ -1,0 +1,739 @@
+
+var mainModule = angular.module('starter', ['ionic', 'ngResource'])
+var db;
+
+mainModule.run(function ($ionicPlatform, $timeout, $ionicPopup, $ionicHistory, $rootScope, $window, $ionicLoading, $state) {
+    $ionicLoading.hide();
+    $ionicPlatform.ready(function () {
+		
+		$rootScope.helpModalOpened = false
+		
+        document.addEventListener("offline", onOffline, false);
+        function onOffline() {
+            window.plugins.toast.showWithOptions(
+                    {
+                        message: "No network connection.",
+                        duration: "long",
+                        position: "center",
+                        addPixelsY: -40
+                    }
+            )
+            $ionicLoading.hide()
+        }
+        document.addEventListener("online", onOnline, false);
+        function onOnline() {
+            window.plugins.toast.showWithOptions(
+                    {
+                        message: "You are now online.",
+                        duration: "long",
+                        position: "center",
+                        addPixelsY: -40
+                    }
+            )
+        }
+			///////////
+			window.FirebasePlugin.onNotificationOpen(function(notification) {
+				 console.log("notification");
+				//$rootScope.pushNotiMessage = notification.body
+				//$rootScope.pushNotiTitle = notification.title
+				//$rootScope.pushNotiTap = notification.tap
+				
+				//$rootScope.showPushNotiPopup()
+
+			}, function(error) {
+			console.log(error);
+			});
+			
+		//////////		
+        // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+        // for form inputs)
+        if (window.cordova && window.cordova.plugins.Keyboard) {
+            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
+            cordova.plugins.Keyboard.disableScroll(false);
+        }
+        if (window.StatusBar) {
+            // org.apache.cordova.statusbar required
+            StatusBar.styleDefault();
+
+        }
+
+
+        db = window.sqlitePlugin.openDatabase({
+            name: 'HRAlignApp.db',
+            iosDatabaseLocation: 'default'
+        }, function () {
+            db.transaction(function (tx) {
+                tx.executeSql('CREATE TABLE IF NOT EXISTS PunchInPunchOut (id integer primary key AUTOINCREMENT,empId integer,Latitude text,Longitude text,Accuracy text,Date_Time integer,type text,syncStatus text,createdDate Date)');
+            }, function (e) {
+                console.log("Internal Server Error ....!", e);
+            });
+        });
+		
+    });
+
+    $rootScope.themes = [
+        {
+            name: "Navy Blue",
+            url: "navyTheme.css"
+        },
+        {
+            name: "Green",
+            url: "greenTheme.css"
+        },
+        {
+            name: "Coral",
+            url: "coral.css"
+        },
+        {
+            name: "Teal",
+            url: "tealTheme.css"
+        },
+        {
+            name: "Orange",
+            url: "Orange.css"
+        }
+    ];
+
+    var selectedTheme = $window.localStorage.theme;
+
+    if (selectedTheme) {
+        $rootScope.theme = selectedTheme;
+
+    } else {
+        $rootScope.theme = "navyTheme.css";
+
+    }
+
+    var flag = 0;
+    $ionicPlatform.registerBackButtonAction(function () {
+        if ($state.current.name == 'app.home.selfService' || $state.current.name == 'app.home' || $state.current.name == 'app.home.dashboard'
+			) {
+            window.plugins.toast.showWithOptions(
+                    {
+                        message: "Press again to Exit",
+                        duration: 1000,
+                        position: "bottom",
+                    }
+            )
+
+            if (flag == 1) {
+                navigator.app.exitApp();
+            } else {
+                flag = 1
+                $timeout(function () {
+                    flag = 0
+                }, 2000)
+            }
+        } else if ($state.current.name == 'login') {
+			//check if forgot help modal is open
+			if ( $rootScope.helpModalOpened == false ){
+				navigator.app.exitApp();
+			}
+        }else if ($state.current.name == 'intro') {
+				navigator.app.exitApp();
+		}else {
+            //$ionicHistory.nextViewOptions({disableBack: true});
+			//here history wise back button to be handeled
+			switch($rootScope.navHistoryPrevPage) {
+			case undefined:
+				window.plugins.toast.showWithOptions(
+                    {
+                        message: "Please input Connection Settings",
+                        duration: 1000,
+                        position: "bottom",
+                    }
+				)
+				break;
+			case "dashboard":
+				if ($rootScope.navHistoryCurrPage=="selfservices"){
+					$state.go('app.home.selfService')
+				}else{
+				$state.go('app.home.dashboard')
+				}
+				break;
+			case "selfservices":
+				$state.go('app.home.selfService')
+				break;
+			case "requisition":
+				 $state.go('app.RequestList')
+				break;
+			case "my_team_detail":
+				$state.go('app.myTeamDetail')
+                break;
+            case "ReqTrCl":
+                $state.go('app.RequisitionTravelAndClaim')
+               break;   
+			case "ClaimTravelDetails":
+                $state.go('claimTravelDetails')
+               break;   			   
+            case "GET_NEW_APP_PAGE" :       
+                navigator.app.exitApp();
+                break;
+            case "UNINSTALL_OLD_APP" :       
+                navigator.app.exitApp();
+                break;                
+			default:
+				if($rootScope.lastPageBeforeMenu=="selfservices")
+					$state.go('app.home.selfService')
+				else
+					$state.go('app.home.dashboard')
+			}
+        }
+    }, 5000);
+
+    $rootScope.goBack = function () {
+        $ionicHistory.goBack();
+    };
+    $rootScope.logout = function (sessionTimeoutVar2) {
+        if (sessionTimeoutVar2 != 1) {
+            var confirmPopup = $ionicPopup.confirm({
+                title: 'Do you want to logout?',
+            });
+            confirmPopup.then(function (res) {
+                if (res) {
+					$rootScope.DonutDataDate = ""
+					$rootScope.punchDataAvlblAtMobile_yyyymm = ""
+					$rootScope.navHistoryPrevPage="dashboard"
+					$rootScope.navHistoryCurrPage="dashboard"
+
+					localStorage.setItem('rememberMeFlag', 0);
+                    sessionStorage.clear()
+                    $state.go('login') //Sent to login page
+                } else {
+                    return;
+                }
+            });
+        } else {
+            sessionStorage.clear()
+            $state.go('startUpPage')
+        }
+    }
+
+      //////////// push notification pop up  ///////////////
+		$rootScope.showPushNotiPopup = function () {
+			var pushPopUp = $ionicPopup.show({
+			template: 
+			'<p style="white-space: pre-wrap !important;word-wrap: break-word;padding:3px;" ><strong>{{pushNotiTitle}}</strong></p><p style="white-space: pre-wrap !important;word-wrap: break-word;">{{pushNotiMessage}}</p>',
+				title: 'Push Notification',
+                scope: $rootScope,
+                buttons: [
+                    {
+                        text: '<b>Close</b>',
+                        type: 'button-positive',
+                        onTap: function (e) {
+							if ($rootScope.pushNotiTap==true){
+							navigator.app.exitApp();
+							}else{
+							$rootScope.closeModal();
+							}
+                        }
+                    }
+                ]
+            });	
+		}
+		$rootScope.closeModal = function (index) {
+        if (index == 1)
+            $rootScope.pushPopUp.hide();
+		};
+	  /////////////////////////////////////////////////
+})
+
+
+
+mainModule.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+
+    $ionicConfigProvider.views.swipeBackEnabled(false);
+    $ionicConfigProvider.tabs.position("top");
+    $stateProvider
+            .state('app', {
+                url: '/app',
+                abstract: true,
+                cache: false,
+                templateUrl: 'templates/menu.html',
+                controller: 'menuCtrl'
+            })
+            .state('app.MyApprovals', {
+                url: '/MyApprovals',
+                cache: false,
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/MyApprovals.html',
+                        controller: 'MyApprovalsCtrl'
+                    }
+                }
+            })
+            .state('app.approvalsTC', {
+                url: '/approvalsTC',
+                cache: false,
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/approvalsTC.html',
+                        controller: 'approvalsTCCtrl'
+                    }
+                }
+            })			
+            // .state('app.teamCalendar', {
+            //     url: '/teamCalendar',
+            //     cache: false,
+            //     views: {
+            //         'menuContent': {
+            //             templateUrl: 'templates/teamCalendar.html',
+            //             controller: 'teamCalendarCtrl'
+            //         }
+            //     }
+            // })
+
+            .state('attendanceRegularisation', {
+                url: '/attendanceRegularisation',
+                cache: false,
+                templateUrl: 'templates/attendanceRegularisation.html',
+                controller: 'attendanceRegularCtrl'
+            })
+            .state('odApplication', {
+                url: '/odApplication',
+                cache: false,
+                templateUrl: 'templates/ODApplication.html',
+                controller: 'odApplicationCtrl'
+            })
+            .state('leaveApplication', {
+                url: '/leaveApplication',
+                cache: false,
+                templateUrl: 'templates/leaveApplication.html',
+                controller: 'leaveApplicationCtrl'
+            })
+            .state('getNewAppVersion', {
+                url: '/getNewAppVersion',
+                cache: false,
+                templateUrl: 'templates/getNewAppVersion.html',
+                controller: 'getNewAppVersionCtrl'
+            })
+            .state('uninstallOldAppVersion', {
+                url: '/uninstallOldAppVersion',
+                cache: false,
+                templateUrl: 'templates/uninstallOldAppVersion.html',
+                controller: 'uninstallOldAppVersionCtrl'
+            })
+
+            .state('app.notifications', {
+                url: '/notifications',
+                cache: false,
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/notifications.html',
+                        controller: 'notificationsCtrl'
+                    }
+                }
+            })
+            .state('app.setting', {
+                url: '/settings',
+                cache: false,
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/settings.html'
+                    }
+                }
+            })
+            .state('app.checkIn', {
+                url: '/checkIn',
+                cache: false,
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/checkIn.html',
+                        controller: 'checkInCtrl'
+                    }
+                }
+            })
+            .state('app.Inbox', {
+                url: '/Inbox',
+                cache: false,
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/Inbox.html',
+                        controller: 'InboxCtrl'
+                    }
+                }
+            })
+            .state('app.NotiInbox', {
+                url: '/NotiInbox',
+                cache: false,
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/NotiInbox.html',
+                        controller: 'NotiInboxCtrl'
+                    }
+                }
+            })
+            .state('app.payslip', {
+                url: '/payslip',
+                cache: false,
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/Payslip.html',
+                        controller: 'paySlipCtrl'
+                    }
+                }
+            })
+            .state('app.Holidays', {
+                url: '/Holidays',
+                cache: false,
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/Holidays.html',
+                        controller: 'HolidaysCtrl'
+                    }
+                }
+            })
+            .state('app.reportIssue', {
+                url: '/reportIssue',
+                cache: false,
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/reportIssue.html',
+                        controller: 'reportIssueCtrl'
+                    }
+                }
+            })
+            .state('app.BirthDayAndAnniversary', {
+                url: '/BirthDayAndAnniversary',
+                cache: false,
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/BirthDayAndAnniversary.html',
+                        controller: 'BirthDayAndAnniversaryCtrl'
+                    }
+                }
+            })
+            .state('app.employeeDirectory', {
+                url: '/employeeDirectory',
+                cache: false,
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/employeeDirectory.html',
+                        controller: 'employeeDirectoryCtrl'
+                    }
+                }
+            })			
+
+            .state('app.pushNotification', {
+                url: '/pushNotification',
+                cache: false,
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/pushNotification.html',
+                        controller: 'pushNotificationCtrl'
+                    }
+                }
+            })
+            .state('shiftChange', {
+                url: '/shiftChange',
+                cache: false,
+                templateUrl: 'templates/shiftChangeApplication.html',
+                controller: 'shiftChangeCtrl'
+            })
+
+            .state('app.logout', {
+                url: '/logout',
+                cache: false,
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/logout.html'
+                    }
+                }
+            })
+            .state('login', {
+                url: '/login',
+                cache: false,
+                templateUrl: 'templates/login.html',
+                controller: 'loginCtrl'
+            })
+            .state('intro', {
+                url: '/intro',
+                cache: false,
+                templateUrl: 'templates/intro.html',
+                controller: 'introCtrl'
+            })			
+            .state('startUpPage', {
+                url: '/startUpPage',
+                cache: false,
+                templateUrl: 'templates/startUpPage.html',
+                controller: 'startUpPageCtrl'
+            })
+            .state('app.homeDashboard', {
+                url: '/homeDashboard',
+                cache: false,
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/homeDashboard.html',
+                        controller: 'homeDashboardCtrl'
+                    }
+                }
+            })
+            .state('app.Profile', {
+                url: '/Profile',
+                cache: false,
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/Profile.html',
+                        controller: 'profileCtrl'
+                    }
+                }
+            })
+            .state('app.RequestList', {
+                url: '/RequestList',
+                cache: false,
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/RequestList.html',
+                        controller: 'RequestListCtrl'
+                    }
+                }
+            })
+			.state('app.RequisitionTravelAndClaim', {
+                url: '/RequisitionTravelAndClaim',
+                cache: false,
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/RequisitionTravelAndClaim.html',
+                        controller: 'RequisitionTravelAndClaimCtrl'
+                    }
+                }
+            })			
+            .state('travelApplication', {
+                url: '/travelApplication',
+                cache: false,
+                templateUrl: 'templates/travelApplication.html',
+                controller: 'travelApplicationCtrl'
+            })
+			.state('claimTravelDetails', {
+                url: '/claimTravelDetails',
+                cache: false,
+                templateUrl: 'templates/claimTravelDetails.html',
+                controller: 'claimTravelDetailsCtrl'
+            })
+			.state('claimApplication', {
+                url: '/claimApplication',
+                cache: false,
+                templateUrl: 'templates/claimApplication.html',
+                controller: 'claimApplicationCtrl'
+            })
+			.state('claimApplicationDetails', {
+                url: '/claimApplicationDetails',
+                cache: false,
+                templateUrl: 'templates/claimApplicationDetails.html',
+                controller: 'claimApplicationDetailsCtrl'
+            })
+			.state('claimApplicationDetailsApprove', {
+                url: '/claimApplicationDetails',
+                cache: false,
+                templateUrl: 'templates/claimApplicationDetailsApprove.html',
+                controller: 'claimApplicationDetailsApproveCtrl'
+            })			
+            .state('individualCal', {
+                url: '/individualCal',
+                cache: false,
+                templateUrl: 'templates/individualCalenderView.html',
+                controller: 'individualCalenderViewCtrl'
+            })
+//            .state('myTeamDetail', {
+//                url: '/myTeamDetail',
+//                cache: false,
+//                templateUrl: 'templates/myTeamDetail.html',
+//                controller: 'myTeamDetailCtrl'
+//            })
+            .state('app.myTeamDetail', {
+                url: '/myTeamDetail',
+                cache: false,
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/myTeamDetail.html',
+                        controller: 'myTeamDetailCtrl'
+                    }
+                }
+            })
+            .state('RetryPage', {
+                url: '/RetryPage',
+                cache: false,
+                templateUrl: 'templates/RetryPage.html',
+                controller: 'RetryPageCtrl'
+            })
+            .state('LeaveDetailPage', {
+                url: '/LeaveDetailPage',
+                cache: false,
+                templateUrl: 'templates/LeaveApplicationDetail.html',
+                controller: 'LeaveApplicationDetailCtrl'
+
+            })
+            .state('app.teamCalendar', {
+                url: '/teamCalendar',
+                cache: false,
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/teamCalendar.html',
+                        controller: 'teamCalendarCtrl'
+                    }
+                }
+            })
+            //Request Tab
+            .state('app.RequestListNew', {
+                url: '/RequestListNew',
+                cache: false,
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/RequestListNew.html',
+                        controller: 'RequestListNewCtrl'
+                    }
+                }
+            })
+            .state('app.home', {
+                url: '/home',
+                cache: false,
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/home.html',
+                        controller: 'homeCtrl'
+                    }
+                }
+            })
+            .state('app.home.dashboard', {
+                url: '/dashboard',
+                cache: false,
+                views: {
+                    'dashboard': {
+                        templateUrl: 'templates/dashboard.html',
+                        controller: 'dashboardCtrl'
+                    }
+                }
+            })
+            .state('app.home.selfService', {
+                url: '/selfService',
+                cache: false,
+                views: {
+                    'selfService': {
+                        templateUrl: 'templates/selfService.html',
+                        controller: 'selfServiceCtrl'
+                    }
+                }
+            })
+            .state('app.RequestListNew.leaveReqList', {
+                url: '/leaveReqList',
+                cache: false,
+                views: {
+                    'leaveReqList': {
+                        templateUrl: 'templates/leaveReqList.html',
+                        controller: 'leaveReqListCtrl'
+                    }
+                }
+            })
+            .state('app.RequestListNew.ODReqList', {
+                url: '/ODReqList',
+                cache: false,
+                views: {
+                    'ODReqList': {
+                        templateUrl: 'templates/ODReqList.html',
+                        controller: 'ODReqListCtrl'
+                    }
+                }
+            })
+            .state('app.RequestListNew.attendanceReqList', {
+                url: '/attendanceReqList',
+                cache: false,
+                views: {
+                    'attendanceReqList': {
+                        templateUrl: 'templates/attendanceReqList.html',
+                        controller: 'attendanceReqListCtrl'
+                    }
+                }
+            })
+            .state('app.RequestListNew.shiftChangeReqList', {
+                url: '/shiftChangeReqList',
+                cache: false,
+                views: {
+                    'shiftChangeReqList': {
+                        templateUrl: 'templates/shiftChangeReqList.html',
+                        controller: 'shiftChangeReqListCtrl'
+                    }
+                }
+            })
+            //Approvals tabs
+            .state('app.MyApprovalsNew', {
+                url: '/MyApprovalsNew',
+                cache: false,
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/MyApprovalsNew.html',
+                        controller: 'MyApprovalsNewCtrl'
+                    }
+                }
+            })
+            .state('app.MyApprovalsNew.leaveApprovalsList', {
+                url: '/leaveApprovalsList',
+                cache: false,
+                views: {
+                    'leaveApprovalsList': {
+                        templateUrl: 'templates/leaveApprovalsList.html',
+                        controller: 'leaveApprovalsListCtrl'
+                    }
+                }
+            })
+            .state('app.MyApprovalsNew.ODApprovalsList', {
+                url: '/ODApprovalsList',
+                cache: false,
+                views: {
+                    'ODApprovalsList': {
+                        templateUrl: 'templates/ODApprovalsList.html',
+                        controller: 'ODApprovalsListCtrl'
+                    }
+                }
+            })
+            .state('app.MyApprovalsNew.attendanceApprovalsList', {
+                url: '/attendanceApprovalsList',
+                cache: false,
+                views: {
+                    'attendanceApprovalsList': {
+                        templateUrl: 'templates/attendanceApprovalsList.html',
+                        controller: 'attendanceApprovalsListCtrl'
+                    }
+                }
+            })
+            .state('app.MyApprovalsNew.shiftChangeApprovalsList', {
+                url: '/shiftChangeApprovalsList',
+                cache: false,
+                views: {
+                    'shiftChangeApprovalsList': {
+                        templateUrl: 'templates/shiftChangeApprovalsList.html',
+                        controller: 'shiftChangeApprovalsListCtrl'
+                    }
+                }
+            })
+    $urlRouterProvider.otherwise('startUpPage');
+});
+
+
+mainModule.service("getSetService", function () {
+    var object = {};
+
+    return {
+        get: function () {
+            return object;
+        },
+        set: function (value) {
+            object = value;
+        }
+    };
+})
+
+mainModule.service("generateColorService", function () {
+    var object = {}
+
+    object.addColors = function (list) {
+        for (var i = 0; i < list.length; i++) {
+            list[i].iconColor = 'rgb(' + (Math.floor((150 - 250) * Math.random()) + 150) + ',' +
+                    (Math.floor((150 - 250) * Math.random()) + 150) + ',' +
+                    (Math.floor((150 - 250) * Math.random()) + 150) + ')';
+        }
+        return list
+    }
+
+    return object
+
+})

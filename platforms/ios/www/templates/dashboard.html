@@ -1,0 +1,602 @@
+<style>
+.wrapper {
+    z-index : 10;
+    position : absolute;
+    top : 0;
+    left : 0;
+	width:100%;
+	height:210%;
+	background-color: rgba(0,0,0,0.72);
+}
+
+/* CSS talk bubble */
+.talk-bubble {
+	position:relative;
+	width: 200px;
+	height: auto;
+	font-size:0.9em;
+	background-color: rgba(0,0,0,0.6);
+}
+.border{
+  border: 8px solid #666;
+}
+.round{
+  border-radius: 30px;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+
+}
+
+/* Right triangle placed top left flush. */
+.tri-right.border.left-top:before {
+	content: ' ';
+
+	width: 0;
+	height: 0;
+  left: -40px;
+	right: auto;
+  top: -8px;
+	bottom: auto;
+	border: 32px solid;
+	border-color: #666 transparent transparent transparent;
+}
+.tri-right.left-top:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: -20px;
+	right: auto;
+  top: 0px;
+	bottom: auto;
+	border: 22px solid;
+	border-color: rgba(0,0,0,0.6) transparent transparent transparent;
+}
+
+/* Right triangle, left side slightly down */
+.tri-right.border.left-in:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: -40px;
+	right: auto;
+  top: 30px;
+	bottom: auto;
+	border: 20px solid;
+	border-color: #666 #666 transparent transparent;
+}
+.tri-right.left-in:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: -20px;
+	right: auto;
+  top: 38px;
+	bottom: auto;
+	border: 12px solid;
+	border-color: rgba(0,0,0,0.6) rgba(0,0,0,0.6) transparent transparent;
+}
+
+/*Right triangle, placed bottom left side slightly in*/
+.tri-right.border.btm-left:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: -8px;
+  right: auto;
+  top: auto;
+	bottom: -40px;
+	border: 32px solid;
+	border-color: transparent transparent transparent #666;
+}
+.tri-right.btm-left:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: 0px;
+  right: auto;
+  top: auto;
+	bottom: -20px;
+	border: 22px solid;
+	border-color: transparent transparent transparent rgba(0,0,0,0.6);
+}
+
+/*Right triangle, placed bottom left side slightly in*/
+.tri-right.border.btm-left-in:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: 30px;
+  right: auto;
+  top: auto;
+	bottom: -40px;
+	border: 20px solid;
+	border-color: #666 transparent transparent #666;
+}
+.tri-right.btm-left-in:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: 38px;
+  right: auto;
+  top: auto;
+	bottom: -20px;
+	border: 12px solid;
+	border-color: rgba(0,0,0,0.6) transparent transparent rgba(0,0,0,0.6);
+}
+
+/*Right triangle, placed bottom right side slightly in*/
+.tri-right.border.btm-right-in:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: 30px;
+	bottom: -40px;
+	border: 20px solid;
+	border-color: #666 #666 transparent transparent;
+}
+.tri-right.btm-right-in:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: 38px;
+	bottom: -20px;
+	border: 12px solid;
+	border-color: rgba(0,0,0,0.6) rgba(0,0,0,0.6) transparent transparent;
+}
+/*
+	left: -8px;
+  right: auto;
+  top: auto;
+	bottom: -40px;
+	border: 32px solid;
+	border-color: transparent transparent transparent #666;
+	left: 0px;
+  right: auto;
+  top: auto;
+	bottom: -20px;
+	border: 22px solid;
+	border-color: transparent transparent transparent rgba(0,0,0,0.6);
+
+/*Right triangle, placed bottom right side slightly in*/
+.tri-right.border.btm-right:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: -8px;
+	bottom: -40px;
+	border: 20px solid;
+	border-color: #666 #666 transparent transparent;
+}
+.tri-right.btm-right:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: 0px;
+	bottom: -20px;
+	border: 12px solid;
+	border-color: rgba(0,0,0,0.6) rgba(0,0,0,0.6) transparent transparent;
+}
+
+/* Right triangle, right side slightly down*/
+.tri-right.border.right-in:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: -40px;
+  top: 30px;
+	bottom: auto;
+	border: 20px solid;
+	border-color: #666 transparent transparent #666;
+}
+.tri-right.right-in:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: -24px;
+  top: 30px;
+	bottom: auto;
+	border: 12px solid;
+	border-color: rgba(0,0,0,0.6) transparent transparent rgba(0,0,0,0.6);
+}
+
+/* Right triangle placed top right flush. */
+.tri-right.border.right-top:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: -40px;
+  top: -8px;
+	bottom: auto;
+	border: 32px solid;
+	border-color: #666 transparent transparent transparent;
+}
+.tri-right.right-top:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: -20px;
+  top: 0px;
+	bottom: auto;
+	border: 20px solid;
+	border-color: rgba(0,0,0,0.6) transparent transparent transparent;
+}
+
+/* talk bubble contents */
+.talktext{
+  padding: 0.7em;
+	text-align: left;
+  line-height: 1.5em;
+}
+.talktext p{
+  /* remove webkit p margins */
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+}
+
+.badge.badgeCustom		
+{ width: 22px;
+ height: 22px;
+  text-align: center; 
+   line-height: 18px;  
+    display: block; 
+	  position: absolute;
+    top: -6px; 
+	  color: #fff !important;   
+	   font-size: 0.6em !important; 
+	    padding: 3px;
+		right: 42px;}
+
+	/* .item {
+    border-color: #ddd;
+    background-color: #fff;
+    color: #444;
+    position: relative;
+    z-index: 2;
+    display: flex !important;
+    margin: -1px;
+    padding: 16px;
+    border-width: 1px;
+    border-style: solid;
+    font-size: 16px;
+} */
+
+
+.candHeader{
+	font-size: 16px;
+    white-space: pre-wrap !important;
+    word-wrap: break-word;
+	margin-bottom: 5px;
+}
+.headeImgSection img,
+.tlcImg{
+	width: 35px;
+	 height: 35px;
+	  margin-right: 3px;
+	  text-align: center;
+}
+
+.headeImgSection  p{
+	font-size: 0.75em;
+	text-align: center;
+	margin-left: -37%;
+}
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+	.tab-title-custom {
+    padding-top: 2%;
+    font-size: 25px !important;
+    /* padding: 6%; */
+}
+.candHeader {
+	font-size: 20px;
+}
+.candHeaderClas p{
+    font-size: 18px;	
+}
+.headeImgSection img{
+	width: 45px;
+	 height: 45px;
+}
+.headeImgSection p{
+	font-size: 1.2em;
+}
+ .item p{
+	font-size: 1.2em;
+}
+ .item .badge {
+    right: 84px;
+}
+ .badge.badgeCustom {
+    width: 35px;
+    height: 35px;
+    font-size: 1.2em !important;
+}
+.gray_background {
+    font-size: 20px;
+}
+.list.card.modal-payslip h5{
+	font-size: 22px;
+}
+.tlcImg{
+	width: 55px;
+    height: 55px;
+}
+.talktext {
+    margin-top: -25px;
+}
+.talktext.myteamStatus{
+	margin-top: -191px;
+}
+.hintCloseBtn{
+	font-size: 23px;
+	margin-right: 30px;
+}
+.tri-right.right-in:after{
+	top: 12px;
+}
+.talktext p {
+    font-size: 17px;
+}
+}
+</style>
+	
+<ion-view style="height:100%">
+    <ion-content style="top:10px; bottom:2px;" class="gray_background">
+<!-- ////// cust-avatar from here	  -->
+       <div class="dashboardMainSection">
+
+            <!-- <img ng-if="attendanceDetail.photoFileName" ng-src="{{attendanceDetail.image1}}" style="top:20px;" class="cust-avatar">
+            <img ng-if="!attendanceDetail.photoFileName" ng-src="./img/Male.png" style="top:20px;" class="cust-avatar">
+
+            <h2 style="margin-left: 17%; margin-top: 16px;white-space: pre-wrap !important;word-wrap: break-word;">{{attendanceDetail.name}}</h2>
+			<p  style="margin-left: 17%;">{{attendanceDetail.designation | limitTo: 60}}
+
+				<a ng-if="hideCheckIn == '1' && IsClockInAccessible == 'true'" href="#/app/checkIn" >
+					<img  src="./img/clockin3.png" align="right" style="width:35px;height:35px;margin-right:3px;"/>
+				</a>
+				<a ng-if="hideCheckIn == '0' && IsClockInAccessible == 'true'" href="#/app/checkIn" >
+					<img  src="./img/clockin2.png" align="right" style="width:35px;height:35px;margin-right:3px;"/>
+				</a>
+
+			</p> -->
+			<div class="form-group row">
+                <label  class="col-sm-2 col-xs-2 col-form-label">
+					<img ng-if="attendanceDetail.photoFileName" ng-src="{{attendanceDetail.image1}}" class="custAvatarImg">
+					<img ng-if="!attendanceDetail.photoFileName" ng-src="./img/Male.png" class="custAvatarImg">
+				</label>
+                <div  class="col-sm-7 col-xs-7 candHeaderClas" style="padding: 6px;">
+					<h2 class="candHeader">{{attendanceDetail.name}}</h2>
+					<p>{{attendanceDetail.designation | limitTo: 60}}</p>
+				</div>
+				<div  class="col-sm-3 col-xs-3">
+					<a ng-if="hideCheckIn == '1' && IsClockInAccessible == 'true'" href="#/app/checkIn" >
+						<img  src="./img/clockin3.png" class="locationImg"/>
+						<b style="color:darkgray";>Clock in/out	</b> 
+					</a>
+					<a ng-if="hideCheckIn == '0' && IsClockInAccessible == 'true'" href="#/app/checkIn" >
+						<img  src="./img/clockin2.png" class="locationImg"/>
+						<b style="color:darkgray";>Clock in/out	</b> 
+					</a>
+				</div>
+              </div>
+        </div>
+		<div class="item item-input gray_background" style="display: flex !important;">
+
+			<div class="headeImgSection" style="width: 30%;margin-left: 4%; position:relative" >
+			
+				<div ng-if="IsLeaveAccessible == 'true' || IsODAccessible == 'true' || IsRegularizationAccessible == 'true' || IsShiftChangeAccessible == 'true'
+				|| IsTravelAccessible =='true' || IsClaimAccessible =='true' || IsExpenseClaimAccessible == 'true' ">
+				<sup  class="badge badgeCustom primary-color" ng-if="totalApproval>99" >99+
+				</sup>
+				<sup  class="badge badgeCustom primary-color" ng-if="totalApproval>0 && totalApproval<=99">{{totalApproval}}
+				</sup>
+				<a href="#/app/requestMenu" style="margin-left: 15%;" >
+					<img src="./img/requisition1.png" style="animation: backInUp;  animation-duration: 4s;" >
+				</a>
+				<p>Requisitions</p>
+				</div>
+			</div>
+
+
+			<div style="width: 30%;margin-left: 4%; position:relative">
+			<div ng-if="isARTorFRT == 'true' || isGroupMasterReportee == 'true'">
+			<sup   class="badge badgeCustom primary-color" ng-if="totalInProcess>99">99+
+				</sup>
+			<sup class="badge badgeCustom primary-color" ng-if="totalInProcess>0 && totalInProcess<= 99">{{totalInProcess}}
+				</sup>
+				<a href="#/app/approvalsMenu"  style="margin-left: 15%;" ng-if="isARTorFRT == 'true' || isGroupMasterReportee == 'true'" >
+					<img class="tlcImg" src="./img/approve1.png" style="animation: backInUp;  animation-duration: 4s;"  >
+				</a>
+				<p ng-if="isARTorFRT == 'true' || isGroupMasterReportee == 'true'">
+				Approvals
+				</p>
+			</div>
+			</div>
+			<div style="width: 30%;margin-left: 4%;">
+				<a href="#/app/teamCalendar" style="margin-left: 15%;">
+					<img class="tlcImg" src="./img/tlc.png" style="animation: backInUp;  animation-duration: 4s;">
+				</a>
+				<p>Team Leave Calendar</p>
+			</div>
+		</div>
+
+        <div class="item item-input gray_background" style="display: flex !important;">
+            <span class="input-label"><b>&emsp;Date: </b></span>
+            <input id="toDate" type="text" ng-click="setFromDate()"  ng-readonly="true" ng-model="resultObj.fromDate" required
+			style="margin-left:5px;padding-left:0px;text-align:center;background-color:white;border: 1px solid #b3b3b3;padding-right:0px;width:140px" />&emsp;&emsp;
+			<i id="toDateIcon" class="ion-calendar" align="right" style="font-size: 193%;" ng-click="setFromDate()">&emsp;&emsp;</i>
+
+
+        </div>
+        <div class="gray_background" >
+            <center>
+                <h2 ng-show="donatChartNoData == true" style="color:red;"> No Data available. </h2>
+				
+
+		<!-- //////// overlay help from here					 -->
+				<div class="wrapper" id="ol_help" ng-if="showOverlayHint=='true' && loggedInNew == 'Y'">
+
+					<div class="talk-bubble tri-right right-in" ng-if="IsClockInAccessible == 'true'"
+					style="    background-color: rgba(0,0,0,0.6);margin-top: 5%;margin-left: 10%;width: 52%;color: white;">
+					<div class="talktext">
+						<p>Tap on marker to go to 'Clock In/Out'</p>
+					  </div>
+					</div>
+
+					<div class="talk-bubble tri-right btm-left-in" ng-if="IsClockInAccessible == 'true'"
+					style="background-color: rgba(0,0,0,0.6);margin-top: 60%;margin-right: 0%;color: white;">
+					  <div class="talktext myteamStatus">
+						<p>Tap on Legend to view 'My Team Status'</p>
+					  </div>
+					</div>
+
+
+					<div ng-if="IsClockInAccessible == 'true'">
+					<a href="#/app/home/selfService">
+					<button text="Close" class="btn btn-default hintCloseBtn">Next</button>
+					</a>
+					</div>
+
+					<div class="talk-bubble tri-right btm-left-in" ng-if="IsClockInAccessible == 'false'"
+					style="background-color: rgba(0,0,0,0.6);margin-top: 93%;margin-right: 0%;color: white;">
+					  <div class="talktext">
+						<p>Tap on Legend to view 'My Team Status'</p>
+					  </div>
+					</div>
+
+
+					<div ng-if="IsClockInAccessible == 'false'">
+					<a href="#/app/home/selfService">
+					<button text="Close" class="btn btn-default hintCloseBtn">Next</button>
+					</a>
+					</div>
+				</div>
+                <div class="card gray_background" id="donutchart" 
+				style="margin:auto;border-radius:5px;  box-shadow: none;height:240px;display: inline-block; margin: 0 0.5rem; 
+				animation: backInUp;  animation-duration: 4s;">
+				</div>
+
+                <p class="gray_background" style="padding-top: 0%;margin-top:0px;">Total Employees : {{totalNoOfEmployees}}</p>
+			</center>
+			
+			<div class="list card modal-payslip">
+				<h5 style="padding: 4px 13px;margin-top:18px">Date&nbsp; {{userSelectedDate}}&nbsp : {{description.AttDesc}}</h5>
+			</div>
+			<!--table for todays clock in out date  -->
+			<div ng-show="listOfClockInOut.length>0" id="todaysClockInOutDataDiv" class="item backgroundcolor">
+			<b><p id="todayText" >Punch Details for {{userSelectedDate}}</p></b>
+            <div class="list card modal-payslip customBorderRadius" ng-repeat="clockPunch in listOfClockInOut | orderBy:'inTimeMinStr' | orderBy:'inTimeHourStr'" >
+                <!--<a style="margin-bottom: 10px;"  class="item custom-item custom-paddingBottom item-text-wrap"> -->
+                    <div class="row" >
+                        <div class="col col-10">
+						<img  ng-if="clockPunch.source=='WEB'"  style="width:23px;height:23px;" src="./img/newicons/desktop.png"/>
+						<img  ng-if="clockPunch.source=='MOBILE'"  style="width:23px;height:23px;" src="./img/newicons/mobile.png"/>
+						<img  ng-if="clockPunch.source=='Swipe Card'"  style="width:23px;height:23px;" src="./img/newicons/fingureprint.png"/>
+							
+						</div>
+                        <div class="col col-20" style="width: 75px;">
+                            <h2 style="font-size: 0.9em;width: 75px;"> <strong>{{clockPunch.inTimeHourStr}}:{{clockPunch.inTimeMinStr}}</strong></h2>
+						</div>
+                        <div class="col col-20">
+							<!--<strong><i ng-if="clockPunch.punchType=='IN'" class="icon ion-log-in"></i></strong> -->
+							<img ng-if="$index % 2 == 0" src="./img/newicons/login.png" style="width:23px;height:23px;"/> 
+							<img ng-if="$index % 2 > 0" src="./img/newicons/logout.png" style="width:23px;height:23px;"/> 
+							<!--<strong><i ng-if="clockPunch.punchType=='OUT'" class="icon ion-log-out"></i></strong> -->
+						</div>
+                        <div class="col col-55" style="word-wrap: break-word;">
+                            <p  ng-show="clockPunch.comments!=''" style="font-size: 0.9em;text-align:left;white-space: pre-wrap !important;word-wrap: break-word;">{{clockPunch.comments}}</p>
+							<p  ng-show="clockPunch.comments==''" style="font-size: 0.9em;text-align:center;white-space: pre-wrap !important;word-wrap: break-word;">-</p>
+						</div>
+                    </div>
+				
+				<div class="row">
+					<div class="col-9">
+					<p ng-if="clockPunch.geoLocationAddress" style="margin-left:18px; word-break: break-word;text-overflow: inherit; white-space: normal;">{{clockPunch.geoLocationAddress}} </p>
+					</div>
+					<div class="col col-3">
+						<img id="img{{$index}}" 
+						onerror="this.onerror=null;this.style.display='none'"
+						 ng-src="{{clockPunch.selfieSrc}}" 
+						style="max-width: 65px;padding:0px;margin-top:-5%"/>
+					</div>
+               <!-- </a> -->
+            </div>
+			<p ng-if="displayLegentPending=='true'">(P) Pending</p>
+
+		</div></div>
+		
+			
+			<!--
+            <div style="padding: 2%;">
+			<ng-click="getReporteeOnload()
+                <a href="#/app/teamCalendar" ><button class="button button-block button-positive" >  Team Leave Calendar </button>
+				</a>
+				<a >
+                <button class="button button-block button-positive item-button-right" Style="text-align: left; margin-bottom:0%;"ng-click="toggleGroup(group)"
+                        ng-class="{active: isGroupShown(group)}">
+                    <b>Pending for Approval &nbsp;&nbsp; ({{totalInProcess}}) </b>
+                    <span style="float: right"><i class="icon-right" ng-class="isGroupShown(group) ? 'ion-chevron-down' : 'ion-chevron-right'"></i></span>
+                </button>
+				</a>
+                <div class="list card item-accordion"  ng-show="isGroupShown(group)" style="margin:auto;border-radius:5px">
+                    <div ng-hide="IsRegularizationAccessible == 'false'" class="item" ng-click="myApprovalRegularization()">
+                        <p>Attendance Regularization </p><span class="badge badge-stable">{{approvalAttendanceApplication}}</span>
+                    </div>
+                    <div ng-hide="IsLeaveAccessible == 'false'" class="item" ng-click="myApprovalLeave()">
+                        <p>Leave Application </p><span class="badge badge-stable">{{approvalLeave}}</span>
+                    </div>
+                    <div ng-hide="IsODAccessible == 'false'" class="item" ng-click="myApprovalOD()">
+                        <p>OD Application </p><span class="badge badge-stable">{{approvalOdApplication}}</span>
+                    </div>
+                    <div ng-hide="IsShiftChangeAccessible == 'false'" class="item" ng-click="redirectmyApprovalShift()">
+                        <p>Shift Change Application </p><span class="badge badge-stable">{{shiftChangeInProcess}}</span>
+                    </div>
+                </div>
+
+                <button id="getReporteList" class="button button-block button-positive item-button-right" Style="text-align: left; margin-bottom:0%;" ng-click="toggleGroupMyRequision(groupMyRequision)"
+                    ng-class="{active: isMyRequision(groupMyRequision)}">
+                    <b> My Requisitions &nbsp;&nbsp; ({{totalApproval}})</b>
+                    <span style="float: right"><i class="icon-right" ng-class="isMyRequision(groupMyRequision) ? 'ion-chevron-down' : 'ion-chevron-right'"></i></span>
+                </button>
+                <div class="list card item-accordion"  ng-show="isMyRequision(groupMyRequision)" style="margin:auto;border-radius:5px">
+                    <div ng-hide="IsRegularizationAccessible == 'false'" class="item" ng-click="myReqRegularization()">
+                        <p>Attendance Regularization</p><span class="badge badge-stable" style="top: 16px;">{{attendanceInprocessCount}}</span>
+                    </div>
+                    <div ng-hide="IsLeaveAccessible == 'false'" class="item" ng-click="myReqLeave()">
+                        <p>Leave Application </p><span class="badge badge-stable" style="top: 16px;">{{leaveInprocessCount}}</span>
+                    </div>
+                    <div ng-hide="IsODAccessible == 'false'" class="item" ng-click="myReqOD()">
+                        <p>OD Application </p><span style="top: 16px;" class="badge badge-stable">{{odprocessInprocess}}</span>
+                    </div>
+                    <div ng-hide="IsShiftChangeAccessible == 'false'" class="item" ng-click="redirectToShiftReq()">
+                        <p>Shift Change Application </p><span style="top: 16px;" class="badge badge-stable">{{shiftChangeInProcessApproval}}</span>
+                    </div>
+                </div>
+            </div>
+			-->
+
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,98 @@
+<style>
+  
+  </style>
+  <ion-view>
+    <div class="bar bar-footer hide-on-keyboard-open" style="background-color:#000; background-size: 100% 0px;">
+        <div class="title" style="height: 20px;">
+            <h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px;
+                margin-bottom: 5px;">Powered by HR Align</h6>
+        </div>
+    </div>
+    <ion-content has-bouncing="false" style="overflow-y: auto;top:0%" class="requisionSection">
+        <div class="custom-header" style="padding-top: 0px;padding-bottom: -20px;">
+            <h4 class="subHeaderClass" style="margin: 0px;"> <span class="backIcon">
+              <i class="icon ion-ios-arrow-back" ng-click="redirectOnBack()"></i></span>
+                <b style="vertical-align: super;">Add House Rent Allowances</b></h4>
+               
+        </div>
+        <div>
+            <div  style="padding: 5px;" ng-repeat="rent in employeeRentPaidList"  >
+            <!-- ng-repeat="investmentVOList in investmentForm.investmentVOList" -->
+                <!-- ng-if="investmentForm.investmentVOList.length > 0" -->
+               
+                <div class="form-group row">
+                  <label  class="col-sm-4 col-xs-4 col-form-label">From Date </label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    <input class=" form-control"  id="rentFromDate_{{$index}}" value="{{rent.fromDt}}"
+                    maxlength="10"  readonly="true"/>
+                  </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label  class="col-sm-4 col-xs-4 col-form-label">To Date </label><span class="dividerClass">:</span>
+                    <div class="col-sm-8 col-xs-8">
+                      <input class="form-control"  id="rentToDate_{{$index}}" value="{{rent.toDt}}" maxlength="10" readonly="true"/>
+                    </div>
+                  </div>
+                <div class="form-group row">
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Remarks </label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    <textarea name="remark_{{$index}}" id="remark_{{$index}}" 
+                    maxlength="499" cols="3"  placeholder="Enter the landlord details along with PAN No."></textarea>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Monthly Contribution </label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    <input class="form-control"  id="amount_{{$index}}" type="number"  maxlength="7"  />
+                  </div>
+                </div>
+
+
+                <div class="item" style=" padding: 0px;">
+                 
+                  <div class="row" >
+                    <label  class="col-sm-4 col-xs-4 col-form-label">Attachment</label><span class="dividerClass">:</span>
+                    </div> 
+      
+                  <div class="form-group row">
+                    <label  class="col-sm-6 col-xs-6 col-form-label">
+        
+                      <button col="col-80" id="btncamera_{{$index}}" Style="text-align: left; margin-bottom:0%;background-color: white;   border: none;color:blue;"  
+                      on-tap="cameraTakePicture('camera',$index);">Take Photo</button>
+
+                    </label>
+                    <div class="col-sm-6 col-xs-6">
+                    <img  id="showImg_{{$index}}" 
+              style="width:60px;height:60px;visibility:hidden;margin-top: -10%;"
+              src="" on-tap="removeAttachment($index)">
+            </img>
+                    </div>
+                </div>
+              <div class="form-group row">
+                    <label  class="col-sm-6 col-xs-6 col-form-label">
+                     <button col="col-80"  Style="text-align: left; margin-bottom:0%;background-color: white;   border: none;color:blue;" 
+                      ng-click="document.getElementById('inputFileUpload_{{$index}}').click()">Select from device</button>
+                    </label>
+                    <div class="col-sm-6 col-xs-6">
+                      <input col="col-80" type="file" name="inputFileUpload_{{$index}}" id="inputFileUpload_{{$index}}"  
+                      ng-model="somemodel" style="height:0px ; width:0px" 
+                      onchange="angular.element(this).scope().selectedValues.elem = this; 
+                       angular.element(this).scope().SelectedFile(event)" />
+      <span style="margin-top:5%;" id="fileName_{{$index}}"><br>{{selectedFileNameFromDevice}}</span>
+                
+                    </div>
+                </div>
+                   </div>
+
+          </div>
+
+          <div class="text-center" class="item" style="padding: 20px;">
+            <button type="button" ng-click="goSave()" class="btn btn-primary">
+              <i class="fa fa-check mr-10"></i>Save</button>
+          </div>
+          <br><br>
+        </div>
+
+    </ion-content>
+  </ion-view>

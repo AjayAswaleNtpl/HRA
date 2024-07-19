@@ -1,0 +1,11 @@
+{
+    "AudioToolbox.framework": 1,
+    "SystemConfiguration.framework": 2,
+    "AVFoundation.framework": 2,
+    "libsqlite3.dylib": 1,
+    "libz.dylib": 1,
+    "ImageIO.framework": 1,
+    "CoreLocation.framework": 3,
+    "CoreTelephony.framework": 2,
+    "QuartzCore.framework": 1
+}

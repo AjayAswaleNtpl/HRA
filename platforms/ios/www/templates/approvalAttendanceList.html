@@ -1,0 +1,1341 @@
+
+<style>
+    .anchorARedirect {
+      position: absolute;
+      top: 270px;
+      right: 14px;
+      font-size: 15px;
+      color: #3B5998;
+    }
+  
+    .abcd {
+      position: absolute;
+      top: 299px;
+      width: 388px;
+    }
+  
+    #outer {
+      width: 100%;
+      text-align: center;
+    }
+  
+    .inner {
+      display: inline-block;
+    }
+  
+    .custom-item {
+      border: none;
+    }
+  
+    ol,
+    ul {
+      margin-bottom: 0px !important;
+    }
+  
+    ul.ctcClaimList {
+      width: 125%;
+    }
+  
+    ul.ctcClaimList li {
+      font-size: 0.8em;
+    }
+  
+    .ctcClaimList b {
+      display: inline-block;
+      width: 40%;
+      position: relative;
+      padding-right: 10px;
+    }
+  
+  
+    .ctcClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+  
+    ul.leaveClaimList {
+      width: 125%;
+    }
+  
+    ul.leaveClaimList li {
+      font-size: 0.8em;
+    }
+  
+    .leaveClaimList b {
+      display: inline-block;
+      width: 35%;
+      position: relative;
+      padding-right: 10px;
+    }
+  
+  
+    .leaveClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ul.odClaimList {
+      width: 125%;
+    }
+  
+    ul.odClaimList li {
+      font-size: 0.8em;
+    }
+  
+    .odClaimList b {
+      display: inline-block;
+      width: 50%;
+      position: relative;
+      padding-right: 10px;
+    }
+  
+  
+    .odClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    .custom-row {
+      padding: 0px;
+    }
+  
+    .custom-padding {
+      padding: 10px;
+    }
+  
+    .custom-top {
+      top: 10px;
+      left: 13px;
+    }
+  
+    .custom-paddingTop {
+      padding-top: 11px;
+    }
+  
+    .custom_OD1 {
+      padding-top: 11px;
+      padding-bottom: 0px;
+    }
+  
+    .custom-paddingBottom {
+      padding-bottom: 0px;
+    }
+  
+    .cust-col-50 {
+      text-align: center;
+    }
+  
+    .custom-grayColor {
+      color: #666;
+    }
+  
+    .custom-p {
+      color: #666;
+      font-size: 14px;
+    }
+  
+    .cust-card {
+      padding: 25px 0px 0px 0px;
+    }
+  
+    .has-header {
+      top: 0px;
+    }
+  
+    .bar-subheader {
+      top: 0px;
+    }
+  
+    .custom-requestApprove {
+      font-size: 11px;
+      color: green;
+    }
+  
+    .custom-requestRejcted {
+      font-size: 11px;
+      color: red;
+    }
+  
+    .custom-requestOther {
+      font-size: 11px;
+      color: orange;
+    }
+  
+    .custom-fontSize {
+      font-size: 12px;
+    }
+  
+    .customBorderRadius {
+      border: none;
+      box-shadow: 0 5px 6px -3px rgba(0, 0, 0, .2), 0 9px 12px 1px rgba(0, 0, 0, .14), 0 3px 16px 2px rgba(0, 0, 0, .12);
+      -moz-box-shadow: 0 5px 6px -3px rgba(0, 0, 0, .2), 0 9px 12px 1px rgba(0, 0, 0, .14), 0 3px 16px 2px rgba(0, 0, 0, .12);
+      -webkit-box-shadow: 0 5px 6px -3px rgba(0, 0, 0, .2), 0 9px 12px 1px rgba(0, 0, 0, .14), 0 3px 16px 2px rgba(0, 0, 0, .12);
+      -o-box-shadow: 0 5px 6px -3px rgba(0, 0, 0, .2), 0 9px 12px 1px rgba(0, 0, 0, .14), 0 3px 16px 2px rgba(0, 0, 0, .12);
+      border-radius: 6%;
+      margin-top: 10px;
+    }
+  
+    .modal-wrapper {
+      position: absolute;
+      top: 25%;
+      display: block;
+      width: 90%;
+      min-height: 35%;
+      padding: 5%;
+    }
+  
+    .modal-backdrop-bg {
+      background-color: rgba(255, 255, 255, 0.85);
+    }
+  
+    .modal {
+      border-top-right-radius: 1em;
+      border-bottom-right-radius: 1em;
+      border-top-left-radius: 1em;
+      border-bottom-left-radius: 1em;
+    }
+  
+    .modal-ion-content {
+      padding: 15px;
+      font-size: 0.85em;
+    }
+  
+    .cust-modal-footer {
+      box-shadow: 0px 0px 0px;
+      border: 0px;
+      background-image: none;
+      margin-bottom: 15px;
+    }
+  
+    .textareaBox {
+      margin-left: 2%;
+      width: 96%;
+      padding-bottom: 5%;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+  
+    .badge.badgeCustom {
+      width: 22px;
+      height: 22px;
+      text-align: center;
+      line-height: 18px;
+      display: block;
+      position: absolute;
+      top: 0;
+      color: #fff !important;
+      font-size: 10px !important;
+      padding: 0;
+    }
+  
+    a:focus,
+    a:hover {
+      text-decoration: none;
+    }
+  
+    .tab-item.tab-item-active,
+    .tab-item.active,
+    .tab-item.activated {
+      opacity: 1;
+    }
+  
+    .tab-item {
+      opacity: 0.7;
+    }
+  
+    .slick-prev,
+    .slick-next {
+      position: absolute;
+      right: 10%;
+      background: #777;
+      border: none;
+      color: transparent;
+      width: 30px;
+      height: 30px;
+    }
+  
+    .slick-prev:before,
+    .slick-next:before {
+      content: ">";
+      color: #fff;
+      font-size: 25px;
+    }
+  
+    .slick-prev {
+      left: 10%;
+    }
+  
+    .slick-prev:before {
+      content: "<";
+    }
+  
+    .slick-dots {
+      list-style: none;
+      margin: 0 auto;
+      text-align: center;
+      margin-top: 10px;
+    }
+  
+    .slick-dots li {
+      display: inline-block;
+    }
+  
+    .slick-dots li button {
+      transition: 0.2s background-color ease-in-out 0s;
+      border: none;
+      padding: 0;
+      color: transparent;
+      width: 10px;
+      height: 10px;
+      background-color: #777;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+  
+    .slick-dots li.slick-active button {
+      background-color: #0a9dc7;
+    }
+  
+    /* .slick-slide.slick-active{
+      background-color:#0a9dc7;
+    } */
+    /* .slick-slider {
+        width: 100%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 100%;
+        left: 50%;
+  
+    } */
+    .slick-slider {
+      width: 100%;
+      position: relative;
+      top: 0%;
+  
+    }
+  
+    .col-xs-2,
+    .col-xs-4 {
+      padding: 0 !important;
+    }
+  
+    .row {
+      margin: 0px 0 5px 0 !important;
+    }
+  
+    label {
+      font-weight: normal !important;
+    }
+  
+    .cust-card .item {
+      padding: 7px !important;
+    }
+  
+    .OdDataclass,
+    .col-xs-8 {
+      padding-right: 5px !important;
+      padding-left: 5px !important;
+    }
+  
+    .item-avatar>img:first-child {
+      top: 0px !important;
+  
+    }
+  
+    .imgclass h3,
+    .imgclass p {
+      margin-left: 65px !important;
+    }
+    .search {
+      margin-top: 90px !important;
+      margin-bottom: -10px !important;
+  }
+  .inner .btn-pad.claimClass{
+    margin: 14px 4px 5px 10px;
+      padding: 0 8px;
+  }
+  .inner .badge{
+    position: relative;
+    margin: 0 -8px;
+    float: right;
+  }
+  .slick-carousel .fa{
+    font-size: 40px;
+    color: #777676;
+  }
+  .slick-carousel p {
+      color: #212121;
+      margin: 0 0 10px;
+      font-size: 0.83em;
+      text-align: center;
+      margin-left: -2%;
+      margin-top: 0%;
+      margin-bottom: 2px;
+      font-weight: 400;
+  }
+  
+  </style>
+<ion-view>
+    <div class="bar bar-footer hide-on-keyboard-open" style="background-color:#000; background-size: 100% 0px;">
+        <div class="title" style="height: 20px;">
+            <h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px;
+                margin-bottom: 5px;">Powered by HR Align</h6>
+        </div>
+    </div>
+    <ion-content has-bouncing="false" class="item-divider grayBackColor" style="overflow-y: auto;">
+        <div class="custom-header" style="padding-top: 0px;padding-bottom: 0px;">
+            <h4 class="subHeaderClass" style="margin: 0px;"> <span class="backIcon">
+              <i class="icon ion-ios-arrow-back" ng-click="redirectOnBack()"></i></span>
+                <b style="vertical-align: super;"> Attendance Approvals</b></h4>
+                <a ng-click="goToRequisitions()" class="approvalLinkClass">
+                  <img src="./img/requisitionNew.png" style="width: 25px; height: 25px; margin-right: 3px;text-align: center;" />
+                </a>
+        </div>
+
+        <div id="AttendanceApplicationID" class="cust-card" style="margin-top:-0%" 
+        ng-show="IsRegularizationAccessible == 'true'">
+        
+        <table style="width: 100%;text-align:center;margin: 0
+          auto;margin-top:-25px;">
+          <tr>
+            <td style="width: 50px;padding-left:40px;">
+              <div ng-click="getAttendanceApplicationListForPrevYear()"
+                class="buttonLinksColor"
+                style="padding-top:14px;">
+                <img ng-if="yearInfo=='CURRENT'" style="width:30px;height:30px;"
+                  src="./img/prev page.png" />
+              </div>
+            </td>
+            <td style="width:200px;text-align:center;"
+              ng-if="requesObjectForYear && yearInfo=='PREVIOUS'">
+              <h4 style="padding-left:15px;">{{requesObjectForYear.year}}</h4>
+            </td>
+            <td style="width:200px;text-align:center;"
+              ng-if="requesObjectForYear && yearInfo=='CURRENT'">
+              <h4 style="padding-right:30px;">{{requesObjectForYear.year}}</h4>
+            </td>
+
+            <td style="width: 50px;padding-right:40px;">
+              <div ng-click="getAttendanceApplicationListForCurrentYear()"
+                class="buttonLinksColor"
+                style="padding-top:14px;">
+                <img ng-if="yearInfo=='PREVIOUS'"
+                  style="width:30px;height:30px;" src="./img/next page.png" />
+              </div>
+            </td>
+          </tr>
+        </table>
+
+        <label class="item item-input item-select" ng-show="1==2">
+          <div class="input-label">Year</div> <select id="year"
+            class="form-control"
+            ng-options="value as value for (key , value) in yearListforAtt"
+            ng-model="requesObjectForYear.year" required>
+            <option value="">Please Select</option>
+          </select>
+        </label> <label class="item item-input item-select" ng-show="1==2">
+          <div class="input-label">Month</div> <select id="month"
+            class="form-control"
+            ng-change="getAttendanceApplicationList()"
+            ng-options="month.monthValue as month.monthName for month in
+            monthList" ng-model="requesObjectForMonth.month"
+            required>
+            <option value="">Please Select</option>
+          </select>
+
+        </label>
+        <!-- <label class="item item-input" style="padding: 6px 7px 5px 16px!important;">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="search" placeholder="Search" ng-model="searchObj.searchQueryAttRegularisationManager" />
+      </label>
+      <br>
+      <span class="refreshBtn">
+        <i ng-click="refreshAttList()" class="fa fa-refresh" ></i>
+      </span> -->
+        <br/>
+          <div class="search" style="margin-top: -15px !important;">
+            <span>
+              <input type="submit" value="&#xf002;" class="search-btn fa ib-m">
+              <div class="search-slide ib-m">
+                <input type="search" id="" placeholder="Enter your search"
+                  class="ib-m"
+                  ng-model="searchObj.searchQueryAttRegularisationManager" />
+                <div class="search-close ib-m">
+                  <i class="fa fa-times-circle" aria-hidden="true"></i></div>
+              </div>
+            </span>
+            <span class="recentRecord" style="margin-left:12px;font-size: 0.8em;
+              font-style: oblique;">
+              Recent 50 applications.
+            </span>
+            <span class="refreshBtn" style="margin-top: 2%;">
+              <i ng-click="refreshAttList()" class="fa fa-refresh"></i>
+            </span>
+          </div>
+          <div class="noDataAvailavle" ng-if="AttendanceApplList.length == 0">
+            <!-- <center> <h4>No Data Available</h4>  </center> -->
+            <img src="./img/no-result.png" alt="">
+          </div>
+          <br/>
+            <!-- <div class="row" style="margin-bottom: -7%;margin-top: -2%;">
+        <div class="col col-75">
+          <p style="margin-left:12px;font-size: 0.8em; font-style: oblique;">Recent 50 applications.</p>
+        </div>
+        <div class="col col-25">
+          <img style="width: 25px;height: 25px;margin-left: 40%;margin-top: -5%;" src="./img/refreshicon.png"
+            ng-click="refreshAttList()" />
+        </div>
+      </div> -->
+            <div class="list card customBorderRadius" ng-repeat="Attendance in
+              AttendanceApplList| filter:
+              searchObj.searchQueryAttRegularisationManager |
+              orderBy:'-Attendance.outTimeDateStrSort'" 
+              ng-if="Attendance.status =='SENT FOR APPROVAL' ||
+              Attendance.status =='SENT FOR CANCELLATION'">
+              <div class="remarkcomments">
+                <h2 class="item-note" style="color:green;"
+                  ng-if="Attendance.status == 'APPROVED' || Attendance.status ==
+                  'CANCELLATION APPROVED'">
+                  {{Attendance.status}}</h2>
+                <h2 class="item-note" style="color:red;"
+                  ng-if="Attendance.status == 'CANCELLED'">
+                  {{Attendance.status}}</h2>
+                <h2 class="item-note" style="color:red;"
+                  ng-if="Attendance.status == 'REJECTED'"> {{Attendance.status}}</h2>
+                <h2 class="item-note" style="color:red;"
+                  ng-if="Attendance.status == 'CANCELLATION REJECTED'">
+                  {{Attendance.status}}</p>
+                <h2 class="item-note" style="color:orange;"
+                  ng-if="Attendance.status != 'REJECTED' &&
+                  Attendance.status != 'APPROVED' && Attendance.status !=
+                  'CANCELLED' &&
+                  Attendance.status != 'CANCELLATION APPROVED' &&
+                  Attendance.status != 'CANCELLATION REJECTED'">
+                  {{Attendance.status}}</h2>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-sm-2 col-xs-2 col-form-label">
+                  <img ng-if="Attendance.profilePhoto"
+                    ng-src="{{Attendance.profilePhoto}}{{Attendance.empId}}"
+                    style="max-width: 50px; max-height: 50px;"> <img
+                    ng-if="!Attendance.profilePhoto && Attendance.gender == 'M'"
+                    ng-src="./img/Male.png"
+                    style="max-width: 50px; max-height: 50px;">
+                  <img ng-if="!Attendance.profilePhoto && Attendance.gender ==
+                    'F'" ng-src="./img/Female.png"
+                    style="max-width: 50px; max-height: 50px;">
+		      <img
+                ng-if="!Attendance.profilePhoto && Attendance.gender !=
+                'M' && Attendance.gender != 'F'"
+                ng-src="./img/blankemp.jpg" style="max-width: 50px; max-height:
+                50px;">				  										
+                </label>
+                <div class="col-sm-10 col-xs-10" style="padding: 20px 0 0 0
+                  !important;">
+                  <h3 style="font-size: 1em;">{{Attendance.empName}}
+                    ({{Attendance.empCode}})</h3>
+                </div>
+              </div>
+              <div ng-if="Attendance.remarks.indexOf('Mobile Clock') <= -1">
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Application
+                    Date</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.applicationDate| date:'dd/MM/yyyy'}}
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Attendance
+                    Date</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.attDate| date:'dd/MM/yyyy'}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Actual In Time</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.actualInTimeStr}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Actual Out
+                    Time</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.actualOutTimeStr}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Modified In
+                    Time</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.inTimeStr}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Modified Out
+                    Time</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.outTimeStr}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Worked Hours</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.workedHrs}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Shift</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.shiftAbbr}}
+                  </div>
+                </div>
+                <div class="form-group row" ng-if="Attendance.firstHalf ==
+                  Attendance.secondHalf">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Attendance
+                    Status</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.firstHalf}}
+                  </div>
+                </div>
+                <div class="form-group row" ng-if="Attendance.firstHalf !=
+                  Attendance.secondHalf">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Attendance
+                    Status</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    First Half:{{Attendance.firstHalf}}-Second
+                    Half:{{Attendance.secondHalf}}
+                  </div>
+                </div>
+                <div class="form-group row" ng-if="Attendance.remarks != 'OTH'">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Reason</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.remarks}}
+                  </div>
+                </div>
+                <div class="form-group row" ng-if="Attendance.remarks == 'OTH'">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Reason</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.othRemarks}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Applicants
+                    Remarks</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.applicantComments}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Approver
+                    Remarks</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8" style="white-space: pre-wrap">{{Attendance.appRemarks}}
+                  </div>
+                </div>
+				<div class="form-group row" >
+					<label class="col-sm-4 col-xs-4 col-form-label">Punch Details</label><span
+						class="dividerClass">:</span>
+					<div class="col-sm-8 col-xs-8" ng-if="!Attendance.punchStr" 
+					ng-click="getPunches(Attendance.dtHrapiFormat,Attendance.dtHrapiFormat,Attendance.empId,Attendance,'ATTREG')"
+					style="color: blue;">
+					Show Punches
+          </div>
+          <div class="col-sm-8 col-xs-8" ng-show="Attendance.punchStr" 
+          ng-click="Attendance.punchStr = null;"
+          style="color: blue;">
+          Hide Punches
+          </div>          
+				</div>
+				<div class="form-group row" ng-if="Attendance.punchStr" >
+					<div style="overflow: auto;height:150px;width:100%;">
+					<div class="col-sm-12 col-xs-12" style="white-space: pre-wrap">{{Attendance.punchStr}}
+					</div>
+				</div>
+				</div>
+				<br>
+                <div class="form-group row"
+                  ng-show="Attendance.geoLocationAddress">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Location
+                    Address</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.geoLocationAddress}}
+                  </div>
+                </div>
+              </div>
+              <div ng-if="Attendance.remarks.indexOf('Mobile Clock')> -1">
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Application
+                    Date</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.applicationDate| date:'dd/MM/yyyy'}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Attendance
+                    Date</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.attDate| date:'dd/MM/yyyy'}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Clock In Time</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.actualInTimeStr}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Clock Out Time</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.actualOutTimeStr}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Worked Hours</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.workedHrs}}
+                  </div>
+                </div>                
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Shift</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.shiftAbbr}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Reason</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.remarks}}
+                  </div>
+                </div>
+                <div class="form-group row" ng-if="Attendance.remarks == 'OTH'">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Reason</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.othRemarks}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Applicants
+                    Remarks</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.applicantComments}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Approver
+                    Remarks</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8" style="white-space: pre-wrap">{{Attendance.appRemarks}}
+                  </div>
+                </div>
+				<div class="form-group row" >
+					<label class="col-sm-4 col-xs-4 col-form-label">Punch Details</label><span
+						class="dividerClass">:</span>
+					<div class="col-sm-8 col-xs-8" ng-if="!Attendance.punchStr" 
+					ng-click="getPunches(Attendance.dtHrapiFormat,Attendance.dtHrapiFormat,Attendance.empId,Attendance,'ATTREG')"
+					style="color: blue;">
+					Show Punches
+          </div>
+          <div class="col-sm-8 col-xs-8" ng-show="Attendance.punchStr" 
+          ng-click="Attendance.punchStr = null;"
+          style="color: blue;">
+          Hide Punches
+          </div>
+
+				</div>
+				
+				<div class="form-group row" ng-if="Attendance.punchStr" >
+				<div style="overflow: auto;height:150px;width:100%;">
+					<div class="col-sm-12 col-xs-12" style="white-space: pre-wrap">{{Attendance.punchStr}}
+					</div>
+				</div>
+				</div>
+				<br>
+                <div class="form-group row"
+                  ng-show="Attendance.geoLocationAddress">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Location
+                    Address In</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.geoLocationAddress}}
+                  </div>
+                </div>
+                <div class="form-group row"
+                  ng-show="Attendance.outGeoLocationAddress">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Location
+                    Address Out</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.outGeoLocationAddress}}
+                  </div>
+                </div>
+              </div>
+              <div ng-show="Attendance.status == 'SENT FOR APPROVAL' ||
+                Attendance.status == 'SENT FOR CANCELLATION'">
+                <div class="row custom-row">
+                  <div ng-click="approveAttendanceApplicationList(Attendance,
+                    'APPROVE')"
+                    class="col col-50 cust-col-50 buttonLinksColor">Approve</div>
+                  |
+                  <div ng-click="approveAttendanceApplicationList(Attendance,
+                    'REJECT')"
+                    class="col col-50 cust-col-50 buttonLinksColor">Reject</div>
+                </div>
+              </div>
+              <br>
+
+
+
+              <!-- <div class="item custom-item custom-paddingBottom item-text-wrap">
+          <div class="row custom-row">
+            <div class="col col-100" ng-if="Attendance.remarks.indexOf('Mobile Clock') <= -1">
+              <ul class="leaveClaimList">
+                <li><b>Attendance Date</b>{{Attendance.attDate| date:'dd/MM/yyyy'}}</li>
+                <li><b>Actual In Time</b>{{Attendance.actualInTimeStr}}</li>
+                <li><b>Actual Out Time</b>{{Attendance.actualOutTimeStr}}</li>
+                <li><b>Modified In Time</b>{{Attendance.inTimeStr}}</li>
+                <li><b>Modified Out Time</b>{{Attendance.outTimeStr}}</li>
+                <li><b>Worked Hours</b>{{Attendance.workedHrs}} </li>
+                <li><b>Shift</b>{{Attendance.shiftAbbr}}</li>
+			  <li ng-if="Attendance.firstHalf == Attendance.secondHalf"><b>Attendance Status</b>{{Attendance.firstHalf}}</li>
+			  <li ng-if="Attendance.firstHalf != Attendance.secondHalf"><b>Attendance Status</b>First Half:{{Attendance.firstHalf}}-Second Half:{{Attendance.secondHalf}}</li>
+			  <li ng-if="Attendance.remarks != 'OTH'"> <b>Reason</b>{{Attendance.remarks}}</li>
+			  <li ng-if="Attendance.remarks == 'OTH'"> <b>Reason</b>{{Attendance.othRemarks}}</li>
+         <li> <b>Applicants Comments</b>{{Attendance.applicantComments}} </li>
+			  <li><b>Approver Comments</b>{{Attendance.lastAppRemarks}}</li>
+               <li ng-show="Attendance.geoLocationAddress"><b>Location Address</b>{{Attendance.geoLocationAddress}} </li>
+            </ul>
+            </div>
+
+            <div class="col col-100" ng-if="Attendance.remarks.indexOf('Mobile Clock') > -1">
+              <ul class="leaveClaimList">
+                <li><b>Attendance Date:</b>{{Attendance.attDate| date:'dd/MM/yyyy'}}</li>
+                <li><b>Clock In Time:</b>{{Attendance.actualInTimeStr}}</li>
+                <li><b>Clock Out Time:</b>{{Attendance.actualOutTimeStr}}</li>
+                <li><b>Shift</b>{{Attendance.shiftAbbr}}</li>
+                <li><b>Reason</b>{{Attendance.remarks}}</li>
+                <li><b>Approver Comments</b>{{Attendance.lastAppRemarks}}</li>
+                <li ng-show="Attendance.geoLocationAddress"><b>Location Address In</b>{{Attendance.geoLocationAddress}}</li>
+                <li ng-show="Attendance.outGeoLocationAddress"><b>Location Address Out:</b>{{Attendance.outGeoLocationAddress}}</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+        <div class="item custom-item custom_OD1 item-avatar imgclass">
+          <img ng-if="Attendance.profilePhoto" ng-src="{{Attendance.profilePhoto}}{{Attendance.empId}}"
+            style="max-width: 50px; max-height: 50px;"> <img
+            ng-if="!Attendance.profilePhoto && Attendance.gender == 'M'" ng-src="./img/Male.png"
+            style="max-width: 50px; max-height: 50px;">
+          <img ng-if="!Attendance.profilePhoto && Attendance.gender == 'F'" ng-src="./img/Female.png"
+            style="max-width: 50px; max-height: 50px;">
+          <h3 style="font-size: 0.8em;">{{Attendance.empName}} ({{Attendance.empCode}})</h3>
+
+          <p style="color:green;"
+            ng-if="Attendance.status == 'APPROVED' || Attendance.status == 'CANCELLATION APPROVED'">
+            {{Attendance.status}}</p>
+          <p style="color:red;" ng-if="Attendance.status == 'CANCELLED'"> {{Attendance.status}}</p>
+          <p style="color:red;" ng-if="Attendance.status == 'REJECTED'"> {{Attendance.status}}</p>
+          <p style="color:red;" ng-if="Attendance.status == 'CANCELLATION REJECTED'"> {{Attendance.status}}</p>
+          <p style="color:orange;" ng-if="Attendance.status != 'REJECTED' &&
+						Attendance.status != 'APPROVED' && Attendance.status != 'CANCELLED' &&
+						Attendance.status != 'CANCELLATION APPROVED' && Attendance.status != 'CANCELLATION REJECTED'">
+            {{Attendance.status}}</p>
+        </div>
+        <div ng-show="Attendance.status == 'SENT FOR APPROVAL' || Attendance.status == 'SENT FOR CANCELLATION'">
+          <div class="row custom-row">
+            <div ng-click="approveAttendanceApplicationList(Attendance, 'APPROVE')"
+              class="col col-50 cust-col-50 buttonLinksColor">Approve</div>
+            |
+            <div ng-click="approveAttendanceApplicationList(Attendance, 'REJECT')"
+              class="col col-50 cust-col-50 buttonLinksColor">Reject</div>
+          </div>
+        </div> -->
+            </div>
+            <br>
+            <div class="list card customBorderRadius" ng-repeat="Attendance in
+              AttendanceApplList| filter:
+              searchObj.searchQueryAttRegularisationManager |
+              orderBy:'-Attendance.outTimeDateStrSort'" 
+              ng-if="!(Attendance.status =='SENT FOR APPROVAL' ||
+              Attendance.status =='SENT FOR CANCELLATION')">
+              <div class="remarkcomments">
+                <h2 class="item-note" style="color:green;"
+                  ng-if="Attendance.status == 'APPROVED' || Attendance.status ==
+                  'CANCELLATION APPROVED'">
+                  {{Attendance.status}}</p>
+                <h2 class="item-note" style="color:red;"
+                  ng-if="Attendance.status == 'CANCELLED'">
+                  {{Attendance.status}}</h2>
+                <h2 class="item-note" style="color:red;"
+                  ng-if="Attendance.status == 'REJECTED'"> {{Attendance.status}}</h2>
+                <h2 class="item-note" style="color:red;"
+                  ng-if="Attendance.status == 'CANCELLATION REJECTED'">
+                  {{Attendance.status}}</h2>
+                <h2 class="item-note" style="color:orange;"
+                  ng-if="Attendance.status != 'REJECTED' &&
+                  Attendance.status != 'APPROVED' && Attendance.status !=
+                  'CANCELLED' &&
+                  Attendance.status != 'CANCELLATION APPROVED' &&
+                  Attendance.status != 'CANCELLATION REJECTED'">
+                  {{Attendance.status}}</h2>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-sm-2 col-xs-2 col-form-label">
+                  <img ng-if="Attendance.profilePhoto"
+                    ng-src="{{Attendance.profilePhoto}}{{Attendance.empId}}"
+                    style="max-width: 50px; max-height: 50px;"> <img
+                    ng-if="!Attendance.profilePhoto && Attendance.gender == 'M'"
+                    ng-src="./img/Male.png"
+                    style="max-width: 50px; max-height: 50px;">
+                  <img ng-if="!Attendance.profilePhoto && Attendance.gender ==
+                    'F'" ng-src="./img/Female.png"
+                    style="max-width: 50px; max-height: 50px;">
+		      <img
+                ng-if="!Attendance.profilePhoto && Attendance.gender !=
+                'M' && Attendance.gender != 'F'"
+                ng-src="./img/blankemp.jpg" style="max-width: 50px; max-height:
+                50px;">				  															
+                </label>
+                <div class="col-sm-10 col-xs-10" style="padding: 20px 0 0 0
+                  !important;">
+                  <h3 style="font-size: 1em;">{{Attendance.empName}}
+                    ({{Attendance.empCode}})</h3>
+                </div>
+              </div>
+              <div ng-if="Attendance.remarks.indexOf('Mobile Clock') <= -1">
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Application
+                    Date</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.applicationDate| date:'dd/MM/yyyy'}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Attendance
+                    Date</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.attDate| date:'dd/MM/yyyy'}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Actual In Time</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.actualInTimeStr}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Actual Out
+                    Time</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.actualOutTimeStr}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Modified In
+                    Time</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.inTimeStr}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Modified Out
+                    Time</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.outTimeStr}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Worked Hours</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.workedHrs}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Shift</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.shiftAbbr}}
+                  </div>
+                </div>
+                <div class="form-group row" ng-if="Attendance.firstHalf ==
+                  Attendance.secondHalf">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Attendance
+                    Status</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.firstHalf}}
+                  </div>
+                </div>
+                <div class="form-group row" ng-if="Attendance.firstHalf !=
+                  Attendance.secondHalf">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Attendance
+                    Status</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    First Half:{{Attendance.firstHalf}}-Second
+                    Half:{{Attendance.secondHalf}}
+                  </div>
+                </div>
+                <div class="form-group row" ng-if="Attendance.remarks != 'OTH'">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Reason</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.remarks}}
+                  </div>
+                </div>
+                <div class="form-group row" ng-if="Attendance.remarks == 'OTH'">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Reason</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.othRemarks}}
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Applicants
+                    Remarks</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.applicantComments}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Approver
+                    Remarks</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8" style="white-space: pre-wrap">{{Attendance.appRemarks}}
+                  </div>
+                </div>
+				<div class="form-group row" >
+					<label class="col-sm-4 col-xs-4 col-form-label">Punch Details</label><span
+						class="dividerClass">:</span>
+					<div class="col-sm-8 col-xs-8" ng-if="!Attendance.punchStr" 
+					ng-click="getPunches(Attendance.dtHrapiFormat,Attendance.dtHrapiFormat,Attendance.empId,Attendance,'ATTREG')"
+					style="color: blue;">
+					Show Punches
+          </div>
+          <div class="col-sm-8 col-xs-8" ng-show="Attendance.punchStr" 
+          ng-click="Attendance.punchStr = null;"
+          style="color: blue;">
+          Hide Punches
+          </div>
+            
+				</div>
+				
+				<div class="form-group row" ng-if="Attendance.punchStr" >
+				<div style="overflow: auto;height:150px;width:100%;">
+					<div class="col-sm-12 col-xs-12" style="white-space: pre-wrap">{{Attendance.punchStr}}
+					</div>
+				</div>
+				</div>
+				<br>
+                <div class="form-group row"
+                  ng-show="Attendance.geoLocationAddress">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Location
+                    Address</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.geoLocationAddress}}
+                  </div>
+                </div>
+              </div>
+              <div ng-if="Attendance.remarks.indexOf('Mobile Clock')> -1">
+                <div class="form-group row">
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-xs-4 col-form-label">Application
+                      Date</label><span class="dividerClass">:</span>
+                    <div class="col-sm-8 col-xs-8">
+                      {{Attendance.applicationDate| date:'dd/MM/yyyy'}}
+                    </div>
+                  </div>
+                  <label class="col-sm-4 col-xs-4 col-form-label">Attendance
+                    Date</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.attDate| date:'dd/MM/yyyy'}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Clock In Time</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.actualInTimeStr}}
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Clock Out Time</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.actualOutTimeStr}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Worked Hours</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.workedHrs}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Shift</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.shiftAbbr}}
+                  </div>
+                </div>
+                <div class="form-group row" ng-if="Attendance.firstHalf ==
+                  Attendance.secondHalf">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Attendance
+                    Status</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.firstHalf}}
+                  </div>
+                </div>
+                <div class="form-group row" ng-if="Attendance.firstHalf !=
+                  Attendance.secondHalf">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Attendance
+                    Status</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    First Half:{{Attendance.firstHalf}}-Second
+                    Half:{{Attendance.secondHalf}}
+                  </div>
+                </div>
+                <div class="form-group row" ng-if="Attendance.remarks != 'OTH'">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Reason</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.remarks}}
+                  </div>
+                </div>
+                <div class="form-group row" ng-if="Attendance.remarks == 'OTH'">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Reason</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.othRemarks}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Applicants
+                    Remarks</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.applicantComments}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Approver
+                    Remarks</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8" style="white-space: pre-wrap">{{Attendance.appRemarks}}</div>
+                </div>
+				<div class="form-group row" >
+					<label class="col-sm-4 col-xs-4 col-form-label">Punch Details</label><span
+						class="dividerClass">:</span>
+					<div class="col-sm-8 col-xs-8" ng-if="!Attendance.punchStr" 
+					ng-click="getPunches(Attendance.dtHrapiFormat,Attendance.dtHrapiFormat,Attendance.empId,Attendance,'ATTREG')"
+					style="color: blue;">
+					Show Punches
+          </div>
+          <div class="col-sm-8 col-xs-8" ng-show="Attendance.punchStr" 
+          ng-click="Attendance.punchStr = null;"
+          style="color: blue;">
+          Hide Punches
+          </div>
+          
+				</div>
+				
+				<div class="form-group row" ng-if="Attendance.punchStr" >
+				<div style="overflow: auto;height:150px;width:100%;">
+					<div class="col-sm-12 col-xs-12" style="white-space: pre-wrap">{{Attendance.punchStr}}
+					</div>
+				</div>
+				</div>
+				<br>
+                <div class="form-group row"
+                  ng-show="Attendance.geoLocationAddress">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Location
+                    Address In</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.geoLocationAddress}}
+                  </div>
+                </div>
+                <div class="form-group row"
+                  ng-show="Attendance.outGeoLocationAddress">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Location
+                    Address In</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{Attendance.outGeoLocationAddress}}
+                  </div>
+                </div>
+              </div>
+              <div ng-show="Attendance.status == 'SENT FOR APPROVAL' ||
+                Attendance.status == 'SENT FOR CANCELLATION'">
+                <div class="row custom-row">
+                  <div ng-click="approveAttendanceApplicationList(Attendance,
+                    'APPROVE')"
+                    class="col col-50 cust-col-50 buttonLinksColor">Approve</div>
+                  |
+                  <div ng-click="approveAttendanceApplicationList(Attendance,
+                    'REJECT')"
+                    class="col col-50 cust-col-50 buttonLinksColor">Reject</div>
+                </div>
+              </div>
+              <br>
+              <!-- <div class="item custom-item custom-paddingBottom item-text-wrap">
+          <div class="row custom-row">
+            <div class="col col-100" ng-if="Attendance.remarks.indexOf('Mobile Clock') <= -1">
+              <ul class="leaveClaimList">
+                <li><b>Attendance Date</b>{{Attendance.attDate| date:'dd/MM/yyyy'}}</li>
+                <li><b>Actual In Time</b>{{Attendance.actualInTimeStr}}</li>
+                <li><b>Actual Out Time</b>{{Attendance.actualOutTimeStr}}</li>
+                <li><b>Modified In Time</b>{{Attendance.inTimeStr}}</li>
+                <li><b>Modified Out Time</b>{{Attendance.outTimeStr}}</li>
+                <li><b>Worked Hours</b>{{Attendance.workedHrs}} </li>
+                <li><b>Shift</b>{{Attendance.shiftAbbr}}</li>
+                <li ng-if="Attendance.firstHalf == Attendance.secondHalf"><b>Attendance Status</b>{{Attendance.firstHalf}}</li>
+			  <li ng-if="Attendance.firstHalf != Attendance.secondHalf"><b>Attendance Status</b>First Half:{{Attendance.firstHalf}}-Second Half:{{Attendance.secondHalf}}</li>
+			  <li ng-if="Attendance.remarks != 'OTH'">
+                <b>Reason</b>{{Attendance.remarks}}
+              </li>
+			                <li ng-if="Attendance.remarks == 'OTH'">
+                <b>Reason</b>{{Attendance.othRemarks}}
+              </li>
+              <li>
+                <b>Applicants Comments</b>{{Attendance.applicantComments}}
+              </li>
+                <li><b>Approver Comments</b>{{Attendance.lastAppRemarks}}</li>
+                <li ng-show="Attendance.geoLocationAddress"><b>Location Address</b>{{Attendance.geoLocationAddress}} </li>
+            </ul>
+            </div>
+            <div class="col col-100" ng-if="Attendance.remarks.indexOf('Mobile Clock') > -1">
+              <ul class="leaveClaimList">
+                <li><b>Attendance Date:</b>{{Attendance.attDate| date:'dd/MM/yyyy'}}</li>
+                <li><b>Clock In Time:</b>{{Attendance.actualInTimeStr}}</li>
+                <li><b>Clock Out Time:</b>{{Attendance.actualOutTimeStr}}</li>
+
+                <li><b>Shift</b>{{Attendance.shiftAbbr}}</li>
+			  <li ng-if="Attendance.firstHalf == Attendance.secondHalf"><b>Attendance Status</b>{{Attendance.firstHalf}}</li>
+			  <li ng-if="Attendance.firstHalf != Attendance.secondHalf"><b>Attendance Status</b>First Half:{{Attendance.firstHalf}}-Second Half:{{Attendance.secondHalf}}</li>
+			  <li ng-if="Attendance.remarks != 'OTH'">
+                <b>Reason</b>{{Attendance.remarks}}
+              </li>
+			                <li ng-if="Attendance.remarks == 'OTH'">
+                <b>Reason</b>{{Attendance.othRemarks}}
+              </li>
+              <li>
+                <b>Applicants Comments</b>{{Attendance.applicantComments}}
+              </li>
+                <li><b>Approver Comments</b>{{Attendance.lastAppRemarks}}</li>
+                <li ng-show="Attendance.geoLocationAddress"><b>Location Address In</b>{{Attendance.geoLocationAddress}}</li>
+                <li ng-show="Attendance.outGeoLocationAddress"><b>Location Address Out:</b>{{Attendance.outGeoLocationAddress}}</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+        <div class="item custom-item custom_OD1 item-avatar imgclass">
+          <img ng-if="Attendance.profilePhoto" ng-src="{{Attendance.profilePhoto}}{{Attendance.empId}}"
+            style="max-width: 50px; max-height: 50px;"> <img
+            ng-if="!Attendance.profilePhoto && Attendance.gender == 'M'" ng-src="./img/Male.png"
+            style="max-width: 50px; max-height: 50px;">
+          <img ng-if="!Attendance.profilePhoto && Attendance.gender == 'F'" ng-src="./img/Female.png"
+            style="max-width: 50px; max-height: 50px;">
+          <h3 style="font-size: 0.8em;">{{Attendance.empName}} ({{Attendance.empCode}})</h3>
+
+          <p style="color:green;"
+            ng-if="Attendance.status == 'APPROVED' || Attendance.status == 'CANCELLATION APPROVED'">
+            {{Attendance.status}}</p>
+          <p style="color:red;" ng-if="Attendance.status == 'CANCELLED'"> {{Attendance.status}}</p>
+          <p style="color:red;" ng-if="Attendance.status == 'REJECTED'"> {{Attendance.status}}</p>
+          <p style="color:red;" ng-if="Attendance.status == 'CANCELLATION REJECTED'"> {{Attendance.status}}</p>
+          <p style="color:orange;" ng-if="Attendance.status != 'REJECTED' &&
+						Attendance.status != 'APPROVED' && Attendance.status != 'CANCELLED' &&
+						Attendance.status != 'CANCELLATION APPROVED' && Attendance.status != 'CANCELLATION REJECTED'">
+            {{Attendance.status}}</p>
+        </div>
+        <div ng-show="Attendance.status == 'SENT FOR APPROVAL' || Attendance.status == 'SENT FOR CANCELLATION'">
+          <div class="row custom-row">
+            <div ng-click="approveAttendanceApplicationList(Attendance, 'APPROVE')"
+              class="col col-50 cust-col-50 buttonLinksColor">Approve</div>
+            |
+            <div ng-click="approveAttendanceApplicationList(Attendance, 'REJECT')"
+              class="col col-50 cust-col-50 buttonLinksColor">Reject</div>
+          </div>
+        </div> -->
+            </div>
+
+          </div>
+    </ion-content>
+</ion-view>
+
+<script>
+
+    $(document).ready(function () {
+    
+      $('.center1').slick({
+        dots: true,
+        infinite: false,
+        speed: 300,
+        slidesToShow: 4,
+        arrows: false,
+        slidesToScroll: 2,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 4,
+              slidesToScroll: 2,
+              infinite: true,
+              dots: true
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 4,
+              slidesToScroll: 2
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 4,
+              slidesToScroll: 2
+            }
+          }
+        ]
+      });
+  
+  
+    var sliBtn = '.search-btn',
+        sliCont = '.search-slide',
+        sliTxt = '.search-slide input[type=text]',
+        sliDis = '.search-close',
+        sliSpd = 300;
+  
+    $(sliBtn).click(function(){
+      $('.recentRecord').css("display", "none").fadeOut(4000);
+      $(sliCont).animate(
+        {'width':'20.5625em'}, sliSpd);
+      $(sliTxt).focus();
+    });
+    $(sliDis).click(function(){
+      setTimeout(function() {
+        $('.recentRecord').css("display", "inline-block");
+  }, 1000);
+  
+      $(sliCont).animate(
+        {'width':0}, sliSpd);
+    });
+    });
+  </script>

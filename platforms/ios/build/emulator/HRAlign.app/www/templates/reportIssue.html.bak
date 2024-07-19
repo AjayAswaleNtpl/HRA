@@ -1,0 +1,46 @@
+<style>
+
+</style>
+<ion-view>
+    <ion-content has-bouncing="false"  style="position:fixed;bottom:1px;top:44px;">
+
+		<!-- <div class="custom-header" style="margin-bottom: 40px;padding: 0px;padding-left: 15px;padding-top: 10px;margin-top:-8px;">
+				<h4 class="custom-header" style="margin-top: 8px;"><b>Report Issue / Feedback</b></h4> 
+		</div> -->
+            
+        <div class="custom-header" style="padding-top: 10px;">
+            <h4 class="subHeaderClass" style="margin: 0px;"><b>Report Issue / Feedback</b></h4>
+           </div> 
+                 
+                <form name="issueForm">
+                    <!-- <h4><b>&nbsp;&nbsp;Issue/Feedback :</b></h4>
+                    <label class="card item item-input" style="margin-top:1px;background-color:white;border: 1px solid #b3b3b3;">
+						<center>
+                        <textarea style="font-size:1em;" rows="16" cols="50" ng-model="requestObject.issue_message_entered" required> </textarea>
+						</center>
+                    </label> -->
+                    <br>
+
+                    <div class="form-group" style="padding: 10px;">
+                        <label  class="col-sm-5 col-xs-5 col-form-label">Issue/Feedback </label><span class="dividerClass">:</span>
+                        <textarea id="txtIssue" style="font-size:1em;height:100px;" rows="8" cols="50" ng-model="requestObject.issue_message_entered" required> </textarea>
+                      </div>
+                    <!-- 	<center>
+						<button class="button  button-positive" style="width:80%;" 	ng-click="sendIssue()">Submit</button>
+						</center> -->
+                    
+                        <br>
+                        <div class="text-center">
+                        <button type="button" ng-click="sendIssue()" class="btn btn-primary mr-10">
+                            <i class="fa fa-paper-plane mr-10" aria-hidden="true"></i>Submit
+                        </button>
+                        </div>
+        
+                        <br><br>
+                </form>
+				
+			
+			
+        
+    </ion-content>
+</ion-view>

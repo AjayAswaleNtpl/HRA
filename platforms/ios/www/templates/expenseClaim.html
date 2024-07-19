@@ -1,0 +1,349 @@
+<style>
+  #outer
+{
+    width:100%;
+    text-align: center;
+}
+.inner
+{
+    display: inline-block;
+}
+.btn-pad{
+  padding: 2px 15px 2px 15px;
+}
+.btn-pad:active{
+    background-color:olive;
+}
+.prateek{
+  background-color:olive;
+}
+.selectul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.selectli {
+  float: left;
+}
+li a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+  ul.ctcClaimList {
+    width:125%;
+  }
+  ul.ctcClaimList li{
+    font-size:0.8em;
+  }
+  .ctcClaimList b {
+  display: inline-block;
+  width: 50%;
+  position: relative;
+  padding-right: 10px;
+}
+
+.ctcClaimList b::after {
+  content: ":";
+  position: absolute;
+  right: 10px;
+}
+  .custom-item {
+      border: none;
+  }
+.marginTop{
+  margin-top: 15px;
+}
+  .custom-row {
+      padding: 0px;
+  }
+  .custom-padding{
+      padding: 10px;
+  }
+  .custom-top
+  {
+      top:10px;
+      left: 13px;
+  }
+  .custom-paddingTop
+  {
+      padding-top : 11px;
+  }
+  .custom_OD
+  {
+      padding-top : 11px;
+      padding-bottom: 0px;
+  }
+  .custom-paddingBottom
+  {
+      padding-bottom: 0px;
+  }
+  .cust-card {
+      padding: 50px 0px 0px 0px;
+  }
+  .custom-requestApprove
+  {
+      font-size: 11px;
+      color: green;
+  }
+  .custom-requestRejcted
+  {
+      font-size: 11px;
+      color: red;
+  }
+  .custom-requestOther
+  {
+      font-size: 11px;
+      color: orange;
+  }
+  .custom-fontSize
+  {
+      font-size: 12px;
+  }
+  .customBorderRadius
+  {
+      border-top-right-radius: 1em;
+      border-bottom-right-radius: 1em;
+      border-top-left-radius: 1em;
+      border-bottom-left-radius: 1em;
+  }
+
+  .modal-wrapper {
+      position: absolute;
+      top: 25%;
+      display: block;
+      width: 90%;
+      min-height: 45%;
+      padding:  5%;
+  }
+
+  .modal-backdrop-bg {
+      background-color: rgba(255,255,255,0.85);
+  }
+
+  .modal {
+      border-top-right-radius: 1em;
+      border-bottom-right-radius: 1em;
+      border-top-left-radius: 1em;
+      border-bottom-left-radius: 1em;
+  }
+
+  .modal-ion-content {
+      padding: 15px; font-size: 0.85em;
+  }
+
+</style>
+
+<ion-view>
+  <ion-content has-bouncing="false" style="overflow-y: auto;top:0%">
+    <div class="tabs-striped tabs-top tabs-icon-top">
+      <div class="tabs tabs-clear" style="margin-top: 25px; top: 65px;">
+        <a id='claimApplication' class="tab-item active" ng-click="getCtcClaimApplicationList();"
+            style="padding-top: 10px; font-size: 1em;color:black;max-width: 100%;"> Claim
+          <br style="color:black;" />Application
+        </a>
+        <!-- <a id='claimApproval' ng-show="IsODAccessible == 'true'" class="tab-item" href="" ng-click="getCtcClaimApprovalList();"
+            style="padding-top: 10px; font-size: 1em;color:black;max-width: 100%;"> Claim
+          <br style="color:black;"/>Approval
+        </a> -->
+      </div>
+    </div>
+
+    <div id="claimApplicationIDReq" class="cust-card">
+      <div>
+        <div class="custom-header" style="font-size: 20px;margin-bottom: 40px;padding: 0px;padding-left: 15px;padding-top: 10px;margin-top:-8px;">
+          <h4 class="custom-header" style="margin-top: 0px;"><b>Expense Claim</b></h4> </div>
+        </div>
+        <br>
+        <label class="item item-input" style="margin-top:8px;">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input id="reqSearch1" type="text" placeholder="Search " ng-model="searchObj.searchQuery" />
+        </label>
+        <br>
+        <!-- <div ng-disabled="isValidateForLeave" class="item item-input item-select"> -->
+          <!-- <div class="input-label " style=" margin-left: -5px;font-weight: normal;">Claim Type</div>
+          <select id="claimList" style="padding-left: 2%;" class="form-control item-select select" ng-model = "selectedValues.claimType" ng-change="getClaimList()">
+            <option value="" id="abc">Please Select</option>
+            <option value="ctcSelect" id="ctcSelect">Compensation Claim (CTC)</option>
+            <option value="nonCtcSelect" id="nonCtcSelect" selected>Non CTC Claim</option>
+            <option value="ltaSelect" id="ltaSelect"> LTA Claim</option>
+          </select>
+        </div> -->
+
+        <div id="outer">
+            <div class="inner"><button id="ctcSelect" ng-click="getCClaimList()" class="button button-small button-outline button-positive btn-pad">CTC</button></div>
+            <div class="inner"><button id="nonCtcSelect" ng-click="getNClaimList()" class="button button-small button-outline button-positive btn-pad">NON CTC</button></div>
+            <div class="inner"><button id="ltaSelect" ng-click="getLClaimList()" class="button button-small button-outline button-positive btn-pad">LTA</button></div>
+        </div>
+
+        <!-- <ul id="claimList" class="selectul">
+            <li id="ctcSelect" class="selectli">CTC</li>
+            <li id="nonCtcSelect" class="selectli">NON CTC</li>
+            <li id="ltaSelect" class="selectli">LTA</li>
+          </ul> -->
+
+        <div class="row" style="margin-bottom: -7%;">
+          <div class="col col-75">
+            <p style="margin-left:12px;font-size: 0.8em; font-style: oblique;">Recent 50 requests.</p>
+          </div>
+          <!-- <div class="col col-25">
+            <img style="width: 25px;height: 25px;margin-left: 40%;margin-top: -5%;" src="./img/refreshicon.png" ng-click="refreshClaimList()"/>
+          </div> -->
+        </div>
+    </div>
+
+    <div id="noData" ng-if="nonCTCClaimApplList.length == 0 && ctcClaimApplList.length == 0 && ltaClaimApplList.length == 0">
+          <center><h4>No Data Available </h4></center>
+    </div><br>
+
+    <div id="nonCtcClaimListCard">
+          <center>
+            <button class="button button-small button-outline button-positive marginTop" id="applyNonCTCClaim" ng-click="reDirectToNewNonCTCClaimPage()">Apply For Claim</button>
+          </center>
+          <div id="noData" ng-if="nonCTCClaimApplList.length == 0">
+              <center><h4>No Data Available </h4></center>
+        </div><br>
+          <div class="list card customBorderRadius modal-payslip" style="margin-top: 10px;"
+                ng-repeat="nonctcclaim in nonCTCClaimApplList | filter:searchObj.searchQuery">
+            <div  class="item custom-item custom-padding item-text-wrap">
+              <div class="row custom-row" style="margin-left:0px;">
+                <div class="col col-80">
+                  <ul class="ctcClaimList">
+                    <li><b>Claim Id </b>{{nonctcclaim.claimFormId}}</li>
+                    <li><b>Application Date </b>{{nonctcclaim.attDate| date : "dd-MMM-yyyy"}}</li>
+                    <li><b>Claim Amount </b>&#x20b9; {{nonctcclaim.claimAmount}}</li>
+                    <li><b>Approved Claim Amount </b>&#x20b9; {{nonctcclaim.approvedclaimAmount}}</li>
+                    <li><b>Reimbursed Claim Amount </b>&#x20b9; {{nonctcclaim.reimburseAmt}}</li>
+                    <li><b>Status </b>{{nonctcclaim.gridStatus}}</li>
+                    <li ng-if="nonctcclaim.fileName.length != 0"><b>Receipt </b>{{nonctcclaim.fileName}}</li>
+                    <li ng-if="nonctcclaim.fileName.length == 0"><b>Receipt </b>Not Available</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+
+    <div id="ctcClaimListCard">
+          <center>
+            <button class="button button-small button-outline button-positive marginTop" id="applyCTCClaim" ng-click="reDirectToNewCTCClaimPage()">Apply For Claim</button>
+          </center>
+          <div id="noData" ng-if="ctcClaimApplList.length == 0">
+              <center><h4>No Data Available </h4></center>
+        </div><br>
+          <div class="list card customBorderRadius modal-payslip" style="margin-top: 10px;"
+                ng-repeat="ctcclaim in ctcClaimApplList | filter:searchObj.searchQuery">
+            <div  class="item custom-item custom-padding item-text-wrap">
+              <div class="row custom-row" style="margin-left:0px;">
+                <div class="col col-80">
+                  <ul class="ctcClaimList">
+                    <li><b>Sr. No </b>{{$index+1}}</li>
+                    <li><b>Claim Date </b>{{ctcclaim.attDate| date : "dd-MMM-yyyy"}}</li>
+                    <li><b>Claim Type </b>{{ctcclaim.ctcPayHeadName}}</li>
+                    <li><b>Claim Amount </b>&#x20b9; {{ctcclaim.claimAmount}}</li>
+                    <li><b>Approved Claim Amount </b>&#x20b9; {{ctcclaim.approvedclaimAmount}}</li>
+                    <li><b>Reimbursed Claim Amount </b>&#x20b9; {{ctcclaim.reimburseAmt}}</li>
+                    <li><b>Status </b>{{ctcclaim.status}}</li>
+                  </ul>
+                  <!-- <h2 style="font-size: 0.8em;"><b>Claim Id : </b>{{nonctcclaim.claimFormId}}</h2>
+                  <h2 style="font-size: 0.8em;"><b>Application Date : </b>{{nonctcclaim.attDate| date : "dd-MMM-yyyy"}}</h2>
+                  <h2 ng-if="!leave.leaveDate" style="font-size: 0.8em;"><b>Claim Amount : </b>{{nonctcclaim.claimAmount}}</h2>
+                  <h2 ng-if="leave.leaveDate" style="font-size: 0.8em;"><b>Approved Claim Amount : </b>{{nonctcclaim.approvedclaimAmount}}</h2>
+                  <h2 style="font-size: 0.8em;"><b>Reimbursed Claim Amount : </b>{{reimburseAmt}} </h2>
+                  <h2 style="font-size: 0.8em;"><b>Status: </b>{{nonctcclaim.gridStatus}}</h2>
+                  <h2 style="font-size: 0.8em;"><b>Receipt: </b>{{nonctcclaim.fileName}}</h2> -->
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+
+    <div id="ltaClaimListCard">
+          <center>
+            <button class="button button-small button-outline button-positive marginTop" id="applyLTAClaim" ng-click="reDirectToNewLTAClaimPage()">Apply For Claim</button>
+          </center>
+          <div id="noData" ng-if="ltaClaimApplList.length == 0">
+              <center><h4>No Data Available </h4></center>
+        </div><br>
+          <div class="list card customBorderRadius modal-payslip" style="margin-top: 10px;"
+                ng-repeat="ltaclaim in ltaClaimApplList | filter:searchObj.searchQuery">
+            <div  class="item custom-item custom-padding item-text-wrap">
+              <div class="row custom-row" style="margin-left:0px;">
+                <div class="col col-80">
+                  <ul class="ctcClaimList">
+                    <li><b>Sr. No </b>{{$index+1}}</li>
+                    <li><b>Claim Date </b>{{ltaclaim.attDate| date : "dd-MMM-yyyy"}}</li>
+                    <li><b>Claim Type </b>{{ltaclaim.ctcPayHeadName}}</li>
+                    <li><b>Claim Amount </b>&#x20b9; {{ltaclaim.claimAmount}}</li>
+                    <li><b>Approved Claim Amount </b>&#x20b9; {{ltaclaim.approvedclaimAmount}}</li>
+                    <li><b>Reimbursed Claim Amount </b>&#x20b9; {{ltaclaim.reimburseAmt}}</li>
+                    <li><b>Status </b>{{ltaclaim.status}}</li>
+                  </ul>
+                  <!-- <h2 style="font-size: 0.8em;"><b>Claim Id : </b>{{nonctcclaim.claimFormId}}</h2>
+                  <h2 style="font-size: 0.8em;"><b>Application Date : </b>{{nonctcclaim.attDate| date : "dd-MMM-yyyy"}}</h2>
+                  <h2 ng-if="!leave.leaveDate" style="font-size: 0.8em;"><b>Claim Amount : </b>{{nonctcclaim.claimAmount}}</h2>
+                  <h2 ng-if="leave.leaveDate" style="font-size: 0.8em;"><b>Approved Claim Amount : </b>{{nonctcclaim.approvedclaimAmount}}</h2>
+                  <h2 style="font-size: 0.8em;"><b>Reimbursed Claim Amount : </b>{{reimburseAmt}} </h2>
+                  <h2 style="font-size: 0.8em;"><b>Status: </b>{{nonctcclaim.gridStatus}}</h2>
+                  <h2 style="font-size: 0.8em;"><b>Receipt: </b>{{nonctcclaim.fileName}}</h2> -->
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </ion-content>
+</ion-view>
+<script>
+
+  $(document).ready(function(){
+    $("#approvalCard").hide();
+      $("#ctcClaimListCard").show();
+      $('#ctcSelect').css({'color':'white','background':'#3B5998'});
+  });
+  $("#claimApproval").on("click",function(){
+    $("#approvalCard").show();
+    $("#ctcClaimListCard").hide();
+  });
+  $("#claimApplication").on("click",function(){
+    $("#approvalCard").hide();
+    $("#ctcClaimListCard").show();
+  });
+
+
+    $("#ctcSelect").on("click",function(){
+      $("#nonCtcSelect").css({'color':'#3B5998','background':'transparent'});
+      $("#ltaSelect").css({'color':'#3B5998','background':'transparent'});
+      $('#ctcSelect').css({'color':'white','background':'#3B5998'});
+    });
+    $("#nonCtcSelect").on("click",function(){
+      $("#ctcSelect").css({'color':'#3B5998','background':'transparent'});
+      $("#ltaSelect").css({'color':'#3B5998','background':'transparent'});
+      $('#nonCtcSelect').css({'color':'white','background':'#3B5998'});
+    });
+    $("#ltaSelect").on("click",function(){
+      $("#nonCtcSelect").css({'color':'#3B5998','background':'transparent'});
+      $("#ctcSelect").css({'color':'#3B5998','background':'transparent'});
+      $("#ltaSelect").css({'color':'white','background':'#3B5998'});
+    });
+</script>

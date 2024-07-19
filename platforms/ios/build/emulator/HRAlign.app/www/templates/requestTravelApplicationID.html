@@ -1,0 +1,759 @@
+<style>
+    .custom-item {
+      border: none;
+    }
+    .anchorRRedirect {
+      position: absolute;
+      top: 212px;
+      right: 14px;
+      font-size: 15px;
+      color: #3b5998;
+    }
+    .listTopMargin {
+      margin-top: 10px;
+    }
+    .travelListTopMargin {
+      margin-top: -40px;
+    }
+    #outer {
+      width: 100%;
+      text-align: center;
+    }
+    .inner {
+      display: inline-block;
+    }
+    ul.ctcClaimList {
+      margin-top: 20px;
+    }
+    ul.ctcClaimList li {
+      font-size: 0.8em;
+      padding: 5px 0px 0px 0px;
+      min-width: 435px;
+    }
+    .ctcClaimList b {
+      display: inline-block;
+      width: 40%;
+      position: relative;
+      padding-right: 10px;
+    }
+    .ctcClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ul.travelClaimList {
+      width: 125%;
+    }
+    ul.travelClaimList li {
+      font-size: 0.8em;
+      padding: 5px 0px 0px 0px;
+      min-width: 435px;
+    }
+    .travelClaimList b {
+      display: inline-block;
+      width: 32%;
+      position: relative;
+      padding-right: 10px;
+    }
+    .travelClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ul.odClaimList {
+      margin-top: 20px;
+    }
+    ul.odClaimList li {
+      font-size: 0.8em;
+      padding: 5px 0px 0px 0px;
+      min-width: 435px;
+    }
+    .odClaimList b {
+      display: inline-block;
+      width: 35%;
+      position: relative;
+      padding-right: 10px;
+    }
+    .odClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ul.attClaimList {
+      width: 125%;
+    }
+    ul.attClaimList li {
+      font-size: 0.8em;
+      padding: 5px 0px 0px 0px;
+      min-width: 435px;
+    }
+    .attClaimList b {
+      display: inline-block;
+      width: 38%;
+      position: relative;
+      padding-right: 10px;
+    }
+    .attClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ol,
+    ul {
+      margin-bottom: 0px !important;
+    }
+    a:focus,
+    a:hover {
+      text-decoration: none;
+    }
+    .tab-item.tab-item-active,
+    .tab-item.active,
+    .tab-item.activated {
+      opacity: 1;
+    }
+    .tab-item {
+      opacity: 0.7;
+    }
+    .custom-row {
+      padding: 0px;
+    }
+    .custom-padding {
+      padding: 5px 10px;
+    }
+    .custom-top {
+      top: 10px;
+      left: 13px;
+    }
+    .custom-paddingTop {
+      padding-top: 11px;
+    }
+    .custom_OD {
+      padding-top: 11px;
+      padding-bottom: 0px;
+    }
+    .custom-paddingBottom {
+      padding-bottom: 0px;
+    }
+    .cust-card {
+      padding: 50px 0px 0px 0px;
+    }
+    .custom-requestApprove {
+      font-size: 11px;
+      color: green;
+    }
+    .custom-requestRejcted {
+      font-size: 11px;
+      color: red;
+    }
+    .custom-requestOther {
+      font-size: 11px;
+      color: orange;
+    }
+    .custom-fontSize {
+      font-size: 12px;
+    }
+    .modal-wrapper {
+      position: absolute;
+      top: 25%;
+      display: block;
+      width: 90%;
+      min-height: 45%;
+      padding: 5%;
+    }
+  
+    .modal-backdrop-bg {
+      background-color: rgba(255, 255, 255, 0.85);
+    }
+  
+    .modal {
+      border-top-right-radius: 1em;
+      border-bottom-right-radius: 1em;
+      border-top-left-radius: 1em;
+      border-bottom-left-radius: 1em;
+    }
+  
+    .modal-ion-content {
+      padding: 15px;
+      font-size: 0.85em;
+    }
+  
+  
+    .badge.badgeCustom {
+      width: 22px;
+      height: 22px;
+      text-align: center;
+      line-height: 18px;
+      display: block;
+      position: absolute;
+      top: 0;
+      color: #fff !important;
+      font-size: 10px !important;
+      padding: 0;
+    }
+    a:focus,
+    a:hover {
+      text-decoration: none;
+    }
+    .tab-item.tab-item-active,
+    .tab-item.active,
+    .tab-item.activated {
+      opacity: 1;
+    }
+    .tab-item {
+      opacity: 0.7;
+    }
+    /* .slick-slide .slide-content {
+    margin: 0 3%;
+    padding: 10px 5px;
+  
+  } */
+  
+    .slick-prev,
+    .slick-next {
+      position: absolute;
+      right: 10%;
+      background: #777;
+      border: none;
+      color: transparent;
+      width: 30px;
+      height: 30px;
+    }
+  
+    .slick-prev:before,
+    .slick-next:before {
+      content: ">";
+      color: #fff;
+      font-size: 25px;
+    }
+  
+    .slick-prev {
+      left: 10%;
+    }
+  
+    .slick-prev:before {
+      content: "<";
+    }
+  
+    .slick-dots {
+      list-style: none;
+      margin: 0 auto;
+      text-align: center;
+      margin-top: 10px;
+    }
+  
+    .slick-dots li {
+      display: inline-block;
+    }
+  
+    .slick-dots li button {
+      transition: 0.2s background-color ease-in-out 0s;
+      border: none;
+      padding: 0;
+      color: transparent;
+      width: 10px;
+      height: 10px;
+      background-color: #777;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+  
+    .slick-dots li.slick-active button {
+      background-color: #0a9dc7;
+    }
+    /* .slick-slider {
+      width: 100%;
+      position: relative;
+      transform: translate(-50%, -50%);
+      top: 0%;
+      left: 50%;
+  } */
+    .slick-slider {
+      width: 100%;
+      position: relative;
+      top: 0%;
+    }
+    /* ===form List=== */
+    /* .customBorderRadius .dividerClass {
+      line-height: 1.5 !important;
+  }
+  .customBorderRadius label {
+      font-size: 13px !important;
+      line-height: 1.5 !important;
+  }
+  .customBorderRadius .row {
+      margin: 0 5px !important;
+      padding: 0 5px !important;
+  }
+  .customBorderRadius.col-xs-8 {
+      font-size: 13px !important;
+  }
+  .customBorderRadius .item-note {
+      padding: 10px 10px 0 0 !important;
+      margin-bottom: 2px !important;
+  } */
+  .inner .btn-pad.claimClass{
+    margin: 14px 4px 5px 10px;
+      padding: 0 8px;
+  }
+  .inner .badge{
+    position: relative;
+    margin: 0 -8px;
+    float: right;
+  }
+  .slick-carousel .fa{
+    font-size: 40px;
+    color: #777676;
+  }
+  .slick-carousel p {
+      color: #212121;
+      margin: 0 0 10px;
+      font-size: 0.83em;
+      text-align: center;
+      margin-left: -2%;
+      margin-top: 0%;
+      margin-bottom: 2px;
+      font-weight: 400;
+  }
+  </style>
+
+
+<ion-view>
+    <div class="bar bar-footer hide-on-keyboard-open" style="background-color:#000; background-size: 100% 0px;">
+        <div class="title" style="height: 20px;">
+            <h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px;
+                margin-bottom: 5px;">Powered by HR Align</h6>
+        </div>
+    </div>
+
+    <ion-content has-bouncing="false" style="overflow-y: auto;top:0%" class="requisionSection">
+        <div class="custom-header" style="padding-top: 0px;padding-bottom: 0px;">
+            <h4 class="subHeaderClass" style="margin: 0px;"> <span class="backIcon">
+              <i class="icon ion-ios-arrow-back" ng-click="redirectOnBack()"></i></span>
+                <b style="vertical-align: super;"> Travel Application </b></h4>
+                <a ng-if="isARTorFRT == 'true' || isGroupMasterReportee == 'true'" ng-click="goToApprovals()" class="approvalLinkClass">
+                  <img src="./img/approveNew.png" style="width: 25px; height: 25px; margin-right: 3px;text-align: center;" />
+                </a>
+        </div>
+
+        <div id="travelApplicationIDReq" style="margin-top:-23%" 
+		class="cust-card" ng-show="IsTravelAccessible == 'true'" >
+            <div>
+              <br><br>
+              <!-- <label ng-show="IsTravelAccessible == 'true'"  class="item item-input" style="margin-top:26px;padding: 6px 7px 5px 16px!important;" >
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="search" placeholder="Search "  ng-model="searchObj.searchTravel" />
+              </label> -->
+              <div class="search">
+                <span ng-show="IsTravelAccessible == 'true'">
+              <input type="submit" value="&#xf002;" class="search-btn fa ib-m">
+               <div class="search-slide ib-m">
+                  <input type="search" id="" placeholder="Enter your search" class="ib-m" ng-model="searchObj.searchQuery"/>
+                  <div class="search-close ib-m">
+                    <i class="fa fa-times-circle" aria-hidden="true"></i></div>
+                </div>
+              </span>
+              <span class="recentRecord" style="margin-left:12px;font-size: 0.8em; font-style: oblique;">
+                Recent 50 applications.
+              </span>
+                <span class="refreshBtn" style="margin-top: 2%;">
+                  <i ng-click="refreshTraList()" class="fa fa-refresh" ></i>
+                </span>
+              </div>
+              <center style=" margin-top: 10px;">
+                <button  class="button button-small button-outline button-positive" ng-click="reDirectToFreshTravelPage()"  >
+                  Apply For Travel
+                </button>
+                <!-- <a class="button button-small button-outline button-positive marginTop" href="#/app/MyApprovalsCombined">Go to Approvals</a> -->
+              </center>
+              <div class="noDataAvailavle" ng-show="IsTravelAccessible == 'true' && travelApplList.length == 0" >
+                <!-- <center><h4>No Data Available</h4></center> -->
+                <img src="./img/no-result.png" alt="">
+              </div>
+             
+              <!-- ======Travel========== -->
+              <div class="list card customBorderRadius" style="margin-top: 8px;" ng-repeat="travel in travelApplList | filter:searchObj.searchQuery | orderBy:'-sortTravelDate'"
+                ng-if="travel.travelStatus =='SENT FOR APPROVAL' || travel.travelStatus =='SENT FOR CANCELLATION'" >
+      
+           <div class="remarkcomments">
+                  <h2  class="item-note custom-requestApprove" style="color:green;" ng-if="travel.travelStatus == 'APPROVED' || travel.travelStatus == 'CANCELLATION APPROVED' " >
+                    {{travel.travelStatus}}</h2>
+      
+                  <h2  class="item-note custom-requestRejcted" style="color:red;" ng-if="travel.travelStatus == 'REJECTED' || travel.travelStatus=='CANCELLATION REJECTED'" >
+                    {{travel.travelStatus}} </h2>
+      
+                  <h2 class="item-note custom-requestOther" style="color:orange;" ng-if="travel.travelStatus != 'REJECTED' && travel.travelStatus != 'APPROVED'
+                  && travel.travelStatus != 'CANCELLATION APPROVED' && travel.travelStatus != 'CANCELLATION REJECTED' " >
+                    {{travel.travelStatus}}<br>{{travel.approvePendingFrom}}</h2>
+              </div>
+      
+              <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Application Date</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{travel.reqDate | date : "dd/MM/yyyy"}}
+                </div>
+              </div>
+              <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Travel Date(s)</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{travel.travelDate | date : "dd/MM/yyyy"}}
+                </div>
+              </div>
+              <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Purpose</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{travel.pov}}
+                </div>
+              </div>
+      
+              <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Travel Objective</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{travel.additionalInfo}}
+                </div>
+              </div>
+              <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Travel Type</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{travel.travelType}}
+                </div>
+              </div>
+              <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Approval Date</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8" ng-if="!(travel.travelStatus=='SENT FOR APPROVAL' ||
+              travel.travelStatus=='SENT FOR CANCELLATION' || travel.travelStatus=='CANCELLED')">
+                  {{travel.apprDate | date :"dd/MM/yyyy"}}
+                </div>
+              </div>
+              <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Attachment</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8"  ng-if="travel.uploadFileName" ng-click="downloadAttachmnent(travel)"  style="color:blue;">
+                  {{travel.uploadFileName}}
+                </div>
+              </div>
+              <div class="form-group row" ng-if="travel.travelTransId">
+                <label class="col-sm-4 col-xs-4 col-form-label">Applicant Remarks</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{travel.applicantRemarks}}
+                </div>
+              </div>
+              <div class="form-group row" ng-if="travel.travelTransId">
+                <label class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8" style="white-space: pre-wrap;">{{travel.approvalRemarks}}</div>
+              </div>
+              <div class="text-center" class="item" >
+                <button type="button" ng-click="showTravelDetailForm(travel);"
+                class="button button-small button-outline button-positive">
+              <i class="fa fa-eye mr-5" ></i>Details</button>
+              </div>
+      
+      
+       <!-- <div class="item custom-item custom-paddingBottom item-text-wrap">
+                  <div class="row custom-row" style="margin-left:0px;">
+                    <div class="col col-100">
+                      <ul class="travelClaimList">
+                        <li>
+                          <b>Application Date:</b> {{travel.reqDate | date : "dd/MM/yyyy"}}
+                        </li>
+                        <div class="col col-30" style="position:absolute;top:22px;right: 15px;" >
+                          <p class="item-note custom-requestApprove" style="color:green;" ng-if="travel.travelStatus == 'APPROVED'" >
+                            {{travel.travelStatus}}
+                          </p>
+                          <p class="item-note custom-requestRejcted" style="color:red;" ng-if="travel.travelStatus == 'REJECTED'" >
+                            {{travel.travelStatus}}
+                          </p>
+                          <p  class="item-note custom-requestOther" style="color:orange;" ng-if="travel.travelStatus != 'REJECTED' && travel.travelStatus != 'APPROVED'" >
+                            {{travel.travelStatus}}<br>{{travel.approvePendingFrom}}
+                          </p>
+                        </div>
+      
+      
+                        <li>
+                          <b>Travel Date(s)</b>{{travel.travelDate | date : "dd/MM/yyyy"}}
+                        </li>
+      
+                        <li>
+                          <b>Purpose of Visit</b>{{travel.pov}}
+                        </li>
+                        <li >
+                          <b>Travel Objective</b>{{travel.additionalInfo}}
+                        </li>
+                        <li >
+                          <b>Travel Type</b>{{travel.travelType}}
+                        </li>
+                        <li >
+                          <b>Approval Date</b>{{travel.apprDate | date :
+                          "dd/MM/yyyy"}}
+                        </li>
+                        <li
+                          ng-if="travel.uploadFileName"
+                          ng-click="downloadAttachmnent(travel)"
+                          style="color:blue;"
+                        >
+                          Tap to download:&nbsp;&nbsp;{{travel.uploadFileName}}
+                        </li>
+                        <li ng-if="travel.travelTransId">
+                          <b>Applicant Remarks</b>{{travel.applicantRemarks}}
+                        </li>
+                        <li ng-if="travel.travelTransId">
+                          <b>Approver Remarks Id</b>{{travel.approvalRemarks}}
+                        </li>
+      
+                      </ul>
+                    </div>
+                  </div>
+                  <div style="margin-bottom: 15px;">
+                    <center>
+                      <br />
+                      <button
+                        class="button button-small button-outline button-positive"
+                        style="width:50%;"
+                        ng-click="showTravelDetailForm(travel);"
+                      >
+                        Details
+                      </button>
+                    </center>
+                  </div>
+                </div> -->
+              </div>
+      
+              <div class="list card customBorderRadius" style="margin-top: 8px;"
+               ng-repeat="travel in travelApplList | filter:searchObj.searchQuery | orderBy:'-sortTravelDate'"
+                ng-if="!(travel.travelStatus =='SENT FOR APPROVAL' || travel.travelStatus =='SENT FOR CANCELLATION')">
+      
+                <div class="remarkcomments">
+                  <h2  class="item-note custom-requestApprove" style="color:green;" ng-if="travel.travelStatus == 'APPROVED' || 
+                  travel.travelStatus == 'CANCELLATION APPROVED'">
+                    {{travel.travelStatus}}</h2>
+      
+                  <h2  class="item-note custom-requestRejcted" style="color:red;" ng-if="travel.travelStatus == 'REJECTED' || 
+                  travel.travelStatus == 'CANCELLED' || travel.travelStatus == 'CANCELLATION REJECTED'" >
+                    {{travel.travelStatus}} </h2>
+      
+                    <h2 class="item-note custom-requestOther" style="color:orange;" ng-if="travel.travelStatus != 'REJECTED' && travel.travelStatus != 'APPROVED'
+                    && travel.travelStatus != 'CANCELLATION APPROVED' && travel.travelStatus != 'CANCELLATION REJECTED' 
+                    &&  travel.travelStatus != 'CANCELLED' " >
+                      {{travel.travelStatus}}<br>{{travel.approvePendingFrom}}</h2>
+  
+                </div>
+      
+              <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Application Date</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{travel.reqDate | date :"dd/MM/yyyy"}}
+                </div>
+              </div>
+      
+      
+              <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Travel Date(s)</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{travel.travelDate | date : "dd/MM/yyyy"}}
+                </div>
+              </div>
+              <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Purpose</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{travel.pov}}
+                </div>
+              </div>
+      
+      
+              <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Travel Objective</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{travel.additionalInfo}}
+                </div>
+              </div>
+              <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Travel Type</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  {{travel.travelType}}
+                </div>
+              </div>
+              <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Approval Date</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8" ng-if="!(travel.travelStatus=='SENT FOR APPROVAL' ||
+              travel.travelStatus=='SENT FOR CANCELLATION'  || travel.travelStatus=='CANCELLED')">
+                  {{travel.apprDate | date : "dd/MM/yyyy"}}
+                </div>
+              </div>
+              <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Attachment</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8"   ng-if="travel.uploadFileName" ng-click="downloadAttachmnent(travel)" style="color:blue;">
+                {{travel.uploadFileName}}
+                </div>
+              </div>
+              <div class="form-group row" ng-if="travel.travelTransId">
+                <label class="col-sm-4 col-xs-4 col-form-label">Applicant Remarks</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8" >
+                  {{travel.applicantRemarks}}
+                </div>
+              </div>
+              <div class="form-group row" ng-if="travel.travelTransId">
+                <label class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8" style="white-space: pre-wrap;">{{travel.approvalRemarks}}</div>
+              </div>
+              <div class="text-center" class="item" >
+                <button type="button" ng-click="showTravelDetailForm(travel);"
+                class="button button-small button-outline button-positive">
+              <i class="fa fa-eye mr-5" ></i>Details</button>
+      
+              </div>
+      
+       <!-- <div class="item custom-item custom-padding item-text-wrap">
+                  <div class="row custom-row" style="margin-left:0px;">
+                    <div class="col col-100">
+                      <ul class="travelClaimList">
+                        <li ng-if="travel.reqDate">
+                          <b>Application Date:</b>{{travel.reqDate | date :"dd/MM/yyyy"}}
+                        </li>
+                        <div
+                          class="col col-30"
+                          style="position:absolute;top:17px;right: 25px;"
+                        >
+                          <p
+                            style="font-size: 0.7em;color:green;"
+                            class="item-note custom-requestApprove"
+                            ng-if="travel.travelStatus == 'APPROVED'"
+                          >
+                            {{travel.travelStatus}}
+                          </p>
+                          <p
+                            style="font-size: 0.7em;color:red;"
+                            class="item-note custom-requestRejcted"
+                            ng-if="travel.travelStatus == 'REJECTED'"
+                          >
+                            {{travel.travelStatus}}
+                          </p>
+                          <p
+                            style="font-size: 0.7em;color:orange;"
+                            class="item-note custom-requestOther"
+                            ng-if="travel.travelStatus != 'REJECTED' && travel.travelStatus != 'APPROVED'"
+                          >
+                            {{travel.travelStatus}}
+                          </p>
+                        </div>
+                        <li>
+                          <b>Travel Date(s)</b>{{travel.travelDate | date : "dd/MM/yyyy"}}
+                        </li>
+      
+                        <li>
+                          <b>Purpose of Visit</b>{{travel.pov}}
+                        </li>
+                        <li >
+                          <b>Travel Objective</b>{{travel.additionalInfo}}
+                        </li>
+                        <li >
+                          <b>Travel Type</b>{{travel.travelType}}
+                        </li>
+                        <li >
+                          <b>Approval Date</b>{{travel.apprDate | date : "dd/MM/yyyy"}}
+                        </li>
+                        <li
+                          ng-if="travel.uploadFileName"
+                          ng-click="downloadAttachmnent(travel)"
+                          style="color:blue;"
+                        >
+                          Tap to download:&nbsp;&nbsp;{{travel.uploadFileName}}
+                        </li>
+                        <li ng-if="travel.travelTransId">
+                          <b>Applicant Remarks</b>{{travel.applicantRemarks}}
+                        </li>
+                        <li ng-if="travel.travelTransId">
+                          <b>Approver Remarks Id</b>{{travel.approvalRemarks}}
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div style="margin-bottom: -15px;">
+                    <center>
+                      <br />
+                      <button
+                        class="button button-small button-outline button-positive"
+                        style="width:50%;"
+                        ng-click="showTravelDetailForm(travel);"
+                      >
+                        Details
+                      </button>
+                    </center>
+                  </div>
+                </div> -->
+                
+                <div class="noDataAvailavle" ng-show="IsTravelAccessible == 'true' && travelApplList.length == 0" >
+                  <!-- <center><h4>No Data Available</h4></center> -->
+                  <img src="./img/no-result.png" alt="">
+                </div>
+                <br />
+              </div>
+            </div>
+          </div>
+    
+    
+    </ion-content>
+</ion-view>
+<script>
+    var sliBtn = '.search-btn',
+        sliCont = '.search-slide',
+        sliTxt = '.search-slide input[type=text]',
+        sliDis = '.search-close',
+        sliSpd = 300;
+  
+    $(sliBtn).click(function(){
+  
+      $('.recentRecord').css("display", "none").fadeOut(4000);
+      $(sliCont).animate(
+        {'width':'20.5625em'}, sliSpd);
+      $(sliTxt).focus();
+    });
+    $(sliDis).click(function(){
+      setTimeout(function() {
+        $('.recentRecord').css("display", "inline-block");
+  }, 1000);
+  
+      $(sliCont).animate(
+        {'width':0}, sliSpd);
+    });
+        </script>
+  <script>
+  
+  
+    $(document).ready(function() {
+     $(".center").slick({
+        dots: true,
+        infinite: false,
+        speed: 300,
+        arrows: false,
+        slidesToShow: 4,
+        slidesToScroll: 2,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 4,
+              slidesToScroll: 2,
+              infinite: true,
+              dots: true
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 4,
+              slidesToScroll: 2
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 4,
+              slidesToScroll: 2
+            }
+          }
+        ]
+      });
+    });
+  </script>

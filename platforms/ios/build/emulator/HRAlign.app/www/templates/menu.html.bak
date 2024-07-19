@@ -1,0 +1,230 @@
+<style>
+.item {
+    border-color: #ddd;
+    background-color: #fff;
+    color: #444;
+    position: relative;
+    z-index: 2;
+    display: block !important;
+    margin: -1px;
+    padding: 16px;
+    border-width: 1px;
+    border-style: solid; 
+    font-size: 16px;
+}
+/* .profileleftalign h3{
+    font-size: 14px !important;
+    margin-top: 2px !important;
+} */
+</style>
+<ion-side-menus enable-menu-with-back-views="true" class="bar-stable">
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-stable" style="height:1.2em;">
+            <ion-nav-buttons side="right">
+                <!--<sup style="top: 0em;  margin-right: -12px;margin-bottom:5px;"><div style="background-color: #3b5998; color: white; padding: 1px 3px; font-size: smaller;" class="badge badge-stable" ng-if="UnreadMessages != 0">{{UnreadMessages}}</div></sup> -->
+                <sup style="top: 0em;  margin-right: -12px;margin-bottom:5px;">
+                    <div style="color: white; padding: 5px; font-size: smaller;" class="badge badge-stable primary-color" ng-if="UnreadMessages != 0">{{UnreadMessages}}</div></sup>
+			<a  menu-close  href="#/app/NotiInbox" >
+                    <button class="button button-icon button-clear ion-android-notifications-none"  style="padding-right: 8px">
+					<!--<button class="button button-icon button-clear ion-email"  style="padding-right: 8px"> -->
+					</button>
+                </a>
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="right" style="padding-right: 15px; width: 50px;">
+                </button>
+            </ion-nav-buttons>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear button-royal" style="width: 113px;height: 35px;padding-top: 5px; background-color: none;" ng-click="goToHomeDashboardAndSelfService()">
+                    <img ng-if="defaultCompanyLogo == false" class="client-logo" />
+                    <!--<img ng-hide="defaultCompanyLogo == true" class="client-logo" style="width: 113px;height: 35px;padding-top: 5px; background-color: none;" ng-src="data:image/png;base64,{{companylogo}}"/>-->
+                    <img ng-if="defaultCompanyLogo == true" style="margin-top: -7%;" class="client-logo" ng-src="data:image/png;base64,{{companylogo}}"/>
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view  name="menuContent"></ion-nav-view>
+        <div class="bar bar-footer hide-on-keyboard-open" style="background-color:#000; background-size: 100% 0px;">
+            <div class="title" style="height: 20px;">
+                <h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px; margin-bottom: 5px;" >Powered by HR Align</h6></div>
+        </div>
+    </ion-side-menu-content>
+    <ion-side-menu side="right">
+
+        <ion-content has-bouncing="false">
+            <div class="item item-avatar item-positive textalign profileleftalign">
+                <a href="#/app/Profile" menu-close ng-if="resultobj.photoFileName">   <img class="profile-picture" ng-src="{{resultobj.imageUrl}}" /></a>
+                <a href="#/app/Profile" menu-close ng-if="!resultobj.photoFileName">   <img class="profile-picture" ng-src="./img/Male.png"/></a>
+             <div style="margin-top: 10px;">  
+                  <h3 class="item-positive themecolor">{{resultobj.empName}}</h4>
+                <h4 ng-if="!resultobj.department" class="item-positive themecolor" >{{resultobj.designation}}</h4>
+                <h4 ng-if="resultobj.department" class="item-positive themecolor" >{{resultobj.designation}} | {{ resultobj.department | limitTo: 60 }}{{resultobj.department.length > 60 ? '...' : ''}}</h3>
+                <h4 class="item-positive themecolor" >{{resultobj.empCode}}</h4></div>
+            </div>
+            <div class="list " >
+                <a class="item item-icon-left item-positive" ng-if="HomeDashBoard == true" menu-close href="#/app/home/dashboard">
+                    <i class="icon ion-grid"></i>
+                    Dashboard
+                </a>
+                
+
+                <!-- <a class="item item-icon-left item-positive" menu-close href="#/app/expenseClaim">
+                  <i class="icon ion-clipboard"></i>
+                  Expense Claim
+              </a>
+              <a class="item item-icon-left item-positive" menu-close href="#/app/approvalClaim">
+                <i class="icon ion-clipboard"></i>
+                  Approval Claim
+              </a> -->
+                <a class="item item-icon-left item-positive" ng-if="HomeDashBoard == false"  menu-close href="#/app/home/selfService">
+                    <i class="icon ion-grid"></i>
+                    Self Service
+                </a>
+                <a class="item item-icon-left item-positive"   menu-close href="#/app/showTracking">
+                    <i class="icon ion-grid"></i>
+                    Show Tracking
+                </a> 
+
+                <a ng-if="IsClockInAccessible == 'true'" class="item item-icon-left item-positive" menu-close  href="#/app/checkIn">
+                    <i class="icon ion-android-checkbox-outline"></i>
+                    Clock In / Out
+                </a>
+
+                <span ng-if="IsLeaveAccessible == 'true' || IsODAccessible == 'true' || IsRegularizationAccessible == 'true' || IsShiftChangeAccessible == 'true'
+				|| IsTravelAccessible =='true' || IsClaimAccessible =='true' || IsExpenseClaimAccessible == 'true' ">
+                  <a class="item item-icon-left item-positive" menu-close href="#/app/requestMenu">
+                      <i class="icon ion-clipboard"></i>
+                      Requisitions
+                      <span style="margin-right: -10%;" class="badge badge-stable">{{totalRequistionCountForMenu}}</span>
+                
+                  </a>
+
+                  
+              </span>
+
+               <!-- <span ng-if="IsLeaveAccessible == 'true' || IsODAccessible == 'true' || IsRegularizationAccessible == 'true' || IsShiftChangeAccessible == 'true'
+              || IsTravelAccessible =='true' || IsClaimAccessible =='true' || IsExpenseClaimAccessible == 'true' ">
+                <a class="item item-icon-left item-positive" menu-close href="#/app/RequestListCombined">
+                    <i class="icon ion-clipboard"></i>
+                    req
+                    <span style="margin-right: -10%;" class="badge badge-stable">{{totalRequistionCountForMenu}}</span>
+              
+                </a>
+
+                
+            </span>
+
+            <span ng-if="IsLeaveAccessible == 'true' || IsODAccessible == 'true' || IsRegularizationAccessible == 'true' || IsShiftChangeAccessible == 'true'
+            || IsTravelAccessible =='true' || IsClaimAccessible =='true' || IsExpenseClaimAccessible == 'true' ">
+              <a class="item item-icon-left item-positive" menu-close href="#/app/MyApprovalsCombined">
+                  <i class="icon ion-clipboard"></i>
+                  appro
+                  <span style="margin-right: -10%;" class="badge badge-stable">{{totalRequistionCountForMenu}}</span>
+            
+              </a>
+
+              
+          </span>         -->
+
+              <a ng-if="isARTorFRT == 'true' || isGroupMasterReportee == 'true' || isPanelMember == 'Y'" 
+              class="item item-icon-left item-positive" menu-close href="#/app/approvalsMenu">
+                      <i class="icon ion-document-text"></i>
+                      Approvals
+                      <span style="margin-right: -10%;" class="badge badge-stable" ng-if="totalRequestCount != 0">{{totalRequestCount}}</span>
+               </a>
+ 
+               <!-- <a 
+               class="item item-icon-left item-positive" menu-close href="#/app/approvalsMenu"> <i class="icon ion-document-text"></i>
+                Approvals New
+                <span style="margin-right: -10%;" class="badge badge-stable" ng-if="totalRequestCount != 0">{{totalRequestCount}}</span>
+				</a>
+				<a  class="item item-icon-left item-positive" menu-close href="#/app/requestMenu">
+                <i class="icon ion-document-text"></i>
+                Request New
+                <span style="margin-right: -10%;" class="badge badge-stable" ng-if="totalRequestCount != 0">{{totalRequistionCountForMenu}}</span>
+				</a> -->
+			
+
+				<a class="item item-icon-left item-positive" menu-close href="#/app/NotiInbox">
+                    <i class="icon ion-email"></i>
+                    Inbox & Notifications
+					<span style="margin-right: -10%;" class="badge badge-stable" ng-if="UnreadMessages != 0">{{UnreadMessages}}</span>
+
+                </a>
+
+                <a class="item item-icon-left item-positive" menu-close href="#/app/Holidays">
+                    <i class="icon ion-images"></i>
+                    Holidays
+                </a>
+				<!--<a class="item item-icon-left item-positive" menu-close href="#/app/timeSheet">
+                    <i class="icon ion-images"></i>
+                    Time Sheet
+                </a>
+				--->
+                <a class="item item-icon-left item-positive" menu-close href="#/app/BirthDayAndAnniversary">
+                    <i class="icon ion-ribbon-b"></i>
+                    Celebrations
+                </a>
+
+
+				<a class="item item-icon-left item-positive" menu-close href="#/app/employeeDirectory">
+                     <i class="icon ion-ios-people"></i>
+                     Employee Directory
+                </a>
+
+
+
+                 <a ng-if="IsPushNotificationsAccessible == 'true'" class="item item-icon-left item-positive" menu-close href="#/app/pushNotification">
+                    <i class="icon ion-ios-bell-outline"></i>
+                    Send Push Notifications
+                </a> 
+                <a ng-if="IsPayslipAccessible == 'true' && myRemunerationFeature == 'false'" class="item item-icon-left item-positive" menu-close href="#/app/payslip">
+                    <i class="icon ion-calculator"></i>
+                    Payslip
+                </a>
+				<a ng-if="IsPayslipAccessible == 'true' && myRemunerationFeature == 'true'" class="item item-icon-left item-positive" menu-close href="#/app/myRemu">
+                    <i class="icon ion-calculator"></i>
+                    My Remuneration
+                </a>
+				
+				
+				
+                <!--                <a   ng-show="IsShiftChangeAccessible == 'true'" class="item item-icon-left item-positive" menu-close href="#/app/shiftChange">
+                                    <i class="icon ion-clock"></i>
+                                    Shift Change
+                                </a>-->
+                <!--                <a ng-if="!HomeDashBoard" class="item item-icon-left item-positive" menu-close href="#/app/teamCalendar">
+                                    <i class="icon ion-calendar"></i>
+                                    Team Calendar
+                                </a>-->
+                <a class="item item-icon-left item-positive" menu-close href="#/app/reportIssue">
+                    <i class="icon ion-chatbubble-working"></i>
+                    Report Issue/Feedback
+                </a>
+                <a class="item item-icon-left item-positive" menu-close href="#/app/settings">
+                    <i class="icon ion-gear-b"></i>
+                    Settings
+                </a>
+				<!--
+                <a class="item item-icon-left item-positive" menu-close href="#/app/settings">
+                    <i class="icon ion-at"></i>
+                    About
+                </a>
+
+                ng-if="tenantId == 'tenantId1' && IsSettingConfiguration == 'true'"
+				-->
+                <a class="item item-icon-left item-positive" 
+                ng-if="tenantId == 'tenantId1' && 1==1"
+                menu-close href="#/app/restoreParams">
+                    <i class="icon ion-gear-b"></i>
+                    Reload Context
+                </a>
+				<a class="item item-icon-left item-positive" ng-click="logout(0)" menu-close >
+                    <i class="icon ion-power"></i>
+                    Logout
+                </a>
+                <!-- Added For Below space -->
+                <a class="item item-icon-left item-positive" style="border:0px;padding: 10px;" menu-close >
+
+                </a>
+            </div>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>

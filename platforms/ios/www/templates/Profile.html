@@ -1,0 +1,249 @@
+<ion-view>
+    <ion-content has-bouncing="false" class="item-devider pro-grayBackColor " style="bottom:20px;top:44px;">
+		<div class="custom-header"
+                     style="font-size: 20px; margin-bottom: 40px; padding: 0px; padding-left: 15px; ">
+                    <h4 class="custom-header" style="margin-top: 0px;" >
+                        <b>My Profile</b>
+                    </h4>			
+		</div>			
+        <div>
+                <center>
+                    <div class="item-item-avatar" ng-if="photoFileName">
+                        <img ng-src="{{image}}" class="pro-img-circle" alt="Cinque Terre" width="50" height="50" />
+                    </div>
+                    <div class="item-item-avatar" ng-if="!photoFileName">
+                        <img ng-src="./img/Male.png" class="pro-img-circle" alt="Cinque Terre" width="50" height="50" />
+                    </div>
+                </center>
+            </div>
+            <div>
+                <center><h4>{{personalDetails.FullName}}</h4></center>
+            </div>
+			<center ng-if="displayDeptName == 1">{{designation}}</center>
+            <center ng-if="displayDeptName == 1">{{personalDetails.CompanyDepart}}</center>
+            <br>
+
+
+           <button class="button button-block button-light item-button-right pro-button-center" Style="text-align: left; margin-bottom:0%;width:100%;" ng-click="toggleGroup(personalDetails)" ng-class="{active: isGroupShown(personalDetails)}">
+                Personal Details
+                <span style="float:right;"><i class="icon-right" ng-class="isGroupShown(personalDetails) ? 'ion-chevron-down' : 'ion-chevron-right'"></i></span>
+            </button>
+
+            <div class="list card modal-payslip item-accordion pro-card-padding pro-cardradius" ng-show="isGroupShown(personalDetails)" >
+                <div class="pro-cust-card"  >
+
+                    <div class="form-group row">
+                        <label class="col-xs-4 col-sm-4">Company Name</label><span class="dividerClass">:</span>
+                        <div class="col-xs-6 col-sm-6">
+                            <span style="word-wrap: break-word">{{personalDetails.Company.companyName}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-xs-4 col-sm-4">Employee Code</label><span class="dividerClass">:</span>
+                        <div class="col-xs-6 col-sm-6">
+                            <span style="word-wrap: break-word">{{personalDetails.EmpCode}}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-xs-4 col-sm-4">Date of Birth</label><span class="dividerClass">:</span>
+                        <div class="col-xs-6 col-sm-6">
+                            <span style="word-wrap: break-word">{{personalDetails.DateOfBirth}}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label class="col-xs-4 col-sm-4">Passport Number</label><span class="dividerClass">:</span>
+                        <div class="col-xs-6 col-sm-6">
+                            <span style="word-wrap: break-word">{{personalDetails.PassportNumber}}</span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label class="col-xs-4 col-sm-4">Bank A/C Number</label><span class="dividerClass">:</span>
+                        <div class="col-xs-6 col-sm-6">
+                            <span style="word-wrap: break-word" ng-if="personalDetails.BankAcNo">{{personalDetails.BankAcNo}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+
+            <button class="button button-block button-light item-button-right pro-button-center" Style="text-align: left; margin-bottom:0%;width:100%;" ng-click="jobGroup(jobDetails)" ng-class="{active: isjobShown(jobDetails)}">
+                Job Details
+                <span style="float:right;"><i class="icon-right" ng-class="isjobShown(jobDetails) ? 'ion-chevron-down' : 'ion-chevron-right'"></i></span>
+            </button>
+
+            <div class="list card modal-payslip item-accordion pro-card-padding pro-cardradius" ng-show="isjobShown(jobDetails)" >
+                <div class="pro-cust-card" >
+                   
+
+                    <div class="form-group row" ng-if="displayDeptName == 1">
+                        <label class="col-xs-4 col-sm-4">Department</label><span class="dividerClass">:</span>
+                        <div class="col-xs-6 col-sm-6">
+                            <span style="word-wrap: break-word">{{personalDetails.CompanyDepart}}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row" >
+                        <label class="col-xs-4 col-sm-4">Office</label><span class="dividerClass">:</span>
+                        <div class="col-xs-6 col-sm-6">
+                            <span style="word-wrap: break-word">{{personalDetails.CompanyLocation}}</span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row" >
+                        <label class="col-xs-4 col-sm-4">Date of Joining</label><span class="dividerClass">:</span>
+                        <div class="col-xs-6 col-sm-6">
+                            <span style="word-wrap: break-word">{{dateOfJoining}}</span>>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row" >
+                        <label class="col-xs-4 col-sm-4">ART</label><span class="dividerClass">:</span>
+                        <div class="col-xs-6 col-sm-6">
+                            <span ng-if="!artName" style="word-wrap: break-word">ART not defined</span>
+                            <span ng-if="artName" style="word-wrap: break-word">{{artName}}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row" >
+                        <label class="col-xs-4 col-sm-4">FRT</label><span class="dividerClass">:</span>
+                        <div class="col-xs-6 col-sm-6">
+                            <span ng-if="!frtName" style="word-wrap: break-word">FRT not defined</span>
+                            <span ng-if="frtName" style="word-wrap: break-word">{{frtName}}</span>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+
+            <button class="button button-block button-light item-button-right pro-button-center" Style="text-align: left; margin-bottom:0%;width:100%;" ng-click="eduGroup(educationDetails)" ng-class="{active: iseduShown(educationDetails)}">
+                Educational Details
+                <span style="float:right;"><i class="icon-right" ng-class="iseduShown(educationDetails) ? 'ion-chevron-down' : 'ion-chevron-right'"></i></span>
+            </button>
+
+            <div class="list card modal-payslip item-accordion pro-card-padding pro-cardradius" ng-show="iseduShown(educationDetails)"  >
+                <div class="pro-cust-card" ng-hide="ShowNodataFlag">
+
+                    <div class="form-group row" >
+                        <label class="col-xs-4 col-sm-4">Degree</label><span class="dividerClass">:</span>
+                        <div class="col-xs-6 col-sm-6">
+                            <span style="word-wrap: break-word">{{personalDetails.QualiCourseType}}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row" >
+                        <label class="col-xs-4 col-sm-4">Specialization</label><span class="dividerClass">:</span>
+                        <div class="col-xs-6 col-sm-6">
+                            <span style="word-wrap: break-word">{{personalDetails.QualiSpecialization}}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row" >
+                        <label class="col-xs-4 col-sm-4">College Name</label><span class="dividerClass">:</span>
+                        <div class="col-xs-6 col-sm-6">
+                            <span style="word-wrap: break-word">{{personalDetails.QualiInstitute}}</span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row" >
+                        <label class="col-xs-4 col-sm-4">University</label><span class="dividerClass">:</span>
+                        <div class="col-xs-6 col-sm-6">
+                            <span style="word-wrap: break-word">{{personalDetails.QualiUniversity}}</span>
+                        </div>
+                    </div>
+                   
+                    <div class="form-group row" >
+                        <label class="col-xs-4 col-sm-4">Grade</label><span class="dividerClass">:</span>
+                        <div class="col-xs-6 col-sm-6">
+                            <span style="word-wrap: break-word">{{personalDetails.QualiGrade}}</span>
+                        </div>
+                    </div>
+                   
+                    <div class="form-group row" >
+                        <label class="col-xs-4 col-sm-4">Percent</label><span class="dividerClass">:</span>
+                        <div class="col-xs-6 col-sm-6">
+                            <span style="word-wrap: break-word">{{personalDetails.QualiQualificationPercent}}</span>
+                       
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                <div ng-show="ShowNodataFlag">
+                    <center> <b>No Data Available </b></center>
+                </div>
+            </div> 
+
+            <button class="button button-block button-light item-button-right pro-button-center" Style="text-align: left; margin-bottom:0%;width:100%;" ng-click="changepassgrp(changepass)" ng-class="{active: isChangePassShown(changepass)}">
+                Change Password
+                <span style="float:right;"><i class="icon-right" ng-class="isChangePassShown(changepass) ? 'ion-chevron-down' : 'ion-chevron-right'"></i></span>
+            </button>
+
+            <div class="list card modal-payslip item-accordion pro-card-padding pro-cardradius" ng-show="isChangePassShown(changepass)" >
+             <center>
+                 <form name="loginForm" style="background: rgba(255,255,255,0.7)">
+               
+                    <div class="list list-inset" style="margin-top: 5%;background-color:white;border: 1px solid #b3b3b3;">
+				
+                    
+                    <div class="form-group row" style=" margin: 20px 0 !important;">
+                        <label class="col-xs-8 col-sm-8">
+                            <input type="password" name="txtoldp" id="txtoldp" ng-model="passwordObj.oldp"  placeholder='Old Password'>
+                        </label>
+                        <div class="col-xs-4 col-sm-4">
+                            <a  href="" ng-click="opInput();" >
+                                <img  ng-if="eyeClosedOP==true" style="margin-right:-16px;width: 30px;   height: 30px;  " src="./img/eyecross.png" />
+                                <img  ng-if="eyeClosedOP==false" style="margin-right:-16px;width: 30px;   height: 30px;  " src="./img/eye.png" />
+                            </a>
+                        </div>
+                    </div>
+
+                    </div>
+                    
+					<div class="list list-inset" style="margin-top: 5%;background-color:white;border: 1px solid #b3b3b3;">
+						
+                    <div class="form-group row" style=" margin: 20px 0 !important;">
+                        <label class="col-xs-8 col-sm-8">
+                            <input type="password" name="txtnewp" id="txtnewp" ng-model="passwordObj.newp"  placeholder='New Password'>
+                        </label>
+                        <div class="col-xs-4 col-sm-4">
+                            <a  href="" ng-click="npInput();" >
+                                <img  ng-if="eyeClosedNP==true" style="margin-right:-16px;width: 30px;   height: 30px;  " src="./img/eyecross.png" />
+                                <img  ng-if="eyeClosedNP==false" style="margin-right:-16px;width: 30px;   height: 30px;  " src="./img/eye.png" />
+                            </a>
+                        </div>
+                    </div>
+                    </div>
+					
+					<div class="list list-inset" style="margin-top: 5%;background-color:white;border: 1px solid #b3b3b3;">
+					
+                    <div class="form-group row" style=" margin: 20px 0 !important;">
+                        <label class="col-xs-8 col-sm-8">
+                            <input type="password" name="txtconfp" id="txtconfp" ng-model="passwordObj.confp"  placeholder='Confirm Password'>
+                        </label>
+                        <div class="col-xs-4 col-sm-4">
+                            <a  href="" ng-click="cpInput();" >
+                                <img  ng-if="eyeClosedCP==true" style="margin-right:-16px;width: 30px;   height: 30px;  " src="./img/eyecross.png" />
+                                <img  ng-if="eyeClosedCP==false" style="margin-right:-16px;width: 30px;   height: 30px;  " src="./img/eye.png" />
+                            </a>
+                        </div>
+                    </div>
+                    </div>
+
+                    
+                    <div class="loginButton" style="margin-top: 0%;margin-left: 0%;
+                         margin-right: 0%; ">
+                        <button class="button button-block button-positive" style="    width: 90% !important;
+                        color: #fff;" ng-click="changePasswordNow()">
+                            Change Password
+                        </button>
+                    </div>
+            </form></center>
+            </div>  
+			
+        </div>
+    </ion-content>
+</ion-view>

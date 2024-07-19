@@ -1,0 +1,357 @@
+<style>
+    .custom-card1
+    {
+        border-top: 1px solid lightgrey;
+    }
+    .item1
+    {
+        border-color: grey;
+        color: #940909;
+        position: relative;
+        z-index: 2;
+        display: block;
+        padding: 16px;
+        border-style: solid;
+        font-size: 16px;
+    }
+    .popover{
+        height: auto;
+        width: auto;
+    }
+    .popstyle {
+        border: 0px;
+        width: 10%;
+        height: 1.5em;
+    }
+    .tabs-top > .tabs, .tabs.tabs-top{
+        top: 15%;
+    }
+    .tab-header-active {
+        border-bottom: 3px solid #336699;
+    }
+
+    .tab-header-inactive {
+        border-bottom: 0px;
+    }
+
+    .item-avatar-custom {
+        background-color: #f5f5f5;
+        min-height: 140px;
+    }
+
+    .cust-avatar {
+        min-width: 80px;
+        min-height: 80px; 
+        margin-top: 10px; 
+        margin-left: 9px;
+    }
+
+    .cust-avatar-font {
+        position: absolute; 
+        padding-left: 15%; 
+        top:48px; 
+        color: black;
+    }
+    .cust-left{
+        margin-left: 9px;
+    }
+
+</style>
+<ion-view>
+    <ion-content has-bouncing="false"  style="overflow-y: auto;background-color:#f5f5f5;">
+        <br><br>
+        <div class="item item-avatar item-avatar-custom"  ng-if="attendanceDetail.photoFileName">
+            <img ng-src="{{attendanceDetail.image1}}" class="cust-avatar">
+            <span class="cust-avatar-font">
+                <span style="white-space: pre-wrap !important;word-wrap: break-word;">{{attendanceDetail.name}}</span>
+                <p ng-if="!obj.department" style="white-space: pre-wrap !important;word-wrap: break-word;">{{attendanceDetail.designation}}</p>
+                <p ng-if="obj.department" style="white-space: pre-wrap !important;word-wrap: break-word;">{{attendanceDetail.designation}} | {{attendanceDetail.department}}</p>
+            </span>
+            <span ng-show="showDashboard != 1"  style="float:right; padding-top: 85px;">
+                <div style="padding-right:15%;padding-left:15%;font-size: 35px;" ng-click="listView()">
+                    <i ng-if="calenderHideandShow == false"  class="ion-ios-list-outline" ></i>
+                    <i ng-if="calenderHideandShow == true" class="icon ion-grid"></i></div>
+            </span>
+        </div>
+        <div class="item item-avatar item-avatar-custom"  ng-if="!attendanceDetail.photoFileName">
+            <img ng-src="./img/Male.png" class="cust-avatar">
+            <span class="cust-avatar-font">
+                <span style="word-wrap: break-word;">{{attendanceDetail.name}}</span>
+                <p style="color: gray;word-wrap: break-word;">{{attendanceDetail.designation}} | {{attendanceDetail.department}}</p>
+            </span>
+            <span ng-show="showDashboard != 1"  style="float:right;padding-top: 85px;">
+                <div style="padding-right:15%;padding-left:15%;font-size: 35px;" ng-click="listView()">
+                    <i ng-if="calenderHideandShow == false" class="ion-ios-list-outline" ></i> 
+                    <i ng-if="calenderHideandShow == true" class="icon ion-grid"></i></div>
+            </span>
+        </div>
+
+        <div class="item row homeDashboardPadding" ng-if="!HomeDashBoard" style="text-align:center;background-color:white; width: inherit">
+            <div class="col homeDashboardPadding" ng-class="tab1click">
+                <button  ng-click="tabsOfDashboard()" class="button button-stable button-clear" style="color:grey;">
+                    Dashboard
+                </button>
+            </div>
+            <div class="col homeDashboardPadding"  ng-class="tab2click">
+                <button  ng-click="tabsOfSelfService()" class="button button-stable button-clear" style="color:grey;">
+                    Self Services
+                </button>
+            </div>
+        </div>
+        <!--        <div class="tabs-striped tabs-top tabs-color-positive">
+                    <div class="tabs" ng-if="!HomeDashBoard" >
+                        <a id="dashboard" class="tab-item active" ng-click="tabsOfDashboard()">
+                            <b>Dashboard</b>
+                        </a>
+                        <a id="selfservice" class="tab-item" ng-click="tabsOfSelfService()">
+                            <b>Self Services</b>
+                        </a>
+                    </div>
+                </div><br><br>-->
+        <!--needed for further use-->
+        <!--        <div class="item row homeDashboardPadding" ng-if="HomeDashBoard" style="text-align:center;background-color:white; width: inherit">
+                    <div class="col col-100" >
+                        <button class="button button-stable button-clear" style="color:grey;">
+                            Self Services
+                        </button>
+                    </div>
+                </div>-->
+        <div ng-show="showDashboard == 1">
+            <label class="item item-input">
+                <span class="input-label"><b>Date: </b></span>
+                <input id="toDate" type="text" ng-click="setFromDate()"  ng-readonly="true" ng-model="resultObj.fromDate" required /><i class="ion-calendar">&emsp;&emsp;</i>
+            </label>
+        </div>
+        <div ng-show=" showDashboard == 1" class="item item-divider">
+            <center> <h2 ng-show="donatChartNoData == true" style="color:red;"> Fetching Data......... </h2>
+                <div class="card" id="donutchart" style="margin:auto;border-radius:5px;   box-shadow: none;"></div>
+                <p>Total no. of Employees : {{totalCountOfReporty}}</p>
+            </center>
+            <button class="button button-block button-positive"  ng-click="getReporteeOnload()">  Team Calendar </button>
+            <div>
+                <button class="button button-block button-light item-button-right" Style="text-align: left; margin-bottom:0%;"ng-click="toggleGroup(group)" ng-class="{
+                            active: isGroupShown(group)
+                        }">
+                    <b>Pending for Approval &nbsp;&nbsp; ({{totalInProcess}}) </b>
+                    <span style="float: right"><i class="icon-right" ng-class="isGroupShown(group) ? 'ion-chevron-down' : 'ion - chevron - right'"></i></span>
+                </button>
+                <div class="list card item-accordion"  ng-show="isGroupShown(group)" style="margin:auto;border-radius:5px">
+                    <div ng-hide="IsRegularizationAccessible == 'false'" class="item" ng-click="myApprovalRegularization()">
+                        <p>Attendance Regularization </p><span style="top: 16px;" class="badge badge-stable">{{approvalAttendanceApplication}}</span>
+                    </div>
+                    <div ng-hide="IsLeaveAccessible == 'false'" class="item" ng-click="myApprovalLeave()">
+                        <p>Leave Application </p><span style="top: 16px;" class="badge badge-stable">{{approvalLeave}}</span>
+                    </div>
+                    <div ng-hide="IsODAccessible == 'false'" class="item" ng-click="myApprovalOD()">
+                        <p>OD Application </p><span style="top: 16px;" class="badge badge-stable">{{approvalOdApplication}}</span>
+                    </div>
+                    <div ng-hide="IsShiftChangeAccessible == 'false'" class="item" ng-click="redirectmyApprovalShift()">
+                        <p>Shift Change Application </p><span style="top: 16px;" class="badge badge-stable">{{shiftChangeInProcess}}</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button id="getReporteList" class="button button-block button-light item-button-right" Style="text-align: left; margin-bottom:0%;" ng-click="toggleGroupMyRequision(groupMyRequision)"  ng-class="{
+                            active: isGroupShown(groupMyRequision)
+                        }">
+                    <b> My Requisitions &nbsp;&nbsp; ({{totalApproval}})</b>         
+                    <span style="float: right"><i class="icon-right" ng-class="isGroupShown(groupMyRequision) ? 'ion-chevron-down' : 'ion - chevron - right'"></i></span>
+                </button>
+                <div class="list card item-accordion"  ng-show="isMyRequision(groupMyRequision)" style="margin:auto;border-radius:5px">
+                    <div ng-show="IsRegularizationAccessible == 'true'" class="item" ng-click="myReqRegularization()">
+                        <p>Attendance Regularization</p><span class="badge badge-stable" style="top: 16px;">{{attendanceInprocessCount}}</span>
+                    </div>
+                    <div ng-show="IsLeaveAccessible == 'true'" class="item" ng-click="myReqLeave()">
+                        <p>Leave Application </p><span class="badge badge-stable" style="top: 16px;">{{leaveInprocessCount}}</span>
+                    </div>
+                    <div ng-show="IsODAccessible == 'true'" class="item" ng-click="myReqOD()">
+                        <p>OD Application </p><span style="top: 16px;" class="badge badge-stable">{{odprocessInprocess}}</span>
+                    </div>
+                    <div ng-show="IsShiftChangeAccessible == 'true'" class="item" ng-click="redirectToShiftReq()">
+                        <p>Shift Change Application </p><span style="top: 16px;" class="badge badge-stable">{{shiftChangeInProcessApproval}}</span>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+        </div>
+        <div ng-show="showDashboard != 1">	
+            <div  class="item gray_background" ng-hide="calenderHideandShow" style="padding-bottom:0%">
+                <div ng-if="!setPartialDirective">
+                    <my-calendar display="dateValue" dateformat="'dd-MMM-yyyy'" get-colours="getLeaveColours"  set-fn="setDirectiveFn(theDirFn)"></my-calendar>
+                </div>
+            </div>
+            <div  class="item" ng-show="calenderHideandShow" style="height:250px;overflow-x: hidden;overflow-y: auto;padding: 0px;background-color: whitesmoke">
+                <ion-scroll scrollY="true" style="display:inline; top:0; right:0; bottom:0; left:0; white-space: nowrap;">
+
+                    <div ng-if="setPartialDirective">
+                        <my-cal display="dateValue" dateformat="'dd-MMM-yyyy'" get-colours="getLeaveColours"  set-fn="setDirectiveFn(theDirFn)"></my-cal>	
+                    </div>
+
+                    <div  class="custom-card1" ng-repeat="(key, value) in listOfTitle">
+                        <div  class="item1">
+                            <span ng-if="value">
+                                <div class="row">
+                                    <div class="col col-25">
+                                        <h3 style="font-size: 25px; color: grey;">{{key}}</h3>
+                                    </div>
+                                    <div class="col" style=" color: grey; ">
+                                        {{value}}
+                                    </div>
+                                </div>
+                            </span>
+                            <span ng-if="!value">
+                                <div class="row">
+                                    <div class="col col-25">
+                                        <h3 style=" font-size: 25px; color: grey; ">{{key}}</h3>
+                                    </div>
+                                    <div class="col" style=" color: grey; ">
+                                    </div>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </ion-scroll>
+            </div>
+            <div  class="list card custom-card" ng-hide="calenderHideandShow">
+
+
+                <div class="white_background font_size">
+                    <div class="row" style="border:0%; padding:0%;margin:0%; padding-left:5%">
+                        <div class="col">
+                            <i class="icon ion-record list_bullet_1" style="font-size:medium; vertical-align: middle"></i><span class="list_element" style="font-size:small; vertical-align: middle">&nbsp;{{attendenceManagement[0]}}</span>
+                        </div>
+                        <div class="col" style="font-size:small">
+                            <i class="icon ion-record list_bullet_2" style="font-size:medium; vertical-align: middle"></i><span class="list_element" style="font-size:small; vertical-align: middle">&nbsp;{{attendenceManagement[1]}}</span>
+                        </div>
+                        <div class="col" style="font-size:small">
+                            <i class="icon ion-record list_bullet_3" style="font-size:medium; vertical-align: middle"></i><span class="list_element" style="font-size:small; vertical-align: middle">&nbsp;{{attendenceManagement[2]}}</span>
+                        </div>
+                    </div>	
+                    <div class="row" style="border:0%; padding:0%;margin:0%; padding-left:5%">
+                        <div class="col">
+                            <i class="icon ion-record list_bullet_4" style="font-size:medium; vertical-align: middle"></i><span class="list_element" style="font-size:small; vertical-align: middle">&nbsp;{{attendenceManagement[3]}}</span>
+                        </div>
+                        <div class="col" style="font-size:small">
+                            <i class="icon ion-record list_bullet_5" style="font-size:medium; vertical-align: middle"></i><span class="list_element" style="font-size:small; vertical-align: middle">&nbsp;{{attendenceManagement[4]}}</span>
+                        </div>
+                        <div class="col" style="font-size:small">
+                            <i class="icon ion-record list_bullet_6" style="font-size:medium; vertical-align: middle"></i><span class="list_element" style="font-size:small; vertical-align: middle">&nbsp;{{attendenceManagement[5]}}</span> 
+                        </div>	
+                    </div>
+                </div>
+                <div  class="item custom-item item-text-wrap">
+                    <h3>Day {{day}}:{{description}}</h3>
+                </div>
+            </div>
+            <div class="row gray_background" style="margin:0%">
+                <div class="col">
+                    <div class="card" style="border-style: solid; border-color: #BADBF9; border-width: thin; margin-top:auto;margin-right: auto;   margin-left: auto; margin-bottom:auto; border-radius: 10px">
+                        <div class="card-block">
+                            <h2 class="card-title " style="text-align:center; padding-top:10%; margin-bottom:0%; font-size: x-large; font-weight:bold">{{attendanceTypeCount["WorkingDay"]}}</h2>
+                            <p class="card-text" style="text-align:center">{{timeFormat}}</p>
+                            <h4 class="card-title" style="text-align:center; margin-bottom:5%">{{attendenceType[0]}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card" style="border-style: solid; border-color: #BADBF9; border-width: thin; margin-top:auto;margin-right: auto;   margin-left: auto; margin-bottom:auto; border-radius: 10px">
+                        <div class="card-block">
+                            <h2 class="card-title" style="text-align:center; padding-top:10%; margin-bottom:0%; font-size: x-large; font-weight:bold">{{attendanceTypeCount["PresentDay"]}}</h2>
+                            <p class="card-text" style="text-align:center">{{timeFormat}}</p>
+                            <h4 class="card-title" style="text-align:center; margin-bottom:5%">{{attendenceType[1]}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card" style="border-style: solid; border-color: #BADBF9; border-width: thin; margin-top:auto;margin-right: auto;   margin-left: auto; margin-bottom:auto; border-radius: 10px">
+                        <div class="card-block">
+                            <h2 class="card-title" style="text-align:center; padding-top:10%; margin-bottom:0%; font-size: x-large; font-weight:bold">{{attendanceTypeCount["HoliDay"]}}</h2>
+                            <p class="card-text" style="text-align:center">{{timeFormat}}</p>
+                            <h4 class="card-title" style="text-align:center; margin-bottom:5%">{{attendenceType[2]}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row gray_background" style="margin:0%">
+                <div class="col col-12">
+                    <div class="card" style="border-style: solid; border-color: #BADBF9; border-width: thin; margin-top:auto; margin-right: auto;   margin-left: auto; margin-bottom:auto; border-radius: 10px">
+                        <div class="card-block">
+                            <h2 class="card-title " style="text-align:center; padding-top:10%; margin-bottom:0%; font-size: x-large; font-weight:bold">{{attendanceTypeCount["WeeklyOff"]}}</h2>
+                            <p class="card-text" style="text-align:center">{{timeFormat}}</p>
+                            <h4 class="card-title" style="text-align:center; margin-bottom:5%">{{attendenceType[3]}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-12">
+                    <div class="card" style="border-style: solid; border-color: #BADBF9; border-width: thin; margin-top:auto;margin-right: auto;   margin-left: auto; margin-bottom:auto; border-radius: 10px">
+                        <div class="card-block">
+                            <h2 class="card-title" style="text-align:center; padding-top:10%; margin-bottom:0%; font-size: x-large; font-weight:bold">{{attendanceTypeCount["Leave"]}}</h2>
+                            <p class="card-text" style="text-align:center">{{timeFormat}}</p>
+                            <h4 class="card-title" style="text-align:center; margin-bottom:5%">{{attendenceType[4]}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-12">
+                    <div class="card" style="border-style: solid; border-color: #BADBF9; border-width: thin;  margin-right: auto;   margin-left: auto;margin-top:auto; margin-bottom:auto; border-radius: 10px">
+                        <div class="card-block">
+                            <h2 class="card-title" style="text-align:center; padding-top:10%; margin-bottom:0%; font-size: x-large; font-weight:bold">{{attendanceTypeCount["AbsentDay"]}}</h2>
+                            <p class="card-text" style="text-align:center">{{timeFormat}}</p>
+                            <h4 class="card-title" style="text-align:center; margin-bottom:5%">{{attendenceType[5]}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+            </div>
+            <div class="item button-block">
+                <center>
+                    <div class="button-bar">
+                        <button class="button button-positive" ng-click="openCheckIn()" >&emsp;Clock In &emsp;</button>&emsp;
+                        <button class="button button-positive" ng-show="IsLeaveAccessible == 'true'" ng-click="openRequisitions()">&emsp;Leave&emsp;</button>
+                    </div>
+                    <br>
+                </center>
+            </div> 
+        </div>
+        <script id="homePopup.html"  type="text/ng-template">
+            <ion-popover-view class="popover">
+            <div class="list" style="margin-bottom: 0px;">
+            <!--<a href="#/attendanceRegularisation" ng-show="showAttenRegular"  ng-click="openAttendanceRegularization('directivecall')">-->
+            <a class="item" style="padding: 11px;" ng-show="showAttenRegular" href="#/attendanceRegularisation">
+            <h4>Regularize Attendance</h4>
+            </a>
+            <a class="item" style="padding: 11px;" ng-show="showLeave" href="#/leaveApplication"  target="_blank">
+            <h4>Apply For Leave</h4>
+            </a>
+            <a class="item" style="padding: 11px;" ng-show="showOD" href="#/odApplication" target="_blank">
+            <h4>Apply For OD</h4>
+            </a>
+            </div>
+            </ion-popover-view>
+        </script>
+<!--        <script id="my-reporteelist.html" type="text/ng-template">
+            <ion-modal-view >
+            <ion-header-bar>
+            <h1 ><button class="button ion-arrow-left-c" ng-click="closeModal()" style="font-size: 40px;"></button>
+            </h1>
+            </ion-header-bar>
+            <ion-content has-bouncing="false" >
+            <h5><b>Reportee Details</b></h5>
+            <div class="list card custom-card" ng-repeat="repobj in ReporteeList">
+            <div ng-click="viewEmployeeInfo(repobj)" class="item custom-item item-text-wrap">
+            <p>Name {{repobj.empName}}</p>
+            <div class="item custom-item item-avatar">
+            <img ng-if="repobj.profilePhoto" ng-src="{{repobj.profilePhoto}}{{repobj.empId}}">
+            <img ng-if="!repobj.profilePhoto" ng-src="./img/Male.png">
+            <h2>{{repobj.empDesig}}</h2>
+            <h2>{{repobj.empCode}}</h2>
+
+            </div>
+            </div>
+            </div>
+            </ion-content>
+            </ion-modal-view>
+        </script>-->
+    </ion-content>
+</ion-view>

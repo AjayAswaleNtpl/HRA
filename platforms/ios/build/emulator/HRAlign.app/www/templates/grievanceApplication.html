@@ -1,0 +1,140 @@
+<style>
+    .col-xs-2 {
+    padding: 0 !important;
+}
+.row {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+label {
+    font-weight: normal !important;
+}
+ .col-xs-4, .col-sm-4 {
+    padding: 0 4px !important;
+}
+</style>
+
+<ion-view>
+    
+    </ion-nav-bar> -->
+    <div class="bar bar-footer hide-on-keyboard-open" style="background-color:#000; background-size: 100% 0px;">
+        <div class="title" style="height: 20px;">
+            <h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px; margin-bottom: 5px;">Powered by HR Align</h6>
+        </div>
+    </div>
+    <ion-content has-bouncing="false" class="item-divider grayBackColor" style="overflow-y: auto;">
+        <div class="custom-header" style="padding-top: 0px;padding-bottom: 0px;">
+            <h4 class="subHeaderClass" style="margin: 0px;"> <span class="backIcon" ng-click="redirectOnBack()">
+              <i class="icon ion-ios-arrow-back" ></i></span>
+               <b style="vertical-align: super;">Grievance/Suggestion Application</b></h4>
+           </div>
+        <!-- <div class="custom-header" style="padding-top: 0px;padding-bottom: 0px;">
+            <h4 class="subHeaderClass" style="margin: 0px;"> <span ng-click="redirectOnBack()" class="backIcon">
+              <i class="icon ion-ios-arrow-back"></i></span> <b style="vertical-align: super;">Leave Application</b></h4>
+        </div> -->
+        <form name="credentialsForm">
+
+            <div class="cardList">
+                <div class="form-group row">
+                    <label  class="col-sm-4 col-xs-4 col-form-label">Type  </label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8">
+                        <select id="applicationType" class="form-control item-select select"
+                        ng-model="selectedValues.applType" ng-change="doChangeCategory();">
+                        <option value="GRIEVANCE" selected>GRIEVANCE</option>
+                        <option value="SUGGESTION" >SUGGESTION</option>
+                        
+                    </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label  class="col-sm-4 col-xs-4 col-form-label">Category  </label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8">
+                        <select id="suggestionCategoryId" class="form-control item-select select"
+                        ng-change="getPanelMembers();"
+                        ng-model="selectedValues.selectedSuggestion">
+                    </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group row" style="visibility: hidden;">
+                    <label  class="col-sm-4 col-xs-4 col-form-label">Category  </label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8">
+                        <select id="panelMemberDD" class="form-control item-select select"
+                        ng-model="selectedValues.selectedpPm">
+                    </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group row" >
+                    <label  class="col-sm-4 col-xs-4 col-form-label">Grievance / Suggestion</label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8">
+                    <textarea id="remarks" 
+                     rows="4" ng-model="grid2.remarks" 
+                        class="form-control"></textarea>
+                    </div >
+                  </div>
+
+                  <div class="form-group row" >
+                    <label  class="col-sm-4 col-xs-4 col-form-label">is Confidential ?</label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8" id="group">
+                        <input id="yes" type="radio"   ng-click="toggleYesNo('Y')">
+                        <span ng-click="toggleYesNo($index,'Y')">Yes &nbsp;[Will go to Only HR Person]<br></span>
+                        <input id="no" type="radio" checked="true" ng-click="toggleYesNo('N')" >
+                        <span ng-click="toggleYesNo($index,'N')" >No&nbsp; [Will go to All Panel Member]</span>
+                    </div >
+                  </div>
+
+                  <div class="form-group row">
+                    <label  class="col-sm-4 col-xs-4 col-form-label">Panel Members </label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8">
+                        <p id="panelMemberNames" style="align-content: center;"> </p>
+                    </div>
+                  </div>    
+               
+
+             
+                <div>
+                    <center>
+                        <span class="error" style="color:red" ng-show="credentialsForm.phone.$error.maxlength || credentialsForm.phone.$error.minlength">Please enter valid phone number</span>
+                    </center>
+                </div>
+            
+               
+                    <br>
+					<!-- attachment -->
+					<div class="item">
+						<label >
+							<div class="row" >Attachment:
+							</div>
+							<div class="row" >
+								<button col="col-80" Style="text-align: left; margin-bottom:0%;background-color: white;  border: none;color:blue;" 
+								onclick="document.getElementById('inputFileUpload').click()">Select from device</button>
+								<input  type="file" name="inputFileUpload" id="inputFileUpload"  
+								style="width:1px;height:1px;"
+                                ng-model="somemodel" 
+                                onchange="angular.element(this).scope().SelectedFile(event)" />
+								<span id="fileNameDisplay" style="margin-left:-40%;margin-top:5%;"><br>{{selectedFileNameFromDevice}}</span></div>
+							<div class="row" >
+								
+								<button col="col-80" id="btncamera"  Style="text-align: left; margin-bottom:0%;background-color: white;  border: none;color:blue;"  
+								on-tap="cameraTakePicture('camera');">Take Photo</button>
+							</div>
+							<img class="col-30" id="showImg" 
+								style="width:50px;height:50px;display:none;margin-left:30%;margin-top: -10%;"
+								src="" on-tap="removeAttachment()">
+							</img>
+                    </label>
+                    <div class="text-center">
+                        <button type="button"  
+                          onclick="angular.element(this).scope().goApprove(event)" class="btn btn-primary mr-10">
+                              <i class="fa fa-paper-plane mr-10" aria-hidden="true"></i>Submit
+                          </button>
+                      </div>                
+                </div>  
+                </div>
+                
+            
+        </form>
+    </ion-content>
+</ion-view>

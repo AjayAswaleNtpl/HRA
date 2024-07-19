@@ -1,0 +1,12 @@
+{
+    "declarations": {},
+    "sources": {},
+    "libraries": {
+        "CocoaLumberjack": {
+            "name": "CocoaLumberjack",
+            "type": "podspec",
+            "spec": "~> 3.7.2",
+            "count": 1
+        }
+    }
+}

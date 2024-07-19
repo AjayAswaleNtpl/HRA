@@ -1,0 +1,141 @@
+<style>
+.modal-wrapper {
+	position: absolute;
+	top: 25%;
+	display: block;
+	width: 90%;
+	min-height: 50%;
+	padding: 5%;
+}
+
+.item-avatar {
+	padding-left: 10%;
+}
+
+.modal-backdrop-bg {
+	background-color: rgba(255, 255, 255, 0.85);
+}
+
+.modal {
+	border-top-right-radius: 1em;
+	border-bottom-right-radius: 1em;
+	border-top-left-radius: 1em;
+	border-bottom-left-radius: 1em;
+}
+
+.modal-ion-content {
+	font-size: 0.85em;
+}
+
+.custom-item {
+	border: none;
+	/*padding: 5px;*/
+}
+
+.custom-row {
+	padding: 0px;
+}
+
+.cust-col-50 {
+	text-align: center;
+	color: #007ec1;
+}
+
+#profileImage {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background: #512DA8;
+	font-size: 23px;
+	color: #fff;
+	text-align: center;
+	line-height: 50px;
+	margin: 0px 0;
+	font-family: monospace;
+}
+
+.cust-list {
+	margin-bottom: 0px;
+}
+
+.mailContent {
+	font-weight: normal;
+	color: darkgray;
+}
+</style>
+
+<ion-view> <ion-content has-bouncing="false"
+	style="top:44px;">
+<div class="custom-header"
+	style="font-size: 20px; margin-bottom: 0px; padding: 0px; padding-left: 15px; height: auto; background-color: transparent;">
+	<h4>
+		<b>Inbox</b>
+	</h4>
+</div>
+<div class="list" style="margin-bottom: 0px">
+	<label class="item item-input"> <i
+		class="icon ion-search placeholder-icon"></i> <input type="text"
+		placeholder="Search" ng-model="searchObj.searchQuery">
+	</label>
+</div>
+
+<div class="list cust-list"
+	ng-repeat="inbox in inboxList| filter: searchObj.searchQuery| limitTo:pageSize">
+	<div ng-click="viewEmailContent(inbox)"
+		class="item custom-item item-text-wrap">
+		<div class="row" ng-if="inbox.status == 'Y'">
+			<div class="col col-20">
+				<div id="profileImage" ng-style="{'background': inbox.iconColor}">{{inbox.initial}}</div>
+			</div>
+			<div class="col col-80">
+				<h2>{{inbox.senderEmpFullName}}</h2>
+				<h3>
+					<div style="font-size: 0.9em;"
+						ng-class="{mailContent: inbox.senderEmpFullName}">{{inbox.subject}}</div>
+				</h3>
+			</div>
+		</div>
+		<div class="row" ng-if="inbox.status == 'N'">
+			<div class="col col-20">
+				<div id="profileImage" ng-style="{'background': inbox.iconColor}">{{inbox.initial}}</div>
+			</div>
+			<div class="col col-80">
+				<h2 style="font-weight: bold;">{{inbox.senderEmpFullName}}</h2>
+				<h3 style="font-size: 0.78em; font-weight: bold;">{{inbox.subject}}</h3>
+			</div>
+		</div>
+	</div>
+</div>
+<center>
+	<a ng-hide="pageSize > inboxList.length || searchObj.searchQuery" ng-show="hidebutton1 == 1"
+		href="" class="col" ng-click="loadNextPage()"
+		style="padding-bottom: 4%; font-size: 17px;">Show More</a>
+</center>
+<br>
+<div ng-show="hidebutton == 1"
+	ng-hide="hidebutton1 == 1 || hidebutton1 == 0" class="cust-card"
+	ng-show="msg">
+	<center style="font-size: 18px;">
+		<b>No Data Available </b>
+	</center>
+</div>
+<br>
+<script id="my-modal.html" type="text/ng-template">
+            <ion-modal-view class="modal-payslip">
+            <ion-content has-bouncing="false" class="modal-ion-content">
+            <div class="item custom-item item-avatar">
+            <div class="item custom-item item-text-wrap">
+            <div class="item custom-item item-avatar" >
+            <img ng-if="profilePhoto" style="position: fixed; top: 51px;" ng-src="{{profilePhoto}}">
+            <img ng-if="!profilePhoto" style="position: fixed; top: 51px;" ng-src="{{gender}}">
+            <div ng-if="!senderFullName" style ="word-wrap: break-word;"><h2><b>Name:</b> {{modal1.senderEmpFullName}}</h2></div>
+            <div ng-if="senderFullName" style ="word-wrap: break-word;"><h2><b>Name:</b> {{senderFullName}}</h2></div>
+            <div style ="word-wrap: break-word;" ><h2><b>Date: </b>{{createDate | date : "dd-MMM-yyyy"}}</h2></div>
+            <div style ="word-wrap: break-word;"><h2><b>Subject: </b>{{modal1.subject}}</h2></div>
+            </div>
+            <p><div id="purpose"> </div></p>
+            </div>
+            </div>
+            </ion-content>
+            </ion-modal-view>
+        </script> </ion-content> </ion-view>

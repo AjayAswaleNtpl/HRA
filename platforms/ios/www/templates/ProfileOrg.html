@@ -1,0 +1,212 @@
+<ion-view>
+    <ion-content has-bouncing="false" class="item-devider pro-grayBackColor " style="bottom:20px;top:44px;">
+        <div > 
+            <div class="custom-header" style="font-size: 20px;margin-bottom: 0px;padding: 0px;padding-left: 15px;height: auto;overflow-y: auto;">
+                <h4><b>My Profile</b></h4>
+            </div>
+            <div>
+                <center>
+                    <div class="item-item-avatar" ng-if="photoFileName">
+                        <img ng-src="{{image}}" class="pro-img-circle" alt="Cinque Terre" width="50" height="50" />
+                    </div>
+                    <div class="item-item-avatar" ng-if="!photoFileName">
+                        <img ng-src="./img/Male.png" class="pro-img-circle" alt="Cinque Terre" width="50" height="50" />
+                    </div>
+                </center>
+            </div>
+
+            <div>
+                <center><h4>{{personalDetails.FullName}}</h4></center>
+            </div>
+			<center ng-if="displayDeptName == 1">{{designation}}</center>
+            <center ng-if="displayDeptName == 1">{{personalDetails.CompanyDepart}}</center>
+            <br>
+
+
+            <button class="button button-block button-light item-button-right pro-button-center" Style="text-align: left; margin-bottom:0%;width:100%;" ng-click="toggleGroup(personalDetails)" ng-class="{active: isGroupShown(personalDetails)}">
+                Personal Details
+                <span style="float:right;"><i class="icon-right" ng-class="isGroupShown(personalDetails) ? 'ion-chevron-down' : 'ion-chevron-right'"></i></span>
+            </button>
+
+            <div class="list card modal-payslip item-accordion pro-card-padding pro-cardradius" ng-show="isGroupShown(personalDetails)" >
+                <div class=" grayBackColor pro-cust-card" style="padding:0px" >
+
+                    <div class="row">
+                        <div class="col col-50">
+                            <b>Company Name : </b>
+                        </div>
+                        <div class="col col-50">
+                            <span style="word-wrap: break-word">{{personalDetails.Company.companyName}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-50">
+                            <b>Employee Code: </b>
+                        </div>    
+                        <div class="col col-50">
+                            <span style="word-wrap: break-word">{{personalDetails.EmpCode}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-50">
+                            <b>Date of birth: </b>
+                        </div> 
+                        <div class="col col-50">
+                            <span style="word-wrap: break-word">{{personalDetails.DateOfBirth}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-50">
+                            <b>Passport Number: </b>
+                        </div>
+                        <div class="col col-50">
+                            <span style="word-wrap: break-word">{{personalDetails.PassportNumber}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-50">
+                            <b>Bank A/C Number: </b>
+                        </div>
+                        <div class="col col-50">
+                            <span style="word-wrap: break-word" ng-if="personalDetails.BankAcNo">{{personalDetails.BankAcNo}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+
+            <button class="button button-block button-light item-button-right pro-button-center" Style="text-align: left; margin-bottom:0%;width:100%;" ng-click="jobGroup(jobDetails)" ng-class="{active: isjobShown(jobDetails)}">
+                Job Details
+                <span style="float:right;"><i class="icon-right" ng-class="isjobShown(jobDetails) ? 'ion-chevron-down' : 'ion-chevron-right'"></i></span>
+            </button>
+
+            <div class="list card modal-payslip item-accordion pro-card-padding pro-cardradius" ng-show="isjobShown(jobDetails)" >
+                <div class=" grayBackColor pro-cust-card" style="padding:0px">
+                    <!--                    <div class="row">
+                                            <div class="col col-50">
+                                                <b >Employee Name:</b> 
+                                            </div>
+                                            <div class="col col-50">
+                                                <span style="word-wrap: break-word">{{personalDetails.FullName}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col col-50">
+                                                <b>Profile:</b>
+                                            </div>
+                                            <div class="col col-50">   
+                                                <span style="word-wrap: break-word">{{personalDetails.CompanyJobProfile}}</span>
+                                            </div>
+                                        </div>-->
+                    <div class="row" ng-if="displayDeptName == 1">
+                        <div class="col col-50">
+                            <b>Department:</b>
+                        </div>
+                        <div class="col col-50">
+                            <span style="word-wrap: break-word">{{personalDetails.CompanyDepart}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-50">
+                            <b>Office:</b>
+                        </div>
+                        <div class="col col-50">
+                            <span style="word-wrap: break-word">{{personalDetails.CompanyLocation}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-50">
+                            <b>Date of Joining:</b>
+                        </div>
+                        <div class="col col-50">
+                            <span style="word-wrap: break-word">{{dateOfJoining}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-50">
+                            <b>ART:</b>
+                        </div>
+                        <div class="col col-50">
+                            <span ng-if="!artName" style="word-wrap: break-word">ART not defined</span>
+                            <span ng-if="artName" style="word-wrap: break-word">{{artName}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-50">
+                            <b>FRT:</b>
+                        </div>
+                        <div class="col col-50">
+                            <span ng-if="!frtName" style="word-wrap: break-word">FRT not defined</span>
+                            <span ng-if="frtName" style="word-wrap: break-word">{{frtName}}</span>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+
+            <button class="button button-block button-light item-button-right pro-button-center" Style="text-align: left; margin-bottom:0%;width:100%;" ng-click="eduGroup(educationDetails)" ng-class="{active: iseduShown(educationDetails)}">
+                Educational Details
+                <span style="float:right;"><i class="icon-right" ng-class="iseduShown(educationDetails) ? 'ion-chevron-down' : 'ion-chevron-right'"></i></span>
+            </button>
+
+            <div class="list card modal-payslip item-accordion pro-card-padding pro-cardradius" ng-show="iseduShown(educationDetails)"  >
+                <div class=" grayBackColor pro-cust-card" style="padding:0px" ng-hide="ShowNodataFlag">
+
+                    <div class="row">
+                        <div class="col col-50">
+                            <b>Degree: </b>
+                        </div>   
+                        <div class="col col-50">
+                            <span style="word-wrap: break-word">{{personalDetails.QualiCourseType}}</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col col-50">
+                            <b>Specialization: </b>
+                        </div>   
+                        <div class="col col-50">
+                            <span style="word-wrap: break-word">{{personalDetails.QualiSpecialization}}</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col col-50">
+                            <b>College Name:</b>
+                        </div>
+                        <div class="col col-50">
+                            <span style="word-wrap: break-word">{{personalDetails.QualiInstitute}}</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col col-50">
+                            <b>University: </b>
+                        </div>
+                        <div class="col col-50">
+                            <span style="word-wrap: break-word">{{personalDetails.QualiUniversity}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-50">
+                            <b>Grade: </b>
+                        </div> 
+                        <div class="col col-50">
+                            <span style="word-wrap: break-word">{{personalDetails.QualiGrade}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-50">
+                            <b>Percent: </b>
+                        </div>    
+                        <div class="col col-50">
+                            <span style="word-wrap: break-word">{{personalDetails.QualiQualificationPercent}}</span>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                <div ng-show="ShowNodataFlag">
+                    <center> <b>No Data Available </b></center>
+                </div>
+            </div> 
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,212 @@
+<style>
+    .custom-card {
+        border-radius: 5%;
+        border: 1px solid #007ec1;
+    }
+    .custom-item {
+        border: none;
+    }
+
+    .custom-row {
+        padding: 0px;
+    }
+    .custom-padding{
+        padding: 10px;
+    }
+/*    .custom-top
+    {
+        top:10px;
+        left: 13px;
+    }*/
+/*    .custom-paddingTop
+    {
+        padding-top : 11px;
+    }*/
+/*    .custom_OD
+    {
+        padding-top : 11px;
+        padding-bottom: 0px;
+    }*/
+/*    .custom-paddingBottom
+    {
+        padding-bottom: 0px;
+    }*/
+/*    .cust-col-50 {
+        text-align: center;
+        color: #007ec1;
+    }*/
+/*    .custom-grayColor
+    {
+        color: #666;
+    }*/
+    .custom-p
+    {
+        color: #666;
+        font-size: 14px;
+    }
+/*    .cust-card {
+        padding: 50px 0px 0px 0px;
+    }*/
+/*    .has-header {
+        top: 0px;
+    }*/
+/*    .bar-subheader{
+        top: 0px;
+    }*/
+    .custom-requestApprove
+    {
+        font-size: 11px;
+        color: green;
+    }
+    .custom-requestRejcted
+    {
+        font-size: 11px;
+        color: red;
+    }
+    .custom-requestOther
+    {
+        font-size: 11px;
+        color: orange;
+    }
+/*    .custom-fontSize
+    {
+        font-size: 12px;
+    }*/
+    .customBorderRadius
+    {
+        border-top-right-radius: 1em;
+        border-bottom-right-radius: 1em;
+        border-top-left-radius: 1em;
+        border-bottom-left-radius: 1em;
+    }
+
+    .modal-wrapper {
+        position: absolute;
+        top: 25%;
+        display: block;
+        width: 90%;
+        min-height: 45%;
+        padding:  5%;
+    }
+
+    .modal-backdrop-bg {
+        background-color: rgba(255,255,255,0.85);
+    }
+
+    .modal {
+        border: 1px solid #007ec1;
+        border-top-right-radius: 1em;
+        border-bottom-right-radius: 1em;
+        border-top-left-radius: 1em;
+        border-bottom-left-radius: 1em;
+    }
+
+    .modal-ion-content {
+        padding: 15px; font-size: 0.85em;
+    }
+</style>
+
+<ion-view view-title="shiftChangeReqList">
+    <ion-content>
+        <div id="ShiftChangeRequestID">
+            <label  class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="search" placeholder="Search" ng-model="searchObj.searchShift"/>
+            </label>
+            <br>
+            <div class="list card custom-card customBorderRadius" ng-repeat="shiftChangeAppli in shiftChangeAppliList| filter: searchObj.searchShift">
+                <div class="item custom-item custom-padding item-text-wrap">
+                    <div class="row custom-row" ng-click="shiftChangeDetailInfo(shiftChangeAppli)">
+                        <div class="col col-80">
+                            <h2 style="font-size: 0.8em;">Date : {{shiftChangeAppli.fromDate}}</h2>
+                            <h2 style="font-size: 0.8em;">For Shift : {{shiftChangeAppli.changedShiftName}}</h2>
+                        </div>
+                        <div class="col col-20">
+                            <h2 style="font-size: 0.6em;" class="item-note custom-requestApprove" ng-if="shiftChangeAppli.status == 'APPROVED'">
+                                {{shiftChangeAppli.status}}
+                            </h2>
+                            <h2 style="font-size: 0.6em;" class="item-note custom-requestRejcted" ng-if="shiftChangeAppli.status == 'REJECTED'">
+                                {{shiftChangeAppli.status}}
+                            </h2>
+                            <h2 style="font-size: 0.6em;" class="item-note custom-requestOther" ng-if="shiftChangeAppli.status != 'REJECTED' && shiftChangeAppli.status != 'APPROVED'">
+                                {{shiftChangeAppli.status}}
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row custom-row" ng-if="shiftChangeAppli.reasonToChange != null || shiftChangeAppli.reasonToChange != 'null' || shiftChangeAppli.reasonToChange != ''">
+                        <div class="col col-100">
+                            <p>{{shiftChangeAppli.reasonToChange}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="IsShiftChangeAccessible == 'true'" ng-if="shiftChangeAppliList.length == 0">
+                <center><h4>No Data Available </h4></center>
+            </div>
+        </div>
+        <script id="my-modal-shift-change.html" type="text/ng-template">
+        <ion-modal-view >
+            <ion-content has-bouncing="false">
+                <div class="row" style="background-color: white">
+                    <div class="col" style="color:grey">
+                        <b>Date</b>:
+                    </div>
+                    <div class="col" style="color:grey">
+                        {{shiftChangeDetails.fromDate}}
+                    </div>
+                </div>
+                <div class="row" style="background-color: white">
+                    <div class="col" style="color:grey">
+                        <b>Status</b>:
+                    </div>
+                    <div class="col" style="color:grey">
+                        {{shiftChangeDetails.status}}
+                    </div>
+                </div>
+
+                <div class="row" style="background-color: white">
+                    <div class="col" style="color:grey">
+                        <b>Roster Shift</b>:
+                    </div>
+                    <div class="col" style="color:grey">
+                        {{shiftChangeDetails.rosterShiftName}}
+                    </div>
+                </div>
+
+                <div class="row" style="background-color: white">
+                    <div class="col" style="color:grey">
+                        <b>Shift Change To</b>:
+                    </div>
+                    <div class="col" style="color:grey">
+                        {{shiftChangeDetails.changedShiftName}}
+                    </div>
+                </div>
+                <div class="row" style="background-color: white">
+                    <div class="col" style="color:grey">
+                        <b>Reason for Shift Change</b>:
+                    </div>
+                    <div class="col" style="color:grey">
+                        {{shiftChangeDetails.reasonToChange}}
+                    </div>
+                </div>
+                <div class="row" style="background-color: white">
+                    <div class="col" style="color:grey">
+                        <b>appRemarks</b>:
+                    </div>
+                    <div class="col" style="color:grey">
+                        {{shiftChangeDetails.appRemarks}}
+                    </div>
+                </div>
+                <div class="row" style="background-color: white">
+                    <div class="col" style="color:grey">
+                        <b>lastAppRemarks</b>:
+                    </div>
+                    <div class="col" style="color:grey">
+                        {{shiftChangeDetails.lastAppRemarks}}
+                    </div>
+                </div>
+            </ion-content>
+        </ion-modal-view>
+        </script>
+    </ion-content>
+</ion-view>

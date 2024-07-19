@@ -1,0 +1,99 @@
+<style>
+.custom-card.reapetData{
+    border: 0 !important;
+}
+.item-text-wrap.empMap{
+    border-radius: 22px !important;
+}
+ h2 {
+    font-size: 18px;
+}
+.empDataClasss img{
+  width: 50px;
+}
+
+.cmpNameHeader{
+    padding: 6px;
+    background-color: #c6c6c6;
+    font-size: 16px;
+}
+.customBorderRadius{
+    margin-bottom: 10px;
+}
+.detailSection p{
+    margin: 0 0 3px;
+}
+</style>
+<ion-view>
+    <!--<ion-nav-bar class="bar-stable" style="background-color: white">
+        <ion-nav-buttons side="left">
+		<a href="#/app/home/dashboard">
+            <button class="button button-clear"  >
+                <i class="icon ion-ios-arrow-back"></i>
+                Back</button>
+				</a>
+        </ion-nav-buttons>
+    </ion-nav-bar>-->
+    <ion-content has-bouncing="false" style="overflow-y:auto">
+
+        <!--<div class="custom-header" style="font-size: 20px;overflow: auto; margin-bottom: 0px;padding: 0px;padding-left: 15px;height: auto;background-color: transparent;">
+            <h4><b>My Team status for {{presentDate}}</b></h4>
+        </div> -->
+		<!-- <div class="custom-header" style="margin-bottom: 40px;padding: 0px;padding-left: 15px;padding-top: 10px;margin-top:-8px;">
+				<h4 class="custom-header" style="margin-top: 8px;"><b>My Team status for {{presentDate}}</b></h4>
+        </div> -->
+        <div class="custom-header" style="padding-top:50px; padding-bottom: 0px;">
+            <h4 class="subHeaderClass" style="margin: 0px;">
+               <b style="vertical-align: super;">My Team status for {{presentDate}}</b></h4>
+
+           </div>
+
+        <label class="item item-input" style="padding: 8px;">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="search" placeholder="search" ng-model="searchObj.searchLeave"/>
+        </label>
+
+        <!--
+		<div ng-repeat="EmpMap in ReporteeList | filter:searchObj.searchLeave" style=" margin: 10px 15px;">
+		<div class="list card custom-card" ng-repeat="EmpMap in ReporteeList"> -->
+            <!-- <div ng-click="viewEmployeeInfo(EmpMap)" class="item custom-item item-text-wrap empMap" style="background-color: {{EmpMap.BackColor}} " >
+                <h2 style="padding-bottom: inherit;margin-bottom: -6px;"><b>{{EmpMap.EmpName}} ({{EmpMap.EmpCode}})</b></h2>
+                <div class="item custom-item item-avatar">
+                    <img ng-if="EmpMap.profilePhoto" ng-src="{{EmpMap.profilePhoto}}{{EmpMap.EmpId}}">
+                    <img ng-if="!EmpMap.profilePhoto && EmpMap.Gender == 'M'" ng-src="./img/Male.png">
+                    <img ng-if="!EmpMap.profilePhoto && EmpMap.Gender == 'F'" ng-src="./img/Female.png">
+                    <h2>{{EmpMap.Company}}</h2>
+                    <h2 ng-if="resultobj.department">{{EmpMap.Department}}</h2>
+                    <h2>{{EmpMap.Designation}}</h2>
+                    <h2 ng-if="EmpMap.FinalStatus == 'OTHERS'">First Half  : {{EmpMap.FirstHalfStatus}}</h2>
+                    <h2 ng-if="EmpMap.FinalStatus == 'OTHERS'">Second Half : {{EmpMap.SecondHalfStatus}}</h2>
+                </div>
+            </div> -->
+            <div ng-repeat="EmpMap in ReporteeList | filter:searchObj.searchLeave" ng-click="viewEmployeeInfo(EmpMap)" class="customBorderRadius" >
+                <div class="cmpNameHeader"> {{EmpMap.EmpName}} ({{EmpMap.EmpCode}})</div>
+                <div class="form-group row empDataClasss">
+                    <label  class="col-sm-2 col-xs-2 col-form-label">
+                        <img ng-if="EmpMap.profilePhoto" ng-src="{{EmpMap.profilePhoto}}{{EmpMap.EmpId}}">
+                        <img ng-if="!EmpMap.profilePhoto && EmpMap.Gender == 'M'" ng-src="./img/Male.png">
+                        <img ng-if="!EmpMap.profilePhoto && EmpMap.Gender == 'F'" ng-src="./img/Female.png">
+                    </label>
+                    <div class="col-sm-10 col-xs-10 detailSection">
+                        <p>{{EmpMap.Company}}</p>
+                        <p ng-if="resultobj.department">{{EmpMap.Department}}</p>
+                        <p>{{EmpMap.Designation}}</p>
+                        <p ng-if="EmpMap.FinalStatus == 'OTHERS'">First Half  : {{EmpMap.FirstHalfStatus}}</p>
+                        <p ng-if="EmpMap.FinalStatus == 'OTHERS'">Second Half : {{EmpMap.SecondHalfStatus}}</p>
+                    </div>
+                </div>
+
+
+              </div>
+        <!--</div> -->
+        <center>
+            <a ng-if="ReporteeListTotalCount >maxData && isLoadMore && ReporteeList.length>0 && searchObj.searchLeave ==''"
+                href="" class="col" ng-click="loadMore()"
+                style="padding-bottom: 4%; font-size: 17px;">Show More</a>
+        </center>
+        <br>
+    </ion-content>
+</ion-view>

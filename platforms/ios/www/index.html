@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html ng-app="starter" >
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+       <!-- <meta name="referrer" content="'strict-origin-when-crossorigin">
+        -->
+        <title></title>
+        <link rel="manifest" href="manifest.json">
+        <link href="css/attendanceRegularisation.css" rel="stylesheet" type="text/css"/>
+		<link href="css/jquery-ui.css" rel="stylesheet" type="text/css"/>
+        <link href="css/profile.css" rel="stylesheet" type="text/css"/>
+         <link href="css/custome.css" rel="stylesheet" type="text/css"/>
+         <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="css/checkInCopy.css" rel="stylesheet" type="text/css"/>
+        <link ng-href="css/{{theme}}" rel="stylesheet" type="text/css"/>
+        <link href="css/homeDashboard.css" rel="stylesheet" type="text/css"/>
+        <link href="css/menu.css" rel="stylesheet" type="text/css"/>
+        <link href="css/login.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" href="css/jquery-comments.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" 
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+        <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script> -->
+		<!-- open sources -->
+		<!-- <link href="css/swiper.min.css" rel="stylesheet" type="text/css"/>
+		<script src="js/common/swiper.min.js"></script> -->
+        <!-- ionic/angularjs js -->
+        <script src="js/common/jquery.min.js" type="text/javascript"></script> 
+        <script src="lib/ionic/js/ionic.bundle.js"></script>
+        <script src="lib/ionic/js/angular/angular-resource.js"></script>
+        <!-- cordova script (this will be a 404 during development) -->
+        <script src="cordova.js"></script>
+        <!-- your app's js -->
+        <script src="js/config.js" type="text/javascript"></script>
+        <script src="js/app.js" type="text/javascript"></script>
+        <script src="js/common/commonFunctions.js" type="text/javascript"></script>
+        <script src="js/jquery-comments.js" type="text/javascript"></script>
+        <script src="js/jquery-comments.min.js" type="text/javascript"></script>
+        <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.textcomplete/1.8.0/jquery.textcomplete.js"></script> -->
+        <script src="js/jquery.textcomplete.js" type="text/javascript"></script>
+        
+        <script src="js/comments-data.js" type="text/javascript"></script>
+
+        <!--<script src="js/application/faceRecogCtrl.js" type="text/javascript"></script> -->
+        <script src="js/application/approvalsMenuCtrl.js" type="text/javascript"></script>
+        <script src="js/application/projectConfigListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/projectConfigListApprovalsCtrl.js" type="text/javascript"></script>
+        <script src="js/application/projectConfigDetailsPage.js" type="text/javascript"></script>
+	
+		<script src="js/application/projectConfigApplicationCtrl.js" type="text/javascript"></script>
+        <script src="js/application/timesheetAddCtrl.js" type="text/javascript"></script>
+        <script src="js/application/requestLeaveListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/requestODListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/requestRegularizationListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/requestShiftChangeListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/requestTravelApplicationIDCtrl.js" type="text/javascript"></script>
+        <script src="js/application/requestClaimListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/requestTimesheetEmployeeDailyListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/addInvestmentCtrl.js" type="text/javascript"></script>
+        <script src="js/application/addEmployeeRentCtrl.js" type="text/javascript"></script>
+        <script src="js/application/requestInvestmentListCtrl.js" type="text/javascript"></script>
+        
+
+        <script src="js/application/approvalLeaveListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/approvalODListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/approvalAttendanceListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/approvalShiftChangeListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/approvalTravelListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/approvalClaimListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/approvalTimesheetEmployeeDailyListCtrl.js" type="text/javascript"></script>
+		<script src="js/application/requestMenuCtrl.js" type="text/javascript"></script>
+		<script src="js/application/claimApplicationCtrl.js" type="text/javascript"></script>
+		<script src="js/application/claimApplicationDetailsCtrl.js" type="text/javascript"></script>
+		<script src="js/application/claimApplicationDetailsApproveCtrl.js" type="text/javascript"></script>
+		<script src="js/application/claimTravelDetailsCtrl.js" type="text/javascript"></script>
+        <script src="js/application/startUpPageCtrl.js" type="text/javascript"></script>
+        <script src="js/services/loginCommService.js" type="text/javascript"></script>
+        <script src="js/application/getNewAppVersionCtrl.js" type="text/javascript"></script>
+        <script src="js/application/uninstallOldAppVersionCtrl.js" type="text/javascript"></script>
+        <script src="js/application/menuCtrl.js" type="text/javascript"></script>
+        <script src="js/application/profileCtrl.js" type="text/javascript"></script>
+        <script src="js/application/myTeamCtrl.js" type="text/javascript"></script>
+        <script src="js/application/myTeamDetailCtrl.js" type="text/javascript"></script>
+        <script src="js/application/RetryPageCtrl.js" type="text/javascript"></script>
+        <script src="js/application/notificationCtrl.js" type="text/javascript"></script>
+        <script src="js/application/MyApprovalsCtrl.js" type="text/javascript"></script>
+        <script src="js/application/nonCTCClaimApprovalCtrl.js" type="text/javascript"></script>
+        <script src="js/application/ltaClaimApprovalCtrl.js" type="text/javascript"></script>
+        <script src="js/application/MyApprovalsCombinedCtrl.js" type="text/javascript"></script>
+        <script src="js/application/homeDashboardCtrl.js" type="text/javascript"></script>
+        <script src="js/application/attendanceRegularCtrl.js" type="text/javascript"></script>
+        <script src="js/application/pushNotificationCtrl.js" type="text/javascript"></script>
+        <script src="js/application/leaveApplicationCtrl.js" type="text/javascript"></script>
+        <script src="js/application/loginCtrl.js" type="text/javascript"></script>
+		<script src="js/application/introCtrl.js" type="text/javascript"></script>
+        <script src="js/application/checkInCtrl.js" type="text/javascript"></script>
+        <script src="js/application/InboxCtrl.js" type="text/javascript"></script>
+		<script src="js/application/NotiInboxCtrl.js" type="text/javascript"></script>
+        <script src="js/common/calendardirective.js" type="text/javascript"></script>
+        <script src="js/common/calendarrdirective.js" type="text/javascript"></script>
+        <script src="js/common/loader.js" type="text/javascript"></script>
+        <script src="js/application/settingCtrl.js" type="text/javascript"></script>
+        <script src="js/application/RequestListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/RequestListCombinedCtrl.js" type="text/javascript"></script>
+		<script src="js/application/RequisitionTravelAndClaimCtrl.js" type="text/javascript"></script>
+		<script src="js/application/travelApplicationCtrl.js" type="text/javascript"></script>
+        <script src="js/application/LeaveApplicationDetailCtrl.js" type="text/javascript"></script>
+        <script src="js/application/odApplicationCtrl.js" type="text/javascript"></script>
+        <script src="js/application/paySlipCtrl.js" type="text/javascript"></script>
+		<script src="js/application/myRemuCtrl.js" type="text/javascript"></script>
+        <script src="js/application/BirthDayAndAnniversaryCtrl.js" type="text/javascript"></script>
+        <script src="js/application/HolidayCtrl.js" type="text/javascript"></script>
+		<script src="js/application/reportIssue.js" type="text/javascript"></script>
+        <script src="js/application/shiftChangeCtrl.js" type="text/javascript"></script>
+        <script src="js/application/individualCalenderViewCtrl.js" type="text/javascript"></script>
+        <script src="js/application/teamCalendarCtrl.js" type="text/javascript"></script>
+        <script src="js/services/homeService.js" type="text/javascript"></script>
+        <script src="js/services/commonService.js" type="text/javascript"></script>
+        <script src="js/services/odErrorHandlerService.js" type="text/javascript"></script>
+        <script src="js/application/leaveReqListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/ODReqListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/attendanceReqListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/shiftChangeReqListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/RequestListNewCtrl.js" type="text/javascript"></script>
+        <script src="js/application/expenseClaimCtrl.js" type="text/javascript"></script>
+        <script src="js/application/newCTCClaimApplicationCtrl.js" type="text/javascript"></script>
+        <script src="js/application/newNonCTCClaimApplicationCtrl.js" type="text/javascript"></script>
+        <script src="js/application/newLTAClaimApplicationCtrl.js" type="text/javascript"></script>
+        <script src="js/application/approvalClaimCtrl.js" type="text/javascript"></script>
+        <script src="js/application/approvalTransactionListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/approvalTransactionDetailsCtrl.js" type="text/javascript"></script>
+        <script src="js/application/transactionDetailsViewTransEmailConfirmationCtrl.js" type="text/javascript"></script>
+        <script src="js/application/transactionDetailsViewTransEmailResignationCtrl.js" type="text/javascript"></script>
+        <script src="js/application/transactionDetailsViewTransEmailSalaryRevisionDetailsCtrl.js" type="text/javascript"></script>
+        <script src="js/application/transactionDetailsViewTransEmailExtensionOfProbationCtrl.js" type="text/javascript"></script>
+        <script src="js/application/transactionDetailsViewTransEmailAbscondingCtrl.js" type="text/javascript"></script>
+        <script src="js/application/transactionDetailsViewTransEmailRedesignationCtrl.js" type="text/javascript"></script>
+        <script src="js/application/approvalsVacancyRequisitionListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/approvalsViewRequisitionDetailsCtrl.js" type="text/javascript"></script>
+        <script src="js/application/approvalsOfferGenerationListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/approvalsViewOfferGenerationDetailsCtrl.js" type="text/javascript"></script>
+        <script src="js/application/approvalsTrainingRequestListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/requestTrainingRequestListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/addTrainingRequestCtrl.js" type="text/javascript"></script>
+        <script src="js/application/approvalsViewTrainingRequestDetailsCtrl.js" type="text/javascript"></script>
+        <script src="js/application/approvalsStationaryRequisitionListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/approvalsViewStationaryRequisitionDetailsCtrl.js" type="text/javascript"></script>
+        <script src="js/application/requestTransactionListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/requestTransactionDetailsResignationCtrl.js" type="text/javascript"></script>
+        <script src="js/application/requestTransactionResignationFormCtrl.js" type="text/javascript"></script>
+        <script src="js/application/requestTransactionWithdrawlResignationFormCtrl.js" type="text/javascript"></script>
+       
+        <script src="js/application/requestTransactionWithdrawlResignationDetailsCtrl.js" type="text/javascript"></script>
+
+        <!--Approvals List-->
+        <script src="js/application/MyApprovalsNewCtrl.js" type="text/javascript"></script>
+        <script src="js/application/leaveApprovalsListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/ODApprovalsListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/attendanceApprovalsListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/shiftChangeApprovalsListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/homeDashboardCtrl.js" type="text/javascript"></script>
+        <script src="js/application/exitInterviewApplicationCtrl.js" type="text/javascript"></script>
+        <script src="js/application/showExitInterviewCtrl.js" type="text/javascript"></script>
+        <script src="js/application/requestGrievanceListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/approvalGrievanceListCtrl.js" type="text/javascript"></script>
+        <script src="js/application/grievanceApplicationCtrl.js" type="text/javascript"></script>
+        <script src="js/application/grievanceApplicationDetailsCtrl.js" type="text/javascript"></script>
+        <script src="js/application/grievanceApplicationDetailsApproveCtrl.js" type="text/javascript"></script>
+        <script src="js/application/homeCtrl.js" type="text/javascript"></script>
+        <script src="js/application/dashboardCtrl.js" type="text/javascript"></script>
+        <script src="js/application/selfServiceCtrl.js" type="text/javascript"></script>
+		<script src="js/application/employeeDirectory.js" type="text/javascript"></script>
+		<script src="js/application/approvalsTCCtrl.js" type="text/javascript"></script>
+        <script src="js/services/ioincLoadingService.js" type="text/javascript"></script>
+        <script src="js/application/approvalCTCdetailsCtrl.js" type="text/javascript"></script>
+        <script src="js/application/perfDiaryCtrl.js" type="text/javascript"></script>
+        <script src="js/application/restoreParamsCtrl.js" type="text/javascript"></script>
+        <script src="js/application/showTrackingCtrl.js" type="text/javascript"></script>
+        <script src="js/application/showDebugLogCtrl.js" type="text/javascript"></script>
+        <script src="js/application/changePasswordCtrl.js" type="text/javascript"></script>
+        
+        
+		
+		
+    <script src="js/services/jcryption.js" type="text/javascript"></script>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.slick/1.4.1/slick.css">  
+    <link rel="stylesheet" type="text/css" href="././css/fonts/icomoon/style.css">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>  -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.slick/1.4.1/slick.min.js"></script>
+	<script src="js/jquery-ui.js"></script>
+
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+    
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+	
+	<!-- face recognition js 
+	<script  src="js/lib/face-api.min.js"></script>
+	-->
+    </head>
+    <body>
+    <ion-nav-view>
+    </ion-nav-view>
+    <div class="bar bar-footer hide-on-keyboard-open" style="background-color:#000; background-size: 100% 0px;">
+        <div class="title" style="height: 20px;">
+            <h6  style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px; margin-bottom: 5px;" >Powered by MaverikHCM (HRAlign)</h6>
+			<!--<h6  style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px; margin-bottom: 5px;" >Powered by Qube</h6> -->
+		</div>
+    </div>
+</body>
+</html>
+<script>
+/*
+    
+  $(document).ready(function() {
+/*
+    $(function () {
+  $('[data-toggle="popover"]').popover()
+});
+
+
+      $('.center').slick({
+          centerMode: true,
+          centerPadding: '30px',
+          slidesToShow: 5,
+          dots: true,
+          arrows: false,
+          responsive: [{
+                  breakpoint: 768,
+                  settings: {
+                      arrows: false,
+                      centerMode: true,
+                      centerPadding: '10px',
+                      slidesToShow: 5
+                  }
+              },
+              {
+                  breakpoint: 480,
+                  settings: {
+                      arrows: false,
+                      centerMode: false,
+                      centerPadding: '30px',
+                      slidesToShow: 4
+                  }
+              }
+          ]
+      });
+  });*/
+</script>

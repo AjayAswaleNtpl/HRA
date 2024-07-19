@@ -1,0 +1,82 @@
+<style>
+    .custom-card {
+        border-radius: 5%;
+        border: 1px solid #007ec1;
+    }
+    .custom-item {
+        border: none;
+    }
+
+    .custom-row {
+        padding: 0px;
+    }
+
+    .cust-col-50 {
+        text-align: center;
+        color: #007ec1;
+    }
+
+    .cust-card {
+        padding: 100px 10px 0px 10px;
+    }
+    .has-header {
+        top: 0px;
+    }
+	.item.empView{
+	    border: 1px solid #f51818;
+    border-radius: 22px;
+	    padding: 10px 5px
+    }
+    .custom-header {
+    padding-bottom: 0px !important;
+    padding-top: 43px !important;
+}
+</style>
+<ion-view>
+    <ion-content has-bouncing="false" style="overflow-y: auto;">
+			<!--<div class="custom-header" style="overflow-y: auto; font-size: 20px;margin-bottom: 0px;padding: 0px;padding-left: 15px;height: auto;background-color: transparent;">
+            <h4><b>Team Leave Calendar</b></h4>
+        </div>-->
+		<!-- <div class="custom-header" style="margin-bottom: 40px;padding: 0px;padding-left: 15px;padding-top: 10px;margin-top:-8px;">
+				<h4 class="custom-header" style="margin-top: 8px;"><b>Team Leave Calendar</b></h4> 
+        </div> -->
+        <div class="custom-header">
+            <h4 class="subHeaderClass"><b>Team Leave Calendar</b></h4>
+          </div>
+		
+        <team-calendar display="dateValue" dateformat="'dd-MMM-yyyy'" get-count="getTeamAttCount"  set-cn="setDrctiveFn(theDirFn)"></team-calendar>
+        <br>
+        <div ng-if="showMemberDtls">
+            <div ng-repeat="member in memberList" style="padding: 10px">
+                <div class="row item empView">
+                    <div class="col col-25">
+                        <div class="item custom-item item-avatar" style="background-color: #f5f5f5; padding-left: 0px;">
+                            <img ng-if="member.profilePhoto" ng-src="{{member.profilePhoto}}{{member.empId}}" style="max-width: 50px;  max-height: 50px;">
+                            <img ng-if="!member.profilePhoto && member.gender == 'M'" ng-src="./img/Male.png" style="max-width: 50px;  max-height: 50px;">
+                            <img ng-if="!member.profilePhoto && member.gender == 'F'" ng-src="./img/Female.png" style="max-width: 50px;  max-height: 50px;">
+                        </div>
+                    </div>
+                    <div class="col col-75" >
+                        <div>
+                            <label style="color: #8c8c8c;">{{member.empName}} ({{member.empCode}})</label>
+                        </div>
+                        <div ng-if="member.fromDate == member.toDate">
+                            <label style="color: #a6a6a6;">{{member.leaveType}}({{member.fromLeaveType}})</label>
+                        </div>
+                        <div ng-if="(!(member.fromDate == member.toDate)) && (!(selectedDate==member.tdt))">
+                            <label style="color: #a6a6a6;">{{member.leaveType}}({{member.fromLeaveType}})</label>
+                        </div>
+                        <div ng-if="(!(member.fromDate == member.toDate)) && (selectedDate==member.tdt)">
+                            <label style="color: #a6a6a6;">{{member.leaveType}}({{member.toLeaveType}})</label>
+                        </div>
+                        <div>
+                            <label style="color: #a6a6a6;">{{member.leaveReason}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,33 @@
+.pro-img-circle{
+    border-radius: 49%;
+    width: 100px;
+    height: 100px
+}
+.pro-grayBackColor{
+    background: #F2F3F4;
+}
+.pro-custom-card{
+    background: #F2F3F4;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    border: 1px solid #D7E8F8;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-right-width: 2px;
+}
+.pro-cust-card{
+    padding: 10px 10px 10px  10px;
+}
+.popup-container .popup {
+    border-radius: 10px;
+}
+.pro-button-center{
+    margin-left: 5%;
+}
+.pro-card-padding{
+    margin-left: 6%;
+    margin-right: 6%;
+}
+.pro-cardradius{
+    border-radius: 0px 0px 8px 8px;
+}

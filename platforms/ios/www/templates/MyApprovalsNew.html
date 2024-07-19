@@ -1,0 +1,23 @@
+<ion-view view-title="My Approvals List">
+    <ion-content tabs-background-positive >
+        <div style=" margin-top: 65px;">
+            <div>
+                <div><h4>&nbsp;&nbsp;Approvals</h4></div>
+            </div>
+        </div>
+        <ion-tabs class="tabs-icon-top tabs-background-positive tabs-color-light">
+            <ion-tab  ng-if="IsLeaveAccessible == 'true'" title="<br/>Leave<br/>Application" icon-off="" icon-on="" href="#/app/MyApprovalsNew/leaveApprovalsList">
+                <ion-nav-view name="leaveApprovalsList"></ion-nav-view>
+            </ion-tab>
+            <ion-tab ng-if="IsODAccessible == 'true'" title="<br/>OD<br/>Application" icon-off="" icon-on="" href="#/app/MyApprovalsNew/ODApprovalsList">
+                <ion-nav-view name="ODApprovalsList"></ion-nav-view>
+            </ion-tab>
+            <ion-tab ng-if="IsRegularizationAccessible == 'true'" title="<br/>Attendance<br/>Regularisation" icon-off="" icon-on="" href="#/app/MyApprovalsNew/attendanceApprovalsList">
+                <ion-nav-view name="attendanceApprovalsList"></ion-nav-view>
+            </ion-tab>
+            <ion-tab ng-if="IsShiftChangeAccessible == 'true'" title="<br/>Shift<br/>Change" icon-off="" icon-on="" href="#/app/MyApprovalsNew/shiftChangeApprovalsList">
+                <ion-nav-view name="shiftChangeApprovalsList"></ion-nav-view>
+            </ion-tab>
+        </ion-tabs>
+    </ion-content >
+</ion-view>

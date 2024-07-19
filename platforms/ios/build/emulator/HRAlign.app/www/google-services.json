@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "531977470606",
+    "firebase_url": "https://hrfcm-70e50.firebaseio.com",
+    "project_id": "hrfcm-70e50",
+    "storage_bucket": "hrfcm-70e50.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531977470606:android:f1daaf798ebe11b9323fdf",
+        "android_client_info": {
+          "package_name": "com.neterson.hralign_4_0_0_6"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "531977470606-dvlhjj4bndcfu2mq1deglto5cr86v5nf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDC1mwYs1bzAL8qjFz7GxsnXD905ZmX6sk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "531977470606-dvlhjj4bndcfu2mq1deglto5cr86v5nf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "531977470606-lik3an5qrrlmc28b7008f5678gsg905v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.neterson.hralign.3.0.92.1"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531977470606:android:b2e2c85880fc764f323fdf",
+        "android_client_info": {
+          "package_name": "com.neterson.hw"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "531977470606-dvlhjj4bndcfu2mq1deglto5cr86v5nf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDC1mwYs1bzAL8qjFz7GxsnXD905ZmX6sk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "531977470606-dvlhjj4bndcfu2mq1deglto5cr86v5nf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "531977470606-lik3an5qrrlmc28b7008f5678gsg905v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.neterson.hralign.3.0.92.1"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

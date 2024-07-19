@@ -1,0 +1,253 @@
+<style>
+    .customRadio{
+        display:none;
+    }
+
+    .customRadio + label {
+        display:inline-block;
+        margin:-2px;
+        padding: 4px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        line-height: 20px;
+        color: #333;
+        text-align: center;
+        text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+        vertical-align: middle;
+        cursor: pointer;
+        background-color: #f5f5f5;
+        background-image: -moz-linear-gradient(top,#fff,#e6e6e6);
+        background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));
+        background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);
+        background-image: -o-linear-gradient(top,#fff,#e6e6e6);
+        background-image: linear-gradient(to bottom,#fff,#e6e6e6);
+        background-repeat: repeat-x;
+        border: 1px solid #ccc;
+        border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+        border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+        border-bottom-color: #b3b3b3;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0);
+        filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+        -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+        -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0
+            ,0,0.05);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+    }
+
+    .customRadio:checked + label{
+        background-image: none;
+        outline: 0;
+        -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0
+            ,0,0.05);
+        -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+        background-color:#0066ff;
+        color: white;
+    }
+    input[type="radio"] {
+        margin-top: -1px;
+        vertical-align: middle;
+    }
+    #check, #check1{
+        cursor: pointer;
+        -webkit-appearance: none;
+        appearance: none;
+        background: white;
+        border-radius: 1px;
+        box-sizing: border-box;
+        position: relative;
+        box-sizing: content-box ;
+        width: 20px;
+        height: 20px;
+        border-width: 0;
+        transition: all .3s linear;
+        border: 2px solid
+    }
+    #check:checked, #check1:checked{
+        background:url("img/tick.jpg");
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+    #check:focus, #check1:focus{
+        outline: 0 none;
+        box-shadow: none;
+    }
+</style>
+
+<ion-view>
+    <!-- <ion-nav-bar class="bar-stable" style="background-color: white;">
+        <ion-nav-buttons side="left">
+            <button class="button button-clear" ng-click="redirectOnTabLeave()" >
+                <i class="icon ion-ios-arrow-back"></i>
+                Back</button>
+
+        </ion-nav-buttons>
+    </ion-nav-bar> -->
+    <div class="bar bar-footer " style="background-color:#000; background-size: 100% 0px;">
+        <div class="title"><h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;" >Powered by HR Align</h6></div>
+    </div>
+
+    <ion-content has-bouncing="false"  class="item-divider grayBackColor" style="overflow-y:auto">
+		<!-- <div class="custom-header" style="font-size: 20px;margin-bottom: 0px;padding: 0px;padding-left: 15px;padding-top: 10px;margin-top:-8px;">
+			<h4 class="custom-header" style="margin-top: 0px;"><b>Leave Application Details</b></h4> 
+        </div> -->
+        <div class="custom-header" style="padding-top: 0px;padding-bottom: 0px;">
+            <h4 class="subHeaderClass" style="margin: 0px;"> <span class="backIcon">
+              <i class="icon ion-ios-arrow-back" ng-click="redirectOnBack()"></i></span>
+               <b style="vertical-align: super;">Leave Application Details</b></h4>
+         
+           </div>
+		<div class="cardList">
+        <div ng-if="!leaveDate">
+            <!-- <div class="col" style="color:grey">
+                <h5><b>From</b>: {{leaveFromDate| date : "dd-MMM-yyyy"}}</h5>
+            </div>
+            <div class="col" style="color:grey">
+                <h5><b>To</b>: {{leaveToDate| date : "dd-MMM-yyyy"}}</h5>
+            </div> -->
+            <div class="form-group row" >
+                <label  class="col-sm-4 col-xs-4 col-form-label">From</label><span class="dividerClass">:</span>
+                <div class="col-sm-8 col-xs-8">
+                    {{leaveFromDate| date : "dd-MMM-yyyy"}}
+                </div>
+              </div>
+              <div class="form-group row" >
+                <label  class="col-sm-4 col-xs-4 col-form-label">To</label><span class="dividerClass">:</span>
+                <div class="col-sm-8 col-xs-8">
+                    {{leaveToDate| date : "dd-MMM-yyyy"}}
+                </div>
+              </div>
+        </div>
+
+        <div ng-if="leaveDate">
+            <!-- <div class="col" style="color:grey">
+                <h5><b>Leave Date</b>: {{leaveDate| date : "dd-MMM-yyyy"}}</h5>
+            </div> -->
+            <div class="form-group row" >
+                <label  class="col-sm-4 col-xs-4 col-form-label">Leave Date</label><span class="dividerClass">:</span>
+                <div class="col-sm-8 col-xs-8">  {{leaveDate| date : "dd-MMM-yyyy"}} </div>
+              </div>
+        </div>
+
+        <!-- <div class="row" style="background-color: white">
+            <div class="col" style="color:grey">
+                <h5><b>Leave Type</b>: {{resultObj.leaveType}}</h5>
+            </div>
+        </div> -->
+        <div class="form-group row" >
+            <label  class="col-sm-4 col-xs-4 col-form-label">Leave Type</label><span class="dividerClass">:</span>
+            <div class="col-sm-8 col-xs-8">{{resultObj.leaveType}} </div>
+          </div>
+
+        <!-- <div ng-if="fileName" class="row" style="background-color: white">
+            <div class="col"  style="color:grey">
+                <h5><b>Document Uploaded</b>: <a ng-click="downloadedFile()">
+                        {{ fileName | limitTo: 15 }}{{fileName.length > 15 ? '...' : ''}}
+                        <i class="ion-ios-download-outline" style="padding-left: 1%;font-size: 20px;font-family: bold;"></i>
+                    </a></h5>
+            </div>
+        </div> -->
+        <div class="form-group row" ng-if="fileName">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Attachment</label><span class="dividerClass">:</span>
+            <div class="col-sm-8 col-xs-8">
+                <!--<a ng-click="downloadedFile()"> -->
+				<a onclick="angular.element(this).scope().openFile(event)"> {{ fileName | limitTo: 15 }}{{fileName.length > 15 ? '...' : ''}} 
+                    <!--<i class="ion-ios-download-outline" style="padding-left: 1%;font-size: 20px;font-family: bold;"></i> -->
+                </a>
+            </div>
+          </div>
+
+        <div ng-if="!noOfHours">
+            <!-- <div ng-if="noOfDaysCounted > 1" class="row" style="background-color: white">
+                <div class="col" style="color:grey">
+                    <h5><b>Applied For</b>: {{noOfDaysCounted}} Days ({{fromLeaveType}})</h5>
+                </div>
+            </div>
+
+            <div ng-if="noOfDaysCounted <= 1" class="row" style="background-color: white">
+                <div class="col" style="color:grey">
+                    <h5><b>Applied For</b>: {{noOfDaysCounted}} Day ({{fromLeaveType}})</h5>
+                </div>
+            </div> -->
+            <div class="form-group row" ng-if="noOfDaysCounted > 1">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Applied For</label><span class="dividerClass">:</span>
+                <div class="col-sm-8 col-xs-8">{{noOfDaysCounted}} Days ({{fromLeaveType}})</div>
+              </div>
+              <div class="form-group row" ng-if="noOfDaysCounted <= 1">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Leave Type</label><span class="dividerClass">:</span>
+                <div class="col-sm-8 col-xs-8">{{noOfDaysCounted}} Day ({{fromLeaveType}}) </div>
+              </div>
+        </div>
+        <div ng-if="noOfHours">
+            <!-- <div ng-if="noOfHours > 1" class="row" style="background-color: white">
+                <div class="col" style="color:grey">
+                    <h5><b>Applied For</b>: {{noOfHours}} Hours ({{fromLeaveType}})</h5>
+                </div>
+            </div>
+
+            <div ng-if="noOfHours <= 1" class="row" style="background-color: white">
+                <div class="col" style="color:grey">
+                    <h5><b>Applied For</b>: {{noOfHours}} Hour ({{fromLeaveType}})</h5>
+                </div>
+            </div> -->
+            <div class="form-group row" ng-if="noOfHours > 1">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Applied For</label><span class="dividerClass">:</span>
+                <div class="col-sm-8 col-xs-8">{{noOfHours}} Hours ({{fromLeaveType}})</div>
+              </div>
+              <div class="form-group row" ng-if="noOfHours <= 1">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Applied For</label><span class="dividerClass">:</span>
+                <div class="col-sm-8 col-xs-8">{{noOfHours}} Hour ({{fromLeaveType}})</div>
+              </div>
+        </div>
+
+        <!-- <div class="row" style="background-color: white">
+            <div class="col" style="color:grey">
+                <h5><b>Reason</b>: {{resultObj.leaveReason}}</h5>
+            </div>
+        </div> -->
+        <div class="form-group row" >
+            <label  class="col-sm-4 col-xs-4 col-form-label">Applicant Remarks</label><span class="dividerClass">:</span>
+            <div class="col-sm-8 col-xs-8">{{resultObj.leaveReason}}</div>
+          </div>
+        <!-- <div class="row" style="background-color: white">
+            <div class="col"  style="color:grey">
+                <h5><b>Status</b>: {{resultObj.status}}</h5>
+            </div>
+        </div> -->
+        <div class="form-group row" >
+            <label  class="col-sm-4 col-xs-4 col-form-label">Status</label><span class="dividerClass">:</span>
+            <div class="col-sm-8 col-xs-8">{{resultObj.status}}</div>
+          </div>
+        <!-- <div ng-if="resultObj.remarks.length > 0" class="row" style="background-color: white">
+            <div class="col"  style="color:grey">
+                <h5><b>Supervisor's Remarks</b>: {{resultObj.remarks}}</h5>
+            </div>
+        </div> -->
+        <div class="form-group row" ng-if="resultObj.remarks.length > 0">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Supervisor's Remarks</label><span class="dividerClass">:</span>
+            <div class="col-sm-8 col-xs-8">{{resultObj.remarks}}</div>
+          </div>
+        <form name="leaveForm" >
+            <!-- <div class="item">
+                <label class="grayBackColor">
+                    <button class="button button-block button-positive" ng-disabled="resultObj.status == 'REJECTED' || resultObj.status == 'CANCELLED' || resultObj.status == 'SENT FOR CANCELLATION' || resultObj.status == 'CANCELLATION APPROVED'" ng-click="onConfirm(1)"  >Cancel Request</button>
+                </label>
+                <label class="grayBackColor" ng-if="isValidateForLeave">
+                    <button class="button button-block button-positive" ng-disabled="resultObj.status != 'SAVED'" ng-click="onConfirm(2)"  >Send For Approval</button>
+                </label>
+            </div> -->
+            <br>
+            <div class="text-center">
+                <button type="button" ng-disabled="resultObj.status == 'REJECTED' || resultObj.status == 'CANCELLED' || resultObj.status == 'SENT FOR CANCELLATION' || resultObj.status == 'CANCELLATION APPROVED'" ng-click="onConfirm(1)" class="btn btn-primary mr-10">
+          <i class="fa fa-times mr-5" aria-hidden="true"></i> Cancel Request</button>
+
+          <!--<button type="button" ng-if="isValidateForLeave" ng-disabled="resultObj.status != 'SAVED'" ng-click="onConfirm(2)" class="btn btn-primary mr-10">
+            <i class="fa fa-paper-plane mr-5" aria-hidden="true"></i> Send For Approval</button>
+			-->
+          </div>
+          <br>
+          <br>
+        </form>
+    </div>
+    </ion-content>
+</ion-view>

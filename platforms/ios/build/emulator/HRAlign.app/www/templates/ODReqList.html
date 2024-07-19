@@ -1,0 +1,115 @@
+<style>
+        .custom-card {
+        border-radius: 5%;
+        border: 1px solid #007ec1;
+    }
+    .custom-item {
+        border: none;
+    }
+
+    .custom-row {
+        padding: 0px;
+    }
+    .custom-padding{
+        padding: 10px;
+    }
+    .cust-card {
+        padding: 50px 0px 0px 0px;
+    }
+    .custom-requestRejcted
+    {
+        font-size: 11px;
+        color: red;
+    }
+    .custom-requestOther
+    {
+        font-size: 11px;
+        color: orange;
+    }
+    .customBorderRadius
+    {
+        border-top-right-radius: 1em;
+        border-bottom-right-radius: 1em;
+        border-top-left-radius: 1em;
+        border-bottom-left-radius: 1em;
+    }
+    .modal {
+        border: 1px solid #007ec1;
+        border-top-right-radius: 1em;
+        border-bottom-right-radius: 1em;
+        border-top-left-radius: 1em;
+        border-bottom-left-radius: 1em;
+    }
+    .modal-ion-content {
+        padding: 15px; font-size: 0.85em;
+    }
+</style>
+<ion-view view-title="ODReqList">
+    <ion-content>
+        <div id="ODApplicationID" class="" >
+            <label class="item item-input item-select">
+                <div class="input-label ">
+                    Year
+                </div>
+                <select id="year" class = "form-control" ng-change="getODApplicationList()" name="LeaveType" ng-options="year for year in yearList"  ng-model = "requesObject1.year" required>
+                    <option value="">Please Select</option>
+                </select>
+            </label>
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" placeholder="Search" ng-model="searchObj.searchOD"/>
+            </label>
+            <br>
+            <center>
+                <button class="button button-small button-outline button-positive" ng-click="reDirectToODApplictaionPage()">Apply For OD Application</button>
+            </center>
+            <div class="list card custom-card customBorderRadius" ng-repeat="odList in ODlList| filter: searchObj.searchOD">
+                <div class="item custom-item custom-padding item-text-wrap">
+
+                    <div class="row custom-row">
+                        <div class="col col-80">
+                            <h2 style="font-size: 0.8em;">{{odList.travelDate}}-{{odList.travelDate_new}}</h2>
+                            <h2 style="font-size: 0.8em;">{{odList.fromTime}} to {{odList.toTime}}</h2>
+                            <h2 style="font-size: 0.8em;">From Place: {{odList.fromPlace}} to {{odList.toPlace}}</h2>
+                            <h3 style="font-size: 0.7em;">{{odList.reqType}}&nbsp;|&nbsp;{{odList.purpose}}</h3>
+                        </div>
+                        <div class="col col-20">
+                            <h2 style="font-size: 0.6em;" class="item-note custom-requestApprove" ng-if="odList.status == 'APPROVED'">
+                                {{odList.status}}
+                            </h2>
+                            <h2 style="font-size: 0.6em;" class="item-note custom-requestRejcted" ng-if="odList.status == 'REJECTED'">
+                                {{odList.status}}
+                            </h2>
+                            <h2 style="font-size: 0.6em;" class="item-note custom-requestOther" ng-if="odList.status != 'REJECTED' && odList.status != 'APPROVED'">
+                                {{odList.status}}
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row custom-row" ng-if="odList.remarks != null || odList.remarks != 'null' || odList.remarks != ''">
+                        <div class="col col-100">
+                            <p>{{odList.remarks}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div  ng-if="odList.status == 'SAVE AS DRAFT'">
+                    <div class="row custom-row">
+                        <div  ng-click="onConfirm(1, odList.status, odList.odID, odList.travelDate)" class="col col-100 cust-col-50">
+                            Send For Approval
+                        </div>
+                    </div>
+                </div>
+                <div  ng-if="odList.status == 'SENT FOR APPROVAL' || odList.status == 'APPROVED'">
+                    <div class="row custom-row">
+                        <div ng-if="odList.status != 'CANCELLED'" ng-click="onConfirm(2, odList.status, odList.odID, odList.travelDate)" class="col col-100 cust-col-50">
+                            Cancel Request
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="ODlList.length == 0">
+                <center><h4>No Data Available </h4></center>
+            </div>
+        </div>
+    </ion-content>
+    </ion-view>

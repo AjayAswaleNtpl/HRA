@@ -1,0 +1,446 @@
+<style>
+ #payHeadDtls{
+  border: 1px solid #c9c9c9;
+    border-radius: 6px;
+    padding: 8px;
+    margin: 0 !important;
+} 
+
+</style>
+
+  <ion-view>
+    <!-- <ion-nav-bar class="bar-stable" style="background-color: white">
+        <ion-nav-buttons side="left">
+            <button class="button button-clear" ng-click="redirectOnLtaClaimR()">
+                <i class="icon ion-ios-arrow-back"></i>
+                Back</button>
+        </ion-nav-buttons>
+    </ion-nav-bar> -->
+    <div class="bar bar-footer hide-on-keyboard-open" style="background-color:#000; background-size: 100% 0px;">
+      <div class="title" style="height: 20px;">
+        <h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px; margin-bottom: 5px;">Powered by HR Align</h6>
+      </div>
+    </div>
+    <ion-content has-bouncing="false" class="item-divider grayBackColor" style="overflow-y: auto;">
+   
+      <!-- <div class="custom-header" style="padding: 0px;padding-left: 15px;margin-top:-8px;">
+        <h4 class="custom-header" style="padding-top:5px;margin-left: -4px;">
+          <b>LTA Claim</b>
+        </h4>
+      </div> -->
+      <div class="custom-header" style="padding-top: 0px;padding-bottom: 0px;">
+        <h4 class="subHeaderClass" style="margin: 0px;"> <span ng-click="redirectOnBack()" class="backIcon">
+          <i class="icon ion-ios-arrow-back"></i></span> <b style="vertical-align: super;">LTA Claim</b></h4>
+       </div>
+      <div class="card" style="margin: 0px; padding: 10px 5px;">
+        <form name="credentialsForm">
+          <!-- <div class="item item-input">
+             <div class="input-label" style="margin-left: -5px;font-weight: normal;">CTC Period :</div>
+             <div class="input-label" style="margin-left: 60px;font-weight: normal;">{{periodfromDt}} - {{periodtoDt}}</div>
+           </div> -->
+           <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">CTC Period </label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{periodfromDt}} - {{periodtoDt}}
+            </div>
+          </div>
+           <!-- <div  class="item item-input item-select">
+              <div class="input-label " style=" margin-left: -5px;font-weight: normal;">Claim Head*</div>
+              <select id="members" style="padding-left: 2%;" class="form-control item-select select"
+              ng-options="payh.ctcPayHeadId as payh.ctcPayHeadName for payh in listLtaCtcPayHeadList"
+              ng-model="selectedValues.ctcPayHeadId[$index]">
+                 <option value="-1" selected="selected">Please Select</option>
+                 <option value="0" >All</option>
+              </select>
+          </div> -->
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Claim Head </label><span class="dividerClass">:</span>    
+            <div  class="col-sm-8 col-xs-8">
+              <select id="payhead" class="form-control"
+			  ng-change="payHeadChanged()"
+              ng-options="payh.ctcPayHeadId as payh.ctcPayHeadName for payh in listLtaCtcPayHeadList"
+              ng-model="selectedValues.ctcPayHeadId[$index]">
+                 <option value="" selected="selected">Please Select</option>
+              </select>
+            </div>
+          </div>
+
+         <div class="form-group row" id="payHeadDtls" style="display:none">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Pay Head Details</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              <ul class="ctcClaimList">
+                <li> <b>Yearly Claim(A):</b>{{phdYearlyClaim}}</li>
+                <li> <b>In-Process Claim Amount(B):</b>{{phdIpCA}}</li>
+                <li> <b>Approved Amount(C):</b>{{phdAppCA}}</li>
+                <li> <b>Reimbursed Amount(D):</b>{{phdRiCA}}</li>
+                <li> <b>Accumulated Balance(E=B-C-D):</b>{{phdAB}}</li>
+                <li> <b>Balance For the Year(A-B-C-D):</b>{{phdBforY}}</li>
+              </ul>
+           </div ></div> 
+		  
+          <!-- <div id="payHeadDtls" style="display:none">
+              PAY HEAD DETAILS
+              <ul class="ctcClaimList">
+                <li> <b>Yearly Claim:</b>{{phdYearlyClaim}}</li>
+                <li> <b>In-Process Claim Amount:</b>{{phdIpCA}}</li>
+                <li> <b>Approved Claim Amount:</b>{{phdAppCA}}</li>
+                <li> <b>Reimbursed Claim Amount:</b>{{phdRiCA}}</li>
+                <li> <b>Accumulated Balance:</b>{{phdAB}}</li>
+                <li> <b>Balance For the Year:</b>{{phdBforY}}</li>
+              </ul>
+            </div>      -->
+
+			
+			<div ng-repeat="grid1 in ltalist">
+			<div id="claimGrid_{{$index}}" ng-show="countGrid1>$index" style="height:auto;">
+              <!-- <div  class="item item-input item-select">
+                  <div class="input-label " style=" margin-left: -5px;font-weight: normal;">Family Details*</div>
+                  <select id="members" style="padding-left: 2%;" class="form-control item-select select">
+                    <option value="">Please Select</option>
+                  </select>
+                </div> -->
+                <div class="form-group row">
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Family Details </label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    <select id="familyElem_{{$index}}"class="form-control"
+						ng-options="eisf.familyId as eisf.firstName + eisf.lastName for eisf in eisFamilyList"
+						ng-model="selectedValues.eisFamily[$index]">
+						<option value="" selected="selected">Please Select</option>
+              </select>
+                  </div>
+                </div>
+                <!-- <div class="item item-input">
+                    <span class="input-label"  style="min-width: 40%; margin-left: -10px;font-weight: normal;">&nbsp;From Date* </span>
+                    <input style="padding-left:0px;padding-right:0px;background-color:white;border: 1px solid #b3b3b3;text-align:center;width:120px" placeholder="DD/MM/YYYY" ng-click="setFromDate()" id="fromDate" type="text" ng-model="resultObj.leaveFromDate" ng-readonly="true" required/>
+                    <i style="padding-left: 3%;margin-right: -15px;font-size: 193%;" ng-click="setFromDate()" class="ion-calendar">&emsp;</i>
+                </div> -->
+                <div class="form-group row">
+                  <label  class="col-sm-4 col-xs-4 col-form-label">From Date</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-6 col-xs-6">
+                    <input   class="form-control" placeholder="DD/MM/YYYY" ng-click="setFromDate(grid1)" id="fromDate_{{$index}}" 
+					type="text"  ng-readonly="true" required/>
+                  </div>
+                  <div  class="col-sm-2 col-xs-2">
+                    <i style="padding-left: 3%;margin-right: -15px;font-size: 193%;" ng-click="setFromDate(grid1)" class="ion-calendar">&emsp;</i>
+                  </div>
+                </div>
+                <!-- <div class="item item-input">
+                    <span class="input-label"  style="min-width: 40%; margin-left: -10px;font-weight: normal;">&nbsp;To Date* </span>
+                    <input style="padding-left:0px;padding-right:0px;background-color:white;border: 1px solid #b3b3b3;text-align:center;width:120px" placeholder="DD/MM/YYYY" ng-click="setFromDate()" id="fromDate" type="text" ng-model="resultObj.leaveFromDate" ng-readonly="true" required/>
+                    <i style="padding-left: 3%;margin-right: -15px;font-size: 193%;" ng-click="setToDate()" class="ion-calendar">&emsp;</i>
+                </div> -->
+                <div class="form-group row">
+                  <label  class="col-sm-4 col-xs-4 col-form-label">To Date</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-6 col-xs-6">
+                    <input class="form-control" placeholder="DD/MM/YYYY" ng-click="setToDate(grid1)" id="toDate_{{$index}}" type="text"  ng-readonly="true" required/>
+                  </div>
+                  <div  class="col-sm-2 col-xs-2">
+                    <i style="padding-left: 3%;margin-right: -15px;font-size: 193%;" ng-click="setToDate(grid1)" class="ion-calendar">&emsp;</i>
+                  </div>
+                </div>
+                <!-- <div class="item item-input">
+                    <div class="input-label " style=" margin-left: -5px;font-weight: normal;">From Location*</div>
+                    <input name="phone" class="input-label"
+                                style="padding-left: 3%;margin-left: 117px;max-width: 25%!important;background-color:white;border: 1px solid #b3b3b3; width:85%"
+                                required />
+                  </div> -->
+                  <div class="form-group row">
+                    <label    class="col-sm-4 col-xs-4 col-form-label">From Location </label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8">
+                      <input  id="fromLoc_{{$index}}"  class="form-control"required />
+                    </div>
+                  </div>
+                  <!-- <div class="item item-input">
+                      <div class="input-label " style=" margin-left: -5px;font-weight: normal;">To Location*</div>
+                      <input name="phone" class="input-label"
+                                  style="padding-left: 3%;margin-left: 117px;max-width: 25%!important;background-color:white;border: 1px solid #b3b3b3; width:85%"
+                                  required />
+                    </div> -->
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-xs-4 col-form-label">To Location</label><span class="dividerClass">:</span>
+                      <div  class="col-sm-8 col-xs-8">
+                        <input   id="toLoc_{{$index}}" class="form-control" required />
+                      </div>
+                    </div>
+                    <!-- <div class="item item-input">
+                        <div class="input-label " style=" margin-left: -5px;font-weight: normal;">Travel Mode*</div>
+                        <input name="phone" class="input-label" style="padding-left: 3%;margin-left: 117px;max-width: 25%!important;
+                        background-color:white;border: 1px solid #b3b3b3; width:85%"
+                                    required />
+                      </div> -->
+                      <div class="form-group row">
+                        <label  class="col-sm-4 col-xs-4 col-form-label">Travel Mode</label><span class="dividerClass">:</span>
+                        <div  class="col-sm-8 col-xs-8">
+                          <input  id="trMode_{{$index}}"  class="form-control" required />
+                        </div>
+                      </div>
+
+              <!-- <div class="item item-input">
+                <div class="input-label " style=" margin-left: -5px;font-weight: normal;">Claim Amount*</div>
+                <input type="tel" name="phone" class="input-label" placeholder="0.0"
+                            style="padding-left: 3%;margin-left: 117px;max-width: 25%!important;background-color:white;border: 1px solid #b3b3b3; width:85%"
+                            ng-model="dataBuffer.phone" ng-maxlength="20" required />
+              </div> -->
+              <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Amount</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  <input  type="tel" id="claimAmt_{{$index}}" class="form-control" placeholder="0.0"  ng-maxlength="20" required />
+                </div>
+              </div>
+              <!-- <div class="item item-input">
+                <div class="input-label " style=" margin-left: -5px;font-weight: normal;">Bill No*</div>
+                <input type="tel" name="phone" class="input-label"
+                            style="padding-left: 3%;margin-left: 117px;max-width: 25%!important;background-color:white;border: 1px solid #b3b3b3; width:85%"
+                            ng-maxlength="20" required />
+              </div> -->
+              <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Bill Number</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  <input  type="tel" id="billNo_{{$index}}" class="form-control" ng-maxlength="20" required />
+                </div>
+              </div>
+
+			  <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Bill Amount</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  <input  type="tel" id="billAmt_{{$index}}" class="form-control" ng-maxlength="20" required />
+                </div>
+              </div>
+              <!-- <div ng-disabled="isValidateForLeave" class="item item-input item-select">
+                  <div class="input-label " style=" margin-left: -5px;font-weight: normal;">Claim For Month*</div>
+                  <select id="members" style="padding-left: 2%;" class="form-control item-select select"
+                  ng-options="month as month for month in listMonth"
+                  ng-model="selectedValues.monthName[$index]">
+                  <option value="" selected="selected">Please Select</option>
+                  </select>
+              </div> -->
+              <div class="form-group row" ng-disabled="isValidateForLeave">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Claim For Month</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  <select id="month_{{$index}}" class="form-control item-select select"
+                  >
+                  <option value="" selected="selected">Please Select</option>
+                    <option value="01" >January</option>
+                    <option value="02">February</option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                    <option value="07">July</option>
+                    <option value="08">August</option>
+                    <option value="09">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                  </select>
+                </div>
+              </div>
+              <!-- <div ng-disabled="isValidateForLeave" class="item item-input item-select">
+                  <div class="input-label " style=" margin-left: -5px;font-weight: normal;">Year*</div>
+                  <select id="members" style="padding-left: 2%;" class="form-control item-select select"
+                  ng-options="year as year for year in listYear"
+                  ng-model="selectedValues.monthName[$index]">
+                    <option value="">Please Select</option>
+                   
+                  </select>
+              </div> -->
+              <div class="form-group row" ng-disabled="isValidateForLeave">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Year</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  <select id="year_{{$index}}" class="form-control item-select select"
+                  ng-options="year as year for year in listYear"
+				  ng-model="selectedValues.year[$index]"
+                  >
+                    <option value="">Please Select</option>
+                   
+                  </select>
+                </div>
+              </div>
+
+             <div class="grayBackColor" style="    margin-top: 10px;">
+              <span style="font-size: 16px; font-weight: normal; margin-left: 11px;">Remarks</span>
+               <textarea  id="rem_{{$index}}"  style="padding-left: 3%;padding-right: 3%;background-color: white;border: 1px solid rgb(179, 179, 179);margin-left: 3%;
+                         margin-top: 3%;width: 92%;"  rows="3"
+                         ng-maxlength="500"></textarea></div> 
+            <div>
+            
+          </div>
+		  
+		  </div>
+		  </div>
+          <br><br>
+			<hr>
+          <div> <!-- buttons -->
+            <!-- <center>
+            <button id="btnAddRow" class="button" style="background-color:green;color:white;width:27%;margin-top:-50%;" 
+              ng-click="addRow()">Add</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button id="btnRemRow" class="button" style="background-color:red;color:white;width:27%;margin-top:-50%;" 
+              ng-click="remRow()">Remove</button>
+            </center> -->
+            <div class="text-center">
+              <button type="button" id="btnAddRow" ng-click="addRowGrid1()" class="btn btn-success mr-10">
+           <i class="fa fa-plus mr-5" aria-hidden="true"></i> Add</button>
+              <button type="button" id="btnRemRow" ng-click="remRowGrid1()" class="btn btn-danger">
+                <i class="fa fa-times mr-5" aria-hidden="true"></i> Remove</button>
+         </div> 
+        </div> 
+        <br>
+            
+
+			<!-- File attachments -- >
+										<div> <!-- image with button section -->
+			<div class="row" >
+				<button  id="delegateLBBtn"    Style="width:100%;text-align: left; margin-bottom:0%;background-color: white;   border: none;color:blue;" 
+				onclick="angular.element(this).scope().selectedValues.elem = this; angular.element(this).scope().selectFromDeviceLTAClicked(event);">Select from device</button>
+				<input id="inputFileLBUpload" style="width:0px;height:0px;" col="col-100" type="file" name="inputFileLBUpload" 
+				onchange="angular.element(this).scope().selectedValues.elem = this;angular.element(this).scope().selectedValues.section = 'LTA';angular.element(this).scope().SelectedFile(event)"
+				 />
+				 <!--onchange="angular.element(this).scope().selectedValues.elem = this;angular.element(this).scope().selectedValues.section = 'LTA';angular.element(this).scope().SelectedFile(event)-->
+			</div>
+			<div class="row" >
+				<button col="col-40" id="btncamera"   
+				Style="width:100%;text-align: left; margin-bottom:0%;background-color: white;   border: none;color:blue;"
+				onclick="angular.element(this).scope().selectedValues.elem = this; angular.element(this).scope().cameraTakePicture(event);">
+					Take Photo &nbsp;&nbsp;
+				</button>
+			</div>
+			<div> <!--file list start -->
+				<div class="row">
+					<input   id="file1" readonly type="text" placeholder="file name"
+					style="margin-left:2px;background-color:lightgray;margin-top:2px;display:none;width:80%">
+					</input>
+					<img  on-tap="removeFile('LTA','file',1)" id="delIcon1" src="./img/del1.png" style="margin-left:15px; width:30px;height:auto;display:none" />
+				</div>
+				<div class="row">
+					<input   id="file2" readonly type="text" placeholder="file name"
+					style="margin-left:2px;background-color:lightgray;margin-top:2px;display:none;width:80%">
+					</input>
+					<img  on-tap="removeFile('LTA','file',2)" id="delIcon2" src="./img/del1.png" style="margin-left:15px; width:30px;height:auto;display:none" />
+				</div>
+				<div class="row">
+					<input   id="file3" readonly type="text" placeholder="file name"
+					style="margin-left:2px;background-color:lightgray;margin-top:2px;display:none;width:80%">
+					</input>
+					<img  on-tap="removeFile('LTA','file',3)" id="delIcon3" src="./img/del1.png" style="margin-left:15px; width:30px;height:auto;display:none" />
+				</div>
+				<div class="row">
+					<input   id="file4" readonly type="text" placeholder="file name"
+					style="margin-left:2px;background-color:lightgray;margin-top:2px;display:none;width:80%">
+					</input>
+					<img  on-tap="removeFile('LTA','file',4)" id="delIcon4" src="./img/del1.png" style="margin-left:15px; width:30px;height:auto;display:none" />
+				</div>
+				<div class="row">
+					<input   id="file5" readonly type="text" placeholder="file name"
+					style="margin-left:2px;background-color:lightgray;margin-top:2px;display:none;width:80%">
+					</input>
+					<img  on-tap="removeFile('LTA','file',5)" id="delIcon5" src="./img/del1.png" style="margin-left:15px; width:30px;height:auto;display:none" />
+				</div>
+				<div class="row">
+					<input   id="file6" readonly type="text" placeholder="file name"
+					style="margin-left:2px;background-color:lightgray;margin-top:2px;display:none;width:80%">
+					</input>
+					<img  on-tap="removeFile('LTA','file',6)" id="delIcon6" src="./img/del1.png" style="margin-left:15px; width:30px;height:auto;display:none" />
+				</div>
+				<div class="row">
+					<input   id="file7" readonly type="text" placeholder="file name"
+					style="margin-left:2px;background-color:lightgray;margin-top:2px;display:none;width:80%">
+					</input>
+					<img  on-tap="removeFile('LTA','file',7)" id="delIcon7" src="./img/del1.png" style="margin-left:15px; width:30px;height:auto;display:none" />
+				</div>
+				<div class="row">
+					<input   id="file8" readonly type="text" placeholder="file name"
+					style="margin-left:2px;background-color:lightgray;margin-top:2px;display:none;width:80%">
+					</input>
+					<img  on-tap="removeFile('LTA','file',8)" id="delIcon8" src="./img/del1.png" style="margin-left:15px; width:30px;height:auto;display:none" />
+				</div>
+				<div class="row">
+					<input   id="file9" readonly type="text" placeholder="file name"
+					style="margin-left:2px;background-color:lightgray;margin-top:2px;display:none;width:80%">
+					</input>
+					<img  on-tap="removeFile('LTA','file',9)" id="delIcon9" src="./img/del1.png" style="margin-left:15px; width:30px;height:auto;display:none" />
+				</div>
+				<div class="row">
+					<input   id="file10" readonly type="text" placeholder="file name"
+					style="margin-left:2px;background-color:lightgray;margin-top:2px;display:none;width:80%">
+					</input>
+					<img  on-tap="removeFile('LTA','file',10)" id="delIcon10" src="./img/del1.png" style="margin-left:15px; width:30px;height:auto;display:none" />
+				</div>
+				
+			</div><!--file list over -->
+			<div class="row" >
+			<br>				
+			<img class="col-30" id="img1"
+			style="width:50px;height:50px;display:none;margin-left:2px;"
+			src="nosrc" on-tap="removePic('LTA','img1',1);">
+			</img>
+			<img class="col-30" id="img2"
+			style="width:50px;height:50px;display:none;margin-left:2px;"
+			src="nosrc" on-tap="removePic('LTA','img2',2);">
+			</img>
+			<img class="col-30" id="img3"
+			style="width:50px;height:50px;display:none;margin-left:2px;"
+			src="nosrc" on-tap="removePic('LTA','img3',3);">
+			</img>
+			<img class="col-30" id="img4"
+			style="width:50px;height:50px;display:none;margin-left:2px;"
+			src="nosrc" on-tap="removePic('LTA','img4',4);">
+			</img>
+			<img class="col-30" id="img5"
+			style="width:50px;height:50px;display:none;margin-left:2px;"
+			src="nosrc" on-tap="removePic('LTA','img5',5);">
+			</img>
+			<img class="col-30" id="img6"
+			style="width:50px;height:50px;display:none;margin-left:2px;"
+			src="nosrc" on-tap="removePic('LTA','img6',6);">
+			</img>
+			<img class="col-30" id="img7"
+			style="width:50px;height:50px;display:none;margin-left:2px;"
+			src="nosrc" on-tap="removePic('LTA','img7',7);">
+			</img>
+			<img class="col-30" id="img8"
+			style="width:50px;height:50px;display:none;margin-left:2px;"
+			src="nosrc" on-tap="removePic('LTA','img8',8);">
+			</img>
+			<img class="col-30" id="img9"
+			style="width:50px;height:50px;display:none;margin-left:2px;"
+			src="nosrc" on-tap="removePic('LTA','img9',9);">
+			</img>
+			<img class="col-30" id="img10"
+			style="width:50px;height:50px;display:none;margin-left:2px;"
+			src="nosrc" on-tap="removePic('LTA','img10',10);">
+			</img>
+			
+			</div>
+				<div>	
+				<hr></hr>
+				</div>	
+			</div>	
+			<!-- file attachments over -->
+          <!-- <div class="item" ng-disabled="isValidateForLeave" style="padding: 2px 16px 2px 16px;">
+            <label class="grayBackColor">
+              <button class="button button-block button-positive">Save</button>
+            </label>
+          </div> -->
+          <div class="text-center" class="item">
+         <button type="button" class="btn btn-primary mr-10"  ng-disabled="credentialsForm.$invalid" 
+         ng-click="sendLTAForm()" ng-disabled="isValidateForLeave">
+       <i class="fa fa-paper-plane mr-10" aria-hidden="true"></i>Send for Approval  </button>
+      
+       </div>
+       <br>
+          <!-- <div class="item" ng-disabled="isValidateForLeave" style="padding: 2px 16px 2px 16px;">
+            <label class="grayBackColor">
+              <button class="button button-block button-positive" ng-disabled="credentialsForm.$invalid" ng-click="getFindWorkFlowOnload(2)">Send For Approval</button>
+            </label>
+          </div> -->
+        	<!-- <div class="text-center" ng-disabled="isValidateForLeave">
+            <button type="button" class="btn btn-primary mr-10"  ng-disabled="credentialsForm.$invalid" 
+            ng-click="getFindWorkFlowOnload(2)" ng-disabled="isValidateForLeave">
+          <i class="fa fa-paper-plane mr-10" aria-hidden="true"></i>Send for Approval  </button>
+          </div> -->
+          <br><br>
+      </div>
+      </form>
+    </ion-content>
+  </ion-view>

@@ -1,0 +1,329 @@
+<style>
+	.col-xs-2 {
+		padding: 0 !important;
+	}
+
+	.row {
+		margin-right: 0px !important;
+		margin-left: 0px !important;
+	}
+
+	label {
+		font-weight: normal !important;
+	}
+
+	.col-xs-4,
+	.col-sm-4 {
+		padding: 0 4px !important;
+	}
+
+	
+input{
+}
+ .ui-autocomplete.ui-menu.ui-widget.ui-widget-content.ui-corner-all
+{
+    height: 100px;
+    overflow: auto;
+}
+</style>
+<ion-view>
+	<!-- <ion-nav-bar class="bar-stable" style="background-color: white">
+        <ion-nav-buttons side="left">
+            <button class="button button-clear" ng-click="redirectOnLeave()">
+                <i class="icon ion-ios-arrow-back"></i>
+                Back</button>
+        </ion-nav-buttons>
+
+    </ion-nav-bar> -->
+	<div class="bar bar-footer hide-on-keyboard-open" style="background-color:#000;
+		background-size: 100% 0px;">
+		<div class="title" style="height: 20px;">
+			<h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px;
+				margin-bottom: 5px;">Powered by HR
+				Align</h6>
+		</div>
+	</div>
+	<ion-content has-bouncing="false" class="item-divider grayBackColor"
+		style="overflow-y: auto;">
+		<div class="custom-header" style="padding-top: 0px;padding-bottom: 0px;">
+			<h4 class="subHeaderClass" style="margin: 0px;"> <span class="backIcon">
+					<i class="icon ion-ios-arrow-back" ng-click="redirectOnBack()"></i></span>
+				<b style="vertical-align: super;">Performance Diary</b>
+			</h4>
+		</div>
+		<!-- <div class="custom-header" style="padding-top: 0px;padding-bottom: 0px;">
+            <h4 class="subHeaderClass" style="margin: 0px;"> <span ng-click="redirectOnBack()" class="backIcon">
+              <i class="icon ion-ios-arrow-back"></i></span> <b style="vertical-align: super;">Leave Application</b></h4>
+        </div> -->
+		<form name="credentialsForm">
+			<div class="form-group row">
+				<label class="col-sm-4 col-xs-4 col-form-label">Company </label><span
+					class="dividerClass">:</span>
+				<div class="col-sm-8 col-xs-8">
+					<select id="companyId" class="form-control item-select select"
+						ng-change="getBalLeave()"
+						name="companyId"
+						onchange="angular.element(this).scope().f_changeCompany(event)"
+						ng-options="comp.companyId as comp.companyName for comp in mobCompanyList
+						track by $index"
+						ng-model="resultObj.compId">
+						<option value="">Select Company</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-sm-4 col-xs-4 col-form-label">PMS Period</label><span
+					class="dividerClass">:</span>
+				<div class="col-sm-8 col-xs-8">
+					<select id="periodId" class="form-control item-select select"
+						name="periodId"
+						onchange="angular.element(this).scope().f_change('false','','')"
+						ng-options="prd.periodId as prd.ddString for prd in pmsPeriodList track by
+						$index"
+						ng-model="resultObj.peridId">
+						<option value="">Select Period</option>
+					</select>
+				</div>
+			</div>
+
+
+			<div class="form-group row">
+				<label class="col-sm-4 col-xs-4 col-form-label">Search Employee </label><span
+					class="dividerClass">:</span>
+				<div class="col-sm-8 col-xs-8">
+					<input type="text" 	ng-model="selectedValues.searchEmpTxt"	
+            name="search_emp" id="search_emp" 
+            style="margin-top:8px;font-style: italic;"
+            placeholder="Search employee" maxlength="100" class=" form-control" 
+            onclick="this.focus();this.select()"/>
+      
+					<!-- <input id="txtSearchEmp" class="form-control"  
+						onclick="this.focus();this.select()"
+						onchange="angular.element(this).scope().filterEmp()" /> -->
+				</div>
+			</div>
+			
+				<div class="form-group row" ng-show="1==2">
+					<label class="col-sm-4 col-xs-4 col-form-label">Employee</label><span
+						class="dividerClass">:</span>
+					<div class="col-sm-8 col-xs-8">
+						<select id="empId" class="form-control item-select select"
+							onchange="angular.element(this).scope().f_change('false')" name="empId"
+							ng-options="emp.applicantId as emp.empName for emp in
+							pmsEmployeeStatusList track by $index"
+							ng-model="resultObj.emp">
+							<option value="">Select Employee</option>
+						</select>
+					</div>
+				</div> 
+
+				<div class="form-group row">
+					<label class="col-sm-4 col-xs-4 col-form-label">Employee Feedback</label><span
+						class="dividerClass">:</span>
+					<div class="col-sm-8 col-xs-8">
+						<input type="radio" id="efRadio" name="rb" checked
+						onchange="angular.element(this).scope().divRadioClicked()"/>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-4 col-xs-4 col-form-label">Notes</label><span
+						class="dividerClass">:</span>
+					<div class="col-sm-8 col-xs-8">
+						<input type="radio" id="notesRadio" name="rb"  
+						onchange="angular.element(this).scope().divRadioClicked()"/>
+					</div>
+				</div>
+
+			
+			<div id="efDiv">
+			<div ng-repeat="headerList in pmsQuestionHeaderList">
+				<h4>Employee Feedback</h4>
+				<input type="hidden" value="{{headerList.questionHeaderId}}">
+				<h5>{{headerList.questionHeader}}</h5>
+				<div ng-repeat="headerChildList in headerList.pmsQuestionHeaderChildList">
+					<div>
+						<h5>{{headerChildList.question}}</h5>
+						<input type="hidden" value="{{headerChildList.kraQuestionId}}"
+							style="color: rgb(46, 10, 207);">
+						<input type="hidden" id="pmsQuestionHeaderChildSize"
+							value="" style="color: blueviolet">
+					</div>
+					<div class="row">
+						<div ng-repeat="questions in headerChildList.questionList">
+							<div class="col-sm-4 col-xs-4">
+								<img style="max-width: 50px; max-height: 50px;"
+									onerror="this.src='./img/blankemp.jpg'"
+									src=baseURL +"/api/eisCompany/viewPhoto.spr?empId={{questions.revieweisPersonal.empId}}"
+									/>
+							</div>
+							<div class="col-sm-8 col-xs-8">
+								<textarea
+									class="form-control" maxlength="1800">{{questions.answer}}</textarea>
+							</div>
+							<br>
+							<br>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group">
+							<div>
+								<div class="col-sm-4 col-xs-4">
+									<img style="max-width: 50px; max-height: 50px;"
+										onerror="this.src='./img/blankemp.jpg'"
+										src="{{baseURL}}/api/eisCompany/viewPhoto.spr?empId={{authentication.principal.empId}}"
+										class="img-circle img-responsisve">
+								</div>
+								<div class="col-sm-8 col-xs-8">
+									<textarea id="answer{{$index}}"
+										class="form-control" maxlength="1800">{{headerChildList.answer}}</textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+				<div class="col-md-12">
+					<h5 id="fileid" class="col-100"
+						style="font-size:0.9em;margin-top:3px;color:blue;"
+						onclick="angular.element(this).scope().openFile('{{headerChildList.kraQuestionId}}')">{{headerChildList.fileName}}
+					</h5>
+				</div>
+					<!-- attachment -->
+					<div  ng-if="$index == 0">
+						<label>
+							<div class="row">Attachment:
+							</div>
+							<div class="row">
+								<button col="col-80"
+									Style="text-align: left; margin-bottom:0%;background-color: white;
+									border: none;color:blue;"
+									onclick="document.getElementById('inputFileUpload').click();">Select
+									from device</button>
+								<input type="file" name="inputFileUpload" id="inputFileUpload" 
+									style="width:1px;height:1px;display:none"
+									ng-model="somssemodel"
+									onchange="angular.element(this).scope().SelectedFile(event)" />
+								<span id="fileNameDisplay"
+									style="margin-left:-40%;margin-top:5%;"><br>{{selectedFileNameFromDevice}}</span>
+							</div>
+							<div class="row">
+								<button col="col-80" id="btncamera"
+									Style="text-align: left; margin-bottom:0%;background-color: white;
+									border: none;color:blue;"
+									on-tap="cameraTakePicture('camera');">Take Photo</button>
+							</div>
+							<img class="col-30" id="showImg"
+								style="width:50px;height:50px;display:none;margin-left:30%;margin-top:
+								-10%;" src=""
+								on-tap="removeAttachment()">
+						</img>
+
+					</label>
+				</div>
+
+				<!-- attachmetn over -->
+				
+
+
+
+
+				<div class="container-fluid comment-review" style="margin-left: -16%;">
+					<input type="hidden" style="color: crimson;font-weight: 500;"
+						class="questionHeaderChildId"
+						id="questionHeaderChildId{{headerChildList.questionHeaderChildId}}"
+						value="{{headerChildList.questionHeaderChildId}}" />
+
+					<div class="comments-container commentsQuestionHeader"
+						id="commentsQuestionHeader{{headerChildList.questionHeaderChildId}}">
+						<br><br>
+					</div>
+				</div>
+			</div>
+			</div>
+			<div class="text-center">
+				<button type="button"
+					onclick="angular.element(this).scope().goSaveAssessment()"
+					class="btn btn-primary mr-10">
+					<i class="fa fa-paper-plane mr-10" aria-hidden="true"></i>Save</button>
+			</div>
+			</div>
+			
+			<h4>Notes</h4>
+			<div id = "notesDiv" 
+			class="container-fluid comment-review" style="display: none;margin-left: -16%;">
+				<div class="comments-container"
+					id="overAllKraComments">
+				</div>
+			</div>
+
+		</form>
+        <script>
+			//url : baseURL + '/common/searchByNameAndCodeForEisCompany.spr',
+	  $(document).ready(
+	  function() {
+	  $(function() {
+	  $("#search_emp").autocomplete({
+	  minLength : 3,
+	  selectfirst : true,
+	  minChars : 1,
+	  matchSubset : 1,
+	  matchContains : 1,
+	  cacheLength : 10,
+	  autoFill : false,
+	  search : function(e, u) {
+	  console.log("fetched project manager list")
+  },
+  source : function(request,response) {
+	//document.getElementById("txtSearchEmp").value = $('#search_emp').val()
+	 angular.element(document.getElementById('search_emp')).scope().filterEmp();
+	 data = angular.element(document.getElementById('search_emp')).scope().pmsEmployeeStatusList
+	if (data.length > 0){
+	var result = new Array(data.length)
+	for (var i= 0; i<data.length;i++ ){
+		var obj = {label:data[i].empName,  value:data[i].applicantId, comId:data[i].empName}
+		result[i] = obj;
+	}
+}else{
+	var result = [ {
+		label : "No matches found",
+		value : '-1'
+		} ];
+}
+response(result);
+	  
+												  },
+												  select : function(event, ui) {
+													  var val = "";
+													  var lable = "";
+													  var comId = "";
+													  var hCatId = "";
+													  
+													  if (ui.item.value != "-1"){
+														  
+														this.value = ui.item.label;  
+														//angular.element(document.getElementById('search_emp')).scope().empId = ui.item.value;
+														angular.element(document.getElementById('search_emp')).scope().f_change("false", ui.item.value,ui.item.label);
+														//document.getElementById('search_emp').value = 'rajes' + ui.item.label
+														//ui.item.value = ui.item.label														
+													  }
+							// this.value = ui.item.label;
+							
+							// document.getElementById('selectedEmpIdFromPopUp').value = ui.item.comId;
+							// document.getElementById('searchEmpTxt').value = ui.item.comId;
+							// angular.element(document.getElementById('selectedEmpIdFromPopUp')).scope().empChangedByPopUpSelection();
+													  
+													  
+													  return true;
+												  }
+											  });
+						  });
+			});
+			
+			$(document).ready(function() {
+			  //$("input[id='sarch_emp']").focus().select();
+		  });
+		  </script>
+  
+		
+	</ion-content>
+</ion-view>

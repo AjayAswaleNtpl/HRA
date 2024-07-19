@@ -1,0 +1,209 @@
+<style>
+.tab-item{
+  display: inline-block !important;
+} 
+ .row {
+  margin: 15px 0px !important;
+  padding: 30px 0px 0px !important;
+  /* box-shadow: 0 1px 5px 0 rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12);
+  -webkit-box-shadow: 0 1px 5px 0 rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12);
+  -moz-box-shadow: 0 1px 5px 0 rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12);
+  -o-box-shadow: 0 1px 5px 0 rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12); */
+
+} 
+.badge.badgeCustom.primary-color{
+  font-size: 13px;
+    padding: 6px 5px 0px 5px;
+    right: auto;
+    top: 1.3em;
+    margin-left: -5px;
+    height: 26%;
+    width: 30px;
+}
+.menuIconSection img{
+  max-width: 45px;
+    max-height: 45px;
+}
+.menuIconSection .col-xs-4{
+  text-align: center;
+    width: 32.333333%;
+    display: inline-block;
+    padding-top: 40px !important;
+    float: inherit;
+}
+.menuIconSection .fa,
+[class^="icon-"], [class*=" icon-"]{
+  font-size: 40px;
+  color: #929292;
+}
+</style>
+<ion-view>
+  <ion-content has-bouncing="false" style="overflow-y: auto;top:4%" class="requisionSection">
+    
+    <div class="custom-header">
+      <h4 class="subHeaderClass"><b>Requisitions</b></h4>
+      <a ng-if="isARTorFRT == 'true' || isGroupMasterReportee == 'true'"
+           href="#/app/approvalsMenu" class="approvalLinkClass">
+        <img src="./img/approveNew.png" style="width: 25px; height: 25px; margin-right: 3px;text-align: center;" />
+      </a>
+    </div>
+    <div class="menuIconSection">
+   <!-- Icon -->
+   <div class="">
+    <div class="col-md-4 col-xs-4" ng-show="isLeaveAccessible == 'true'" >
+      <div id="" class="" ng-click="openLeavePage()">
+        <a  id=""  class="tab-item" ng-click="">
+          <!-- <img  src="./img/leave1.png" />  -->
+          <i class="fa fa-calendar-times-o" aria-hidden="true"></i>
+          <sup class="badge badgeCustom primary-color" ng-show="LeaveRequests > 0">{{LeaveRequests}} </sup>
+          <p > Leave </p>
+        </a>
+       
+      </div>
+    </div>
+    <div class="col-md-4 col-xs-4" ng-show="isODAccessible == 'true'">
+      <div id="" class="">
+        <a  id=""  class="tab-item" ng-click="openODPage()" >
+          <!-- <img src="./img/od.png" />  -->
+          <!-- <i class="fa fa-calendar" aria-hidden="true"></i> -->
+          <i class="icon-calendar-leavemain"></i>
+              <sup class="badge badgeCustom primary-color" ng-show="ODRequests > 0">{{ODRequests}} </sup>
+              <p> On Duty</p>
+        </a>
+       
+      </div>
+    </div>
+    <div class="col-md-4 col-xs-4" ng-show="isRegularizationAccessible == 'true'">
+      <div id="" class="">
+        <a  id=""  class="tab-item" ng-click="openAttendancePage()" >
+          <!-- <img  src="./img/attendance.png" />  -->
+           <!-- <i class="fa fa-file-text-o" ></i>   -->
+           <i class="icon-Time_Attendance"></i>
+         <sup class="badge badgeCustom primary-color" ng-show="AttRegRequests > 0">{{AttRegRequests}}
+        </sup>
+        <p> Attendance</p>
+        </a>
+       
+      </div>
+    </div>
+  <!-- Icon 2 -->
+    <div class="col-md-4 col-xs-4" ng-show="isShiftChangeAccessible == 'true'">
+      <div id="" class="">
+        <a  id=""  class="tab-item" ng-click="openShiftChangePage()" >
+          <!-- <img  src="./img/sift_change.png"/>  -->
+          <!-- <i class="fa fa-retweet" aria-hidden="true"></i> -->
+          <i class="fa fa-random" ></i>
+          <sup class="badge badgeCustom primary-color" ng-show="SCRequests > 0">{{SCRequests}}</sup>
+          <p>Shift Change</p>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4 col-xs-4" ng-show="isTravelAccessible == 'true'">
+      <div id="" class="">
+        <a  id=""  class="tab-item" ng-click="openTravelPage()" >
+          <!-- <img src="./img/travel.png" /> -->
+          <!-- <i class="fa fa-globe" aria-hidden="true"></i> -->
+          <i class="icon-airplane-around-earth"></i>
+          
+          <sup class="badge badgeCustom primary-color" ng-show="travelRequests > 0">{{travelRequests}} </sup>
+          <p> Travel </p>
+        </a>
+       
+      </div>
+    </div>
+    <div class="col-md-4 col-xs-4" ng-show="isClaimAccessible == 'true' || isExpenseClaimAccessible=='true' ">
+      <div id="" class="">
+        <a  id=""  class="tab-item" ng-click="openClaimPage()" >
+          <!-- <img  src="./img/claim1.png"/>  -->
+                 <!-- <i class="fa fa-money"></i> -->
+                 <i class="icon-claim" aria-hidden="true"></i>
+       <sup class="badge badgeCustom primary-color" ng-show="totalClaimRequests > 0">{{totalClaimRequests}}</sup>
+       <p> Claim </p>
+        </a>
+        
+      </div>
+    </div>
+  <!-- Icon 3 -->
+    <div class="col-md-4 col-xs-4" ng-show="isTimesheetAccessible == 'true'">
+      <div id="" class="">
+        <a  id=""  class="tab-item" ng-click="openTimesheetPage()">
+          <!-- <img  src="./img/time-sheet.png" />  -->
+          <!-- <i class="fa fa-clock-o" aria-hidden="true"></i> -->
+          <i class="icon-timesheetmain" style="color: black;"></i>
+          <p>Time Sheet </p>
+        </a>
+       
+      </div>
+    </div>
+    <div class="col-md-4 col-xs-4" ng-show="isProjectConfigAccessible == 'true'">
+      <div id="" class="">
+        <a  id=""  class="tab-item" ng-click="openProjectConfigList()" >
+          <!-- <img src="./img/proj-confi.png" />  -->
+          <i class="fa fa-cogs" aria-hidden="true"></i>
+          <p>Project <br>Configuration</p>
+        </a>
+        
+      </div>
+    </div>
+    <div class="col-md-4 col-xs-4" ng-show="isInvestmentDeclaration == 'true'" style="display:inline-block">
+      <div id="" class="">
+        <a  id=""  class="tab-item" ng-click="openInvestmentList()" >
+          <!-- <img src="./img/proj-confi.png" />  -->
+          <i class="fa fa-money" aria-hidden="true"></i>
+          <p>Investment <br>Declaration</p>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4 col-xs-4" ng-show="IsTransactionAccessible == 'true' " style="display:inline-block">
+      <div id="" class="">
+        <a  id=""  class="tab-item" ng-click="openTransactionList()" >
+          <!-- <img src="./img/proj-confi.png" />  -->
+          <i class="fa fa-recycle" aria-hidden="true"></i>
+          <sup class="badge badgeCustom primary-color" ng-show="transactionRequests > 0" >{{transactionRequests}}</sup>
+          <p>Transaction </p>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4 col-xs-4" ng-show="IsTrainingRequestAccessible == 'true' ">
+      <div id="" class="">
+        <a  id=""  class="tab-item" ng-click="openTrainingRequestList()" >
+          <i class="fa fa-certificate" aria-hidden="true"></i>
+          <!-- <sup class="badge badgeCustom primary-color">{{}}</sup>  -->
+        <p>Training Request</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="col-md-4 col-xs-4"  ng-show="IsGrievanceAccessible == 'true' " style="display:inline-block">
+      <div id="" class="">
+        <a  id=""  class="tab-item" ng-click="openGrievanceList()" >
+          <!-- <img src="./img/proj-confi.png" />  -->
+          <i class="fa fa-indent" aria-hidden="true"></i>
+          <p> Grievance /<br> Suggestion </p>
+        </a>
+      </div>
+    </div>    
+    <div class="col-md-4 col-xs-4"  ng-show="IsExitInterviewAccessible == 'true' " style="display:inline-block">
+      <div id="" class="">
+        <a  id=""  class="tab-item" ng-click="openExitInterviewPage()" >
+          <!-- <img src="./img/proj-confi.png" />  -->
+          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+          <p> Exit Interview </p>
+        </a>
+      </div>
+    </div>        
+    <div class="col-md-4 col-xs-4"  ng-show="IsPerfDiary == 'true' && perfDiaryFeature == 'true' " style="display:inline-block">
+      <div id="" class="">
+        <a  id=""  class="tab-item" ng-click="openPerfDiaryPage()" >
+          <!-- <img src="./img/proj-confi.png" />  -->
+          <i class="fas fa-book-reader" aria-hidden="true" style="font-size: 33px;color:grey"></i>
+          <p> Performance<br> Diary </p>
+        </a>
+      </div>
+    </div>        
+  </div>
+  
+  </div>
+  <br><br>
+	  </ion-content>
+	  </ion-view>

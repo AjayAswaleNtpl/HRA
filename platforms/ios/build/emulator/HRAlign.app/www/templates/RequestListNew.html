@@ -1,0 +1,24 @@
+<ion-view view-title="Request List">
+
+    <ion-content tabs-background-positive >
+        <div style=" margin-top: 65px;">
+            <div>
+                <div><h4>&nbsp;&nbsp;Requests</h4></div>
+            </div>
+        </div>
+        <ion-tabs class="tabs-icon-top tabs-background-positive tabs-color-light">
+            <ion-tab ng-if="IsLeaveAccessible == 'true'" title="<br/>Leave<br/>Application" icon-off="" icon-on="" href="#/app/RequestListNew/leaveReqList">
+                <ion-nav-view name="leaveReqList"></ion-nav-view>
+            </ion-tab>
+            <ion-tab ng-if="IsODAccessible == 'true'" title="<br/>OD<br/>Application" icon-off="" icon-on="" href="#/app/RequestListNew/ODReqList">
+                <ion-nav-view name="ODReqList"></ion-nav-view>
+            </ion-tab>
+            <ion-tab ng-if="IsRegularizationAccessible == 'true'" title="<br/>Attendance<br/>Regularisation" icon-off="" icon-on="" href="#/app/RequestListNew/attendanceReqList">
+                <ion-nav-view name="attendanceReqList"></ion-nav-view>
+            </ion-tab>
+            <ion-tab ng-if="IsShiftChangeAccessible == 'true'" title="<br/>Shift<br/>Change" icon-off="" icon-on="" href="#/app/RequestListNew/shiftChangeReqList">
+                <ion-nav-view name="shiftChangeReqList"></ion-nav-view>
+            </ion-tab>
+        </ion-tabs>
+    </ion-content >
+</ion-view>

@@ -1,0 +1,2103 @@
+<style>
+    .anchorARedirect {
+      position: absolute;
+      top: 270px;
+      right: 14px;
+      font-size: 15px;
+      color: #3B5998;
+    }
+  
+    .abcd {
+      position: absolute;
+      top: 299px;
+      width: 388px;
+    }
+  
+    #outer {
+      width: 100%;
+      text-align: center;
+    }
+  
+    .inner {
+      display: inline-block;
+    }
+  
+    .custom-item {
+      border: none;
+    }
+  
+    ol,
+    ul {
+      margin-bottom: 0px !important;
+    }
+  
+    ul.ctcClaimList {
+      width: 125%;
+    }
+  
+    ul.ctcClaimList li {
+      font-size: 0.8em;
+    }
+  
+    .ctcClaimList b {
+      display: inline-block;
+      width: 40%;
+      position: relative;
+      padding-right: 10px;
+    }
+  
+  
+    .ctcClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+  
+    ul.leaveClaimList {
+      width: 125%;
+    }
+  
+    ul.leaveClaimList li {
+      font-size: 0.8em;
+    }
+  
+    .leaveClaimList b {
+      display: inline-block;
+      width: 35%;
+      position: relative;
+      padding-right: 10px;
+    }
+  
+  
+    .leaveClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ul.odClaimList {
+      width: 125%;
+    }
+  
+    ul.odClaimList li {
+      font-size: 0.8em;
+    }
+  
+    .odClaimList b {
+      display: inline-block;
+      width: 50%;
+      position: relative;
+      padding-right: 10px;
+    }
+  
+  
+    .odClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    .custom-row {
+      padding: 0px;
+    }
+  
+    .custom-padding {
+      padding: 10px;
+    }
+  
+    .custom-top {
+      top: 10px;
+      left: 13px;
+    }
+  
+    .custom-paddingTop {
+      padding-top: 11px;
+    }
+  
+    .custom_OD1 {
+      padding-top: 11px;
+      padding-bottom: 0px;
+    }
+  
+    .custom-paddingBottom {
+      padding-bottom: 0px;
+    }
+  
+    .cust-col-50 {
+      text-align: center;
+    }
+  
+    .custom-grayColor {
+      color: #666;
+    }
+  
+    .custom-p {
+      color: #666;
+      font-size: 14px;
+    }
+  
+    .cust-card {
+      padding: 25px 0px 0px 0px;
+    }
+  
+    .has-header {
+      top: 0px;
+    }
+  
+    .bar-subheader {
+      top: 0px;
+    }
+  
+    .custom-requestApprove {
+      font-size: 11px;
+      color: green;
+    }
+  
+    .custom-requestRejcted {
+      font-size: 11px;
+      color: red;
+    }
+  
+    .custom-requestOther {
+      font-size: 11px;
+      color: orange;
+    }
+  
+    .custom-fontSize {
+      font-size: 12px;
+    }
+  
+    .customBorderRadius {
+      border: none;
+      box-shadow: 0 5px 6px -3px rgba(0, 0, 0, .2), 0 9px 12px 1px rgba(0, 0, 0, .14), 0 3px 16px 2px rgba(0, 0, 0, .12);
+      -moz-box-shadow: 0 5px 6px -3px rgba(0, 0, 0, .2), 0 9px 12px 1px rgba(0, 0, 0, .14), 0 3px 16px 2px rgba(0, 0, 0, .12);
+      -webkit-box-shadow: 0 5px 6px -3px rgba(0, 0, 0, .2), 0 9px 12px 1px rgba(0, 0, 0, .14), 0 3px 16px 2px rgba(0, 0, 0, .12);
+      -o-box-shadow: 0 5px 6px -3px rgba(0, 0, 0, .2), 0 9px 12px 1px rgba(0, 0, 0, .14), 0 3px 16px 2px rgba(0, 0, 0, .12);
+      border-radius: 6%;
+      margin-top: 10px;
+    }
+  
+    .modal-wrapper {
+      position: absolute;
+      top: 25%;
+      display: block;
+      width: 90%;
+      min-height: 35%;
+      padding: 5%;
+    }
+  
+    .modal-backdrop-bg {
+      background-color: rgba(255, 255, 255, 0.85);
+    }
+  
+    .modal {
+      border-top-right-radius: 1em;
+      border-bottom-right-radius: 1em;
+      border-top-left-radius: 1em;
+      border-bottom-left-radius: 1em;
+    }
+  
+    .modal-ion-content {
+      padding: 15px;
+      font-size: 0.85em;
+    }
+  
+    .cust-modal-footer {
+      box-shadow: 0px 0px 0px;
+      border: 0px;
+      background-image: none;
+      margin-bottom: 15px;
+    }
+  
+    .textareaBox {
+      margin-left: 2%;
+      width: 96%;
+      padding-bottom: 5%;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+  
+    .badge.badgeCustom {
+      width: 22px;
+      height: 22px;
+      text-align: center;
+      line-height: 18px;
+      display: block;
+      position: absolute;
+      top: 0;
+      color: #fff !important;
+      font-size: 10px !important;
+      padding: 0;
+    }
+  
+    a:focus,
+    a:hover {
+      text-decoration: none;
+    }
+  
+    .tab-item.tab-item-active,
+    .tab-item.active,
+    .tab-item.activated {
+      opacity: 1;
+    }
+  
+    .tab-item {
+      opacity: 0.7;
+    }
+  
+    .slick-prev,
+    .slick-next {
+      position: absolute;
+      right: 10%;
+      background: #777;
+      border: none;
+      color: transparent;
+      width: 30px;
+      height: 30px;
+    }
+  
+    .slick-prev:before,
+    .slick-next:before {
+      content: ">";
+      color: #fff;
+      font-size: 25px;
+    }
+  
+    .slick-prev {
+      left: 10%;
+    }
+  
+    .slick-prev:before {
+      content: "<";
+    }
+  
+    .slick-dots {
+      list-style: none;
+      margin: 0 auto;
+      text-align: center;
+      margin-top: 10px;
+    }
+  
+    .slick-dots li {
+      display: inline-block;
+    }
+  
+    .slick-dots li button {
+      transition: 0.2s background-color ease-in-out 0s;
+      border: none;
+      padding: 0;
+      color: transparent;
+      width: 10px;
+      height: 10px;
+      background-color: #777;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+  
+    .slick-dots li.slick-active button {
+      background-color: #0a9dc7;
+    }
+  
+    /* .slick-slide.slick-active{
+      background-color:#0a9dc7;
+    } */
+    /* .slick-slider {
+        width: 100%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 100%;
+        left: 50%;
+  
+    } */
+    .slick-slider {
+      width: 100%;
+      position: relative;
+      top: 0%;
+  
+    }
+  
+    .col-xs-2,
+    .col-xs-4 {
+      padding: 0 !important;
+    }
+  
+    .row {
+      margin: 0px 0 5px 0 !important;
+    }
+  
+    label {
+      font-weight: normal !important;
+    }
+  
+    .cust-card .item {
+      padding: 7px !important;
+    }
+  
+    .OdDataclass,
+    .col-xs-8 {
+      padding-right: 5px !important;
+      padding-left: 5px !important;
+    }
+  
+    .item-avatar>img:first-child {
+      top: 0px !important;
+  
+    }
+  
+    .imgclass h3,
+    .imgclass p {
+      margin-left: 65px !important;
+    }
+    .search {
+      margin-top: 90px !important;
+      margin-bottom: -10px !important;
+  }
+  .inner .btn-pad.claimClass{
+    margin: 14px 4px 5px 10px;
+      padding: 0 8px;
+  }
+  .inner .badge{
+    position: relative;
+    margin: 0 -8px;
+    float: right;
+  }
+  .slick-carousel .fa{
+    font-size: 40px;
+    color: #777676;
+  }
+  .slick-carousel p {
+      color: #212121;
+      margin: 0 0 10px;
+      font-size: 0.83em;
+      text-align: center;
+      margin-left: -2%;
+      margin-top: 0%;
+      margin-bottom: 2px;
+      font-weight: 400;
+  }
+  
+  </style>
+<ion-view>
+    <div class="bar bar-footer hide-on-keyboard-open" style="background-color:#000; background-size: 100% 0px;">
+        <div class="title" style="height: 20px;">
+            <h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px;
+                margin-bottom: 5px;">Powered by HR Align</h6>
+        </div>
+    </div>
+    <ion-content has-bouncing="false" class="item-divider grayBackColor" style="overflow-y: auto;">
+        <div class="custom-header" style="padding-top: 0px;padding-bottom: 0px;">
+            <h4 class="subHeaderClass" style="margin: 0px;"> <span class="backIcon">
+              <i class="icon ion-ios-arrow-back" ng-click="redirectOnBack()"></i></span>
+                <b style="vertical-align: super;">Claim Approvals</b></h4>
+                <a ng-click="goToRequisitions()" class="approvalLinkClass">
+                  <img src="./img/requisitionNew.png" style="width: 25px; height: 25px; margin-right: 3px;text-align: center;" />
+                </a>
+        </div>
+        <div id="ClaimPendingApplicationID" class="cust-card" style="margin-top:-23%" > 
+            <label class="item item-input" style="margin-top:8px;padding: 6px 7px 5px
+              16px!important;"> <i
+                class="icon ion-search placeholder-icon"></i> <input type="search"
+                placeholder="Search"
+                ng-model="searchObj.searchQuery" />
+            </label>
+            <br>
+      
+            <div class="noDataAvailavle" ng-if="claim.length == 0">
+              <!-- <center> <h4>No Data Available</h4> </center> -->
+              <img src="./img/no-result.png" alt="">
+            </div>
+            <br>
+          </div>
+      
+          <div id="claimApplicationID" class="cust-card" style="margin-top:-30%" >
+      
+           
+            <!-- <label class="item item-input" style="margin-top:85px;padding: 6px 7px 5px 16px!important;">
+              <i class="icon ion-search placeholder-icon"></i>
+              <input id="reqSearch1" type="search" placeholder="Search " ng-model="searchObj.searchQuery" />
+            </label> -->
+            <br>
+            <div class="search" style="margin-bottom: -10px !important;">
+              <span>
+                <input type="submit" value="&#xf002;" class="search-btn fa ib-m">
+                <div class="search-slide ib-m">
+                  <input type="search" id="reqSearch1" placeholder="Enter your search"
+                    class="ib-m" ng-model="searchObj.searchQuery" />
+                  <div class="search-close ib-m">
+                    <i class="fa fa-times-circle" aria-hidden="true"></i></div>
+                </div>
+              </span>
+              <span class="recentRecord" style="margin-left:12px;font-size: 0.8em;
+                font-style: oblique;">
+                Recent 50 applications.
+              </span>
+              <!-- <span class="refreshBtn" style="margin-top: 2%;">
+                <i ng-click="refreshNCTCList()" class="fa fa-refresh" ></i>
+              </span>  -->
+            </div>
+            <br>
+      
+            <div id="outer">
+              <div   ng-show="IsExpenseClaimAccessible == 'true' "  class="row" style=" margin: -4px 9px 4px 0px !important;">
+                <select id="periodDD" style="padding-left: 2%;" class="form-control item-select select"
+                ng-change="periodChange()"
+                ng-options="prd.periodId as prd.fromDt + ' - ' + prd.toDt  for prd in ctcPeriodVOList"
+                ng-model="selectedValues.periodId">
+                </select>
+          </div >
+              <div class="inner" ng-show="IsExpenseClaimAccessible == 'true' ">
+                <sup ng-show="ctcCount != 0" class="badge badgeCustom primary-color">{{ctcCount}}</sup>
+                <button id="ctcSelect1" ng-click="getCClaimList()"
+                  class="button button-small button-outline  btn-pad
+                  claimClass">CTC</button></div>
+              <div class="inner" ng-show="IsExpenseClaimAccessible == 'true' ">
+                <sup ng-show="nonCtcCount != 0" class="badge badgeCustom
+                  primary-color">{{nonCtcCount}}</sup>
+                <button id="nonCtcSelect1" ng-click="getNClaimList()"
+                  class="button button-small button-outline  btn-pad
+                  claimClass">NON CTC</button></div>
+              <div class="inner" ng-show="IsExpenseClaimAccessible == 'true' ">
+                <sup ng-show="ltaCtcCount != 0" class="badge badgeCustom
+                  primary-color">{{ltaCtcCount}}</sup>
+                <button id="ltaSelect1" ng-click="getLClaimList()"
+                  class="button button-small button-outline  btn-pad
+                  claimClass">LTA</button></div>
+              <div class="inner" ng-show="IsClaimAccessible == 'true' ">
+                <sup ng-show="travelClaimCount != 0" class="badge badgeCustom
+                  primary-color">{{travelClaimCount}}</sup>
+                <button id="travelSelect1" ng-click="getTrClaimList()"
+                  class="button button-small button-outline  btn-pad
+                  claimClass">Travel</button></div>
+            </div>
+      
+            <div id="nonCtcClaimApprovalCard">
+              <span class="refreshBtn" style="margin-top: -10%;">
+                <i ng-click="refresNONCTCClaimList()" class="fa fa-refresh"></i>
+              </span>
+              <!-- <div class="row" style="margin-bottom: -7%!important;margin-top: 20px;">
+                <div class="col col-75">
+                  <p style="margin-left:12px;font-size: 0.8em; font-style: oblique;">Recent 50 applications.</p>
+                </div>
+                <div class="col col-25">
+                  <img style="width: 25px;height: 25px;margin-left: 40%;margin-top: -5%;" src="./img/refreshicon.png"
+                    ng-click="refresNONCTCClaimList()" />
+                </div>
+              </div> -->
+              <div id="noData" ng-if="nonCTCClaimApprList.length == 0">
+                <!-- <center><h4>No Data Available </h4></center> -->
+                <img src="./img/no-result.png" alt="">
+              </div>
+              <div class="list card customBorderRadius" ng-repeat="nonctcclaimApp in
+                nonCTCClaimApprList | filter:searchObj.searchQuery |
+                orderBy:'-attDate'"ng-if="nonctcclaimApp.status =='SENT FOR APPROVAL'
+                || nonctcclaimApp.status =='SENT FOR CANCELLATION'">
+      
+                <div class="remarkcomments">
+                  <h2 class="item-note" style="color:green;"
+                    ng-if="nonctcclaimApp.status == 'APPROVED' ||
+                    nonctcclaimApp.status == 'CANCELLATION APPROVED'">
+                    {{nonctcclaimApp.status}}</h2>
+                  <h2 class="item-note" style="color:red;"
+                    ng-if="nonctcclaimApp.status == 'CANCELLED'">
+                    {{nonctcclaimApp.status}}</h2>
+                  <h2 class="item-note" style="color:red;"
+                    ng-if="nonctcclaimApp.status == 'REJECTED'">
+                    {{nonctcclaimApp.status}}</h2>
+                  <h2 class="item-note" style="color:red;"
+                    ng-if="nonctcclaimApp.status == 'CANCELLATION REJECTED'">
+                    {{nonctcclaimApp.status}}</h2>
+                  <h2 class="item-note" style="color:orange;"
+                    ng-if="nonctcclaimApp.status != 'REJECTED' &&
+                    nonctcclaimApp.status != 'APPROVED' && nonctcclaimApp.status !=
+                    'CANCELLED' &&
+                    nonctcclaimApp.status != 'CANCELLATION APPROVED' &&
+                    nonctcclaimApp.status != 'CANCELLATION REJECTED'">
+                    {{nonctcclaimApp.status}}</h2>
+                </div>
+      
+                <div class="form-group row">
+                  <label class="col-sm-2 col-xs-2 col-form-label">
+                    <img ng-if="nonctcclaimApp.profilePhoto"
+                      ng-src="{{nonctcclaimApp.profilePhoto}}{{nonctcclaimApp.empId}}"
+                      style="max-width: 50px; max-height: 50px;"> 
+                      <img
+                      ng-if="!nonctcclaimApp.profilePhoto && nonctcclaimApp.gender ==
+                      'M'"
+                      ng-src="./img/Male.png" style="max-width: 50px; max-height:
+                      50px;">
+                    <img ng-if="!nonctcclaimApp.profilePhoto && nonctcclaimApp.gender
+                      == 'F'" ng-src="./img/Female.png"
+                      style="max-width: 50px; max-height: 50px;">
+                      <img
+                      ng-if="!nonctcclaimApp.profilePhoto && nonctcclaimApp.gender !=
+                      'M' && nonctcclaimApp.gender != 'F'"
+                      ng-src="./img/blankemp.jpg" style="max-width: 50px; max-height:
+                      50px;">
+      
+                  </label>
+                  <div class="col-sm-10 col-xs-10"style="padding: 20px 0 0 0
+                    !important;">
+                    <h3 style="font-size: 1em;">{{nonctcclaimApp.empName}}
+                      ({{nonctcclaimApp.empCode}})</h3>
+      
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Claim Id</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{nonctcclaimApp.claimFormId}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Application Date</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{nonctcclaimApp.attDate| date : "dd/MM/yyyy"}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Amount</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{nonctcclaimApp.claimAmount}}
+                  </div>
+                </div>
+                <div class="form-group row" id="approveAmt">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Approved Amount</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{nonctcclaimApp.approvedclaimAmount}}
+                  </div>
+                </div>
+                <div class="form-group row" id="approveAmt">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Reimbursed Amount</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{nonctcclaimApp.reimburseAmt}}
+                  </div>
+                </div>
+      
+                <div class="text-center" class="item">
+                  <button type="button"
+                    ng-click="redirectToNonCtcApproval(nonctcclaimApp);"
+                    class="button button-small button-outline button-positive">
+                    <i class="fa fa-eye mr-5"></i>Details</button>
+                </div>
+      
+                <!-- <div class="item custom-item custom-paddingBottom item-text-wrap">
+                  <div class="row custom-row">
+                    <div class="col col-100">
+                      <ul class="ctcClaimList">
+                        <li><b>Claim Id</b>{{nonctcclaimApp.claimFormId}}</li>
+                        <li><b>Application Date</b>{{nonctcclaimApp.attDate| date : "dd/MM/yyyy"}}</li>
+                        <li><b>Claim Amount</b>{{nonctcclaimApp.claimAmount}}</li>
+                        <li id="approveAmt"><b>Approved Claim Amount</b>&#x20b9; {{nonctcclaimApp.approvedclaimAmount}}</li>
+                        <li><b>Reimbursed Claim Amount</b>&#x20b9; {{nonctcclaimApp.reimburseAmt}}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="item custom-item custom_OD1 item-avatar imgclass">
+                  <img ng-if="nonctcclaimApp.profilePhoto" ng-src="{{nonctcclaimApp.profilePhoto}}{{nonctcclaimApp.empId}}"
+                    style="max-width: 50px; max-height: 50px;"> <img ng-if="!nonctcclaimApp.profilePhoto && nonctcclaimApp.gender == 'M'"
+                    ng-src="./img/Male.png" style="max-width: 50px; max-height: 50px;">
+                  <img ng-if="!nonctcclaimApp.profilePhoto && nonctcclaimApp.gender == 'F'" ng-src="./img/Female.png"
+                    style="max-width: 50px; max-height: 50px;">
+                  <h3 style="font-size: 0.8em;">{{nonctcclaimApp.empName}} ({{nonctcclaimApp.empCode}})</h3>
+      
+                  <p style="color:green;" ng-if="nonctcclaimApp.status == 'APPROVED' || nonctcclaimApp.status == 'CANCELLATION APPROVED'">
+                    {{nonctcclaimApp.status}}</p>
+                  <p style="color:red;" ng-if="nonctcclaimApp.status == 'CANCELLED'"> {{nonctcclaimApp.status}}</p>
+                  <p style="color:red;" ng-if="nonctcclaimApp.status == 'REJECTED'"> {{nonctcclaimApp.status}}</p>
+                  <p style="color:red;" ng-if="nonctcclaimApp.status == 'CANCELLATION REJECTED'"> {{nonctcclaimApp.status}}</p>
+                  <p style="color:orange;" ng-if="nonctcclaimApp.status != 'REJECTED' &&
+                  nonctcclaimApp.status != 'APPROVED' && nonctcclaimApp.status != 'CANCELLED' &&
+                  nonctcclaimApp.status != 'CANCELLATION APPROVED' && nonctcclaimApp.status != 'CANCELLATION REJECTED'">
+                  {{nonctcclaimApp.status}}</p>
+                </div>
+                <div class="row custom-row">
+                  <button class="button button-small button-outline button-positive"
+                    style="width:50%;margin-top: 10px;margin-left: 105px;"
+                    ng-click="redirectToNonCtcApproval(nonctcclaimApp);">Details
+                  </button>
+                </div> -->
+                <!-- <div ng-show="nonctcclaimApp.status == 'SENT FOR APPROVAL'">
+                  <div class="row custom-row">
+                    <div ng-click="approveOrRejectPendingCClaim(nonctcclaimApp, 'APPROVE')" class="col col-50 cust-col-50 buttonLinksColor">Approve
+                    </div>
+                    |
+                    <div ng-click="approveOrRejectPendingCClaim(nonctcclaimApp, 'REJECT')" class="col col-50 cust-col-50 buttonLinksColor">Reject
+                    </div>
+                  </div>
+                </div> -->
+              </div>
+              <div class="list card customBorderRadius" ng-repeat="nonctcclaimApp in
+                nonCTCClaimApprList | filter:searchObj.searchQuery |
+                orderBy:'-attDate'"
+                ng-if="!(nonctcclaimApp.status =='SENT FOR APPROVAL' ||
+                nonctcclaimApp.status =='SENT FOR CANCELLATION')">
+      
+                <div class="remarkcomments">
+                  <h2 class="item-note" style="color:green;"
+                    ng-if="nonctcclaimApp.status == 'APPROVED' ||
+                    nonctcclaimApp.status == 'CANCELLATION APPROVED'">
+                    {{nonctcclaimApp.status}}</h2>
+                  <h2 class="item-note" style="color:red;"
+                    ng-if="nonctcclaimApp.status == 'CANCELLED'">
+                    {{nonctcclaimApp.status}}</h2>
+                  <h2 class="item-note" style="color:red;"
+                    ng-if="nonctcclaimApp.status == 'REJECTED'">
+                    {{nonctcclaimApp.status}}</h2>
+                  <h2 class="item-note" style="color:red;"
+                    ng-if="nonctcclaimApp.status == 'CANCELLATION REJECTED'">
+                    {{nonctcclaimApp.status}}</h2>
+                  <h2 class="item-note" style="color:orange;"
+                    ng-if="nonctcclaimApp.status != 'REJECTED' &&
+                    nonctcclaimApp.status != 'APPROVED' && nonctcclaimApp.status !=
+                    'CANCELLED' &&
+                    nonctcclaimApp.status != 'CANCELLATION APPROVED' &&
+                    nonctcclaimApp.status != 'CANCELLATION REJECTED'">
+                    {{nonctcclaimApp.status}}</h2>
+                </div>
+      
+                <div class="form-group row">
+                  <label class="col-sm-2 col-xs-2 col-form-label">
+                    <img ng-if="nonctcclaimApp.profilePhoto"
+                      ng-src="{{nonctcclaimApp.profilePhoto}}{{nonctcclaimApp.empId}}"
+                      style="max-width: 50px; max-height: 50px;"> <img
+                      ng-if="!nonctcclaimApp.profilePhoto && nonctcclaimApp.gender ==
+                      'M'"
+                      ng-src="./img/Male.png" style="max-width: 50px; max-height:
+                      50px;">
+                    <img ng-if="!nonctcclaimApp.profilePhoto && nonctcclaimApp.gender
+                      == 'F'" ng-src="./img/Female.png"
+                      style="max-width: 50px; max-height: 50px;">
+                      <img
+                      ng-if="!nonctcclaimApp.profilePhoto && nonctcclaimApp.gender !=
+                      'M' && nonctcclaimApp.gender != 'F'"
+                      ng-src="./img/blankemp.jpg" style="max-width: 50px; max-height:
+                      50px;">				
+      
+                  </label>
+                  <div class="col-sm-10 col-xs-10"style="padding: 20px 0 0 0
+                    !important;">
+                    <h3 style="font-size: 1em;">{{nonctcclaimApp.empName}}
+                      ({{nonctcclaimApp.empCode}})</h3>
+      
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Claim Id</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{nonctcclaimApp.claimFormId}}
+                  </div>
+                </div>
+      
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Application Date</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{nonctcclaimApp.attDate| date : "dd/MM/yyyy"}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Amount</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{nonctcclaimApp.claimAmount}}
+                  </div>
+                </div>
+                <div class="form-group row" id="approveAmt">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Approved Amount</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{nonctcclaimApp.approvedclaimAmount}}
+                  </div>
+                </div>
+                <div class="form-group row" id="approveAmt">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Reimbursed Amount</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{nonctcclaimApp.reimburseAmt}}
+                  </div>
+                </div>
+                <div class="text-center" class="item">
+                  <button type="button"
+                    ng-click="redirectToNonCtcApproval(nonctcclaimApp);"
+                    class="button button-small button-outline button-positive">
+                    <i class="fa fa-eye mr-5"></i>Details</button>
+                </div>
+      
+                <!-- <div class="item custom-item custom-paddingBottom item-text-wrap">
+                  <div class="row custom-row">
+                    <div class="col col-100">
+                      <ul class="ctcClaimList">
+                        <li><b>Claim Id </b>{{nonctcclaimApp.claimFormId}}</li>
+                        <li><b>Application Date</b>{{nonctcclaimApp.attDate| date : "dd/MM/yyyy"}}</li>
+                        <li><b>Claim Amount</b>{{nonctcclaimApp.claimAmount}}</li>
+                        <li id="approveAmt"><b>Approved Claim Amount</b>&#x20b9; {{nonctcclaimApp.approvedclaimAmount}}</li>
+                        <li><b>Reimbursed Claim Amount</b>&#x20b9; {{nonctcclaimApp.reimburseAmt}}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="item custom-item custom_OD1 item-avatar imgclass">
+                  <img ng-if="nonctcclaimApp.profilePhoto" ng-src="{{nonctcclaimApp.profilePhoto}}{{nonctcclaimApp.empId}}"
+                    style="max-width: 50px; max-height: 50px;"> <img ng-if="!nonctcclaimApp.profilePhoto && nonctcclaimApp.gender == 'M'"
+                    ng-src="./img/Male.png" style="max-width: 50px; max-height: 50px;">
+                  <img ng-if="!nonctcclaimApp.profilePhoto && nonctcclaimApp.gender == 'F'" ng-src="./img/Female.png"
+                    style="max-width: 50px; max-height: 50px;">
+                  <h3 style="font-size: 0.8em;">{{nonctcclaimApp.empName}} ({{nonctcclaimApp.empCode}})</h3>
+      
+                  <p style="color:green;" ng-if="nonctcclaimApp.status == 'APPROVED' || nonctcclaimApp.status == 'CANCELLATION APPROVED'">
+                    {{nonctcclaimApp.status}}</p>
+                  <p style="color:red;" ng-if="nonctcclaimApp.status == 'CANCELLED'"> {{nonctcclaimApp.status}}</p>
+                  <p style="color:red;" ng-if="nonctcclaimApp.status == 'REJECTED'"> {{nonctcclaimApp.status}}</p>
+                  <p style="color:red;" ng-if="nonctcclaimApp.status == 'CANCELLATION REJECTED'"> {{nonctcclaimApp.status}}</p>
+                  <p style="color:orange;" ng-if="nonctcclaimApp.status != 'REJECTED' &&
+                  nonctcclaimApp.status != 'APPROVED' && nonctcclaimApp.status != 'CANCELLED' &&
+                  nonctcclaimApp.status != 'CANCELLATION APPROVED' && nonctcclaimApp.status != 'CANCELLATION REJECTED'"> {{nonctcclaimApp.status}}</p>
+                </div>
+                <div class="row custom-row">
+                    <button class="button button-small button-outline button-positive"
+                      style="width:50%;margin-top: 10px;margin-left: 105px;"
+                      ng-click="redirectToNonCtcApproval(nonctcclaimApp);">Details
+                    </button>
+                  </div> -->
+                <!-- <div ng-show="nonctcclaimApp.status == 'SENT FOR APPROVAL'">
+                  <div class="row custom-row">
+                    <div ng-click="approveOrRejectPendingCClaim(nonctcclaimApp, 'APPROVE')" class="col col-50 cust-col-50 buttonLinksColor">Approve
+                    </div>
+                    |
+                    <div ng-click="approveOrRejectPendingCClaim(nonctcclaimApp, 'REJECT')" class="col col-50 cust-col-50 buttonLinksColor">Reject
+                    </div>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+      
+            <div id="ctcClaimApprovalCard">
+              <span class="refreshBtn" style="margin-top: -10%;">
+                <i ng-click="refresCTCClaimList()" class="fa fa-refresh"></i>
+                <!-- <img style="width: 25px;height: 25px;margin-left: 40%;margin-top: -5%;" src="./img/refreshicon.png"
+                ng-click="refresCTCClaimList()" /> -->
+              </span>
+              <!-- <div class="row" style="margin-bottom: -7%!important;margin-top: 20px;">
+                <div class="col col-75">
+                  <p style="margin-left:12px;font-size: 0.8em; font-style: oblique;">Recent 50 applications.</p>
+                </div>
+                <div class="col col-25">
+                  <img style="width: 25px;height: 25px;margin-left: 40%;margin-top: -5%;" src="./img/refreshicon.png"
+                    ng-click="refresCTCClaimList()" />
+                </div>
+              </div> -->
+              <div id="noData" ng-if="ctcClaimApprList.length == 0">
+                <!-- <center> <h4>No Data Available</h4> </center> -->
+                <img src="./img/no-result.png" alt="">
+              </div>
+              <div class="list card customBorderRadius" ng-repeat="ctcclaimApp in
+                ctcClaimApprList | filter:searchObj.searchQuery | orderBy:'-attDate'"
+                ng-if="ctcclaimApp.status =='SENT FOR APPROVAL' || ctcclaimApp.status
+                =='SENT FOR CANCELLATION'">
+                <div class="remarkcomments">
+                  <h2 class="item-note" style="color:green;" ng-if="ctcclaimApp.status
+                    == 'APPROVED' || ctcclaimApp.status == 'CANCELLATION APPROVED'">
+                    {{ctcclaimApp.status}}</h2>
+                  <h2 class="item-note" style="color:red;" ng-if="ctcclaimApp.status
+                    == 'CANCELLED'"> {{ctcclaimApp.status}}</h2>
+                  <h2 class="item-note" style="color:red;" ng-if="ctcclaimApp.status
+                    == 'REJECTED'"> {{ctcclaimApp.status}}</h2>
+                  <h2 class="item-note" style="color:red;" ng-if="ctcclaimApp.status
+                    == 'CANCELLATION REJECTED'"> {{ctcclaimApp.status}}</h2>
+                  <h2 class="item-note" style="color:orange;"
+                    ng-if="ctcclaimApp.status != 'REJECTED' &&
+                    ctcclaimApp.status != 'APPROVED' && ctcclaimApp.status !=
+                    'CANCELLED' &&
+                    ctcclaimApp.status != 'CANCELLATION APPROVED' &&
+                    ctcclaimApp.status != 'CANCELLATION REJECTED'">
+                    {{ctcclaimApp.status}}</h2>
+                </div>
+      
+                <div class="form-group row">
+                  <label class="col-sm-2 col-xs-2 col-form-label">
+                    <img ng-if="ctcclaimApp.profilePhoto"
+                      ng-src="{{ctcclaimApp.profilePhoto}}{{ctcclaimApp.empId}}"
+                      style="max-width: 50px; max-height: 50px;"> <img
+                      ng-if="!ctcclaimApp.profilePhoto && ctcclaimApp.gender == 'M'"
+                      ng-src="./img/Male.png" style="max-width: 50px; max-height:
+                      50px;">
+                    <img ng-if="!ctcclaimApp.profilePhoto && ctcclaimApp.gender ==
+                      'F'" ng-src="./img/Female.png"
+                      style="max-width: 50px; max-height: 50px;">
+                    <img
+                      ng-if="!ctcclaimApp.profilePhoto && ctcclaimApp.gender !=
+                      'M' && ctcclaimApp.gender != 'F'"
+                      ng-src="./img/blankemp.jpg" style="max-width: 50px; max-height:
+                      50px;">
+                  </label>
+                  <div class="col-sm-10 col-xs-10"style="padding: 20px 0 0 0
+                    !important;">
+                    <h3 style="font-size: 1em;">{{ctcclaimApp.empName}}
+                      ({{ctcclaimApp.empCode}})</h3>
+      
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Claim Id</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{ctcclaimApp.claimFormId}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Claim Date</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{ctcclaimApp.attDate| date : "dd/MM/yyyy"}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Claim Type</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{ctcclaimApp.ctcPayHeadName}}
+                  </div>
+                </div>
+               <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Month</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{ctcclaimApp.monthName}}
+                  </div>
+                </div>	
+               <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Year</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{ctcclaimApp.yearId}}
+                  </div>
+                </div>			  
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Bill Amount</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{ctcclaimApp.billAmount}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Amount</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{ctcclaimApp.claimAmount}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Approved Amount</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{ctcclaimApp.approvedclaimAmount}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Reimbursed Amount</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{ctcclaimApp.reimburseAmt}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Applicant Remarks
+                    </label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{ctcclaimApp.remarks}}
+                  </div>
+                </div>	
+              <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{ctcclaimApp.appRemarks}}
+                  </div>
+                </div>		  
+                <div class="form-group row" ng-if="ctcclaimApp.file1Name">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Attachment</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8"  ng-if="ctcclaimApp.file1Name"> 
+                   <span ng-click="openFileCTCClaim(1,ctcclaimApp)" 
+                             style="color:blue;">{{ctcclaimApp.file1Name}}</span>
+                </div>
+               </div>		  
+              <div class="form-group row" ng-if="ctcclaimApp.file2Name">
+               <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+                <div  class="col-sm-8 col-xs-8">
+                <span ng-if="ctcclaimApp.file2Name" ng-click="openFileCTCClaim(2,ctcclaimApp)"  style="color:blue;">
+                  {{ctcclaimApp.file2Name}}</span>
+                </div>
+              </div>		  			
+              <div class="form-group row" ng-if="ctcclaimApp.file3Name">
+               <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+                <div  class="col-sm-8 col-xs-8"><span  ng-if="ctcclaimApp.file3Name" ng-click="openFileCTCClaim(3,ctcclaimApp)"  style="color:blue;">
+                  {{ctcclaimApp.file3Name}}></span>
+                </div>
+              </div>		  			
+              <div class="form-group row" ng-if="ctcclaimApp.file4Name">
+               <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+                <div  class="col-sm-8 col-xs-8" ><span ng-if="ctcclaimApp.file4Name" ng-click="openFileCTCClaim(4,ctcclaimApp)"  style="color:blue;">
+                  {{ctcclaimApp.file4Name}}</span>
+                </div>
+              </div>		  			
+              <div class="form-group row" ng-if="ctcclaimApp.file5Name">
+               <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+                <div  class="col-sm-8 col-xs-8"><span  ng-if="ctcclaimApp.file5Name" ng-click="openFileCTCClaim(5,ctcclaimApp)"  style="color:blue;">
+                  {{ctcclaimApp.file5Name}}</span>
+                </div>
+              </div>		  			
+              <div class="form-group row" ng-if="ctcclaimApp.file6Name">
+               <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+                <div  class="col-sm-8 col-xs-8"><span  ng-if="ctcclaimApp.file6Name" ng-click="openFileCTCClaim(6,ctcclaimApp)"  style="color:blue;">
+                  {{ctcclaimApp.file6Name}}</span>
+                </div>
+              </div>		  			
+              <div class="form-group row" ng-if="ctcclaimApp.file7Name">
+               <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+                <div  class="col-sm-8 col-xs-8"><span  ng-if="ctcclaimApp.file7Name" ng-click="openFileCTCClaim(7,ctcclaimApp)"  style="color:blue;">
+                  {{ctcclaimApp.file7Name}}</span>
+                </div>
+              </div>		  			
+              <div class="form-group row" ng-if="ctcclaimApp.file8Name">
+               <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+                <div  class="col-sm-8 col-xs-8"><span  ng-if="ctcclaimApp.file8Name" ng-click="openFileCTCClaim(8,ctcclaimApp)"  style="color:blue;">
+                  {{ctcclaimApp.file8Name}}</span>
+                </div>
+              </div>		  			
+              <div class="form-group row" ng-if="ctcclaimApp.file9Name">
+               <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+                <div  class="col-sm-8 col-xs-8"><span  ng-if="ctcclaimApp.file9Name" ng-click="openFileCTCClaim(9,ctcclaimApp)"  style="color:blue;">
+                  {{ctcclaimApp.file9Name}}</span>
+                </div>
+              </div>		  			
+              <div class="form-group row" ng-if="ctcclaimApp.file10Name">
+               <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+                <div  class="col-sm-8 col-xs-8"><span  ng-if="ctcclaimApp.file10Name" ng-click="openFileCTCClaim(10,ctcclaimApp)"  style="color:blue;">
+                  {{ctcclaimApp.file10Name}}</span>
+                </div>
+              </div>			
+                
+              
+                <div ng-show="ctcclaimApp.status == 'SENT FOR APPROVAL'">
+                  
+                  <div class="text-center" class="item">
+                    <button type="button"
+                      ng-click="openCTCdetails(ctcclaimApp);"
+                      class="button button-small button-outline button-positive">
+                      <i class="fa fa-eye mr-5"></i>Details</button>
+                  </div>
+                </div>
+              
+                <!-- <div ng-show="ctcclaimApp.status == 'SENT FOR APPROVAL'">
+                  <div class="row custom-row">
+                    <div ng-click="approveOrRejectPendingCClaim(ctcclaimApp,
+                      'APPROVE')"
+                      class="col col-50 cust-col-50 buttonLinksColor">Approve
+                    </div>
+                    |
+                    <div ng-click="approveOrRejectPendingCClaim(ctcclaimApp,
+                      'REJECT')"
+                      class="col col-50 cust-col-50 buttonLinksColor">Reject
+                    </div>
+                  </div>
+                </div> -->
+                <br>
+      
+                <!-- <div class="item custom-item custom-paddingBottom item-text-wrap">
+                  <div class="row custom-row">
+                    <div class="col col-100">
+                      <ul class="ctcClaimList">
+                          <li><b>Claim Id </b>{{ctcclaimApp.claimFormId}}</li>
+                          <li><b>Claim Date </b>{{ctcclaimApp.attDate| date : "dd/MM/yyyy"}}</li>
+                          <li><b>Claim Type </b>{{ctcclaimApp.ctcPayHeadName}}</li>
+                          <li><b>Claim Amount </b>&#x20b9; {{ctcclaimApp.claimAmount}}</li>
+                          <li><b>Approved Claim Amount </b>&#x20b9; {{ctcclaimApp.approvedclaimAmount}}</li>
+                          <li><b>Reimbursed Claim Amount </b>&#x20b9; {{ctcclaimApp.reimburseAmt}}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="item custom-item custom_OD1 item-avatar imgclass">
+                  <img ng-if="ctcclaimApp.profilePhoto" ng-src="{{ctcclaimApp.profilePhoto}}{{ctcclaimApp.empId}}"
+                    style="max-width: 50px; max-height: 50px;"> <img ng-if="!ctcclaimApp.profilePhoto && ctcclaimApp.gender == 'M'"
+                    ng-src="./img/Male.png" style="max-width: 50px; max-height: 50px;">
+                  <img ng-if="!ctcclaimApp.profilePhoto && ctcclaimApp.gender == 'F'" ng-src="./img/Female.png"
+                    style="max-width: 50px; max-height: 50px;">
+                  <h3 style="font-size: 0.8em;">{{ctcclaimApp.empName}} ({{ctcclaimApp.empCode}})</h3>
+      
+                  <p style="color:green;" ng-if="ctcclaimApp.status == 'APPROVED' || ctcclaimApp.status == 'CANCELLATION APPROVED'">
+                    {{ctcclaimApp.status}}</p>
+                  <p style="color:red;" ng-if="ctcclaimApp.status == 'CANCELLED'"> {{ctcclaimApp.status}}</p>
+                  <p style="color:red;" ng-if="ctcclaimApp.status == 'REJECTED'"> {{ctcclaimApp.status}}</p>
+                  <p style="color:red;" ng-if="ctcclaimApp.status == 'CANCELLATION REJECTED'"> {{ctcclaimApp.status}}</p>
+                  <p style="color:orange;" ng-if="ctcclaimApp.status != 'REJECTED' &&
+                  ctcclaimApp.status != 'APPROVED' && ctcclaimApp.status != 'CANCELLED' &&
+                  ctcclaimApp.status != 'CANCELLATION APPROVED' && ctcclaimApp.status != 'CANCELLATION REJECTED'"> {{ctcclaimApp.status}}</p>
+                </div>
+                <div ng-show="ctcclaimApp.status == 'SENT FOR APPROVAL'">
+                  <div class="row custom-row">
+                    <div ng-click="approveOrRejectPendingCClaim(ctcclaimApp, 'APPROVE')"
+                     class="col col-50 cust-col-50 buttonLinksColor">Approve
+                    </div>
+                    |
+                    <div ng-click="approveOrRejectPendingCClaim(ctcclaimApp, 'REJECT')"
+                    class="col col-50 cust-col-50 buttonLinksColor">Reject
+                    </div>
+                  </div>
+                </div> -->
+              </div>
+              <div class="list card customBorderRadius" ng-repeat="ctcclaimApp in
+                ctcClaimApprList | filter:searchObj.searchQuery | orderBy:'-attDate'"
+                ng-if="!(ctcclaimApp.status =='SENT FOR APPROVAL' ||
+                ctcclaimApp.status =='SENT FOR CANCELLATION')">
+      
+                <div class="remarkcomments">
+                  <h2 class="item-note" style="color:green;" ng-if="ctcclaimApp.status
+                    == 'APPROVED' || ctcclaimApp.status == 'CANCELLATION APPROVED'">
+                    {{ctcclaimApp.status}}</h2>
+                  <h2 class="item-note" style="color:red;" ng-if="ctcclaimApp.status
+                    == 'CANCELLED'"> {{ctcclaimApp.status}}</h2>
+                  <h2 class="item-note" style="color:red;" ng-if="ctcclaimApp.status
+                    == 'REJECTED'"> {{ctcclaimApp.status}}</h2>
+                  <h2 class="item-note" style="color:red;" ng-if="ctcclaimApp.status
+                    == 'CANCELLATION REJECTED'"> {{ctcclaimApp.status}}</h2>
+                  <h2 class="item-note" style="color:orange;"
+                    ng-if="ctcclaimApp.status != 'REJECTED' &&
+                    ctcclaimApp.status != 'APPROVED' && ctcclaimApp.status !=
+                    'CANCELLED' &&
+                    ctcclaimApp.status != 'CANCELLATION APPROVED' &&
+                    ctcclaimApp.status != 'CANCELLATION REJECTED'">
+                    {{ctcclaimApp.status}}</h2>
+                </div>
+      
+                <div class="form-group row">
+                  <label class="col-sm-2 col-xs-2 col-form-label">
+                    <img ng-if="ctcclaimApp.profilePhoto"
+                      ng-src="{{ctcclaimApp.profilePhoto}}{{ctcclaimApp.empId}}"
+                      style="max-width: 50px; max-height: 50px;"> <img
+                      ng-if="!ctcclaimApp.profilePhoto && ctcclaimApp.gender == 'M'"
+                      ng-src="./img/Male.png" style="max-width: 50px; max-height:
+                      50px;">
+                    <img ng-if="!ctcclaimApp.profilePhoto && ctcclaimApp.gender ==
+                      'F'" ng-src="./img/Female.png"
+                      style="max-width: 50px; max-height: 50px;">
+                    <img
+                      ng-if="!ctcclaimApp.profilePhoto && ctcclaimApp.gender !=
+                      'M' && ctcclaimApp.gender != 'F'"
+                      ng-src="./img/blankemp.jpg" style="max-width: 50px; max-height:
+                      50px;">
+                  </label>
+                  <div class="col-sm-10 col-xs-10"style="padding: 20px 0 0 0
+                    !important;">
+                    <h3 style="font-size: 1em;">{{ctcclaimApp.empName}}
+                      ({{ctcclaimApp.empCode}})</h3>
+      
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Claim Id</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{ctcclaimApp.claimFormId}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Claim Date</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{ctcclaimApp.attDate| date : "dd/MM/yyyy"}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Claim Type</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{ctcclaimApp.ctcPayHeadName}}
+                  </div>
+                </div>
+               <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Month</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{ctcclaimApp.monthName}}
+                  </div>
+                </div>	
+               <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Year</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{ctcclaimApp.yearId}}
+                  </div>
+                </div>			  		  
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Bill Amount</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{ctcclaimApp.billAmount}}
+                  </div>
+                </div>
+      
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Amount</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{ctcclaimApp.claimAmount}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Approved Amount </label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{ctcclaimApp.approvedclaimAmount}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Approval Date </label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{ctcclaimApp.approvalDate}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Reimbursed Amount</label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{ctcclaimApp.reimburseAmt}}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Applicant Remarks
+                    </label><span class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{ctcclaimApp.remarks}}
+                  </div>
+                </div>
+                
+              <!-- <div class="form-group row" ng-show="countGrid1>$index"> -->
+                  <!-- <label  class="col-sm-4 col-xs-4 col-form-label">Attachment</label><span class="dividerClass">:</span> -->
+                  <!-- <div  class="col-sm-8 col-xs-8"> -->
+                      <!-- <ul> -->
+                          <!-- <li ng-repeat="fileList in grid1.fileTdList"  -->
+                                <!-- > -->
+                           <!-- <h5 id="{{$parent.$index}}_tdFilelist_{{$index}}" class="col-100" -->
+                            <!-- style="font-size:0.9em;margin-top:3px;color:blue;" -->
+                            <!-- onclick="angular.element(this).scope().selectedValues.fileToDownload = this; -->
+                            <!-- angular.element(this).scope().selectedValues.elem = this; -->
+                            <!-- angular.element(this).scope().openFileTd(event)" >{{fileList}} -->
+                           <!-- </h5> -->
+                          <!-- </li> -->
+                          <!-- </ul> -->
+                  <!-- </div> -->
+                <!-- </div>		   -->
+                
+                
+                <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span
+                    class="dividerClass">:</span>
+                  <div class="col-sm-8 col-xs-8">
+                    {{ctcclaimApp.appRemarks}}
+                  </div>
+                </div>
+                <div class="form-group row" ng-if="ctcclaimApp.file1Name">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Attachment</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8"  ng-if="ctcclaimApp.file1Name"> 
+                   <span ng-click="openFileCTCClaim(1,ctcclaimApp)" 
+                             style="color:blue;">{{ctcclaimApp.file1Name}}</span>
+                </div>
+               </div>		  
+              <div class="form-group row" ng-if="ctcclaimApp.file2Name">
+               <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+                <div  class="col-sm-8 col-xs-8">
+                <span ng-if="ctcclaimApp.file2Name" ng-click="openFileCTCClaim(2,ctcclaimApp)"  style="color:blue;">
+                  {{ctcclaimApp.file2Name}}</span>
+                </div>
+              </div>		  			
+              <div class="form-group row" ng-if="ctcclaimApp.file3Name">
+               <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+                <div  class="col-sm-8 col-xs-8"><span  ng-if="ctcclaimApp.file3Name" ng-click="openFileCTCClaim(3,ctcclaimApp)"  style="color:blue;">
+                  {{ctcclaimApp.file3Name}}></span>
+                </div>
+              </div>		  			
+              <div class="form-group row" ng-if="ctcclaimApp.file4Name">
+               <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+                <div  class="col-sm-8 col-xs-8" ><span ng-if="ctcclaimApp.file4Name" ng-click="openFileCTCClaim(4,ctcclaimApp)"  style="color:blue;">
+                  {{ctcclaimApp.file4Name}}</span>
+                </div>
+              </div>		  			
+              <div class="form-group row" ng-if="ctcclaimApp.file5Name">
+               <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+                <div  class="col-sm-8 col-xs-8"><span  ng-if="ctcclaimApp.file5Name" ng-click="openFileCTCClaim(5,ctcclaimApp)"  style="color:blue;">
+                  {{ctcclaimApp.file5Name}}</span>
+                </div>
+              </div>		  			
+              <div class="form-group row" ng-if="ctcclaimApp.file6Name">
+               <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+                <div  class="col-sm-8 col-xs-8"><span  ng-if="ctcclaimApp.file6Name" ng-click="openFileCTCClaim(6,ctcclaimApp)"  style="color:blue;">
+                  {{ctcclaimApp.file6Name}}</span>
+                </div>
+              </div>		  			
+              <div class="form-group row" ng-if="ctcclaimApp.file7Name">
+               <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+                <div  class="col-sm-8 col-xs-8"><span  ng-if="ctcclaimApp.file7Name" ng-click="openFileCTCClaim(7,ctcclaimApp)"  style="color:blue;">
+                  {{ctcclaimApp.file7Name}}</span>
+                </div>
+              </div>		  			
+              <div class="form-group row" ng-if="ctcclaimApp.file8Name">
+               <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+                <div  class="col-sm-8 col-xs-8"><span  ng-if="ctcclaimApp.file8Name" ng-click="openFileCTCClaim(8,ctcclaimApp)"  style="color:blue;">
+                  {{ctcclaimApp.file8Name}}</span>
+                </div>
+              </div>		  			
+              <div class="form-group row" ng-if="ctcclaimApp.file9Name">
+               <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+                <div  class="col-sm-8 col-xs-8"><span  ng-if="ctcclaimApp.file9Name" ng-click="openFileCTCClaim(9,ctcclaimApp)"  style="color:blue;">
+                  {{ctcclaimApp.file9Name}}</span>
+                </div>
+              </div>		  			
+              <div class="form-group row" ng-if="ctcclaimApp.file10Name">
+               <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+                <div  class="col-sm-8 col-xs-8"><span  ng-if="ctcclaimApp.file10Name" ng-click="openFileCTCClaim(10,ctcclaimApp)"  style="color:blue;">
+                  {{ctcclaimApp.file10Name}}</span>
+                </div>
+              </div>		  			
+            
+                
+                <div ng-show="ctcclaimApp.status == 'SENT FOR APPROVAL'">
+                  <div class="text-center" class="item">
+                    <button type="button"
+                      ng-click="openCTCdetails(ctcclaimApp);"
+                      class="button button-small button-outline button-positive">
+                      <i class="fa fa-eye mr-5"></i>Details</button>
+                  </div>
+                  
+                  <!-- <div class="row custom-row">
+                    <div ng-click="approveOrRejectPendingCClaim(ctcclaimApp,
+                      'APPROVE')"
+                      class="col col-50 cust-col-50 buttonLinksColor">Approve
+                    </div>
+                    |
+                    <div ng-click="approveOrRejectPendingCClaim(ctcclaimApp,
+                      'REJECT')"
+                      class="col col-50 cust-col-50 buttonLinksColor">Reject
+                    </div>
+                  </div> -->
+                </div>
+                <br/>
+                  <!-- <div class="item custom-item custom-paddingBottom item-text-wrap">
+                  <div class="row custom-row">
+                    <div class="col col-100">
+                      <ul class="ctcClaimList">
+                        <li><b>Claim Id </b>{{ctcclaimApp.claimFormId}}</li>
+                        <li><b>Claim Date </b>{{ctcclaimApp.attDate| date : "dd/MM/yyyy"}}</li>
+                        <li><b>Claim Type </b>{{ctcclaimApp.ctcPayHeadName}}</li>
+                        <li><b>Claim Amount </b>&#x20b9; {{ctcclaimApp.claimAmount}}</li>
+                        <li><b>Approved Claim Amount </b>&#x20b9; {{ctcclaimApp.approvedclaimAmount}}</li>
+                        <li><b>Reimbursed Claim Amount </b>&#x20b9; {{ctcclaimApp.reimburseAmt}}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="item custom-item custom_OD1 item-avatar imgclass">
+                  <img ng-if="ctcclaimApp.profilePhoto" ng-src="{{ctcclaimApp.profilePhoto}}{{ctcclaimApp.empId}}"
+                    style="max-width: 50px; max-height: 50px;"> <img ng-if="!ctcclaimApp.profilePhoto && ctcclaimApp.gender == 'M'"
+                    ng-src="./img/Male.png" style="max-width: 50px; max-height: 50px;">
+                  <img ng-if="!ctcclaimApp.profilePhoto && ctcclaimApp.gender == 'F'" ng-src="./img/Female.png"
+                    style="max-width: 50px; max-height: 50px;">
+                  <h3 style="font-size: 0.8em;">{{ctcclaimApp.empName}} ({{ctcclaimApp.empCode}})</h3>
+      
+                  <p style="color:green;" ng-if="ctcclaimApp.status == 'APPROVED' || ctcclaimApp.status == 'CANCELLATION APPROVED'">
+                    {{ctcclaimApp.status}}</p>
+                  <p style="color:red;" ng-if="ctcclaimApp.status == 'CANCELLED'"> {{ctcclaimApp.status}}</p>
+                  <p style="color:red;" ng-if="ctcclaimApp.status == 'REJECTED'"> {{ctcclaimApp.status}}</p>
+                  <p style="color:red;" ng-if="ctcclaimApp.status == 'CANCELLATION REJECTED'"> {{ctcclaimApp.status}}</p>
+                  <p style="color:orange;" ng-if="ctcclaimApp.status != 'REJECTED' &&
+                  ctcclaimApp.status != 'APPROVED' && ctcclaimApp.status != 'CANCELLED' &&
+                  ctcclaimApp.status != 'CANCELLATION APPROVED' && ctcclaimApp.status != 'CANCELLATION REJECTED'"> {{ctcclaimApp.status}}</p>
+                </div>
+                <div ng-show="ctcclaimApp.status == 'SENT FOR APPROVAL'">
+                  <div class="row custom-row">
+                    <div ng-click="approveOrRejectPendingCClaim(ctcclaimApp, 'APPROVE')"
+                    class="col col-50 cust-col-50 buttonLinksColor">Approve
+                    </div>
+                    |
+                    <div ng-click="approveOrRejectPendingCClaim(ctcclaimApp, 'REJECT')"
+                     class="col col-50 cust-col-50 buttonLinksColor">Reject
+                    </div>
+                  </div>
+                </div> -->
+                </div>
+              </div>
+      
+              <div id="ltaClaimApprovalCard">
+                <span class="refreshBtn" style="margin-top: -10%;">
+                  <i ng-click="refresLTAClaimList()" class="fa fa-refresh"></i>
+                  <!-- <img style="width: 25px;height: 25px;margin-left: 40%;margin-top: -5%;" src="./img/refreshicon.png"
+                ng-click="refresLTAClaimList()" /> -->
+                </span>
+                <!-- <div class="row" style="margin-bottom: -7%!important;margin-top: 20px;">
+                <div class="col col-75">
+                  <p style="margin-left:12px;font-size: 0.8em; font-style: oblique;">Recent 50 applications.</p>
+                </div>
+                <div class="col col-25">
+                  <img style="width: 25px;height: 25px;margin-left: 40%;margin-top: -5%;" src="./img/refreshicon.png"
+                    ng-click="refresLTAClaimList()" />
+                </div>
+              </div> -->
+                <div id="noData" ng-if="ltaClaimApprList.length == 0">
+                  <!-- <center><h4>No Data Available </h4></center> -->
+                  <img src="./img/no-result.png" alt="">
+                </div>
+                <div class="list card customBorderRadius" ng-repeat="ltaclaimApp in
+                  ltaClaimApprList | filter:searchObj.searchQuery |
+                  orderBy:'-attDate'"
+                  ng-if="ltaclaimApp.status =='SENT FOR APPROVAL' ||
+                  ltaclaimApp.status =='SENT FOR CANCELLATION'">
+      
+                  <div class="remarkcomments">
+      
+                    <h2 class="item-note" style="color:green;"
+                      ng-if="ltaclaimApp.status == 'APPROVED' || ltaclaimApp.status ==
+                      'CANCELLATION APPROVED'">
+                      {{ltaclaimApp.status}}</h2>
+                    <h2 class="item-note" style="color:red;" ng-if="ltaclaimApp.status
+                      == 'CANCELLED'">{{ltaclaimApp.status}}</h2>
+                    <h2 class="item-note" style="color:red;" ng-if="ltaclaimApp.status
+                      == 'REJECTED'">{{ltaclaimApp.status}}</h2>
+                    <h2 class="item-note" style="color:red;" ng-if="ltaclaimApp.status
+                      == 'CANCELLATION REJECTED'">{{ltaclaimApp.status}}</h2>
+                    <h2 class="item-note" style="color:orange;"
+                      ng-if="ltaclaimApp.status != 'REJECTED' &&
+                      ltaclaimApp.status != 'APPROVED' && ltaclaimApp.status !=
+                      'CANCELLED' &&
+                      ltaclaimApp.status != 'CANCELLATION APPROVED' &&
+                      ltaclaimApp.status != 'CANCELLATION REJECTED'">{{ltaclaimApp.status}}</h2>
+                  </div>
+      
+                  <div class="form-group row">
+                    <label class="col-sm-2 col-xs-2 col-form-label">
+                      <img ng-if="ltaclaimApp.profilePhoto"
+                        ng-src="{{ltaclaimApp.profilePhoto}}{{ltaclaimApp.empId}}"
+                        style="max-width: 50px; max-height: 50px;"> <img
+                        ng-if="!ltaclaimApp.profilePhoto && ltaclaimApp.gender == 'M'"
+                        ng-src="./img/Male.png" style="max-width: 50px; max-height:
+                        50px;">
+                      <img ng-if="!ltaclaimApp.profilePhoto && ltaclaimApp.gender ==
+                        'F'" ng-src="./img/Female.png"
+                        style="max-width: 50px; max-height: 50px;">
+                    <img
+                      ng-if="!ltaclaimApp.profilePhoto && ltaclaimApp.gender !=
+                      'M' && ltaclaimApp.gender != 'F'"
+                      ng-src="./img/blankemp.jpg" style="max-width: 50px; max-height:
+                      50px;">				  
+      
+                    </label>
+                    <div class="col-sm-10 col-xs-10"style="padding: 20px 0 0 0
+                      !important;">
+                      <h3 style="font-size: 1em;">{{ltaclaimApp.empName}}
+                        ({{ltaclaimApp.empCode}})</h3>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-xs-4 col-form-label">Claim Id</label><span
+                      class="dividerClass">:</span>
+                    <div class="col-sm-8 col-xs-8">
+                      {{ltaclaimApp.claimFormId}}
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-xs-4 col-form-label">Claim Date</label><span
+                      class="dividerClass">:</span>
+                    <div class="col-sm-8 col-xs-8">
+                      {{ltaclaimApp.attDate| date : "dd/MM/yyyy"}}
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-xs-4 col-form-label">Claim Type</label><span
+                      class="dividerClass">:</span>
+                    <div class="col-sm-8 col-xs-8">
+                      {{ltaclaimApp.ctcPayHeadName}}
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-xs-4 col-form-label">Amount</label><span
+                      class="dividerClass">:</span>
+                    <div class="col-sm-8 col-xs-8">
+                      {{ltaclaimApp.claimAmount}}
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-xs-4 col-form-label">Approved Amount</label><span class="dividerClass">:</span>
+                    <div class="col-sm-8 col-xs-8">
+                      {{ltaclaimApp.approvedclaimAmount}}
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-xs-4 col-form-label">Reimbursed Amount</label><span class="dividerClass">:</span>
+                    <div class="col-sm-8 col-xs-8">
+                      {{ltaclaimApp.reimburseAmt}}
+                    </div>
+                  </div>
+      
+                  <div class="text-center" class="item">
+                    <button type="button"
+                      ng-click="redirectToLtaApproval(ltaclaimApp);"
+                      class="button button-small button-outline button-positive">
+                      <i class="fa fa-eye mr-5"></i>Details</button>
+                  </div>
+                  <!-- <div class="item custom-item custom-paddingBottom item-text-wrap">
+                  <div class="row custom-row">
+                    <div class="col col-100">
+                      <ul class="ctcClaimList">
+                          <li><b>Claim Id</b>{{ltaclaimApp.claimFormId}}</li>
+                          <li><b>Claim Date</b>{{ltaclaimApp.attDate| date : "dd/MM/yyyy"}}</li>
+                          <li><b>Claim Type</b>{{ltaclaimApp.ctcPayHeadName}}</li>
+                          <li><b>Claim Amount</b>&#x20b9; {{ltaclaimApp.claimAmount}}</li>
+                          <li><b>Approved Claim Amount</b>&#x20b9; {{ltaclaimApp.approvedclaimAmount}}</li>
+                          <li><b>Reimbursed Claim Amount</b>&#x20b9; {{ltaclaimApp.reimburseAmt}}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="item custom-item custom_OD1 item-avatar imgclass">
+                  <img ng-if="ltaclaimApp.profilePhoto" ng-src="{{ltaclaimApp.profilePhoto}}{{ltaclaimApp.empId}}"
+                    style="max-width: 50px; max-height: 50px;"> <img ng-if="!ltaclaimApp.profilePhoto && ltaclaimApp.gender == 'M'"
+                    ng-src="./img/Male.png" style="max-width: 50px; max-height: 50px;">
+                  <img ng-if="!ltaclaimApp.profilePhoto && ltaclaimApp.gender == 'F'" ng-src="./img/Female.png"
+                    style="max-width: 50px; max-height: 50px;">
+                  <h3 style="font-size: 0.8em;">{{ltaclaimApp.empName}} ({{ltaclaimApp.empCode}})</h3>
+      
+                  <p style="color:green;" ng-if="ltaclaimApp.status == 'APPROVED' || ltaclaimApp.status == 'CANCELLATION APPROVED'">
+                    {{ltaclaimApp.status}}</p>
+                  <p style="color:red;" ng-if="ltaclaimApp.status == 'CANCELLED'">{{ltaclaimApp.status}}</p>
+                  <p style="color:red;" ng-if="ltaclaimApp.status == 'REJECTED'">{{ltaclaimApp.status}}</p>
+                  <p style="color:red;" ng-if="ltaclaimApp.status == 'CANCELLATION REJECTED'">{{ltaclaimApp.status}}</p>
+                  <p style="color:orange;" ng-if="ltaclaimApp.status != 'REJECTED' &&
+                  ltaclaimApp.status != 'APPROVED' && ltaclaimApp.status != 'CANCELLED' &&
+                  ltaclaimApp.status != 'CANCELLATION APPROVED' && ltaclaimApp.status != 'CANCELLATION REJECTED'">{{ltaclaimApp.status}}</p>
+                </div>
+                <div class="row custom-row">
+                  <button class="button button-small button-outline button-positive"
+                    style="width:50%;margin-top: 10px;margin-left: 105px;"
+                    ng-click="redirectToLtaApproval(ltaclaimApp);">Details
+                  </button>
+                </div> -->
+                </div>
+                <div class="list card customBorderRadius" ng-repeat="ltaclaimApp in
+                  ltaClaimApprList | filter:searchObj.searchQuery |
+                  orderBy:'-attDate'"
+                  ng-if="!(ltaclaimApp.status =='SENT FOR APPROVAL' ||
+                  ltaclaimApp.status =='SENT FOR CANCELLATION')">
+                  <div class="remarkcomments">
+                    <h2 class="item-note" style="color:green;"
+                      ng-if="ltaclaimApp.status == 'APPROVED' || ltaclaimApp.status ==
+                      'CANCELLATION APPROVED'">
+                      {{ltaclaimApp.status}}</h2>
+                    <h2 class="item-note" style="color:red;" ng-if="ltaclaimApp.status
+                      == 'CANCELLED'">{{ltaclaimApp.status}}</h2>
+                    <h2 class="item-note" style="color:red;" ng-if="ltaclaimApp.status
+                      == 'REJECTED'">{{ltaclaimApp.status}}</h2>
+                    <h2 class="item-note" style="color:red;" ng-if="ltaclaimApp.status
+                      == 'CANCELLATION REJECTED'">{{ltaclaimApp.status}}</h2>
+                    <h2 class="item-note" style="color:orange;"
+                      ng-if="ltaclaimApp.status != 'REJECTED' &&
+                      ltaclaimApp.status != 'APPROVED' && ltaclaimApp.status !=
+                      'CANCELLED' &&
+                      ltaclaimApp.status != 'CANCELLATION APPROVED' &&
+                      ltaclaimApp.status != 'CANCELLATION REJECTED'">{{ltaclaimApp.status}}</h2>
+                  </div>
+      
+                  <div class="form-group row">
+                    <label class="col-sm-2 col-xs-2 col-form-label">
+                      <img ng-if="ltaclaimApp.profilePhoto"
+                        ng-src="{{ltaclaimApp.profilePhoto}}{{ltaclaimApp.empId}}"
+                        style="max-width: 50px; max-height: 50px;"> <img
+                        ng-if="!ltaclaimApp.profilePhoto && ltaclaimApp.gender == 'M'"
+                        ng-src="./img/Male.png" style="max-width: 50px; max-height:
+                        50px;">
+                      <img ng-if="!ltaclaimApp.profilePhoto && ltaclaimApp.gender ==
+                        'F'" ng-src="./img/Female.png"
+                        style="max-width: 50px; max-height: 50px;">
+                    <img
+                      ng-if="!ltaclaimApp.profilePhoto && ltaclaimApp.gender !=
+                      'M' && ltaclaimApp.gender != 'F'"
+                      ng-src="./img/blankemp.jpg" style="max-width: 50px; max-height:
+                      50px;">				  				  
+      
+                    </label>
+                    <div class="col-sm-10 col-xs-10"style="padding: 20px 0 0 0
+                      !important;">
+                      <h3 style="font-size: 1em;">{{ltaclaimApp.empName}}
+                        ({{ltaclaimApp.empCode}})</h3>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-xs-4 col-form-label">Claim Id</label><span
+                      class="dividerClass">:</span>
+                    <div class="col-sm-8 col-xs-8">
+                      {{ltaclaimApp.claimFormId}}
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-xs-4 col-form-label">Claim Date</label><span
+                      class="dividerClass">:</span>
+                    <div class="col-sm-8 col-xs-8">
+                      {{ltaclaimApp.attDate| date : "dd/MM/yyyy"}}
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-xs-4 col-form-label">Claim Type</label><span
+                      class="dividerClass">:</span>
+                    <div class="col-sm-8 col-xs-8">
+                      {{ltaclaimApp.ctcPayHeadName}}
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-xs-4 col-form-label">Amount</label><span
+                      class="dividerClass">:</span>
+                    <div class="col-sm-8 col-xs-8">
+                      {{ltaclaimApp.claimAmount}}
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-xs-4 col-form-label">Approved Amount</label><span class="dividerClass">:</span>
+                    <div class="col-sm-8 col-xs-8">
+                      {{ltaclaimApp.approvedclaimAmount}}
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-xs-4 col-form-label">Reimbursed Amount</label><span class="dividerClass">:</span>
+                    <div class="col-sm-8 col-xs-8">
+                      {{ltaclaimApp.reimburseAmt}}
+                    </div>
+                  </div>
+                  <div class="text-center" class="item">
+                    <button type="button"
+                      ng-click="redirectToLtaApproval(ltaclaimApp);"
+                      class="button button-small button-outline button-positive">
+                      <i class="fa fa-eye mr-5"></i>Details</button>
+                  </div>
+                  <!--
+                <div class="item custom-item custom-paddingBottom item-text-wrap">
+                  <div class="row custom-row">
+                    <div class="col col-100">
+                      <ul class="ctcClaimList">
+                          <li><b>Claim Id</b>{{ltaclaimApp.claimFormId}}</li>
+                          <li><b>Claim Date</b>{{ltaclaimApp.attDate| date : "dd/MM/yyyy"}}</li>
+                          <li><b>Claim Type</b>{{ltaclaimApp.ctcPayHeadName}}</li>
+                          <li><b>Claim Amount</b>&#x20b9; {{ltaclaimApp.claimAmount}}</li>
+                          <li><b>Approved Claim Amount</b>&#x20b9; {{ltaclaimApp.approvedclaimAmount}}</li>
+                          <li><b>Reimbursed Claim Amount</b>&#x20b9; {{ltaclaimApp.reimburseAmt}}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="item custom-item custom_OD1 item-avatar imgclass">
+                  <img ng-if="ltaclaimApp.profilePhoto" ng-src="{{ltaclaimApp.profilePhoto}}{{ltaclaimApp.empId}}"
+                    style="max-width: 50px; max-height: 50px;"> <img ng-if="!ltaclaimApp.profilePhoto && ltaclaimApp.gender == 'M'"
+                    ng-src="./img/Male.png" style="max-width: 50px; max-height: 50px;">
+                  <img ng-if="!ltaclaimApp.profilePhoto && ltaclaimApp.gender == 'F'" ng-src="./img/Female.png"
+                    style="max-width: 50px; max-height: 50px;">
+                  <h3 style="font-size: 0.8em;">{{ltaclaimApp.empName}} ({{ltaclaimApp.empCode}})</h3>
+      
+                  <p style="color:green;" ng-if="ltaclaimApp.status == 'APPROVED' || ltaclaimApp.status == 'CANCELLATION APPROVED'">
+                    {{ltaclaimApp.status}}</p>
+                  <p style="color:red;" ng-if="ltaclaimApp.status == 'CANCELLED'">{{ltaclaimApp.status}}</p>
+                  <p style="color:red;" ng-if="ltaclaimApp.status == 'REJECTED'">{{ltaclaimApp.status}}</p>
+                  <p style="color:red;" ng-if="ltaclaimApp.status == 'CANCELLATION REJECTED'">{{ltaclaimApp.status}}</p>
+                  <p style="color:orange;" ng-if="ltaclaimApp.status != 'REJECTED' &&
+                  ltaclaimApp.status != 'APPROVED' && ltaclaimApp.status != 'CANCELLED' &&
+                  ltaclaimApp.status != 'CANCELLATION APPROVED' && ltaclaimApp.status != 'CANCELLATION REJECTED'">{{ltaclaimApp.status}}</p>
+                </div>
+                <div class="row custom-row">
+                  <button class="button button-small button-outline button-positive"
+                    style="width:50%;margin-top: 10px;margin-left: 105px;"
+                    ng-click="redirectToLtaApproval(ltaclaimApp);">Details
+                  </button>
+                </div> -->
+                </div>
+              </div>
+      
+              <div id="trClaimApprovalCard">
+                <span class="refreshBtn" style="margin-top: -9%;">
+                  <i ng-click="refresTRClaimList()" class="fa fa-refresh"></i>
+                  <!-- <img style="width: 25px;height: 25px;margin-left: 40%;margin-top: -5%;" src="./img/refreshicon.png"
+                ng-click="refresTRClaimList()" /> -->
+                </span>
+				<div id="noData" ng-if="reporteeList.length == 0">
+                <!-- <center><h4>No Data Available </h4></center> -->
+                <img src="./img/no-result.png" alt="">
+              </div>
+                <!-- <div class="row" style="margin-bottom: -2%!important;margin-top: 20px;">
+                <div class="col col-75">
+                  <p style="margin-left:12px;font-size: 0.8em; font-style: oblique;">Recent 50 applications.</p>
+                </div>
+                <div class="col col-25">
+                  <img style="width: 25px;height: 25px;margin-left: 40%;margin-top: -5%;" src="./img/refreshicon.png"
+                    ng-click="refresTRClaimList()" />
+                </div>
+              </div> -->
+                <div class="" ng-show="IsClaimAccessible == 'true'">
+                  <div class="list card customBorderRadius"
+                    ng-if="claim.travelClaimStatus=='SENT FOR APPROVAL' ||
+                    claim.travelClaimStatus=='SENT FOR CANCELLATION'"
+                    ng-repeat="claim in reporteeList| filter: searchObj.searchQuery |
+                    orderBy:'-claim.reqDate'">
+      
+                    <div class="remarkcomments">
+                      <h2 class="item-note" style="color:green;"
+                        ng-if="claim.travelClaimStatus == 'APPROVED' ||
+                        claim.travelClaimStatus == 'CANCELLATION APPROVED'|| claim.travelClaimStatus == 'APPROVED & CLOSED'" >
+                        {{claim.travelClaimStatus}}</h2>
+                      <h2 class="item-note" class="item-note" style="color:red;"
+                        ng-if="claim.travelClaimStatus == 'CANCELLED'">{{claim.travelClaimStatus}}</h2>
+                      <h2 class="item-note" style="color:red;"
+                        ng-if="claim.travelClaimStatus == 'REJECTED'">{{claim.travelClaimStatus}}</h2>
+                      <h2 class="item-note" style="color:red;"
+                        ng-if="claim.travelClaimStatus == 'CANCELLATION REJECTED'">
+                        {{claim.travelClaimStatus}}</h2>
+                      <h2 class="item-note" style="color:orange;"
+                        ng-if="claim.travelClaimStatus != 'REJECTED' &&
+                        claim.travelClaimStatus != 'APPROVED' &&
+                        claim.travelClaimStatus != 'CANCELLED' &&
+                        claim.travelClaimStatus != 'CANCELLATION APPROVED' &&
+                        claim.travelClaimStatus != 'APPROVED & CLOSED' &&
+                        claim.travelClaimStatus != 'CANCELLATION REJECTED'">
+                        {{claim.travelClaimStatus}}</h2>
+                    </div>
+      
+                    <div class="form-group row">
+                      <label class="col-sm-2 col-xs-2 col-form-label">
+                        <img ng-if="claim.photoFileName"
+                          ng-src="{{claim.photoFileName}}"
+                          style="max-width: 50px; max-height: 50px;"
+                          onerror="this.onerror=null;this.src='./img/blankemp.jpg';">
+                        <img
+                          ng-if="!claim.photoFileName && claim.gender == 'M'"
+                          ng-src="./img/Male.png" style="max-width: 50px; max-height:
+                          50px;">
+                        <img ng-if="!claim.photoFileName && claim.gender == 'F'"
+                          ng-src="./img/Female.png"
+                          style="max-width: 50px; max-height: 50px;">
+                    <img
+                      ng-if="!claim.photoFileName && claim.gender !=
+                      'M' && claim.gender != 'F'"
+                      ng-src="./img/blankemp.jpg" style="max-width: 50px; max-height:
+                      50px;">				  					
+                      </label>
+                      <div class="col-sm-10 col-xs-10"style="padding: 20px 0 0 0
+                        !important;">
+                        <h3 style="font-size: 1em;">{{claim.name}}</h3>
+                      </div>
+                    </div>
+                    <div class="form-group row" ng-if="claim.travelTransId">
+                      <label  class="col-sm-4 col-xs-4 col-form-label">Travel ID </label><span class="dividerClass">:</span>
+                      <div  class="col-sm-8 col-xs-8">
+                        {{claim.travelTransId}}
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-xs-4 col-form-label">Application Date</label><span
+                        class="dividerClass">:</span>
+                      <div class="col-sm-8 col-xs-8">
+                        {{claim.reqDate| date :"dd/MM/yyyy"}}
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-xs-4 col-form-label">Travel Date(s</label><span
+                        class="dividerClass">:</span>
+                      <div class="col-sm-8 col-xs-8">
+                        {{claim.travelDate| date :"dd/MM/yyyy"}}
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-xs-4 col-form-label">Travel Objective</label><span
+                        class="dividerClass">:</span>
+                      <div class="col-sm-8 col-xs-8">
+                        {{claim.additionalInfo}}
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-xs-4 col-form-label">Applicant
+                        Remarks</label><span class="dividerClass">:</span>
+                      <div class="col-sm-8 col-xs-8">
+                        {{claim.applicantRemark}}
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span
+                        class="dividerClass">:</span>
+                      <div class="col-sm-8 col-xs-8">
+                        {{claim.approvalRemarks}}
+                      </div>
+                    </div>
+                    <!--
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-xs-4 col-form-label">Transaction ID</label><span
+                        class="dividerClass">:</span>
+                      <div class="col-sm-8 col-xs-8">
+                        {{claim.travelTransId}}
+                      </div>
+                    </div>
+                      -->
+                    <div class="text-center" class="item">
+                      <button type="button" ng-click="showClaimlDetailForm(claim);"
+                        class="button button-small button-outline button-positive">
+                        <i class="fa fa-eye mr-5"></i>Details</button>
+                    </div>
+                    <!-- <div class="item custom-item custom-paddingBottom item-text-wrap">
+                    <div class="row custom-row" style="margin-left:0px;">
+                      <div class="col col-100">
+                        <ul class="ctcClaimList">
+                <li> <b>Application Date</b>{{claim.reqDate| date :"dd/MM/yyyy"}} </li>
+                          <li> <b>Travel Date(s)</b>{{claim.travelDate| date :"dd/MM/yyyy"}} </li>
+                          <li> <b>Travel Objective</b>{{claim.additionalInfo}}  </li>
+                          <li> <b>Applicant Remarks</b>{{claim.applicantRemark}} </li>
+                          <li><b>Approver Remarks</b>{{claim.approvalRemarks}} </li>
+                          <li><b>Transaction ID</b>{{claim.travelTransId}}</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item custom-item custom_OD1 item-avatar imgclass">
+                    <img ng-src="./img/Male.png" style="max-width: 50px; max-height: 50px;">
+                    <div>
+                      <img ng-if="claim.profilePhoto" ng-src="{{claim.profilePhoto}}{{claim.empId}}"
+                        style="max-width: 50px; max-height: 50px;"> <img ng-if="!claim.profilePhoto && claim.gender == 'M'"
+                        ng-src="./img/Male.png" style="max-width: 50px; max-height: 50px;">
+                      <img ng-if="!claim.profilePhoto && claim.gender == 'F'" ng-src="./img/Female.png"
+                        style="max-width: 50px; max-height: 50px;">
+                      <h3 style="font-size: 0.8em;">{{claim.name}} </h3>
+                      <p style="color:green;"
+                        ng-if="claim.travelClaimStatus == 'APPROVED' || claim.travelClaimStatus == 'CANCELLATION APPROVED'">
+                        {{claim.travelClaimStatus}}</p>
+                      <p style="color:red;" ng-if="claim.travelClaimStatus == 'CANCELLED'">{{claim.travelClaimStatus}}</p>
+                      <p style="color:red;" ng-if="claim.travelClaimStatus == 'REJECTED'">{{claim.travelClaimStatus}}</p>
+                      <p style="color:red;" ng-if="claim.travelClaimStatus == 'CANCELLATION REJECTED'">
+                        {{claim.travelClaimStatus}}</p>
+                      <p style="color:orange;" ng-if="claim.travelClaimStatus != 'REJECTED' &&
+          claim.travelClaimStatus != 'APPROVED' && claim.travelClaimStatus != 'CANCELLED' &&
+          claim.travelClaimStatus != 'CANCELLATION APPROVED' && claim.travelClaimStatus != 'CANCELLATION REJECTED'">
+                        {{claim.travelClaimStatus}}</p>
+                    </div>
+                  </div>
+                  <div>
+                    <center>
+                      <br>
+                      <button class="button button-small button-outline button-positive" style="width:50%;"
+                        ng-click="showClaimlDetailForm(claim);">Details</button>
+                    </center>
+                  </div>
+                  <br> -->
+                  </div>
+                  <div class="list card customBorderRadius"
+                    ng-if="!(claim.travelClaimStatus=='SENT FOR APPROVAL' ||
+                    claim.travelClaimStatus=='SENT FOR CANCELLATION')"
+                    ng-repeat="claim in reporteeList| filter: searchObj.searchQuery |
+                    orderBy:'-reqDate'">
+                    <div class="remarkcomments">
+                      <h2 class="item-note" style="color:green;"
+                        ng-if="claim.travelClaimStatus == 'APPROVED' ||
+                        claim.travelClaimStatus == 'CANCELLATION APPROVED' || claim.travelClaimStatus == 'APPROVED & CLOSED'">
+                        {{claim.travelClaimStatus}}</h2>
+                      <h2 class="item-note" class="item-note" style="color:red;"
+                        ng-if="claim.travelClaimStatus == 'CANCELLED'">{{claim.travelClaimStatus}}</h2>
+                      <h2 class="item-note" style="color:red;"
+                        ng-if="claim.travelClaimStatus == 'REJECTED'">{{claim.travelClaimStatus}}</h2>
+                      <h2 class="item-note" style="color:red;"
+                        ng-if="claim.travelClaimStatus == 'CANCELLATION REJECTED'">
+                        {{claim.travelClaimStatus}}</h2>
+                      <h2 class="item-note" style="color:orange;"
+                        ng-if="claim.travelClaimStatus != 'REJECTED' &&
+                        claim.travelClaimStatus != 'APPROVED' &&
+                        claim.travelClaimStatus != 'CANCELLED' &&
+                        claim.travelClaimStatus != 'CANCELLATION APPROVED' &&
+                        claim.travelClaimStatus != 'APPROVED & CLOSED' &&
+                        claim.travelClaimStatus != 'CANCELLATION REJECTED'">
+                        {{claim.travelClaimStatus}}</h2>
+                    </div>
+      
+                    <div class="form-group row">
+                      <label class="col-sm-2 col-xs-2 col-form-label">
+                        <img ng-if="claim.photoFileName"
+                          ng-src="{{claim.photoFileName}}"
+                          style="max-width: 50px; max-height: 50px;"
+                          onerror="this.onerror=null;this.src='./img/blankemp.jpg';"> 
+                       <img
+                          ng-if="!claim.photoFileName && claim.gender == 'M'"
+                          ng-src="./img/Male.png" style="max-width: 50px; max-height:
+                          50px;">
+                        <img ng-if="!claim.photoFileName && claim.gender == 'F'"
+                          ng-src="./img/Female.png"
+                          style="max-width: 50px; max-height: 50px;">
+                      <img
+                      ng-if="!claim.photoFileName && claim.gender !=
+                      'M' && claim.gender != 'F'"
+                      ng-src="./img/blankemp.jpg" style="max-width: 50px; max-height:
+                      50px;">				  										
+                      </label>
+                      <div class="col-sm-10 col-xs-10"style="padding: 20px 0 0 0
+                        !important;">
+                        <h3 style="font-size: 1em;">{{claim.name}}</h3>
+                      </div>
+                    </div>
+                    <div class="form-group row" ng-if="claim.travelTransId">
+                      <label  class="col-sm-4 col-xs-4 col-form-label">Travel ID </label><span class="dividerClass">:</span>
+                      <div  class="col-sm-8 col-xs-8">
+                        {{claim.travelTransId}}
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-xs-4 col-form-label">Application Date</label><span
+                        class="dividerClass">:</span>
+                      <div class="col-sm-8 col-xs-8">
+                        {{claim.reqDate| date :"dd/MM/yyyy"}}
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-xs-4 col-form-label">Travel Date(s</label><span
+                        class="dividerClass">:</span>
+                      <div class="col-sm-8 col-xs-8">
+                        {{claim.travelDate| date :"dd/MM/yyyy"}}
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-xs-4 col-form-label">Travel Objective</label><span
+                        class="dividerClass">:</span>
+                      <div class="col-sm-8 col-xs-8">
+                        {{claim.additionalInfo}}
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-xs-4 col-form-label">Applicant
+                        Remarks</label><span class="dividerClass">:</span>
+                      <div class="col-sm-8 col-xs-8">
+                        {{claim.applicantRemark}}
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span
+                        class="dividerClass">:</span>
+                      <div class="col-sm-8 col-xs-8">
+                        {{claim.approvalRemarks}}
+                      </div>
+                    </div>
+                    <!--
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-xs-4 col-form-label">Transaction ID</label><span
+                        class="dividerClass">:</span>
+                      <div class="col-sm-8 col-xs-8">
+                        {{claim.travelTransId}}
+                      </div>
+                    </div>
+                      -->
+                    <div class="text-center" class="item">
+                      <button type="button" ng-click="showClaimlDetailForm(claim);"
+                        class="button button-small button-outline button-positive">
+                        <i class="fa fa-eye mr-5"></i>Details</button>
+                    </div>
+                    <!-- <div class="item custom-item custom-paddingBottom item-text-wrap">
+                    <div class="row custom-row" style="margin-left: 0px;">
+                      <div class="col col-100">
+                        <ul class="ctcClaimList">
+                            <li>
+                            <b>Application Date</b>{{claim.reqDate| date :
+                            "dd/MM/yyyy"}}
+                          </li>
+                          <li>
+                            <b>Travel Date(s)</b>{{claim.travelDate| date :
+                            "dd/MM/yyyy"}}
+                          </li>
+                          <li>
+                            <b>Travel Objective</b>{{claim.additionalInfo}}
+                          </li>
+                          <li>
+                            <b>Applicant Remarks</b>{{claim.applicantRemark}}
+                          </li>
+                          <li>
+                            <b>Approver Remarks</b>{{claim.approvalRemarks}}
+                          </li>
+                          <li><b>Transaction ID</b>{{claim.travelTransId}}</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item custom-item custom_OD1 item-avatar imgclass">
+                    <div>
+                      <h3 style="font-size: 0.8em;">{{claim.name}} </h3>
+                      <p style="color:green;"
+                        ng-if="claim.travelClaimStatus == 'APPROVED' || claim.travelClaimStatus == 'CANCELLATION APPROVED'">
+                        {{claim.travelClaimStatus}}</p>
+                      <p style="color:red;" ng-if="claim.travelClaimStatus == 'CANCELLED'">{{claim.travelClaimStatus}}</p>
+                      <p style="color:red;" ng-if="claim.travelClaimStatus == 'REJECTED'">{{claim.travelClaimStatus}}</p>
+                      <p style="color:red;" ng-if="claim.travelClaimStatus == 'CANCELLATION REJECTED'">
+                        {{claim.travelClaimStatus}}</p>
+                      <p style="color:orange;" ng-if="claim.travelClaimStatus != 'REJECTED' &&
+          claim.travelClaimStatus != 'APPROVED' && claim.travelClaimStatus != 'CANCELLED' &&
+          claim.travelClaimStatus != 'CANCELLATION APPROVED' && claim.travelClaimStatus != 'CANCELLATION REJECTED'">
+                        {{claim.travelClaimStatus}}</p>
+                    </div>
+                  </div>
+                  <div>
+                    <center>
+                      <br>
+                      <button class="button button-small button-outline button-positive" style="width:50%;"
+                        ng-click="showClaimlDetailForm(claim);">Details</button>
+                    </center>
+                  </div> -->
+                  </div>
+                  <div class="noDataAvailavle" ng-if="claim.length">
+                    <!-- <center><h4>No Data Available</h4> </center> -->
+                    <img src="./img/no-result.png" alt="">
+                  </div>
+                  <br>
+                </div>
+      
+              </div>
+            </div>
+    </ion-content>
+</ion-view>
+
+<script>
+    $("#ctcSelect1").on("click", function () {
+      $("#nonCtcSelect1").css({ 'color': '#3B5998', 'background': 'transparent' });
+      $("#travelSelect1").css({ 'color': '#3B5998', 'background': 'transparent' });
+      $("#ltaSelect1").css({ 'color': '#3B5998', 'background': 'transparent' });
+      $('#ctcSelect1').css({ 'color': 'white', 'background': '#3B5998' });
+  
+    });
+    $("#nonCtcSelect1").on("click", function () {
+      $("#ctcSelect1").css({ 'color': '#3B5998', 'background': 'transparent' });
+      $("#travelSelect1").css({ 'color': '#3B5998', 'background': 'transparent' });
+      $("#ltaSelect1").css({ 'color': '#3B5998', 'background': 'transparent' });
+      $('#nonCtcSelect1').css({ 'color': 'white', 'background': '#3B5998' });
+  
+    });
+    $("#ltaSelect1").on("click", function () {
+      $("#nonCtcSelect1").css({ 'color': '#3B5998', 'background': 'transparent' });
+      $("#ctcSelect1").css({ 'color': '#3B5998', 'background': 'transparent' });
+      $("#travelSelect1").css({ 'color': '#3B5998', 'background': 'transparent' });
+      $("#ltaSelect1").css({ 'color': 'white', 'background': '#3B5998' });
+  
+    });
+  
+    $("#travelSelect1").on("click", function () {
+      $("#nonCtcSelect1").css({ 'color': '#3B5998', 'background': 'transparent' });
+      $("#ctcSelect1").css({ 'color': '#3B5998', 'background': 'transparent' });
+      $("#ltaSelect1").css({ 'color': '#3B5998', 'background': 'transparent' });
+      $("#travelSelect1").css({ 'color': 'white', 'background': '#3B5998' });
+  
+    });
+    </script>      
+        <script id="ctcApprovalModal.html" type="text/ng-template">
+    <div>
+      <p>
+        <span style="padding-right: 10px;">
+          <b>Bill Amount   : </b>
+        </span>
+        &#x20b9;<span ng-model="claimPendingCObject.billAmount"></span>
+      </p>
+      <p>
+        <span style="padding-right: 10px;">
+          <b>Claim Date   : </b>
+        </span>
+        <span ng-model="claimPendingCObject.claimDate"></span>
+      </p>
+      <p>
+        <span style="padding-right: 10px;">
+          <b>Claim Amount   : </b>
+        </span>
+        &#x20b9;<span ng-model="claimPendingCObject.claimAmount"></span>
+      </p>
+      <span>
+        <b>Payment Month      :</b>
+      </span>
+      <select id="paymentMonth">
+        <option>--Select--</option>
+        <option value="01">January</option>
+        <option value="02">February</option>
+        <option value="03">March</option>
+        <option value="04">April</option>
+        <option value="05">May</option>
+        <option value="06">June</option>
+        <option value="07">July</option>
+        <option value="08">August</option>
+        <option value="09">September</option>
+        <option value="10">October</option>
+        <option value="11">November</option>
+        <option value="12">December</option>
+      </select>
+    </div>
+    <form name="myForm">
+      <span>Approved Amount</span>
+      <input style="border: 1px solid #b3b3b3;"
+            type="number"
+            name="mybox"
+            ng-model="claimPendingCObject.revisedClaimAmount"/>
+          <label>Approver Remarks</label>
+          <textarea style="border: 1px solid #b3b3b3;"
+            rows="3" name="mybox" ng-model="claimPendingCObject.remark"
+            ng-maxlength="3000" cols="100">
+        </textarea>
+        <span class="error" style="color:red" ng-show="myForm.mybox.$error.maxlength">No more text can be added.</span>
+      </form>
+    </script>
+    <script>
+
+        $(document).ready(function () {
+        
+          $('.center1').slick({
+            dots: true,
+            infinite: false,
+            speed: 300,
+            slidesToShow: 4,
+            arrows: false,
+            slidesToScroll: 2,
+            responsive: [
+              {
+                breakpoint: 1024,
+                settings: {
+                  slidesToShow: 4,
+                  slidesToScroll: 2,
+                  infinite: true,
+                  dots: true
+                }
+              },
+              {
+                breakpoint: 600,
+                settings: {
+                  slidesToShow: 4,
+                  slidesToScroll: 2
+                }
+              },
+              {
+                breakpoint: 480,
+                settings: {
+                  slidesToShow: 4,
+                  slidesToScroll: 2
+                }
+              }
+            ]
+          });
+      
+      
+        var sliBtn = '.search-btn',
+            sliCont = '.search-slide',
+            sliTxt = '.search-slide input[type=text]',
+            sliDis = '.search-close',
+            sliSpd = 300;
+      
+        $(sliBtn).click(function(){
+          $('.recentRecord').css("display", "none").fadeOut(4000);
+          $(sliCont).animate(
+            {'width':'20.5625em'}, sliSpd);
+          $(sliTxt).focus();
+        });
+        $(sliDis).click(function(){
+          setTimeout(function() {
+            $('.recentRecord').css("display", "inline-block");
+      }, 1000);
+      
+          $(sliCont).animate(
+            {'width':0}, sliSpd);
+        });
+        });
+      </script>

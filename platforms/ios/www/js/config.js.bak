@@ -1,0 +1,653 @@
+
+var baseURL = localStorage.getItem("BaseUrl");
+
+var appVersion = 'v 4.0.7.1';
+//var appVersion = 'v 1.0.0.2';
+
+var autoRetryCounter = 0;
+var commonRequestTimeout = 40000;
+
+//var commonRequestTimeout = 1200000;
+var applyAppVersionCompatibiliyModule = "N";
+var myHrapiVersion = "-1";
+
+var app_product_name = "HRAlign"
+//var app_product_name = "QUBE"
+var demoOnboarding='false'
+
+var gstrFname = ""
+var gblobFiledata 
+
+var jsonTransformRequest = function (data) {
+    var param = function (obj) {
+        var query = '';
+        var name, value, fullSubName, subValue, innerObj, i;
+
+        for (name in obj) {
+            value = obj[name];
+
+            if (value instanceof Array) {
+                for (i = 0; i < value.length; ++i) {
+                    subValue = value[i];
+                    fullSubName = name + '[' + i + ']';
+                    innerObj = {};
+                    innerObj[fullSubName] = subValue;
+                    query += param(innerObj) + '&';
+                }
+            } else if (value instanceof Object) {
+                for (subName in value) {
+                    subValue = value[subName];
+                    fullSubName = name + '.' + subName;
+                    innerObj = {};
+                    innerObj[fullSubName] = subValue;
+                    query += param(innerObj) + '&';
+                }
+            } else if (value !== undefined && value !== null) {
+                query += encodeURIComponent(name) + '=' + encodeURIComponent(value) + '&';
+            }
+        }
+        return query.length ? query.substr(0, query.length - 1) : query;
+    };
+    var ret = angular.isObject(data) ? param(data) : data;
+    return ret;
+};
+
+var getMenuInformation = function (moduleName, menuName) {
+    var portalModule = JSON.parse(sessionStorage.getItem("portalModule"));
+    var modules = $.grep(portalModule, function (v) {
+        return v.moduleName === moduleName;
+    });
+    //modules=[];
+
+    if (modules.length <= 0) {
+        return false;
+    }
+    var menus = $.grep(modules[0].masterMenuBeanList, function (v) {
+        return v.menuName === menuName;
+    });
+    if (menus.length > 0) {
+        return menus[0];
+    }
+    else {
+        return false;
+    }
+}
+
+var  stringToDate = function (customDate)
+	   {		   
+			 var partsDates = customDate.split("#");
+			 var afterParse   = partsDates[0].split("/");
+			 var parts = afterParse;					 
+			 var convertedDate = new Date(parseInt(parts[2], 10),
+			                   parseInt(parts[1], 10) - 1,
+			                   parseInt(parts[0], 10));
+			 
+			 return convertedDate;
+	   }
+
+var  compareDate = function (frstDt, sndDt, fmt){
+		var firstDay;
+		var secondDay;
+		var firstMon;
+		var secondMon;
+		var firstYear;
+		var secondYear;
+	//	alert("hi")
+		if(fmt=="dd/MM/yyyy" ||fmt=="dd-MM-yyyy" ||fmt=="dd.MM.yyyy"){
+			firstDay  = frstDt.substring(0, 2);
+			secondDay  = sndDt.substring(0, 2);
+	    	firstMon   = frstDt.substring(3, 5);
+	    	secondMon  = sndDt.substring(3, 5);
+	  		firstYear  = frstDt.substring(6, 10);
+	  		secondYear = sndDt.substring(6, 10);
+
+	  	}else if(fmt=="MM/dd/yyyy" || fmt=="MM-dd-yyyy"||fmt=="MM.dd.yyyy"){
+			firstMon   = frstDt.substring(0, 2);
+	    	secondMon  = sndDt.substring(0, 2);
+	    	firstDay   = frstDt.substring(3, 5);
+	   		secondDay  = sndDt.substring(3, 5);
+	  		firstYear  = frstDt.substring(6, 10);
+	  		secondYear = sndDt.substring(6, 10);
+		}else if(fmt == "yyyy/MM/dd" ||fmt == "yyyy-MM-dd"||fmt == "yyyy.MM.dd"){
+
+			firstYear  = frstDt.substring(0, 4);
+	  		secondYear = sndDt.substring(0, 4);
+			firstMon   = frstDt.substring(5, 7);
+	    	secondMon  = sndDt.substring(5, 7);
+	    	firstDay   = frstDt.substring(8, 10);
+	   		secondDay  = sndDt.substring(8, 10);
+	  	}
+
+		var firstDate  = new Date(firstYear, eval(firstMon-1), firstDay);
+		var secondDate = new Date(secondYear,eval(secondMon-1), secondDay);
+
+		if(secondDate.getTime() > firstDate.getTime()){
+			return 1;
+		}else if(secondDate.getTime() < firstDate.getTime()){
+			return -1;
+		}else{
+			return 0;
+		}
+	}
+
+
+
+	var caldays = function (dt1,dt2){
+
+	var date1=0;
+	var date2=0;
+	var v = dt1;
+	var v2 =dt2;
+
+	dd1 = v.substring(0,2)
+    mm1 = v.substring(3,5)
+	yy1 = v.substring(6,10)
+
+
+	dd2 = v2.substring(0,2)
+    mm2 = v2.substring(3,5)
+	yy2 = v2.substring(6,10)
+
+	date1 = new Date(mm1+"/"+dd1+"/"+yy1)
+	date2 = new Date(mm2+"/"+dd2+"/"+yy2)
+
+	var nodays = Math.abs((date2-date1)/86400000)+1
+
+	return nodays;
+}
+
+
+
+	var getTodaysDate = function() {
+		var today = new Date()
+		var dd,mm,yyyy
+			if (today.getDate()<10){
+				dd = "0"+ today.getDate()
+			}else{
+				dd = today.getDate()
+			}
+
+			if (today.getMonth() + 1 <10){
+				mm = "0"+ (today.getMonth() + 1) 
+			}else{
+				mm = today.getMonth() + 1
+			}
+
+			yyyy=today.getFullYear()
+
+			return dd+"/"+mm+"/"+yyyy
+
+	}
+
+
+var copyFile = function (baseFileURI, destPathName, fileSystem){
+    window.resolveLocalFileSystemURL(baseFileURI,
+        function(file){
+            window.requestFileSystem(fileSystem, 0,
+                function (fileSystem) {
+                    var documentsPath = fileSystem.root+"Download";
+					console.log(documentsPath);
+					console.log(destPathName);
+					file.copyTo(documentsPath, destPathName,
+
+						function(res){
+
+							console.log('copying was successful to: ' + res.nativeURL)
+						},
+						function(err){
+
+							console.log('unsuccessful copying ' + err.code)
+						});
+
+
+					/*
+					documentsPath.getDirectory('Download', { create: false, exclusive: false },function (dirEntry) {
+						console.log('dir entry: ' + dirEntry)
+						file.copyTo(dirEntry, destPathName,
+
+							function(res){
+
+								console.log('copying was successful to: ' + res.nativeURL)
+							},
+							function(err){
+
+								console.log('unsuccessful copying ' + err.code)
+							});
+					},
+					function(err){
+						alert("direcftory getdire error")
+						console.log('failure! DIRECTORY was not found' + err.code )
+					});*/
+					//var parentEntry = new DirectoryEntry({fullPath: "/"});
+					// file.copyTo(documentsPath+"Download", destPathName,
+
+
+                });
+        },
+        function(){
+			alert("copy failed")
+            console.log('failure! file was not found')
+        });
+}
+
+	function successMoveFile(entry) {
+		alert("file moved ")
+		alert(FileError.NOT_FOUND_ERR)
+		console.log("New Path: " + entry.fullPath);
+	}
+
+	function failMoveFile(error) {
+		alert(FileError.NOT_FOUND_ERR)
+		alert("File move  fial " + error.code);
+	}
+
+	function moveFile(entry,filename) {
+		var parent = cordova.file.externalRootDirectory ,
+
+        parentName = parent.substring(parent.lastIndexOf('/')+1),
+		parentEntry = new DirectoryEntry(parentName, parent);
+
+		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fs) {
+			fs.root.getDirectory(
+				"Download",
+				{
+					create: false
+				},
+				function(dirEntry) {
+					//alert(dirEntry)
+					entry.moveTo(dirEntry, filename, successMoveFile, failMoveFile);
+				}
+		)
+		});
+
+			//parentEntry = new DirectoryEntry({fullPath: parent});
+
+
+		// move the file to a new directory and rename it
+
+
+	}
+
+	
+
+// Checking for permissions
+function checkPermissionCallback(status) {
+  let permissions = cordova.plugins.permissions
+  
+  console.log('checking permissions')
+  console.log(status)
+  if (!status.hasPermission) {
+    var errorCallback = function () {
+      console.warn('Storage permission is not turned on')
+	  alert("its errror")
+    }
+    // Asking permission to the user
+    permissions.requestPermission(
+      permissions.WRITE_EXTERNAL_STORAGE,
+      function (status) {
+        if (!status.hasPermission) {
+          errorCallback()
+        } else {
+          // proceed with downloading
+		  saveFileFromData(gstrFname,gblobFiledata)
+          
+        }
+      },
+      errorCallback)
+  } else {
+	  saveFileFromData(gstrFname,gblobFiledata)
+    
+  }
+}
+	var saveFileFromData = function(filename,blob){
+			
+
+		if (window.cordova && cordova.platformId !== "browser") {
+			document.addEventListener("deviceready", function () {
+
+			  var storageLocation = "";
+
+			  switch (device.platform) {
+				case "Android":
+				  storageLocation = cordova.file.externalDataDirectory;
+				  storageLocation = cordova.file.externalRootDirectory + 'download/' 
+				  
+				  //storageLocation = cordova.file.dataDirectory  ;
+				  //storageLocation = "/Download/"
+				  break;
+
+				case "iOS":
+				  storageLocation = cordova.file.documentsDirectory;
+				  break;
+			  }
+
+
+			  var folderPath = storageLocation  //dirObject.nativeURL;
+
+
+			  window.resolveLocalFileSystemURL(
+				folderPath,
+				function (dir) {
+				  dir.getFile(
+					filename,
+					{
+					  create: true
+					},
+					function (file) {
+					  file.createWriter(
+						function (fileWriter) {
+						  fileWriter.seek(0)
+						  fileWriter.write(blob);
+
+						  fileWriter.onwriteend = function () {
+							var url = file.toURL();
+
+							showAlert("File Saved in download folder", filename )
+
+
+
+							//move file
+							//moveFile(file,filename)
+
+							/*window.setTimeout(function () {
+								//alert("copying")
+								copyFile(url,'z'+filename,LocalFileSystem.PERSISTENT);
+							},3000)
+							*/
+
+							//////////////////////
+
+
+
+							/*cordova.plugins.fileOpener2.open(url, mimeType, {
+							  error: function error(err) {
+								console.error(err);
+								alert("Unable to download");
+							  },
+							  success: function success() {
+
+								console.log("success with opening the file");
+							  }
+							});*/
+						  };
+
+						  fileWriter.onerror = function (err) {
+							showAlert("Unable to download. Please try later. Code=1");
+							// console.error(err);
+						  };
+						},
+						function (err) {
+						  // failed
+						  showAlert("Unable to download. Please try later. Code=2");
+						  // console.error(err);
+						}
+					  );
+					},
+					function (err) {
+						showAlert("Unable to download. Please try later. Code=3");
+					  // console.log(err);
+					}
+				  );
+				},
+				function (err) {
+					showAlert("Unable to download. Please try later. Code=4");
+				  // console.error(err);
+				}
+			  );
+			});
+		  }
+	}
+
+
+
+
+
+	var getDonloadDirectoryObject = function(filename,blob){
+		if (device.platform =="Android"){
+			gstrFname = filename
+			gblobFiledata = blob
+			let permissions = cordova.plugins.permissions
+			permissions.checkPermission(permissions.WRITE_EXTERNAL_STORAGE, checkPermissionCallback, null)
+		}else{
+			saveFileFromData(filename,blob)
+		}
+		
+		
+				return;
+				
+		switch (device.platform) {
+				case "Android":
+				  dnldDir = cordova.file.externalDataDirectory;
+				  //dnldDir = "file:///storage/emulated/0/"
+				  break;
+
+				case "iOS":
+				  dnldDir = cordova.file.documentsDirectory;
+				  break;
+		}
+		window.resolveLocalFileSystemURL(dnldDir,
+		function (fileSystem) {
+
+        fileSystem.getDirectory('Download', {
+                create: false,
+                exclusive: false
+            },
+            function (directory) {
+
+				saveFileFromData(filename,blob)
+				return;
+
+            }, function err(aa){alert("1")} );
+    }, function err1(aa){alert("2")});
+
+	}
+
+
+
+
+	var downloadFileFromData = function download(filename, data, mimeType) {
+		var savingPath;
+		  var blob = new Blob([data], {
+			type: mimeType
+		  });
+		  getDonloadDirectoryObject(filename,blob)
+/*
+		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+					//alert('1');
+					fileSystem.root.getDirectory("Download", {create: true, exclusive: false}, function(dirEntry) {
+						 dirEntry.getFile(filename, {create: true, exclusive: false},function(fileEntry) {
+						var localPath = fileEntry.fullPath;
+						alert(localPath)
+						if (device.platform === "Android" && localPath.indexOf("file://") === 0) {
+							localPath = localPath.substring(7);
+							alert(localPath)
+						}
+						//alert(remoteFile);
+						//alert(localPath);
+
+
+							}, /*fail);
+					}, /*fail);
+				}, /*fail);
+
+*/			
+
+
+}
+
+
+
+/**
+ * Convert a base64 string in a Blob according to the data and contentType.
+ *
+ * @param b64Data {String} Pure base64 string without contentType
+ * @param contentType {String} the content type of the file i.e (image/jpeg - image/png - text/plain)
+ * @param sliceSize {Int} SliceSize to process the byteCharacters
+ * @see http://stackoverflow.com/questions/16245767/creating-a-blob-from-a-base64-string-in-javascript
+ * @return Blob
+ */
+ /*
+var b64toBlob = function (b64Data, contentType, sliceSize) {
+        contentType = contentType || '';
+        sliceSize = sliceSize || 512;
+
+        var byteCharacters = atob(b64Data);
+        var byteArrays = [];
+
+        for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+            var slice = byteCharacters.slice(offset, offset + sliceSize);
+
+            var byteNumbers = new Array(slice.length);
+            for (var i = 0; i < slice.length; i++) {
+                byteNumbers[i] = slice.charCodeAt(i);
+            }
+
+            var byteArray = new Uint8Array(byteNumbers);
+
+            byteArrays.push(byteArray);
+        }
+
+      var blob = new Blob(byteArrays, {type: contentType});
+      return blob;
+}
+*/
+
+/**
+ * use this to make a Base64 encoded string URL friendly,
+ * i.e. '+' and '/' are replaced with '-' and '_' also any trailing '='
+ * characters are removed
+ *
+ * @param {String} str the encoded string
+ * @returns {String} the URL friendly encoded String
+ */
+var  Base64EncodeUrl = function(str){
+    return str.replace(/\+/g, '-').replace(/\//g, '_').replace(/\=+$/, '');
+}
+
+/**
+ * Use this to recreate a Base64 encoded string that was made URL friendly
+ * using Base64EncodeurlFriendly.
+ * '-' and '_' are replaced with '+' and '/' and also it is padded with '+'
+ *
+ * @param {String} str the encoded string
+ * @returns {String} the URL friendly encoded String
+ */
+var Base64DecodeUrl = function(str){
+    str = (str + '===').slice(0, str.length + (str.length % 4));
+    return str.replace(/-/g, '+').replace(/_/g, '/');
+}
+
+
+var base64toBlob = function(base64Data, contentType) {
+    contentType = contentType || '';
+    var sliceSize = 1024;
+    var byteCharacters = atob(base64Data);
+    var bytesLength = byteCharacters.length;
+    var slicesCount = Math.ceil(bytesLength / sliceSize);
+    var byteArrays = new Array(slicesCount);
+
+    for (var sliceIndex = 0; sliceIndex < slicesCount; ++sliceIndex) {
+        var begin = sliceIndex * sliceSize;
+        var end = Math.min(begin + sliceSize, bytesLength);
+
+        var bytes = new Array(end - begin);
+        for (var offset = begin, i = 0; offset < end; ++i, ++offset) {
+            bytes[i] = byteCharacters[offset].charCodeAt(0);
+        }
+        byteArrays[sliceIndex] = new Uint8Array(bytes);
+    }
+    return new Blob(byteArrays, { type: contentType });
+}
+
+
+
+function getKyByValueFromJSMap(map, searchValue) {
+	for (let [key, value] of map.entries()) {
+	  if (value === searchValue)
+		return key;
+	}
+  }
+// maintaining hrapi versions mapping arrays
+	hrapiVersionsText=new Array(15)
+	hrapiVersionsNumber=new Array(15)
+
+	hrapiVersionsText[0]="4.0.0.6"
+	hrapiVersionsNumber[0]=1
+
+	hrapiVersionsText[1]="4.0.1.2"
+	hrapiVersionsNumber[1]=2
+
+	hrapiVersionsText[2]="4.0.2.0"
+	hrapiVersionsNumber[2]=3
+
+	hrapiVersionsText[3]="4.0.2.3"
+	hrapiVersionsNumber[3]=4
+
+	hrapiVersionsText[4]="4.0.3.3"
+	hrapiVersionsNumber[4]=5
+
+	hrapiVersionsText[5]="4.0.3.3.1"
+	hrapiVersionsNumber[5]=6
+
+	hrapiVersionsText[6]="4.0.4.0"
+	hrapiVersionsNumber[6]=7
+
+	hrapiVersionsText[7]="4.0.4.1"
+	hrapiVersionsNumber[7]=8
+
+	hrapiVersionsText[8]="4.0.4.3"
+	hrapiVersionsNumber[8]=9
+
+	hrapiVersionsText[9]="4.0.4.3.2"
+	hrapiVersionsNumber[9]=10
+
+	hrapiVersionsText[10]="4.0.4.4"
+	hrapiVersionsNumber[10]=11
+
+	hrapiVersionsText[11]="4.0.4.6"
+	hrapiVersionsNumber[11]=12
+
+	hrapiVersionsText[12]="4.0.4.7"
+	hrapiVersionsNumber[12]=13
+
+	hrapiVersionsText[13]="4.0.5.3"
+	hrapiVersionsNumber[13]=14
+
+	hrapiVersionsText[14]="4.0.5.6"
+	hrapiVersionsNumber[14]=14 // purposely repeated version 14 , because some build has to be given but not the features.
+
+	// from this point version will come from hrapi
+
+
+	var getHrapiVersionNumber = function(verText){
+		/*for(i=0;i<hrapiVersionsText.length;i++){
+			if (hrapiVersionsText[i]==verText) {
+				return hrapiVersionsNumber[i]
+			}
+		}
+		return -1;
+		*/
+		return getMyHrapiVersionNumber()
+	}
+
+	var getMyHrapiVersionNumber = function(){
+		return 17
+		if (sessionStorage.getItem('product_version')=="-1"){
+			//do nothing
+		}
+		else{
+			return sessionStorage.getItem('product_version')
+		}
+
+
+		var verText = sessionStorage.getItem("domainVersion")
+		for(i=0;i<hrapiVersionsText.length;i++){
+			if (hrapiVersionsText[i]==verText) {
+				return hrapiVersionsNumber[i]
+			}
+		}
+		return -1;
+	}
+
+
+

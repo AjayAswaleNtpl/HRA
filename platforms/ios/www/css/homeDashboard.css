@@ -1,0 +1,88 @@
+
+.homeDashboardPadding{
+    border:0%;
+    padding:0%;
+    margin:0%
+}
+#donutchart{
+    width:100% ; 
+    height: 300px;
+    background-color: #f5f5f5; 
+    position: relative;
+}
+.popup-container .popup {
+    border-radius: 10px;
+}
+/* Self-Services */
+
+.list_bullet_1{
+    color: #D7F187;
+
+}
+
+.list_bullet_2{
+
+    color: #f37076;
+
+}
+
+.list_bullet_3{
+
+    color: #6666FF;
+
+}
+
+.list_bullet_4{
+
+    /*color: #00CDCD;*/
+    color: #ff75d0;
+    
+
+}
+
+.list_bullet_5{
+
+    color: #ffff00;
+
+}
+
+.list_bullet_6{
+
+    color: #FFA07A;
+
+}
+
+.list_bullet_7{
+
+    color: #1418c9;
+
+}
+
+.list_bullet_8{
+
+    color: #00BAC6;
+
+}
+
+
+.list_element{
+    color:#444;
+
+}
+
+.gray_background{
+    background-color:#F8F8F8;
+}
+
+.white_background{
+    background-color:#FFFFFF;
+}
+
+.font_size{
+    font-size:large;
+}
+
+.font_size_1{
+    width: inherit;
+    font-size: large;
+}

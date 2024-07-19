@@ -1,0 +1,548 @@
+<style>
+  .custom-item {
+    border: none;
+  }
+  .anchorRRedirect {
+    position: absolute;
+    top: 212px;
+    right: 14px;
+    font-size: 15px;
+    color: #3b5998;
+  }
+  .listTopMargin {
+    margin-top: 10px;
+  }
+  .travelListTopMargin {
+    margin-top: -40px;
+  }
+  #outer {
+    width: 100%;
+    text-align: center;
+  }
+  .inner {
+    display: inline-block;
+  }
+  ul.ctcClaimList {
+    margin-top: 20px;
+  }
+  ul.ctcClaimList li {
+    font-size: 0.8em;
+    padding: 5px 0px 0px 0px;
+    min-width: 435px;
+  }
+  .ctcClaimList b {
+    display: inline-block;
+    width: 40%;
+    position: relative;
+    padding-right: 10px;
+  }
+  .ctcClaimList b::after {
+    content: ":";
+    position: absolute;
+    right: 10px;
+  }
+
+  ul.travelClaimList {
+    width: 125%;
+  }
+  ul.travelClaimList li {
+    font-size: 0.8em;
+    padding: 5px 0px 0px 0px;
+    min-width: 435px;
+  }
+  .travelClaimList b {
+    display: inline-block;
+    width: 32%;
+    position: relative;
+    padding-right: 10px;
+  }
+  .travelClaimList b::after {
+    content: ":";
+    position: absolute;
+    right: 10px;
+  }
+
+  ul.odClaimList {
+    margin-top: 20px;
+  }
+  ul.odClaimList li {
+    font-size: 0.8em;
+    padding: 5px 0px 0px 0px;
+    min-width: 435px;
+  }
+  .odClaimList b {
+    display: inline-block;
+    width: 35%;
+    position: relative;
+    padding-right: 10px;
+  }
+  .odClaimList b::after {
+    content: ":";
+    position: absolute;
+    right: 10px;
+  }
+
+  ul.attClaimList {
+    width: 125%;
+  }
+  ul.attClaimList li {
+    font-size: 0.8em;
+    padding: 5px 0px 0px 0px;
+    min-width: 435px;
+  }
+  .attClaimList b {
+    display: inline-block;
+    width: 38%;
+    position: relative;
+    padding-right: 10px;
+  }
+  .attClaimList b::after {
+    content: ":";
+    position: absolute;
+    right: 10px;
+  }
+
+  ol,
+  ul {
+    margin-bottom: 0px !important;
+  }
+  a:focus,
+  a:hover {
+    text-decoration: none;
+  }
+  .tab-item.tab-item-active,
+  .tab-item.active,
+  .tab-item.activated {
+    opacity: 1;
+  }
+  .tab-item {
+    opacity: 0.7;
+  }
+  .custom-row {
+    padding: 0px;
+  }
+  .custom-padding {
+    padding: 5px 10px;
+  }
+  .custom-top {
+    top: 10px;
+    left: 13px;
+  }
+  .custom-paddingTop {
+    padding-top: 11px;
+  }
+  .custom_OD {
+    padding-top: 11px;
+    padding-bottom: 0px;
+  }
+  .custom-paddingBottom {
+    padding-bottom: 0px;
+  }
+  .cust-card {
+    padding: 50px 0px 0px 0px;
+  }
+  .custom-requestApprove {
+    font-size: 11px;
+    color: green;
+  }
+  .custom-requestRejcted {
+    font-size: 11px;
+    color: red;
+  }
+  .custom-requestOther {
+    font-size: 11px;
+    color: orange;
+  }
+  .custom-fontSize {
+    font-size: 12px;
+  }
+  .modal-wrapper {
+    position: absolute;
+    top: 25%;
+    display: block;
+    width: 90%;
+    min-height: 45%;
+    padding: 5%;
+  }
+
+  .modal-backdrop-bg {
+    background-color: rgba(255, 255, 255, 0.85);
+  }
+
+  .modal {
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+  }
+
+  .modal-ion-content {
+    padding: 15px;
+    font-size: 0.85em;
+  }
+
+
+  .badge.badgeCustom {
+    width: 22px;
+    height: 22px;
+    text-align: center;
+    line-height: 18px;
+    display: block;
+    position: absolute;
+    top: 0;
+    color: #fff !important;
+    font-size: 10px !important;
+    padding: 0;
+  }
+  a:focus,
+  a:hover {
+    text-decoration: none;
+  }
+  .tab-item.tab-item-active,
+  .tab-item.active,
+  .tab-item.activated {
+    opacity: 1;
+  }
+  .tab-item {
+    opacity: 0.7;
+  }
+  </style>
+
+<style>
+  .col-xs-2 {
+  padding: 0 !important;
+}
+.row {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
+label {
+  font-weight: normal !important;
+}
+.col-xs-4, .col-sm-4 {
+  padding: 0 4px !important;
+}
+</style>
+
+<ion-view>
+  <!-- <ion-nav-bar class="bar-stable" style="background-color: white">
+      <ion-nav-buttons side="left">
+          <button class="button button-clear" ng-click="redirectOnLeave()">
+              <i class="icon ion-ios-arrow-back"></i>
+              Back</button>
+      </ion-nav-buttons>
+
+  </ion-nav-bar> -->
+  <div class="bar bar-footer hide-on-keyboard-open" style="background-color:#000; background-size: 100% 0px;">
+      <div class="title" style="height: 20px;">
+          <h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px; margin-bottom: 5px;">Powered by HR Align</h6>
+      </div>
+  </div>
+  <ion-content has-bouncing="false" class="item-divider grayBackColor" style="overflow-y: auto;">
+    <div class="custom-header" style="padding-top: 0px;padding-bottom: 0px;">
+      <h4 class="subHeaderClass" style="margin: 0px;"> <span class="backIcon">
+        <i class="icon ion-ios-arrow-back" ng-click="redirectOnBack()"></i></span>
+         <b style="vertical-align: super;">Project Configuration - Self List</b></h4>
+         <a ng-if="isARTorFRT == 'true' || isGroupMasterReportee == 'true'" ng-click="goToApprovals()" class="approvalLinkClass">
+          <img src="./img/approveNew.png" style="width: 25px; height: 25px; margin-right: 3px;text-align: center;" />
+        </a>
+     </div>
+<form name="projectMasterForm">
+
+  <div class="search">
+    <span >
+      <input type="submit" value="&#xf002;" class="search-btn fa ib-m">
+       <div class="search-slide ib-m">
+          <input type="search" id="reqSearch1" placeholder="Enter your search" class="ib-m" ng-model="searchObj.searchQuery"/>
+          <div class="search-close ib-m">
+            <i class="fa fa-times-circle" aria-hidden="true"></i></div>
+        </div>
+      </span>
+    <span class="recentRecord" style="margin-left:12px;font-size: 0.8em; font-style: oblique;">
+    Recent 50 applications.
+  </span>
+    <span class="refreshBtn" style="margin-top: 2%;">
+      <i ng-click="refreshList()" class="fa fa-refresh" ></i>
+    </span>
+  </div>
+
+        <div id="ProjectMasterListCard" class="listTopMargin">
+          <center>
+            <button class="button button-small button-outline button-positive marginTop" id="applyNonCTCClaim"  
+			ng-click="reDirectToFreshProjConfigPage()"  >
+              Add Project
+            </button>
+          </center>
+          <!-- <span class="refreshBtn" style="margin-top: -7%;">
+            <i ng-click="refreshList()" class="fa fa-refresh" ></i>
+          </span> -->
+          <div id="noData" ng-if="selfList.length == 0">
+            <img src="./img/no-result.png" alt="">
+          </div>
+          <div class="list card customBorderRadius"
+            ng-repeat="projmaster in selfList | filter:searchObj.searchQuery | orderBy:'-attDate' "
+            ng-if="projmaster.status =='SENT FOR APPROVAL' || projmaster.status =='SENT FOR CANCELLATION'" >
+            <div class="remarkcomments">
+              <h2 class="item-note custom-requestApprove"
+                    ng-if="projmaster.status == 'APPROVED' ||  projmaster.status == 'CANCELLATION APPROVED'"  >
+                    {{projmaster.status}}</h2>
+                  <h2  class="item-note custom-requestRejcted" ng-if="projmaster.status == 'CANCELLED'">
+                    {{projmaster.status}}
+                  </h2>
+                  <h2  class="item-note custom-requestRejcted" ng-if="projmaster.status == 'REJECTED'" >
+                    {{projmaster.status}}
+                  </h2>
+                  <h2  class="item-note custom-requestRejcted" ng-if="projmaster.status == 'CANCELLATION REJECTED'" >
+                    {{projmaster.status}}
+                  </h2>
+                  <h2  class="item-note custom-requestOther"
+                    ng-if="projmaster.status != 'REJECTED' &&
+                            projmaster.status != 'APPROVED' && projmaster.status != 'CANCELLED' &&
+                            projmaster.status != 'CANCELLATION APPROVED' && projmaster.status != 'CANCELLATION REJECTED'" >
+                    {{projmaster.status}}<br><span style="float: right;">{{projmaster.approverPendingFrom}}</span>
+                  </h2>
+           </div>
+
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Project Code</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{projmaster.projectCode}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Project Name </label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{projmaster.projectName}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Created By </label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{projmaster.createdBy}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Created Date</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{projmaster.createdDate | date :"dd/MM/yyyy"}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Visibility</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8" ng-if="projmaster.visibility =='y'">Public</div>
+            <div  class="col-sm-8 col-xs-8" ng-if="projmaster.visibility =='n'">Private</div>
+            
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Project Type</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{projmaster.projectTypeMaster.projectTypeName}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Project Start Date</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{projmaster.startDate  | date :"dd/MM/yyyy" }}
+            </div>
+          </div>		  
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Project End Date</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{projmaster.endDate  | date :"dd/MM/yyyy" }}
+            </div>
+          </div>	
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Account Manager</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+			      {{projmaster.accountmanagerName}})
+            </div>
+          </div>		  
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Project Manager</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+				    {{projmaster.projectManagerName}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Attachment</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8" style="color: blue;" ng-click="openFileLeave(projmaster)">
+              {{projmaster.projectMasterList[0].fileName}} {{projmaster.projectMasterList[0].uploadFileId}}
+            </div>
+          </div>		  
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Approval Date</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{projmaster.approvalDate | date :"dd/MM/yyyy" }}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Applicant Remarks</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{projmaster.applicantRemark}}
+            </div>
+          </div>		  
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{projmaster.prevApproverRemark}}
+            </div>
+          </div>
+		  <br>
+          <div class="text-center" class="item" >
+            <button type="button"  ng-click="redirectToProjConfigDetails(projmaster);"
+            class="button button-small button-outline button-positive">
+          <i class="fa fa-eye mr-5" ></i>Details</button>
+          </div>
+          </div>
+
+
+          <div class="list card customBorderRadius"
+            ng-repeat="projmaster in selfList | filter:searchObj.searchQuery | orderBy:'-attDate' "
+            ng-if="!(projmaster.status =='SENT FOR APPROVAL' || projmaster.status =='SENT FOR CANCELLATION')" >
+            <div class="remarkcomments">
+              <h2 class="item-note custom-requestApprove"
+                    ng-if="projmaster.status == 'APPROVED' ||  projmaster.status == 'CANCELLATION APPROVED'"  >
+                    {{projmaster.status}}</h2>
+                  <h2  class="item-note custom-requestRejcted" ng-if="projmaster.status == 'CANCELLED'">
+                    {{projmaster.status}}
+                  </h2>
+                  <h2  class="item-note custom-requestRejcted" ng-if="projmaster.status == 'REJECTED'" >
+                    {{projmaster.status}}
+                  </h2>
+                  <h2  class="item-note custom-requestRejcted" ng-if="projmaster.status == 'CANCELLATION REJECTED'" >
+                    {{projmaster.status}}
+                  </h2>
+                  <h2  class="item-note custom-requestOther"
+                    ng-if="projmaster.status != 'REJECTED' &&
+                            projmaster.status != 'APPROVED' && projmaster.status != 'CANCELLED' &&
+                            projmaster.status != 'CANCELLATION APPROVED' && projmaster.status != 'CANCELLATION REJECTED'" >
+                    {{projmaster.status}}<br><span style="float: right;">{{projmaster.approverPendingFrom}}</span>
+                  </h2>
+           </div>
+
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Project Code</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{projmaster.projectCode}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Project Name </label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{projmaster.projectName}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Created By </label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{projmaster.createdBy}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Created Date</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{projmaster.createdDate | date :"dd/MM/yyyy"}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Visibility</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8" ng-if="projmaster.visibility =='y'">Public</div>
+            <div  class="col-sm-8 col-xs-8" ng-if="projmaster.visibility =='n'">Private</div>
+            
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Project Type</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{projmaster.projectTypeMaster.projectTypeName}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Project Start Date</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{projmaster.startDate  | date :"dd/MM/yyyy" }}
+            </div>
+          </div>		  
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Project End Date</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{projmaster.endDate  | date :"dd/MM/yyyy" }}
+            </div>
+          </div>	
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Account Manager</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+			      {{projmaster.accountmanagerName}})
+            </div>
+          </div>		  
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Project Manager</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+				    {{projmaster.projectManagerName}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Attachment</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{projmaster.projectMasterList[0].fileName}} {{projmaster.projectMasterList[0].uploadFileId}}
+            </div>
+          </div>		  
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Approval Date</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{projmaster.approvalDate | date :"dd/MM/yyyy" }}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Applicant Remarks</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{projmaster.applicantRemark}}
+            </div>
+          </div>		  
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{projmaster.approverRemarks}}
+            </div>
+          </div>
+		  <br>
+          <div class="text-center" class="item" >
+            <button type="button"  ng-click="redirectToProjConfigDetails(projmaster);"
+            class="button button-small button-outline button-positive">
+          <i class="fa fa-eye mr-5" ></i>Details</button>
+          </div>
+          </div>
+
+        </div>
+
+        
+
+<input type="hidden" name="fromEmail" id="fromEmail" th:value="${fromEmail}" />
+<input type="hidden" name="selfGrid" id="selfGrid" th:value="${selfGrid}" />
+<input type="hidden" name="fromView" id="fromView" th:value="*{fromView}" />
+</form>
+    
+    </ion-content>
+</ion-view>
+<script>
+  var sliBtn = '.search-btn',
+      sliCont = '.search-slide',
+      sliTxt = '.search-slide input[type=text]',
+      sliDis = '.search-close',
+      sliSpd = 300;
+
+  $(sliBtn).click(function(){
+
+    $('.recentRecord').css("display", "none").fadeOut(4000);
+    $(sliCont).animate(
+      {'width':'20.5625em'}, sliSpd);
+    $(sliTxt).focus();
+  });
+  $(sliDis).click(function(){
+    setTimeout(function() {
+      $('.recentRecord').css("display", "inline-block");
+}, 1000);
+
+    $(sliCont).animate(
+      {'width':0}, sliSpd);
+  });
+      </script>

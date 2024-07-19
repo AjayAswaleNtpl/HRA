@@ -1,0 +1,247 @@
+<style>
+    .customRadio{
+        display:none;
+    }
+    .customRadio + label {
+        display:inline-block;
+        margin:-2px;
+        padding: 4px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        line-height: 20px;
+        color: #333;
+        text-align: center;
+        text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+        vertical-align: middle;
+        cursor: pointer;
+        background-color: #f5f5f5;
+        background-image: -moz-linear-gradient(top,#fff,#e6e6e6);
+        background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));
+        background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);
+        background-image: -o-linear-gradient(top,#fff,#e6e6e6);
+        background-image: linear-gradient(to bottom,#fff,#e6e6e6);
+        background-repeat: repeat-x;
+        border: 1px solid #ccc;
+        border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+        border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+        border-bottom-color: #b3b3b3;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0);
+        filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+        -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+        -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0
+            ,0,0.05);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+    }
+
+    .customRadio:checked + label{
+        background-image: none;
+        outline: 0;
+        -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0
+            ,0,0.05);
+        -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+        background-color:#0066ff;
+        color: white;
+    }
+    input[type="radio"] {
+        margin-top: -1px;
+        vertical-align: middle;
+    }
+    #check, #check1{
+        cursor: pointer;
+        -webkit-appearance: none;
+        appearance: none;
+        background: white;
+        border-radius: 1px;
+        box-sizing: border-box;
+        position: relative;
+        box-sizing: content-box ;
+        width: 20px;
+        height: 20px;
+        border-width: 0;
+        transition: all .3s linear;
+        border: 2px solid
+    }
+    #check:checked, #check1:checked{
+        background:url("img/tick.jpg");
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+    #check:focus, #check1:focus{
+        outline: 0 none;
+        box-shadow: none;
+    }
+    .textareaBox{
+        margin-left: 2%;
+        width: 96%;
+        padding-bottom: 5%;
+        border-radius: 8px;
+        border: 1px solid black;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    .col-xs-2 {
+    padding: 0 !important;
+}
+.row {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+label {
+    font-weight: normal !important;
+}
+.applySection{
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+    -webkit-box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+    -moz-box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+    -o-box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+    border-radius: 15px;
+    border: 0;
+}
+.headerLable{
+    font-size: 16px;
+    padding: 10px 0 5px 5px;
+    color: #797979;
+}
+.item{
+    white-space: inherit !important;
+}
+</style>
+
+<ion-view >
+    <!-- <ion-nav-bar class="bar-stable" style="background-color: white">
+        <ion-nav-buttons side="left">
+            <button class="button button-clear" ng-click="redirectOnShiftChangePage()" >
+                <i class="icon ion-ios-arrow-back"></i>
+                Back</button>
+        </ion-nav-buttons>
+
+    </ion-nav-bar> -->
+    <div class="bar bar-footer hide-on-keyboard-open" style="background-color:#000; background-size: 100% 0px;">
+        <div class="title" style="height: 20px;">
+            <h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px; margin-bottom: 5px;" >Powered by HR Align</h6></div>
+    </div>
+    <ion-content has-bouncing="false" class="item-divider grayBackColor" style="overflow-y: auto;">
+        <form name="credentialsForm"  class="ng-pristine ng-valid ng-valid-required" style="overflow: auto;">            
+            <!-- <div class="custom-header" style="padding: 0px;padding-left: 15px;margin-top:-8px;">
+				<h4 class="custom-header" style="padding-top:5px;"><b>Shift Change</b></h4>
+            </div> -->
+            <div class="custom-header" style="padding-top: 0px;padding-bottom: 0px;">
+                <h4 class="subHeaderClass" style="margin: 0px;"> <span ng-click="redirectOnBack()" class="backIcon">
+                  <i class="icon ion-ios-arrow-back"></i></span> <b style="vertical-align: super;">Shift Change</b></h4>
+               </div>
+            <!-- <div class="card">
+                <div class="item item-input">
+                    <span class="input-label" style="min-width: 40%; margin-left: -10px;" id="_label-4"><b>From Date </b> </span>
+                    <input id="fromDate" ng-click="setFromDate()" style="padding-left: 0px;padding-right:0px;background-color:
+                    white;border: 1px solid #b3b3b3;text-align:center; width:120px;" 
+                    type="text"  ng-model="resultShiftObj.fromDate" ng-readonly="true"
+                     class="ng-pristine ng-touched ng-not-empty ng-valid ng-valid-required" readonly="readonly" required>
+                    <i style="padding-left: 5%; font-size: 193%;" ng-click="setFromDate()" class="ion-calendar" >&emsp;</i>
+                </div>                                
+            </div> -->
+            <div class="cardList">
+		<div class="headerLable">Please select dates </div>
+            <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">From Date </label><span class="dividerClass">:</span>
+                <div  class="col-sm-6 col-xs-6">
+                    <input id="fromDate" ng-click="setFromDate()" 
+                    type="text"  ng-model="resultShiftObj.fromDate" ng-readonly="true"
+                     class="form-control ng-pristine ng-touched ng-not-empty ng-valid ng-valid-required" readonly="readonly" required>
+                </div >
+               <div class="col-sm-2 col-xs-2">
+                <i style="padding-left: 3%; font-size: 193%;"  ng-click="setFromDate()" class="ion-calendar">&emsp;</i>
+               </div>
+              </div>
+            <!-- <div class="card">
+                <div class="item item-input">
+                    <span class="input-label" style="min-width: 40%; margin-left: -10px;" id="_label-5"><b>To Date </b></span>
+                    <input id="toDate" ng-click="setToDate()" style="padding-left: 0px;padding-right:0px;background-color:white;border: 1px solid #b3b3b3;
+                    text-align:center; width:120px;" type="text"  ng-model="resultShiftObj.toDate" ng-readonly="true"
+                     class="ng-pristine ng-touched ng-not-empty ng-valid ng-valid-required" readonly="readonly" required>
+                    <i style="padding-left: 5%; font-size: 193%;" ng-click="setToDate()" class="ion-calendar" >&emsp;</i>
+                </div>
+            </div> -->
+            <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">To Date </label><span class="dividerClass">:</span>
+                <div  class="col-sm-6 col-xs-6">
+                    <input id="toDate" ng-click="setToDate()" type="text"  ng-model="resultShiftObj.toDate" ng-readonly="true"
+                     class="form-control ng-pristine ng-touched ng-not-empty ng-valid ng-valid-required" readonly="readonly" required>
+                </div >
+               <div class="col-sm-2 col-xs-2">
+                <i style="padding-left: 3%; font-size: 193%;"  ng-click="setToDate()" class="ion-calendar">&emsp;</i>
+               </div>
+              </div>
+
+            <div class="list card modal-payslip applySection" ng-repeat="shift in shiftList| filter:searchQueryLeave track by $index">
+                <div class="item custom-item item-text-wrap" style=" padding: 0;">
+                    <div ng-if="shift.status != 'SENT FOR APPROVAL'">
+                        <ion-checkbox  ng-click="selectShiftChangeApprovals(shift, result)" >
+                            <span style="margin-left: 30px;">Select to Apply</span></ion-checkbox>
+                    </div>
+                    <div class="row">
+                        <label  class="col-sm-4 col-xs-4 col-form-label">Date </label><span class="dividerClass">:</span>
+                        <div class="col-sm-8 col-xs-8"> 
+                            <p>{{shift.reqDate}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- <div class="col">
+                            <p>Roster Shift Name: </p>
+                        </div> -->
+                        <label  class="col-sm-4 col-xs-4 col-form-label">Roster Shift Name </label><span class="dividerClass">:</span>
+                        <div class="col-sm-8 col-xs-8"> 
+                            <p>{{shift.rosterShiftName}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- <div class="col" >
+                            <p>Shift Change To:</p>
+                        </div> -->
+                        <label  class="col-sm-4 col-xs-4 col-form-label">Shift Change To </label><span class="dividerClass">:</span>
+                        <div class="col-sm-8 col-xs-8"> 
+                            <select class="form-control" ng-disabled="shift.status == 'SENT FOR APPROVAL'" ng-model="shift.shiftMasterChildId" ng-options="key as value for (key , value) in shift.dayWiseShift" >
+                                <option value="">Select </option>
+                            </select>
+                        </div>                    
+                    </div>
+                    <div class="row">
+                        <!-- <div class="col" >
+                            <p>Reason for Shift Change: </p>
+                        </div> -->
+                        <label  class="col-sm-4 col-xs-4 col-form-label">Reason for Shift Change</label><span class="dividerClass">:</span>
+                    <div class="col-sm-8 col-xs-8">
+					<textarea class="form-control" ng-disabled="shift.status == 'SENT FOR APPROVAL'" name="reason"  ng-model="shift.reasonToChange" ng-maxlength="1000" required></textarea>
+                    </div>
+                </div>
+                    <div>
+                        <center>
+                            <span class="error" style="color:red" ng-show="credentialsForm.reason.$error.maxlength">No more text can be entered.</span>
+                        </center>
+                    </div>
+                    <div class="row">
+                        <!-- <div class="col">
+                            <p>Status: </p>
+                        </div> -->
+                        <label  class="col-sm-4 col-xs-4 col-form-label">Status</label><span class="dividerClass">:</span>
+                        <div class="col-sm-8 col-xs-8">
+                            <p><b>{{shift.status}}</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row custom-row" ng-if="resultShiftObj.fromDate && resultShiftObj.toDate" style="padding-left: 10px;padding-right: 10px;">
+                <!-- <button class="button button-full button-positive" ng-disabled="credentialsForm.$invalid || selectShiftChangeApprovalsList.length == 0" ng-click="saveShiftChangeApplication()">Save</button> -->
+            </div>
+            <div class="text-center" ng-if="resultShiftObj.fromDate && resultShiftObj.toDate">
+                <button type="button" ng-disabled="credentialsForm.$invalid || selectShiftChangeApprovalsList.length == 0"
+                ng-click="sendForApproval()" class="btn btn-primary mr-10">
+          <i class="fa fa-paper-plane mr-5" aria-hidden="true"></i>Send for Approval</button>
+          </div>
+            <br>
+
+            </div>
+        </form>
+    
+    </ion-content>
+</ion-view>

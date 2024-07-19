@@ -1,0 +1,709 @@
+<style>
+.row {
+    margin: 0px 0 5px 0 !important;
+}
+</style>
+<ion-view>
+    <!-- <ion-nav-bar class="bar-stable" style="background-color: white">
+        <ion-nav-buttons side="left">
+            <button class="button button-clear" ng-click="redirectOnLeave()">
+                <i class="icon ion-ios-arrow-back"></i>
+                Back</button>
+        </ion-nav-buttons>
+
+    </ion-nav-bar> -->
+    <div class="bar bar-footer hide-on-keyboard-open"
+        style="background-color:#000; background-size: 100% 0px;">
+        <div class="title" style="height: 20px;">
+            <h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px;
+                margin-bottom: 5px;">Powered by HR Align</h6>
+        </div>
+    </div>
+    <ion-content has-bouncing="false" class="item-divider grayBackColor" style="overflow-y: auto;">
+
+        <!-- <div class="custom-header" style="padding: 0px;padding-left:
+            15px;margin-top:-8px;">
+            <h4 class="custom-header" style="padding-top:5px;">
+                <b>Travel Application</b>
+            </h4>
+        </div> -->
+        <div class="custom-header" style="padding-top: 0px;padding-bottom: 0px;">
+            <h4 class="subHeaderClass" style="margin: 0px;"> <span ng-click="redirectOnBack()" class="backIcon">
+              <i class="icon ion-ios-arrow-back"></i></span> <b style="vertical-align: super;">Travel Application</b></h4>
+           </div>
+        <form name="travelForm">
+            <!--            tab 6 start -->
+		<!--
+            <div class="sectionClass">
+                <button id="6" class="button button-block button-positive
+                    item-button-right" Style="text-align: left;
+                    margin-bottom:0%;" ng-click="toggleTab6(tab)"
+                    ng-class="{active: isTab6Shown(tab)}">
+                    <b> Travel Objective &nbsp;&nbsp; </b>
+                    <span style="float: right"><i class="icon-right"
+                            ng-class="isTab6Shown(tab) || defaultTabs6Open=='Y' ? 'ion-chevron-down' :
+                            'ion-chevron-right'"></i></span>
+                </button>
+                <div class="list card item-accordion" ng-show="isTab6Shown(tab) || defaultTabs6Open=='Y'"
+                    style="margin:auto;border-radius:5px">
+
+						<div class="item">
+                            <h5 style="font-size:0.9em;margin-top:3px;font-weight:500;">Travel Objective:</h5>
+                            <textarea id="addi" rows="4" cols="50" class="form-control" style="background-color:white;border: 1px solid #b3b3b3;text-align:left;"></textarea>
+                        </div>
+                        
+                </div>
+            </div>
+			-->
+            <!--            tab 1 start
+			ng-class="{active: isTab1Shown(tab)}"-->
+			<!--
+            <div class="sectionClass">
+                <button id="1" class="button button-block button-positive
+                    item-button-right" Style="text-align: left;
+                    margin-bottom:0%;" ng-click="toggleTab1(tab)"
+                    ng-class="{active: isTab1Shown(tab)}">
+                    <b> Employee Details &nbsp;&nbsp; </b>
+                    <span style="float: right"><i class="icon-right"
+                            ng-class="isTab1Shown(tab) || defaultTabs1Open=='Y' ? 'ion-chevron-down' :
+                            'ion-chevron-right'"></i></span>
+                </button>
+                <div class="list card item-accordion" ng-show="isTab1Shown(tab) || defaultTabs1Open=='Y'"
+                    style="margin:auto;border-radius:5px">
+                   <tab 1 content start 
+                    <div class="item">
+                      <ul class="ctcClaimList">
+                        <li style="font-size:0.9em;" ng-if="empDetailslist[0].companyName"><b>Company</b>{{empDetailslist[0].companyName}}</li>
+                        <li style="font-size:0.9em;" ng-if="empDetailslist[0].empName"><b>Employee Name</b>{{empDetailslist[0].empName}}</li>
+                        <li style="font-size:0.9em;" ng-if="empDetailslist[0].location"><b>Office</b>{{empDetailslist[0].location}}</li>
+                        <li style="font-size:0.9em;" ng-if="empDetailslist[0].grade"><b>Grade</b>{{empDetailslist[0].grade}}</li>
+                        <li style="font-size:0.9em;" ng-if="empDetailslist[0].band"><b>Band</b>{{empDetailslist[0].band}}</li>
+                        <li style="font-size:0.9em;" ng-if="empDetailslist[0].passportNum"><b>Passport No</b>{{empDetailslist[0].passportNum}}</li>
+                        <li style="font-size:0.9em;" ng-if="empDetailslist[0].passportExpiryDate"><b>Passport Expiry Date</b>{{empDetailslist[0].passportExpiryDate | date : "dd-MMM-yyyy"}}</li>
+                      </ul>
+                    </div>
+                </div>
+            </div>
+			-->
+
+            <div class="sectionClass">
+                <button id="2" class="button button-block button-positive
+                    item-button-right" Style="text-align: left;
+                    margin-bottom:0%;" ng-click="toggleTab2(tab)"
+                    ng-class="{active: isTab2Shown(tab)}">
+                    <b> Travel Summary&nbsp;&nbsp; </b>
+                    <span style="float: right"><i class="icon-right"
+                            ng-class="isTab2Shown(tab)|| defaultTabs2Open=='Y' ? 'ion-chevron-down' :
+                            'ion-chevron-right'"></i></span>
+                </button>
+                <div class="list card item-accordion" ng-show="isTab2Shown(tab)|| defaultTabs2Open=='Y'"
+                    style="margin:auto;border-radius:5px">
+                    <!--tab 2 content start -->
+                    <div style="padding: 16px 5px;">
+                        <!-- <div class="row">
+                            <h5 class="col-40" style="font-size:0.9em;margin-top:3px;">Type of Travel: </h5>
+                            <select ng-init="selectedValues.selectedToT='-1'"
+                                id="typeOfTravel" class="col-60 form-control item-select select"
+                                style="font-size:0.9em;background:white;"
+                                ng-change="getTravelRule();"
+                                ng-model="selectedValues.selectedToT">
+                                <option value="-1">- Select -</option>
+                                <option value="Domestic">Domestic</option>
+                                <option value="International">International</option>
+                            </select>
+                        </div> -->
+
+                        <div class="form-group row">
+                            <label  class="col-sm-4 col-xs-4 col-form-label">Type of Travel  </label><span class="dividerClass">:</span>
+                            <div  class="col-sm-8 col-xs-8">
+                                <select ng-init="selectedValues.selectedToT='-1'"
+                                id="typeOfTravel" class="form-control item-select select" 
+                                ng-change="getTravelRule();travelTypeChange()"
+                                ng-model="selectedValues.selectedToT">
+                                <option value="-1">- Select -</option>
+                                <option value="Domestic">Domestic</option>
+                                <option value="International">International</option>
+                                <option value="Local">Local</option>
+                            </select>
+                            </div>
+                          </div>
+
+                  <!-- <div class="row">
+                            <h5 class="col-40"
+                                style="font-size:0.9em;margin-top:3px;">Purpose
+                                of Visit:</h5>
+                            <select id="purposeOfVisit" class="col-60 form-control item-select select"
+                                style="font-size:0.9em;background:white;"
+                                ng-options="povSel.pov for povSel
+                                in listMasterPOV"
+                                ng-model="selectedValues.selectedPOV">
+                            </select>
+                        </div> -->
+                        <div class="form-group row">
+                            <label  class="col-sm-4 col-xs-4 col-form-label">Purpose of Visit  </label><span class="dividerClass">:</span>
+                            <div  class="col-sm-8 col-xs-8">
+                                <select id="purposeOfVisit" class="form-control item-select select"
+                                ng-options="povSel.pov for povSel in listMasterPOV"
+                                ng-model="selectedValues.selectedPOV">
+                            </select>
+                            </div>
+                          </div>
+
+                        <!-- <div class="row">
+                            <h5 class="col-40"
+                                style="font-size:0.9em;margin-top:3px;">Cost
+                                Borne By:
+                            </h5>
+                            <select class="col-60 form-control item-select select"
+                                ng-init="selectedValues.selectedCBB='-1'"
+                                ng-model="selectedValues.selectedCBB"
+                                style="font-size:0.9em;background:white;">
+                                <option value="-1">- Select -</option>
+                                <option value="Company">Company</option>
+                                <option value="Customer">Customer</option>
+                            </select>
+                        </div> -->
+                        <div class="form-group row">
+                            <label  class="col-sm-4 col-xs-4 col-form-label">Cost Borne By </label><span class="dividerClass">:</span>
+                            <div  class="col-sm-8 col-xs-8">
+                                <select class="form-control item-select select"
+                                ng-init="selectedValues.selectedCBB='-1'"
+                                ng-model="selectedValues.selectedCBB">
+                                <option value="-1">- Select -</option>
+                                <option value="Company">Company</option>
+                                <option value="Customer">Customer</option>
+                            </select>
+                            </div>
+                          </div>
+                      
+                      
+                        <!-- <div class="form-group row">
+                            <label  class="col-sm-4 col-xs-4 col-form-label">Attachment</label><span class="dividerClass">:</span>
+                           
+                          </div>
+                            <div class="col-100" style="margin-top: -3%">
+                                <label class="grayBackColor" >
+                                        <div class="row" >
+                                            <input col="col-20" type="radio"  value="fileRadio" checked="checked"
+                                            style="margin-right: 3%;" value="file" ng-change="typeAttach('file');" ng-model="selectedValues.typeAttach"/>
+                                            <input col="col-80" type="file" name="inputFileUpload" id="inputFileUpload"
+                                            ng-model="somemodel"  />
+                                        </div>
+                                        <div class="row" style="margin-top:2px;">
+                                            <input col="col-20"   type="radio"  value="cameraRadio"
+                                            style="margin-right: 3%; margin-top: 2%;" value="camera" ng-change="typeAttach('camera');" ng-model="selectedValues.typeAttach"/>
+                                            <button col="col-80" id="btncamera"  Style="text-align: left;
+                                                margin-bottom:0%;" on-tap="cameraTakePicture('camera');">
+                                                <b> Take Picture &nbsp;&nbsp; </b>
+                                            </button>
+                                        </div>
+                                        <img class="col-30" id="showImg"
+                                            style="width:50px;height:0px;display:none;margin-left:2px;" src="" on-tap="removeAttachment()">
+                                        </img>
+
+                                </label>
+                            </div> -->
+                            
+                                <div  >Attachment:</div>
+                                <div class="row" >
+								<button col="col-80"  Style="text-align: left; margin-bottom:0%;background-color: white;   border: none;color:blue;" 
+								onclick="document.getElementById('inputFileUpload').click()">Select from device</button>
+								<input col="col-80" type="file" name="inputFileUpload" 
+								id="inputFileUpload"    ng-model="somemodel" style="height:0px ; width:0px;display:none" 
+                                onchange="angular.element(this).scope().SelectedFile(event)" />
+								<span style="margin-left:-36%;margin-top:5%;"><br>{{selectedFileNameFromDevice}}</span>
+							</div>
+                            
+                              <div class="row" style="margin-top:2px;">
+                                <!--<input   type="radio"  value="cameraRadio" value="camera" ng-change="typeAttach('camera');" ng-model="selectedValues.typeAttach"/>-->
+                                <button  id="btncamera"   Style="text-align: left; margin-bottom:0%;background-color: white;   border: none;color:blue;" 
+								on-tap="cameraTakePicture('camera');">
+                                    Take photo &nbsp;&nbsp; 
+                                </button>
+                            </div>
+                            <img class="col-30" id="showImg"
+                                style="width:50px;height:0px;display:none;margin-left:2px;" src="" on-tap="removeAttachment()">
+                            </img>
+							<br>
+							<!-- <div class="item">
+                            <h5 style="font-size:0.9em;margin-top:3px;font-weight:500;">Travel Objective:</h5>
+                            <textarea id="addi" rows="2" cols="50" class="form-control" 
+                            style="background-color:white;border: 1px solid
+                             #b3b3b3;text-align:left;"></textarea>
+                        </div> -->
+
+
+
+                        <div class="form-group row">
+                            <label  class="col-sm-4 col-xs-4 col-form-label">Travel Objective </label><span class="dividerClass">:</span>
+                            <div  class="col-sm-8 col-xs-8">
+                                <textarea id="addi" rows="2" cols="50" class="form-control" ></textarea>
+                            </div>
+                          </div>
+                
+                  </div>
+                    </div>
+                    <!--tab 2 content over -->
+                </div>
+            </div>
+
+            <!--            tab 3 start -->
+            <div class="sectionClass">
+                <button id="3" class="button button-block button-positive
+                    item-button-right" Style="text-align: left;
+                    margin-bottom:0%;" ng-click="toggleTab3(tab)"
+                    ng-class="{active: isTab3Shown(tab)}">
+                    <b> Travel Details &nbsp;&nbsp; </b>
+                    <span style="float: right"><i class="icon-right"
+                            ng-class="isTab3Shown(tab) || defaultTabs3Open=='Y'? 'ion-chevron-down' :
+                            'ion-chevron-right'"></i></span>
+                </button>
+                <div class="list card item-accordion" ng-show="isTab3Shown(tab) || defaultTabs3Open=='Y'"
+                    style="margin:auto;border-radius:5px">
+                    <!--tab 3 content start -->
+                    <div style="padding: 16px 5px;">
+                        <div ng-repeat="grid1 in travelApplicationForm.travelRuleGridChildVOList">
+                        <div id="trGrid1_{{$index}}" ng-show="countGrid1>$index" style="height:auto;">
+                            
+					
+                                <div class="form-group row" ng-show="countGrid1>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Tentative Date</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">
+                                        <ion-checkbox   id="istentative{{$index}}" ng-checked='false'
+                                        ng-model="selectedValues.isTentative[$index]" ng-click="setIsTentative($index)"
+                                        > </ion-checkbox>
+                                    </div>
+                                  </div>
+
+
+                                <div class="form-group row" ng-show="countGrid1>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">From Travel Date </label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-6 col-xs-6">
+                                 <input  class="form-control" id="travelDate{{$index}}" ng-show="countGrid1>$index"
+                                       ng-click="setDate(grid1)" type="text" ng-model="grid1.travelDate" ng-readonly="true" required/>
+                                    </div >
+                                   <div class="col-sm-2 col-xs-2">
+                                    <i style="padding-left: 3%; font-size: 193%;"  ng-click="setDate(grid1)" class="ion-calendar">&emsp;</i>
+                                   </div>
+                                  </div>
+                        
+                                <div class="form-group row" ng-show="countGrid1>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">To Travel Date </label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-6 col-xs-6">
+                                 <input  class="form-control" id="toTravelDate{{$index}}" ng-show="countGrid1>$index"
+                                       ng-click="setToDateG1(grid1)" type="text" ng-model="grid1.toTravelDate" ng-readonly="true" required/>
+                                    </div >
+                                   <div class="col-sm-2 col-xs-2">
+                                    <i style="padding-left: 3%; font-size: 193%;"  ng-click="setToDateG1(grid1)" class="ion-calendar">&emsp;</i>
+                                   </div>
+                                  </div>						
+                                
+								<!-- <div class="row" ng-show="countGrid1>$index" style="margin-left:-5px;margin-right:0px;">
+								<h5 class="col-40"
+									style="font-size:0.9em;margin-top:3px;">From Place:
+								</h5>
+
+								<select id="fromPlace{{$index}}" class="col-60 form-control item-select select"
+									style="font-size:0.9em;background:white;" ng-show="countGrid1>$index"
+									ng-options="fp.fromPlaceId as fp.fromPlace for fp in listDestination track by $index"
+									ng-model="selectedValues.fromPlace[$index]">
+								</select>
+                                </div> -->
+                                <div class="form-group row" ng-show="countGrid1>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">From Place</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">
+                                        <select id="fromPlace{{$index}}" class="form-control item-select select" ng-show="countGrid1>$index"
+                                        ng-options="fp.fromPlaceId as fp.fromPlace for fp in listDestination track by $index"
+                                        ng-model="selectedValues.fromPlace[$index]" 
+                                        onchange="angular.element(this).scope().selectedValues.elem = this; angular.element(this).scope().onChangeFromPlace(event)" >
+                                    </select>
+                                    </div>
+                                    <br>
+                                    <input  class="col-sm-8 col-xs-8" id="fromPlacesOther{{$index}}"  
+                                        style="display:none;"
+                                        type="text" />
+                                    
+                                  </div>
+								
+
+                                <div class="form-group row" ng-show="countGrid1>$index" >
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">To Place</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">
+                                        <select id="toPlace{{$index}}" class="form-control item-select select" ng-show="countGrid1>$index"
+                                        ng-options="tp.destinationId as tp.destinationName for tp in travelApplicationForm.listDestinationTOPlace track by $index"
+                                        ng-model="selectedValues.toPlace[$index]"
+                                        onchange="angular.element(this).scope().selectedValues.elem = this; angular.element(this).scope().onChangeToPlace(event)" >
+                                    </select>
+                                    </div>
+                                    <br>
+                                    <input  class="col-sm-8 col-xs-8" id="toPlacesOther{{$index}}"  
+                                    style="display:none;"
+                                        type="text"  />
+                                    
+                                  </div>
+                               
+                                
+                                <div class="form-group row" ng-show="countGrid1>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Travel Mode</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">
+                                        <select id="travelMode{{$index}}" class="form-control item-select select" ng-show="countGrid1>$index"
+                                        ng-change="getTravelClass(grid1);"
+                                        ng-options="tm as tm.travelMode for tm in listMasterTravelType track by $index"
+                                        ng-model="selectedValues.travelMode[$index]">
+                                    </select>
+                                    </div>
+                                  </div>
+                                
+                                <div class="form-group row" ng-show="countGrid1>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Travel Class</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">
+                          <select id="travelClassTypeId{{$index}}" class="form-control item-select select" ng-show="countGrid1>$index"
+                             ng-change="getTravelRuleByMode(grid1);" ng-model="selectedValues.travelClassTypeId[$index]">
+							 </select>
+                                    </div>
+                                  </div>
+
+								<div>
+								<hr></hr>
+								</div>
+						</div>
+
+                        </div>
+                         <!-- ng repeat -->
+
+						 <!-- buttons -->
+								<!-- <center>
+	<button id="btnAddRowGrid1" class="btn btn-success mr-10" ng-click="addRowGrid1()">Add</button>
+	<button id="btnRemRowGrid1" class="button" style="background-color:red;color:white;width:27%;"   ng-click="remRowGrid1()">Remove</button>
+                                </center> -->
+                                
+
+                                <div class="text-center">
+                                    <button type="button" id="btnAddRowGrid1" ng-click="addRowGrid1()" class="btn btn-success mr-10"><i class="fa fa-check mr-5" aria-hidden="true"></i> Add</button>
+                                    <button type="button" id="btnRemRowGrid1" ng-click="remRowGrid1()" class="btn btn-danger"><i class="fa fa-times mr-5" aria-hidden="true"></i> Remove</button>
+                         </div>
+
+					
+                    </div>  <!--tab 3 content over -->
+                </div><!-- accordion -->
+            </div><!-- tab 3-->
+            <!--            tab 4 start -->
+            <div class="sectionClass">
+                <button id="4" class="button button-block button-positive
+                    item-button-right" Style="text-align: left;
+                    margin-bottom:0%;" ng-click="toggleTab4(tab)"
+                    ng-class="{active: isTab4Shown(tab)}"><b> Stay Arrangements &nbsp;&nbsp; </b>
+                    <span style="float: right"><i class="icon-right"
+                            ng-class="isTab4Shown(tab) || defaultTabs4Open=='Y' ? 'ion-chevron-down' :
+                            'ion-chevron-right'"></i></span>
+                </button>
+               
+                <div class="list card item-accordion" 
+                ng-show="isTab4Shown(tab) || defaultTabs4Open=='Y'"
+                    style="margin:auto;border-radius:5px">
+                     <!--tab 4 content start -->
+                     <div style="padding: 16px 5px;" id="stayArrId" >
+                        <div style="margin-bottom: 18px;" 
+						ng-repeat="grid2 in travelApplicationForm.travelRuleGridChildVOList1">
+							<div id="trGrid2_{{$index}}" ng-show="countGrid2>$index" style="height:auto;">
+
+								<!-- <div class="row" ng-show="countGrid2>$index">
+                                <span class="input-label" style="min-width: 40%;
+                                    margin-left: -10px;font-weight: 500;font-size: 0.9em;">&nbsp;Stay Location:
+                                     </span>
+                                <input id="stayLocation{{$index}}" ng-show="countGrid2>$index"
+                                    style="padding-left:0px;padding-right:0px;background-color:white;border:
+                                    1px solid
+                                    #b3b3b3;text-align:left;width:250px"
+                                    type="text"
+									ng-model="grid2.stayLocation" class="form-control"
+                                    />
+                                    <br>
+                                </div> -->
+                                <div class="form-group row" ng-show="countGrid2>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Stay Location</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">
+                                      <input id="stayLocation{{$index}}" ng-show="countGrid2>$index"  type="text" 
+                                      ng-model="grid2.stayLocation" class="form-control"
+                                      />
+                                    </div >
+                                  </div>
+
+								
+								<!-- <div class="row" ng-show="countGrid2>$index">
+                                <span class="input-label" style="min-width: 40%;
+                                    margin-left: -10px;font-weight:500;font-size: 0.9em;">&nbsp;From Travel Date
+                                    : </span>
+                                <input id="fDate{{$index}}" ng-show="countGrid2>$index"
+                                    style="padding-left:0px;padding-right:0px;background-color:white;border:
+                                    1px solid
+                                    #b3b3b3;text-align:center;width:176px"
+                                    ng-click="setFromDate(grid2)" class="form-control"
+                                    type="text"
+									ng-model="grid2.fDate"
+                                    ng-readonly="true" required/>
+
+                                <i style="padding-left: 5%;font-size: 193%;"
+                                    ng-click="setFromDate(grid2)"
+                                    class="ion-calendar">&emsp;</i>
+                                    <br>
+                                </div> -->
+                                
+                                <div class="form-group row" ng-show="countGrid2>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">From Travel Date</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-6 col-xs-6">
+                                        <input id="fDate{{$index}}" ng-show="countGrid2>$index"
+                                       ng-click="setFromDate(grid2)" class="form-control" type="text" ng-model="grid2.fDate" ng-readonly="true" required/>
+                                    </div >
+                                   <div class="col-sm-2 col-xs-2">
+                                    <i style="padding-left: 3%; font-size: 193%;" ng-click="setFromDate(grid2)"
+                                     class="ion-calendar">&emsp;</i>
+                                   </div>
+                                  </div>
+
+
+								
+								<!-- <div class="row" ng-show="countGrid2>$index">
+                                <span class="input-label" style="min-width: 40%;
+                                    margin-left: -10px;font-weight: 500;font-size: 0.9em;">&nbsp;To Travel Date
+                                    : </span>
+                                <input id="tDate{{$index}}" ng-show="countGrid2>$index"
+                                    style="padding-left:0px;padding-right:0px;background-color:white;border:
+                                    1px solid
+                                    #b3b3b3;text-align:center;width:176px"
+                                    ng-click="setToDate(grid2)"class="form-control"
+                                    type="text"
+									ng-model="grid2.tDate"
+                                    ng-readonly="true" required/>
+                                <i style="padding-left: 5%;font-size: 193%;"
+                                    ng-click="setToDate(grid2)"
+                                    class="ion-calendar">&emsp;</i>
+                                    <br>
+                                </div> -->
+                                <div class="form-group row" ng-show="countGrid2>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">To Travel Date</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-6 col-xs-6">
+                                        <input id="tDate{{$index}}" ng-show="countGrid2>$index"
+                                        ng-click="setToDate(grid2)"class="form-control"
+                                        type="text" ng-model="grid2.tDate" ng-readonly="true" required/>
+                                    </div >
+                                   <div class="col-sm-2 col-xs-2">
+                                    <i style="padding-left: 3%; font-size: 193%;" ng-click="setToDate(grid2)"
+                                     class="ion-calendar">&emsp;</i>
+                                   </div>
+                                  </div>
+								
+								<!-- <div class="row" ng-show="countGrid2>$index">
+                                <span class="input-label" style="min-width: 40%;
+                                    margin-left: -10px;font-weight: 500;font-size: 0.9em;">&nbsp;Remarks:
+                                     </span>
+                                <textarea id="remarks{{$index}}" ng-show="countGrid2>$index"
+                                    style="padding-left:0px;padding-right:0px;background-color:white;border:
+                                    1px solid #b3b3b3;text-align:left;width:250px" rows="2"
+									ng-model="grid2.remarks"class="form-control"
+                                     ></textarea>
+                                </div> -->
+                                
+                                <div class="form-group row" ng-show="countGrid2>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Remarks</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">
+                            <textarea id="remarks{{$index}}" ng-show="countGrid2>$index" rows="2" ng-model="grid2.remarks" 
+                                class="form-control"></textarea>
+                                    </div >
+                                  </div>
+								<div>
+								<hr></hr>
+								</div>
+							</div>
+
+                        </div> <!-- ng repeat -->
+
+						<!-- <div> 
+								<center>
+								<button id="btnAddRowGrid2" class="button" style="background-color:green;color:white;width:27%;"   ng-click="addRowGrid2()">Add</button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<button id="btnRemRowGrid2" class="button" style="background-color:red;color:white;width:27%;"   ng-click="remRowGrid2()">Remove</button>
+								</center>
+                        </div> -->
+                        <div class="text-center">
+                            <button type="button" id="btnAddRowGrid2" ng-click="addRowGrid2()" class="btn btn-success mr-10">
+                     <i class="fa fa-check mr-5" aria-hidden="true"></i> Add Stay </button>
+                            <button type="button" id="btnRemRowGrid2" ng-click="remRowGrid2()" class="btn btn-danger">
+                                <i class="fa fa-times mr-5" aria-hidden="true"></i>Remove Last Stay</button>
+                 </div>
+
+                    </div>  <!--tab 4 content over -->
+                    <!--tab 4 content over -->
+                </div>
+              
+            </div>
+
+            <!--            tab 5 start -->
+            <div class="sectionClass">
+                <button id="5" class="button button-block button-positive
+                    item-button-right" Style="text-align: left;
+                    margin-bottom:0%;" ng-click="toggleTab5(tab)"
+                    ng-class="{active: isTab5Shown(tab)}">
+                    <b> Travel Advance &nbsp;&nbsp; </b>
+                    <span style="float: right">
+                        <i class="icon-right" ng-class="isTab5Shown(tab) || defaultTabs5Open=='Y'? 'ion-chevron-down' : 'ion-chevron-right'"></i></span>
+                </button>
+            
+                <div class="list card item-accordion" ng-show="isTab5Shown(tab) || defaultTabs5Open=='Y'"
+                    style="margin:auto;border-radius:5px">
+                    <!--tab 5 content start -->
+                     <div style="padding: 16px 5px;">
+                        <div ng-repeat="grid3 in travelApplicationForm.travelRuleGridChildVOList1">
+							<div id="trGrid3_{{$index}}" ng-show="countGrid3>$index" style="height:auto;">
+
+								<!-- <div class="row" ng-show="countGrid3>$index">
+								<span class="input-label" style="min-width: 40%;
+                                    margin-left: -10px;font-weight: 500;font-size: 0.9em;">&nbsp;Travel Advance Required:
+                                     </span>
+								<div id="group_{{$index}}" style="margin-left: 58px;margin-top: 6px;">
+								<input id="yes{{$index}}" type="radio"   ng-click="toggleYesNo($index,'Y')">
+								<span ng-click="toggleYesNo($index,'Y')">Yes &nbsp;</span>
+								<input id="no{{$index}}" type="radio" checked="true" ng-click="toggleYesNo($index,'N')" >
+								<span ng-click="toggleYesNo($index,'N')" >No</span>
+								</div>
+								</div>
+                                <br> -->
+                                <div class="form-group row" ng-show="countGrid3>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Travel Advance Required</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8" id="group_{{$index}}">
+                                        <input id="yes{{$index}}" type="radio"   ng-click="toggleYesNo($index,'Y')">
+                                        <span ng-click="toggleYesNo($index,'Y')">Yes &nbsp;</span>
+                                        <input id="no{{$index}}" type="radio" checked="true" ng-click="toggleYesNo($index,'N')" >
+                                        <span ng-click="toggleYesNo($index,'N')" >No</span>
+                                    </div >
+                                  </div>
+
+
+
+								<!-- <div class="row" ng-show="countGrid3>$index">
+									<h5 class="col-40"
+									style="font-size:0.9em;margin-top:3px;margin-left:-4px;">Currency:
+								</h5>
+								<select id="currencyTypeId{{$index}}" class="col-60 form-control item-select select"
+									 ng-show="countGrid3>$index"
+									ng-options="curr.currencyId as curr.currencyName for curr in travelApplicationForm.listTravelCurrency  track by $index"
+									ng-model="selectedValues.currencyId[$index]">
+								</select>
+								</div>
+                                <br> -->
+                                <div class="form-group row" ng-show="countGrid3>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Currency</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">
+                                        <select id="currencyTypeId{{$index}}" class="form-control item-select select"
+                                        ng-show="countGrid3>$index"
+                                       ng-options="curr.currencyId as curr.currencyName for curr in travelApplicationForm.listTravelCurrency  track by $index"
+                                       ng-model="selectedValues.currencyId[$index]">
+                                   </select>
+                                    </div>
+                                  </div>
+
+								<!-- <div class="row" ng-show="countGrid3>$index">
+                                <span class="input-label" style="min-width: 40%;
+                                    margin-left: -10px;font-weight: 500;font-size: 0.9em;">&nbsp;Req. Amount
+                                    : </span>
+                                <input id="amount{{$index}}" ng-show="countGrid3>$index"
+                                 type="text" ng-model="grid3.ReqAmount" class="form-control" />
+								</div>
+                                <br> -->
+                                <div class="form-group row" ng-show="countGrid3>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Requested Amount</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">
+                                        <input id="amount{{$index}}" ng-show="countGrid3>$index"
+                                        type="text" maxlength = "7" ng-model="grid3.ReqAmount" class="form-control" />
+                                    </div>
+                                  </div>
+
+								<!-- <div class="row" ng-show="countGrid3>$index">
+                                <span class="input-label" style="min-width: 40%;
+                                    margin-left: -10px;font-weight: 500;font-size: 0.9em;">&nbsp;Approved Amount:
+                                    </span>
+                                <input id="approvedAmt{{$index}}" class="form-control" ng-show="countGrid3>$index"
+                                    type="text" readonly="true" ng-model="grid3.ApprovedAmount"
+                                     />
+                                </div> -->
+                                <div class="form-group row" ng-show="countGrid3>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Approved Amount</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">
+                                        <input id="approvedAmt{{$index}}" class="form-control" ng-show="countGrid3>$index"
+                                        type="text" readonly="true" ng-model="grid3.ApprovedAmount"/>
+                                    </div>
+                                  </div>
+
+								<div>
+								<hr></hr>
+								</div>
+
+							</div>
+
+                        </div> <!-- ng repeat -->
+
+						<!-- <div> 
+								<center>
+								<button id="btnAddRowGrid3" class="button" style="background-color:green;color:white;width:27%;"   ng-click="addRowGrid3()">Add</button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<button id="btnRemRowGrid3" class="button" style="background-color:red;color:white;width:27%;"   ng-click="remRowGrid3()">Remove</button>
+								</center>
+                        </div> -->
+                        
+                        <div class="text-center">
+                            <button type="button" id="btnAddRowGrid3" ng-click="addRowGrid3()" class="btn btn-success mr-10">
+                     <i class="fa fa-check mr-5" aria-hidden="true"></i> Add</button>
+                            <button type="button" id="btnRemRowGrid3" ng-click="remRowGrid3()" class="btn btn-danger">
+                                <i class="fa fa-times mr-5" aria-hidden="true"></i> Remove</button>
+                 </div>
+
+                    </div>
+                    <!--tab 5 content over -->
+                </div>
+            
+              <div> <!-- buttons -->
+                <!-- <center>
+                <button id="btnSave" class="button button-positive" style="width:70%;margin-top:10px;"   ng-click="goSendForApproval()">Send for Approval</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </center> -->
+                <br>
+				
+				<div class="item">
+                            <h5 style="font-size:0.9em;margin-top:3px;font-weight:500;">Applicant Remarks:</h5>
+                            <textarea id="applicantRemarks" rows="2" cols="50" class="form-control" style="background-color:white;border: 1px solid #b3b3b3;text-align:left;"></textarea>
+                        </div>
+                        <br>
+                <div class="text-center">
+                <button type="button" id="btnSave" ng-click="goSendForApproval()" class="btn btn-primary mr-10">
+                    <i class="fa fa-paper-plane mr-10" aria-hidden="true"></i>Send
+                    for Approval
+                </button>
+                </div>
+
+                <br><br>
+
+            </div>
+            </div>
+            </div>
+
+<!------------------------------------------------------- hidden field Start-------------------------------------------------------------- -->
+		<input type="hidden" name="buttonRights" id="buttonRights" value="{{requestObject.buttonRights}}">
+
+		<input type="hidden" name="reqtrack" id="reqtrack" value="{{requestObject.TRACKERID}}">
+		<input type="hidden" name="menuId" id="menuId" value="{{requestObject.menuId}}">
+
+
+
+		<input type="hidden" name="countGrid" id="countGrid" value="0">
+		<input type="hidden" name="empId" id="empId" value="{{requestObject.empId}}">
+		<input type="hidden" name="countGrid1" id="countGrid1" value="0">
+		<input type="hidden" name="countGrid2" id="countGrid2" value="0">
+		<input type="hidden" id="empName" name="empName" value="{{requestObject.empName}}">
+       	<input type="hidden" id="empCode" name="empCode" value="{{requestObject.empCode}}">
+		<input type="hidden" name="DateFormat" id="DateFormat" value="{{requestObject.dateFormat}}">
+		<input type="hidden" name="smallestTravelDate" id="smallestTravelDate" value="">
+		<input type="hidden" name="largeTravelDate" id="largeTravelDate" value="">
+
+        </form>
+    </ion-content>
+</ion-view>

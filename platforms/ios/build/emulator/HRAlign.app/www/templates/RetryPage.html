@@ -1,0 +1,26 @@
+<ion-view >
+    <div class="bar bar-footer " style="background-color:#000; background-size: 100% 0px;">
+        <div class="title" style="height: 20px;">
+            <h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px; margin-bottom: 5px;" >Powered by HR Align</h6></div>
+    </div>
+    <ion-content has-bouncing="false" >
+        <h3 style="padding-top: 5%;text-align: center;"><b>Connection Error</b></h3>
+        <br>
+        <center>
+            <i style="padding-top: 5%;font-size: 150px;  color : red;" class="icon ion-android-warning"></i>
+        </center>
+        <br>
+
+        <h4 style="padding-top: 5%;text-align: center;"><b>Connection could not be established.</b></h4>
+        <br>
+        <center>
+            <div class="button-bar" style="padding-top: 35%;padding-left: 10px;padding-right: 10px;">
+                <button class="button  button-positive" ng-click="retry()">
+                    Retry
+                </button>&emsp;
+                <button class="button  button-positive" ng-click="redirectToHomePage()">
+                    Home
+                </button>
+            </div></center><br><br>
+    </ion-content>
+</ion-view>

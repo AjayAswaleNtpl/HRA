@@ -1,0 +1,358 @@
+<style>
+  .customRadio {
+    display: none;
+  }
+  .spanPadding{
+  padding-left: 20px;
+  }
+  .formPadding{
+    padding-left: 6px;
+  }
+  .maxWidthInput{
+    max-width: 100%;
+  }
+  .maxPaymentInput{
+    max-width: 59%;
+  }
+
+  .nonCtcHeader {
+    padding-top: 5px;
+    margin-left: -5px;
+  }
+
+  .topHeader {
+    padding: 0px;
+    padding-left: 20px;
+    margin-top: -8px;
+  }
+  .paddingTwo {
+    padding-left: 2%;
+  }
+
+  .btnGroup {
+    padding: 2px 16px 2px 16px;
+  }
+
+  .claimDate {
+    min-width: 40%;
+    margin-left: -10px;
+    font-weight: normal;
+  }
+
+  .customInput {
+    padding-left: 3%;
+    margin-left: 117px;
+    max-width: 25% !important;
+    background-color: white;
+    border: 1px solid #b3b3b3;
+    width: 85%;
+  }
+
+  .fromDate {
+    padding-left: 0px;
+    padding-right: 0px;
+    background-color: white;
+    border: 1px solid #b3b3b3;
+    text-align: center;
+    width: 120px
+  }
+
+  .btnStyle {
+    float: left;
+    padding: 5px 70px 5px 70px;
+  }
+
+  .marginInput {
+    margin-left: -5px;
+    font-weight: normal;
+  }
+
+  .marginInputLabel {
+    margin-left: 60px;
+    font-weight: normal;
+  }
+
+  input[type="radio"] {
+    margin-top: -1px;
+    vertical-align: middle;
+  }
+
+  .textareaBox {
+    margin-left: 2%;
+    width: 96%;
+    padding-bottom: 5%;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .custom-card {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    border-radius: 9px;
+    border: 1px solid #007ec1;
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+
+  .item-select select {
+    max-width: 68%;
+  }
+
+  .poweredHR {
+    font-size: 0.5em;
+    color: #fff;
+    margin-top: 5px;
+    height: 10px;
+    margin-bottom: 5px;
+  }
+
+  .standardHeader {
+    background-color: #000;
+    background-size: 100% 0px;
+  }
+
+  .headerHeight {
+    height: 20px;
+  }
+
+  .colorHeader {
+    background-color: white
+  }
+
+  #btnSearch,
+  #btnClear {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+.row{
+  padding: 0 5px !important;
+}
+</style>
+
+<ion-view>
+  <!-- <ion-nav-bar class="bar-stable colorHeader">
+    <ion-nav-buttons side="left">
+      <button class="button button-clear" ng-click="redirectToltaApproval()">
+        <i class="icon ion-ios-arrow-back"></i>
+        Back</button>
+    </ion-nav-buttons>
+  </ion-nav-bar> -->
+  <div class="bar bar-footer hide-on-keyboard-open standardHeader">
+    <div class="title headerHeight">
+      <h6 class="poweredHR">Powered by HR Align</h6>
+    </div>
+  </div>
+  <ion-content has-bouncing="false" class="item-divider grayBackColor" style="overflow-y: auto;">
+
+    <!-- <div class="custom-header topHeader">
+      <h4 class="custom-header nonCtcHeader">
+        <b>LTA Claim Application</b>
+      </h4>
+    </div> -->
+    <div class="custom-header" style="padding-top: 0px;padding-bottom: 0px;">
+      <h4 class="subHeaderClass" style="margin: 0px;"> <span class="backIcon">
+        <i class="icon ion-ios-arrow-back" ng-click="redirectOnBack()"></i></span>
+         <b style="vertical-align: super;">LTA Claim Application</b></h4>
+   
+     </div>
+<div  class="cardList ">
+    <div class="form-group row ">
+      <label class="col-sm-4 col-xs-4 col-form-label">Employee Name </label><span class="dividerClass">:</span>
+      <div class="col-sm-8 col-xs-8">
+        <span>{{ltaApprForm.empName}}</span>
+      </div>
+    </div>
+
+    <div class="form-group row ">
+      <label class="col-sm-4 col-xs-4 col-form-label">Period </label><span class="dividerClass">:</span>
+      <div class="col-sm-8 col-xs-8">
+        <span>{{ctcPeriodVO.fromDt}} -
+          {{ctcPeriodVO.toDt}}</span>
+      </div>
+    </div>
+    <div class="form-group row ">
+      <label class="col-sm-4 col-xs-4 col-form-label">Claim Type  </label><span class="dividerClass">:</span>
+      <div class="col-sm-8 col-xs-8">
+        <span>{{ltaApprForm.ctcPayHeadName}}</span>
+      </div>
+    </div>
+
+    <!-- payhead details-->
+    <div class="form-group row">
+      <label class="col-sm-4 col-xs-4 col-form-label">Yearly Claim(A)</label><span class="dividerClass">:</span>
+      <div class="col-sm-8 col-xs-8">
+        <span>{{ltaApprForm.yearlyClaim}}</span>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-4 col-xs-4 col-form-label">In Process Claim(B) </label><span class="dividerClass">:</span>
+      <div class="col-sm-8 col-xs-8">
+        <span>{{ltaApprForm.inprocessClaim}}</span>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-4 col-xs-4 col-form-label">Approved Claim(C)</label><span class="dividerClass">:</span>
+      <div class="col-sm-8 col-xs-8">
+        <span>{{ltaApprForm.approvedClaim}}</span>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-4 col-xs-4 col-form-label">Reimbursed Claim(D)</label><span class="dividerClass">:</span>
+      <div class="col-sm-8 col-xs-8">
+        <span>{{ltaApprForm.reimbursment}}</span>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-4 col-xs-4 col-form-label">Accumulated Balance(E=B-C-D) </label><span class="dividerClass">:</span>
+      <div class="col-sm-8 col-xs-8">
+        <span>{{ltaApprForm.accumulatedAmount}}</span>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-4 col-xs-4 col-form-label">Bal. for the year(A-B-C-D)</label><span class="dividerClass">:</span>
+      <div class="col-sm-8 col-xs-8">
+        <span>{{ltaApprForm.balanceAmount}}</span>
+      </div>
+    </div>
+    <!-- payhead details over -->
+
+
+    <div class="cardList" ng-repeat="ltaclaimApp in ltaClaimApprList" ng-if="ltaclaimApp.claimFormId">
+      <form name="credentialsForm1" class="formPadding">
+        <div class="form-group row">
+          <label class="col-sm-4 col-xs-4 col-form-label">Family Details </label><span class="dividerClass">:</span>
+          <div class="col-sm-8 col-xs-8">
+            <span>{{ltaclaimApp.familyName}}</span>
+          </div>
+        </div>
+          <div class="form-group row">
+              <label class="col-sm-4 col-xs-4 col-form-label">From Date </label><span class="dividerClass">:</span>
+              <div class="col-sm-8 col-xs-8">
+                <span>{{ltaclaimApp.ctcFromDate}}</span>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-4 col-xs-4 col-form-label">To Date </label><span class="dividerClass">:</span>
+              <div class="col-sm-8 col-xs-8">
+                <span>{{ltaclaimApp.ctcToDate}}</span>
+              </div>
+            </div>
+
+        <div class="form-group row">
+          <label class="col-sm-4 col-xs-4 col-form-label">From Location</label><span class="dividerClass">:</span>
+          <div class="col-sm-8 col-xs-8">
+            <span>{{ltaclaimApp.fromLocation}}</span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-xs-4 col-form-label">To Location </label><span class="dividerClass">:</span>
+          <div class="col-sm-8 col-xs-8">
+            <span>{{ltaclaimApp.toLocation}}</span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-xs-4 col-form-label">Travel Mode  </label><span class="dividerClass">:</span>
+          <div class="col-sm-8 col-xs-8">
+            <span>{{ltaclaimApp.travelMode}}</span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-xs-4 col-form-label">Claim Amount</label><span class="dividerClass">:</span>
+          <div class="col-sm-8 col-xs-8">
+            <input class="input-label maxWidthInput form-control" value="{{ltaclaimApp.claimAmount}}" disabled />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-xs-4 col-form-label">Bill No. </label><span class="dividerClass">:</span>
+          <div class="col-sm-8 col-xs-8">
+            <input type="tel" name="billAmount" class="input-label maxWidthInput form-control"
+              value="{{ltaclaimApp.billno}}" disabled />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-xs-4 col-form-label">Bill Amount </label><span class="dividerClass">:</span>
+          <div class="col-sm-8 col-xs-8">
+            <input type="tel" name="billAmount" class="input-label maxWidthInput form-control"
+              value="{{ltaclaimApp.billAmount}}" disabled />
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-4 col-xs-4 col-form-label">Approved Amount </label><span class="dividerClass">:</span>
+          <div class="col-sm-8 col-xs-8">
+            <input type="tel" id="approvedBillAmount{{$index}}" 
+              class="input-label maxWidthInput form-control" value="{{ltaclaimApp.approvedClaim}}" required />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-xs-4 col-form-label">Claim For Month </label><span class="dividerClass">:</span>
+          <div class="col-sm-8 col-xs-8">
+            <span>{{ltaclaimApp.tempMonthName}}</span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-xs-4 col-form-label">Year </label><span class="dividerClass">:</span>
+          <div class="col-sm-8 col-xs-8">
+            <span>{{ltaclaimApp.yearId}}</span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-xs-4 col-form-label">Employee Remarks</label><span class="dividerClass">:</span>
+          <div class="col-sm-8 col-xs-8">
+            <input class="input-label form-control" value="{{ltaclaimApp.remarks}}" disabled />
+          </div>
+        </div>
+        
+        <center>
+          <span class="error" style="color:red" ng-show="credentialsForm.txt.$error.maxlength">No more text can be
+            entered.</span>
+        </center>
+        <br>
+      </form>
+    </div>
+    <div id="appremDiv" class="form-group row">
+      <label class="col-sm-4 col-xs-4 col-form-label">Approver Remarks </label><span class="dividerClass">:</span>
+      <div class="col-sm-8 col-xs-8">
+        <textarea id="apprem" class="input-label form-control" colspan="5"
+         ng-maxlength="200"></textarea>
+      </div>
+    </div>
+  
+    <div ng-repeat="file in files">
+      <div class="form-group row" ng-click="openAttachment({{$index}})">
+        <label  class="col-sm-4 col-xs-4 col-form-label">Attachment</label><span class="dividerClass">:</span>
+        <div  class="col-sm-8 col-xs-8" style="font-size:0.9em;color:blue;">{{file}} </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- <div class="form-group row spanPadding">
+      <label class="col-sm-4 col-xs-4 col-form-label">Payment Mode:</label>
+      <div class="col-sm-8 col-xs-8 maxPaymentInput">
+          <select id="payMode" class="form-control item-select select"
+          ng-options="paymode.pm for paymode in paymentModeList"
+          ng-model="selectedValues.selectedPOV">
+          <option value="" selected="selected">Please Select</option>
+        </select>
+      </div>
+    </div>
+    <br> -->
+    <!-- <div class="row center-block" style="margin-top: 0px !important;">
+      <div class="col-sm-12 text-center">
+        <button ng-click="approveOrRejectPendingLClaim('APPROVE');" id="btnApprove"
+          class="btn btn-success btn-md center-block" Style="width: 100px;">Approve</button>
+        <button ng-click="approveOrRejectPendingLClaim('REJECT');" id="btnReject"
+          class="btn btn-danger btn-md center-block" Style="width: 100px;">Reject</button>
+      </div>
+    </div> -->
+    <br>
+    <div id="appRejButtons" class="text-center">
+      <button type="button" ng-click="approveOrRejectPendingLClaim('APPROVE');" id="btnApprove" class="btn btn-success mr-10">
+<i class="fa fa-check mr-5" aria-hidden="true"></i> Approve</button>
+      <button type="button" ng-click="approveOrRejectPendingLClaim('REJECT');" id="btnReject" class="btn btn-danger">
+          <i class="fa fa-times mr-5" aria-hidden="true"></i> Reject</button>
+</div>
+<br><br><br>
+  </ion-content>
+</ion-view>

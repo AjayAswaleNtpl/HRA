@@ -1,0 +1,644 @@
+<style>
+    .custom-item {
+      border: none;
+    }
+    .anchorRRedirect {
+      position: absolute;
+      top: 212px;
+      right: 14px;
+      font-size: 15px;
+      color: #3b5998;
+    }
+    .listTopMargin {
+      margin-top: 10px;
+    }
+    .travelListTopMargin {
+      margin-top: -40px;
+    }
+    #outer {
+      width: 100%;
+      text-align: center;
+    }
+    .inner {
+      display: inline-block;
+    }
+    ul.ctcClaimList {
+      margin-top: 20px;
+    }
+    ul.ctcClaimList li {
+      font-size: 0.8em;
+      padding: 5px 0px 0px 0px;
+      min-width: 435px;
+    }
+    .ctcClaimList b {
+      display: inline-block;
+      width: 40%;
+      position: relative;
+      padding-right: 10px;
+    }
+    .ctcClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ul.travelClaimList {
+      width: 125%;
+    }
+    ul.travelClaimList li {
+      font-size: 0.8em;
+      padding: 5px 0px 0px 0px;
+      min-width: 435px;
+    }
+    .travelClaimList b {
+      display: inline-block;
+      width: 32%;
+      position: relative;
+      padding-right: 10px;
+    }
+    .travelClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ul.odClaimList {
+      margin-top: 20px;
+    }
+    ul.odClaimList li {
+      font-size: 0.8em;
+      padding: 5px 0px 0px 0px;
+      min-width: 435px;
+    }
+    .odClaimList b {
+      display: inline-block;
+      width: 35%;
+      position: relative;
+      padding-right: 10px;
+    }
+    .odClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ul.attClaimList {
+      width: 125%;
+    }
+    ul.attClaimList li {
+      font-size: 0.8em;
+      padding: 5px 0px 0px 0px;
+      min-width: 435px;
+    }
+    .attClaimList b {
+      display: inline-block;
+      width: 38%;
+      position: relative;
+      padding-right: 10px;
+    }
+    .attClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ol,
+    ul {
+      margin-bottom: 0px !important;
+    }
+    a:focus,
+    a:hover {
+      text-decoration: none;
+    }
+    .tab-item.tab-item-active,
+    .tab-item.active,
+    .tab-item.activated {
+      opacity: 1;
+    }
+    .tab-item {
+      opacity: 0.7;
+    }
+    .custom-row {
+      padding: 0px;
+    }
+    .custom-padding {
+      padding: 5px 10px;
+    }
+    .custom-top {
+      top: 10px;
+      left: 13px;
+    }
+    .custom-paddingTop {
+      padding-top: 11px;
+    }
+    .custom_OD {
+      padding-top: 11px;
+      padding-bottom: 0px;
+    }
+    .custom-paddingBottom {
+      padding-bottom: 0px;
+    }
+    /* .cust-card {
+      padding: 50px 0px 0px 0px;
+    } */
+    .custom-requestApprove {
+      font-size: 11px;
+      color: green;
+    }
+    .custom-requestRejcted {
+      font-size: 11px;
+      color: red;
+    }
+    .custom-requestOther {
+      font-size: 11px;
+      color: orange;
+    }
+    
+    .custom-fontSize {
+      font-size: 12px;
+    }
+    .modal-wrapper {
+      position: absolute;
+      top: 25%;
+      display: block;
+      width: 90%;
+      min-height: 45%;
+      padding: 5%;
+    }
+  
+    .modal-backdrop-bg {
+      background-color: rgba(255, 255, 255, 0.85);
+    }
+  
+    .modal {
+      border-top-right-radius: 1em;
+      border-bottom-right-radius: 1em;
+      border-top-left-radius: 1em;
+      border-bottom-left-radius: 1em;
+    }
+  
+    .modal-ion-content {
+      padding: 15px;
+      font-size: 0.85em;
+    }
+  
+  
+    .badge.badgeCustom {
+      width: 22px;
+      height: 22px;
+      text-align: center;
+      line-height: 18px;
+      display: block;
+      position: absolute;
+      top: 0;
+      color: #fff !important;
+      font-size: 10px !important;
+      padding: 0;
+    }
+    a:focus,
+    a:hover {
+      text-decoration: none;
+    }
+    .tab-item.tab-item-active,
+    .tab-item.active,
+    .tab-item.activated {
+      opacity: 1;
+    }
+    .tab-item {
+      opacity: 0.7;
+    }
+    /* .slick-slide .slide-content {
+    margin: 0 3%;
+    padding: 10px 5px;
+  
+  } */
+  
+    .slick-prev,
+    .slick-next {
+      position: absolute;
+      right: 10%;
+      background: #777;
+      border: none;
+      color: transparent;
+      width: 30px;
+      height: 30px;
+    }
+  
+    .slick-prev:before,
+    .slick-next:before {
+      content: ">";
+      color: #fff;
+      font-size: 25px;
+    }
+  
+    .slick-prev {
+      left: 10%;
+    }
+  
+    .slick-prev:before {
+      content: "<";
+    }
+  
+    .slick-dots {
+      list-style: none;
+      margin: 0 auto;
+      text-align: center;
+      margin-top: 10px;
+    }
+  
+    .slick-dots li {
+      display: inline-block;
+    }
+  
+    .slick-dots li button {
+      transition: 0.2s background-color ease-in-out 0s;
+      border: none;
+      padding: 0;
+      color: transparent;
+      width: 10px;
+      height: 10px;
+      background-color: #777;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+  
+    .slick-dots li.slick-active button {
+      background-color: #0a9dc7;
+    }
+    /* .slick-slider {
+      width: 100%;
+      position: relative;
+      transform: translate(-50%, -50%);
+      top: 0%;
+      left: 50%;
+  } */
+    .slick-slider {
+      width: 100%;
+      position: relative;
+      top: 0%;
+    }
+    /* ===form List=== */
+    /* .customBorderRadius .dividerClass {
+      line-height: 1.5 !important;
+  }
+  .customBorderRadius label {
+      font-size: 13px !important;
+      line-height: 1.5 !important;
+  }
+  .customBorderRadius .row {
+      margin: 0 5px !important;
+      padding: 0 5px !important;
+  }
+  .customBorderRadius.col-xs-8 {
+      font-size: 13px !important;
+  }
+  .customBorderRadius .item-note {
+      padding: 10px 10px 0 0 !important;
+      margin-bottom: 2px !important;
+  } */
+  .inner .btn-pad.claimClass{
+    margin: 14px 4px 5px 10px;
+      padding: 0 8px;
+  }
+  .inner .badge{
+    position: relative;
+    margin: 0 -8px;
+    float: right;
+  }
+  .slick-carousel .fa{
+    font-size: 40px;
+    color: #777676;
+  }
+  .slick-carousel p {
+      color: #212121;
+      margin: 0 0 10px;
+      font-size: 0.83em;
+      text-align: center;
+      margin-left: -2%;
+      margin-top: 0%;
+      margin-bottom: 2px;
+      font-weight: 400;
+  }
+  /*-------Color Code--------------*/
+.colorClegend {
+	display: block;
+	list-style: none;
+  margin: 11px 0;
+    overflow: hidden;
+    padding: 15px 0px;;
+	text-align: left;
+  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+  -webkit-box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+  -moz-box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+  -o-box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+}
+
+.colorClegend li {
+	position: relative;
+	display: inline-block;
+	/* font-size: 12px; */
+	line-height: 1;
+	color: #aaa;
+	margin-right: 10px;
+}
+
+.colorClegend li:before {
+	display: block;
+	width: 16px;
+	height: 16px;
+	background: #ddd;
+	content: '';
+	float: left;
+	margin-right: 6px;
+}
+
+.colorClegend li.leave:before {
+	background: #8A2BE2;
+}
+
+.colorClegend li.weekoff:before {
+	background: #FFA07A;
+}
+
+.colorClegend li.holiday:before {
+	background: #ff75d0;
+}
+.colorClegend li.app:before {
+	background: #ccffcc;
+}
+
+.colorClegend li.rej:before {
+	background: #ff9999;
+}
+
+.colorClegend li.sent:before {
+	background: #ffffb3;
+}
+.colorClegend li.save:before {
+	background: #b3e6ff;
+}
+.alert {
+    padding: 10px 10px !important;
+    margin-bottom: 0px !important;
+
+}
+  </style>
+
+  <ion-view>
+    <div class="bar bar-footer hide-on-keyboard-open" style="background-color:#000; background-size: 100% 0px;">
+        <div class="title" style="height: 20px;">
+            <h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px;
+                margin-bottom: 5px;">Powered by HR Align</h6>
+        </div>
+    </div>
+    <ion-content has-bouncing="false" style="overflow-y: auto;top:0%" class="requisionSection">
+
+      
+        <div class="custom-header" style="padding-top: 0px;padding-bottom: -20px;">
+            <h4 class="subHeaderClass" style="margin: 0px;"> <span class="backIcon">
+              <i class="icon ion-ios-arrow-back" ng-click="redirectOnBack()"></i></span>
+                <b style="vertical-align: super;"> Timesheet </b></h4>
+                <a ng-if="isARTorFRT == 'true' || isGroupMasterReportee == 'true'" ng-click="goToApprovals()" class="approvalLinkClass">
+                  <img src="./img/approveNew.png" style="width: 25px; height: 25px; margin-right: 3px;text-align: center;" />
+                </a>
+        </div>
+
+        <div id="timesheetEmployee" class="cust-card" >
+              <div class="form-group row padding-left:20px;">
+                <label class="col-sm-2 col-xs-2 col-form-label" style="margin-top: 2%;">Month</label>
+                <select class="col-sm-4 col-xs-4"  id="month" ng-change="doChangeMonth()" ng-model="selectedValue.selectedMonth" >  
+                  <option value="1">January</option>
+                  <option value="2">February</option>
+                  <option value="3">March</option>
+                  <option value="4">April</option>
+                  <option value="5">May</option>
+                  <option value="6">June</option>
+                  <option value="7">July</option>
+                  <option value="8">August</option>
+                  <option value="9">September</option>
+                  <option value="10">October</option>
+                  <option value="11">November</option>
+                  <option value="12">December</option>
+                </select>
+                <label class="col-sm-2 col-xs-2 col-form-label"style="margin-top: 2%;margin-left: 40px;">Year</label>
+                 <select class="col-sm-2 col-xs-2" id="year"  ng-change="doChangeYear()"  ng-model="selectedValue.selectedYear"
+                ng-options="item for item in listYear" ></select>
+              </div>
+              <div class="form-group row">
+                <input type="checkbox" id="selectAll" ng-click="selectAll()"class="col-sm-2 col-xs-2"/>
+                <button type="button" id="multiSendForApproval"
+									ng-click="goMultiSendForApproval()" value="multiSendForApproval"
+									class="btn btn-primary mr-10 col-sm-6 col-xs-6" style=" margin-left: 40px;" title="multiSendForApproval">
+									<i class="fa fa-paper-plane mr-10" aria-hidden="true"></i>Send for Approval	</button>
+              </div>
+        </div>
+        
+        <div class="list card customBorderRadius animated slideInUp"
+        style="padding:8px;"  id="timesheetHeaderCard_{{$index}}"  ng-click = "openOnTap($index)"
+            ng-repeat="(key,value) in timeSheetDataMap" >
+            <div  class="form-group row">
+                <!-- <label  class="col-sm-4 col-xs-4 col-form-label">Date</label><span class="dividerClass">:</span> -->
+                <input type="checkbox"	ng-click="deselectCheckBox($index)" name="approve"
+                	id="approve_{{$index}}" class="col-sm-2 col-xs-2"	> 
+                <div  class="col-sm-6 col-xs-6" id="date_{{$index}}" ><strong>{{key}} - {{headerList[$index].day}}</strong> </div>
+                 <div  class="col-sm-8 col-xs-8"  id="status_{{$index}}" >{{headerList[$index].status}}</div>
+                 <div ng-if="headerList[$index].status=='SENT FOR APPROVAL' || headerList[$index].status=='SENT FOR CANCELLATION'">({{headerList[$index].pendingFrom}})</div>
+
+
+            </div>
+           <div style="display: none;" id="employeeId_{{$index}}">{{headerList[$index].employeeId}}</div>
+            <div  class="form-group row">
+                <!-- <label  class="col-sm-4 col-xs-4 col-form-label">Total Hours</label><span class="dividerClass">:</span> -->
+               <div class="col-sm-2 col-xs-2"></div>
+                <div  class="col-sm-6 col-xs-6" ng-show="headerList[$index].totHrs"
+                        id="noOfHours_{{$index}}"
+                 >{{headerList[$index].totHrs}} hours</div>
+                 <div  class="col-sm-8 col-xs-8"
+                        
+                 > 
+                 <span> <a  name="Send"
+                     value="Send" id="send_{{$index}}"
+                     ng-click = "sendForApproval($index,this)"
+                     ng-if="headerList[$index].status=='SAVED' || headerList[$index].status=='REJECTED' || headerList[$index].status=='CANCELLED'"
+                     title="send for approval" > <i
+                         class="fa fa-paper-plane" aria-hidden="true"
+                         style="font-size: 24px;"
+                          title=""
+                         ></i></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                         <!-- ng-click="'sendForApproval(\''+${iterStatDD.index} + '\',this);'" -->
+                 
+                  <span> <a 
+                             name="editRecord" value="editRecord"
+                             id="editRecord_{{$index}}"
+                             ng-click = "goUpdate($index)"
+                             ng-if="headerList[$index].status=='SAVED' || headerList[$index].status=='REJECTED' || headerList[$index].status=='CANCELLED'"
+                             title="Edit Record" th:class="editClass"> <i
+                                 class="fa fa-pencil-square-o EditICON periodsICon"
+                                 data-toggle="tooltip" title=""  style="font-size: 24px;"
+                                 data-original-title="Edit Record"></i>
+                 </span>&nbsp;&nbsp;&nbsp;&nbsp;
+                 <!-- th:onclick="'goUpdate(\''+${instance.key}+ '\');'" -->
+                 <span><a style="display: inline-block; width: 22px;"
+                     id="cancel_{{index}}"
+                     ng-click="sentForCancellation($index,this)"
+                     ng-if ="headerList[$index].status=='APPROVED'"
+                     > <i
+                         class="fa fa-times-circle text-danger periodsICon"
+                         style="font-size: 24px; margin-left: 13px;"
+                         id="glyphicon-trash" 
+                         ></i></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                         
+                         <!-- th:class="cancellationClass" -->
+                         <!-- th:onclick="'sentForCancellation(\''+${iterStatDD.index} + '\',this);'" -->
+                     
+                         <span><a
+                             style="display: inline-block; width: 22px;"
+                             id="cancelApp_{{$index}}" 
+                             ng-click = "cancel($index,this)" 
+                             ng-if="(headerList[$index].status=='SENT FOR APPROVAL')||(headerList[$index].status=='SENT FOR CANCELLATION')"
+                                                      
+                             > <i
+                                 class="fa fa-times-circle text-danger periodsICon"
+                                 style="font-size: 24px; margin-left: 13px;"
+                                 id="glyphicon-trash" data-toggle="tooltip" title=""
+                                 data-original-title="Cancel"></i></span> &nbsp;&nbsp;&nbsp;&nbsp;
+ 
+                                 <!-- th:onclick="'cancel(\''+${iterStatDD.index} + '\',this);'"
+                             th:class="cancelClass" -->
+ 
+                             <span> <a
+                                name="addRecord"
+                                 value="addRecord"
+                                 id="addRecord_{{$index}}"
+                                 ng-if ="!(headerList[$index].status=='SAVED') && !(headerList[$index].status=='APPROVED') && !(headerList[$index].status=='SENT FOR APPROVAL') && !(headerList[$index].status=='SENT FOR CANCELLATION') && !(headerList[$index].status=='REJECTED') && !(headerList[$index].status=='CANCELLED')"
+                                 ng-click="goAddRecord($index,value)"
+                                
+                                 title="Add Record" > <i
+                                     class="fa fa-plus-circle addreocrdICON mr-10"
+                                     style="font-size: 24px;"
+                                    ></i></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                     <!-- th:class="addClass" -->
+                                     <!-- th:onclick="'goAddRecord(\''+${instance.key}+ '\');'" -->
+                             <span> 
+                                 <a id="delete_{{$index}}"
+                                 ng-click = "goDelete($index,this)"
+                                 ng-if = "headerList[$index].status=='SAVED' || headerList[$index].status=='REJECTED' || headerList[$index].status=='CANCELLED'"
+                                         > <i
+                                             class="fa fa-trash text-danger periodsICon"
+                                             style="font-size: 24px;"
+                                             id="glyphicon-trash btn-xs" data-toggle="tooltip"
+                                             title="Delete"></i></a>
+                              </span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                           <!-- th:onclick="'goDelete(\''+${iterStatDD.index} + '\',this);'"
+                                         th:class="deleteClass" -->
+                 </div>
+
+            </div>
+            <!-- <div  class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Status</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8"
+                        id="status_{{$index}}"
+                 >{{headerList[$index].status}}</div>
+
+            </div> -->
+           
+            <!-- <input type="hidden" id="keyDate" name="keyDate"
+			value="${instance.key}"
+            name="timeSheetEmployeeGridList[__${iterStatDD.index}__].monthYear" /> -->
+            
+            <!-- INNER NG_REPEAT BEGINS -->
+            <div id="inner_div_{{$index}}"  style="display: none;width: 100%;">
+              
+            <div id="inner" class="form-group list card customBorderRadius" 
+                 ng-repeat="timesheet in value"
+                 style="margin-bottom: 5px;background-color: #fff;padding:5px"
+            >
+                <!-- <div > -->
+                <!-- <input type="hidden"
+                    value="${timeSheet.timeSheetDaily.status}"
+                    name="statusEach" id="'statusEach_{{$index}}"
+                    /> -->
+                <!-- <span id="timeSheetEmployeeId_{{$index}}" class="tId" style="display: none">[[${timeSheet.timeSheetDaily.timeSheetEmployeeId}]]</span> -->
+                <!-- <span class="status" style="display: none">[[${timeSheet.timeSheetDaily.status}]]</span> -->
+                <!-- </div> -->
+                <div  class="form-group row">
+                    <label  class="col-sm-4 col-xs-4 col-form-label">Project</label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8"
+                            id="projectName_{{$index}}{{index}}"
+                     > {{timesheet.projectMasterName}}</div>
+    
+                </div>
+                <div  class="form-group row">
+                    <label  class="col-sm-4 col-xs-4 col-form-label">Activity</label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8"
+                            id="activityName_{{$index}}{{index}}"
+                     >{{timesheet.activityMasterName}} </div>
+    
+                </div>
+                <div  class="form-group row">
+                    <label  class="col-sm-4 col-xs-4 col-form-label">Sub Activity</label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8"
+                            id="subActivityName_{{$index}}{{index}}"
+                     >{{timesheet.subActivityMasterName}} </div>
+    
+                </div>
+                <div  class="form-group row">
+                    <label  class="col-sm-4 col-xs-4 col-form-label">Hours</label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8"
+                            id="noOfHours_{{$index}}{{index}}"
+                     >{{timesheet.noOfHrs}} </div>
+    
+                </div>
+                <div  class="form-group row">
+                    <label  class="col-sm-4 col-xs-4 col-form-label">Remarks</label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8"
+                            id="remark_{{$index}}{{index}}"
+                     >{{timesheet.remarks}}</div>
+    
+                </div>
+                <div  class="form-group row">
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8"
+                          id="status_{{employee}}_{{approverRemarks}}"
+                   >
+                   <div ng-repeat="aaa in timesheet.approverRemarks.split('!#!')">
+                   <div>{{aaa}}</div></div>
+                  </div>
+  
+              </div>
+              <div  class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Approved Date</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8" 
+                ng-if="timesheet.status=='APPROVED' || timesheet.status=='REJECTED' ||
+                 timesheet.status=='CANCELLATION APPROVED' || timesheet.status=='CANCELLATION REJECTED'"
+                        id="status_{{employee}}_{{approvedDate}}"
+                 >{{timesheet.approvedDate}}</div>
+
+            </div>
+            <!-- ng-if="!timesheet.status=='SENT FOR APPROVAL' || 
+            !timesheet.status=='SENT FOR CANCELLATION' || !timesheet.status=='CANCELLED'" -->
+              </div>
+
+               
+
+            </div>
+          </div>
+            <!-- INNER REPEAT ENDS !!!!!!!!! -->
+            
+
+        </div>
+        <div>
+          <ul class="colorClegend">
+            <li class="weekoff alert alert-weekoff pull-left mr-10" style="margin-right: 2px;">WeekOff</li>
+           <li class="holiday alert alert-holiday pull-left mr-10"  style="margin-right: 2px";>Holiday</li>
+            <li class="leave alert alert-leave pull-left mr-10" style="margin-right: 2px;">Leave</li>
+             <li class="app alert  pull-left mr-10" style="margin-right: 2px;">Approved</li>
+           <li class="rej alert  pull-left mr-10"  style="margin-right: 2px;">Rejected/Cancelled</li>
+           <li class="sent alert  pull-left mr-10"  style="margin-right: 2px;">Send For Approval</li>
+           <li class="save alert pull-left mr-10"  style="margin-right: 2px;">Save</li>
+         </ul>
+        </div>
+    
+    </ion-content>
+  </ion-view>

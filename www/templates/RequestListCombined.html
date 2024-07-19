@@ -1,0 +1,4170 @@
+
+<style>
+  .custom-item {
+    border: none;
+  }
+  .anchorRRedirect {
+    position: absolute;
+    top: 212px;
+    right: 14px;
+    font-size: 15px;
+    color: #3b5998;
+  }
+  .listTopMargin {
+    margin-top: 10px;
+  }
+  .travelListTopMargin {
+    margin-top: -40px;
+  }
+  #outer {
+    width: 100%;
+    text-align: center;
+  }
+  .inner {
+    display: inline-block;
+  }
+  ul.ctcClaimList {
+    margin-top: 20px;
+  }
+  ul.ctcClaimList li {
+    font-size: 0.8em;
+    padding: 5px 0px 0px 0px;
+    min-width: 435px;
+  }
+  .ctcClaimList b {
+    display: inline-block;
+    width: 40%;
+    position: relative;
+    padding-right: 10px;
+  }
+  .ctcClaimList b::after {
+    content: ":";
+    position: absolute;
+    right: 10px;
+  }
+
+  ul.travelClaimList {
+    width: 125%;
+  }
+  ul.travelClaimList li {
+    font-size: 0.8em;
+    padding: 5px 0px 0px 0px;
+    min-width: 435px;
+  }
+  .travelClaimList b {
+    display: inline-block;
+    width: 32%;
+    position: relative;
+    padding-right: 10px;
+  }
+  .travelClaimList b::after {
+    content: ":";
+    position: absolute;
+    right: 10px;
+  }
+
+  ul.odClaimList {
+    margin-top: 20px;
+  }
+  ul.odClaimList li {
+    font-size: 0.8em;
+    padding: 5px 0px 0px 0px;
+    min-width: 435px;
+  }
+  .odClaimList b {
+    display: inline-block;
+    width: 35%;
+    position: relative;
+    padding-right: 10px;
+  }
+  .odClaimList b::after {
+    content: ":";
+    position: absolute;
+    right: 10px;
+  }
+
+  ul.attClaimList {
+    width: 125%;
+  }
+  ul.attClaimList li {
+    font-size: 0.8em;
+    padding: 5px 0px 0px 0px;
+    min-width: 435px;
+  }
+  .attClaimList b {
+    display: inline-block;
+    width: 38%;
+    position: relative;
+    padding-right: 10px;
+  }
+  .attClaimList b::after {
+    content: ":";
+    position: absolute;
+    right: 10px;
+  }
+
+  ol,
+  ul {
+    margin-bottom: 0px !important;
+  }
+  a:focus,
+  a:hover {
+    text-decoration: none;
+  }
+  .tab-item.tab-item-active,
+  .tab-item.active,
+  .tab-item.activated {
+    opacity: 1;
+  }
+  .tab-item {
+    opacity: 0.7;
+  }
+  .custom-row {
+    padding: 0px;
+  }
+  .custom-padding {
+    padding: 5px 10px;
+  }
+  .custom-top {
+    top: 10px;
+    left: 13px;
+  }
+  .custom-paddingTop {
+    padding-top: 11px;
+  }
+  .custom_OD {
+    padding-top: 11px;
+    padding-bottom: 0px;
+  }
+  .custom-paddingBottom {
+    padding-bottom: 0px;
+  }
+  .cust-card {
+    padding: 50px 0px 0px 0px;
+  }
+  .custom-requestApprove {
+    font-size: 11px;
+    color: green;
+  }
+  .custom-requestRejcted {
+    font-size: 11px;
+    color: red;
+  }
+  .custom-requestOther {
+    font-size: 11px;
+    color: orange;
+  }
+  .custom-fontSize {
+    font-size: 12px;
+  }
+  .modal-wrapper {
+    position: absolute;
+    top: 25%;
+    display: block;
+    width: 90%;
+    min-height: 45%;
+    padding: 5%;
+  }
+
+  .modal-backdrop-bg {
+    background-color: rgba(255, 255, 255, 0.85);
+  }
+
+  .modal {
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+  }
+
+  .modal-ion-content {
+    padding: 15px;
+    font-size: 0.85em;
+  }
+
+
+  .badge.badgeCustom {
+    width: 22px;
+    height: 22px;
+    text-align: center;
+    line-height: 18px;
+    display: block;
+    position: absolute;
+    top: 0;
+    color: #fff !important;
+    font-size: 10px !important;
+    padding: 0;
+  }
+  a:focus,
+  a:hover {
+    text-decoration: none;
+  }
+  .tab-item.tab-item-active,
+  .tab-item.active,
+  .tab-item.activated {
+    opacity: 1;
+  }
+  .tab-item {
+    opacity: 0.7;
+  }
+  /* .slick-slide .slide-content {
+  margin: 0 3%;
+  padding: 10px 5px;
+
+} */
+
+  .slick-prev,
+  .slick-next {
+    position: absolute;
+    right: 10%;
+    background: #777;
+    border: none;
+    color: transparent;
+    width: 30px;
+    height: 30px;
+  }
+
+  .slick-prev:before,
+  .slick-next:before {
+    content: ">";
+    color: #fff;
+    font-size: 25px;
+  }
+
+  .slick-prev {
+    left: 10%;
+  }
+
+  .slick-prev:before {
+    content: "<";
+  }
+
+  .slick-dots {
+    list-style: none;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .slick-dots li {
+    display: inline-block;
+  }
+
+  .slick-dots li button {
+    transition: 0.2s background-color ease-in-out 0s;
+    border: none;
+    padding: 0;
+    color: transparent;
+    width: 10px;
+    height: 10px;
+    background-color: #777;
+    margin-right: 10px;
+    border-radius: 50%;
+  }
+
+  .slick-dots li.slick-active button {
+    background-color: #0a9dc7;
+  }
+  /* .slick-slider {
+    width: 100%;
+    position: relative;
+    transform: translate(-50%, -50%);
+    top: 0%;
+    left: 50%;
+} */
+  .slick-slider {
+    width: 100%;
+    position: relative;
+    top: 0%;
+  }
+  /* ===form List=== */
+  /* .customBorderRadius .dividerClass {
+    line-height: 1.5 !important;
+}
+.customBorderRadius label {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+}
+.customBorderRadius .row {
+    margin: 0 5px !important;
+    padding: 0 5px !important;
+}
+.customBorderRadius.col-xs-8 {
+    font-size: 13px !important;
+}
+.customBorderRadius .item-note {
+    padding: 10px 10px 0 0 !important;
+    margin-bottom: 2px !important;
+} */
+.inner .btn-pad.claimClass{
+  margin: 14px 4px 5px 10px;
+    padding: 0 8px;
+}
+.inner .badge{
+  position: relative;
+  margin: 0 -8px;
+  float: right;
+}
+.slick-carousel .fa{
+  font-size: 40px;
+  color: #777676;
+}
+.slick-carousel p {
+    color: #212121;
+    margin: 0 0 10px;
+    font-size: 0.83em;
+    text-align: center;
+    margin-left: -2%;
+    margin-top: 0%;
+    margin-bottom: 2px;
+    font-weight: 400;
+}
+</style>
+
+<ion-view>
+  <ion-content has-bouncing="false" style="overflow-y: auto;top:4%;display: none;" class="requisionSection">
+  
+    <div class="custom-header">
+      <h4 class="subHeaderClass"><b>Requisitions</b></h4>
+
+      <a ng-show="isARTorFRT == 'true' || isGroupMasterReportee == 'true'" href="#/app/MyApprovalsCombined" class="approvalLinkClass">
+        <img src="./img/approveNew.png" style="width: 25px; height: 25px; margin-right: 3px;text-align: center;" />
+      </a>
+    </div>
+	<div id='coverDiv'>
+    <div ng-if="IsLeaveAccessible == 'true' || IsODAccessible == 'true' || IsRegularizationAccessible == 'true' || IsShiftChangeAccessible == 'true'"
+      id="tabhead"
+      class="tabs-striped tabs-top tabs-icon-top /*tabs-background-positive tabs-color-light*/ tabs-clear" >
+      <div class="tabs"  style="margin-top: 5px;top: 50px;border-bottom: 1px solid #fff;" >
+        <div class="slick-carousel center">
+            <div id="mainTabLeave" class="slide-content" ng-if="IsLeaveAccessible == 'true'"  >
+              <a  id="tabLeaveReq"  class="tab-item "ng-click="getLeaveRequestList()" style="padding-top: 10px; font-size: 1em;color:black;max-width: 100%;" href="" >
+                <!-- <i class="fa fa-calendar-times-o" ></i> -->
+                <img  src="./img/leave1.png"  style="max-width: 40px; max-height: 40px;margin-left: 30px;" /> 
+                <p >Leave </p>
+                <sup ng-if="LeaveRequests > 0" class="badge badgeCustom  primary-color"
+                  style="font-size: 10px; padding: 4px 5px 0px 5px; right: auto; top: 0.3em;margin-left: 56px; color: white;height: 33%;"
+                  >{{LeaveRequests}}
+                </sup>
+              </a>
+            </div>
+        
+            <div id="mainTabOD" class="slide-content" ng-if="IsODAccessible == 'true'"  >
+              <a   id="tabODReq" class="tab-item" ng-click="getODApplicationList()" href=""
+                style="padding-top: 10px; font-size: 1em;color:black;max-width: 100%;" >
+                <img src="./img/od.png"  style="max-width: 38px; max-height: 40px;margin-left: 27px;" /> 
+                <p> On Duty</p>
+                <sup  ng-if="ODRequests > 0" class="badge badgeCustom  primary-color"
+                  style="font-size: 10px; padding: 4px 5px 0px 5px; right: auto; top: 0.3em;margin-left: 56px; color: white;height: 33%;"
+                  >{{ODRequests}}
+                </sup>
+              </a>
+            </div>
+        
+          
+            <div id="mainTabAttReg" class="slide-content" ng-if="IsRegularizationAccessible == 'true'" >
+              <a   id="tabRegularizationReq"
+                class="tab-item" ng-click="getRegularizationRequestList()"
+                href="" style="padding-top: 10px; font-size: 1em;color:black;max-width: 100%;" >
+             <img  src="./img/attendance.png" style="max-width: 40px; max-height: 40px;margin-left: 27px;" /> 
+                 <!-- <i class="fa fa-file-text-o" ></i>  -->
+                <p> Attendance</p>
+                <sup  ng-if="AttRegRequests > 0" class="badge badgeCustom  primary-color"
+                   style="font-size: 10px; padding: 4px 5px 0px 5px; right: auto; top: 0.3em;margin-left: 56px; color: white;height: 33%;">{{AttRegRequests}}
+                </sup>
+              </a>
+            </div>
+          
+          
+            <div id="mainTabSC" class="slide-content" ng-if="IsShiftChangeAccessible == 'true'"  >
+              <a   id="tabShiftApplicationReq" class="tab-item" ng-click="getShiftChangeRequestList()"
+                href="" style="padding-top: 10px; font-size: 1em;color:black;max-width: 100%;" >
+             <img  src="./img/sift_change.png" style="max-width: 37px; max-height: 40px;margin-left: 27px;" /> 
+              
+                <p> Shift Change </p>
+                <sup ng-if="SCRequests > 0" class="badge badgeCustom  primary-color"
+                  style="font-size: 10px; padding: 4px 5px 0px 5px; right: auto; top: 0.3em;margin-left: 56px; color: white;height: 33%;"
+                  >{{SCRequests}}
+                </sup>
+              </a>
+            </div>
+          
+          
+            <div id="mainTabTravel" class="slide-content" ng-if="IsTravelAccessible == 'true'" >
+              <a  id="tabTravelApplicationReq" class="tab-item" ng-click="getTravelRequestList()"
+                style="padding-top: 10px; font-size: 1em;color:black;max-width: 100%;" >
+                <img   src="./img/travel.png" style="max-width: 40px; max-height: 40px;margin-left: 28px;" />
+                
+                <p>Travel </p>
+                <sup  ng-if="travelRequests > 0" class="badge badgeCustom  primary-color"
+                  style="font-size: 10px; padding: 4px 5px 0px 5px; right: auto; top: 0.3em;margin-left: 56px; color: white;height: 33%;">{{travelRequests}}
+                </sup>
+              </a>
+            </div>
+          
+          
+            <div id="mainTabClaim" class="slide-content" ng-if="IsExpenseClaimAccessible == 'true' || IsClaimAccessible == 'true'" >
+              <a    id="tabClaimApplicationReq"  class="tab-item"
+                ng-click="claimTabClicked()"  href="" style="padding-top: 10px; font-size: 1em;color:black;max-width: 100%;"  >
+                <img  src="./img/claim1.png"  style="max-width: 39px; max-height: 40px;margin-left: 30px;" /> 
+                <!-- <i class="fa fa-money"></i> -->
+                <p> Claim </p>
+                <sup  ng-if="totalClaimRequests > 0"  class="badge badgeCustom  primary-color"
+                   style="font-size: 10px; padding: 4px 5px 0px 5px; right: auto; top: 0.3em;margin-left: 56px; color: white;height: 33%;" >{{totalClaimRequests}}
+                </sup>
+              </a>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+    <div ng-show="IsLeaveAccessible == 'false' && IsODAccessible == 'false' && IsRegularizationAccessible == 'false' && IsShiftChangeAccessible == 'false'" >
+      <br /><br /><br />
+      <center><h4>You are not authorized to access this page</h4></center>
+    </div>
+    <div id="claimApplicationIDReq" class="cust-card">
+      <div>
+        <br />
+        <!-- <label  class="item item-input"   style="margin-top:26px;padding: 6px 7px 5px 16px!important;" > <i class="icon ion-search placeholder-icon"></i>
+          <input  id="reqSearch1" type="search" placeholder="Search " ng-model="searchObj.searchQuery" />
+        </label> -->
+        <br>
+        <div class="search" style=" margin-bottom: 0px;">
+          <span>
+        <input type="submit" value="&#xf002;" class="search-btn fa ib-m">
+         <div class="search-slide ib-m">
+            <input type="search" id="reqSearch1" placeholder="Enter your search" class="ib-m" ng-model="searchObj.searchQuery" />
+            <div class="search-close ib-m">
+              <i class="fa fa-times-circle" aria-hidden="true"></i></div>
+          </div>
+        </span>
+        <span class="recentRecord" style="margin-left:12px;font-size: 0.8em; font-style: oblique;">
+          Recent 50 applications.
+        </span>
+          <!-- <span class="refreshBtn" style="margin-top: 2%;">
+            <i ng-click="refreshNCTCList()" class="fa fa-refresh" ></i>
+          </span> -->
+        </div>
+
+		<!-- drop down for  period -->
+
+        <div id="outer">
+		<div   ng-show="IsExpenseClaimAccessible == 'true' "  class="row" style=" margin: -4px 9px 4px 0px !important;">
+              <select id="periodDD" style="padding-left: 2%;" class="form-control item-select select"
+              ng-change="periodChange()"
+              ng-options="prd.periodId as prd.fromDt + ' - ' + prd.toDt  for prd in ctcPeriodVOList"
+              ng-model="selectedValues.periodId">
+              </select>
+        </div >
+          <div  ng-show="IsExpenseClaimAccessible == 'true' " class="inner" style="margin-left: -15px;">
+            <sup ng-show="ctcRequests != 0" class="badge badgeCustom primary-color">{{ctcRequests}}</sup>
+            <button id="ctcSelect" ng-click="getCClaimList()" class="button button-small button-outline  btn-pad claimClass" >
+              CTC
+            </button>
+
+          </div>
+          <div  ng-show="IsExpenseClaimAccessible == 'true' " class="inner">
+            <sup ng-show="nonCtcRequests != 0" class="badge badgeCustom primary-color">{{nonCtcRequests}}</sup>
+            <button id="nonCtcSelect" ng-click="getNClaimList()" class="button button-small button-outline  btn-pad claimClass"  >
+              NON CTC
+            </button>
+
+          </div>
+          <div  ng-show="IsExpenseClaimAccessible == 'true' " class="inner">
+
+			<sup ng-show="ltaRequests != 0" class="badge badgeCustom primary-color">{{ltaRequests}}</sup>
+            <button  id="ltaSelect" ng-click="getLClaimList()" class="button button-small button-outline  btn-pad claimClass"  >
+              LTA
+            </button>
+
+          </div>
+          <div  ng-show="IsClaimAccessible == 'true' " class="inner">
+			<sup ng-show="travelClaimRequests != 0" class="badge badgeCustom primary-color">{{travelClaimRequests}}</sup>
+            <button id="travelSelect" ng-click="getClaimRequestList()" class="button button-small button-outline  btn-pad claimClass" >
+              Travel
+            </button>
+          </div>
+        </div>
+
+        <div id="nonCtcClaimListCard" class="listTopMargin">
+          <center>
+            <button class="button button-small button-outline button-positive marginTop" id="applyNonCTCClaim"  ng-click="reDirectToNewNonCTCClaimPage()"  >
+              Apply For Claim
+            </button>
+          </center>
+          <!-- <div class="row" style="margin-bottom: -7% !important;">
+            <div class="col col-75">
+              <p style="margin-left:12px;font-size: 0.8em; font-style: oblique;" > Recent 50 applications.
+              </p>
+            </div>
+            <div class="col col-25">
+              <img style="width: 25px;height: 25px;margin-left: 40%;margin-top: -5%;" src="./img/refreshicon.png" ng-click="refreshNCTCList()"
+              />
+            </div>
+          </div> -->
+          <span class="refreshBtn" style="margin-top: -7%;">
+            <i ng-click="refreshNCTCList()" class="fa fa-refresh" ></i>
+          </span>
+          <div id="noData" ng-if="nonCTCClaimApplList.length == 0">
+            <img src="./img/no-result.png" alt="">
+          </div>
+          <div class="list card customBorderRadius"
+            ng-repeat="nonctcclaim in nonCTCClaimApplList | filter:searchObj.searchQuery | orderBy:'-attDate' "
+
+            ng-if="nonctcclaim.gridStatus =='SENT FOR APPROVAL' || nonctcclaim.gridStatus =='SENT FOR CANCELLATION'" >
+
+
+            <div class="remarkcomments">
+              <h2 class="item-note custom-requestApprove"
+                    ng-if="nonctcclaim.gridStatus == 'APPROVED' ||  nonctcclaim.gridStatus == 'CANCELLATION APPROVED'"  >
+                    {{nonctcclaim.gridStatus}}</h2>
+                  <h2  class="item-note custom-requestRejcted" ng-if="nonctcclaim.gridStatus == 'CANCELLED'">
+                    {{nonctcclaim.gridStatus}}
+                  </h2>
+                  <h2  class="item-note custom-requestRejcted" ng-if="nonctcclaim.gridStatus == 'REJECTED'" >
+                    {{nonctcclaim.gridStatus}}
+                  </h2>
+                  <h2  class="item-note custom-requestRejcted" ng-if="nonctcclaim.gridStatus == 'CANCELLATION REJECTED'" >
+                    {{nonctcclaim.gridStatus}}
+                  </h2>
+                  <h2  class="item-note custom-requestOther"
+                    ng-if="nonctcclaim.gridStatus != 'REJECTED' &&
+                            nonctcclaim.gridStatus != 'APPROVED' && nonctcclaim.gridStatus != 'CANCELLED' &&
+                            nonctcclaim.gridStatus != 'CANCELLATION APPROVED' && nonctcclaim.gridStatus != 'CANCELLATION REJECTED'" >
+                    {{nonctcclaim.gridStatus}}<br><span style="float: right;">{{nonctcclaim.approvePendingFrom}}</span>
+                  </h2>
+           </div>
+
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Claim Id</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{nonctcclaim.claimFormId}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Application Date </label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{nonctcclaim.attDate| date : "dd/MM/yyyy"}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Claim Amount</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{nonctcclaim.claimAmount}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Approved Claim Amount</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{nonctcclaim.approvedclaimAmount}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Reimbursed Claim Amount</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{nonctcclaim.reimburseAmt}}
+            </div>
+          </div>
+          <div class="form-group row" ng-if="nonctcclaim.fileName.length != 0">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Receipt</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{nonctcclaim.fileName}}
+            </div>
+          </div>
+          <br>
+          <div class="text-center" class="item" >
+            <button type="button"  ng-click="redirectToNonCtcDetails(nonctcclaim);"
+            class="button button-small button-outline button-positive">
+          <i class="fa fa-eye mr-5" ></i>Details</button>
+          </div>
+          </div>
+
+          <div class="list card customBorderRadius"  ng-repeat="nonctcclaim in nonCTCClaimApplList | filter:searchObj.searchQuery | orderBy:'-attDate' "
+            ng-if="!(nonctcclaim.gridStatus =='SENT FOR APPROVAL' || nonctcclaim.gridStatus =='SENT FOR CANCELLATION')" >
+
+            <div class="remarkcomments">
+              <h2  class="item-note custom-requestApprove"
+                    ng-if="nonctcclaim.gridStatus == 'APPROVED' ||  nonctcclaim.gridStatus == 'CANCELLATION APPROVED'">
+                    {{nonctcclaim.gridStatus}}
+                  </h2>
+                  <h2  class="item-note custom-requestRejcted" ng-if="nonctcclaim.gridStatus == 'CANCELLED'" >
+                    {{nonctcclaim.gridStatus}}
+                  </h2>
+                  <h2  class="item-note custom-requestRejcted" ng-if="nonctcclaim.gridStatus == 'REJECTED'">
+                    {{nonctcclaim.gridStatus}}
+                  </h2>
+                  <h2  class="item-note custom-requestRejcted" ng-if="nonctcclaim.gridStatus == 'CANCELLATION REJECTED'" >
+                    {{nonctcclaim.gridStatus}}
+                  </h2>
+                  <h2  class="item-note custom-requestOther"  ng-if="nonctcclaim.gridStatus != 'REJECTED' &&
+                            nonctcclaim.gridStatus != 'APPROVED' && nonctcclaim.gridStatus != 'CANCELLED' &&
+                            nonctcclaim.gridStatus != 'CANCELLATION APPROVED' && nonctcclaim.gridStatus != 'CANCELLATION REJECTED'" >
+                    {{nonctcclaim.gridStatus}}
+                  </h2>
+           </div>
+
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Claim Id</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{nonctcclaim.claimFormId}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Application Date</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{nonctcclaim.attDate| date :"dd/MM/yyyy"}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Claim Amount </label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{nonctcclaim.claimAmount}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Approved Claim Amount </label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{nonctcclaim.approvedclaimAmount}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Reimbursed Claim Amount </label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{nonctcclaim.reimburseAmt}}
+            </div>
+          </div>
+          <div class="form-group row" ng-if="nonctcclaim.fileName.length != 0">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Receipt</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{nonctcclaim.fileName}}
+            </div>
+          </div>
+
+		  <div class="text-center" class="item" >
+            <button type="button"  ng-click="redirectToNonCtcDetails(nonctcclaim);"
+            class="button button-small button-outline button-positive">
+          <i class="fa fa-eye mr-5" ></i>Details</button>
+          </div>
+
+
+          </div>
+        </div>
+
+        <div id="ctcClaimListCard" class="listTopMargin">
+          <center>
+            <button  class="button button-small button-outline button-positive marginTop"   id="applyCTCClaim" ng-click="reDirectToNewCTCClaimPage()" >
+              Apply For Claim
+            </button>
+
+            <!-- <a class="button button-small button-outline button-positive marginTop" href="#/app/MyApprovalsCombined">Go to Approvals</a> -->
+          </center>
+          <!-- <div class="row" style="margin-bottom: -7% !important;">
+            <div class="col col-75">
+              <p  style="margin-left:12px;font-size: 0.8em; font-style: oblique;" >
+                Recent 50 applications.
+              </p>
+            </div>
+            <div class="col col-25">
+              <img style="width: 25px;height: 25px;margin-left: 40%;margin-top: -5%;"  src="./img/refreshicon.png"  ng-click="refreshCTCList()"/>
+            </div>
+          </div> -->
+          <span class="refreshBtn" style="margin-top: -7%;">
+            <i ng-click="refreshCTCList()" class="fa fa-refresh" ></i>
+          </span>
+          <div id="noData" ng-if="ctcClaimApplList.length == 0">
+            <!-- <center><h4>No Data Available</h4></center> -->
+            <img src="./img/no-result.png" alt="">
+          </div>
+          <br />
+          <div class="list card customBorderRadius" style="margin-top: -5px;" ng-repeat="ctcclaim in ctcClaimApplList | filter:searchObj.searchQuery | orderBy: '-attDate' "
+            ng-if="ctcclaim.status =='SENT FOR APPROVAL' || ctcclaim.status =='SENT FOR CANCELLATION'" >
+
+            <div class="remarkcomments">
+              <h2 class="item-note custom-requestApprove"
+              ng-if="ctcclaim.status == 'APPROVED' || ctcclaim.status == 'CANCELLATION APPROVED'">
+              {{ctcclaim.status}}
+            </h2>
+            <h2  class="item-note custom-requestRejcted" ng-if="ctcclaim.status == 'CANCELLED'" >
+              {{ctcclaim.status}}
+            </h2>
+            <h2  class="item-note custom-requestRejcted" ng-if="ctcclaim.status == 'REJECTED'" >
+              {{ctcclaim.status}}
+            </h2>
+            <h2  class="item-note custom-requestRejcted" ng-if="ctcclaim.status == 'CANCELLATION REJECTED'" >
+              {{ctcclaim.status}}
+            </h2>
+            <h2   class="item-note custom-requestOther"
+              ng-if="ctcclaim.status != 'REJECTED' &&
+                      ctcclaim.status != 'APPROVED' && ctcclaim.status != 'CANCELLED' &&
+                      ctcclaim.status != 'CANCELLATION APPROVED' && ctcclaim.status != 'CANCELLATION REJECTED'" >
+              {{ctcclaim.status}}<br><span>{{ctcclaim.approvePendingFrom}}</span>
+            </h2>
+           </div>
+
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Claim Date</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{ctcclaim.attDate| date : "dd/MM/yyyy"}}
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Claim Type</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{ctcclaim.ctcPayHeadName}}
+            </div>
+          </div>
+		 <div class="form-group row">
+            <label class="col-sm-4 col-xs-4 col-form-label">Month</label><span
+              class="dividerClass">:</span>
+            <div class="col-sm-8 col-xs-8">
+              {{ctcclaim.monthName}}
+            </div>
+          </div>	
+		 <div class="form-group row">
+            <label class="col-sm-4 col-xs-4 col-form-label">Year</label><span
+              class="dividerClass">:</span>
+            <div class="col-sm-8 col-xs-8">
+              {{ctcclaim.yearId}}
+            </div>
+          </div>			  		  
+		  <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Bill Amount</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{ctcclaim.billAmount}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Claim Amount</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{ctcclaim.claimAmount}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Approved Claim Amount</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{ctcclaim.approvedclaimAmount}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Reimbursed Claim Amount</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{ctcclaim.reimburseAmt}}
+            </div>
+          </div>
+		  <div class="form-group row">
+            <label class="col-sm-4 col-xs-4 col-form-label">Applicant Remarks </label><span class="dividerClass">:</span>
+            <div class="col-sm-8 col-xs-8">
+              {{ctcclaim.remarks}}
+            </div>
+          </div>		  
+		  <div class="form-group row">
+            <label class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span
+              class="dividerClass">:</span>
+            <div class="col-sm-8 col-xs-8">
+              {{ctcclaim.appRemarks}}
+            </div>
+          </div>
+		  <div class="form-group row" ng-if="ctcclaim.file1Name">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Attachment</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8"  ng-if="ctcclaim.file1Name" ng-click="openFileCTCClaim(1,ctcclaim)"  style="color:blue;">
+            {{ctcclaim.file1Name}}
+          </div>
+ 		</div>		  
+		<div class="form-group row" ng-if="ctcclaim.file2Name">
+		 <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+		  <div  class="col-sm-8 col-xs-8"  ng-if="ctcclaim.file2Name" ng-click="openFileCTCClaim(2,ctcclaim)"  style="color:blue;">
+            {{ctcclaim.file2Name}}
+          </div>
+		</div>		  			
+		<div class="form-group row" ng-if="ctcclaim.file3Name">
+		 <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+		  <div  class="col-sm-8 col-xs-8"  ng-if="ctcclaim.file3Name" ng-click="openFileCTCClaim(3,ctcclaim)"  style="color:blue;">
+            {{ctcclaim.file3Name}}
+          </div>
+		</div>		  			
+		<div class="form-group row" ng-if="ctcclaim.file4Name">
+		 <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+		  <div  class="col-sm-8 col-xs-8"  ng-if="ctcclaim.file4Name" ng-click="openFileCTCClaim(4,ctcclaim)"  style="color:blue;">
+            {{ctcclaim.file4Name}}
+          </div>
+		</div>		  			
+		<div class="form-group row" ng-if="ctcclaim.file5Name">
+		 <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+		  <div  class="col-sm-8 col-xs-8"  ng-if="ctcclaim.file5Name" ng-click="openFileCTCClaim(5,ctcclaim)"  style="color:blue;">
+            {{ctcclaim.file5Name}}
+          </div>
+		</div>		  			
+		<div class="form-group row" ng-if="ctcclaim.file6Name">
+		 <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+		  <div  class="col-sm-8 col-xs-8"  ng-if="ctcclaim.file6Name" ng-click="openFileCTCClaim(6,ctcclaim)"  style="color:blue;">
+            {{ctcclaim.file6Name}}
+          </div>
+		</div>		  			
+		<div class="form-group row" ng-if="ctcclaim.file7Name">
+		 <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+		  <div  class="col-sm-8 col-xs-8"  ng-if="ctcclaim.file7Name" ng-click="openFileCTCClaim(7,ctcclaim)"  style="color:blue;">
+            {{ctcclaim.file7Name}}
+          </div>
+		</div>		  			
+		<div class="form-group row" ng-if="ctcclaim.file8Name">
+		 <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+		  <div  class="col-sm-8 col-xs-8"  ng-if="ctcclaim.file8Name" ng-click="openFileCTCClaim(8,ctcclaim)"  style="color:blue;">
+            {{ctcclaim.file8Name}}
+          </div>
+		</div>		  			
+		<div class="form-group row" ng-if="ctcclaim.file9Name">
+		 <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+		  <div  class="col-sm-8 col-xs-8"  ng-if="ctcclaim.file9Name" ng-click="openFileCTCClaim(9,ctcclaim)"  style="color:blue;">
+            {{ctcclaim.file9Name}}
+          </div>
+		</div>		  			
+		<div class="form-group row" ng-if="ctcclaim.file10Name">
+		 <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+		  <div  class="col-sm-8 col-xs-8"  ng-if="ctcclaim.file10Name" ng-click="openFileCTCClaim(10,ctcclaim)"  style="color:blue;">
+            {{ctcclaim.file10Name}}
+          </div>
+		</div>		  			
+		
+            <!-- <div class="item custom-item custom-padding item-text-wrap">
+              <div class="row custom-row" style="margin-left:0px;">
+                <div class="col col-100">
+                <span>
+                  <h2 class="item-note custom-requestApprove"
+                    ng-if="ctcclaim.status == 'APPROVED' || ctcclaim.status == 'CANCELLATION APPROVED'">
+                    {{ctcclaim.status}}
+                  </h2>
+                  <h2  class="item-note custom-requestRejcted" ng-if="ctcclaim.status == 'CANCELLED'" >
+                    {{ctcclaim.status}}
+                  </h2>
+                  <h2  class="item-note custom-requestRejcted" ng-if="ctcclaim.status == 'REJECTED'" >
+                    {{ctcclaim.status}}
+                  </h2>
+                  <h2  class="item-note custom-requestRejcted" ng-if="ctcclaim.status == 'CANCELLATION REJECTED'" >
+                    {{ctcclaim.status}}
+                  </h2>
+                  <h2 style="font-size: 0.7em;"  class="item-note custom-requestOther"
+                    ng-if="ctcclaim.status != 'REJECTED' &&
+                            ctcclaim.status != 'APPROVED' && ctcclaim.status != 'CANCELLED' &&
+                            ctcclaim.status != 'CANCELLATION APPROVED' && ctcclaim.status != 'CANCELLATION REJECTED'" >
+                    {{ctcclaim.status}}<br><span>{{ctcclaim.approvePendingFrom}}</span>
+                  </h2>
+                </span>
+
+                  <ul class="ctcClaimList">
+                    <li>
+                      <b>Claim Date </b>{{ctcclaim.attDate| date : "dd/MM/yyyy"}}
+                    </li>
+                    <li><b>Claim Type </b>{{ctcclaim.ctcPayHeadName}}</li>
+                    <li>
+                      <b>Claim Amount </b>&#x20b9; {{ctcclaim.claimAmount}}
+                    </li>
+                    <li>
+                      <b>Approved Claim Amount </b>&#x20b9;{{ctcclaim.approvedclaimAmount}}
+                    </li>
+                    <li>
+                      <b>Reimbursed Claim Amount </b>&#x20b9;{{ctcclaim.reimburseAmt}}
+                    </li>
+
+                  </ul>
+                </div>
+
+
+              </div>
+            </div> -->
+          </div>
+          <div class="list card customBorderRadius" style="margin-top: -5px;" ng-repeat="ctcclaim in ctcClaimApplList | filter:searchObj.searchQuery | orderBy:'-attDate' "
+            ng-if="!(ctcclaim.status =='SENT FOR APPROVAL' || ctcclaim.status =='SENT FOR CANCELLATION')"   >
+
+            <div class="remarkcomments">
+              <h2 class="item-note custom-requestApprove"
+              ng-if="ctcclaim.status == 'APPROVED' || ctcclaim.status == 'CANCELLATION APPROVED'" >
+              {{ctcclaim.status}}
+            </h2>
+            <h2 class="item-note custom-requestRejcted" ng-if="ctcclaim.status == 'CANCELLED'" >
+              {{ctcclaim.status}}
+            </h2>
+            <h2  class="item-note custom-requestRejcted" ng-if="ctcclaim.status == 'REJECTED'" >
+              {{ctcclaim.status}}
+            </h2>
+            <h2  class="item-note custom-requestRejcted" ng-if="ctcclaim.status == 'CANCELLATION REJECTED'">
+              {{ctcclaim.status}}
+            </h2>
+            <h2  class="item-note custom-requestOther" ng-if="ctcclaim.status != 'REJECTED' &&
+                      ctcclaim.status != 'APPROVED' && ctcclaim.status != 'CANCELLED' &&
+                      ctcclaim.status != 'CANCELLATION APPROVED' && ctcclaim.status != 'CANCELLATION REJECTED'" >
+              {{ctcclaim.status}}
+            </h2>
+           </div>
+
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Claim Date</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{ctcclaim.attDate| date : "dd/MM/yyyy"}}
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Claim Type</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{ctcclaim.ctcPayHeadName}}
+            </div>
+          </div>
+		 <div class="form-group row">
+            <label class="col-sm-4 col-xs-4 col-form-label">Month</label><span
+              class="dividerClass">:</span>
+            <div class="col-sm-8 col-xs-8">
+              {{ctcclaim.monthName}}
+            </div>
+          </div>	
+		 <div class="form-group row">
+            <label class="col-sm-4 col-xs-4 col-form-label">Year</label><span
+              class="dividerClass">:</span>
+            <div class="col-sm-8 col-xs-8">
+              {{ctcclaim.yearId}}
+            </div>
+          </div>			  		  
+		  <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Bill Amount</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{ctcclaim.billAmount}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Claim Amount</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{ctcclaim.claimAmount}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Approved Claim Amount</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{ctcclaim.approvedclaimAmount}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Reimbursed Claim Amount</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{ctcclaim.reimburseAmt}}
+            </div>
+          </div>
+		  <div class="form-group row">
+            <label class="col-sm-4 col-xs-4 col-form-label">Applicant Remarks </label><span class="dividerClass">:</span>
+            <div class="col-sm-8 col-xs-8">
+              {{ctcclaim.remarks}}
+            </div>
+          </div>
+		  <div class="form-group row">
+            <label class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span
+              class="dividerClass">:</span>
+            <div class="col-sm-8 col-xs-8">
+              {{ctcclaim.appRemarks}}
+            </div>
+          </div>		  
+		  <div class="form-group row" ng-if="ctcclaim.file1Name">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Attachment</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8"  ng-if="ctcclaim.file1Name" ng-click="openFileCTCClaim(1,ctcclaim)"  style="color:blue;">
+            {{ctcclaim.file1Name}}
+          </div>
+ 		</div>		  
+		<div class="form-group row" ng-if="ctcclaim.file2Name">
+		 <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+		  <div  class="col-sm-8 col-xs-8"  ng-if="ctcclaim.file2Name" ng-click="openFileCTCClaim(2,ctcclaim)"  style="color:blue;">
+            {{ctcclaim.file2Name}}
+          </div>
+		</div>		  			
+		<div class="form-group row" ng-if="ctcclaim.file3Name">
+		 <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+		  <div  class="col-sm-8 col-xs-8"  ng-if="ctcclaim.file3Name" ng-click="openFileCTCClaim(3,ctcclaim)"  style="color:blue;">
+            {{ctcclaim.file3Name}}
+          </div>
+		</div>		  			
+		<div class="form-group row" ng-if="ctcclaim.file4Name">
+		 <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+		  <div  class="col-sm-8 col-xs-8"  ng-if="ctcclaim.file4Name" ng-click="openFileCTCClaim(4,ctcclaim)"  style="color:blue;">
+            {{ctcclaim.file4Name}}
+          </div>
+		</div>		  			
+		<div class="form-group row" ng-if="ctcclaim.file5Name">
+		 <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+		  <div  class="col-sm-8 col-xs-8"  ng-if="ctcclaim.file5Name" ng-click="openFileCTCClaim(5,ctcclaim)"  style="color:blue;">
+            {{ctcclaim.file5Name}}
+          </div>
+		</div>		  			
+		<div class="form-group row" ng-if="ctcclaim.file6Name">
+		 <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+		  <div  class="col-sm-8 col-xs-8"  ng-if="ctcclaim.file6Name" ng-click="openFileCTCClaim(6,ctcclaim)"  style="color:blue;">
+            {{ctcclaim.file6Name}}
+          </div>
+		</div>		  			
+		<div class="form-group row" ng-if="ctcclaim.file7Name">
+		 <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+		  <div  class="col-sm-8 col-xs-8"  ng-if="ctcclaim.file7Name" ng-click="openFileCTCClaim(7,ctcclaim)"  style="color:blue;">
+            {{ctcclaim.file7Name}}
+          </div>
+		</div>		  			
+		<div class="form-group row" ng-if="ctcclaim.file8Name">
+		 <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+		  <div  class="col-sm-8 col-xs-8"  ng-if="ctcclaim.file8Name" ng-click="openFileCTCClaim(8,ctcclaim)"  style="color:blue;">
+            {{ctcclaim.file8Name}}
+          </div>
+		</div>		  			
+		<div class="form-group row" ng-if="ctcclaim.file9Name">
+		 <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+		  <div  class="col-sm-8 col-xs-8"  ng-if="ctcclaim.file9Name" ng-click="openFileCTCClaim(9,ctcclaim)"  style="color:blue;">
+            {{ctcclaim.file9Name}}
+          </div>
+		</div>		  			
+		<div class="form-group row" ng-if="ctcclaim.file10Name">
+		 <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass"></span>
+		  <div  class="col-sm-8 col-xs-8"  ng-if="ctcclaim.file10Name" ng-click="openFileCTCClaim(10,ctcclaim)"  style="color:blue;">
+            {{ctcclaim.file10Name}}
+          </div>
+		</div>		  			
+		
+
+            <!-- <div class="item custom-item custom-padding item-text-wrap">
+              <div class="row custom-row" style="margin-left:0px;">
+                <div class="col col-100">
+                <span>
+                  <h2 class="item-note custom-requestApprove"
+                    ng-if="ctcclaim.status == 'APPROVED' || ctcclaim.status == 'CANCELLATION APPROVED'" >
+                    {{ctcclaim.status}}
+                  </h2>
+                  <h2 style="font-size: 0.7em;"  class="item-note custom-requestRejcted" ng-if="ctcclaim.status == 'CANCELLED'" >
+                    {{ctcclaim.status}}
+                  </h2>
+                  <h2  class="item-note custom-requestRejcted" ng-if="ctcclaim.status == 'REJECTED'" >
+                    {{ctcclaim.status}}
+                  </h2>
+                  <h2  class="item-note custom-requestRejcted" ng-if="ctcclaim.status == 'CANCELLATION REJECTED'">
+                    {{ctcclaim.status}}
+                  </h2>
+                  <h2  class="item-note custom-requestOther" ng-if="ctcclaim.status != 'REJECTED' &&
+                            ctcclaim.status != 'APPROVED' && ctcclaim.status != 'CANCELLED' &&
+                            ctcclaim.status != 'CANCELLATION APPROVED' && ctcclaim.status != 'CANCELLATION REJECTED'" >
+                    {{ctcclaim.status}}
+                  </h2>
+                </span>
+
+                  <ul class="ctcClaimList">
+
+                    <li>
+                      <b>Claim Date </b>{{ctcclaim.attDate| date :
+                      "dd/MM/yyyy"}}
+                    </li>
+                    <li><b>Claim Type </b>{{ctcclaim.ctcPayHeadName}}</li>
+                    <li>
+                      <b>Claim Amount </b>&#x20b9; {{ctcclaim.claimAmount}}
+                    </li>
+                    <li>
+                      <b>Approved Claim Amount </b>&#x20b9;
+                      {{ctcclaim.approvedclaimAmount}}
+                    </li>
+                    <li>
+                      <b>Reimbursed Claim Amount </b>&#x20b9;
+                      {{ctcclaim.reimburseAmt}}
+                    </li>
+
+                    </li>
+
+                  </ul>
+                </div>
+
+
+              </div>
+            </div> -->
+          </div>
+        </div>
+
+        <div id="ltaClaimListCard" class="listTopMargin">
+          <center>
+            <button
+              class="button button-small button-outline button-positive marginTop"
+              id="applyLTAClaim"
+              ng-click="reDirectToNewLTAClaimPage()"
+            >
+              Apply For Claim
+            </button>
+
+            <!-- <a class="button button-small button-outline button-positive marginTop" href="#/app/MyApprovalsCombined">Go to Approvals</a> -->
+          </center>
+          <!-- <div class="row" style="margin-bottom: -7% !important;">
+            <div class="col col-75">
+              <p
+                style="margin-left:12px;font-size: 0.8em; font-style: oblique;"
+              >
+                Recent 50 applications.
+              </p>
+            </div>
+            <div class="col col-25">
+              <img
+                style="width: 25px;height: 25px;margin-left: 40%;margin-top: -5%;"
+                src="./img/refreshicon.png"
+                ng-click="refreshLTAList()"
+              />
+            </div>
+          </div> -->
+          <span class="refreshBtn" style="margin-top: -7%;">
+            <i ng-click="refreshLTAList()" class="fa fa-refresh" ></i>
+            <!-- <img style="width: 25px;height: 25px;margin-left: 40%;margin-top: -5%;" src="./img/refreshicon.png"
+            ng-click="refreshLTAList()" /> -->
+          </span>
+          <div id="noData" ng-if="ltaClaimApplList.length == 0">
+            <!-- <center><h4>No Data Available</h4></center> -->
+            <img src="./img/no-result.png" alt="">
+          </div>
+          <div
+            class="list card customBorderRadius" ng-repeat="ltaclaim in ltaClaimApplList | filter:searchObj.searchQuery | orderBy:'-attDate' "
+            ng-if="ltaclaim.status =='SENT FOR APPROVAL' || ltaclaim.status =='SENT FOR CANCELLATION'" >
+
+
+            <div class="remarkcomments">
+              <h2  class="item-note custom-requestApprove"
+              ng-if="ltaclaim.status == 'APPROVED' ||
+                              ltaclaim.status == 'CANCELLATION APPROVED'" >
+              {{ltaclaim.status}}
+            </h2>
+            <h2  class="item-note custom-requestRejcted" ng-if="ltaclaim.status == 'CANCELLED'" >
+              {{ltaclaim.status}}
+            </h2>
+            <h2  class="item-note custom-requestRejcted" ng-if="ltaclaim.status == 'REJECTED'" >
+              {{ltaclaim.status}}
+            </h2>
+            <h2 style="font-size: 0.7em;"
+              class="item-note custom-requestRejcted"
+              ng-if="ltaclaim.status == 'CANCELLATION REJECTED'" >
+              {{ltaclaim.status}}
+            </h2>
+            <h2 style="font-size: 0.7em;"   class="item-note custom-requestOther"
+              ng-if="ltaclaim.status != 'REJECTED' &&
+                      ltaclaim.status != 'APPROVED' && ltaclaim.status != 'CANCELLED' &&
+                      ltaclaim.status != 'CANCELLATION APPROVED' && ltaclaim.status != 'CANCELLATION REJECTED'" >
+              {{ltaclaim.status}}<br><span style="float: right;">{{ltaclaim.approvePendingFrom}}</span>
+            </h2>
+           </div>
+
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Claim Date</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{ltaclaim.attDate| date : "dd/MM/yyyy"}}
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Claim Type</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{ltaclaim.ctcPayHeadName}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Claim Amount </label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{ltaclaim.claimAmount}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Approved Claim Amount </label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{ltaclaim.approvedclaimAmount}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Reimbursed Claim Amount  </label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{ltaclaim.reimburseAmt}}
+            </div>
+          </div>
+
+		  <div class="text-center" class="item" >
+			<button type="button" ng-click="redirectToLtaApproval(ltaclaim);"
+			class="button button-small button-outline button-positive">
+				<i class="fa fa-eye mr-5" ></i>Details</button>
+		  </div>
+		<br>
+
+
+            <!-- <div class="item custom-item custom-padding item-text-wrap">
+              <div class="row custom-row" style="margin-left:0px;">
+                <div class="col col-100">
+                <span>
+                  <h2  class="item-note custom-requestApprove"
+                    ng-if="ltaclaim.status == 'APPROVED' ||
+                                    ltaclaim.status == 'CANCELLATION APPROVED'" >
+                    {{ltaclaim.status}}
+                  </h2>
+                  <h2  class="item-note custom-requestRejcted" ng-if="ltaclaim.status == 'CANCELLED'" >
+                    {{ltaclaim.status}}
+                  </h2>
+                  <h2  class="item-note custom-requestRejcted" ng-if="ltaclaim.status == 'REJECTED'" >
+                    {{ltaclaim.status}}
+                  </h2>
+                  <h2 style="font-size: 0.7em;"
+                    class="item-note custom-requestRejcted"
+                    ng-if="ltaclaim.status == 'CANCELLATION REJECTED'" >
+                    {{ltaclaim.status}}
+                  </h2>
+                  <h2 style="font-size: 0.7em;"   class="item-note custom-requestOther"
+                    ng-if="ltaclaim.status != 'REJECTED' &&
+                            ltaclaim.status != 'APPROVED' && ltaclaim.status != 'CANCELLED' &&
+                            ltaclaim.status != 'CANCELLATION APPROVED' && ltaclaim.status != 'CANCELLATION REJECTED'" >
+                    {{ltaclaim.status}}<br><span style="float: right;">{{ltaclaim.approvePendingFrom}}</span>
+                  </h2>
+                </span>
+
+                  <ul class="ctcClaimList">
+
+                    <li>
+                      <b>Claim Date </b>{{ltaclaim.attDate| date : "dd/MM/yyyy"}}
+                    </li>
+                    <li><b>Claim Type </b>{{ltaclaim.ctcPayHeadName}}</li>
+                    <li>
+                      <b>Claim Amount </b>&#x20b9; {{ltaclaim.claimAmount}}
+                    </li>
+                    <li>
+                      <b>Approved Claim Amount </b>&#x20b9;  {{ltaclaim.approvedclaimAmount}}
+                    </li>
+                    <li>
+                      <b>Reimbursed Claim Amount </b>&#x20b9;{{ltaclaim.reimburseAmt}}
+                    </li>
+                  </ul>
+                </div>
+
+
+              </div>
+            </div> -->
+          </div>
+          <div  class="list card customBorderRadius" ng-repeat="ltaclaim in ltaClaimApplList | filter:searchObj.searchQuery | orderBy:'-attDate' "
+            ng-if="!(ltaclaim.status =='SENT FOR APPROVAL' || ltaclaim.status =='SENT FOR CANCELLATION')">
+
+
+            <div class="remarkcomments">
+              <h2  class="item-note custom-requestApprove"
+              ng-if="ltaclaim.status == 'APPROVED' ||  ltaclaim.status == 'CANCELLATION APPROVED'" >
+              {{ltaclaim.status}}
+            </h2>
+            <h2 style="font-size: 0.7em;"  class="item-note custom-requestRejcted" ng-if="ltaclaim.status == 'CANCELLED'" >
+              {{ltaclaim.status}}
+            </h2>
+            <h2  style="font-size: 0.7em;" class="item-note custom-requestRejcted" ng-if="ltaclaim.status == 'REJECTED'" >
+              {{ltaclaim.status}}
+            </h2>
+            <h2  class="item-note custom-requestRejcted" ng-if="ltaclaim.status == 'CANCELLATION REJECTED'" >
+              {{ltaclaim.status}}
+            </h2>
+            <h2  class="item-note custom-requestOther"  ng-if="ltaclaim.status != 'REJECTED' &&
+                      ltaclaim.status != 'APPROVED' && ltaclaim.status != 'CANCELLED' &&
+                      ltaclaim.status != 'CANCELLATION APPROVED' && ltaclaim.status != 'CANCELLATION REJECTED'"  >
+              {{ltaclaim.status}}
+            </h2>
+           </div>
+
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Claim Date</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{ltaclaim.attDate| date :"dd/MM/yyyy"}}
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Claim Type</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{ltaclaim.ctcPayHeadName}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Amount </label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{ltaclaim.claimAmount}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Approved Amount </label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{ltaclaim.approvedclaimAmount}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Reimbursed Amount  </label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{ltaclaim.reimburseAmt}}
+            </div>
+          </div>
+
+		  <div class="text-center" class="item" >
+			<button type="button" ng-click="redirectToLtaApproval(ltaclaim);"
+			class="button button-small button-outline button-positive">
+				<i class="fa fa-eye mr-5" ></i>Details</button>
+		  </div>
+			<br>
+            <!-- <div class="item custom-item custom-padding item-text-wrap">
+              <div class="row custom-row" style="margin-left:0px;">
+                <div class="col col-100">
+                <span>
+                  <h2  class="item-note custom-requestApprove"
+                    ng-if="ltaclaim.status == 'APPROVED' ||  ltaclaim.status == 'CANCELLATION APPROVED'" >
+                    {{ltaclaim.status}}
+                  </h2>
+                  <h2 style="font-size: 0.7em;"  class="item-note custom-requestRejcted" ng-if="ltaclaim.status == 'CANCELLED'" >
+                    {{ltaclaim.status}}
+                  </h2>
+                  <h2  style="font-size: 0.7em;" class="item-note custom-requestRejcted" ng-if="ltaclaim.status == 'REJECTED'" >
+                    {{ltaclaim.status}}
+                  </h2>
+                  <h2  class="item-note custom-requestRejcted" ng-if="ltaclaim.status == 'CANCELLATION REJECTED'" >
+                    {{ltaclaim.status}}
+                  </h2>
+                  <h2  class="item-note custom-requestOther"  ng-if="ltaclaim.status != 'REJECTED' &&
+                            ltaclaim.status != 'APPROVED' && ltaclaim.status != 'CANCELLED' &&
+                            ltaclaim.status != 'CANCELLATION APPROVED' && ltaclaim.status != 'CANCELLATION REJECTED'"  >
+                    {{ltaclaim.status}}
+                  </h2>
+                </span>
+
+                  <ul class="ctcClaimList">
+
+                    <li>
+                      <b>Claim Date </b>{{ltaclaim.attDate| date :
+                      "dd/MM/yyyy"}}
+                    </li>
+                    <li><b>Claim Type </b>{{ltaclaim.ctcPayHeadName}}</li>
+                    <li>
+                      <b>Claim Amount </b>&#x20b9; {{ltaclaim.claimAmount}}
+                    </li>
+                    <li>
+                      <b>Approved Claim Amount </b>&#x20b9;
+                      {{ltaclaim.approvedclaimAmount}}
+                    </li>
+                    <li>
+                      <b>Reimbursed Claim Amount </b>&#x20b9;
+                      {{ltaclaim.reimburseAmt}}
+                    </li>
+
+                  </ul>
+                </div>
+
+
+              </div>
+            </div> -->
+          </div>
+        </div>
+        <div id="claimApplicationReq" class="cust-card travelListTopMargin"  ng-show="IsClaimAccessible == 'true'"  >
+          <!-- <center>
+              <a href="#/app/MyApprovalsCombined" class="button button-small button-outline button-positive marginTop">Go to Approvals</a>
+              </center> -->
+          <!-- <div class="row" style="margin-bottom: -7% !important;">
+            <div class="col col-75">
+              <p
+                style="margin-left:12px;font-size: 0.8em; font-style: oblique;"
+              >
+                Recent 50 applications.
+              </p>
+            </div>
+            <div class="col col-25">
+              <img
+                style="width: 25px;height: 25px;margin-left: 40%;margin-top: -5%;"
+                src="./img/refreshicon.png"
+                ng-click="refreshTraClaimList()"
+              />
+            </div>
+          </div> -->
+          <span class="refreshBtn" style="margin-top: -7%;">
+            <i ng-click="refreshTraClaimList()" class="fa fa-refresh" ></i>
+            <!-- <img style="width: 25px;height: 25px;margin-left: 40%;margin-top: -5%;" src="./img/refreshicon.png"
+            ng-click="refreshTraClaimList()" /> -->
+          </span>
+          <div class="list card customBorderRadius" ng-repeat="claim in claimApplList | filter:searchObj.searchClaim | orderBy:'-claimDate'"
+            ng-if="!claim.travelClaimStatus" >
+       <div class="remarkcomments">
+                      <h2 class="item-note" style="color:black;" ng-if="!claim.travelClaimStatus" >-</h2>
+                      <h2 class="item-note" style="color:green;"
+                        ng-if="claim.travelClaimStatus == 'APPROVED' || claim.travelClaimStatus == 'CANCELLATION APPROVED'
+						|| claim.travelClaimStatus == 'APPROVED & CLOSED'"
+                        >{{claim.travelClaimStatus}}</h2>
+                      <h2 class="item-note" style="color:red;"  ng-if="claim.travelClaimStatus == 'CANCELLED'" >{{claim.travelClaimStatus}}</h2>
+                      <h2 class="item-note" style="color:red;" ng-if="claim.travelClaimStatus == 'REJECTED'"
+                        >{{claim.travelClaimStatus}}</h2 >
+                      <h2 class="item-note" style="color:red;" ng-if="claim.travelClaimStatus == 'CANCELLATION REJECTED'"  >
+                        {{claim.travelClaimStatus}}</h2 >
+                      <h2 class="item-note" style="color:orange;" ng-if="claim.travelClaimStatus != 'REJECTED' &&
+                      claim.travelClaimStatus != 'APPROVED' && claim.travelClaimStatus != 'CANCELLED' &&
+                      claim.travelClaimStatus != 'CANCELLATION APPROVED' && claim.travelClaimStatus != 'CANCELLATION REJECTED'
+					  && claim.travelClaimStatus != 'APPROVED & CLOSED'"
+                        >{{claim.travelClaimStatus}}<br>{{claim.approvePendingFrom}}</h2>
+           </div>
+
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Application Date</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{claim.reqDate| date :"dd/MM/yyyy"}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Travel Date(s)</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{claim.travelDate| date : "dd/MM/yyyy"}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Travel Objective</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{claim.additionalInfo}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Applicant Remarks</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{claim.applicantRemark}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{claim.approvalRemarks}}
+            </div>
+          </div>
+		 <!--
+          <div class="form-group row" ng-if="claim.travelTransId">
+            <label  class="col-sm-4 col-xs-4 col-form-label">ID</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{claim.travelTransId}}
+            </div>
+          </div>
+		  -->
+          <br>
+          <div class="text-center" class="item" >
+            <button type="button" ng-click="reDirectToFreshClaimPage(claim)"
+            class="button button-small button-outline button-positive">
+          <i class="fa fa-eye mr-5" ></i>Details</button>
+          </div>
+         <!-- <div class="item custom-item custom-padding item-text-wrap">
+              <div class="row custom-row"  style="margin-left:0px;" ng-click="detailInfoReporty(travel.travelTransId, travel)" >
+                <div class="col col-100">
+                  <ul class="odClaimList">
+					<li>
+                      <b>Application Date</b>{{claim.reqDate| date :
+                      "dd/MM/yyyy"}}
+                    </li>
+					<li>
+                      <b>Travel Date(s)</b>{{claim.travelDate| date :
+                      "dd/MM/yyyy"}}
+                    </li>
+					<li>
+                      <b>Travel Objective</b>{{claim.additionalInfo}}
+                    </li>
+					<li>
+                      <b>Applicant Remarks</b>{{claim.applicantRemark}}
+                    </li>
+					<li>
+                      <b>Approver Remarks</b>{{claim.approvalRemarks}}
+                    </li>
+                    <li ng-if="claim.travelTransId">
+                      <b>ID</b>{{claim.travelTransId}}
+                    </li>
+                    <li class="custom-requestOther">
+                      <span style="color:black;"><b>Claim Status</b></span>
+                      <span style="color:black;" ng-if="!claim.travelClaimStatus" >-</span >
+                      <span style="color:green;"
+                        ng-if="claim.travelClaimStatus == 'APPROVED' || claim.travelClaimStatus == 'CANCELLATION APPROVED'"
+                        >{{claim.travelClaimStatus}}</span
+                      >
+                      <span
+                        style="color:red;"
+                        ng-if="claim.travelClaimStatus == 'CANCELLED'"
+                        >{{claim.travelClaimStatus}}</span
+                      >
+                      <span
+                        style="color:red;"
+                        ng-if="claim.travelClaimStatus == 'REJECTED'"
+                        >{{claim.travelClaimStatus}}</span
+                      >
+                      <span
+                        style="color:red;"
+                        ng-if="claim.travelClaimStatus == 'CANCELLATION REJECTED'"
+                        >{{claim.travelClaimStatus}}</span
+                      >
+                      <span
+                        style="color:orange;"
+                        ng-if="claim.travelClaimStatus != 'REJECTED' &&
+                      claim.travelClaimStatus != 'APPROVED' && claim.travelClaimStatus != 'CANCELLED' &&
+                      claim.travelClaimStatus != 'CANCELLATION APPROVED' && claim.travelClaimStatus != 'CANCELLATION REJECTED'"
+                        >{{claim.travelClaimStatus}}<br>{{claim.approvePendingFrom}}</span >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div style="margin-bottom: 15px;">
+                <center>
+                  <br />
+                  <button
+                    class="button button-small button-outline button-positive"
+                    style="width:50%;"
+                    ng-click="reDirectToFreshClaimPage(claim)"
+                  >
+                    Details
+                  </button>
+                </center>
+              </div>
+            </div> -->
+          </div>
+          <div  class="list card customBorderRadius" ng-repeat="claim in claimApplList | filter:searchObj.searchClaim | orderBy:'-claimDate'"
+            ng-if="claim.travelClaimStatus"  >
+            <div class="remarkcomments">
+                      <h2 class="item-note"  style="color:black;" ng-if="!claim.travelClaimStatus" >-</h2>
+                      <h2 class="item-note" style="color:green;"
+                        ng-if="claim.travelClaimStatus == 'APPROVED' || claim.travelClaimStatus == 'CANCELLATION APPROVED'
+						|| claim.travelClaimStatus == 'APPROVED & CLOSED'"
+                        >{{claim.travelClaimStatus}}</h2>
+                      <h2 class="item-note" style="color:red;"  ng-if="claim.travelClaimStatus == 'CANCELLED'" >{{claim.travelClaimStatus}}</h2>
+                      <h2 class="item-note" style="color:red;" ng-if="claim.travelClaimStatus == 'REJECTED'"
+                        >{{claim.travelClaimStatus}}</h2 >
+                      <h2 class="item-note" style="color:red;" ng-if="claim.travelClaimStatus == 'CANCELLATION REJECTED'"  >
+                        {{claim.travelClaimStatus}}</h2 >
+                      <h2 class="item-note" style="color:orange;" ng-if="claim.travelClaimStatus != 'REJECTED' &&
+                      claim.travelClaimStatus != 'APPROVED' && claim.travelClaimStatus != 'CANCELLED' &&
+                      claim.travelClaimStatus != 'CANCELLATION APPROVED' && claim.travelClaimStatus != 'CANCELLATION REJECTED'
+					  &&  claim.travelClaimStatus != 'APPROVED & CLOSED'"
+                        >{{claim.travelClaimStatus}}<br>{{claim.approvePendingFrom}}</h2>
+           </div>
+
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Application Date</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{claim.reqDate| date :"dd/MM/yyyy"}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Travel Date(s)</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{claim.travelDate| date : "dd/MM/yyyy"}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Travel Objective</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{claim.additionalInfo}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Applicant Remarks</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{claim.applicantRemark}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{claim.approvalRemarks}}
+            </div>
+          </div>
+		  <!--
+          <div class="form-group row" ng-if="claim.travelTransId">
+            <label  class="col-sm-4 col-xs-4 col-form-label">ID</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{claim.travelTransId}}
+            </div>
+          </div>
+		  -->
+          <br>
+          <div class="text-center" class="item" >
+            <button type="button" ng-click="reDirectToFreshClaimPage(claim)"
+            class="button button-small button-outline button-positive">
+          <i class="fa fa-eye mr-5" ></i>Details</button>
+
+          </div>
+
+<!-- <div class="item custom-item custom-padding item-text-wrap">
+              <div class="row custom-row" style="margin-left:0px;" ng-click="detailInfoReporty(travel.travelTransId, travel)" >
+                <div class="col col-100">
+                  <ul class="odClaimList">
+                    <li>
+                      <b>Application Date</b>{{claim.reqDate| date :
+                      "dd/MM/yyyy"}}
+                    </li>
+					<li>
+                      <b>Travel Date(s)</b>{{claim.travelDate| date :
+                      "dd/MM/yyyy"}}
+                    </li>
+					<li>
+                      <b>Travel Objective</b>{{claim.additionalInfo}}
+                    </li>
+					<li>
+                      <b>Applicant Remarks</b>{{claim.applicantRemark}}
+                    </li>
+					<li>
+                      <b>Approver Remarks</b>{{claim.approvalRemarks}}
+                    </li>
+                    <li ng-if="claim.travelTransId">
+                      <b>ID</b>{{claim.travelTransId}}
+                    </li>
+                    <li class="custom-requestOther">
+                      <span style="color:black;"><b>Claim Status</b></span>
+
+                      <span
+                        style="color:black;"
+                        ng-if="!claim.travelClaimStatus"
+                        >-</span
+                      >
+                      <span
+                        style="color:green;"
+                        ng-if="claim.travelClaimStatus == 'APPROVED' || claim.travelClaimStatus == 'CANCELLATION APPROVED'"
+                        >{{claim.travelClaimStatus}}</span
+                      >
+                      <span
+                        style="color:red;"
+                        ng-if="claim.travelClaimStatus == 'CANCELLED'"
+                        >{{claim.travelClaimStatus}}</span
+                      >
+                      <span
+                        style="color:red;"
+                        ng-if="claim.travelClaimStatus == 'REJECTED'"
+                        >{{claim.travelClaimStatus}}</span
+                      >
+                      <span
+                        style="color:red;"
+                        ng-if="claim.travelClaimStatus == 'CANCELLATION REJECTED'"
+                        >{{claim.travelClaimStatus}}</span
+                      >
+                      <span
+                        style="color:orange;"
+                        ng-if="claim.travelClaimStatus != 'REJECTED' &&
+                      claim.travelClaimStatus != 'APPROVED' && claim.travelClaimStatus != 'CANCELLED' &&
+                      claim.travelClaimStatus != 'CANCELLATION APPROVED' && claim.travelClaimStatus != 'CANCELLATION REJECTED'"
+                        >{{claim.travelClaimStatus}}<br>{{claim.approvePendingFrom}}</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div>
+                <center>
+                  <br />
+                  <button
+                    class="button button-small button-outline button-positive"
+                    style="width:50%;"
+                    ng-click="reDirectToFreshClaimPage(claim)"
+                  >
+                    Details
+                  </button>
+                </center>
+              </div>
+            </div> -->
+
+          </div>
+          <div id="noData" ng-if="claimApplList.length == 0">
+            <!-- <center><h4>No Data Available</h4></center> -->
+            <img src="./img/no-result.png" alt="">
+          </div>
+        </div>
+    </div>
+    </div>
+    <div id="travelApplicationIDReq" class="cust-card" ng-show="IsTravelAccessible == 'true'" >
+      <div>
+        <br><br>
+        <!-- <label ng-show="IsTravelAccessible == 'true'"  class="item item-input" style="margin-top:26px;padding: 6px 7px 5px 16px!important;" >
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="search" placeholder="Search "  ng-model="searchObj.searchTravel" />
+        </label> -->
+        <div class="search">
+          <span ng-show="IsTravelAccessible == 'true'">
+        <input type="submit" value="&#xf002;" class="search-btn fa ib-m">
+         <div class="search-slide ib-m">
+            <input type="search" id="" placeholder="Enter your search" class="ib-m" ng-model="searchObj.searchTravel"/>
+            <div class="search-close ib-m">
+              <i class="fa fa-times-circle" aria-hidden="true"></i></div>
+          </div>
+        </span>
+        <span class="recentRecord" style="margin-left:12px;font-size: 0.8em; font-style: oblique;">
+          Recent 50 applications.
+        </span>
+          <span class="refreshBtn" style="margin-top: 2%;">
+            <i ng-click="refreshTraList()" class="fa fa-refresh" ></i>
+          </span>
+        </div>
+        <center style=" margin-top: 10px;">
+          <button  class="button button-small button-outline button-positive" ng-click="reDirectToFreshTravelPage()"  >
+            Apply For Travel
+          </button>
+          <!-- <a class="button button-small button-outline button-positive marginTop" href="#/app/MyApprovalsCombined">Go to Approvals</a> -->
+        </center>
+        <div class="noDataAvailavle" ng-show="IsTravelAccessible == 'true' && travelApplList.length == 0" >
+          <!-- <center><h4>No Data Available</h4></center> -->
+          <img src="./img/no-result.png" alt="">
+        </div>
+       
+        <!-- ======Travel========== -->
+        <div class="list card customBorderRadius" style="margin-top: 8px;" 
+		ng-repeat="travel in travelApplList | filter:searchObj.searchTravel | orderBy:'-reqDate'"
+          ng-if="travel.travelStatus =='SENT FOR APPROVAL' || travel.travelStatus =='SENT FOR CANCELLATION'" >
+
+     <div class="remarkcomments">
+            <h2  class="item-note custom-requestApprove" style="color:green;" ng-if="travel.travelStatus == 'APPROVED'">
+              {{travel.travelStatus}}</h2>
+
+            <h2  class="item-note custom-requestRejcted" style="color:red;" ng-if="travel.travelStatus == 'REJECTED'" >
+              {{travel.travelStatus}} </h2>
+
+            <h2 class="item-note custom-requestOther" style="color:orange;" ng-if="travel.travelStatus != 'REJECTED' && travel.travelStatus != 'APPROVED'" >
+              {{travel.travelStatus}}<br>{{travel.approvePendingFrom}}</h2>
+		</div>
+
+        <div class="form-group row">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Application Date</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{travel.reqDate | date : "dd/MM/yyyy"}}
+          </div>
+        </div>
+        <div class="form-group row">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Travel Date(s)</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{travel.travelDate | date : "dd/MM/yyyy"}}
+          </div>
+        </div>
+        <div class="form-group row">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Purpose of Visit</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{travel.pov}}
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Travel Objective</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{travel.additionalInfo}}
+          </div>
+        </div>
+        <div class="form-group row">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Travel Type</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{travel.travelType}}
+          </div>
+        </div>
+        <div class="form-group row">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Approval Date</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8" ng-if="!(travel.travelStatus=='SENT FOR APPROVAL' ||
+        travel.travelStatus=='SENT FOR CANCELLATION' || travel.travelStatus=='CANCELLED')">
+            {{travel.apprDate | date :"dd/MM/yyyy"}}
+          </div>
+        </div>
+        <div class="form-group row">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Attachment</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8"  ng-if="travel.uploadFileName" ng-click="downloadAttachmnent(travel)"  style="color:blue;">
+            {{travel.uploadFileName}}
+          </div>
+        </div>
+        <div class="form-group row" ng-if="travel.travelTransId">
+          <label class="col-sm-4 col-xs-4 col-form-label">Applicant Remarks</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{travel.applicantRemarks}}
+          </div>
+        </div>
+        <div class="form-group row" ng-if="travel.travelTransId">
+          <label class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{travel.approvalRemarks}}
+          </div>
+        </div>
+        <div class="text-center" class="item" >
+          <button type="button" ng-click="showTravelDetailForm(travel);"
+          class="button button-small button-outline button-positive">
+        <i class="fa fa-eye mr-5" ></i>Details</button>
+        </div>
+
+
+ <!-- <div class="item custom-item custom-paddingBottom item-text-wrap">
+            <div class="row custom-row" style="margin-left:0px;">
+              <div class="col col-100">
+                <ul class="travelClaimList">
+                  <li>
+                    <b>Application Date:</b> {{travel.reqDate | date : "dd/MM/yyyy"}}
+                  </li>
+                  <div class="col col-30" style="position:absolute;top:22px;right: 15px;" >
+                    <p class="item-note custom-requestApprove" style="color:green;" ng-if="travel.travelStatus == 'APPROVED'" >
+                      {{travel.travelStatus}}
+                    </p>
+                    <p class="item-note custom-requestRejcted" style="color:red;" ng-if="travel.travelStatus == 'REJECTED'" >
+                      {{travel.travelStatus}}
+                    </p>
+                    <p  class="item-note custom-requestOther" style="color:orange;" ng-if="travel.travelStatus != 'REJECTED' && travel.travelStatus != 'APPROVED'" >
+                      {{travel.travelStatus}}<br>{{travel.approvePendingFrom}}
+                    </p>
+                  </div>
+
+
+                  <li>
+                    <b>Travel Date(s)</b>{{travel.travelDate | date : "dd/MM/yyyy"}}
+                  </li>
+
+				  <li>
+                    <b>Purpose of Visit</b>{{travel.pov}}
+                  </li>
+				  <li >
+                    <b>Travel Objective</b>{{travel.additionalInfo}}
+                  </li>
+				  <li >
+                    <b>Travel Type</b>{{travel.travelType}}
+                  </li>
+                  <li >
+                    <b>Approval Date</b>{{travel.apprDate | date :
+                    "dd/MM/yyyy"}}
+                  </li>
+                  <li
+                    ng-if="travel.uploadFileName"
+                    ng-click="downloadAttachmnent(travel)"
+                    style="color:blue;"
+                  >
+                    Tap to download:&nbsp;&nbsp;{{travel.uploadFileName}}
+                  </li>
+				  <li ng-if="travel.travelTransId">
+                    <b>Applicant Remarks</b>{{travel.applicantRemarks}}
+                  </li>
+				  <li ng-if="travel.travelTransId">
+                    <b>Approver Remarks Id</b>{{travel.approvalRemarks}}
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+            <div style="margin-bottom: 15px;">
+              <center>
+                <br />
+                <button
+                  class="button button-small button-outline button-positive"
+                  style="width:50%;"
+                  ng-click="showTravelDetailForm(travel);"
+                >
+                  Details
+                </button>
+              </center>
+            </div>
+          </div> -->
+        </div>
+
+        <div class="list card customBorderRadius" style="margin-top: 8px;"
+         ng-repeat="travel in travelApplList | filter:searchObj.searchQuery | orderBy:'-reqDate'"
+          ng-if="!(travel.travelStatus =='SENT FOR APPROVAL' || travel.travelStatus =='SENT FOR CANCELLATION')">
+
+          <div class="remarkcomments">
+            <h2  class="item-note custom-requestApprove" style="color:green;" ng-if="travel.travelStatus == 'APPROVED'">
+              {{travel.travelStatus}}</h2>
+
+            <h2  class="item-note custom-requestRejcted" style="color:red;" ng-if="travel.travelStatus == 'REJECTED' || 
+			travel.travelStatus == 'CANCELLED'" >
+              {{travel.travelStatus}} </h2>
+
+            <h2 class="item-note custom-requestOther" style="color:orange;" 
+			ng-if="travel.travelStatus != 'REJECTED' && travel.travelStatus != 'APPROVED' && travel.travelStatus != 'CANCELLED'" >
+              {{travel.travelStatus}}</h2>
+          </div>
+
+        <div class="form-group row">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Application Date</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{travel.reqDate | date :"dd/MM/yyyy"}}
+          </div>
+        </div>
+
+
+        <div class="form-group row">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Travel Date(s)</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{travel.travelDate | date : "dd/MM/yyyy"}}
+          </div>
+        </div>
+        <div class="form-group row">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Purpose of Visit</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{travel.pov}}
+          </div>
+        </div>
+
+
+        <div class="form-group row">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Travel Objective</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{travel.additionalInfo}}
+          </div>
+        </div>
+        <div class="form-group row">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Travel Type</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{travel.travelType}}
+          </div>
+        </div>
+        <div class="form-group row">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Approval Date</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8" ng-if="!(travel.travelStatus=='SENT FOR APPROVAL' ||
+        travel.travelStatus=='SENT FOR CANCELLATION'  || travel.travelStatus=='CANCELLED')">
+            {{travel.apprDate | date : "dd/MM/yyyy"}}
+          </div>
+        </div>
+        <div class="form-group row">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Attachment</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8"   ng-if="travel.uploadFileName" ng-click="downloadAttachmnent(travel)" style="color:blue;">
+          {{travel.uploadFileName}}
+          </div>
+        </div>
+        <div class="form-group row" ng-if="travel.travelTransId">
+          <label class="col-sm-4 col-xs-4 col-form-label">Applicant Remarks</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{travel.applicantRemarks}}
+          </div>
+        </div>
+        <div class="form-group row" ng-if="travel.travelTransId">
+          <label class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{travel.approvalRemarks}}
+          </div>
+        </div>
+        <div class="text-center" class="item" >
+          <button type="button" ng-click="showTravelDetailForm(travel);"
+          class="button button-small button-outline button-positive">
+        <i class="fa fa-eye mr-5" ></i>Details</button>
+
+        </div>
+
+ <!-- <div class="item custom-item custom-padding item-text-wrap">
+            <div class="row custom-row" style="margin-left:0px;">
+              <div class="col col-100">
+                <ul class="travelClaimList">
+                  <li ng-if="travel.reqDate">
+                    <b>Application Date:</b>{{travel.reqDate | date :"dd/MM/yyyy"}}
+                  </li>
+                  <div
+                    class="col col-30"
+                    style="position:absolute;top:17px;right: 25px;"
+                  >
+                    <p
+                      style="font-size: 0.7em;color:green;"
+                      class="item-note custom-requestApprove"
+                      ng-if="travel.travelStatus == 'APPROVED'"
+                    >
+                      {{travel.travelStatus}}
+                    </p>
+                    <p
+                      style="font-size: 0.7em;color:red;"
+                      class="item-note custom-requestRejcted"
+                      ng-if="travel.travelStatus == 'REJECTED'"
+                    >
+                      {{travel.travelStatus}}
+                    </p>
+                    <p
+                      style="font-size: 0.7em;color:orange;"
+                      class="item-note custom-requestOther"
+                      ng-if="travel.travelStatus != 'REJECTED' && travel.travelStatus != 'APPROVED'"
+                    >
+                      {{travel.travelStatus}}
+                    </p>
+                  </div>
+                  <li>
+                    <b>Travel Date(s)</b>{{travel.travelDate | date : "dd/MM/yyyy"}}
+                  </li>
+
+				  <li>
+                    <b>Purpose of Visit</b>{{travel.pov}}
+                  </li>
+				  <li >
+                    <b>Travel Objective</b>{{travel.additionalInfo}}
+                  </li>
+				  <li >
+                    <b>Travel Type</b>{{travel.travelType}}
+                  </li>
+                  <li >
+                    <b>Approval Date</b>{{travel.apprDate | date : "dd/MM/yyyy"}}
+                  </li>
+                  <li
+                    ng-if="travel.uploadFileName"
+                    ng-click="downloadAttachmnent(travel)"
+                    style="color:blue;"
+                  >
+                    Tap to download:&nbsp;&nbsp;{{travel.uploadFileName}}
+                  </li>
+				  <li ng-if="travel.travelTransId">
+                    <b>Applicant Remarks</b>{{travel.applicantRemarks}}
+                  </li>
+				  <li ng-if="travel.travelTransId">
+                    <b>Approver Remarks Id</b>{{travel.approvalRemarks}}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div style="margin-bottom: -15px;">
+              <center>
+                <br />
+                <button
+                  class="button button-small button-outline button-positive"
+                  style="width:50%;"
+                  ng-click="showTravelDetailForm(travel);"
+                >
+                  Details
+                </button>
+              </center>
+            </div>
+          </div> -->
+          
+          <div class="noDataAvailavle" ng-show="IsTravelAccessible == 'true' && travelApplList.length == 0" >
+            <!-- <center><h4>No Data Available</h4></center> -->
+            <img src="./img/no-result.png" alt="">
+          </div>
+          <br />
+        </div>
+      </div>
+    </div>
+    <div id="leaveApplicationIDReq" class="cust-card" style="margin-top: 27px;" ng-show="IsLeaveAccessible == 'true'">
+      <br />
+      <!-- <label ng-show="IsLeaveAccessible == 'true'" class="item item-input" style="padding: 6px 7px 5px 16px!important;" >
+        <i class="icon ion-search placeholder-icon"></i>
+        <input id="reqSearch1" type="search"  placeholder="Search " ng-model="searchObj.searchQuery"/>
+      </label> -->
+      <div class="search">
+        <span ng-show="IsLeaveAccessible == 'true'">
+      <input type="submit" value="&#xf002;" class="search-btn fa ib-m">
+       <div class="search-slide ib-m">
+          <input type="search" id="reqSearch1" placeholder="Enter your search" class="ib-m" ng-model="searchObj.searchQuery"/>
+          <div class="search-close ib-m">
+            <i class="fa fa-times-circle" aria-hidden="true"></i></div>
+        </div>
+      </span>
+      <span class="recentRecord" style="margin-left:12px;font-size: 0.8em; font-style: oblique;">
+        Recent 50 applications.
+      </span>
+        <span class="refreshBtn" style="margin-top: 2%;">
+          <i ng-click="refreshLeaveList()" class="fa fa-refresh" ></i>
+        </span>
+      </div>
+      <br />
+      <center>
+        <button  class="button button-small button-outline button-positive" ng-click="reDirectToFreshLeavePage()"  >
+          Apply For Fresh Leave
+        </button>
+
+        <!-- <a class="button button-small button-outline button-positive marginTop" href="#/app/MyApprovalsCombined">Go to Approvals</a> -->
+      </center>
+      <!-- <div class="row" style="margin-bottom: -7% !important;">
+        <div class="col col-75">
+          <p style="margin-left:12px;font-size: 0.8em; font-style: oblique;">
+            Recent 50 applications.
+          </p>
+        </div>
+        <div class="col col-25">
+          <img
+            style="width: 25px;height: 25px;margin-left: 40%;margin-top: -5%;"
+            src="./img/refreshicon.png"
+            ng-click="refreshLeaveList()"
+          />
+        </div>
+      </div> -->
+      <!-- <span class="refreshBtn" style="margin-top: -7%;">
+        <i ng-click="refreshLeaveList()" class="fa fa-refresh" ></i>
+      </span> -->
+      <!-- ==============Leave======== -->
+      <div  class="list card customBorderRadius animated slideInUp" ng-repeat="leave in leaveApplList | filter:searchObj.searchQuery | orderBy:'-leaveFromDate'"
+        ng-if="leave.leaveStatus =='SENT FOR APPROVAL' || leave.leaveStatus =='SENT FOR CANCELLATION'" >
+
+        <div class="remarkcomments">
+          <h2  class="item-note custom-requestApprove" ng-if="leave.leaveStatus == 'APPROVED' ||
+                        leave.leaveStatus == 'CANCELLATION APPROVED'"> {{leave.leaveStatus}}</h2>
+          <h2  class="item-note custom-requestRejcted" ng-if="leave.leaveStatus == 'CANCELLED'" >
+            {{leave.leaveStatus}} </h2>
+          <h2  class="item-note custom-requestRejcted" ng-if="leave.leaveStatus == 'REJECTED'" >
+            {{leave.leaveStatus}}</h2>
+          <h2  class="item-note custom-requestRejcted" ng-if="leave.leaveStatus == 'CANCELLATION REJECTED'" >
+            {{leave.leaveStatus}}
+          </h2>
+          <h2  class="item-note custom-requestOther"   ng-if="leave.leaveStatus != 'REJECTED' &&
+                leave.leaveStatus != 'APPROVED' && leave.leaveStatus != 'CANCELLED' &&
+                leave.leaveStatus != 'CANCELLATION APPROVED' && leave.leaveStatus != 'CANCELLATION REJECTED'" >
+            {{leave.leaveStatus}}<br><span style="float: right;">{{leave.approverPendingFrom}}</span>
+          </h2>
+      </div>
+
+      <div class="form-group row">
+        <label  class="col-sm-4 col-xs-4 col-form-label">Application Date</label><span class="dividerClass">:</span>
+        <div  class="col-sm-8 col-xs-8">
+          {{leave.reqDate| date : "dd/MM/yyyy"}}
+        </div>
+      </div>
+      <div class="form-group row">
+        <label  class="col-sm-4 col-xs-4 col-form-label">Leave Type</label><span class="dividerClass">:</span>
+        <div  class="col-sm-8 col-xs-8">
+          {{leave.leaveType}}
+        </div>
+      </div>
+      <div class="form-group row" ng-if="!leave.leaveDate">
+        <label  class="col-sm-4 col-xs-4 col-form-label">Leave date(s)</label><span class="dividerClass">:</span>
+        <div  class="col-sm-8 col-xs-8">
+          {{leave.leaveFromDate| date : "dd/MM/yyyy"}} <b>to</b> {{leave.leaveToDate| date : "dd/MM/yyyy"}}
+        </div>
+      </div>
+      <div class="form-group row" ng-if="leave.leaveDate">
+        <label  class="col-sm-4 col-xs-4 col-form-label">Leave date(s)</label><span class="dividerClass">:</span>
+        <div  class="col-sm-8 col-xs-8">
+          {{leave.leaveFromDate| date : "dd/MM/yyyy"}}
+        </div>
+      </div>
+      <div class="form-group row" ng-if="leave.leaveDate">
+        <label  class="col-sm-4 col-xs-4 col-form-label">Days/Hours</label><span class="dividerClass">:</span>
+        <div  class="col-sm-8 col-xs-8">
+          {{leave.leaveDebit}}&nbsp;{{leave.daysOrHrs}}
+        </div>
+      </div>
+	  <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Attachment</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            <span style="font-size: 0.8em;color:blue;" ng-if="leave.fileNm" 
+			ng-click="openFileLeave(leave)"> {{leave.fileNm}}
+			</span>
+          </div>
+      </div>
+      <div class="form-group row">
+        <label  class="col-sm-4 col-xs-4 col-form-label">Approval Date</label><span class="dividerClass">:</span>
+        <div  class="col-sm-8 col-xs-8">
+          {{leave.apprDate}}
+        </div>
+      </div>
+      <div class="form-group row">
+        <label  class="col-sm-4 col-xs-4 col-form-label">Applicant Remarks</label><span class="dividerClass">:</span>
+        <div  class="col-sm-8 col-xs-8">
+          {{leave.leaveReason}}
+        </div>
+      </div>
+      <div class="form-group row" ng-if="leave.approverRemark">
+        <label  class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span class="dividerClass">:</span>
+        <div  class="col-sm-8 col-xs-8">
+          {{leave.approverRemark}}
+        </div>
+				<!-- <div class="col-sm-8 col-xs-8" ng-repeat="apprRem in leave.approverRemark" >{{apprRem}}</div> -->
+      </div>
+      <br>
+      <div class="text-center" class="item" >
+        <button type="button"  ng-click="detailInfoReporty(leave.leaveTransId, leave)"
+        class="button button-small button-outline button-positive">
+      <i class="fa fa-eye mr-5" ></i>Show Details</button>
+
+      </div>
+
+
+        <!-- <div class="item custom-item custom-padding item-text-wrap">
+          <div class="row custom-row"  ng-click="detailInfoReporty(leave.leaveTransId, leave)" >
+
+            <div class="remarkcomments">
+              <h2  class="item-note custom-requestApprove" ng-if="leave.leaveStatus == 'APPROVED' ||
+							              leave.leaveStatus == 'CANCELLATION APPROVED'"> {{leave.leaveStatus}}</h2>
+              <h2  class="item-note custom-requestRejcted" ng-if="leave.leaveStatus == 'CANCELLED'" >
+                {{leave.leaveStatus}} </h2>
+              <h2  class="item-note custom-requestRejcted" ng-if="leave.leaveStatus == 'REJECTED'" >
+                {{leave.leaveStatus}}</h2>
+              <h2  class="item-note custom-requestRejcted" ng-if="leave.leaveStatus == 'CANCELLATION REJECTED'" >
+                {{leave.leaveStatus}}
+              </h2>
+              <h2  class="item-note custom-requestOther"   ng-if="leave.leaveStatus != 'REJECTED' &&
+                    leave.leaveStatus != 'APPROVED' && leave.leaveStatus != 'CANCELLED' &&
+                    leave.leaveStatus != 'CANCELLATION APPROVED' && leave.leaveStatus != 'CANCELLATION REJECTED'" >
+                {{leave.leaveStatus}}<br><span style="float: right;">{{leave.approverPendingFrom}}</span>
+              </h2>
+          </div>
+
+
+
+              <ul class="odClaimList">
+                <li>
+                  <b>Application Date</b> <span>{{leave.reqDate| date : "dd/MM/yyyy"}}</span>
+                </li>
+                <li><b>Leave Type</b><span>{{leave.leaveType}}</span></li>
+                <li ng-if="!leave.leaveDate">
+                  <b>Leave from</b><span>{{leave.leaveFromDate| date : "dd/MM/yyyy"}}</span>
+                  <span style="font-weight:bold;color:#000;">to </span>{{leave.leaveToDate| date : "dd/MM/yyyy"}}
+                </li>
+                <li ng-if="leave.leaveDate">
+                  <b>Leave for</b>{{leave.leaveFromDate| date : "dd/MM/yyyy"}}
+                </li>
+                <li>
+                  <b>Days/Hours</b>{{leave.leaveDebit}}&nbsp;{{leave.daysOrHrs}}
+                </li>
+                <li><b>Approval Date</b>{{leave.apprDate}}</li>
+                <li><b>Applicant Remarks</b><span>{{leave.leaveReason}}</span></li>
+                <li ng-if="leave.approverRemark">
+                  <b>Approver Remarks</b><span>{{leave.approverRemark}}</span>
+                </li>
+                <li ng-if="!leave.approverRemark"><b>Approver Remarks</b>-</li>
+              </ul>
+              <div class="list card customBorderRadius" ng-repeat="apprRem in leave.approverRemark" >
+                {{apprRem}}
+              </div>
+
+
+          </div>
+        </div> -->
+      </div>
+
+      <div
+        class="list card customBorderRadius" ng-repeat="leave in leaveApplList | filter:searchObj.searchQuery | orderBy:'-leaveFromDate'"
+        ng-if="!(leave.leaveStatus =='SENT FOR APPROVAL' || leave.leaveStatus =='SENT FOR CANCELLATION')" >
+        <div class="remarkcomments">
+          <h2 style="font-size: 0.7em;" class="item-note custom-requestApprove" ng-if="leave.leaveStatus == 'APPROVED' ||
+          leave.leaveStatus == 'CANCELLATION APPROVED'">
+           {{leave.leaveStatus}}
+         </h2>
+         <h2 style="font-size: 0.7em;" class="item-note custom-requestRejcted" ng-if="leave.leaveStatus == 'CANCELLED'"  >
+           {{leave.leaveStatus}}
+         </h2>
+
+         <h2  style="font-size: 0.7em;" class="item-note custom-requestRejcted" ng-if="leave.leaveStatus == 'REJECTED'">
+           {{leave.leaveStatus}}
+         </h2>
+         <h2  style="font-size: 0.7em;" class="item-note custom-requestRejcted"  ng-if="leave.leaveStatus == 'CANCELLATION REJECTED'"  >
+           {{leave.leaveStatus}}
+         </h2>
+         <h2  style="font-size: 0.7em;"  class="item-note custom-requestOther" ng-if="leave.leaveStatus != 'REJECTED' &&
+         leave.leaveStatus != 'APPROVED' && leave.leaveStatus != 'CANCELLED' &&
+         leave.leaveStatus != 'CANCELLATION APPROVED' && leave.leaveStatus != 'CANCELLATION REJECTED'"  >
+           {{leave.leaveStatus}}
+         </h2>
+        </div>
+
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Application Date</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{leave.reqDate| date : "dd/MM/yyyy"}}
+          </div>
+        </div>
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Leave Type</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{leave.leaveType}}
+          </div>
+        </div>
+        <div class="form-group row"  ng-if="!leave.leaveDate">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Leave Date(s)</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{leave.leaveFromDate| date : "dd/MM/yyyy"}} <b>to</b> {{leave.leaveToDate| date : "dd/MM/yyyy"}}
+          </div>
+        </div>
+        <div class="form-group row" ng-if="leave.leaveDate">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Leave Date(s)</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{leave.leaveFromDate| date : "dd/MM/yyyy"}}
+          </div>
+        </div>
+        <div class="form-group row" ng-if="leave.leaveDate">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Days/Hours</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{leave.leaveDebit}}&nbsp;{{leave.daysOrHrs}}
+          </div>
+        </div>
+		<div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Attachment</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            <span style="font-size: 0.8em;color:blue;" ng-if="leave.fileNm" 
+			ng-click="openFileLeave(leave)">{{leave.fileNm}}</span>
+        </div>
+      </div>
+        <div class="form-group row" ng-if="leave.leaveDate">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Approval Date</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{leave.apprDate}}
+          </div>
+        </div>
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Applicant Remarks</label><span class="dividerClass">:</span>
+		  <div  class="col-sm-8 col-xs-8">
+                {{leave.leaveReason}}
+				</div>
+        </div>
+		<div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span class="dividerClass">:</span>
+		  <div  class="col-sm-8 col-xs-8">
+		  {{leave.approverRemark}}
+		  </div>
+		  <!-- <div class="col-sm-8 col-xs-8" ng-repeat="apprRem1 in leave.approverRemark" > -->
+                <!-- {{leave.approverRemark}} -->
+			<!-- </div> -->
+        </div>
+        <!-- <div class="form-group row" ng-if="leave.approverRemark"> -->
+          <!-- <label  class="col-sm-4 col-xs-4 col-form-label">Reason</label><span class="dividerClass">:</span> -->
+          <!-- <div  class="col-sm-8 col-xs-8"> -->
+            <!-- {{leave.leaveReason}} -->
+          <!-- </div> -->
+        <!-- </div> -->
+        <br>
+      <div class="text-center" class="item" >
+        <button type="button"  ng-click="detailInfoReporty(leave.leaveTransId, leave)"
+        class="button button-small button-outline button-positive">
+      <i class="fa fa-eye  mr-5" ></i>Show Details</button>
+
+      </div>
+      <br>
+<!--
+        <div class="item custom-item custom-padding item-text-wrap">
+          <div class="row custom-row" ng-click="detailInfoReporty(leave.leaveTransId, leave)" >
+            <div class="col col-80">
+              <ul class="odClaimList">
+                <li>
+                  <b>Application Date</b><span>{{leave.reqDate| date : "dd/MM/yyyy"}}</span>
+                </li>
+                <li><b>Leave Type</b>{{leave.leaveType}}</li>
+                <li ng-if="!leave.leaveDate">
+                  <b>Leave from</b>{{leave.leaveFromDate| date : "dd/MM/yyyy"}}
+                  <span style="font-weight:bold;">to</span> {{leave.leaveToDate|
+                  date : "dd/MM/yyyy"}}
+                </li>
+                <li ng-if="leave.leaveDate">
+                  <b>Leave for</b>{{leave.leaveFromDate| date : "dd/MM/yyyy"}}
+                </li>
+                <li>
+                  <b>Days/Hours</b>{{leave.leaveDebit}}&nbsp;{{leave.daysOrHrs}}
+                </li>
+                <li><b>Approval Date</b>{{leave.apprDate}}</li>
+                <li><b>Applicant Remarks</b><span>{{leave.leaveReason}}</span></li>
+                <li ng-if="leave.approverRemark">
+                  <b>Approver Remarks</b><span>{{leave.approverRemark}}</span>
+                </li>
+                <li ng-if="!leave.approverRemark"><b>Approver Remarks</b>-</li>
+              </ul>
+			  
+              <div
+                class="list card customBorderRadius"
+                ng-repeat="apprRem1 in leave.approverRemark"
+              >
+                {{apprRem1}}
+              </div>
+            </div>
+            <div class="col col-20" style="padding-top:15px;">
+              <h2 style="font-size: 0.7em;" class="item-note custom-requestApprove" ng-if="leave.leaveStatus == 'APPROVED' ||
+							 leave.leaveStatus == 'CANCELLATION APPROVED'">
+                {{leave.leaveStatus}}
+              </h2>
+              <h2 style="font-size: 0.7em;" class="item-note custom-requestRejcted" ng-if="leave.leaveStatus == 'CANCELLED'"  >
+                {{leave.leaveStatus}}
+              </h2>
+
+              <h2  style="font-size: 0.7em;" class="item-note custom-requestRejcted" ng-if="leave.leaveStatus == 'REJECTED'">
+                {{leave.leaveStatus}}
+              </h2>
+              <h2  style="font-size: 0.7em;" class="item-note custom-requestRejcted"  ng-if="leave.leaveStatus == 'CANCELLATION REJECTED'"  >
+                {{leave.leaveStatus}}
+              </h2>
+              <h2  style="font-size: 0.7em;"  class="item-note custom-requestOther" ng-if="leave.leaveStatus != 'REJECTED' &&
+							leave.leaveStatus != 'APPROVED' && leave.leaveStatus != 'CANCELLED' &&
+							leave.leaveStatus != 'CANCELLATION APPROVED' && leave.leaveStatus != 'CANCELLATION REJECTED'"  >
+                {{leave.leaveStatus}}
+              </h2>
+            </div>
+          </div>
+        </div> -->
+      </div>
+      <div class="noDataAvailavle" ng-show="IsLeaveAccessible == 'true'" ng-if="leaveApplList.length == 0">
+        <!-- <center><h4>No Data Available</h4></center> -->
+        <img src="./img/no-result.png" alt="">
+      </div>
+      <br />
+    </div>
+    <div id="ODApplicationIDReq"   class="cust-card"  ng-show="IsODAccessible == 'true'" >
+      <br />
+      <label ng-show="1==2" class="item item-input item-select">
+        <div class="input-label "> Year  </div>
+        <select  id="year"  class="form-control"  ng-change="getODApplicationList()" name="LeaveType"  ng-options="year for year in yearList"
+          ng-model="requesObject1.year"  required >
+          <option value="">Please Select</option>
+        </select>
+      </label>
+
+      <!-- <label  ng-show="IsODAccessible == 'true'"  class="item item-input"  style="margin-top:25px;padding: 6px 7px 5px 16px!important;" >
+        <i class="icon ion-search placeholder-icon"></i>
+        <input id="reqSearch2" type="search" placeholder="Search" ng-model="searchObj.searchOD" />
+      </label> -->
+<br>
+      <div class="search">
+        <span ng-show="IsODAccessible == 'true'" >
+      <input type="submit" value="&#xf002;" class="search-btn fa ib-m">
+       <div class="search-slide ib-m">
+          <input type="search" id="reqSearch2" placeholder="Enter your search" class="ib-m" ng-model="searchObj.searchOD"/>
+          <div class="search-close ib-m">
+            <i class="fa fa-times-circle" aria-hidden="true"></i></div>
+        </div>
+      </span>
+      <span class="recentRecord" style="margin-left:12px;font-size: 0.8em; font-style: oblique;">
+        Recent 50 applications.
+      </span>
+        <span class="refreshBtn" style="margin-top: 2%;">
+          <i ng-click="refreshODList()" class="fa fa-refresh" ></i>
+        </span>
+      </div>
+      <br />
+
+      <center>
+        <button  class="button button-small button-outline button-positive"  ng-click="reDirectToODApplictaionPage()">
+          Apply For OD Application
+        </button>
+        <!-- <a class="button button-small button-outline button-positive marginTop" href="#/app/MyApprovalsCombined">Go to Approvals</a> -->
+      </center>
+      <!-- <div class="row" style="margin-bottom: -7% !important;">
+        <div class="col col-75">
+          <p style="margin-left:12px;font-size: 0.8em; font-style: oblique;">
+            Recent 50 applications.
+          </p>
+        </div>
+        <div class="col col-25">
+          <img  style="width: 25px;height: 25px;margin-left: 40%;margin-top: -5%;" src="./img/refreshicon.png"
+           ng-click="refreshODList()" />
+        </div>
+      </div> -->
+      <!-- <span class="refreshBtn" style="margin-top: -7%;">
+        <i ng-click="refreshODList()" class="fa fa-refresh" ></i>
+      </span> -->
+
+<!-- ============On Duty Kishor========== -->
+
+      <div class="list card customBorderRadius"   ng-repeat="odList in ODlList | filter: searchObj.searchOD | orderBy:'-travelDate' |  limitTo : 100"
+        ng-if="odList.status =='SENT FOR APPROVAL' || odList.status =='SENT FOR CANCELLATION'" >
+
+        <div class="remarkcomments">
+          <h2  class="item-note custom-requestApprove" ng-if="odList.status == 'APPROVED' ||
+          odList.status == 'CANCELLATION APPROVED'" >
+            {{odList.status}}
+          </h2>
+          <h2 class="item-note custom-requestRejcted" ng-if="odList.status == 'CANCELLED'" >
+            {{odList.status}}
+          </h2>
+          <h2 class="item-note custom-requestRejcted" ng-if="odList.status == 'REJECTED'" >
+            {{odList.status}}
+          </h2>
+          <h2  class="item-note custom-requestRejcted"  ng-if="odList.status == 'CANCELLATION REJECTED'" >
+            {{odList.status}}
+          </h2>
+          <h2  class="item-note custom-requestOther"  ng-if="odList.status != 'REJECTED' &&
+          odList.status != 'APPROVED' && odList.status != 'CANCELLED' &&	odList.status != 'CANCELLATION APPROVED' && odList.status != 'CANCELLATION REJECTED'" >
+            {{odList.status}}<br>{{odList.applicationPedingFrom}}
+          </h2>
+        </div>
+
+        <div class="form-group row" ng-if="odList.reqDate">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Application Date</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{odList.reqDate| date : "dd/MM/yyyy"}}
+          </div>
+        </div>
+        <div class="form-group row" ng-if="!odList.odDate">
+          <label  class="col-sm-4 col-xs-4 col-form-label">OD Date(s)</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{odList.travelDate| date : "dd/MM/yyyy"}} ({{odList.fromTime}}) <b>To</b> {{odList.travelDate_new| date : "dd/MM/yyyy"}} ({{odList.toTime}})
+          </div>
+        </div>
+
+        <div class="form-group row" ng-if="odList.odDate">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Date</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{odList.travelDate| date : "dd/MM/yyyy"}}
+          </div>
+        </div>
+
+        <div class="form-group row" ng-if="odList.odDate">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Time</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            ({{odList.fromTime}}-{{odList.toTime}})
+          </div>
+        </div>
+        <div class="form-group row">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Location</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{odList.fromPlace}} <b>To</b> {{odList.toPlace}}
+          </div>
+        </div>
+
+
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Purpose</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{odList.purpose}}
+          </div>
+        </div>
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Applicant Remarks</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{odList.remarks}}
+          </div>
+        </div>
+		<div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Attachment</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            <span style="font-size: 0.8em;color:blue;" ng-if="odList.uploadFileName" ng-click="downloadAttachmnent(odList)">{{odList.uploadFileName}}</span>
+          </div>
+        </div>
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span class="dividerClass">:</span>
+		  <div class="col-sm-8 col-xs-8">
+		  <div ng-repeat="apprRem2 in odList.approvalRemarks" >{{apprRem2}}</div>
+		  
+		  </div>
+        </div>
+		<div class="form-group row" ng-if="showPunchDetailsFeature=='true'">
+				<label class="col-sm-4 col-xs-4 col-form-label">Punch Details</label><span
+					class="dividerClass">:</span>
+				<div class="col-sm-8 col-xs-8" ng-if="!odList.punchStr" 
+				ng-click="getPunches(odList.dtHrapiFormatFromDateOD,odList.dtHrapiFormatToDateOD,odList.empId,$index,'OD')"
+				style="color: blue;">
+				Get Punch Details
+				</div>
+		</div>
+		
+		<div class="form-group row" ng-if="odList.punchStr" >
+		<div style="overflow: auto;height:150px;width:100%;">
+				<div class="col-sm-12 col-xs-12" style="white-space: pre-wrap">{{odList.punchStr}}
+				</div>
+		</div>		
+		</div>
+		<br>
+		
+        
+        <!-- <div ng-repeat="apprRem2 in odList.approvalRemarks" style="font-size: 0.8em;margin-left:5px;" >
+          <div>
+            {{apprRem2}}
+          </div>
+        </div> -->
+
+
+        <!-- <div class="item custom-item custom-padding item-text-wrap">
+          <div class="row custom-row">
+            <div class="col col-75">
+              <ul class="odClaimList">
+                <li ng-if="odList.reqDate">
+                  <b>Application Date</b>{{odList.reqDate| date :
+                  "dd/MM/yyyy"}}
+                </li>
+                <li ng-if="!odList.odDate">
+                  <b>From Date - To Date</b>{{odList.travelDate| date :
+                  "dd/MM/yyyy"}}({{odList.fromTime}})<span style="font-weight:bold;"> to </span<br/>
+                  >{{odList.travelDate_new| date : "dd/MM/yyyy"}}<br/>
+				  ({{odList.toTime}})
+                </li>
+               <li ng-if="odList.odDate">
+                  <b>Date</b>{{odList.travelDate| date :
+                  "dd/MM/yyyy"}}<br/>
+				  ({{odList.fromTime}}-{{odList.toTime}})
+                </li>
+                <li>
+                  <b>From Place - To Place</b>{{odList.fromPlace}}<span style="font-weight:bold;" > to </span >{{odList.toPlace}}
+                </li>
+                <li><b>Purpose</b><span>{{odList.purpose}}</span></li>
+                <li><b>Applicant Remarks</b><span>{{odList.remarks}}</span></li>
+                <li><b>Approver Remarks</b>-</li>
+				<li ng-if="odList.uploadFileName" ng-click="downloadAttachmnent(odList)" style="font-size: 0.8em;"><b>
+				Tap to download:</b>&nbsp;&nbsp;<span style="font-size: 0.8em;color:blue;">{{odList.uploadFileName}}</span> </li>
+              </ul>
+              <div ng-repeat="apprRem2 in odList.approvalRemarks" style="font-size: 0.8em;margin-left:5px;" >
+                <div>
+                  {{apprRem2}}
+                </div>
+              </div>
+            </div>
+           <div class="col col-25" style="padding-top:15px;">
+              <h2  style="font-size: 0.7em;"  class="item-note custom-requestApprove" ng-if="odList.status == 'APPROVED' ||
+							odList.status == 'CANCELLATION APPROVED'" >
+                {{odList.status}}
+              </h2>
+              <h2  style="font-size: 0.7em;" class="item-note custom-requestRejcted" ng-if="odList.status == 'CANCELLED'" >
+                {{odList.status}}
+              </h2>
+              <h2 style="font-size: 0.7em;"class="item-note custom-requestRejcted" ng-if="odList.status == 'REJECTED'" >
+                {{odList.status}}
+              </h2>
+              <h2  style="font-size: 0.7em;" class="item-note custom-requestRejcted"  ng-if="odList.status == 'CANCELLATION REJECTED'" >
+                {{odList.status}}
+              </h2>
+              <h2 style="font-size: 0.7em;margin-left: 25px;"  class="item-note custom-requestOther"  ng-if="odList.status != 'REJECTED' &&
+							odList.status != 'APPROVED' && odList.status != 'CANCELLED' &&	odList.status != 'CANCELLATION APPROVED' && odList.status != 'CANCELLATION REJECTED'" >
+                {{odList.status}}<br>{{odList.applicationPedingFrom}}
+              </h2>
+            </div>
+          </div>
+        </div> -->
+        <br>
+        <div class="text-center" class="item" 
+		ng-if="odList.status == 'SENT FOR APPROVAL' || odList.status == 'APPROVED' ||
+		odList.status == 'CANCELLATION REJECTED' || 
+		odList.status == 'CANCELLED' || odList.status == 'CANCELLATION APPROVED'" >
+          <button type="button"  ng-if="odList.status != 'CANCELLED'  && odList.status != 'CANCELLATION APPROVED'" 
+		  ng-click="onConfirm(2, odList.status, odList.odID, odList.travelDate)"
+          class="button button-small button-outline button-positive">
+        <i class="fa fa-times mr-5" aria-hidden="true"></i> Cancel Request </button>
+
+        <button type="button"  ng-if="(odList.status == 'CANCELLED' || odList.status == 'CANCELLATION APPROVED') && editOD=='true' "
+        ng-click="showDetails(odList.status, odList.odID)"
+        class="button button-small button-outline button-positive">
+        <i class="fa fa-pencil-square-o mr-5" aria-hidden="true"></i> Edit </button>
+        </div>
+        <!-- <div class="row">
+          <div class="col col-15"></div>
+          <div  ng-if="odList.status == 'SENT FOR APPROVAL' || odList.status == 'APPROVED' || odList.status == 'CANCELLATION REJECTED' || odList.status == 'CANCELLED'"  >
+            <div class="row custom-row">
+              <div
+                ng-if="odList.status != 'CANCELLED'"
+                ng-click="onConfirm(2, odList.status, odList.odID, odList.travelDate)"
+                class="button button-small button-outline button-positive"
+              >
+                Cancel Request
+              </div>
+              <div
+                ng-if="odList.status == 'CANCELLED' && editOD=='true' "
+                ng-click="showDetails(odList.status, odList.odID)"
+                class="button button-small button-outline button-positive"
+              >
+                Edit
+              </div>
+            </div>
+          </div>
+          <div class="col col-15"></div>
+        </div> -->
+      </div>
+
+      <div class="list card customBorderRadius"  ng-repeat="odList in ODlList | filter: searchObj.searchOD | orderBy:'-travelDate'"
+        ng-if="!(odList.status =='SENT FOR APPROVAL' || odList.status =='SENT FOR CANCELLATION')">
+
+          <div class="remarkcomments">
+            <h2 class="item-note custom-requestApprove"  ng-if="odList.status == 'APPROVED' || odList.status == 'CANCELLATION APPROVED'" >
+              {{odList.status}}
+            </h2>
+            <h2 class="item-note custom-requestRejcted" ng-if="odList.status == 'CANCELLED'" >{{odList.status}}  </h2>
+            <h2 class="item-note custom-requestRejcted" ng-if="odList.status == 'REJECTED'"  > {{odList.status}}</h2>
+            <h2 class="item-note custom-requestRejcted" ng-if="odList.status == 'CANCELLATION REJECTED'" > {{odList.status}}</h2>
+            <h2  class="item-note custom-requestOther" ng-if="odList.status != 'REJECTED' &&
+            odList.status != 'APPROVED' && odList.status != 'CANCELLED' &&
+            odList.status != 'CANCELLATION APPROVED' && odList.status != 'CANCELLATION REJECTED'" > {{odList.status}} </h2>
+          </div>
+
+          <div class="form-group row" ng-if="odList.reqDate">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Application Date</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{odList.reqDate| date : "dd/MM/yyyy"}}
+            </div>
+          </div>
+          <div class="form-group row" ng-if="!odList.odDate">
+            <label  class="col-sm-4 col-xs-4 col-form-label">OD Date(s) </label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{odList.travelDate| date : "dd/MM/yyyy"}} ({{odList.fromTime}}) <b>To</b>  {{odList.travelDate_new| date : "dd/MM/yyyy"}} ({{odList.toTime}})
+            </div>
+          </div>
+
+
+          <div class="form-group row" ng-if="odList.odDate">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Date</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{odList.travelDate| date : "dd/MM/yyyy"}} <!-- ({{odList.fromTime}}-{{odList.toTime}}) -->
+            </div>
+          </div>
+          <div class="form-group row" ng-if="odList.odDate">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Time</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+           ({{odList.fromTime}}-{{odList.toTime}})
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Location </label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{odList.fromPlace}} <b>To</b> {{odList.toPlace}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Purpose</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{odList.purpose}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Applicant Remarks</label><span class="dividerClass">:</span>
+            <div  class="col-sm8 col-xs-8">
+              {{odList.remarks}}
+            </div>
+          </div>
+		  <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Attachment</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8" ng-if="odList.uploadFileName" ng-click="downloadAttachmnent(odList)" style="font-size: 0.8em;color:blue;">
+              {{odList.uploadFileName}}
+            </div>
+          </div>
+		  <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span class="dividerClass">:</span>
+		  <div class="col-sm-8 col-xs-8">
+		  <div ng-repeat="apprRem3 in odList.approvalRemarks" >{{apprRem3}}</div>
+		  
+		  </div>
+		  </div>
+		<div class="form-group row" ng-if="showPunchDetailsFeature=='true'">
+				<label class="col-sm-4 col-xs-4 col-form-label">Punch Details</label><span
+					class="dividerClass">:</span>
+				<div class="col-sm-8 col-xs-8" ng-if="!odList.punchStr" 
+				ng-click="getPunches(odList.dtHrapiFormatFromDateOD,odList.dtHrapiFormatToDateOD,odList.empId,$index,'OD')"
+				style="color: blue;">
+				Get Punch Details
+				</div>
+		</div>
+		
+		<div class="form-group row" ng-if="odList.punchStr" >
+		<div style="overflow: auto;height:150px;width:100%;">
+				<div class="col-sm-12 col-xs-12" style="white-space: pre-wrap">{{odList.punchStr}}
+				</div>
+		</div>		          
+        </div>
+			<br>
+          <!-- <div class="item custom-item custom-padding item-text-wrap">
+          <div class="row custom-row">
+            <div class="col col-75">
+              <ul class="odClaimList">
+               <li ng-if="odList.reqDate">
+                  <b>Application Date</b>{{odList.reqDate| date :
+                  "dd/MM/yyyy"}}
+                </li>
+                <li ng-if="!odList.odDate">
+                  <b>From Date - To Date</b>{{odList.travelDate| date :
+                  "dd/MM/yyyy"}}({{odList.fromTime}})<span style="font-weight:bold;"> to </span><br/>
+				  {{odList.travelDate_new| date : "dd/MM/yyyy"}}<br/>
+				 ({{odList.toTime}})
+                </li>
+
+
+                <li ng-if="odList.odDate">
+                  <b>Date</b>{{odList.travelDate| date :
+                  "dd/MM/yyyy"}}<br/>
+				  ({{odList.fromTime}}-{{odList.toTime}})
+                </li>
+                <li>
+                  <b>From Place - To Place</b>{{odList.fromPlace}}<span style="font-weight:bold;" > to </span >{{odList.toPlace}}
+                </li>
+                <li><b>Purpose</b><span>{{odList.purpose}}</span></li>
+                <li><b>Applicant Remarks</b><span>{{odList.remarks}}</span></li>
+                <li ng-repeat="apprRem3 in odList.approvalRemarks">
+                  <b>Approver Remarks</b><span>{{apprRem3}}</span>
+                </li>
+				<li ng-if="odList.uploadFileName" ng-click="downloadAttachmnent(odList)" style="font-size: 0.8em;"><b>
+				Tap to download:</b>&nbsp;&nbsp;<span style="font-size: 0.8em;color:blue;">{{odList.uploadFileName}}</span> </li>
+              </ul>
+            </div>
+        <div class="col col-25" style="padding-top:15px;">
+              <h2
+                style="font-size: 0.7em;"
+                class="item-note custom-requestApprove"
+                ng-if="odList.status == 'APPROVED' ||
+							odList.status == 'CANCELLATION APPROVED'"
+              >
+                {{odList.status}}
+              </h2>
+              <h2
+                style="font-size: 0.7em;"
+                class="item-note custom-requestRejcted"
+                ng-if="odList.status == 'CANCELLED'"
+              >
+                {{odList.status}}
+              </h2>
+              <h2
+                style="font-size: 0.7em;"
+                class="item-note custom-requestRejcted"
+                ng-if="odList.status == 'REJECTED'"
+              >
+                {{odList.status}}
+              </h2>
+              <h2
+                style="font-size: 0.7em;"
+                class="item-note custom-requestRejcted"
+                ng-if="odList.status == 'CANCELLATION REJECTED'"
+              >
+                {{odList.status}}
+              </h2>
+              <h2
+                style="font-size: 0.7em;margin-left: 25px;"
+                class="item-note custom-requestOther"
+                ng-if="odList.status != 'REJECTED' &&
+							odList.status != 'APPROVED' && odList.status != 'CANCELLED' &&
+							odList.status != 'CANCELLATION APPROVED' && odList.status != 'CANCELLATION REJECTED'"
+              >
+                {{odList.status}}
+              </h2>
+            </div>
+          </div>
+        </div>
+
+
+       <div class="row">
+          <div class="col col-15"></div>
+          <div
+            ng-if="odList.status == 'SENT FOR APPROVAL' || odList.status == 'APPROVED' || odList.status == 'CANCELLATION REJECTED'  || odList.status == 'CANCELLED'"
+          >
+            <div class="row custom-row">
+              <div
+                ng-if="odList.status != 'CANCELLED'"
+                ng-click="onConfirm(2, odList.status, odList.odID, odList.travelDate)"
+                class="button button-small button-outline button-positive"
+              >
+                Cancel Request
+              </div>
+              <div
+                ng-if="odList.status == 'CANCELLED'  && editOD=='true' "
+                ng-click="showDetails(odList.status, odList.odID)"
+                class="button button-small button-outline button-positive"
+              >
+                Edit
+              </div>
+            </div>
+          </div>
+          <div class="col col-15"></div>
+        </div>  -->
+
+        <br>
+        <div class="text-center" class="item" ng-if="odList.status == 'SENT FOR APPROVAL' || 
+		odList.status == 'APPROVED' || odList.status == 'CANCELLATION REJECTED'  || 
+		odList.status == 'CANCELLED' || odList.status == 'CANCELLATION APPROVED'">
+          <button type="button" ng-if="odList.status != 'CANCELLED' && odList.status != 'CANCELLATION APPROVED'"
+          ng-click="onConfirm(2, odList.status, odList.odID, odList.travelDate)"
+          class="button button-small button-outline button-positive">
+        <i class="fa fa-times mr-5" aria-hidden="true"></i> Cancel Request </button>
+
+        <button type="button"  ng-if="(odList.status == 'CANCELLED' || odList.status == 'CANCELLATION APPROVED' ) && editOD=='true' "
+        ng-click="showDetails(odList.status, odList.odID)"
+        class="button button-small button-outline button-positive">
+        <i class="fa fa-pencil-square-o mr-5" aria-hidden="true"></i> Edit </button>
+        </div>
+      </div>
+      <!-- ==========On Duty End======== -->
+      <div class="noDataAvailavle" ng-show="IsODAccessible == 'true'" ng-if="ODlList.length == 0">
+        <!-- <center><h4>No Data Available</h4></center> -->
+        <img src="./img/no-result.png" alt="">
+      </div>
+      <br />
+    </div>
+    <div id="RegularizationApplicationIDReq" ng-show="IsRegularizationAccessible == 'true'"  class="cust-card" >
+      <br />
+      <div class="row custom-row" style="margin-top:10px!important;">
+        <div ng-click="getRegularizationRequestListPrevMonth()"  class="col col-35 cust-col-50 buttonLinksColor" style="padding-top:12px;text-align:left;padding-left:40px;"  >
+          <img style="width:30px;height:30px;" src="./img/prev page.png" />
+        </div>
+        <div  class="col col-30 cust-col-50 buttonLinksColor"  style="margin-top: 6px;"  >
+          <center>
+            <h5 ng-if="requesObjectForYear">  {{monthName}}, {{requesObject.year}} </h5>
+          </center>
+        </div>
+        <div   class="col col-35 cust-col-50 buttonLinksColor"  style="padding-top:12px;text-align:right;padding-right:40px" >
+          <img  ng-if="greyArrowForNextMonth == false"  ng-click="getRegularizationRequestListNextMonth()" style="width:30px;height:30px;"
+            src="./img/next page.png"/>
+          <img  ng-if="greyArrowForNextMonth == true" style="width:30px;height:30px;" src="./img/next page grey.png"/>
+        </div>
+      </div>
+
+      <label ng-show="1==2" class="item item-input item-select">
+        <div class="input-label ">
+          Year
+        </div>
+        <select  id="year"   class="form-control"  ng-options="value as value for (key , value) in yearListforAtt"
+          ng-model="requesObjectForYear.yearId"  required  >
+          <option value="">Please Select</option>
+        </select>
+      </label>
+
+      <label ng-show="1==2" class="item item-input item-select">
+        <div class="input-label ">  Month </div>
+        <select  id="month"  class="form-control" ng-change="getRegularizationRequestList()"
+          ng-options="month.monthValue as month.monthName for month in monthList" ng-model="requesObjectForMonth.month" required >
+          <option value="">Please Select</option>
+        </select>
+      </label>
+
+      <!-- <label  class="item item-input"  style="padding: 6px 7px 5px 16px!important;"  >
+        <i class="icon ion-search placeholder-icon"></i>
+        <input id="reqSearch3" type="search"  placeholder="Search" ng-model="searchObj.searchRegular"/>
+      </label> -->
+      <div class="search">
+        <span>
+      <input type="submit" value="&#xf002;" class="search-btn fa ib-m">
+       <div class="search-slide ib-m">
+          <input type="search" id="reqSearch3" placeholder="Enter your search" class="ib-m" ng-model="searchObj.searchRegular"/>
+          <div class="search-close ib-m">
+            <i class="fa fa-times-circle" aria-hidden="true"></i></div>
+        </div>
+      </span>
+      <span class="recentRecord" style="margin-left:12px;font-size: 0.8em; font-style: oblique;">
+        Recent 50 applications.
+      </span>
+        <span class="refreshBtn" style="margin-top: 2%;">
+          <i ng-click="refreshAttList()" class="fa fa-refresh" ></i>
+        </span>
+      </div>
+
+      <br />
+      <center>
+        <button  class="button button-small button-outline button-positive"  style="margin-right:-14px;" ng-click="reDirectToAttendanceRegularizationPage()"  >
+          Apply Attendance Regularization
+        </button>
+
+        <!-- <a class="button button-small button-outline button-positive marginTop" href="#/app/MyApprovalsCombined">Go to Approvals</a> -->
+      </center>
+      <!-- <div class="row" style="margin-bottom: -7% !important;">
+        <div class="col col-75">
+          <p style="margin-left:12px;font-size: 0.8em; font-style: oblique;">
+            Recent 50 applications.
+          </p>
+        </div>
+        <div class="col col-25">
+          <img  style="width: 25px;height: 25px;margin-left: 40%;margin-top: -5%;"  src="./img/refreshicon.png"  ng-click="refreshAttList()"
+          />
+        </div>
+      </div> -->
+      <!-- <span class="refreshBtn" style="margin-top: -7%;">
+        <i ng-click="refreshAttList()" class="fa fa-refresh" ></i>
+      </span> -->
+
+      <div   class="list card customBorderRadius"  style="border-radius: 1em;box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3)!important;"
+        ng-repeat="regularisation in missPunchAppliList | filter: searchObj.searchRegular | orderBy:'-outTimeDateStr'"
+        ng-if="regularisation.status =='SENT FOR APPROVAL' || regularisation.status =='SENT FOR CANCELLATION'">
+ <div class="remarkcomments">
+          <h2  class="item-note custom-requestApprove" ng-if="regularisation.status == 'APPROVED'
+          || regularisation.status == 'CANCELLATION APPROVED'" >
+          {{regularisation.status}}
+        </h2>
+        <h2  class="item-note custom-requestRejcted"
+          ng-if="regularisation.status == 'CANCELLED'" >
+          {{regularisation.status}}
+        </h2>
+        <h2  class="item-note custom-requestRejcted"
+          ng-if="regularisation.status == 'REJECTED'"  >
+          {{regularisation.status}}
+        </h2>
+        <h2  class="item-note custom-requestRejcted"
+          ng-if="regularisation.status == 'CANCELLATION REJECTED'" >
+          {{regularisation.status}}
+        </h2>
+        <h2  class="item-note custom-requestOther"  ng-if="regularisation.status != 'REJECTED' &&
+          regularisation.status != 'APPROVED' && regularisation.status != 'CANCELLED' &&
+          regularisation.status != 'CANCELLATION APPROVED' && regularisation.status != 'CANCELLATION REJECTED'" >
+          {{regularisation.status}}<br>{{regularisation.approvalPendingFrom}}
+        </h2>
+        </div>
+
+        <div ng-if="regularisation.othRemarks.indexOf('Mobile Clock') <= -1" >
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Application Date</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{regularisation.outTimeDateStr| date : "dd/MM/yyyy"}}
+          </div>
+        </div>
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Actual In Time</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{regularisation.actualInTimeStr}}
+          </div>
+        </div>
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Actual Out Time</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{regularisation.actualOutTimeStr}}
+          </div>
+        </div>
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Modified In Time</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{regularisation.inTimeStr}}
+          </div>
+        </div>
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Modified Out Time</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{regularisation.outTimeStr}}
+          </div>
+        </div>
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Worked Hours</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{regularisation.workedHrs}}
+          </div>
+        </div>
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Shift</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{regularisation.shiftAbbr}}
+          </div>
+        </div>
+        <div class="form-group row" ng-if="regularisation.firstHalf == regularisation.secondHalf">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Attendance Status</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{regularisation.firstHalf}}
+          </div>
+        </div>
+        <div class="form-group row" ng-if="regularisation.firstHalf != regularisation.secondHalf">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Attendance Status</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            First Half:{{regularisation.firstHalf}}-Second Half:{{regularisation.secondHalf}}
+          </div>
+        </div>
+
+
+        <div class="form-group row" ng-if="regularisation.remarks != 'OTH'">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Reason</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{regularisation.remarks}}
+          </div>
+        </div>
+        <div class="form-group row" ng-if="regularisation.remarks == 'OTH'">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Reason</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{regularisation.othRemarks}}
+          </div>
+        </div>
+
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Applicants Remarks</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{regularisation.applicantComments}}
+          </div>
+        </div>
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8" style="white-space: pre-wrap">{{regularisation.appRemarks}}</div>
+        </div>
+		<div class="form-group row" ng-if="showPunchDetailsFeature=='true'">
+				<label class="col-sm-4 col-xs-4 col-form-label">Punch Details</label><span
+					class="dividerClass">:</span>
+				<div class="col-sm-8 col-xs-8" ng-if="!regularisation.punchStr" 
+				ng-click="getPunches(regularisation.dtHrapiFormatDate,regularisation.dtHrapiFormatDate,regularisation.empId,$index,'ATTREG')"
+				style="color: blue;">
+				Get Punch Details
+				</div>
+		</div>
+		
+		<div class="form-group row" ng-if="regularisation.punchStr" >
+		<div style="overflow: auto;height:150px;width:100%;">
+				<div class="col-sm-12 col-xs-12" style="white-space: pre-wrap">{{regularisation.punchStr}}
+				</div>
+		</div>		
+		</div>
+		<br>
+        <div class="form-group row" ng-show="regularisation.geoLocationAddress">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Location Address</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{regularisation.geoLocationAddress}}
+          </div>
+        </div>
+        <br>
+        <div class="text-center" class="item" ng-if="(regularisation.status =='SENT FOR APPROVAL' || 
+		  regularisation.status =='APPROVED') && cancelAttReg=='true'" >
+          <button type="button" ng-click="goSendForCancelation(regularisation)"  class="button button-small button-outline button-positive">
+        <i class="fa fa-times mr-5" aria-hidden="true"></i> Cancel Request </button>
+      </div>
+     </div>
+
+        <div ng-if="regularisation.othRemarks.indexOf('Mobile Clock') > -1">
+          <div class="form-group row" >
+            <label  class="col-sm-4 col-xs-4 col-form-label">Application Date</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{regularisation.outTimeDateStr| date : "dd/MM/yyyy"}}
+            </div>
+          </div>
+          <div class="form-group row" >
+            <label  class="col-sm-4 col-xs-4 col-form-label">Clock In Time</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{regularisation.actualInTimeStr}}
+            </div>
+          </div>
+          <div class="form-group row" >
+            <label  class="col-sm-4 col-xs-4 col-form-label">Clock Out Time</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{regularisation.outTimeStr}}
+            </div>
+          </div>
+          <div class="form-group row" >
+            <label  class="col-sm-4 col-xs-4 col-form-label">Shift</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{regularisation.shiftAbbr}}
+            </div>
+          </div>
+          <div class="form-group row" ng-if="regularisation.firstHalf == regularisation.secondHalf">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Attendance Status</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{regularisation.firstHalf}}
+            </div>
+          </div>
+          <div class="form-group row" ng-if="regularisation.firstHalf != regularisation.secondHalf">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Attendance Status</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              First Half:{{regularisation.firstHalf}}-Second Half:{{regularisation.secondHalf}}
+            </div>
+          </div>
+          <div class="form-group row" ng-if="regularisation.remarks != 'OTH'">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Reason</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{regularisation.remarks}}
+            </div>
+          </div>
+          <div class="form-group row" ng-if="regularisation.remarks == 'OTH'">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Reason</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{regularisation.othRemarks}}
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Applicants Remarks</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{regularisation.applicantComments}}
+            </div>
+          </div>
+          <div class="form-group row" >
+            <label  class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8" style="white-space: pre-wrap">{{regularisation.appRemarks}}</div>
+          </div>
+		<div class="form-group row" ng-if="showPunchDetailsFeature=='true'">
+				<label class="col-sm-4 col-xs-4 col-form-label">Punch Details</label><span
+					class="dividerClass">:</span>
+				<div class="col-sm-8 col-xs-8" ng-if="!regularisation.punchStr" 
+				ng-click="getPunches(regularisation.dtHrapiFormatDate,regularisation.dtHrapiFormatDate,regularisation.empId,$index,'ATTREG')"
+				style="color: blue;">
+				Get Punch Details
+				</div>
+		</div>
+		
+		<div class="form-group row" ng-if="regularisation.punchStr" >
+		<div style="overflow: auto;height:150px;width:100%;">
+				<div class="col-sm-12 col-xs-12" style="white-space: pre-wrap">{{regularisation.punchStr}}
+				</div>
+		</div>		
+		</div>
+		<br>
+          <div class="form-group row" ng-show="regularisation.geoLocationAddress">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Location Address In</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{regularisation.geoLocationAddress}}
+            </div>
+          </div>
+          <div class="form-group row" ng-show="regularisation.outGeoLocationAddress">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Location Address Out</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{regularisation.outGeoLocationAddress}}
+            </div>
+          </div>
+          <div class="form-group row" ng-show="!regularisation.outGeoLocationAddress">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Location Address Out</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              No Location Data.
+            </div>
+          </div>
+</div>
+ <!-- <div class="item custom-item custom-padding item-text-wrap">
+          <div class="row custom-row"  style="position: absolute;top: 18px;right: 0px;" >
+            <div class="col col-80">
+            </div>
+            <div class="col col-20">
+              <h2  class="item-note custom-requestApprove" ng-if="regularisation.status == 'APPROVED'
+					  		|| regularisation.status == 'CANCELLATION APPROVED'" >
+                {{regularisation.status}}
+              </h2>
+              <h2  class="item-note custom-requestRejcted"
+                ng-if="regularisation.status == 'CANCELLED'" >
+                {{regularisation.status}}
+              </h2>
+              <h2  class="item-note custom-requestRejcted"
+                ng-if="regularisation.status == 'REJECTED'"  >
+                {{regularisation.status}}
+              </h2>
+              <h2  class="item-note custom-requestRejcted"
+                ng-if="regularisation.status == 'CANCELLATION REJECTED'" >
+                {{regularisation.status}}
+              </h2>
+              <h2  class="item-note custom-requestOther"  ng-if="regularisation.status != 'REJECTED' &&
+							  regularisation.status != 'APPROVED' && regularisation.status != 'CANCELLED' &&
+								regularisation.status != 'CANCELLATION APPROVED' && regularisation.status != 'CANCELLATION REJECTED'" >
+                {{regularisation.status}}<br>{{regularisation.approvalPendingFrom}}
+              </h2>
+            </div>
+          </div>
+
+          <div class="col col-100"  ng-if="regularisation.othRemarks.indexOf('Mobile Clock') <= -1" >
+            <ul class="attClaimList">
+              <li>
+                <b>Attendance Date</b>{{regularisation.outTimeDateStr| date :
+                "dd/MM/yyyy"}}
+              </li>
+              <li><b>Actual In Time</b>{{regularisation.actualInTimeStr}}</li>
+              <li><b>Actual Out Time</b>{{regularisation.actualOutTimeStr}}</li>
+              <li><b>Modified In Time</b>{{regularisation.inTimeStr}}</li>
+              <li><b>Modified Out Time</b>{{regularisation.outTimeStr}}</li>
+              <li><b>Worked Hours</b>{{regularisation.workedHrs}}</li>
+              <li><b>Shift</b>{{regularisation.shiftAbbr}}</li>
+			  <li ng-if="regularisation.firstHalf == regularisation.secondHalf"><b>Attendance Status</b>{{regularisation.firstHalf}}</li>
+			  <li ng-if="regularisation.firstHalf != regularisation.secondHalf"><b>Attendance Status</b>First Half:{{regularisation.firstHalf}}-Second Half:{{regularisation.secondHalf}}</li>
+			  <li ng-if="regularisation.remarks != 'OTH'">
+                <b>Reason</b>{{regularisation.remarks}}
+              </li>
+			                <li ng-if="regularisation.remarks == 'OTH'">
+                <b>Reason</b>{{regularisation.othRemarks}}
+              </li>
+              <li>
+                <b>Applicants Comments</b>{{regularisation.applicantComments}}
+              </li>
+              <li><b>Approver Comments</b>{{regularisation.appRemarks}}</li>
+              <li ng-show="regularisation.geoLocationAddress">
+                <b>Location Address</b>{{regularisation.geoLocationAddress}}
+              </li>
+            </ul>
+            <div ng-if="(regularisation.status =='SENT FOR APPROVAL' && cancelAttReg=='true') " >
+              <br />
+              <center>
+                <button  class="button button-small button-outline button-positive" style="padding: 2px 5px 2px 5px;"  ng-click="goSendForCancelation(regularisation)" >
+                  Cancel Request
+                </button>
+              </center>
+            </div>
+          </div>
+          <div  class="col col-100"  ng-if="regularisation.othRemarks.indexOf('Mobile Clock') > -1">
+            <ul class="attClaimList">
+              <li>
+                <b>Attendance Date</b>{{regularisation.outTimeDateStr| date :
+                "dd/MM/yyyy"}}
+              </li>
+              <li><b>Clock In Time</b>{{regularisation.actualInTimeStr}}</li>
+              <li><b>Clock Out Time</b>{{regularisation.actualOutTimeStr}}</li>
+              <li><b>Shift:</b>{{regularisation.shiftAbbr}}</li>
+              <li ng-if="regularisation.firstHalf == regularisation.secondHalf"><b>Attendance Status</b>{{regularisation.firstHalf}}</li>
+			  <li ng-if="regularisation.firstHalf != regularisation.secondHalf"><b>Attendance Status</b>First Half:{{regularisation.firstHalf}}-Second Half:{{regularisation.secondHalf}}</li>
+			  <li ng-if="regularisation.remarks != 'OTH'">
+                <b>Reason</b>{{regularisation.remarks}}
+              </li>
+			                <li ng-if="regularisation.remarks == 'OTH'">
+                <b>Reason</b>{{regularisation.othRemarks}}
+              </li>
+              <li>
+                <b>Applicants Comments</b>{{regularisation.applicantComments}}
+              </li>
+              <li><b>Approver Comments</b>{{regularisation.appRemarks}}</li>
+              <br />
+              <li ng-show="regularisation.geoLocationAddress">
+                <b>Location Address In</b>{{regularisation.geoLocationAddress}}
+              </li>
+              <br />
+              <li ng-show="regularisation.outGeoLocationAddress">
+                <b>Location Address Out</b
+                >{{regularisation.outGeoLocationAddress}}
+              </li>
+              <li ng-show="!regularisation.outGeoLocationAddress">
+                <b>Location Address Out</b>No Location Data.
+              </li>
+            </ul>
+          </div>
+        </div> -->
+      </div>
+
+      <div  class="list card customBorderRadius" ng-repeat="regularisation in missPunchAppliList | filter: searchObj.searchRegular | orderBy:'-outTimeDateStr'"
+        ng-if="!(regularisation.status =='SENT FOR APPROVAL' || regularisation.status =='SENT FOR CANCELLATION')" >
+
+        <div class="remarkcomments">
+          <h2  class="item-note custom-requestApprove" ng-if="regularisation.status == 'APPROVED'
+					  		|| regularisation.status == 'CANCELLATION APPROVED'"> {{regularisation.status}}</h2>
+              <h2 class="item-note custom-requestRejcted"  ng-if="regularisation.status == 'CANCELLED'" >
+                {{regularisation.status}}
+              </h2>
+              <h2  class="item-note custom-requestRejcted" ng-if="regularisation.status == 'REJECTED'" >
+                {{regularisation.status}}
+              </h2>
+              <h2  class="item-note custom-requestRejcted"   ng-if="regularisation.status == 'CANCELLATION REJECTED'">
+                {{regularisation.status}}
+              </h2>
+              <h2 class="item-note custom-requestOther"  ng-if="regularisation.status != 'REJECTED' &&
+							  regularisation.status != 'APPROVED' && regularisation.status != 'CANCELLED' &&
+								regularisation.status != 'CANCELLATION APPROVED' && regularisation.status != 'CANCELLATION REJECTED'"  >
+                {{regularisation.status}}
+              </h2>
+        </div>
+
+        <div ng-if="regularisation.othRemarks.indexOf('Mobile Clock') <= -1">
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Application Date</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{regularisation.outTimeDateStr| date : "dd/MM/yyyy"}}
+          </div>
+        </div>
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Actual In Time</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{regularisation.actualInTimeStr}}
+          </div>
+        </div>
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Actual Out Time</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{regularisation.outTimeStr}}
+          </div>
+        </div>
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Modified In Time</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{regularisation.inTimeStr}}
+          </div>
+        </div>
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Modified Out Time</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{regularisation.outTimeStr}}
+          </div>
+        </div>
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Worked Hours</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{regularisation.workedHrs}}
+          </div>
+        </div>
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Shift</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{regularisation.shiftAbbr}}
+          </div>
+        </div>
+
+        <div class="form-group row" ng-if="regularisation.firstHalf == regularisation.secondHalf">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Attendance Status</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{regularisation.firstHalf}}
+          </div>
+        </div>
+        <div class="form-group row" ng-if="regularisation.firstHalf != regularisation.secondHalf">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Attendance Status</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            First Half:{{regularisation.firstHalf}}-Second Half:{{regularisation.secondHalf}}
+          </div>
+        </div>
+
+        <div class="form-group row" ng-if="regularisation.remarks != 'OTH'">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Reason</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{regularisation.remarks}}
+          </div>
+        </div>
+        <div class="form-group row" ng-if="regularisation.remarks == 'OTH'">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Reason</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{regularisation.othRemarks}}
+          </div>
+        </div>
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Applicants Remarks</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{regularisation.applicantComments}}
+          </div>
+        </div>
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8" style="white-space: pre-wrap">{{regularisation.appRemarks}}</div>
+        </div>
+		<div class="form-group row" ng-if="showPunchDetailsFeature=='true'">
+				<label class="col-sm-4 col-xs-4 col-form-label">Punch Details</label><span
+					class="dividerClass">:</span>
+				<div class="col-sm-8 col-xs-8" ng-if="!regularisation.punchStr" 
+				ng-click="getPunches(regularisation.dtHrapiFormatDate,regularisation.dtHrapiFormatDate,regularisation.empId,$index,'ATTREG')"
+				style="color: blue;">
+				Get Punch Details
+				</div>
+		</div>
+		
+		<div class="form-group row" ng-if="regularisation.punchStr" >
+		<div style="overflow: auto;height:150px;width:100%;" >
+				<div class="col-sm-12 col-xs-12" style="white-space: pre-wrap">{{regularisation.punchStr}}
+				</div>
+		</div>		
+		</div>
+        <div class="form-group row" ng-show="regularisation.geoLocationAddress">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Location Address</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{regularisation.geoLocationAddress}}
+          </div>
+        </div>
+        <br>
+        <div class="text-center" class="item"  ng-if="(regularisation.status =='SENT FOR APPROVAL' || 
+		regularisation.status =='APPROVED') && cancelAttReg=='true' ">
+          <button type="button" ng-click="goSendForCancelation(regularisation)"  class="button button-small button-outline button-positive">
+        <i class="fa fa-times mr-5" aria-hidden="true"></i> Cancel Request </button>
+      </div>
+        </div>
+<div ng-if="regularisation.othRemarks.indexOf('Mobile Clock') > -1" >
+          <div class="form-group row" >
+            <label  class="col-sm-4 col-xs-4 col-form-label">Application Date</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{regularisation.outTimeDateStr| date : "dd/MM/yyyy"}}
+            </div>
+          </div>
+          <div class="form-group row" >
+            <label  class="col-sm-4 col-xs-4 col-form-label">Clock In Time</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{regularisation.actualInTimeStr}}
+            </div>
+          </div>
+          <div class="form-group row" >
+            <label  class="col-sm-4 col-xs-4 col-form-label">Clock Out Time</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{regularisation.outTimeStr}}
+            </div>
+          </div>
+          <div class="form-group row" >
+            <label  class="col-sm-4 col-xs-4 col-form-label">Shift</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{regularisation.shiftAbbr}}
+            </div>
+          </div>
+          <div class="form-group row" ng-if="regularisation.firstHalf == regularisation.secondHalf">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Attendance Status</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{regularisation.firstHalf}}
+            </div>
+          </div>
+          <div class="form-group row" ng-if="regularisation.firstHalf != regularisation.secondHalf">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Attendance Status</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              First Half:{{regularisation.firstHalf}}-Second Half:{{regularisation.secondHalf}}
+            </div>
+          </div>
+          <div class="form-group row" ng-if="regularisation.remarks != 'OTH'">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Reason</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{regularisation.remarks}}
+            </div>
+          </div>
+          <div class="form-group row" ng-if="regularisation.remarks == 'OTH'" >
+            <label  class="col-sm-4 col-xs-4 col-form-label">Reason</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{regularisation.othRemarks}}
+            </div>
+          </div>
+          <div class="form-group row"  >
+            <label  class="col-sm-4 col-xs-4 col-form-label">Applicants Remarks</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{regularisation.applicantComments}}
+            </div>
+          </div>
+          <div class="form-group row"  >
+            <label  class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8" style="white-space: pre-wrap">{{regularisation.appRemarks}}</div>
+          </div>
+		<div class="form-group row" ng-if="showPunchDetailsFeature=='true'">
+				<label class="col-sm-4 col-xs-4 col-form-label">Punch Details</label><span
+					class="dividerClass">:</span>
+				<div class="col-sm-8 col-xs-8" ng-if="!regularisation.punchStr" 
+				ng-click="getPunches(regularisation.dtHrapiFormatDate,regularisation.dtHrapiFormatDate,regularisation.empId,$index,'ATTREG')"
+				style="color: blue;">
+				Get Punch Details
+				</div>
+		</div>
+		
+		<div class="form-group row" ng-if="regularisation.punchStr" >
+		<div style="overflow: auto;height:150px;width:100%;">
+				<div class="col-sm-12 col-xs-12" style="white-space: pre-wrap">{{regularisation.punchStr}}
+				</div>
+		</div>		
+		</div>
+		<br>  
+          <div class="form-group row"  ng-show="regularisation.geoLocationAddress">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Location Address In</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{regularisation.geoLocationAddress}}
+            </div>
+          </div>
+          <div class="form-group row"  ng-show="regularisation.outGeoLocationAddress">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Location Address Out</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{regularisation.outGeoLocationAddress}}
+            </div>
+          </div>
+          <div class="form-group row"  ng-show="!regularisation.outGeoLocationAddress">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Location Address Out</label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              No Location Data.
+            </div>
+          </div>
+        </div>
+        <!-- <div class="item custom-item custom-padding item-text-wrap">
+          <div  class="row custom-row"  style="position: absolute;top: 18px;right: 16px;"   >
+            <div class="col col-80">
+            </div>
+            <div class="col col-20">
+              <h2  class="item-note custom-requestApprove" ng-if="regularisation.status == 'APPROVED'
+					  		|| regularisation.status == 'CANCELLATION APPROVED'"> {{regularisation.status}}</h2>
+              <h2 class="item-note custom-requestRejcted"  ng-if="regularisation.status == 'CANCELLED'" >
+                {{regularisation.status}}
+              </h2>
+              <h2  class="item-note custom-requestRejcted" ng-if="regularisation.status == 'REJECTED'" >
+                {{regularisation.status}}
+              </h2>
+              <h2  class="item-note custom-requestRejcted"   ng-if="regularisation.status == 'CANCELLATION REJECTED'">
+                {{regularisation.status}}
+              </h2>
+              <h2 class="item-note custom-requestOther"  ng-if="regularisation.status != 'REJECTED' &&
+							  regularisation.status != 'APPROVED' && regularisation.status != 'CANCELLED' &&
+								regularisation.status != 'CANCELLATION APPROVED' && regularisation.status != 'CANCELLATION REJECTED'"  >
+                {{regularisation.status}}
+              </h2>
+            </div>
+          </div>
+
+          <div
+            class="col col-100"
+            ng-if="regularisation.othRemarks.indexOf('Mobile Clock') <= -1" >
+            <ul class="attClaimList">
+              <li>
+                <b>Attendance Date</b>{{regularisation.outTimeDateStr| date :
+                "dd/MM/yyyy"}}
+              </li>
+              <li><b>Actual In Time</b>{{regularisation.actualInTimeStr}}</li>
+              <li><b>Actual Out Time</b>{{regularisation.actualOutTimeStr}}</li>
+              <li><b>Modified In Time</b>{{regularisation.inTimeStr}}</li>
+              <li><b>Modified Out Time</b>{{regularisation.outTimeStr}}</li>
+              <li><b>Worked Hours</b>{{regularisation.workedHrs}}</li>
+              <li><b>Shift</b>{{regularisation.shiftAbbr}}</li>
+              <li><b>Shift</b>{{regularisation.shiftAbbr}}</li>
+			  <li ng-if="regularisation.firstHalf == regularisation.secondHalf"><b>Attendance Status</b>{{regularisation.firstHalf}}</li>
+			  <li ng-if="regularisation.firstHalf != regularisation.secondHalf"><b>Attendance Status</b>First Half:{{regularisation.firstHalf}}-Second Half:{{regularisation.secondHalf}}</li>
+			  <li ng-if="regularisation.remarks != 'OTH'">
+                <b>Reason</b>{{regularisation.remarks}}
+              </li>
+			                <li ng-if="regularisation.remarks == 'OTH'">
+                <b>Reason</b>{{regularisation.othRemarks}}
+              </li>
+              <li>
+                <b>Applicants Comments</b>{{regularisation.applicantComments}}
+              </li>
+              <li><b>Approver Comments</b>{{regularisation.appRemarks}}</li>
+              <li ng-show="regularisation.geoLocationAddress">
+                <b>Location Address</b>{{regularisation.geoLocationAddress}}
+              </li>
+            </ul>
+            <div  ng-if="(regularisation.status =='SENT FOR APPROVAL' && cancelAttReg=='true') "  >
+              <br />
+              <center>
+                <button
+                  class="button button-small button-outline button-positive"
+                  ng-click="goSendForCancelation(regularisation)"
+                >
+                  Cancel
+                </button>
+              </center>
+            </div>
+          </div>
+          <div
+            class="col col-100"
+            ng-if="regularisation.othRemarks.indexOf('Mobile Clock') > -1" >
+            <ul class="attClaimList">
+              <li>
+                <b>Attendance Date</b>{{regularisation.outTimeDateStr| date :
+                "dd/MM/yyyy"}}
+              </li>
+              <li><b>Clock In Time</b>{{regularisation.actualInTimeStr}}</li>
+              <li><b>Clock Out Time</b>{{regularisation.actualOutTimeStr}}</li>
+              <li><b>Shift:</b>{{regularisation.shiftAbbr}}</li>
+              <li><b>Shift</b>{{regularisation.shiftAbbr}}</li>
+			  <li ng-if="regularisation.firstHalf == regularisation.secondHalf"><b>Attendance Status</b>{{regularisation.firstHalf}}</li>
+			  <li ng-if="regularisation.firstHalf != regularisation.secondHalf"><b>Attendance Status</b>First Half:{{regularisation.firstHalf}}-Second Half:{{regularisation.secondHalf}}</li>
+			  <li ng-if="regularisation.remarks != 'OTH'">
+                <b>Reason</b>{{regularisation.remarks}}
+              </li>
+			                <li ng-if="regularisation.remarks == 'OTH'">
+                <b>Reason</b>{{regularisation.othRemarks}}
+              </li>
+              <li>
+                <b>Applicants Comments</b>{{regularisation.applicantComments}}
+              </li>
+              <li><b>Approver Comments</b>{{regularisation.appRemarks}}</li>
+              <br />
+              <li ng-show="regularisation.geoLocationAddress">
+                <b>Location Address In</b>{{regularisation.geoLocationAddress}}
+              </li>
+              <br />
+              <li ng-show="regularisation.outGeoLocationAddress">
+                <b>Location Address Out</b
+                >{{regularisation.outGeoLocationAddress}}
+              </li>
+              <li ng-show="!regularisation.outGeoLocationAddress">
+                <b>Location Address Out</b>No Location Data.
+              </li>
+            </ul>
+          </div>
+        </div> -->
+      </div>
+
+      <div class="noDataAvailavle" ng-show="IsRegularizationAccessible == 'true'" ng-if="missPunchAppliList.length == 0" >
+        <!-- <center><h4>No Data Available</h4></center> -->
+        <img src="./img/no-result.png" alt="">
+      </div>
+      <br />
+    </div>
+
+    <div id="ShiftChangeRequestIDReq" ng-show="IsShiftChangeAccessible == 'true'" class="cust-card"  >
+      <!-- <label class="item item-input" style="margin-top:25px;padding: 6px 7px 5px 16px!important;" >
+        <i class="icon ion-search placeholder-icon"></i>
+        <input  id="reqSearch4"  type="search"  placeholder="Search"  ng-model="searchObj.searchShift"/>
+      </label> -->
+      <br><br>
+      <div class="search">
+        <span >
+      <input type="submit" value="&#xf002;" class="search-btn fa ib-m">
+       <div class="search-slide ib-m">
+          <input type="search" id="reqSearch4" placeholder="Enter your search" class="ib-m" ng-model="searchObj.searchShift"/>
+          <div class="search-close ib-m">
+            <i class="fa fa-times-circle" aria-hidden="true"></i></div>
+        </div>
+      </span>
+      <span class="recentRecord" style="margin-left:12px;font-size: 0.8em; font-style: oblique;">
+        Recent 50 applications.
+      </span>
+        <span class="refreshBtn" style="margin-top: 2%;">
+          <i ng-click="refreshSCList()" class="fa fa-refresh" ></i>
+        </span>
+      </div>
+      <br />
+      <center>
+        <button class="button button-small button-outline button-positive" ng-click="reDirectToShiftChangePage()" > Apply For Shift Change </button>
+      </center>
+      <!-- <div class="row" style="margin-bottom: -7% !important;">
+        <div class="col col-75">
+          <p style="margin-left:12px;font-size: 0.8em; font-style: oblique;"> Recent 50 applications. </p>
+        </div>
+        <div class="col col-25">
+          <img
+            style="width: 25px;height: 25px;margin-left: 40%;margin-top: -5%;"
+            src="./img/refreshicon.png"
+            ng-click="refreshSCList()"
+          />
+        </div>
+      </div> -->
+      <!-- <span class="refreshBtn" style="margin-top: -7%;">
+        <i ng-click="refreshSCList()" class="fa fa-refresh" ></i>
+      </span> -->
+      <div  class="list card customBorderRadius" ng-repeat="shiftChangeAppli in shiftChangeAppliList | filter: searchObj.searchShift | orderBy:'-fromDate'"
+        ng-if="shiftChangeAppli.status =='SENT FOR APPROVAL' || shiftChangeAppli.status =='SENT FOR CANCELLATION'">
+
+        <div class="remarkcomments">
+          <h2 class="item-note custom-requestApprove"  ng-if="shiftChangeAppli.status == 'APPROVED' ||
+							      shiftChangeAppli.status == 'CANCELLATION APPROVED'" >
+                {{shiftChangeAppli.status}}
+              </h2>
+              <h2 class="item-note custom-requestRejcted" ng-if="shiftChangeAppli.status == 'CANCELLED'" >
+                {{shiftChangeAppli.status}}
+              </h2>
+              <h2 class="item-note custom-requestRejcted" ng-if="shiftChangeAppli.status == 'REJECTED'" >
+                {{shiftChangeAppli.status}}
+              </h2>
+              <h2 class="item-note custom-requestRejcted" ng-if="shiftChangeAppli.status == 'CANCELLATION REJECTED'" >
+                {{shiftChangeAppli.status}}
+              </h2>
+              <h2 class="item-note custom-requestOther" ng-if="shiftChangeAppli.status != 'REJECTED' &&
+                    shiftChangeAppli.status != 'APPROVED' && shiftChangeAppli.status != 'CANCELLED' &&
+                    shiftChangeAppli.status != 'CANCELLATION APPROVED' && shiftChangeAppli.status != 'CANCELLATION REJECTED'" >
+                {{shiftChangeAppli.status}}<br>{{shiftChangeAppli.approvalPendingFrom}}
+              </h2>
+        </div>
+
+
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Date</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{shiftChangeAppli.reqDate|date:'dd/MM/yyyy'}}
+          </div>
+        </div>
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Roaster Shift</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{shiftChangeAppli.rosterShiftName}}
+          </div>
+        </div>
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Shift Change To</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{shiftChangeAppli.changedShiftName}}
+          </div>
+        </div>
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Reason For Shift Change</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{shiftChangeAppli.reasonToChange}}
+          </div>
+        </div>
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{shiftChangeAppli.appRemarks}}
+          </div>
+        </div>
+
+ <!-- <div class="item custom-item custom-padding item-text-wrap">
+          <div class="row custom-row">
+            <div class="col col-80">
+              <ul class="odClaimList">
+                <li>
+                  <b>Date</b>{{shiftChangeAppli.reqDate|date:'dd/MM/yyyy'}}
+                </li>
+                <li>
+                  <b>Roaster Shift</b>{{shiftChangeAppli.rosterShiftName}}
+                </li>
+                <li>
+                  <b>Shift Change To</b>{{shiftChangeAppli.changedShiftName}}
+                </li>
+                <li> <b>Reason For Shift Change</b >{{shiftChangeAppli.reasonToChange}}
+                </li>
+                <li><b>Approver Remarks</b><span>{{shiftChangeAppli.appRemarks}}</span></li>
+              </ul>
+            </div>
+            <div class="col col-20" style="margin-top:5px;">
+              <h2 class="item-note custom-requestApprove"  ng-if="shiftChangeAppli.status == 'APPROVED' ||
+							      shiftChangeAppli.status == 'CANCELLATION APPROVED'" >
+                {{shiftChangeAppli.status}}
+              </h2>
+              <h2 class="item-note custom-requestRejcted" ng-if="shiftChangeAppli.status == 'CANCELLED'" >
+                {{shiftChangeAppli.status}}
+              </h2>
+              <h2 class="item-note custom-requestRejcted" ng-if="shiftChangeAppli.status == 'REJECTED'" >
+                {{shiftChangeAppli.status}}
+              </h2>
+              <h2 class="item-note custom-requestRejcted" ng-if="shiftChangeAppli.status == 'CANCELLATION REJECTED'" >
+                {{shiftChangeAppli.status}}
+              </h2>
+              <h2 class="item-note custom-requestOther" ng-if="shiftChangeAppli.status != 'REJECTED' &&
+                    shiftChangeAppli.status != 'APPROVED' && shiftChangeAppli.status != 'CANCELLED' &&
+                    shiftChangeAppli.status != 'CANCELLATION APPROVED' && shiftChangeAppli.status != 'CANCELLATION REJECTED'" >
+                {{shiftChangeAppli.status}}<br>{{shiftChangeAppli.approvalPendingFrom}}
+              </h2>
+            </div>
+          </div>
+        </div> -->
+      </div>
+
+      <div class="list card customBorderRadius"
+        ng-repeat="shiftChangeAppli in shiftChangeAppliList | filter: searchObj.searchShift | orderBy:'-fromDate'"
+        ng-if="!(shiftChangeAppli.status =='SENT FOR APPROVAL' || shiftChangeAppli.status =='SENT FOR CANCELLATION')" >
+
+
+        <div class="remarkcomments">
+          <h2 class="item-note custom-requestApprove"  ng-if="shiftChangeAppli.status == 'APPROVED' ||  shiftChangeAppli.status == 'CANCELLATION APPROVED'"  >
+            {{shiftChangeAppli.status}}
+          </h2>
+          <h2 class="item-note custom-requestRejcted"  ng-if="shiftChangeAppli.status == 'CANCELLED'" >
+            {{shiftChangeAppli.status}}
+          </h2>
+          <h2 class="item-note custom-requestRejcted" ng-if="shiftChangeAppli.status == 'REJECTED'"  >
+            {{shiftChangeAppli.status}}
+          </h2>
+          <h2 class="item-note custom-requestRejcted" ng-if="shiftChangeAppli.status == 'CANCELLATION REJECTED'"  >
+            {{shiftChangeAppli.status}}
+          </h2>
+          <h2  class="item-note custom-requestOther"
+            ng-if="shiftChangeAppli.status != 'REJECTED' &&
+                shiftChangeAppli.status != 'APPROVED' && shiftChangeAppli.status != 'CANCELLED' &&
+                shiftChangeAppli.status != 'CANCELLATION APPROVED' && shiftChangeAppli.status != 'CANCELLATION REJECTED'" >
+            {{shiftChangeAppli.status}}
+          </h2>
+        </div>
+
+
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Date</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{shiftChangeAppli.reqDate|date: 'dd/MM/yyyy'}}
+          </div>
+        </div>
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Roaster Shift</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{shiftChangeAppli.rosterShiftName}}
+          </div>
+        </div>
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Shift Change To</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{shiftChangeAppli.changedShiftName}}
+          </div>
+        </div>
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Reason For Shift Change</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{shiftChangeAppli.reasonToChange}}
+          </div>
+        </div>
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{shiftChangeAppli.appRemarks}}
+          </div>
+        </div>
+<!-- <div class="item custom-item custom-padding item-text-wrap">
+          <div class="row custom-row">
+            <div class="col col-80">
+              <ul class="odClaimList">
+                <li>
+                  <b>Date</b>{{shiftChangeAppli.reqDate|date: 'dd/MM/yyyy'}}
+                </li>
+                <li>
+                  <b>Roaster Shift</b>{{shiftChangeAppli.rosterShiftName}}
+                </li>
+                <li>
+                  <b>Shift Change To</b>{{shiftChangeAppli.changedShiftName}}
+                </li>
+                <li>
+                  <b>Reason For Shift Change</b >{{shiftChangeAppli.reasonToChange}}
+                </li>
+                <li><b>Approver Remarks</b><span>{{shiftChangeAppli.appRemarks}}</span></li>
+              </ul>
+            </div>
+            <div class="col col-20" style="margin-top:5px;">
+              <h2 class="item-note custom-requestApprove"  ng-if="shiftChangeAppli.status == 'APPROVED' ||  shiftChangeAppli.status == 'CANCELLATION APPROVED'"  >
+                {{shiftChangeAppli.status}}
+              </h2>
+              <h2 class="item-note custom-requestRejcted"  ng-if="shiftChangeAppli.status == 'CANCELLED'" >
+                {{shiftChangeAppli.status}}
+              </h2>
+              <h2 class="item-note custom-requestRejcted" ng-if="shiftChangeAppli.status == 'REJECTED'"  >
+                {{shiftChangeAppli.status}}
+              </h2>
+              <h2 class="item-note custom-requestRejcted" ng-if="shiftChangeAppli.status == 'CANCELLATION REJECTED'"  >
+                {{shiftChangeAppli.status}}
+              </h2>
+              <h2  class="item-note custom-requestOther"
+                ng-if="shiftChangeAppli.status != 'REJECTED' &&
+                    shiftChangeAppli.status != 'APPROVED' && shiftChangeAppli.status != 'CANCELLED' &&
+                    shiftChangeAppli.status != 'CANCELLATION APPROVED' && shiftChangeAppli.status != 'CANCELLATION REJECTED'" >
+                {{shiftChangeAppli.status}}
+              </h2>
+            </div>
+          </div>
+        </div> -->
+      </div>
+
+      <div class="noDataAvailavle" ng-show="IsShiftChangeAccessible == 'true'" ng-if="shiftChangeAppliList.length == 0" >
+        <!-- <center><h4>No Data Available</h4></center> -->
+        <img src="./img/no-result.png" alt="">
+      </div>
+      <br />
+    </div>
+</div>
+    <script id="my-modal-shift-change.html" type="text/ng-template">
+               <ion-modal-view style="height: 400px" class="modal-payslip">
+               <ion-content has-bouncing="false">
+      	<div style="text-align:right;margin-right:8px;" >
+      <img id="imgcrossnoti" ng-src="./img/cross.png" src="./img/cross.png" ng-click="closeModalShiftChange()">
+      </div>
+
+      <div class="row" style="background-color: white">
+               <div class="col" style="color:grey;text-align:center;">
+               <b>{{shiftChangeDetails.fromDate | date : "dd/MM/yyyy"}}</b>
+               </div>
+               </div>
+
+               <div class="row" style="background-color: white;text-align:center;margin-top:-4%;">
+               <div class="col" style="color:grey" >
+               {{shiftChangeDetails.status}}<b ng-if="shiftChangeDetails.status=='SENT FOR APPROVAL'">({{shiftChangeDetails.approvalPendingFrom}})</b>
+               </div>
+               </div>
+
+      <!--  -->
+               <div class="row" style="background-color: white">
+               <div class="col" style="color:grey">
+               <b>Date</b>:
+               </div>
+               <div class="col" style="color:grey">
+               {{shiftChangeDetails.fromDate | date : "dd/MM/yyyy"}}
+               </div>
+               </div>
+
+               <div class="row" style="background-color: white">
+               <div class="col" style="color:grey">
+               <b>Roster Shift</b>:
+               </div>
+               <div class="col" style="color:grey">
+               {{shiftChangeDetails.rosterShiftName}}
+               </div>
+               </div>
+
+               <div class="row" style="background-color: white">
+               <div class="col" style="color:grey">
+               <b>Shift Change To</b>:
+               </div>
+               <div class="col" style="color:grey">
+               {{shiftChangeDetails.changedShiftName}}
+               </div>
+               </div>
+               <div class="row" style="background-color: white">
+               <div class="col" style="color:grey">
+               <b>Reason for Shift Change</b>:
+               </div>
+               <div class="col" style="color:grey">
+               {{shiftChangeDetails.reasonToChange}}
+               </div>
+               </div>
+      <div style="text-align:center;">
+      <br><br>
+      <button class="button  button-positive" style="width:50%;" ng-click="closeModalShiftChange()">
+      Close
+      </button>
+      </div>
+
+               </ion-content>
+               </ion-modal-view>
+    </script>
+
+    <script id="my-modal-attend.html" type="text/ng-template">
+               <ion-modal-view style="height: 400px" class="modal-payslip">
+               <ion-content has-bouncing="false">
+      	<div style="text-align:right;margin-right:8px;" >
+      <img id="imgcrossnoti" ng-src="./img/cross.png" src="./img/cross.png" ng-click="closeModalAttend()">
+      </div>
+
+               <div class="row" style="background-color: white">
+               <div class="col" style="color:grey;text-align:center;">
+               <b>{{missPunchDetails.outTimeDateStr | date : "dd/MM/yyyy"}}</b>
+               </div>
+               </div>
+
+               <div class="row" style="background-color: white;text-align:center;margin-top:-4%;">
+               <div class="col" style="color:grey" >
+               {{missPunchDetails.status}}<b ng-if="missPunchDetails.status=='SENT FOR APPROVAL'">({{missPunchDetails.approvalPendingFrom}})</b>
+               </div>
+               </div>
+
+               <div class="row" style="background-color: white">
+               <div class="col" style="color:grey">
+               <b>Shift</b>:
+               </div>
+               <div class="col" style="color:grey">
+               {{missPunchDetails.shiftAbbr}}
+               </div>
+               </div>
+
+               <div class="row" style="background-color: white" ng-if="missPunchDetails.secondHalf != missPunchDetails.firstHalf">
+               <div class="col" style="color:grey">
+               <b>First Half</b>:
+               </div>
+               <div class="col" style="color:grey">
+               {{missPunchDetails.firstHalf}}
+               </div>
+               </div>
+
+               <div class="row" style="background-color: white" ng-if="missPunchDetails.secondHalf != missPunchDetails.firstHalf">
+               <div class="col" style="color:grey">
+               <b>Second Half</b>:
+               </div>
+               <div class="col" style="color:grey">
+               {{missPunchDetails.secondHalf}}
+               </div>
+               </div>
+
+               <div class="row" style="background-color: white" ng-if="missPunchDetails.secondHalf == missPunchDetails.firstHalf">
+               <div class="col" style="color:grey">
+               <b>Att. Status:</b>
+               </div>
+               <div class="col" style="color:grey">
+               {{missPunchDetails.secondHalf}}
+               </div>
+               </div>
+
+
+
+               <div class="row" style="background-color: white">
+               <div class="col" style="color:grey">
+               <b>Actual Time</b>:
+               </div>
+               <div class="col" style="color:grey">
+               {{missPunchDetails.actualInTimeStr}}&nbsp;-&nbsp;{{missPunchDetails.actualOutTimeStr}}
+      <!--<br>({{missPunchDetails.workingHours}} hrs)-->
+               </div>
+               </div>
+
+
+
+               <div class="row" style="background-color: white">
+               <div class="col" style="color:grey">
+               <b>Modified Time</b>:
+               </div>
+               <div class="col" style="color:grey">
+               {{missPunchDetails.inTimeStr}}&nbsp;-&nbsp;{{missPunchDetails.outTimeStr}}
+      <br>({{missPunchDetails.workedHrs}} hrs)
+               </div>
+               </div>
+
+
+
+               <div class="row" style="background-color: white">
+               <div class="col" style="color:grey">
+               <b>Out Time Date</b>:
+               </div>
+               <div class="col" style="color:grey">
+               {{missPunchDetails.outTimeDateStr | date : "dd/MM/yyyy"}}
+               </div>
+               </div>
+
+               <div class="row" style="background-color: white" ng-if="missPunchDetails.remarks!='OTH'">
+               <div class="col" style="color:grey">
+               <b>Reason</b>:
+               </div>
+               <div class="col" style="color:grey">
+               {{fullRemarks}}
+               </div>
+               </div>
+
+               <div class="row" style="background-color: white" ng-if="missPunchDetails.remarks=='OTH'">
+               <div class="col" style="color:grey">
+               <b>Reason</b>:
+               </div>
+               <div class="col" style="color:grey">
+               {{missPunchDetails.othRemarks}}
+               </div>
+               </div>
+
+
+               <div class="row" style="background-color: white" ng-if="missPunchDetails.applicantComments">
+               <div class="col" style="color:grey">
+               <b>Remarks</b>:
+               </div>
+               <div class="col" style="color:grey">
+               {{missPunchDetails.applicantComments}}
+               </div>
+               </div>
+
+
+               <div ng-if="missPunchDetails.lastAppRemarks.length > 0" class="row" style="background-color: white">
+               <div class="col" style="color:grey">
+               <b>Final Approver Remarks</b>:
+               </div>
+               <div class="col" style="color:grey">
+               {{missPunchDetails.lastAppRemarks}}
+               </div>
+               </div>
+				<div class="form-group row" ng-if="showPunchDetailsFeature=='true'">
+						<label class="col-sm-4 col-xs-4 col-form-label">Punch Details</label><span
+							class="dividerClass">:</span>
+						<div class="col-sm-8 col-xs-8" ng-if="!missPunchDetails.punchStr" 
+						ng-click="getPunches(missPunchDetails.dtHrapiFormatFromDateOD,missPunchDetails.dtHrapiFormatToDateOD,missPunchDetails.empId,$index,'ATTREG')"
+						style="color: blue;">
+						Get Punch Details
+						</div>
+				</div>
+				
+				<div class="form-group row" ng-if="missPunchDetails.punchStr" >
+				<div style="overflow: auto;height:150px;width:100%;">
+						<div class="col-sm-12 col-xs-12" style="white-space: pre-wrap">{{missPunchDetails.punchStr}}
+						</div>
+				</div>		
+				</div>
+				<br>
+      <div  class="row" ng-if="missPunchDetails.geoLocationAddress" style="background-color: white">
+               <div class="col" style="color:grey">
+               <b>Location Address:</b>:
+               </div>
+               <div class="col" style="color:grey" >
+               {{missPunchDetails.geoLocationAddress}}
+               </div>
+
+               </div>
+
+      <div style="text-align:center;">
+      <br><br>
+      <button class="button  button-positive" style="width:50%;" ng-click="closeModalAttend()">
+      Close
+      </button>
+      </div>
+
+               </ion-content>
+               </ion-modal-view>
+    </script>
+  </ion-content>
+</ion-view>
+<script>
+  var sliBtn = '.search-btn',
+      sliCont = '.search-slide',
+      sliTxt = '.search-slide input[type=text]',
+      sliDis = '.search-close',
+      sliSpd = 300;
+
+  $(sliBtn).click(function(){
+
+    $('.recentRecord').css("display", "none").fadeOut(4000);
+    $(sliCont).animate(
+      {'width':'20.5625em'}, sliSpd);
+    $(sliTxt).focus();
+  });
+  $(sliDis).click(function(){
+    setTimeout(function() {
+      $('.recentRecord').css("display", "inline-block");
+}, 1000);
+
+    $(sliCont).animate(
+      {'width':0}, sliSpd);
+  });
+      </script>
+<script>
+
+
+  $(document).ready(function() {
+   $(".center").slick({
+      dots: true,
+      infinite: false,
+      speed: 300,
+      arrows: false,
+      slidesToShow: 4,
+      slidesToScroll: 2,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 4,
+            slidesToScroll: 2,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 4,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 4,
+            slidesToScroll: 2
+          }
+        }
+      ]
+    });
+  });
+</script>
+<script>
+  $(document).ready(function() {
+    $("#approvalCard").hide();
+    $("#ctcClaimListCard").show();
+    $("#ctcSelect").css({ color: "white", background: "#3B5998" });
+  });
+  $("#claimApproval").on("click", function() {
+    $("#approvalCard").show();
+    $("#ctcClaimListCard").hide();
+  });
+  $("#claimApplication").on("click", function() {
+    $("#approvalCard").hide();
+    $("#ctcClaimListCard").show();
+  });
+
+  $("#ctcSelect").on("click", function() {
+    $("#nonCtcSelect").css({ color: "#3B5998", background: "transparent" });
+    $("#travelSelect").css({ color: "#3B5998", background: "transparent" });
+    $("#ltaSelect").css({ color: "#3B5998", background: "transparent" });
+    $("#ctcSelect").css({ color: "white", background: "#3B5998" });
+  });
+  $("#nonCtcSelect").on("click", function() {
+    $("#ctcSelect").css({ color: "#3B5998", background: "transparent" });
+    $("#travelSelect").css({ color: "#3B5998", background: "transparent" });
+    $("#ltaSelect").css({ color: "#3B5998", background: "transparent" });
+    $("#nonCtcSelect").css({ color: "white", background: "#3B5998" });
+  });
+  $("#ltaSelect").on("click", function() {
+    $("#nonCtcSelect").css({ color: "#3B5998", background: "transparent" });
+    $("#ctcSelect").css({ color: "#3B5998", background: "transparent" });
+    $("#travelSelect").css({ color: "#3B5998", background: "transparent" });
+    $("#ltaSelect").css({ color: "white", background: "#3B5998" });
+  });
+
+  $("#travelSelect").on("click", function() {
+    $("#nonCtcSelect").css({ color: "#3B5998", background: "transparent" });
+    $("#ctcSelect").css({ color: "#3B5998", background: "transparent" });
+    $("#ltaSelect").css({ color: "#3B5998", background: "transparent" });
+    $("#travelSelect").css({ color: "white", background: "#3B5998" });
+  });
+</script>

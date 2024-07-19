@@ -1,0 +1,30 @@
+
+.loginImg{
+    height: 50%;
+    width: 50%;
+    margin-top: 15%;
+    margin-left: 27%;
+    margin-bottom: 15%;
+}
+
+.loginName{
+    margin-left: 5%;
+    padding-bottom: 0%;
+}
+
+.loginCard{
+    margin-bottom: 2%;
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.loginButton{
+    margin-left: 30%;
+    margin-right: 30%; 
+    margin-top: 17%;
+}
+.popup-container .popup {
+    text-align: center;
+    border-radius: 10px;
+}

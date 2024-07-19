@@ -1,0 +1,108 @@
+<style>
+    .custom-card {
+        border-radius: 5%;
+        border: 1px solid #007ec1;
+    }
+    .custom-item {
+        border: none;
+    }
+
+    .custom-row {
+        padding: 0px;
+    }
+
+    .cust-col-50 {
+        text-align: center;
+        color: #007ec1;
+    }
+
+    .cust-card {
+        padding: 0px 10px 0px 10px;
+    }
+</style>
+<ion-view>
+    <ion-content has-bouncing="false"  style="overflow-y: auto;bottom:20px;">
+        <!-- <div class="list"> -->
+        <div class="item item-divider custom-item" style="font-size: 20px;">
+            Notification
+        </div>
+        <!-- </div> -->
+        <div class="tabs-striped tabs-top tabs-icon-top tabs-background-positive tabs-color-light">
+            <div class="tabs">
+                <a class="tab-item active" style="padding-top: 10px; font-size: 1em;" href="">
+                    <!-- <i class="icon ion-home"></i> -->
+                    Leave <br/>Application
+                </a>
+                <a class="tab-item" href="" style="padding-top: 10px; font-size: 1em;">
+                    <!-- <i class="icon ion-star"></i> -->
+                    Outdoor <br/>Application
+                </a>
+                <a class="tab-item" href="" style="padding-top: 10px; font-size: 1em;">
+                    <!-- <i class="icon ion-gear-a"></i> -->
+                    Attendance <br/>Regularisation
+                </a>
+            </div>
+        </div>
+        <br/><br/><br/>
+        <p>
+            <!--<button ng-click="openModal()">Open Popover</button>-->
+        </p>
+        <div class="cust-card">
+
+            <div class="list card custom-card" ng-repeat="leave in leaveApplList">
+                <div  ng-click="detailInfoReporty(leave.leaveTransId)" class="item custom-item item-text-wrap">
+                    <h3>Leave from {{leave.leaveFromDate}} to {{leave.leaveToDate}}</h3>
+                    <h5>{{leave.leaveType}}</h5>
+                    <p>{{leave.approveReason}}
+                    </p>
+                    <div class="item custom-item item-avatar">
+                        <!--<img src="mcfly.jpg">-->
+                        <img src="./img/hr.jpg" alt=""/>
+                        <h2>{{leave.name}}</h2>
+                        <p>{{leave.post}}</p>
+                    </div>
+                </div>
+                <!--                <div class="row custom-row">
+                                    <div  ng-click="approvedLeave(leave.leaveTransId)" class="col col-50 cust-col-50">
+                                        Approve
+                                    </div>|
+                                    <div  ng-click="rejectLeave(leave.leaveTransId)"class="col col-50 cust-col-50">
+                                        Decline
+                                    </div>
+                                </div>-->
+            </div>
+        </div>
+        <script id="my-modal.html" type="text/ng-template">
+        <ion-modal-view >
+            <ion-header-bar>
+                <h1 class="title"></h1>
+            </ion-header-bar>
+            <ion-content has-bouncing="false">
+
+                <div class="list card custom-card" >
+                    <div   class="item custom-item item-text-wrap">
+                        <h3>Leave from {{leaveFromDate}} to {{leaveToDate}}</h3>
+                        <h5>{{subject}}</h5>
+                        <p>Status: {{status}}</p>
+                        <p>{{leaveReason}}</p>
+                        <div class="item custom-item item-avatar">
+                            <img src="mcfly.jpg">
+                            <h2>{{name}}</h2>
+                            <p>{{post}}</p>
+                            <p>{{phoneNo}}</p>
+                        </div>
+<!--                        <div class="row custom-row">
+                            <div class="col col-50 cust-col-50">
+                                Approve
+                            </div>|
+                            <div class="col col-50 cust-col-50">
+                                Decline
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+            </ion-content>
+        </ion-modal-view>
+        </script>
+    </ion-content>
+</ion-view>

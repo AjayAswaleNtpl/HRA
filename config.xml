@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.neterson.hralign.3.0.92.1" version="4.0.67" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>HRAlign</name>
+    
+    <description>
+        A sample Apache Cordova application that responds to the deviceready event.
+    </description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Apache Cordova Team
+    </author>
+    <content src="index.html" />
+    <allow-navigation href="http://ionic.local/*" />
+    <access origin="*" />
+    <allow-navigation href="*"/>
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    
+    <preference name="UIWebViewBounce" value="false" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="BackupWebStorage" value="none" />
+    <preference name="SplashMaintainAspectRatio" value="true" />
+    <preference name="FadeSplashScreenDuration" value="300" />
+    <preference name="SplashShowOnlyFirstTime" value="false" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="3000" />
+    <preference name="StatusBarOverlaysWebView" value="true" />
+    <preference name="StatusBarBackgroundColor" value="#bfbfbf" />
+    <preference name="StatusBarStyle" value="lightcontent" />
+    <preference name="android-versionCode" value="204" />
+    <preference name="loadUrlTimeoutValue" value="700000" />
+    <preference name="AndroidPersistentFileLocation" value="Internal" />
+    <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+    <preference name="iosPersistentFileLocation" value="Library" />
+    <preference name="AndroidExtraFilesystems" value="files,files-external,documents,sdcard,root" />
+    <preference name="scheme" value="app" />
+    <preference name="hostname" value="www" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+        
+        <!-- background-geolocation -->
+            <config-file parent="NSLocationAlwaysAndWhenInUseUsageDescription" target="*-Info.plist">
+                <string>Background location for few outdoor employees, you are in control by providing consent</string>
+            </config-file>
+            <config-file parent="NSLocationAlwaysUsageDescription" target="*-Info.plist">
+                <string>For Geotracking, You are in control by providing consent</string>
+            </config-file>
+            <config-file parent="NSLocationWhenInUseUsageDescription" target="*-Info.plist">
+                <string>Background location for few outdoor employees, You are in control by providing consent</string>
+            </config-file>
+            <config-file parent="NSMotionUsageDescription" target="*-Info.plist">
+                <string>Device motion updates help determine when the device is stationary so the app can save power by turning off location-updates</string>
+            </config-file>
+            
+            
+            
+            <config-file parent="NSLocationTemporaryUsageDescriptionDictionary" target="*-Info.plist">
+                        <key>NSLocationTemporaryUsageDescriptionDictionary</key>
+                        <dict>
+                            <key>DemoPurpose</key>
+                            <string>provide high accuracy location-tracking</string>
+                        </dict>
+                    </config-file>
+                    <config-file parent="BGTaskSchedulerPermittedIdentifiers" target="*-Info.plist">
+                        <array>
+                            <string>com.transistorsoft.customtask</string>
+                        </array>
+                    </config-file>
+                    <config-file parent="NSLocationAlwaysAndWhenInUseUsageDescription" target="*-Info.plist">
+                        <string>LOCATION_ALWAYS_AND_WHEN_IN_USE_USAGE_DESCRIPTION</string>
+                    </config-file>
+                    <config-file parent="NSLocationAlwaysUsageDescription" target="*-Info.plist">
+                        <string>LOCATION_ALWAYS_USAGE_DESCRIPTION</string>
+                    </config-file>
+                    <config-file parent="NSLocationWhenInUseUsageDescription" target="*-Info.plist">
+                        <string>LOCATION_WHEN_IN_USE_USAGE_DESCRIPTION</string>
+                    </config-file>
+                    <config-file parent="NSMotionUsageDescription" target="*-Info.plist">
+                        <string>MOTION_USAGE_DESCRIPTION</string>
+                    </config-file>
+                    <config-file parent="BACKGROUND_GEOLOCATION_ENCRYPTION_PASSWORD" target="*-Info.plist">
+                        <string>transistorsoft</string>
+                    </config-file>
+		    <config-file parent="NSCameraUsageDescription" target="*-Info.plist">
+                        <string>TO TAKE SELFIE FOR MOBILE CLOCK IN/OUT.</string>
+                    </config-file>
+		   <config-file parent="NSPhotoLibraryUsageDescription" target="*-Info.plist">
+                        <string>TO SHOW EPLOYEE PIC.</string>
+                    </config-file>
+
+             
+            <!-- /background-geolocation -->
+            <system.webServer>
+                        <httpProtocol>
+                            <customHeaders>
+                                <add name="Access-Control-Allow-Origin" value="*" />
+                                <add name="Access-Control-Allow-Headers" value="Content-Type" />
+                                <add name="Access-Control-Allow-Methods" value="GET, POST, PUT, DELETE, OPTIONS" />
+                            </customHeaders>
+                        </httpProtocol>
+            </system.webServer>
+        
+    </platform>
+</widget>

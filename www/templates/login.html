@@ -1,0 +1,496 @@
+<style>
+    .platform-ios .input-label {
+        display: inline;
+        padding: 7px 10px 7px 0px;
+        max-width: 200px;
+        width: 35%;
+        color: #444;
+        font-size: 16px;
+    }
+
+    .logincheckbox {
+        border-color: transparent;
+        text-align: left;
+        right: auto;
+        background-color: transparent;
+        padding: 3%;
+        padding-left: 50px;
+    }
+
+    .list-inset {
+        overflow: hidden;
+        margin: 5px 10px;
+        border-radius: 2px;
+        background-color: #fff;
+    }
+
+    #homecontent {
+        background: url('./img/hrbg.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+
+    .field-icon {
+        float: right;
+        margin-top: -42px;
+        margin-right: 10px;
+        position: relative !important;
+        z-index: 2;
+        cursor: pointer;
+        pointer-events: initial !important;
+        font-size: 18px !important;
+    }
+
+    /* .contact-form-icon input {
+    width: 94% !important; 
+} */
+    .contact-form-icon input {
+        width: 85% !important;
+        font-size: 14px;
+        height: 28px;
+        z-index: 1;
+        margin-left: 39px;
+        height: 40px;
+    }
+
+    label {
+        text-transform: none !important;
+
+    }
+
+    .loginIcon {
+        padding: 12px 17px !important;
+        border-top-left-radius: 22px;
+        border-bottom-left-radius: 20px;
+    }
+
+    .contact-form-icon input {
+        padding-left: 15px;
+    }
+
+    .login-btn {
+        width: 98% !important;
+    }
+
+    .field-icon.toggle-password {
+        font-size: 17px !important;
+    }
+
+    .showData {
+        margin-right: 0;
+        padding: 8PX;
+    }
+
+    .contact-form-icon .fa {
+        padding: 15px 24px;
+        pointer-events: none;
+        position: absolute;
+        font-size: 16px;
+
+    }
+
+    .contact-form-icon .loginIcon {
+        left: 45px;
+    }
+
+    .brandLogo img {
+        overflow-y: auto;
+        height: 40%;
+        width: 55%;
+        margin: 5%;
+    }
+
+    .loginFormClass {
+        padding: 20px 20px 0px;
+        width: 90%;
+        /* background: #f6f6f7; */
+        background-color: #FFF;
+        border: 1px solid #ccc;
+        border-radius: 50px;
+        opacity: 0.9;
+        filter: alpha(opacity=90);
+        box-shadow: 8px 8px #999;
+    }
+
+    .modal-backdrop.in {
+        opacity: 0 !important;
+        z-index: -1;
+    }
+
+    .modal-header {
+        padding: 10px 10px 0px 10px;
+        border-bottom: 1px solid #e5e5e5;
+        color: #fff;
+    }
+
+    .modal-title {
+        display: inline-block;
+    }
+
+    .needHeader {
+        margin: 0px;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .loginPage input[type="text"],
+    input[type="password"] {
+        border: 1px solid #ccc !important;
+        padding: 6px 12px !important;
+        margin-left: 3.1875em !important;
+    }
+
+    .needHealpClass {
+        font-size: 0.9em;
+    }
+
+    .privacyPolicyClass {
+        font-size: 0.7em;
+        margin-top: 0%;
+    }
+
+    .appVersion {
+        font-size: 0.8em;
+    }
+
+    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+        .contact-form-icon .fa {
+            font-size: 30px;
+        }
+
+        .contact-form-icon input {
+            font-size: 24px;
+        }
+
+        .needHealpClass {
+            font-size: 1.5em;
+        }
+
+        .privacyPolicyClass {
+            font-size: 1.3em;
+            margin-top: 0%;
+        }
+
+        .field-icon {
+            margin-top: -46px;
+            margin-right: 42px;
+        }
+
+        .field-icon.toggle-password {
+            font-size: 28px !important;
+        }
+
+        .contact-form-icon .loginIcon {
+            left: 105px;
+        }
+
+        .loginFormClass {
+            width: 80%;
+        }
+
+        .appVersion {
+            font-size: 1.4em;
+        }
+    }
+</style>
+<script>
+    $(".toggle-password").click(function () {
+        $(this).toggleClass("fa-eye fa-eye-slash");
+        var input = $($(this).attr("toggle"));
+        if (input.attr("type") == "password") {
+            input.attr("type", "text");
+        } else {
+            input.attr("type", "password");
+        }
+    });
+</script>
+
+<ion-view hide-nav-bar="true" class="pane">
+    <ion-content has-bouncing="false" id="homecontent">
+
+             
+        <center>
+            
+            <div ng-show="defaultLognLogo == false">
+            
+          <br><br><br><br>
+          
+        <img  src="./img/Maverik_HCM.png"
+        style="width:35%;height:auto; "  />
+        <img  src="./img/logo_centeralign.png"
+        style="width:35%;height:auto;  "  />
+                </div>
+                
+                
+<!--                    <div class="row" style="height: 150px;">-->
+<!--                     <div class="col col-6" height="auto">-->
+<!--                        <img src="./img/Maverik_HCM.png"/>-->
+<!--<!--                        style="margin-top: 8%;height: auto;width: 88%;"/>-->
+<!--                    </div> -->
+<!--                    <div class="col col-6" height="auto">-->
+<!--                        <img src="./img/logo_centeralign.png"/>-->
+<!--<!--                        style="height: auto;width: 79%;"/>-->
+<!---->
+<!--                    </div>-->
+<!--                </div>-->
+                
+            
+            <div ng-if="defaultLognLogo == true" class="brandLogo">
+                <img src="data:image/png;base64,{{loginPageLogoImg}}" />
+            </div>
+        </center>
+        <br><br><br><br>
+        <center>
+            <div class="loginFormClass">
+                <form name="loginForm" style="margin-top: 20px;">
+                    <div class="form-group contact-form-icon loginPage">
+                        <lable><i class="fa fa-user loginIcon"></i></lable>
+                        <input type="text" class="form-control" name="username" id="username"
+                            ng-model='loginDetails.username' placeholder='Username'>
+                        <span ng-show="loginForm.username.$error.required && loginForm.username.$dirty" ng-cloak>
+                            <font style="color:red;">Username is required</font>
+                        </span>
+                    </div>
+
+                    <div class="form-group contact-form-icon loginPage">
+                        <label for="password" class="sr-only">Password</label>
+                        <lable>
+                            <i class="fa fa-lock loginIcon"></i>
+                        </lable>
+                        <input type='password' class="form-control" id="password" name="password"
+                            ng-model='loginDetails.password' placeholder='Password' />
+                        <span onclick="tpinput();" toggle="#password"
+                            class="fa fa-fw fa-eye-slash field-icon toggle-password"></span>
+                    </div>
+
+
+                    <!-- <div class="list list-inset" style="margin-top: 5%;">
+                        <label class="item item-input" style="background-color:white;border: 1px solid #b3b3b3;">
+                            <input type="text" name="username" id="username" ng-model='loginDetails.username' placeholder='Username'>
+                        </label>
+
+                        <span ng-show="loginForm.username.$error.required && loginForm.username.$dirty" ng-cloak>
+                            <font style="color:red;">Username is required</font></span>
+                    </div>
+                    
+
+                    <div class="list list-inset" style="margin-top: 5%;background-color:white;border: 1px solid #b3b3b3;">
+						<div class="item item-input row">
+						<div class="col-75">
+                        <label >
+                            <input type='password'  id="password" name="password" ng-model='loginDetails.password'
+                             placeholder='Password'style="padding-left:10px"/>
+						</label>	
+						</div>
+						<div class="col-25" >
+						<a  href="" ng-click="tpinput();" >
+                            <img  ng-if="eyeClosed==true" style="margin-right:-16px;width: 30px;   height: 30px;  " 
+                            src="./img/eyecross.png" />
+                            <img  ng-if="eyeClosed==false" style="margin-right:-16px;width: 30px;   height: 30px;  " 
+                            src="./img/eye.png" />
+						</a>							
+						</div>	
+						</div>
+						
+                        <span ng-show="loginForm.password.$error.required && loginForm.password.$dirty" ng-cloak>
+                            <font style="color:red;">Username is required</font></span>
+                    </div> -->
+
+                    <!--            <div class="col col-20" style="float: right">
+                                    <a href="" ng-click="openModal(2)">Settings</a></br></br>
+                                </div>-->
+
+
+                    <!--<ion-checkbox class="logincheckbox" ng-click="setRememberMeFlag()" ng-model="htmlRememberMeFlag" > Remember me</ion-checkbox> -->
+                    <ion-checkbox class="logincheckbox" ng-click="setRememberMeFlag()" ng-checked='true'> Remember
+                        me</ion-checkbox>
+                    <div class="loginButton" style="margin-top: 0%;margin-left: 0%;
+                         margin-right: 0%; ">
+                        <button class="button button-block button-positive" ng-disabled="loginForm.$invalid"
+                            style="width:90%;" ng-click="Login()">
+                            <i class="fa fa-paper-plane" style="margin-right:10px;"></i>&nbsp;Login
+                        </button>
+
+                    </div>
+
+                    <!-- Model -->
+                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Launch demo modal
+              </button> -->
+
+                    <!--  -->
+
+                    <div class="needHealpClass">
+                        <a href="" class="col-60" data-toggle="modal" data-target="#exampleModal"> Need Help
+                            <img class="col-40" style="width:20px;height:20px;" src="./img/help blue.png" />
+                        </a>
+                    </div>
+
+                    <div class="privacyPolicyClass">
+                        By continuing you agree to our <a href="" ng-click="openPP()"
+                            style="font-size:0.8em;color:blue;">Privacy Policy </a>
+                    </div>
+                    <!--<div class="row" style="width:200%;">
+						<div class="col" style="font-size: 0.7em;margin-left: -28%;">
+							<p> By continuing you agree to our </p>
+						</div>
+						<div class="col">
+							<a href="" ng-click="openPP()" style="font-size:0.7em;color:blue;margin-top: -39px;margin-left: 27%;">Privacy Policy
+							</a>
+						</div>	
+					
+					</div>
+					-->
+                    <!--class="col" ng-click="openPP()" style="font-size:0.7em;color:blue;margin-top: -39px;margin-left: 27%;" 
+					style="margin-top: -3%;font-size: 0.7em;margin-left: -28%;"-->
+                            
+                    <!-- <img ng-show="app_product_name =='HRAlign'" class="loginImg" src="./img/logo_centeralign.png" style="padding-top: 7%;
+                      padding-bottom: 7%;margin-bottom: 0%;margin-top: -5%;width: 43%;margin-left: 0%; " /> -->
+                      <br><br>
+                    <img ng-show="app_product_name =='QUBE'" class="loginImg" src="./img/qube_logo.png" style="padding-top: 7%;
+                      padding-bottom: 7%;margin-bottom: 0%;margin-top: -5%;width: 43%;margin-left: 0%; " />
+
+                </form>
+
+                <div class="col col-100" style="margin-top: -2%;">
+                    <p class="appVersion">{{resultObj.appVersion}}</p>
+                </div>
+
+
+            </div>
+        </center>
+        <!-- <script id="forgotPassword.html" type="text/ng-template">
+        <ion-modal-view>
+        <ion-content has-bouncing="false" >
+		
+        <div>
+        <ul class="list">
+		
+        <li class="item" >
+        <div class="row" >
+        <div class="col"><b><center>Here is what you can do...<i class="icon ion-close-circled close-modal"  style="float: right;font-size: 150%;" ng-click="closeModal(1)"></i></center></b>
+
+        </div>
+
+        </div>
+        </li>
+		</ul>
+		<div style="padding-top: 4%;">
+            <b style=" font-size: 16px; margin-left: 15px; ">Reset Password:</b>
+			<br><br>
+        </div>
+        
+        <div class="item-input">
+        <div class="item-input" style="min-width:40%;margin-left: -5%;">Username</div>
+		<div class="item-input">
+		<input type="text" name="username" id="username" ng-model='loginDetails.username'
+		style="margin-left: -8%;margin-right: 14%;width: 35%;background-color:white;border: 1px solid #b3b3b3;padding-left:3px;">
+		</div>
+        </div>
+        
+    
+	
+        <div class="item-input">
+		<span class="item-input" style="min-width: 40%;margin-left: -5%;" aria-label="Date of Birth " id="_label-0">Date of Birth </span>
+       
+		
+		<input id="toDate" type="text" placeholder="dd/mm/yyyy" ng-click="setFromDate()" ng-readonly="true" ng-model="resultObj.birthDate" required="" class="ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" readonly="readonly" style="width: 40%;background-color:white;border: 1px solid #b3b3b3;padding-left:3px;">
+		
+       
+        <i class="ion-calendar" id="toDateIcon" ng-click="setFromDate()" style="font-size: 193%;padding-left: 6%; padding-right: 6%;">
+		</i>&nbsp;&nbsp</div>
+        
+        
+        <center><button class="button  button-positive" ng-disabled="!resultObj.birthDate" ng-click="validDOB()" style="margin-top:8px;">
+        Reset Password
+        </button></center>
+        </div>
+		
+		<br><hr>
+		
+		<div class="row">
+			<div class="col col-78">
+				<div style="padding-top: 12%;">
+					<b style=" font-size: 16px; margin-left: 5%; ">Connection URL</b>
+				</div>
+			</div>
+			<div class="col col-22">
+				<a  ng-click="changeUrl()"  class="button" style="background-color:white;color:red;margin-top:9%"> 
+					<img  style="width:30px;height:30px;" src="./img/edit.png" />
+				</a>
+			</div>		
+		</div>
+		
+		<div>
+			<button class="button button-full" disabled style="color: black; text-align:left;margin-left: 2%;color: black;text-align: left;margin-top: -8%; ">
+				{{resultObj.BaseUrl}}
+			</button>
+		</div>		
+		
+		
+        
+    </ion-content>
+	</ion-modal-view>
+    </script> -->
+    </ion-content>
+</ion-view>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Here is what you can do...</h5>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button> -->
+                <i class="icon ion-close-circled close-modal" style="float: right;font-size: 150%;" data-dismiss="modal"
+                    aria-label="Close"></i>
+            </div>
+            <div class="modal-body">
+                <p class="text-center needHeader">Reset Password</p>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-xs-4 col-form-label">Username</label><span class="dividerClass">:</span>
+                    <div class="col-sm-8 col-xs-8">
+                        <input type="text" name="username" class="form-control" id="username"
+                            ng-model='loginDetails.username'>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-xs-4 col-form-label">Date of Birth </label><span
+                        class="dividerClass">:</span>
+                    <div class="col-sm-6 col-xs-6">
+                        <input id="toDate" type="text" placeholder="dd/mm/yyyy" ng-click="setFromDate()"
+                            ng-readonly="true" ng-model="resultObj.birthDate" required=""
+                            class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+                            readonly="readonly">
+                    </div>
+                    <div class="col-sm-2 col-xs-2">
+                        <i style="padding-left: 3%; font-size: 193%;" id="toDateIcon" ng-click="setFromDate()"
+                            class="ion-clock">&emsp;</i>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary mr-10" ng-disabled="!resultObj.birthDate" ng-click="validDOB()">
+                        <i class="fa fa-undo mr-5" aria-hidden="true"></i> Reset Password</button>
+                </div>
+
+                <br>
+
+                <p class="text-center needHeader">Connection URL</p>
+                <div class="form-group row">
+                    <div class="col-sm-10 col-xs-10">
+                        <div class="form-control" style="height: auto;">{{resultObj.BaseUrl}}</div>
+                    </div>
+                    <div class="col-sm-2 col-xs-2">
+                        <span ng-click="changeUrl()">
+                            <i class="fa fa-pencil-square" style="font-size: 33px; color: #7d7d7d;"></i>
+                            <!-- <img  style="width:30px;height:30px;" src="./img/edit.png" /> -->
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

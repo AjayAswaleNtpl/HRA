@@ -1,0 +1,131 @@
+<style>
+	.col-xs-2, .col-xs-4,col-xs-8 {
+    padding: 5px !important;
+}
+.form-group {
+    margin-bottom: 15px !important;
+}
+</style>
+<ion-view  ng-controller="settingCtrl">
+    <ion-content has-bouncing="false"  style="overflow-y: auto;">
+		<!-- <div class="custom-header" style="margin-bottom: 40px;padding: 0px;padding-left: 15px;padding-top: 10px;margin-top:-8px;">
+				<h4 class="custom-header" style="margin-top: 8px;"><b>Settings</b></h4> </div> -->
+
+				<div class="custom-header" style="padding-top: 46px;">
+					<h4 class="subHeaderClass" style="margin: 0px;"><b>Settings</b></h4>
+				   </div>			
+
+		<!-- <div>
+            <b style=" font-size: 16px; margin-left: 15px; ">Theme</b>
+        </div>
+		
+		<div>
+		<select class="item item-input" ng-options="theme.url as theme.name for theme in themes" ng-change="changeTheme(theme)" 
+		 ng-model="theme"  style="width: 85%;    margin-left: 4%;margin-top:3%;"	>
+        </select>
+		</div> -->
+		<br><br>
+		<div class="form-group row">
+			<label  class="col-sm-4 col-xs-4 col-form-label">Theme </label><span class="dividerClass">:</span>
+			<div  class="col-sm-8 col-xs-8">
+				<select class="form-control" ng-options="theme.url as theme.name for theme in themes" 
+				ng-change="changeTheme(theme)" 	ng-model="theme" >
+			   </select>
+			</div>
+		  </div>
+		
+
+        <!-- <div style="padding-top: 4%;font-size: 16px;    padding-top: 4%;    font-size: 16px;    margin-left: 2%;">
+		<div class="row">
+		<div class="col col-40">
+		<b>Show Hints</b>
+		</div>
+		<div class="col col-60">
+			<label class = "toggle toggle-positive"  ng-click="toggleChange()"
+			style="margin-left: 56%;    margin-top: -4%;">
+				<input type = "checkbox" ng-checked='toggleHintValue'/>
+				<div class = "track">
+					<div class = "handle">
+					</div>
+				</div>				
+			</label>
+		</div>		
+		</div>
+		</div> -->
+		<div class="form-group row">
+			<label  class="col-sm-4 col-xs-4 col-form-label">Show Hints </label><span class="dividerClass">:</span>
+			<div  class="col-sm-8 col-xs-8">
+				<label class = "toggle toggle-positive"  ng-click="toggleChange()"
+				style="margin-left: 56%;    margin-top: -4%;">
+					<input type = "checkbox" ng-checked='toggleHintValue'/>
+					<div class = "track">
+						<div class = "handle">
+						</div>
+					</div>				
+				</label>
+			</div>
+		  </div>
+		  <!-- <div class="form-group row">
+			<label  class="col-sm-3 col-xs-3 col-form-label">Connection URL </label><span class="dividerClass">:</span>
+			<div  class="col-sm-8 col-xs-8">
+				<span class="form-control">
+					{{resultObj.BaseUrl}}</span>
+			</div>
+			<div  class="col-sm-1 col-xs-1">
+				<a  ng-click="changeUrl()"  class="button" style="background-color:white;color:red;margin-top:9%;border:none;"> 
+					<img  style="width:30px;height:30px;" src="./img/edit.png" />
+				</a>
+			</div>
+		  </div> -->
+		  <div class="form-group">
+			<label class="col-sm-4 col-xs-4 col-form-label">Connection URL </label><span class="dividerClass">:</span>
+			<div class="col-sm-12 col-xs-12">
+				<div class="col-sm-10 col-xs-10">
+				
+					<div class="form-control" style="height: auto;">{{resultObj.BaseUrl}}</div>
+				</div>
+				<div class="col-sm-2 col-xs-2">
+					<span  ng-click="changeUrl()">
+						<!-- <img  style="width:30px;height:30px;" src="./img/edit.png" /> -->
+						<i class="fa fa-pencil-square" style="font-size: 33px; color: #7d7d7d;"></i>
+					</span>
+				
+				</div>
+			</div>
+			</div>
+		
+		<!-- <div class="row">
+			<div class="col col-78">
+				<div style="padding-top: 12%;">
+					<b style=" font-size: 16px; margin-left: 5%; ">Connection URL</b>
+				</div>
+			</div>
+			<div class="col col-22">
+				<a  ng-click="changeUrl()"  class="button" style="background-color:white;color:red;margin-top:9%;border:none;"> 
+					<img  style="width:30px;height:30px;" src="./img/edit.png" />
+				</a>
+			</div>		
+		</div>
+		
+		<div>
+			<button class="button button-full" disabled style="color: black; text-align:left;margin-left: 2%;color: black;text-align: left;margin-top: -8%; 
+			background:white;">
+				{{resultObj.BaseUrl}}
+			</button>
+		</div>		 -->
+		
+
+		
+			<center>
+			<div>
+				<br>
+				<hr>
+                <p class="ng-binding" style="padding-top: 5%;">App : {{resultObj.appVersion}}  &nbsp;&nbsp;|&nbsp;&nbsp;  DB : {{dbVersion}}  &nbsp;&nbsp;|&nbsp;&nbsp;  Domain : {{appVersion}}</p>
+            </div>
+			</center>
+			
+			
+	
+ 
+    </ion-content>
+</ion-view>

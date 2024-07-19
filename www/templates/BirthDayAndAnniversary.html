@@ -1,0 +1,255 @@
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+<style>
+    .custom-item {
+        border: none;
+    }
+
+    .custom-row {
+        padding: 0px;
+    }
+
+    .custom-paddingBottom
+    {
+        padding: 10px;
+        padding-bottom: 0px;
+    }
+    .cust-col-50 {
+        text-align: center;
+        color: #007ec1;
+    }
+
+     .cust-card {
+        padding: 50px 0px 0px 0px;
+    }
+    .has-header {
+        top: 0px;
+    }
+    .cardImg img{
+    max-width: 70px;
+    max-height: 70px;
+    border-radius: 50%;
+}
+.modal-payslip h2 {
+    margin: 0 0 2px 0;
+    font-size: 16px;
+    font-weight: normal;
+}
+</style>
+<ion-view >
+    <ion-content has-bouncing="false"  style="overflow-y: auto;">
+
+        <div  id="tabhead" class="tabs-striped tabs-top tabs-icon-top tabs-clear">
+            <div class="tabs" style="margin-top: 25px;top: 65px;">
+                <a  id='tabBirthdays' class="tab-item " ng-click="showBirthDay()"  style="margin-top: 5px;padding-top: 10px; font-size: 1em;" href="">
+                    Birthdays
+                </a>
+                <a  id='tabAnniversaries'  class="tab-item" ng-click="showAnniversay()" href="" style="margin-top: 5px;padding-top: 10px; font-size: 1em;">
+                    Anniversaries
+                </a>
+				<a  id='tabWorkAni'  class="tab-item" ng-click="showWorkAni()" href="" style="margin-top: 5px;padding-top: 10px; font-size: 1em;">
+                    Work <br>Anniversaries
+                </a>
+            </div>
+        </div>
+
+
+        <div id="birthDayList" class="cust-card" >
+            <!-- <div>
+                <div class="custom-header" style="font-size: 20px;margin-bottom: 25px;padding: 0px;padding-left: 15px;padding-top: 10px;margin-top:-8px;">
+				<h4 class="custom-header" style="margin-top: 0px;"><b>Celebrations</b></h4> </div>
+            </div> -->
+            <div class="custom-header" style="padding-top: 2px;">
+                <h4 class="subHeaderClass" style="margin: 0px;">  <b>Celebrations</b></h4>
+               </div>
+            <br><br><br><br>
+            <!-- <div ng-if="bdayList.length > 0" class="list card modal-payslip"
+                 ng-repeat="bday in bdayList | limitTo :dirctLimit">
+                <div class="item custom-item item-text-wrap" style=" padding: 0px;">
+                    <div class="item custom-item item-avatar">
+                        <img ng-if="bday.profilePhoto" ng-src="{{bday.profilePhoto}}{{bday.empId}}" style="max-width: 70px;  max-height: 70px;">
+                        <img ng-if="!bday.profilePhoto && bday.gender == 'M'" ng-src="./img/Male.png" style="max-width: 70px;  max-height: 70px;">
+                        <img ng-if="!bday.profilePhoto && bday.gender == 'F'" ng-src="./img/Female.png" style="max-width: 70px;  max-height: 70px;">
+                        <div style="padding-left: 18%">
+                            <p ng-show="bday.dobMonth">{{bday.dobMonth| date:'dd MMM'}} <br>Happy Birthday <img ng-src="./img/bday.png" style="float:right"/></p>
+                            <p ng-hide="bday.dobMonth">{{bday.dateOfBirth| date:'dd MMM'}} <br>Happy Birthday <img ng-src="./img/bday.png" style="float:right"/></p>
+                            <h2>{{bday.empName}}</h2>
+                          
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+         
+            <div  ng-if="bdayList.length > 0"  ng-repeat="bday in bdayList | limitTo :dirctLimit" 
+                class="list card modal-payslip" style=" padding: 10px 0;">
+                <div class="form-group row">
+				<!--<h2>{{bday.name}}</h2> -->
+                <label  class="col-sm-3 col-xs-3 col-form-label cardImg">
+                    <img ng-if="bday.profilePhoto" ng-src="{{bday.profilePhoto}}{{bday.empId}}" >
+                    <img ng-if="!bday.profilePhoto && bday.gender == 'M'" ng-src="./img/Male.png">
+                    <img ng-if="!bday.profilePhoto && bday.gender == 'F'" ng-src="./img/Female.png">
+                </label>
+                <div  class="col-sm-7 col-xs-7">
+                    <div ng-show="bday.dobMonth">
+                        <h2>{{bday.dobMonth| date:'dd MMM'}}</h2>
+                        <h2>Happy Birthday</h2>
+						<h2>{{bday.empName}}</h2>
+                    </div>
+                    <div ng-hide="bday.dobMonth">
+                        <h2>{{bday.dateOfBirth| date:'dd MMM'}}</h2>
+                        <h2>Happy Birthday</h2>
+                        <h2>{{bday.empName}}</h2>
+                    </div>
+                    <!-- <p ng-show="bday.dobMonth">{{bday.dobMonth| date:'dd MMM'}} 
+                        <br>Happy Birthday <img ng-src="./img/bday.png" style="float:right"/></p>
+                    <p ng-hide="bday.dobMonth">{{bday.dateOfBirth| date:'dd MMM'}} 
+                        <br>Happy Birthday <img ng-src="./img/bday.png" style="float:right"/></p>
+                    <h2>{{bday.empName}}</h2> -->
+                </div >
+               <div class="col-sm-2 col-xs-2">
+                <img ng-src="./img/bday.png"/>
+               </div>
+              </div>
+            </div>
+            <center>
+                <a ng-if="bdayList.length >50 && && isLoadMore" 
+                    href="" class="col" ng-click="loadMore()"
+                    style="padding-bottom: 4%; font-size: 17px;">Show More</a>
+            </center>
+            <br>
+            <div class="list card modal-payslip" ng-if="bdayList.length == 0">
+                <div   class="item custom-item custom-paddingBottom item-text-wrap">
+                    <div class="row custom-row" >
+                        <div class="col col-100" style="padding-bottom: 15px;">
+                            <h4>No Birthdays</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+         <div id="anniversayList" class="cust-card">
+            <!-- <div>
+                <div class="custom-header" style="font-size: 20px;margin-bottom: 25px;padding: 0px;padding-left: 15px;padding-top: 10px;margin-top:-8px;">
+				<h4 class="custom-header"  style="margin-top: 0px;"><b>Celebrations</b></h4> </div>
+            </div> -->
+            <div class="custom-header" style="padding-top: 2px;">
+                <h4 class="subHeaderClass" style="margin: 0px;">  <b>Celebrations</b></h4>
+               </div>
+            <br><br><br><br>
+            <!-- <div ng-if="anniversaryList.length > 0" class="list card modal-payslip" 
+                ng-repeat="anniversary in anniversaryList | limitTo :anniverLimit">
+                <div class="item custom-item item-text-wrap" style=" padding: 0px;">
+                    <div class="item custom-item item-avatar">
+                        <img ng-if="anniversary.profilePhoto" ng-src="{{anniversary.profilePhoto}}{{anniversary.empId}}" style="max-width: 70px;  max-height: 70px;">
+                        <img ng-if="!anniversary.profilePhoto && anniversary.gender == 'M'" ng-src="./img/Male.png" style="max-width: 70px;  max-height: 70px;">
+                        <img ng-if="!anniversary.profilePhoto && anniversary.gender == 'F'" ng-src="./img/Female.png" style="max-width: 70px;  max-height: 70px;">
+                        <div style="padding-left: 18%">
+                            <p>{{anniversary.weddingDate| date:'dd MMM'}}
+                                 <br> Happy Anniversary <img ng-src="./img/anny.png" style="float:right"/></p>
+                            <h2>{{anniversary.empName}}</h2>
+                          
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <div  class="list card modal-payslip" style=" padding: 10px 0;" ng-if="anniversaryList.length > 0"  ng-repeat="anniversary in anniversaryList | limitTo :anniverLimit">
+            <div  class="form-group row">
+                <label  class="col-sm-3 col-xs-3 col-form-label cardImg">
+                    <img ng-if="anniversary.profilePhoto" ng-src="{{anniversary.profilePhoto}}{{anniversary.empId}}">
+                    <img ng-if="!anniversary.profilePhoto && anniversary.gender == 'M'" ng-src="./img/Male.png" >
+                    <img ng-if="!anniversary.profilePhoto && anniversary.gender == 'F'" ng-src="./img/Female.png">
+                </label>
+                <div  class="col-sm-7 col-xs-7">
+                    <h2>{{anniversary.weddingDate| date:'dd MMM'}}</h2>
+                    <h2>Happy Anniversary</h2>
+					<h2>{{anniversary.empName}}</h2>
+               </div >
+               <div class="col-sm-2 col-xs-2">
+                <img ng-src="./img/anny.png"/>
+               </div>
+              </div>
+              </div>
+            <center>
+                <a ng-if="anniversaryList.length >50 && isLoadMoreAnn" 
+                    href="" class="col" ng-click="loadMoreAnn()"
+                    style="padding-bottom: 4%; font-size: 17px;">Show More</a>
+            </center>
+            <br>
+            <div class="list card modal-payslip" ng-if="anniversaryList.length == 0">
+                <div   class="item custom-item custom-paddingBottom item-text-wrap">
+                    <div class="row custom-row" >
+                        <div class="col col-100" style="padding-bottom: 15px;">
+                            <h4>No Anniversaries</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <div id="workaniList" class="cust-card">
+            <!-- <div>
+                <div class="custom-header" style="font-size: 20px;margin-bottom: 25px;padding: 0px;padding-left: 15px;padding-top: 10px;margin-top:-8px;">
+				<h4 class="custom-header" style="margin-top: 0px;"><b>Celebrations</b></h4> </div>
+            </div> -->
+            <div class="custom-header" style="padding-top: 2px;">
+                <h4 class="subHeaderClass" style="margin: 0px;">  <b>Celebrations</b></h4>
+               </div>
+            <br/> <br/> <br/><br/>
+            <!-- <div ng-if="workaniList.length > 0" class="list card modal-payslip"
+                 ng-repeat="workanniversary in workaniList | limitTo :workanniverLimit">
+                <div class="item custom-item item-text-wrap" style=" padding: 0px;">
+                    <div class="item custom-item item-avatar">
+                        <img ng-if="workanniversary.profilePhoto" ng-src="{{workanniversary.profilePhoto}}{{workanniversary.empId}}" style="max-width: 70px;  max-height: 70px;">
+                        <img ng-if="!workanniversary.profilePhoto && workanniversary.gender == 'M'" ng-src="./img/Male.png" style="max-width: 70px;  max-height: 70px;">
+                        <img ng-if="!workanniversary.profilePhoto && workanniversary.gender == 'F'" ng-src="./img/Female.png" style="max-width: 70px;  max-height: 70px;">
+						<img ng-if="!workanniversary.profilePhoto && workanniversary.gender != 'F' && workanniversary.gender != 'M'" ng-src="./img/blankemp.jpg" style="max-width: 70px;  max-height: 70px;">
+                        <div style="padding-left: 18%">
+                            <p>{{workanniversary.workDate | date:'dd MMM'}} <br> Happy Work Anniversary <img ng-src="./img/workanny.png" style="float:right"/></p>
+                            <h2>{{workanniversary.empName}}</h2>
+                         
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            
+            <div ng-if="workaniList.length > 0"   class="list card modal-payslip" style=" padding: 10px 0;"
+                ng-repeat="workanniversary in workaniList | limitTo :workanniverLimit">
+                <div class="form-group row" >
+                <label  class="col-sm-3 col-xs-3 col-form-label cardImg">
+                    
+                    <img ng-if="workanniversary.profilePhoto" ng-src="{{workanniversary.profilePhoto}}{{workanniversary.empId}}" >
+                    <img ng-if="!workanniversary.profilePhoto && workanniversary.gender == 'M'" ng-src="./img/Male.png" >
+                    <img ng-if="!workanniversary.profilePhoto && workanniversary.gender == 'F'" ng-src="./img/Female.png">
+                    <img ng-if="!workanniversary.profilePhoto && workanniversary.gender != 'F' && workanniversary.gender != 'M'" ng-src="./img/blankemp.jpg">
+                </label>
+                <div  class="col-sm-7 col-xs-7">
+                   <!-- <h2>{{workanniversary.workDate | date:'dd MMM'}}</h2> -->
+                   <h2>{{workanniversary.workDt}}</h2>
+                        <h2>Happy Work Anniversary</h2>
+						<h2>{{workanniversary.empName}}</h2>
+                     </div >
+               <div class="col-sm-2 col-xs-2">
+                <img ng-src="./img/workanny.png" />
+               </div>
+              </div>
+              </div>
+            <center>
+                <a ng-if="workaniList.length >50 && isLoadMoreWorkAnn" 
+                    href="" class="col" ng-click="loadMoreWorkAnn()"
+                    style="padding-bottom: 4%; font-size: 17px;">Show More</a>
+            </center>
+            <br>
+            <div class="list card modal-payslip" ng-if="workaniList.length == 0">
+                <div   class="item custom-item custom-paddingBottom item-text-wrap">
+                    <div class="row custom-row" >
+                        <div class="col col-100" style="padding-bottom: 15px;">
+                            <h4>No Work Anniversaries</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><br>		
+    </ion-content>
+</ion-view>

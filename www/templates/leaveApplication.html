@@ -1,0 +1,311 @@
+<style>
+    .col-xs-2 {
+    padding: 0 !important;
+}
+.row {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+label {
+    font-weight: normal !important;
+}
+ .col-xs-4, .col-sm-4 {
+    padding: 0 4px !important;
+}
+</style>
+
+<ion-view>
+    <!-- <ion-nav-bar class="bar-stable" style="background-color: white">
+        <ion-nav-buttons side="left">
+            <button class="button button-clear" ng-click="redirectOnLeave()">
+                <i class="icon ion-ios-arrow-back"></i>
+                Back</button>
+        </ion-nav-buttons>
+
+    </ion-nav-bar> -->
+    <div class="bar bar-footer hide-on-keyboard-open" style="background-color:#000; background-size: 100% 0px;">
+        <div class="title" style="height: 20px;">
+            <h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px; margin-bottom: 5px;">Powered by HR Align</h6>
+        </div>
+    </div>
+    <ion-content has-bouncing="false" class="item-divider grayBackColor" style="overflow-y: auto;">
+        <div class="custom-header" style="padding-top: 0px;padding-bottom: 0px;">
+            <h4 class="subHeaderClass" style="margin: 0px;"> <span class="backIcon">
+              <i class="icon ion-ios-arrow-back" ng-click="redirectOnBack()"></i></span>
+               <b style="vertical-align: super;">Leave Application</b></h4>
+           </div>
+        <!-- <div class="custom-header" style="padding-top: 0px;padding-bottom: 0px;">
+            <h4 class="subHeaderClass" style="margin: 0px;"> <span ng-click="redirectOnBack()" class="backIcon">
+              <i class="icon ion-ios-arrow-back"></i></span> <b style="vertical-align: super;">Leave Application</b></h4>
+        </div> -->
+        <form name="credentialsForm">
+
+            <div class="cardList">
+                <!-- <div class="item item-input">
+                    <span class="input-label"  style="min-width: 40%; margin-left: -10px;font-weight: normal;">&nbsp;From Date : </span>
+                    <input style="padding-left:0px;padding-right:0px;background-color:white;border: 1px solid #b3b3b3;text-align:center;width:120px" ng-click="setFromDate()" id="fromDate" type="text" ng-model="resultObj.leaveFromDate" ng-readonly="true" required/>
+                    <i style="padding-left: 5%;font-size: 193%;" ng-click="setFromDate()" class="ion-calendar">&emsp;</i>
+                </div> -->
+
+
+                <div class="form-group row">
+                    <label  class="col-sm-4 col-xs-4 col-form-label">From Date  </label><span class="dividerClass">:</span>
+                    <div  class="col-sm-6 col-xs-6">
+                      <input type="text" class="form-control" ng-click="setFromDate()" id="fromDate" ng-model="resultObj.leaveFromDate" ng-readonly="true" required/>
+                    </div >
+                   <div class="col-sm-2 col-xs-2">
+                    <i style="padding-left: 3%; font-size: 193%;"  ng-click="setFromDate()" class="ion-calendar">&emsp;</i>
+                   </div>
+                  </div>
+
+                <div ng-if="resultObj.fromLeaveType == 'Short Leave' || resultObj.fromLeaveType == 'Hourly Leave' ">
+                    <!-- <div class="item item-input">
+                        <span class="input-label" style="min-width: 40%; margin-left: -10px;font-weight: normal;">&nbsp;From Time : </span>
+                        <input style="padding-left:5px;background-color:white;border: 1px solid #b3b3b3;text-align:left;" 
+                        ng-click="setFromTime()" id="toDate" type="text" ng-model="resultObj.fromLvHr" ng-readonly="true" required />
+                        <i style="padding-left: 3%; font-size: 193%;" ng-click="setFromTime()" class="ion-clock">&emsp;</i>
+                    </div> -->
+                    <div class="form-group row">
+                        <label  class="col-sm-4 col-xs-4 col-form-label">From Time </label><span class="dividerClass">:</span>
+                        <div  class="col-sm-6 col-xs-6">
+                          <input class="form-control" 
+                          ng-click="setFromTime()" id="toDate" type="text" ng-model="resultObj.fromLvHr" ng-readonly="true" required />
+                        </div >
+                       <div class="col-sm-2 col-xs-2">
+                        <i style="padding-left: 3%; font-size: 193%;"  ng-click="setFromTime()" class="ion-calendar">&emsp;</i>
+                       </div>
+                      </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-4 col-xs-4" ng-repeat="(key, value) in listOfdays">
+                        <input id="{{key + value}}" class="customRadio" type="radio" ng-model="resultObj.fromLeaveType" value="{{key}}" ng-click="fromToTypeCondition(resultObj.fromLeaveType)"
+                               />
+                        <label for="{{key + value}}" class=" button-positive" style="width: 100%;padding: 2% 5%;">{{value}}</label>
+                    </div>
+                </div>
+                <!-- <div class="item item-input">
+                    <span class="input-label" style="min-width: 40%; margin-left: -10px;font-weight: normal;">&nbsp;To Date : </span>
+                    <input style="padding-left:0px;padding-right:0px;background-color:white;border: 1px solid #b3b3b3;text-align:center;width:120px" 
+                    ng-click="setToDate()" id="toDate" type="text" ng-model="resultObj.leaveToDate" required ng-readonly="true" />
+                    <i style="padding-left: 5%; font-size: 193%;" ng-click="setToDate()" class="ion-calendar">&emsp;</i>
+                </div> -->
+
+                <div class="form-group row">
+                    <label  class="col-sm-4 col-xs-4 col-form-label">To Date </label><span class="dividerClass">:</span>
+                    <div  class="col-sm-6 col-xs-6">
+                      <input class="form-control"  ng-click="setToDate()" id="toDate" type="text" ng-model="resultObj.leaveToDate" required ng-readonly="true" />
+                    </div >
+                   <div class="col-sm-2 col-xs-2">
+                    <i style="padding-left: 3%; font-size: 193%;"  ng-click="setToDate()" class="ion-calendar">&emsp;</i>
+                   </div>
+                  </div>
+
+                <div ng-if="resultObj.toLeaveType == 'Short Leave' || resultObj.fromLeaveType == 'Hourly Leave' ">
+                    <!-- <div class="item item-input">
+                        <span class="input-label" style="min-width: 32%; margin-left: -10px;font-weight: normal;">&nbsp;To Time :</span>
+                        <input style="padding-left:5px;background-color:white;border: 1px solid #b3b3b3;text-align:left;" 
+                        ng-click="setToTime()" id="toDate" type="text" ng-model="resultObj.toLvHr" ng-readonly="true" required />
+                        <i style="padding-left: 3%; font-size: 193%;" ng-click="setToTime()" class="ion-clock">&emsp;</i>
+                    </div> -->
+                    <div class="form-group row">
+                        <label  class="col-sm-4 col-xs-4 col-form-label">To Time </label><span class="dividerClass">:</span>
+                        <div  class="col-sm-6 col-xs-6">
+                          <input type="text" class="form-control" 
+                          ng-click="setToTime()" id="toDate" type="text" ng-model="resultObj.toLvHr" ng-readonly="true" required />
+                        </div >
+                       <div class="col-sm-2 col-xs-2">
+                        <i style="padding-left: 3%; font-size: 193%;"  ng-click="setToTime()" class="ion-calendar">&emsp;</i>
+                       </div>
+                      </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-4 col-xs-4" ng-repeat="(key, value) in listOfdays">
+                        <input ng-disabled="(resultObj.leaveFromDate == resultObj.leaveToDate) || (!resultObj.leaveFromDate && !resultObj.leaveToDate)"
+                               id="{{key}}" class="customRadio" type="radio" ng-model="resultObj.toLeaveType" value="{{key}}" ng-click="tempFunction()"
+                               />
+                        <label for="{{key}}" style="width: 100%;padding: 2% 5%;">{{value}}</label>
+                    </div>
+                </div>
+                <!-- <div ng-disabled="isValidateForLeave" class="item item-input item-select">
+                    <div class="input-label " style=" margin-left: -5px;font-weight: normal;">Leave Type:</div>
+                    <select id="members" style="padding-left: 2%;" class="form-control item-select select" ng-change="getBalLeave()" name="LeaveType" ng-options="listobj.leaveTypeId as listobj.leaveType for listobj in listOfLeave" ng-model="resultObj.leaveTypeId">
+                        <option value="">Please Select</option>
+                    </select>
+                </div> -->
+                <div class="form-group row">
+                    <label  class="col-sm-4 col-xs-4 col-form-label">Leave Type </label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8">
+                        <select id="members" class="form-control item-select select" ng-change="getBalLeave()" name="LeaveType" ng-options="listobj.leaveTypeId as listobj.leaveType for listobj in listOfLeave" ng-model="resultObj.leaveTypeId">
+                            <option value="">Please Select</option>
+                        </select>
+                    </div >
+                  
+                  </div>
+				<!--
+                <div class="row" ng-if="isUpload == true">
+                    <span class="col col-50" style="font-weight: normal;">
+                        Document Upload :
+                    </span>
+                    <div class="col col-50">
+                        <button ng-click="openFilePicker()" style="width: 60%;">Choose File</button>
+                        <p ng-if="!selectedFileName" style="margin-right: 2%;">No file chosen</p>
+                        <p style="margin-right: 2%;">{{firstChar| limitTo: 10 }} {{firstChar.length > 10 ? '...' : ''}} {{firstChar| limitTo:-7}}</p>
+                    </div>
+                </div>
+				-->
+                <!-- <div class="row">
+                    <span class="col col-50" style="font-weight: normal;">
+                        Leave Balance : 
+                    </span>
+                    <div class="col col-50">
+                        <p style="align-content: center;">{{dataBuffer.leaveBalance}}</p>
+                    </div>
+                </div> -->
+                <div class="form-group row">
+                    <label  class="col-sm-4 col-xs-4 col-form-label">Leave Balance </label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8">
+                        <p style="align-content: center;">{{dataBuffer.leaveBalance}}</p>
+                    </div>
+                  
+                  </div>
+
+                <!-- <div class="row" ng-hide="resultObj.fromLeaveType == 'Short Leave'">
+                    <span class="col col-50" style="font-weight: normal;">
+                        Leave Applied for : 
+                    </span>
+                    <div class="col col-50">
+                        <p ng-if="dataBuffer.noDaysCounted && dataBuffer.noDaysCounted == 1" style="align-content: center;">{{dataBuffer.noDaysCounted}} day</p>
+                        <p ng-if="dataBuffer.noDaysCounted && dataBuffer.noDaysCounted != 1" style="align-content: center;">{{dataBuffer.noDaysCounted}} days</p>
+                    </div>
+                </div> -->
+                <div class="form-group row" ng-hide="(resultObj.fromLeaveType == 'Short Leave' || resultObj.fromLeaveType == 'Hourly Leave')">
+                    <label  class="col-sm-4 col-xs-4 col-form-label">Leave Applied for </label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8">
+                        <p ng-if="dataBuffer.noDaysCounted && dataBuffer.noDaysCounted == 1" style="align-content: center;">{{dataBuffer.noDaysCounted}} day</p>
+                        <p ng-if="dataBuffer.noDaysCounted && dataBuffer.noDaysCounted != 1" style="align-content: center;">{{dataBuffer.noDaysCounted}} days</p>
+                   
+                    </div>
+                  
+                  </div>
+
+                <!-- <div class="row" ng-if="resultObj.fromLeaveType == 'Short Leave'">
+                    <span class="col col-50" style="font-weight: normal;">
+                        Leave Applied for:
+                    </span>
+                    <div class="col col-50">
+                        <p ng-if="getTotalTimeDiff" style="align-content: center;">{{getTotalTimeDiff}} Hour(s)</p>
+                    </div>
+                </div> -->
+                <div class="form-group row" ng-if="resultObj.fromLeaveType == 'Short Leave' || resultObj.fromLeaveType == 'Hourly Leave'">
+                    <label  class="col-sm-4 col-xs-4 col-form-label">Leave Applied for </label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8">
+                        <p ng-if="getTotalTimeDiff" style="align-content: center;">{{getTotalTimeDiff}} Hour(s)</p>
+                    </div>
+                  
+                  </div>
+
+                <!-- <div>
+                    <label class="item" style="padding-right: 5px;">
+                        <table>
+                            <tr>
+                                <td style=" vertical-align: middle;">
+                                    <span class="input-label" style="margin-left: -5px;padding-right: 38%;">Phone Number : </span>
+                                </td>
+                                <td style="vertical-align: middle;width:90%;padding-left: 5%;">
+                                    <input type="tel" name="phone" class="input-label" 
+									style="padding-left: 10%;background-color:white;border: 1px solid #b3b3b3; width:85%"
+                                           ng-model="dataBuffer.phone" ng-maxlength="20" required />
+                                </td>
+                            </tr>
+                        </table>
+                    </label>
+                </div> -->
+                <div class="form-group row">
+                    <label  class="col-sm-4 col-xs-4 col-form-label">Phone Number  </label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8">
+                        <input type="tel" name="phone" class="form-control"  ng-model="dataBuffer.phone" ng-maxlength="20" required />
+                    </div>
+                  
+                  </div>
+                <div>
+                    <center>
+                        <span class="error" style="color:red" ng-show="credentialsForm.phone.$error.maxlength || credentialsForm.phone.$error.minlength">Please enter valid phone number</span>
+                    </center>
+                </div>
+                <div class="">
+                    <!-- <span style="font-size: 16px; font-weight: normal; margin-left: 11px;">Applicant Remarks:</span>
+                    
+                        <textarea style="padding-left: 3%;padding-right: 3%;background-color: white;border: 1px solid rgb(179, 179, 179);margin-left: 3%;
+							margin-top: 3%;width: 88%;" name="txt" ng-model="dataBuffer.leaveReason"
+                                  ng-maxlength="249"></textarea> -->
+
+
+                                  <div class="form-group row">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Applicant Remarks  </label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">
+                                        <textarea class="form-control"  name="txt" ng-model="dataBuffer.leaveReason" maxlength="250"
+                                              ng-maxlength="249"></textarea>
+                                    </div>
+                                  </div>
+                    <div>
+                        <center>
+                            <span class="error" style="color:red" ng-show="credentialsForm.txt.$error.maxlength">No more text can be entered.</span>
+                        </center>
+                    </div>
+                    <br>
+					<!-- attachment -->
+					<div class="item">
+						<label ng-if="fileUploadFeatureIncluded=='true'">
+							<div class="row" >Attachment:
+							</div>
+							<div class="row" >
+								<!-- <input col="col-20" type="radio"  value="fileRadio" checked="true"   
+                                style="margin-right: 3%; margin-top: 4%;" value="file" ng-change="typeAttach('file');" ng-model="selectedValues.typeAttach"/>
+                                -->
+								<button col="col-80" Style="text-align: left; margin-bottom:0%;background-color: white;  border: none;color:blue;" 
+								onclick="document.getElementById('inputFileUpload').click()">Select from device</button>
+								<input  type="file" name="inputFileUpload" id="inputFileUpload"  
+								style="width:1px;height:1px;"
+                                ng-model="somemodel" 
+                                onchange="angular.element(this).scope().SelectedFile(event)" />
+								<span id="fileNameDisplay" style="margin-left:-40%;margin-top:5%;"><br>{{selectedFileNameFromDevice}}</span></div>
+							<div class="row" >
+								<!-- <input col="col-20"   type="radio"  value="cameraRadio" 
+                                style="margin-right: 3%; margin-top: 4%;" value="camera" ng-change="typeAttach('camera');" ng-model="selectedValues.typeAttach"/>
+                                -->
+								<button col="col-80" id="btncamera"  Style="text-align: left; margin-bottom:0%;background-color: white;  border: none;color:blue;"  
+								on-tap="cameraTakePicture('camera');">Take Photo</button>
+							</div>
+							<img class="col-30" id="showImg" 
+								style="width:50px;height:50px;display:none;margin-left:30%;margin-top: -10%;"
+								src="" on-tap="removeAttachment()">
+							</img>
+                        
+                    </label>
+                </div>  
+                <input type="hidden"  id="shiftTypeAndOutTime">
+				<!-- attachmetn over -- >
+                    <div class="item" ng-disabled="isValidateForLeave">
+                        <!--<label class="grayBackColor">
+                            <button class="button button-block button-positive" ng-disabled="credentialsForm.$invalid" ng-click="getFindWorkFlowOnload(1)">Save</button>
+                        </label>
+                        -->
+                        <div class="text-center">
+                          <button type="button" ng-disabled="credentialsForm.$invalid" 
+                            ng-click="getFindWorkFlowOnload(2)" class="btn btn-primary mr-10">
+                                <i class="fa fa-paper-plane mr-10" aria-hidden="true"></i>Send for Approval
+                            </button>
+                        </div>
+						<br>
+						<br>
+						<br>
+                        <!-- <label class="grayBackColor">
+                            <button class="button button-block button-positive" ng-disabled="credentialsForm.$invalid" 
+                            ng-click="getFindWorkFlowOnload(2)">Send For Approval</button>
+                        </label> -->
+                    </div>
+                </div>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,85 @@
+<style>
+        .custom-card {
+        border-radius: 5%;
+        border: 1px solid #007ec1;
+    }
+    .custom-item {
+        border: none;
+    }
+
+    .custom-row {
+        padding: 0px;
+    }
+    .custom-padding{
+        padding: 10px;
+    }
+    .cust-card {
+        padding: 50px 0px 0px 0px;
+    }
+    .custom-requestRejcted
+    {
+        font-size: 11px;
+        color: red;
+    }
+    .custom-requestOther
+    {
+        font-size: 11px;
+        color: orange;
+    }
+    .customBorderRadius
+    {
+        border-top-right-radius: 1em;
+        border-bottom-right-radius: 1em;
+        border-top-left-radius: 1em;
+        border-bottom-left-radius: 1em;
+    }
+    .modal {
+        border: 1px solid #007ec1;
+        border-top-right-radius: 1em;
+        border-bottom-right-radius: 1em;
+        border-top-left-radius: 1em;
+        border-bottom-left-radius: 1em;
+    }
+    .modal-ion-content {
+        padding: 15px; font-size: 0.85em;
+    }
+</style>
+<ion-view view-title="leaveReqList">
+    <ion-content>
+       <div id="leaveApplicationID" class="">
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" placeholder="Search " ng-model="searchObj.searchQuery"/>
+            </label>
+            <br>
+            <center>
+                <button class="button button-small button-outline button-positive" ng-click="reDirectToFreshLeavePage()">Apply For Fresh Leave</button>
+            </center>
+            <div class="list card custom-card customBorderRadius" ng-repeat="leave in leaveApplList| filter:searchObj.searchQuery">
+                <div  class="item custom-item custom-padding item-text-wrap">
+                    <div class="row custom-row" ng-click="detailInfoReporty(leave.leaveTransId, leave)">
+                        <div class="col col-80">
+                            <h2 style="font-size: 0.8em;">Leave for {{leave.leaveFromDate}} to {{leave.leaveToDate}}</h2>
+                            <h3 style="font-size: 0.7em;">{{leave.leaveType}}</h3>
+                        </div>
+                        <div class="col col-20">
+                            <h2 style="font-size: 0.6em;" class="item-note custom-requestApprove" ng-if="leave.leaveStatus == 'APPROVED'">
+                                {{leave.leaveStatus}}
+                            </h2>
+                            <h2 style="font-size: 0.6em;" class="item-note custom-requestRejcted" ng-if="leave.leaveStatus == 'REJECTED'">
+                                {{leave.leaveStatus}}
+                            </h2>
+                            <h2 style="font-size: 0.6em;" class="item-note custom-requestOther" ng-if="leave.leaveStatus != 'REJECTED' && leave.leaveStatus != 'APPROVED'">
+                                {{leave.leaveStatus}}
+                            </h2>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div ng-if="leaveApplList.length == 0">
+                <center><h4>No Data Available </h4></center>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

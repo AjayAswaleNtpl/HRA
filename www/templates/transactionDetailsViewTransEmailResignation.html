@@ -1,0 +1,2094 @@
+<style>
+    .custom-item {
+      border: none;
+    }
+    .anchorRRedirect {
+      position: absolute;
+      top: 212px;
+      right: 14px;
+      font-size: 15px;
+      color: #3b5998;
+    }
+    .listTopMargin {
+      margin-top: 10px;
+    }
+    .travelListTopMargin {
+      margin-top: -40px;
+    }
+    #outer {
+      width: 100%;
+      text-align: center;
+    }
+    .inner {
+      display: inline-block;
+    }
+    ul.ctcClaimList {
+      margin-top: 20px;
+    }
+    ul.ctcClaimList li {
+      font-size: 0.8em;
+      padding: 5px 0px 0px 0px;
+      min-width: 435px;
+    }
+    .ctcClaimList b {
+      display: inline-block;
+      width: 40%;
+      position: relative;
+      padding-right: 10px;
+    }
+    .ctcClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ul.travelClaimList {
+      width: 125%;
+    }
+    ul.travelClaimList li {
+      font-size: 0.8em;
+      padding: 5px 0px 0px 0px;
+      min-width: 435px;
+    }
+    .travelClaimList b {
+      display: inline-block;
+      width: 32%;
+      position: relative;
+      padding-right: 10px;
+    }
+    .travelClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ul.odClaimList {
+      margin-top: 20px;
+    }
+    ul.odClaimList li {
+      font-size: 0.8em;
+      padding: 5px 0px 0px 0px;
+      min-width: 435px;
+    }
+    .odClaimList b {
+      display: inline-block;
+      width: 35%;
+      position: relative;
+      padding-right: 10px;
+    }
+    .odClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ul.attClaimList {
+      width: 125%;
+    }
+    ul.attClaimList li {
+      font-size: 0.8em;
+      padding: 5px 0px 0px 0px;
+      min-width: 435px;
+    }
+    table, th, td {
+  border: 1px solid black;
+}
+    .attClaimList b {
+      display: inline-block;
+      width: 38%;
+      position: relative;
+      padding-right: 10px;
+    }
+    .attClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ol,
+    ul {
+      margin-bottom: 0px !important;
+    }
+    a:focus,
+    a:hover {
+      text-decoration: none;
+    }
+    .tab-item.tab-item-active,
+    .tab-item.active,
+    .tab-item.activated {
+      opacity: 1;
+    }
+    .tab-item {
+      opacity: 0.7;
+    }
+    .custom-row {
+      padding: 0px;
+    }
+    .custom-padding {
+      padding: 5px 10px;
+    }
+    .custom-top {
+      top: 10px;
+      left: 13px;
+    }
+    .custom-paddingTop {
+      padding-top: 11px;
+    }
+    .custom_OD {
+      padding-top: 11px;
+      padding-bottom: 0px;
+    }
+    .custom-paddingBottom {
+      padding-bottom: 0px;
+    }
+    /* .cust-card {
+      padding: 50px 0px 0px 0px;
+    } */
+    .custom-requestApprove {
+      font-size: 11px;
+      color: green;
+    }
+    .custom-requestRejcted {
+      font-size: 11px;
+      color: red;
+    }
+    .custom-requestOther {
+      font-size: 11px;
+      color: orange;
+    }
+    
+    .custom-fontSize {
+      font-size: 12px;
+    }
+    .modal-wrapper {
+      position: absolute;
+      top: 25%;
+      display: block;
+      width: 90%;
+      min-height: 45%;
+      padding: 5%;
+    }
+  
+    .modal-backdrop-bg {
+      background-color: rgba(255, 255, 255, 0.85);
+    }
+  
+    .modal {
+      border-top-right-radius: 1em;
+      border-bottom-right-radius: 1em;
+      border-top-left-radius: 1em;
+      border-bottom-left-radius: 1em;
+    }
+  
+    .modal-ion-content {
+      padding: 15px;
+      font-size: 0.85em;
+    }
+  
+  
+    .badge.badgeCustom {
+      width: 22px;
+      height: 22px;
+      text-align: center;
+      line-height: 18px;
+      display: block;
+      position: absolute;
+      top: 0;
+      color: #fff !important;
+      font-size: 10px !important;
+      padding: 0;
+    }
+    a:focus,
+    a:hover {
+      text-decoration: none;
+    }
+    .tab-item.tab-item-active,
+    .tab-item.active,
+    .tab-item.activated {
+      opacity: 1;
+    }
+    .tab-item {
+      opacity: 0.7;
+    }
+    /* .slick-slide .slide-content {
+    margin: 0 3%;
+    padding: 10px 5px;
+  
+  } */
+  
+    .slick-prev,
+    .slick-next {
+      position: absolute;
+      right: 10%;
+      background: #777;
+      border: none;
+      color: transparent;
+      width: 30px;
+      height: 30px;
+    }
+  
+    .slick-prev:before,
+    .slick-next:before {
+      content: ">";
+      color: #fff;
+      font-size: 25px;
+    }
+  
+    .slick-prev {
+      left: 10%;
+    }
+  
+    .slick-prev:before {
+      content: "<";
+    }
+  
+    .slick-dots {
+      list-style: none;
+      margin: 0 auto;
+      text-align: center;
+      margin-top: 10px;
+    }
+  
+    .slick-dots li {
+      display: inline-block;
+    }
+  
+    .slick-dots li button {
+      transition: 0.2s background-color ease-in-out 0s;
+      border: none;
+      padding: 0;
+      color: transparent;
+      width: 10px;
+      height: 10px;
+      background-color: #777;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+  
+    .slick-dots li.slick-active button {
+      background-color: #0a9dc7;
+    }
+    /* .slick-slider {
+      width: 100%;
+      position: relative;
+      transform: translate(-50%, -50%);
+      top: 0%;
+      left: 50%;
+  } */
+    .slick-slider {
+      width: 100%;
+      position: relative;
+      top: 0%;
+    }
+    /* ===form List=== */
+    /* .customBorderRadius .dividerClass {
+      line-height: 1.5 !important;
+  }
+  .customBorderRadius label {
+      font-size: 13px !important;
+      line-height: 1.5 !important;
+  }
+  .customBorderRadius .row {
+      margin: 0 5px !important;
+      padding: 0 5px !important;
+  }
+  .customBorderRadius.col-xs-8 {
+      font-size: 13px !important;
+  }
+  .customBorderRadius .item-note {
+      padding: 10px 10px 0 0 !important;
+      margin-bottom: 2px !important;
+  } */
+  .inner .btn-pad.claimClass{
+    margin: 14px 4px 5px 10px;
+      padding: 0 8px;
+  }
+  .inner .badge{
+    position: relative;
+    margin: 0 -8px;
+    float: right;
+  }
+  .slick-carousel .fa{
+    font-size: 40px;
+    color: #777676;
+  }
+  .slick-carousel p {
+      color: #212121;
+      margin: 0 0 10px;
+      font-size: 0.83em;
+      text-align: center;
+      margin-left: -2%;
+      margin-top: 0%;
+      margin-bottom: 2px;
+      font-weight: 400;
+  }
+  /*-------Color Code--------------*/
+.colorClegend {
+	display: block;
+	list-style: none;
+  margin: 11px 0;
+    overflow: hidden;
+    padding: 15px 0px;;
+	text-align: left;
+  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+  -webkit-box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+  -moz-box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+  -o-box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+}
+
+.colorClegend li {
+	position: relative;
+	display: inline-block;
+	/* font-size: 12px; */
+	line-height: 1;
+	color: #aaa;
+	margin-right: 10px;
+}
+
+.colorClegend li:before {
+	display: block;
+	width: 16px;
+	height: 16px;
+	background: #ddd;
+	content: '';
+	float: left;
+	margin-right: 6px;
+}
+
+.colorClegend li.leave:before {
+	background: #8A2BE2;
+}
+
+.colorClegend li.weekoff:before {
+	background: #FFA07A;
+}
+
+.colorClegend li.holiday:before {
+	background: #ff75d0;
+}
+.colorClegend li.app:before {
+	background: #ccffcc;
+}
+
+.colorClegend li.rej:before {
+	background: #ff9999;
+}
+
+.colorClegend li.sent:before {
+	background: #ffffb3;
+}
+.colorClegend li.save:before {
+	background: #b3e6ff;
+}
+.alert {
+    padding: 10px 10px !important;
+    margin-bottom: 0px !important;
+
+}
+select{
+    width: 80%;
+}
+input{
+}
+ .ui-autocomplete.ui-menu.ui-widget.ui-widget-content.ui-corner-all
+{
+    height: 100px;
+    overflow: auto;
+}
+  </style>
+  <ion-view>
+
+    <div class="bar bar-footer hide-on-keyboard-open" style="background-color:#000; background-size: 100% 0px;">
+        <div class="title" style="height: 20px;">
+            <h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px;
+                margin-bottom: 5px;">Powered by HR Align</h6>
+        </div>
+    </div>
+    <ion-content has-bouncing="false" style="overflow-y: auto;top:0%" class="requisionSection">
+        <div class="custom-header" style="padding-top: 0px;padding-bottom: -20px;">
+            <h4 class="subHeaderClass" style="margin: 0px;"> <span class="backIcon">
+              <i class="icon ion-ios-arrow-back" ng-click="redirectOnBack()"></i></span>
+                <b style="vertical-align: super;"> Transaction Approval </b></h4>
+                
+        </div>
+        <div style="padding: 10px;">
+			<div class="form-group row" style="background: lightgrey;font-weight: 500;">
+				{{transDetailToSend.transName}}&nbsp; - &nbsp;{{transDetailToSend.empName}}&nbsp;({{transDetailToSend.empCode}})		
+			</div>
+            <div class="form-group row" ng-show="transRequisitionForm.transactionTypeId != 8">
+              <label class="col-xs-4 col-sm-4">Official Notice Period</label><span class="dividerClass">:</span>
+              <div class="col-xs-8 col-sm-8">
+                {{ExistNoticePeriod}}
+              </div>
+            </div>
+
+
+            <div class="form-group row">
+              <label class="col-xs-4 col-sm-4">Last Working Date *
+                (As Per Policy)</label><span class="dividerClass">:</span>
+              <div class="col-xs-6 col-sm-6"
+              ng-show="transRequisitionForm.transactionTypeId != 5 && transRequisitionForm.transactionTypeId != 18"
+              >
+                {{initialLwdDate}}
+              </div>
+              <div class="col-xs-6 col-sm-6"
+              ng-show="transRequisitionForm.transactionTypeId == 5 || transRequisitionForm.transactionTypeId == 18"
+              >
+                {{wef}}
+              </div>
+              <div class="col-xs-2 col-sm-2"
+                ng-show="transRequisitionForm.transactionTypeId != 5 || transRequisitionForm.transactionTypeId != 18"
+              >
+                <span ng-show="weekOffHOllidayFlag == 'W' || weekOffHOllidayFlag == 'H' || weekOffHOllidayFlag == 'WH'">
+                  <b style="color: red;">#</b>
+                </span>
+              </div>
+            </div>
+
+
+            <div class="form-group row"
+            ng-show="transRequisitionForm.transactionTypeId != 8"
+            >
+           
+            <label class="col-xs-4 col-sm-4"> Proposed Last Working Date</label><span class="dividerClass">:</span>
+            <div class="col-xs-8 col-sm-8"
+            ng-show="transRequisitionForm.transactionTypeId != 5 || transRequisitionForm.transactionTypeId != 18"
+            >
+              <div ng-show="requestedLwdDate != null || requestedLwdDate != ''">
+                <div ng-show="transRequisitionForm.transVO.lwd == transRequisitionForm.transVO.initialLwdDate">
+                  <div class="form-group row">
+                    <input id="revlwd" class="col-xs-8 col-sm-8" value={{requestedLwdDate}}
+                    ng-click="setDate()"
+                   
+                    ng-model="selectedValue.weekOfHoliday"
+                    />
+                    <span class="col-xs-2 col-sm-2" >
+                      <i ng-click="setDate()" class="ion-calendar"></i>
+                    </span>
+                  </div>
+                  
+                </div>
+                <div ng-show="transRequisitionForm.transVO.lwd != transRequisitionForm.transVO.initialLwdDate">
+                  <div class="form-group row">
+                    <input id="revlwd" class="col-xs-8 col-sm-8" value={{transRequisitionForm.transVO.lwd}}
+                    ng-click="setDate()"
+                   
+                    ng-model="selectedValue.weekOfHoliday"
+                    />
+                    <span class="col-xs-2 col-sm-2" >
+                      <i ng-click="setDate()" class="ion-calendar"></i>
+                    </span>
+                  </div>
+                  
+                </div>
+              </div>
+              <div ng-show="requestedLwdDate == null || requestedLwdDate == ''">
+                <div class="form-group row">
+                  <input id="revlwd" class="col-xs-8 col-sm-8" value={{transRequisitionForm.transVO.lwd}}
+                  ng-click="setDate()"
+                 
+                  ng-model="selectedValue.weekOfHoliday"
+                  />
+                  <span class="col-xs-2 col-sm-2" >
+                    <i ng-click="setDate()" class="ion-calendar"></i>
+                  </span>
+                </div>
+              </div>
+          </div>
+
+          <div class="col-xs-8 col-sm-8"
+          ng-show="transRequisitionForm.transactionTypeId == 5 || transRequisitionForm.transactionTypeId == 18"
+          >
+            <div  ng-show="requestedLwdDate != null || requestedLwdDate != ''">
+              <div ng-show="transRequisitionForm.transVO.lwd == transRequisitionForm.transVO.initialLwdDate">
+                <div class="form-group row">
+                  <input id="revlwd" class="col-xs-8 col-sm-8" value={{requestedLwdDate}} readonly="readonly"
+                  ng-click="setDate()"
+                 
+                  ng-model="selectedValue.weekOfHoliday"
+                  />
+                  <span class="col-xs-2 col-sm-2" >
+                    <i  class="ion-calendar"></i>
+                  </span>
+                </div>
+                
+              </div>
+              <div ng-show="transRequisitionForm.transVO.lwd != transRequisitionForm.transVO.initialLwdDate">
+                <div class="form-group row">
+                  <input id="revlwd" class="col-xs-8 col-sm-8" value={{transRequisitionForm.transVO.lwd}}
+                  ng-click="setDate()"
+                 
+                  ng-model="selectedValue.weekOfHoliday"
+                  readonly="readonly"
+                  />
+                  <span class="col-xs-2 col-sm-2" >
+                    <i  class="ion-calendar"></i>
+                  </span>
+                </div>
+                
+              </div>
+            </div>
+            <div ng-show="requestedLwdDate == null || requestedLwdDate == ''">
+              <div class="form-group row">
+                <input  id="revlwd" class="col-xs-8 col-sm-8" value={{transRequisitionForm.transVO.lwd}}
+                ng-click="setDate()"
+               
+                ng-model="selectedValue.weekOfHoliday"
+                readonly="readonly"
+                />
+                <span class="col-xs-2 col-sm-2" >
+                  <i class="ion-calendar"></i>
+                </span>
+              </div>
+            </div>
+        </div>
+            </div>
+        <div id="lableWeekHoli" style="color: red;"></div>
+
+        <div class="form-group row" ng-show="transRequisitionForm.transactionTypeId != 5 || transRequisitionForm.transactionTypeId != 18">
+          <label class="col-xs-4 col-sm-4">Revised Notice period to be Served</label><span class="dividerClass">:</span>
+          <div class="col-xs-8 col-sm-8">
+            <span id="daysLbl"></span>
+            <span id="dbRevNoticePrd">{{revisedNticePrd}} Days</span>
+            <input id="days" name="days" type="hidden"
+											maxlength="5" size="5" value="" readonly="readonly"
+											onkeypress="return isDigit(event)" />
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-xs-4 col-sm-4">Allow Leaves In Notice Period</label><span class="dividerClass">:</span>
+          <input class="col-xs-8 col-sm-8" type="checkbox" id="allowLeave" ng-show="'Y'== AllowLeaveNticePrd" checked="checked" ng-click="checkAllowLeave()">
+          <input class="col-xs-8 col-sm-8" type="checkbox" id="allowLeave" ng-show="'Y'!= AllowLeaveNticePrd" ng-click="checkAllowLeave()" >
+
+        </div>
+
+
+
+
+
+
+            </div>
+
+            <div class="form-group row">
+              <label class="col-xs-4 col-sm-4"><b>Recovery</b> </label>
+
+            </div>
+            <div class="form-group row">
+              <label class="col-xs-4 col-sm-4">Recovery Days
+                (As Per Approved Last Working Date.)</label><span class="dividerClass">:</span>
+                
+                <div  class="col-xs-8 col-sm-8">
+                  <span id="recdaysLbl"></span>
+                  <span id="dbRecDaysLbl">{{recvrDays}} Days</span>
+                  
+                  <input id="recdays" name="recdays" type="hidden"
+											maxlength="5" size="5" value="" readonly="readonly"
+											onkeypress="return isDigit(event)" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-xs-4 col-sm-4">No. of days to be recovered</label><span class="dividerClass">:</span>
+              <input id="recdaysAdj" type="number" value={{adjustedRecvrDays}} max="99999" />
+            </div>
+
+            <div class="form-group row" ng-show="LeaveBalanceCheck.length > 0">
+              <a ng-click="enableLeaveBalance()">  
+                Click Here To Check Leave Balance</a>
+            </div>
+
+            <div id="leaveBalanceDiv" style="display: none;">
+              <div class="form-group row"
+              ng-repeat="lbc in LeaveBalanceCheck"
+              >
+              <label class="col-xs-4 col-sm-4">{{lbc.leaveType}}</label><span class="dividerClass">:</span>
+              <div class="col-xs-8 col-sm-8">{{lbc.leaveBal}} Days</div>
+              </div>
+
+            </div>
+
+            <div class="form-group row">
+              <label class="col-xs-4 col-sm-4">Amount Payable To Company</label><span class="dividerClass">:</span>
+              <input id="amount" type="number" value="{{transRequisitionForm.transVO.amountToCompany}}" max="999999999" />
+            </div>
+
+
+            <div ng-show="isLastLevel == 'lastLevel'">
+
+              <div ng-show="listArtEmps.length > 0" >
+                <div class="form-group row">
+                <input id="jobProfileId" name="jobProfileId"
+											type="hidden"
+											value="{{transRequisitionForm.eisPersonal.eisCompany.jobProfile.jpId}}"
+											readonly="readonly" onkeypress="return isDigit(event)" />
+                      <label class="col-xs-4 col-sm-4">New ART Company </label><span class="dividerClass">:</span>
+                      <div class="col-xs-8 col-sm-8">
+                        <select
+                        id="artCompanyId"
+                        ng-change="getArtEmployeeList()"
+                        ng-model="selectedValue.artList"
+                        ng-options="key as value for(key,value) in transRequisitionForm.allCompanyList"
+                        ng-model="key==transRequisitionForm.artCompanyId"
+                        >
+                      <option value="">Please Select</option>
+                      </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                     
+                            <label class="col-xs-4 col-sm-4">New ART  </label><span class="dividerClass">:</span>
+                            <div class="col-xs-8 col-sm-8">
+                              <select
+                              id="artEmpId"
+                              >
+                            <option value="">Please Select</option>
+                            <option ng-repeat="value in listArtEmps"
+                            value={{value.empId}}
+                            ng-selected="value.empId==transRequisitionForm.eisPersonal.eisCompany.artEmpId.empId"
+                            
+                            >{{value.fullName}}-{{value.empCode}}</option>
+                            </select>
+                            </div>
+                          </div>
+              </div> 
+
+
+
+              <div ng-show="listFrtEmps.length > 0" >
+                <div class="form-group row">
+               
+                      <label class="col-xs-4 col-sm-4">New FRT Company </label><span class="dividerClass">:</span>
+                      <div class="col-xs-8 col-sm-8">
+                        <select
+                        id="frtCompanyId"
+                        ng-change="getFrtEmployeeList()"
+                        ng-model="selectedValue.frtList"
+                        ng-options="key as value for(key,value) in transRequisitionForm.allCompanyList"
+                        ng-model="key==transRequisitionForm.frtCompanyId"
+                        >
+                      <option value="">Please Select</option>
+                      </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                     
+                            <label class="col-xs-4 col-sm-4">New FRT  </label><span class="dividerClass">:</span>
+                            <div class="col-xs-8 col-sm-8">
+                              <select
+                              id="frtEmpId"
+                              >
+                            <option value="">Please Select</option>
+                            <option ng-repeat="value in listFrtEmps"
+                            value={{value.empId}}
+                            ng-selected="value.empId==transRequisitionForm.eisPersonal.eisCompany.frtEmpId.empId"
+                            
+                            >{{value.fullName}}-{{value.empCode}}</option>
+                            </select>
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label class="col-xs-4 col-sm-4">Pending Applications</label><span class="dividerClass">:</span>
+                            <div class="col-xs-8 col-sm-8" >
+                              <a ng-click="viewTotalApps()" style="color: blue;">{{totalInprocessAppsPending}}</a>
+                            </div>
+                          </div>
+
+                          <div ng-show="totalInprocessAppsPending != 0">
+
+                            <div class="form-group row">
+                              <label class="col-xs-4 col-sm-4">Assign Pending Self Applications</label><span class="dividerClass">:</span>
+                              <div class="col-xs-8 col-sm-8">
+                                <div ng-repeat = "(key,value) in actionApprv">
+                                    <input type="radio" name="assign" value={{key}} ng-click="changeFilter('')">
+                                    <label for={{key}}>{{value}}</label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+
+                          <div id="allAppsApprovalsOne" style="display: none;" class="form-group row">
+                            <label class="col-xs-4 col-sm-4">Assign All Pending Approvals To </label><span class="dividerClass">:</span>
+                            <div class="col-xs-8 col-sm-8">
+                              <input id="searchEmpAssignToOne" name="searchEmpAssignToOne" 
+                              placeholder="Search Employee" maxlength="100"
+                              onchange="onAllTrackerCust('form')"
+                              ng-model="selectedValue.onAllTrackerCust"
+                              />
+                            </div>
+                          </div>
+
+                          <div id="allAppsApprovals" style="display: none;">
+                            <div ng-show="LeaveTrackerVO != null">
+                              <div ng-show="LeaveTrackerVO.inProcess != 0">
+
+                                <div class="form-group row">
+                                  <label class="col-xs-4 col-sm-4">Leave Application </label><span class="dividerClass">:</span>
+                                  <div class="col-xs-8 col-sm-8">
+                                    <a style="color: blue;" ng-click="viewRepoteeLeaveIP()">{{LeaveTrackerVO.inProcess}}</a>
+                                    <div><label>Assign To</label></div>
+                                    <div>
+                                      <input name="searchEmpleaveAprv" id="searchEmpleaveAprv" onchange="onLeaveCust('form')"
+                                     
+                                      placeholder="Search Employee" size="20" maxlength="100">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div ng-show="TransactionTrackerVO != null">
+                              <div ng-show="TransactionTrackerVO.inProcess != 0">
+
+                                <div class="form-group row">
+                                  <label class="col-xs-4 col-sm-4">Transaction Requisition </label><span class="dividerClass">:</span>
+                                  <div class="col-xs-8 col-sm-8">
+                                    <a style="color: blue;" ng-click="viewTransAppInPro()">{{TransactionTrackerVO.inProcess}}</a>
+                                    <div><label>Assign To</label></div>
+                                    <div>
+                                      <input name="searchEmptransApprv" id="searchEmptransApprv" onChange="onTransactionCust('form')"
+                                      placeholder="Search Employee" size="20" maxlength="100">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div ng-show="ODTrackerVO != null">
+                              <div ng-show="ODTrackerVO.inProcess != 0">
+
+                                <div class="form-group row">
+                                  <label class="col-xs-4 col-sm-4">OD Application </label><span class="dividerClass">:</span>
+                                  <div class="col-xs-8 col-sm-8">
+                                    <a style="color: blue;" ng-click="viewOdAppIp()">{{ODTrackerVO.inProcess}}</a>
+                                    <div><label>Assign To</label></div>
+                                    <div>
+                                      <input name="searchEmpOdApprv" id="searchEmpOdApprv" onchange="onOdCust('form')"
+                                      placeholder="Search Employee" size="20" maxlength="100">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+
+                            <div ng-show="ClaimTrackerVO != null">
+                              <div ng-show="ClaimTrackerVO.inProcess != 0">
+
+                                <div class="form-group row">
+                                  <label class="col-xs-4 col-sm-4">Expense Claim Application </label><span class="dividerClass">:</span>
+                                  <div class="col-xs-8 col-sm-8">
+                                    <a style="color: blue;" ng-click="viewClaimApp11()">{{ClaimTrackerVO.inProcess}}</a>
+                                    <div><label>Assign To</label></div>
+                                    <div>
+                                      <input name="searchEmpexpenceApprv" id="searchEmpexpenceApprv" onchange="onClaimCust('form')"
+                                      placeholder="Search Employee" size="20" maxlength="100">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div ng-show="TravelTrackerVO != null">
+                              <div ng-show="TravelTrackerVO.inProcess != 0">
+
+                                <div class="form-group row">
+                                  <label class="col-xs-4 col-sm-4">Travel Application </label><span class="dividerClass">:</span>
+                                  <div class="col-xs-8 col-sm-8">
+                                    <a style="color: blue;" ng-click="viewTravelApp('INPROCESS')">{{TravelTrackerVO.inProcess}}</a>
+                                    <div><label>Assign To</label></div>
+                                    <div>
+                                      <input name="searchEmptravelAppApprv" id="searchEmptravelAppApprv" onchange="onTravelTrackCust('form')"
+                                      placeholder="Search Employee" size="20" maxlength="100">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+
+                            <div ng-show="MusterTrackerVO != null">
+                              <div ng-show="MusterTrackerVO.inProcess != 0">
+
+                                <div class="form-group row">
+                                  <label class="col-xs-4 col-sm-4">My  Attendance Record</label><span class="dividerClass">:</span>
+                                  <div class="col-xs-8 col-sm-8">
+                                    <a style="color: blue;" ng-click="viewMusterApp()">{{MusterTrackerVO.inProcess}}</a>
+                                    <div><label>Assign To</label></div>
+                                    <div>
+                                      <input name="searchEmpattRecApprv" id="searchEmpattRecApprv" onchange="onMusterCust('form')"
+                                      placeholder="Search Employee" size="20" maxlength="100">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div ng-show="ShiftChangeTrackerVO != null">
+                              <div ng-show="ShiftChangeTrackerVO.inProcess != 0">
+
+                                <div class="form-group row">
+                                  <label class="col-xs-4 col-sm-4">Shift Change Application</label><span class="dividerClass">:</span>
+                                  <div class="col-xs-8 col-sm-8">
+                                    <a style="color: blue;" ng-click="viewShiftChangeApp()">{{ShiftChangeTrackerVO.inProcess}}</a>
+                                    <div><label>Assign To</label></div>
+                                    <div>
+                                      <input name="searchEmpshiftChgApprv" id="searchEmpshiftChgApprv" onchange="onShiftCust('form')"
+                                      placeholder="Search Employee" size="20" maxlength="100">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div ng-show="TravelClaimTrackerVO != null">
+                              <div ng-show="TravelClaimTrackerVO.inProcess != 0">
+
+                                <div class="form-group row">
+                                  <label class="col-xs-4 col-sm-4">Travel Claim Application</label><span class="dividerClass">:</span>
+                                  <div class="col-xs-8 col-sm-8">
+                                    <a style="color: blue;" ng-click="viewTravelClaimApp('INPROCESS')">{{TravelClaimTrackerVO.inProcess}}</a>
+                                    <div><label>Assign To</label></div>
+                                    <div>
+                                      <input name="searchEmptravelClaimApprv" id="searchEmptravelClaimApprv" onchange="onTravelClaimCust('form')"
+                                      placeholder="Search Employee" size="20" maxlength="100">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+
+
+                          </div>
+
+              </div> 
+            </div>
+
+            <div class="form-group row">
+              <label class="col-xs-4 col-sm-4">Document Upload </label><span class="dividerClass">:</span>
+              <div class="col-xs-8 col-sm-8">
+                <a ng-click="openFile1(transRequisitionForm)" style="color: blue;">{{transRequisitionForm.userUplodfileName}}</a>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-xs-4 col-sm-4">Uploaded File </label><span class="dividerClass">:</span>
+              <div class="col-xs-8 col-sm-8" ng-show="transRequisitionForm.fileName != null && transRequisitionForm.fileName != ''">
+                <a ng-click="openFile2(transRequisitionForm)" style="color: blue;">{{transRequisitionForm.fileName}}</a>
+              </div>
+              <div class="col-xs-8 col-sm-8" ng-show="transRequisitionForm.fileName == null || transRequisitionForm.fileName == ''">
+               None 
+              </div>
+            </div>
+
+            <div ng-show="transRequisitionForm.transactionTypeId == 18">
+              <div class="form-group row">
+                <label class="col-xs-4 col-sm-4">Contract From Date </label><span class="dividerClass">:</span>
+                <div class="col-xs-8 col-sm-8" id="formDate1">
+                  <input id="contractStartDate" disabled="true" value={{transRequisitionForm.contractStartDate}}>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-xs-4 col-sm-4">Contract End Date </label><span class="dividerClass">:</span>
+                <div class="col-xs-6 col-sm-6" id="formDate1">
+                  <input id="contractEndDate" disabled="true" value={{transRequisitionForm.contractEndDate}}>
+                </div>
+				<div class="col-sm-2 col-xs-2" >
+					<i style="padding-left: 3%; font-size: 193%;"  ng-click="setContractEndDate()" class="ion-calendar">&emsp;</i>
+			 	</div>
+              </div>
+            </div>
+
+            <div ng-show="transRequisitionForm.transactionTypeId == 6 || transRequisitionForm.transactionTypeId == 4" class="form-group row">
+              <label class="col-xs-4 col-sm-4">Rehire Eligibility </label><span class="dividerClass">:</span>
+              <div class="col-xs-8 col-sm-8">
+                <input id="rehire1" type="checkbox" value="Yes"  ng-show="transRequisitionForm.transVO.rehire =='Y'" checked="checked">
+                <input id="rehire1" type="checkbox" value="Yes"  ng-show="transRequisitionForm.transVO.rehire !='Y'">
+
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-xs-4 col-sm-4">Applicant Remarks </label><span class="dividerClass">:</span>
+              <div class="col-xs-8 col-sm-8" ng-show="transRequisitionForm.transVO.remarks != null && transRequisitionForm.transVO.remarks != ''">
+                {{transRequisitionForm.transVO.remarks}}
+              </div>
+              <div class="col-xs-8 col-sm-8" ng-show="transRequisitionForm.transVO.remarks == null || transRequisitionForm.transVO.remarks == ''">
+                None 
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-xs-4 col-sm-4">Approvers</label><span class="dividerClass">:</span>
+              <div class="col-xs-8 col-sm-8">
+                <div ng-repeat="approver in transRequisitionForm.nxtApproverList">
+                  {{approver}}
+                </div>
+              </div>
+            </div>
+
+            <div ng-repeat="level in getCountOfLevel" class="form-group row">
+              <label class="col-xs-4 col-sm-4">{{level}} Level Remarks</label><span class="dividerClass">:</span>
+              <div class="col-xs-8 col-sm-8" ng-show="getCountOfComments[$index] != null">
+                {{getCountOfComments[$index]}}
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-xs-4 col-sm-4">{{transRequisitionForm.transAuthVO.masterWorkflowChild.level}} Level Remarks</label><span class="dividerClass">:</span>
+              <div class="col-xs-8 col-sm-8">
+                <textarea rows="3" cols="60" id="comments">{{transRequisitionForm.transAuthVO.comments}}</textarea>
+              </div>
+            </div>
+
+            <div class="form-group row" ng-show="transRequisitionForm.transAuthVO.status == 'S'">
+
+              <div class="col-xs-6 col-sm-6">
+                <button class="btn btn-success" ng-click="goSave('A')">
+                  <i class="fa fa-check"></i>
+                  Approve</button>
+              </div>
+<!--              <div class="col-xs-6 col-sm-6">-->
+<!--                <button class="btn btn-danger" ng-click="goSave('R')">-->
+<!--                  <i class="fa fa-times"></i>-->
+<!--                  Reject </button>-->
+<!--              </div>-->
+            </div>
+
+            <div class="form-group row" ng-show="cancellation == 'SENT FOR CANCELLATION'">
+
+              <div class="col-xs-6 col-sm-6">
+                <button class="btn btn-success" ng-click="goCancel('A')">
+                  <i class="fa fa-check"></i>
+                  Approve</button>
+              </div>
+<!--              <div class="col-xs-6 col-sm-6">-->
+<!--                <button class="btn btn-danger" ng-click="goCancel('R')">-->
+<!--                  <i class="fa fa-times"></i>-->
+<!--                  Reject </button>-->
+<!--              </div>-->
+			</div>
+			<br>
+			<br>
+			<br>
+            <input type="number" style="display: none;" id="transTrackerInProcess"/>
+            <input type="number" style="display: none;" id="transTrackerInProcessLeave"/>
+            <input type="number" style="display: none;" id="transTrackerInProcessOD"/>
+            <input type="number" style="display: none;" id="transTrackerInProcessTravel"/>
+            <input type="number" style="display: none;" id="transTrackerInProcessMuster"/>
+            <input type="number" style="display: none;" id="transTrackerInProcessShift"/>
+            <input type="number" style="display: none;" id="transTrackerInProcessClaimTravel"/>
+            <input type="number" style="display: none;" id="transTrackerInProcessClaim"/>
+
+            
+            
+            
+            <input type="hidden" name="matchFoundTransactionTrackerVO"
+				id="matchFoundTransactionTrackerVO" value="">
+            <input type="hidden" name="matchFoundLeaveTrackerVO"
+				id="matchFoundLeaveTrackerVO" value="">
+			<input type="hidden" name=matchFoundODTrackerVO
+				id="matchFoundODTrackerVO" value="">
+			<input type="hidden" name="matchFoundClaimTrackerVO"
+				id="matchFoundClaimTrackerVO" value="">
+			<input type="hidden" name="matchFoundTravelTrackerVO"
+				id="matchFoundTravelTrackerVO" value="">
+			<input type="hidden" name="matchFoundMusterTrackerVO"
+				id="matchFoundMusterTrackerVO" value="">
+			<input type="hidden" name="matchFoundShiftChangeTrackerVO"
+				id="matchFoundShiftChangeTrackerVO" value="">
+			<input type="hidden" name="matchFoundTravelClaimTrackerVO"
+				id="matchFoundTravelClaimTrackerVO" value="">
+			<input type="hidden" name="matchFoundAllTrackerVO"
+				id="matchFoundAllTrackerVO" value="">
+        </div>
+    </ion-content>
+  </ion-view>
+  <script>
+    $(document).ready(
+	function() {
+		$(function() {
+			if (parseInt(document.getElementById("transTrackerInProcess").value) != 0) {
+				$("#searchEmptransApprv")
+						.autocomplete(
+								{
+									minLength : 3,
+									selectfirst : true,
+									minChars : 1,
+									matchSubset : 1,
+									matchContains : 1,
+									cacheLength : 10,
+									autoFill : true,
+									search : function(e, u) {
+										console.log(1)
+
+									},
+									source : function(request, response) {
+										$
+												.ajax({
+													type : "POST",
+													url :  baseUrl + "/common/searchByNameForEisCompany.spr",
+													dataType : 'json',
+													data : {
+														name : $(
+																'#searchEmptransApprv')
+																.val()
+													},
+													success : function(data) {
+														if (!data.length) {
+															var result = [ {
+																label : "No matches found",
+																value : ''
+															} ];
+															response(result);
+															$(
+																	"#matchFoundTransactionTrackerVO")
+																	.val(
+																			"NotFound");
+														} else {
+															response(jQuery
+																	.map(
+																			data,
+																			function(
+																					item) {
+																				return {
+																					label : (item.name)
+																							.split("@@")[1],
+																					value : (item.name)
+																							.split("@@")[0]
+
+																				};
+																			}));
+														}
+													}
+												});
+									},
+
+									select : function(event, ui) {
+										var val = "";
+										var lable = "";
+										if (ui.item != null
+												&& trim(ui.item.value) != "") {
+											val = ui.item.value;
+											label = ui.item.label;
+										}
+										if (val != "") {
+											$("#matchFoundTransactionTrackerVO")
+													.val("Found");
+											$('#searchEmptransApprv').html(
+													label);
+											$('#transApprvEmpIdEmpId').val(val);
+										}
+
+										// update what is displayed in the textbox
+										this.value = label;
+										return false;
+									},
+									focus : function(e, ui) {
+
+										console.log(1);
+										var val = "";
+										var lable = "";
+										if (ui.item != null
+												&& trim(ui.item.value) != "") {
+											val = ui.item.value;
+											label = ui.item.label;
+										}
+										if (val != "") {
+											$("#matchFoundTransactionTrackerVO")
+													.val("Found");
+											$('#searchEmptransApprv').html(
+													label);
+											$('#transApprvEmpIdEmpId').val(val);
+										}
+
+										// update what is displayed in the textbox
+										this.value = label;
+										return false;
+									}
+
+								})/*.data("ui-autocomplete")._renderItem = function(
+						ul, item) {
+
+					if (item.value == '') {
+						$("#matchFoundTransactionTrackerVO").val("NotFound");
+						return $(
+								'<li class="ui-state-disabled" style="color:red;opacity: 0.6;">'
+										+ item.label + '</li>').appendTo(ul);
+					} else {
+						$("#matchFoundTransactionTrackerVO").val("Found");
+						return $("<li>").append("<a>" + item.label + "</a>")
+								.appendTo(ul);
+					}
+
+				};*/
+			}
+		});
+
+		$(function() {
+			if (parseInt(document.getElementById("transTrackerInProcessLeave").value) != 0) {
+				$("#searchEmpleaveAprv")
+						.autocomplete(
+								{
+									minLength : 3,
+									selectfirst : true,
+									minChars : 1,
+									matchSubset : 1,
+									matchContains : 1,
+									cacheLength : 10,
+									autoFill : true,
+									search : function(e, u) {
+										console.log(1)
+
+									},
+									source : function(request, response) {
+										$
+												.ajax({
+													type : "POST",
+													url : baseUrl+"/common/searchByNameForEisCompany.spr",
+													dataType : 'json',
+													data : {
+														name : $(
+																'#searchEmpleaveAprv')
+																.val()
+													},
+													success : function(data) {
+														if (!data.length) {
+															var result = [ {
+																label : "No matches found",
+																value : ''
+															} ];
+															response(result);
+															$(
+																	"#matchFoundLeaveTrackerVO")
+																	.val(
+																			"NotFound");
+														} else {
+															response(jQuery
+																	.map(
+																			data,
+																			function(
+																					item) {
+																				return {
+																					label : (item.name)
+																							.split("@@")[1],
+																					value : (item.name)
+																							.split("@@")[0]
+
+																				};
+																			}));
+														}
+													}
+												});
+									},
+
+									select : function(event, ui) {
+										var val = "";
+										var lable = "";
+										if (ui.item != null
+												&& trim(ui.item.value) != "") {
+											val = ui.item.value;
+											label = ui.item.label;
+										}
+										if (val != "") {
+											$("#matchFoundLeaveTrackerVO").val(
+													"Found");
+											$('#searchEmpleaveAprv')
+													.html(label);
+											$('#leaveAprvEmpId').val(val);
+										}
+
+										// update what is displayed in the textbox
+										this.value = label;
+										return false;
+									},
+									focus : function(e, ui) {
+
+										console.log(1);
+										var val = "";
+										var lable = "";
+										if (ui.item != null
+												&& trim(ui.item.value) != "") {
+											val = ui.item.value;
+											label = ui.item.label;
+										}
+										if (val != "") {
+											$("#matchFoundLeaveTrackerVO").val(
+													"Found");
+											$('#searchEmpleaveAprv')
+													.html(label);
+											$('#leaveAprvEmpId').val(val);
+										}
+
+										// update what is displayed in the textbox
+										this.value = label;
+										return false;
+									}
+
+								})/*.data("ui-autocomplete")._renderItem = function(
+						ul, item) {
+
+					if (item.value == '') {
+						$("#matchFoundLeaveTrackerVO").val("NotFound");
+						return $(
+								'<li class="ui-state-disabled" style="color:red;opacity: 0.6;">'
+										+ item.label + '</li>').appendTo(ul);
+					} else {
+						$("#matchFoundLeaveTrackerVO").val("Found");
+						return $("<li>").append("<a>" + item.label + "</a>")
+								.appendTo(ul);
+					}
+
+				};*/
+			}
+		});
+
+		$(function() {
+			if (parseInt(document.getElementById("transTrackerInProcessOD").value) != 0) {
+				$("#searchEmpOdApprv")
+						.autocomplete(
+								{
+									minLength : 3,
+									selectfirst : true,
+									minChars : 1,
+									matchSubset : 1,
+									matchContains : 1,
+									cacheLength : 10,
+									autoFill : true,
+									search : function(e, u) {
+										console.log(1)
+
+									},
+									source : function(request, response) {
+										$
+												.ajax({
+													type : "POST",
+													url : baseUrl+"/common/searchByNameForEisCompany.spr",
+													dataType : 'json',
+													data : {
+														name : $(
+																'#searchEmpOdApprv')
+																.val()
+													},
+													success : function(data) {
+														if (!data.length) {
+															var result = [ {
+																label : "No matches found",
+																value : ''
+															} ];
+															response(result);
+															$(
+																	"#matchFoundODTrackerVO")
+																	.val(
+																			"NotFound");
+														} else {
+															response(jQuery
+																	.map(
+																			data,
+																			function(
+																					item) {
+																				return {
+																					label : (item.name)
+																							.split("@@")[1],
+																					value : (item.name)
+																							.split("@@")[0]
+
+																				};
+																			}));
+														}
+													}
+												});
+									},
+
+									select : function(event, ui) {
+										var val = "";
+										var lable = "";
+										if (ui.item != null
+												&& trim(ui.item.value) != "") {
+											val = ui.item.value;
+											label = ui.item.label;
+										}
+										if (val != "") {
+											$("#matchFoundODTrackerVO").val(
+													"Found");
+											$('#searchEmpOdApprv').html(label);
+											$('#odApprvEmpId').val(val);
+										}
+
+										// update what is displayed in the textbox
+										this.value = label;
+										return false;
+									},
+									focus : function(e, ui) {
+
+										console.log(1);
+										var val = "";
+										var lable = "";
+										if (ui.item != null
+												&& trim(ui.item.value) != "") {
+											val = ui.item.value;
+											label = ui.item.label;
+										}
+										if (val != "") {
+											$("#matchFoundODTrackerVO").val(
+													"Found");
+											$('#searchEmpOdApprv').html(label);
+											$('#odApprvEmpId').val(val);
+										}
+
+										// update what is displayed in the textbox
+										this.value = label;
+										return false;
+									}
+
+								})/*.data("ui-autocomplete")._renderItem = function(
+						ul, item) {
+
+					if (item.value == '') {
+						$("#matchFoundODTrackerVO").val("NotFound");
+						return $(
+								'<li class="ui-state-disabled" style="color:red;opacity: 0.6;">'
+										+ item.label + '</li>').appendTo(ul);
+					} else {
+						$("#matchFoundODTrackerVO").val("Found");
+						return $("<li>").append("<a>" + item.label + "</a>")
+								.appendTo(ul);
+					}
+
+				};*/
+			}
+		});
+
+		$(function() {
+			if (parseInt(document.getElementById("transTrackerInProcessClaim").value) != 0) {
+				$("#searchEmpexpenceApprv")
+						.autocomplete(
+								{
+									minLength : 3,
+									selectfirst : true,
+									minChars : 1,
+									matchSubset : 1,
+									matchContains : 1,
+									cacheLength : 10,
+									autoFill : true,
+									search : function(e, u) {
+										console.log(1)
+
+									},
+									source : function(request, response) {
+										$
+												.ajax({
+													type : "POST",
+													url : baseUrl+"/common/searchByNameForEisCompany.spr",
+													dataType : 'json',
+													data : {
+														name : $(
+																'#searchEmpexpenceApprv')
+																.val()
+													},
+													success : function(data) {
+														if (!data.length) {
+															var result = [ {
+																label : "No matches found",
+																value : ''
+															} ];
+															response(result);
+															$(
+																	"#matchFoundClaimTrackerVO")
+																	.val(
+																			"NotFound");
+														} else {
+															response(jQuery
+																	.map(
+																			data,
+																			function(
+																					item) {
+																				return {
+																					label : (item.name)
+																							.split("@@")[1],
+																					value : (item.name)
+																							.split("@@")[0]
+
+																				};
+																			}));
+														}
+													}
+												});
+									},
+
+									select : function(event, ui) {
+										var val = "";
+										var lable = "";
+										if (ui.item != null
+												&& trim(ui.item.value) != "") {
+											val = ui.item.value;
+											label = ui.item.label;
+										}
+										if (val != "") {
+											$("#matchFoundClaimTrackerVO").val(
+													"Found");
+											$('#searchEmpexpenceApprv').html(
+													label);
+											$('#expenceAppApprvEmpId').val(val);
+										}
+
+										// update what is displayed in the textbox
+										this.value = label;
+										return false;
+									},
+									focus : function(e, ui) {
+
+										console.log(1);
+										var val = "";
+										var lable = "";
+										if (ui.item != null
+												&& trim(ui.item.value) != "") {
+											val = ui.item.value;
+											label = ui.item.label;
+										}
+										if (val != "") {
+											$("#matchFoundClaimTrackerVO").val(
+													"Found");
+											$('#searchEmpexpenceApprv').html(
+													label);
+											$('#expenceAppApprvEmpId').val(val);
+										}
+
+										// update what is displayed in the textbox
+										this.value = label;
+										return false;
+									}
+
+								})/*.data("ui-autocomplete")._renderItem = function(
+						ul, item) {
+
+					if (item.value == '') {
+						$("#matchFoundClaimTrackerVO").val("NotFound");
+						return $(
+								'<li class="ui-state-disabled" style="color:red;opacity: 0.6;">'
+										+ item.label + '</li>').appendTo(ul);
+					} else {
+						$("#matchFoundClaimTrackerVO").val("Found");
+						return $("<li>").append("<a>" + item.label + "</a>")
+								.appendTo(ul);
+					}
+
+				};*/
+			}
+		});
+
+		$(function() {
+			if (parseInt(document.getElementById("transTrackerInProcessTravel").value) != 0) {
+				$("#searchEmptravelAppApprv")
+						.autocomplete(
+								{
+									minLength : 3,
+									selectfirst : true,
+									minChars : 1,
+									matchSubset : 1,
+									matchContains : 1,
+									cacheLength : 10,
+									autoFill : true,
+									search : function(e, u) {
+										console.log(1)
+
+									},
+									source : function(request, response) {
+										$
+												.ajax({
+													type : "POST",
+													url : baseUrl+"/common/searchByNameForEisCompany.spr",
+													dataType : 'json',
+													data : {
+														name : $(
+																'#searchEmptravelAppApprv')
+																.val()
+													},
+													success : function(data) {
+														if (!data.length) {
+															var result = [ {
+																label : "No matches found",
+																value : ''
+															} ];
+															response(result);
+															$(
+																	"#matchFoundTravelTrackerVO")
+																	.val(
+																			"NotFound");
+														} else {
+															response(jQuery
+																	.map(
+																			data,
+																			function(
+																					item) {
+																				return {
+																					label : (item.name)
+																							.split("@@")[1],
+																					value : (item.name)
+																							.split("@@")[0]
+
+																				};
+																			}));
+														}
+													}
+												});
+									},
+
+									select : function(event, ui) {
+										var val = "";
+										var lable = "";
+										if (ui.item != null
+												&& trim(ui.item.value) != "") {
+											val = ui.item.value;
+											label = ui.item.label;
+										}
+										if (val != "") {
+											$("#matchFoundTravelTrackerVO")
+													.val("Found");
+											$('#searchEmptravelAppApprv').html(
+													label);
+											$('#travelAppApprvEmpId').val(val);
+										}
+
+										// update what is displayed in the textbox
+										this.value = label;
+										return false;
+									},
+									focus : function(e, ui) {
+
+										console.log(1);
+										var val = "";
+										var lable = "";
+										if (ui.item != null
+												&& trim(ui.item.value) != "") {
+											val = ui.item.value;
+											label = ui.item.label;
+										}
+										if (val != "") {
+											$("#matchFoundTravelTrackerVO")
+													.val("Found");
+											$('#searchEmptravelAppApprv').html(
+													label);
+											$('#travelAppApprvEmpId').val(val);
+										}
+
+										// update what is displayed in the textbox
+										this.value = label;
+										return false;
+									}
+
+								})/*.data("ui-autocomplete")._renderItem = function(
+						ul, item) {
+
+					if (item.value == '') {
+						$("#matchFoundTravelTrackerVO").val("NotFound");
+						return $(
+								'<li class="ui-state-disabled" style="color:red;opacity: 0.6;">'
+										+ item.label + '</li>').appendTo(ul);
+					} else {
+						$("#matchFoundTravelTrackerVO").val("Found");
+						return $("<li>").append("<a>" + item.label + "</a>")
+								.appendTo(ul);
+					}
+
+				};*/
+			}
+		});
+
+		$(function() {
+			if (parseInt(document.getElementById("transTrackerInProcessMuster").value) != 0) {
+				$("#searchEmpattRecApprv")
+						.autocomplete(
+								{
+									minLength : 3,
+									selectfirst : true,
+									minChars : 1,
+									matchSubset : 1,
+									matchContains : 1,
+									cacheLength : 10,
+									autoFill : true,
+									search : function(e, u) {
+										console.log(1)
+
+									},
+									source : function(request, response) {
+										$
+												.ajax({
+													type : "POST",
+													url : baseUrl+"/common/searchByNameForEisCompany.spr",
+													dataType : 'json',
+													data : {
+														name : $(
+																'#searchEmpattRecApprv')
+																.val()
+													},
+													success : function(data) {
+														if (!data.length) {
+															var result = [ {
+																label : "No matches found",
+																value : ''
+															} ];
+															response(result);
+															$(
+																	"#matchFoundMusterTrackerVO")
+																	.val(
+																			"NotFound");
+														} else {
+															response(jQuery
+																	.map(
+																			data,
+																			function(
+																					item) {
+																				return {
+																					label : (item.name)
+																							.split("@@")[1],
+																					value : (item.name)
+																							.split("@@")[0]
+
+																				};
+																			}));
+														}
+													}
+												});
+									},
+
+									select : function(event, ui) {
+										var val = "";
+										var lable = "";
+										if (ui.item != null
+												&& trim(ui.item.value) != "") {
+											val = ui.item.value;
+											label = ui.item.label;
+										}
+										if (val != "") {
+											$("#matchFoundMusterTrackerVO")
+													.val("Found");
+											$('#searchEmpattRecApprv').html(
+													label);
+											$('#attRecApprvEmpId').val(val);
+										}
+
+										// update what is displayed in the textbox
+										this.value = label;
+										return false;
+									},
+									focus : function(e, ui) {
+
+										console.log(1);
+										var val = "";
+										var lable = "";
+										if (ui.item != null
+												&& trim(ui.item.value) != "") {
+											val = ui.item.value;
+											label = ui.item.label;
+										}
+										if (val != "") {
+											$("#matchFoundMusterTrackerVO")
+													.val("Found");
+											$('#searchEmpattRecApprv').html(
+													label);
+											$('#attRecApprvEmpId').val(val);
+										}
+
+										// update what is displayed in the textbox
+										this.value = label;
+										return false;
+									}
+
+								})/*.data("ui-autocomplete")._renderItem = function(
+						ul, item) {
+
+					if (item.value == '') {
+						$("#matchFoundMusterTrackerVO").val("NotFound");
+						return $(
+								'<li class="ui-state-disabled" style="color:red;opacity: 0.6;">'
+										+ item.label + '</li>').appendTo(ul);
+					} else {
+						$("#matchFoundMusterTrackerVO").val("Found");
+						return $("<li>").append("<a>" + item.label + "</a>")
+								.appendTo(ul);
+					}
+
+				};*/
+			}
+		});
+
+		$(function() {
+			if (parseInt(document.getElementById("transTrackerInProcessShift").value) != 0) {
+				$("#searchEmpshiftChgApprv")
+						.autocomplete(
+								{
+									minLength : 3,
+									selectfirst : true,
+									minChars : 1,
+									matchSubset : 1,
+									matchContains : 1,
+									cacheLength : 10,
+									autoFill : true,
+									search : function(e, u) {
+										console.log(1)
+
+									},
+									source : function(request, response) {
+										$
+												.ajax({
+													type : "POST",
+													url : baseUrl+"/common/searchByNameForEisCompany.spr",
+													dataType : 'json',
+													data : {
+														name : $(
+																'#searchEmpshiftChgApprv')
+																.val()
+													},
+													success : function(data) {
+														if (!data.length) {
+															var result = [ {
+																label : "No matches found",
+																value : ''
+															} ];
+															response(result);
+															$(
+																	"#matchFoundShiftChangeTrackerVO")
+																	.val(
+																			"NotFound");
+														} else {
+															response(jQuery
+																	.map(
+																			data,
+																			function(
+																					item) {
+																				return {
+																					label : (item.name)
+																							.split("@@")[1],
+																					value : (item.name)
+																							.split("@@")[0]
+
+																				};
+																			}));
+														}
+													}
+												});
+									},
+
+									select : function(event, ui) {
+										var val = "";
+										var lable = "";
+										if (ui.item != null
+												&& trim(ui.item.value) != "") {
+											val = ui.item.value;
+											label = ui.item.label;
+										}
+										if (val != "") {
+											$("#matchFoundShiftChangeTrackerVO")
+													.val("Found");
+											$('#searchEmpshiftChgApprv').html(
+													label);
+											$('#shiftChgApprvEmpId').val(val);
+										}
+
+										// update what is displayed in the textbox
+										this.value = label;
+										return false;
+									},
+									focus : function(e, ui) {
+
+										console.log(1);
+										var val = "";
+										var lable = "";
+										if (ui.item != null
+												&& trim(ui.item.value) != "") {
+											val = ui.item.value;
+											label = ui.item.label;
+										}
+										if (val != "") {
+											$("#matchFoundShiftChangeTrackerVO")
+													.val("Found");
+											$('#searchEmpshiftChgApprv').html(
+													label);
+											$('#shiftChgApprvEmpId').val(val);
+										}
+
+										// update what is displayed in the textbox
+										this.value = label;
+										return false;
+									}
+
+								})/*.data("ui-autocomplete")._renderItem = function(
+						ul, item) {
+
+					if (item.value == '') {
+						$("#matchFoundShiftChangeTrackerVO").val("NotFound");
+						return $(
+								'<li class="ui-state-disabled" style="color:red;opacity: 0.6;">'
+										+ item.label + '</li>').appendTo(ul);
+					} else {
+						$("#matchFoundShiftChangeTrackerVO").val("Found");
+						return $("<li>").append("<a>" + item.label + "</a>")
+								.appendTo(ul);
+					}
+
+				};*/
+			}
+		});
+
+		$(function() {
+			if (parseInt(document.getElementById("transTrackerInProcessClaimTravel").value) != 0) {
+				$("#searchEmptravelClaimApprv")
+						.autocomplete(
+								{
+									minLength : 3,
+									selectfirst : true,
+									minChars : 1,
+									matchSubset : 1,
+									matchContains : 1,
+									cacheLength : 10,
+									autoFill : true,
+									search : function(e, u) {
+										console.log(1)
+
+									},
+									source : function(request, response) {
+										$
+												.ajax({
+													type : "POST",
+													url : baseUrl+"/common/searchByNameForEisCompany.spr",
+													dataType : 'json',
+													data : {
+														name : $(
+																'#searchEmptravelClaimApprv')
+																.val()
+													},
+													success : function(data) {
+														if (!data.length) {
+															var result = [ {
+																label : "No matches found",
+																value : ''
+															} ];
+															response(result);
+															$(
+																	"#matchFoundTravelClaimTrackerVO")
+																	.val(
+																			"NotFound");
+														} else {
+															response(jQuery
+																	.map(
+																			data,
+																			function(
+																					item) {
+																				return {
+																					label : (item.name)
+																							.split("@@")[1],
+																					value : (item.name)
+																							.split("@@")[0]
+
+																				};
+																			}));
+														}
+													}
+												});
+									},
+
+									select : function(event, ui) {
+										var val = "";
+										var lable = "";
+										if (ui.item != null
+												&& trim(ui.item.value) != "") {
+											val = ui.item.value;
+											label = ui.item.label;
+										}
+										if (val != "") {
+											$("#matchFoundTravelClaimTrackerVO")
+													.val("Found");
+											$('#searchEmptravelClaimApprv')
+													.html(label);
+											$('#travelClaimApprvEmpId')
+													.val(val);
+										}
+
+										// update what is displayed in the textbox
+										this.value = label;
+										return false;
+									},
+									focus : function(e, ui) {
+
+										console.log(1);
+										var val = "";
+										var lable = "";
+										if (ui.item != null
+												&& trim(ui.item.value) != "") {
+											val = ui.item.value;
+											label = ui.item.label;
+										}
+										if (val != "") {
+											$("#matchFoundTravelClaimTrackerVO")
+													.val("Found");
+											$('#searchEmptravelClaimApprv')
+													.html(label);
+											$('#travelClaimApprvEmpId')
+													.val(val);
+										}
+
+										// update what is displayed in the textbox
+										this.value = label;
+										return false;
+									}
+
+								})/*.data("ui-autocomplete")._renderItem = function(
+						ul, item) {
+
+					if (item.value == '') {
+						$("#matchFoundTravelClaimTrackerVO").val("NotFound");
+						return $(
+								'<li class="ui-state-disabled" style="color:red;opacity: 0.6;">'
+										+ item.label + '</li>').appendTo(ul);
+					} else {
+						$("#matchFoundTravelClaimTrackerVO").val("Found");
+						return $("<li>").append("<a>" + item.label + "</a>")
+								.appendTo(ul);
+					}
+
+				};*/
+			}
+		});
+
+		$(function() {
+			if (parseInt(document.getElementById("transTrackerInProcess").value) != 0
+					|| parseInt(document.getElementById("transTrackerInProcessLeave").value) != 0
+					|| parseInt(document.getElementById("transTrackerInProcessOD").value) != 0
+					|| parseInt(document.getElementById("transTrackerInProcessClaim").value) != 0
+					|| parseInt(document.getElementById("transTrackerInProcessTravel").value) != 0
+					|| parseInt(document.getElementById("transTrackerInProcessMuster").value) != 0
+					|| parseInt(document.getElementById("transTrackerInProcessShift").value) != 0
+					|| parseInt(document.getElementById("transTrackerInProcessClaimTravel").value) != 0) {
+				$("#searchEmpAssignToOne")
+						.autocomplete(
+								{
+									minLength : 3,
+									selectfirst : true,
+									minChars : 1,
+									matchSubset : 1,
+									matchContains : 1,
+									cacheLength : 10,
+									autoFill : true,
+									search : function(e, u) {
+										console.log(1)
+
+									},
+									source : function(request, response) {
+										$
+												.ajax({
+													type : "POST",
+													url : baseUrl + "/common/searchByNameForEisCompany.spr",
+													dataType : 'json',
+													data : {
+														name : $(
+																'#searchEmpAssignToOne')
+																.val()
+													},
+													success : function(data) {
+														if (!data.length) {
+															var result = [ {
+																label : "No matches found",
+																value : ''
+															} ];
+															response(result);
+															$(
+																	"#matchFoundAllTrackerVO")
+																	.val(
+																			"NotFound");
+														} else {
+															response(jQuery
+																	.map(
+																			data,
+																			function(
+																					item) {
+																				return {
+																					label : (item.name)
+																							.split("@@")[1],
+																					value : (item.name)
+																							.split("@@")[0]
+
+																				};
+																			}));
+														}
+													}
+												});
+									},
+
+									select : function(event, ui) {
+										var val = "";
+										var lable = "";
+										if (ui.item != null
+												&& trim(ui.item.value) != "") {
+											val = ui.item.value;
+											label = ui.item.label;
+										}
+										if (val != "") {
+											$("#matchFoundAllTrackerVO").val(
+													"Found");
+											$('#searchEmpAssignToOne').html(
+													label);
+											$('#assignToOneEmpId').val(val);
+										}
+
+										// update what is displayed in the textbox
+										this.value = label;
+										return false;
+									},
+									focus : function(e, ui) {
+
+										console.log(1);
+										var val = "";
+										var lable = "";
+										if (ui.item != null
+												&& trim(ui.item.value) != "") {
+											val = ui.item.value;
+											label = ui.item.label;
+										}
+										if (val != "") {
+											$("#matchFoundAllTrackerVO").val(
+													"Found");
+											$('#searchEmpAssignToOne').html(
+													label);
+											$('#assignToOneEmpId').val(val);
+										}
+
+										// update what is displayed in the textbox
+										this.value = label;
+										return false;
+									}
+
+								})/*.data("ui-autocomplete")._renderItem = function(
+						ul, item) {
+
+					if (item.value == '') {
+						$("#matchFoundAllTrackerVO").val("NotFound");
+						return $(
+								'<li class="ui-state-disabled" style="color:red;opacity: 0.6;">'
+										+ item.label + '</li>').appendTo(ul);
+					} else {
+						$("#matchFoundAllTrackerVO").val("Found");
+						return $("<li>").append("<a>" + item.label + "</a>")
+								.appendTo(ul);
+					}
+
+				};*/
+			}
+		});
+
+		// $(function() {
+		// 	$('.chosen-select').chosen({
+		// 		width : "100%"
+		// 	});
+		// 	$('.chosen-select-deselect').chosen({
+		// 		allow_single_deselect : true
+		// 	});
+
+    // });
+  });
+	</script>

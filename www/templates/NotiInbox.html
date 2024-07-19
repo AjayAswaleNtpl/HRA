@@ -1,0 +1,579 @@
+<style>
+    .custom-item {
+        border: none;
+    }
+
+    .custom-row {
+        padding: 0px;
+    }
+    .custom-padding{
+        padding: 10px;
+    }
+    .custom-top
+    {
+        top:10px;
+        left: 13px;
+    }
+    .custom-paddingTop
+    {
+        padding-top : 11px;
+    }
+    .custom_OD
+    {
+        padding-top : 11px;
+        padding-bottom: 0px;
+    }
+    .custom-paddingBottom
+    {
+        padding-bottom: 0px;
+    }
+    .cust-card {
+        padding: 50px 0px 0px 0px;
+    }
+    .custom-requestApprove
+    {
+        font-size: 11px;
+        color: green;
+    }
+    .custom-requestRejcted
+    {
+        font-size: 11px;
+        color: red;
+    }
+    .custom-requestOther
+    {
+        font-size: 11px;
+        color: orange;
+    }
+    .custom-fontSize
+    {
+        font-size: 12px;
+    }
+    .customBorderRadius
+    {
+        border-top-right-radius: 1em;
+        border-bottom-right-radius: 1em;
+        border-top-left-radius: 1em;
+        border-bottom-left-radius: 1em;
+    }
+/*
+    .modal-wrapper {
+        position: absolute;
+        top: 25%;
+        display: block;
+        width: 90%;
+        min-height: 45%;
+        padding:  5%;
+    }
+
+    .modal-backdrop-bg {
+        background-color: rgba(255,255,255,0.85);
+		display:none;
+    }
+
+    .modal {
+        border-top-right-radius: 1em;
+        border-bottom-right-radius: 1em;
+        border-top-left-radius: 1em;
+        border-bottom-left-radius: 1em;
+		
+    }
+
+    .modal-ion-content {
+        padding: 15px; font-size: 0.85em;
+    }
+
+
+
+.modal-wrapper {
+	position: absolute;
+	top: 25%;
+	display: block;
+	width: 90%;
+	min-height: 50%;
+	padding: 5%;
+}
+
+.item-avatar {
+	padding-left: 10%;
+}
+
+.modal-backdrop-bg {
+	background-color: rgba(255, 255, 255, 0.85);
+	display:none;
+}
+
+.modal {
+	border-top-right-radius: 1em;
+	border-bottom-right-radius: 1em;
+	border-top-left-radius: 1em;
+	border-bottom-left-radius: 1em;
+}
+
+.modal-ion-content {
+	font-size: 0.85em;
+}
+ */
+
+.custom-row {
+	padding: 0px;
+}
+
+.cust-col-50 {
+	text-align: center;
+	color: #007ec1;
+}
+
+#profileImage {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background: #512DA8;
+	font-size: 23px;
+	color: #fff;
+	text-align: center;
+	line-height: 50px;
+	margin: 0px 0;
+	font-family: monospace;
+}
+
+.cust-list {
+	margin-bottom: 0px;
+}
+
+.mailContent {
+	font-weight: normal;
+	color: darkgray;
+}
+.custom-header {
+    padding-top: 0px !important;
+}
+.search {
+    margin-top: 50px !important;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.modal-backdrop.in {
+    opacity: 0 !important;
+    z-index: -1;
+	display:none;
+}
+.modal-header {
+    padding: 10px 10px 0px 10px;
+    border-bottom: 1px solid #e5e5e5;
+    color: #fff;
+}
+.modal-title {
+    display: inline-block;
+}
+.indexImg img {
+  width: 50px;
+}
+
+.indexClass h2{
+  font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+.col-xs-9,.col-xs-3{
+  padding: 0 !important;
+}
+.modal-body {
+    padding: 12px 8px !important;
+}
+.inboxClass{
+  margin-top: 2px;
+  padding-top: 15px;
+   font-size: 1.1em;
+   margin-left:-6%;
+   max-width:100%;
+}
+.notificationsClass{
+  margin-top: 2px;
+  padding-top: 15px;
+   font-size: 1.1em;
+   margin-left:8%;
+   max-width:100%;
+}
+.notificationSection h2{
+  font-size: 16px;
+}
+.discription{
+  font-size: 0.9em;
+}
+.icon.ion-close-circled.close-modal{
+  float: right;
+  font-size: 150%;
+}
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+.inboxClass,
+.notificationsClass{
+  font-size: 2.1em;
+}
+.notificationSection h2{
+  font-size: 22px;
+}
+.discription{
+  font-size: 1.2em;
+}
+.modal-open .modal {
+    width: 100%;
+}
+.indexClass h2,
+#purpose,
+.modal-title {
+    font-size: 22px;
+}
+.icon.ion-close-circled.close-modal{
+  float: right;
+  font-size: 220%;
+}
+}
+</style>
+
+<ion-view >
+    <ion-content has-bouncing="false" style="overflow-y: auto;top:0%;">
+
+        <div ng-show ="IsLeaveAccessible == 'true' || IsODAccessible == 'true' || IsRegularizationAccessible == 'true' || IsShiftChangeAccessible == 'true'" id="tabhead" class="tabs-striped tabs-top tabs-icon-top tabs-clear">
+            <div class="tabs" style="margin-top: 25px; top: 65px;">
+                <!-- style="margin-top: 5px;top: 0px;" -->
+            <a  id='inboxTab'  class="tab-item inboxClass" ng-click="getInbox()" href=""
+		>
+                Inbox
+            </a>
+      <a  id='notificationsTab' class="tab-item notificationsClass " ng-click="getNotifications()"
+        href="">
+                Notifications
+				<!--
+				<sup style="top: -0.5em;margin-left: 12px;"><div style="background-color: white; color: rgb(59, 89, 152); padding: 1px 3px; font-size: smaller;top: -6px; margin-right: 14px;" class="badge badge-stable ng-binding" ng-if="UnreadMessages != 0">{{notiCount}}</div>
+				</sup>
+				-->
+            </a>
+            </div>
+        </div>
+
+
+        <div id="inboxDiv" class="cust-card" >
+           <!-- <div>
+		   <div class="custom-header" style="font-size: 20px;margin-bottom: 40px;padding: 0px;padding-left: 15px;padding-top: 10px;margin-top:-8px;">
+				<h4 class="custom-header" style="margin-top: 0px;"><b>Inbox</b></h4> </div>
+				<br>
+			</div> -->
+			<div class="custom-header">
+				<h4 class="subHeaderClass"><b>Inbox</b></h4>
+			  </div>
+		<!-- <div class="list" style="margin-bottom: 0px;">
+			<label class="item item-input" style="margin-top: 41px;">
+				 <i class="icon ion-search placeholder-icon"></i>
+				  <input type="search"	placeholder="Search" ng-model="searchObj.searchQuery">
+			</label>
+		</div>		 -->
+		<div class="search">
+			<span>
+		  <input type="submit" value="&#xf002;" class="search-btn fa ib-m">
+		   <div class="search-slide ib-m">
+			  <input type="search" id="" placeholder="Enter your search" class="ib-m" ng-model="searchObj.searchQuery"/>
+			  <div class="search-close ib-m">
+				<i class="fa fa-times-circle" aria-hidden="true"></i></div>
+			</div>
+		</span>
+		  </div>
+		<div class="list cust-list notificationSection" ng-repeat="inbox in inboxList| filter: searchObj.searchQuery| limitTo:pageSize">
+		<div ng-click="viewEmailContent(inbox)"	class="item custom-item item-text-wrap" style="padding: 0px 16px;" 
+		data-toggle="modal" data-target="#inboxID">
+		<div class="row" ng-if="inbox.status == 'Y'">
+			<div class="col col-20">
+				<div id="profileImage" ng-style="{'background': inbox.iconColor}">{{inbox.initial}}</div>
+			</div>
+			<div class="col col-80">
+				<h2>{{inbox.senderEmpFullName}}</h2>
+				<h3>
+					<div class="discription" 
+						ng-class="{mailContent: inbox.senderEmpFullName}">{{inbox.subject}}</div>
+				</h3>
+			</div>
+		</div>
+		<div class="row" ng-if="inbox.status == 'N'">
+			<div class="col col-20">
+				<div id="profileImage" ng-style="{'background': inbox.iconColor}">{{inbox.initial}}</div>
+			</div>
+			<div class="col col-80">
+				<h2 style="font-weight: bold;">{{inbox.senderEmpFullName}}</h2>
+				<h3 style="font-size: 0.78em; font-weight: bold;">{{inbox.subject}}</h3>
+			</div>
+		</div>
+	</div>
+</div>
+<center>
+	<a ng-hide="pageSize > inboxList.length || searchObj.searchQuery" ng-show="hidebutton1 == 1"
+		href="" class="col" ng-click="loadNextPage()"
+		style="padding-bottom: 4%; font-size: 17px;">Show More</a>
+</center>
+<br>
+<div ng-show="hidebutton == 1"
+	ng-hide="hidebutton1 == 1 || hidebutton1 == 0" class="cust-card"
+	ng-show="msg">
+	<center style="font-size: 18px;">
+		<b>No Data Available </b>
+	</center>
+</div>
+</div>
+ <div id="notificationsDiv" class="cust-card" >
+         <!--<div>
+                <div class="custom-header"
+                     style="font-size: 20px; margin-bottom: 40px; padding: 0px; padding-left: 15px; padding-top: 10px;margin-top: 0px;">
+                    <h4 style="margin-top: 0px;">
+                        <b>Notifications</b>
+                    </h4>
+                </div>
+        </div>-->
+		<div>
+		   <div class="custom-header" style="font-size: 20px;margin-bottom: 40px;padding: 0px;padding-left: 15px;padding-top: 10px;margin-top:-8px;">
+				<h4 class="custom-header" style="margin-top: 0px;"><b>Notifications</b></h4> </div>
+				<br>
+            </div>
+		<!-- <div class="list" style="margin-bottom: 0px">
+			<label class="item item-input" style="margin-top:8px;"> <i
+				class="icon ion-search placeholder-icon"></i> <input type="text"
+				placeholder="Search" ng-model="searchObjNoti.searchQuery">
+			</label>
+		</div>-->
+		<div class="search" style="margin-top: 20px !important;">
+			<span>
+		  <input type="submit" value="&#xf002;" class="search-btn fa ib-m">
+		   <div class="search-slide ib-m">
+			  <input type="search" id="" placeholder="Enter your search" class="ib-m searchBtn" ng-model="searchObjNoti.searchQuery"/>
+			  <div class="search-close ib-m">
+				<i class="fa fa-times-circle" aria-hidden="true"></i></div>
+			</div>
+		</span>
+		  </div>
+		<div class="list cust-list"	ng-repeat="noti in notiList| filter: searchObjNoti.searchQuery| limitTo:pageSizeNoti">
+		<div ng-click="viewNotiContentLocally(noti)" class="item custom-item item-text-wrap" 
+		data-toggle="modal" data-target="#notificationID">
+		<div class="row" >
+			<div class="col col-20">
+				<div id="profileImage" ng-style="{'background': noti.iconColor}">{{noti.initial}}</div>
+			</div>
+			<div class="col col-80">
+				<h2>{{noti.senderEmpFullName}}</h2>
+				<h3>
+					<div style="font-size: 0.9em;"
+						ng-class="{mailContent: noti.senderEmpFullName}">{{noti.title}}</div>
+				</h3>
+			</div>
+		</div>
+	</div>
+</div>
+<center>
+	<a ng-hide="pageSizeNoti > notiList.length || searchObjNoti.searchQuery" ng-show="hidebutton1Noti == 1"
+		href="" class="col" ng-click="loadNextPageNoti()"
+		style="padding-bottom: 4%; font-size: 17px;">Show More</a>
+</center>
+<br>
+<div ng-show="hidebuttonNoti == 1"
+	ng-hide="hidebutton1Noti == 1 || hidebutton1Noti == 0" class="cust-card"
+	ng-show="msgNoti">
+	<center style="font-size: 18px;">
+		<b>No Notification(s) Available. </b>
+	</center>
+</div>
+
+</div>
+
+		<!-- <script id="my-modal.html" type="text/ng-template">
+            <ion-modal-view style="height: 400px" class="modal-payslip">
+            <ion-content has-bouncing="false" class="modal-ion-content">
+ 			<div id="imgcross" style="text-align:right;" >
+			<img  ng-focus="focusOnCross=='true'" ng-src="./img/cross.png" src="./img/cross.png" ng-click="closeModal()">
+			</div>
+
+ 			<div id="approvals_link" style="text-align:left;margin-top:-11%" ng-if="viewApprovalsLink">
+			<p>Go to
+			<a ng-click="closeModal()" href="#/app/MyApprovals" ><b>Approvals</b></a>, to Approve/Reject.</p>
+			</div>
+
+
+
+            <div class="item custom-item item-avatar">
+            <div class="item custom-item item-text-wrap">
+            <div class="item custom-item item-avatar" >
+            <img ng-if="profilePhoto" style="position: fixed; top: 60px;" ng-src="{{profilePhoto}}">
+            <img ng-if="!profilePhoto" style="position: fixed; top: 60px;" ng-src="{{gender}}">
+            <div ng-if="!senderFullName" style ="word-wrap: break-word;"><h2><b>Name:</b> {{modal1.senderEmpFullName}}</h2></div>
+            <div ng-if="senderFullName" style ="word-wrap: break-word;"><h2><b>Name:</b> {{senderFullName}}</h2></div>
+            <div style ="word-wrap: break-word;" ><h2><b>Date: </b>{{createDate | date : "dd-MMM-yyyy"}}</h2></div>
+            <div style ="word-wrap: break-word;"><h2><b>Subject: </b>{{modal1.subject}}</h2></div>
+            </div>
+            <p><div id="purpose"> </div></p>
+			<div style="text-align:center;">
+			<br><br>
+			<button class="button  button-positive" style="width:50%;" ng-click="closeModal()">
+			Close
+			</button>
+			</div>
+
+            </div>
+            </div>
+            </ion-content>
+            </ion-modal-view>
+        </script> -->
+		<!-- <script id="my-modal-noti.html" type="text/ng-template">
+            <ion-modal-view style="height: 400px" class="modal-payslip">
+            <ion-content has-bouncing="false" class="modal-ion-content">
+ 			<div style="text-align:right;" >
+			<img id="imgcrossnoti" ng-src="./img/cross.png" src="./img/cross.png" ng-click="closeModalNoti()">
+			</div>
+
+            <div class="item custom-item item-avatar">
+            <div class="item custom-item item-text-wrap">
+            <div class="item custom-item item-avatar" >
+            <img ng-if="profilePhotoNoti" style="position: fixed; top: 25px;" ng-src="{{profilePhotoNoti}}">
+            <img ng-if="!profilePhotoNoti" style="position: fixed; top: 25px;" ng-src="{{genderNoti}}">
+            <div ng-if="!senderFullNameNoti" style ="word-wrap: break-word;"><h2><b>From:</b> {{modal1Noti.senderEmpFullName}}</h2></div>
+            <div ng-if="senderFullNameNoti" style ="word-wrap: break-word;"><h2><b>From:</b> {{senderFullNameNoti}}</h2></div>
+            <div style ="word-wrap: break-word;" ><h2><b>Date: </b>{{createDateNoti | date : "dd-MMM-yyyy"}}</h2></div>
+
+			<br>
+			<div style ="word-wrap: break-word;"><h2><b>{{modal1Noti.title}}</b></h2></div>
+            </div>
+            <p><div id="purposeNoti"> </div></p>
+			<div style="text-align:center;">
+			<br><br>
+			<button class="button  button-positive" style="width:50%;" ng-click="closeModalNoti()">
+			Close
+			</button>
+			</div>
+
+            </div>
+            </div>
+            </ion-content>
+            </ion-modal-view>
+        </script> -->
+    
+<!-- Inbox Modal -->
+<div class="modal fade showPOPUP" id="inboxID" tabindex="-1" role="dialog"
+ aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog" role="document" style="margin-top: 75px;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Notification</h5>
+
+          <i class="icon ion-close-circled close-modal" data-dismiss="modal" aria-label="Close"></i>
+        </div>
+        <div class="modal-body">
+
+          <div id="approvals_link"  style="text-align:left;" ng-if="viewApprovalsLink">
+              <p >Go to
+              <!--<a ng-click="closeModal()" href="#/app/MyApprovalsCombined" ><b>Approvals</b></a>, to Approve/Reject.</p> -->
+			  <!-- <a  onclick="onApprovalClick();" href="#/app/MyApprovalsCombined"   ><b>Approvals</b></a>, to Approve/Reject.</p> -->
+			   <span><b>Approvals</b></span>, to Approve/Reject.</p>
+              </div>
+             <div class="form-group row" >
+               <div class="col-sm-3 col-xs-3 indexImg">
+
+                <img ng-if="profilePhoto"  ng-src="{{profilePhoto}}">
+                  <img ng-if="!profilePhoto"  ng-src="{{gender}}">
+               </div>
+                <div  class="col-sm-9 col-xs-9 indexClass">
+                  <div ng-if="!senderFullName"><h2><b>Name:</b> {{modal1.senderEmpFullName}}</h2></div>
+                  <div ng-if="senderFullName"><h2><b>Name:</b> {{senderFullName}}</h2></div>
+                  <div ><h2><b>Date: </b>{{createDate | date : "dd-MMM-yyyy"}}</h2></div>
+                  <div ><h2><b>Subject: </b>{{modal1.subject}}</h2></div>
+                </div>
+
+              </div>
+
+              <div class="form-group row" >
+
+                <div class="col-sm-12 col-xs-12">
+                  <div id="purpose" style="overflow:scroll;height: 200;"> </div>
+                </div>
+              </div>
+
+              <!-- <div class="item custom-item item-avatar">
+                  <div class="item custom-item item-text-wrap">
+                  <div class="item custom-item item-avatar" >
+                  <img ng-if="profilePhoto" style="position: fixed; top: 60px;" ng-src="{{profilePhoto}}">
+                  <img ng-if="!profilePhoto" style="position: fixed; top: 60px;" ng-src="{{gender}}">
+                  <div ng-if="!senderFullName" style ="word-wrap: break-word;"><h2><b>Name:</b> {{modal1.senderEmpFullName}}</h2></div>
+                  <div ng-if="senderFullName" style ="word-wrap: break-word;"><h2><b>Name:</b> {{senderFullName}}</h2></div>
+                  <div style ="word-wrap: break-word;" ><h2><b>Date: </b>{{createDate | date : "dd-MMM-yyyy"}}</h2></div>
+                  <div style ="word-wrap: break-word;"><h2><b>Subject: </b>{{modal1.subject}}</h2></div>
+                  </div>
+                <div id="purpose"> </div>
+
+          </div>
+     </div> -->
+  </div>
+</div></div></div>
+
+
+<!--Notification Modal -->
+<div class="modal fade showPOPUP" id="notificationID" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="margin-top: 75px;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Notification</h5>
+
+          <i class="icon ion-close-circled close-modal"  data-dismiss="modal" aria-label="Close"></i>
+        </div>
+        <div class="modal-body">
+
+            <div class="form-group row" >
+                <div class="col-sm-3 col-xs-3 indexImg">
+                    <img ng-if="profilePhotoNoti" style="position: fixed; top: 51px;" ng-src="{{profilePhotoNoti}}">
+                    <img ng-if="!profilePhotoNoti" style="position: fixed; top: 51px;" ng-src="{{genderNoti}}">
+                </div>
+                 <div  class="col-sm-9 col-xs-9 indexClass">
+                    <div ng-if="!senderFullNameNoti"><h2><b>From:</b> {{modal1Noti.senderEmpFullName}}</h2></div>
+                    <div ng-if="senderFullNameNoti"><h2><b>From:</b> {{senderFullNameNoti}}</h2></div>
+                    <div><h2><b>Date: </b>{{createDateNoti | date : "dd-MMM-yyyy"}}</h2></div>
+                 </div>
+
+               </div>
+               <br>
+               <div style ="word-wrap: break-word;margin-left:5%;"><h4><b>{{modal1Noti.title}}</b></h2></div>
+               <div style ="word-wrap: break-word;margin-left:5%;"><h5><b>{{modal1Noti.message}}</b></h2></div>
+
+               <div class="form-group row" >
+                 <div class="col-sm-12 col-xs-12">
+                   <div id="purposeNoti"> </div>
+                 </div>
+               </div>
+
+    </div>
+  </div></div></div>
+  </ion-content>
+</ion-view>
+
+<script>
+	var sliBtn = '.search-btn',
+		sliCont = '.search-slide',
+		sliTxt = '.search-slide input[type=search]',
+		sliDis = '.search-close',
+		sliSpd = 300;
+
+	$(sliBtn).click(function(){
+	  $('.recentRecord').css("display", "none").fadeOut(4000);
+	  $(sliCont).animate(
+		{'width':'20.5625em'}, sliSpd);
+	  $(sliTxt).focus();
+	});
+	$(sliDis).click(function(){
+	  setTimeout(function() {
+		$('.recentRecord').css("display", "inline-block");
+  }, 1000);
+
+	  $(sliCont).animate(
+		{'width':0}, sliSpd);
+	});
+
+	// $('.ib-m.searchBtn').click(
+    // function(){
+    //     $(this).val('');
+    // });
+	
+
+		</script>

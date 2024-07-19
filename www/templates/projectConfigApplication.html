@@ -1,0 +1,697 @@
+
+<style>
+    .col-xs-2 {
+    padding: 0 !important;
+}
+.row {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+label {
+    font-weight: normal !important;
+}
+ .col-xs-4, .col-sm-4 {
+    padding: 0 4px !important;
+}
+
+ .ui-autocomplete.ui-menu.ui-widget.ui-widget-content.ui-corner-all
+{
+    height: 100px;
+    overflow: auto;
+}
+#tableContactPerson th{
+    padding: 5px;
+	text-align: center;
+}
+#tableContactPerson td{
+	color: #6d6d6d;
+	text-align: center;
+}
+button, html input[type=button] {
+    color: #333;
+    background-color: #e6e6e6;
+}
+</style>
+<!-- <script src="js/jquery-ui.js"></script> -->
+<ion-view>
+    <div class="bar bar-footer hide-on-keyboard-open" style="background-color:#000; background-size: 100% 0px;">
+        <div class="title" style="height: 20px;">
+            <h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px;
+                margin-bottom: 5px;">Powered by HR Align</h6>
+        </div>
+    </div>
+    <ion-content has-bouncing="false" class="item-divider grayBackColor" style="overflow-y: auto;">
+        <div class="custom-header" style="padding-top: 0px;padding-bottom: 0px;">
+            <h4 class="subHeaderClass" style="margin: 0px;"> <span class="backIcon">
+              <i class="icon ion-ios-arrow-back" ng-click="redirectOnBack()"></i></span>
+                <b style="vertical-align: super;"> Project Configuration </b></h4>
+
+        </div>
+		<input type="hidden" name="companyId" value="1"
+											id="companyId" 
+											class="form-control" />
+						
+        <form name="projectMasterForm">
+			<h4 style="font-size: 18px;" id="header"></h4>
+            <!-- <div class="form-group row">
+                <label class="col-sm-4 col-xs-4 col-form-label">Company Name </label><span class="dividerClass">:</span>
+                <span class="col-sm-8 col-xs-8" id="companyName"></span>
+
+			</div> -->
+			<div class="form-group row">
+				<label  class="col-sm-4 col-xs-4 col-form-label">Company Name</label><span class="dividerClass">:</span>
+				<div  class="col-sm-8 col-xs-8">
+					<span id="companyName"></span>
+				</div>
+			  </div>
+
+
+            <!-- <div class="form-group row">
+                <label class="col-sm-4 col-xs-4 col-form-label">Project Name </label><span class="dividerClass">:</span>
+				<input class="col-sm-8 col-xs-8 form-control" id="projectName" type="text" ng-model="projectMaster.projectName"
+				 autocomplete="off" maxlength="50" />
+			</div> -->
+			<div class="form-group row">
+				<label  class="col-sm-4 col-xs-4 col-form-label">Project Name </label><span class="dividerClass">:</span>
+				<div  class="col-sm-8 col-xs-8">
+					<input class="form-control" id="projectName" type="text" ng-model="projectMaster.projectName"
+					autocomplete="off" maxlength="50" />
+				</div>
+			  </div>
+
+            <!-- <div class="form-group row">
+                <label class="col-sm-4 col-xs-4 col-form-label">Project Code </label><span class="dividerClass">:</span>
+				<input class="col-sm-6 col-xs-8 form-control" id="projectCode" type="text" 
+				ng-model="projectMaster.projectCode" autocomplete="off" maxlength="20" />
+			</div> -->
+			<div class="form-group row">
+				<label  class="col-sm-4 col-xs-4 col-form-label">Project Code </label><span class="dividerClass">:</span>
+				<div  class="col-sm-8 col-xs-8">
+					<input class="form-control" id="projectCode" type="text" 
+					ng-model="projectMaster.projectCode" autocomplete="off" maxlength="20" />
+				</div>
+			  </div>
+
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-xs-4 col-form-label">Visibility </label><span class="dividerClass">:</span>
+                <div class="col-sm-8 col-xs-8">
+                    <div >
+
+                        <label class="col-sm-4 col-xs-4 col-form-label">
+                            <input type="radio" name="visibility" id="visibilityPublic" checked="checked" value="y"/> <span>Public</span>
+                        </label>
+                        <span class="col-sm-8 col-xs-8"><i>(Anyone can log time spent)</i></span>
+                    </div>
+                    <div>
+                        <label class="col-sm-4 col-xs-4 col-form-label">
+                            <input type="radio" name="visibility" id="visibilityPrivate"  value="n"/> <span>Private</span>
+                        </label>
+                        <span class="col-sm-8 col-xs-8"><i>(Only project team members can log time spent)</i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-xs-4 col-form-label">Project Type </label><span class="dividerClass">:</span>
+                <div class="col-sm-8 col-xs-8">
+                    <select required="required" class="form-control" id="projectTypeMasterId">
+                        <option value="-1" selected>---Select Type----</option>
+                        
+                    </select>
+                </div>
+            </div>
+            <!-- <div class="form-group">
+                <label class="col-sm-4 col-xs-4 col-form-label">Hours Distribution Type </label><span class="dividerClass">:</span>
+                <select required="required" class="form-control" id="hrsId" name="hrsId">
+                    <option selected="selected" value="-1">---Select---</option>
+                    
+                </select>
+			</div> -->
+			<div class="form-group row">
+                <label class="col-sm-4 col-xs-4 col-form-label">Hours Distribution Type </label><span class="dividerClass">:</span>
+                <div class="col-sm-8 col-xs-8">
+					<select required="required" class="form-control" id="hrsId" name="hrsId">
+						<option selected value="-1">---Select---</option>
+						
+					</select>
+                </div>
+            </div>
+
+            <!-- <div class="form-group">
+                <label class="col-sm-4 col-xs-4 col-form-label">Budgeted Hours</label><span class="dividerClass">:</span>
+				<input class="col-sm-8 col-xs-8 form-control" type="text" id="budgetHours"
+				ng-model="projectMaster.budgetHours"
+				autocomplete="off" />
+
+			</div> -->
+			<div class="form-group row">
+                <label class="col-sm-4 col-xs-4 col-form-label">Budgeted Hours </label><span class="dividerClass">:</span>
+                <div class="col-sm-8 col-xs-8">
+					<input class="form-control" type="number" id="budgetHours"
+				
+				autocomplete="off" />
+                </div>
+            </div>
+
+
+
+            <div class="form-group row">
+				<label class="col-sm-4 col-xs-4 col-form-label">Approved Hours</label><span class="dividerClass">:</span>
+				<div class="col-sm-8 col-xs-8">
+				<input class="form-control" type="number" id="approvHours"
+				 autocomplete="off" 
+				  /></div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-xs-4 col-form-label">Start Date</label><span class="dividerClass">:</span>
+                <div class="col-sm-6 col-xs-6">
+					<input class="form-control" type="text" id="startDate" ng-readonly="true" 
+					ng-model="selectedValues.startDate"
+					ng-click="setStartDate()"
+					required/> </div>
+                    <div class="col-sm-2 col-xs-2">
+                        <i style="padding-left: 3%; font-size: 193%;" class="ion-calendar" ng-click="setStartDate()">&emsp;</i>
+                    </div>
+               
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-xs-4 col-form-label">End Date</label><span class="dividerClass">:</span>
+                <div class="col-sm-6 col-xs-6">
+					<input class="form-control" type="text" id="endDate" ng-readonly="true" 
+					required ng-model="selectedValues.endDate" 
+					ng-click="setEndDate()"/> </div>
+                    <div class="col-sm-2 col-xs-2">
+                        <i style="padding-left: 3%; font-size: 193%;" class="ion-calendar" ng-click="setEndDate()">&emsp;</i>
+                    </div>
+               
+            </div>
+            <div class="form-group row">
+				<label class="col-sm-4 col-xs-4 col-form-label">Project Value</label><span class="dividerClass">:</span>
+				<div class="col-sm-8 col-xs-8">
+				<input type="number" maxlength="100" id="projectValue" autocomplete="off"
+				ng-model="projectMaster.projectValue"  onKeypress="return isNumberKey(event,this)" 
+				class=" form-control" />
+				</div>
+            </div>
+            <div class="form-group row">
+				<label class="col-sm-4 col-xs-4 col-form-label">Client Name</label><span class="dividerClass">:</span>
+				<div class="col-sm-8 col-xs-8">
+				<input type="text" name="clientName" id="clientName" 
+				ng-model="projectMaster.clientName" 
+				autocomplete="off" maxlength="99" class=" form-control">
+				</div>
+            </div>
+            <div class="form-group row">
+				<label class="col-sm-4 col-xs-4 col-form-label">Client Location</label><span class="dividerClass">:</span>
+				<div class="col-sm-8 col-xs-8">
+				<input type="text" 	ng-model="projectMaster.clientLocation" 
+				name="clientLocation" id="clientLocation" autocomplete="off" maxlength="99" class=" form-control">
+				</div>
+            </div>
+            <div class="form-group row">
+				<label class="col-sm-4 col-xs-4 col-form-label">Client Address</label><span class="dividerClass">:</span>
+				<div class="col-sm-8 col-xs-8">
+				<input type="text" 	ng-model="projectMaster.clientAddress"
+				name="clientAddress" id="clientAddress" autocomplete="off" maxlength="499" class=" form-control">
+				</div>
+            </div>
+            <div class="form-group row">
+				<label class="col-sm-4 col-xs-4 col-form-label">Client Phone No</label><span class="dividerClass">:</span>
+				<div class="col-sm-8 col-xs-8">
+				<input type="number" 	ng-model="projectMaster.clientPhoneNo"
+				name="clientPhoneNo" id="clientPhoneNo" autocomplete="off" maxlength="12" class=" form-control">
+				</div>
+            </div>
+            <div class="form-group row">
+				<label class="col-sm-4 col-xs-4 col-form-label">Client Pan Card No </label><span class="dividerClass">:</span>
+				<div class="col-sm-8 col-xs-8">
+				<input type="text" ng-model="projectMaster.clientPanNo"
+				name="clientPanNo" id="clientPanNo" autocomplete="off" maxlength="20" class=" form-control">
+				</div>
+            </div>
+            <div class="form-group row">
+				<label class="col-sm-4 col-xs-4 col-form-label">Client GST No </label><span class="dividerClass">:</span>
+				<div class="col-sm-8 col-xs-8">
+				<input type="text" 	ng-model="projectMaster.clientGstNo"
+				name="clientGstNo" id="clientGstNo" autocomplete="off" maxlength="30" class=" form-control">
+			</div>
+            </div>
+            <div class="form-group row">
+				<label class="col-sm-4 col-xs-4 col-form-label">Key Contact Person </label><span class="dividerClass">:</span>
+				<div class="col-sm-6 col-xs-6">
+				<input type="text" 	ng-model="projectMaster.keyContactPersonID"	name="keyContactPerson" id="keyContactPerson" 
+				placeholder="Search Employee" maxlength="100" class=" form-control" onclick="this.focus();">
+				</div>
+				<div class="col-sm-2 col-xs-2"><button class="btn btn-primary" ng-click="addRow()">Add</button></div>
+				
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-sm-4 col-xs-4 col-form-label"></label>
+				<div class="col-sm-8 col-xs-8" style="background: #d2d1d1; padding: 4px;">
+					<table id="tableContactPerson">
+						<tr>
+							<th>Id</th>
+							<th>Name</th>
+							<th>Delete</th>
+						</tr>
+						
+					</table>
+				</div>
+            </div>
+
+
+
+
+            <div class="form-group row">
+				<label class="col-sm-4 col-xs-4 col-form-label">Project Manager</label><span class="dividerClass">:</span>
+				<div class="col-sm-8 col-xs-8">
+				<input type="text" 
+				ng-model="projectMaster.projectManagerName"
+				name="projectManager" value="" id="projectManager" placeholder="Search Employee" maxlength="100" class=" form-control" />
+				</div>
+            </div>
+            <div class="form-group row">
+				<label class="col-sm-4 col-xs-4 col-form-label">Account Manager</label><span class="dividerClass">:</span>
+				<div class="col-sm-8 col-xs-8">
+				<input type="text" ng-model="projectMaster.accountmanagerName"
+				name="accountmanager" value="" id="accountmanager" placeholder="Search Employee" maxlength="100" class=" form-control">
+			</div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-xs-4 col-form-label">Office</label><span class="dividerClass">:</span>
+                <div class="col-sm-8 col-xs-8">
+                    <div class="form-group row">
+                        <a class="dataLinkText" ng-click="selectAll()">
+                            <i class="fa fa-check mr-10"></i>Select All</a>
+                        </a>
+                        <a class="dataLinkText" ng-click="deSelectAll()" style="margin-left: 30px;">
+                            <i class="fa fa-ban mr-10"></i>Deselect All
+                        </a>
+                    </div>
+                    <div class="form-group row">
+						<select required="required" class="form-control" 
+						ng-model="selectedValues.office"
+						 multiple="multiple" name="locId" id="locationId"
+						 ng-options="key as value for (key,value) in listOfLocations"
+						 ng-change="doChangeLoc()"
+						 >
+						 <option value="100" selected>Please Select</option>
+                            <!-- <option >Option1</option>
+                            <option>Option2</option> -->
+                    </select>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-xs-4 col-form-label">Team</label><span class="dividerClass">:</span>
+                <div class="col-sm-8 col-xs-8">
+                 <select required="required" 
+						placeholder="Search Employee" class="form-control " 
+						multiple="multiple" id="teamList">
+						<option value="-1">Please Select</option>
+					</select>
+					<div><font color="red" style="font-size: 12px">Please Select Office</font></div>
+				 </div>
+			</div>
+					<div class="form-group row">
+						<label class="col-sm-4 col-xs-4 col-form-label">Applicant Remarks</label><span class="dividerClass">:</span>
+						<div class="col-sm-8 col-xs-8">
+						<textarea class=" form-control"
+						 id="applicantRemarks" type="text" ng-model="projectMaster.applicantRemark"
+						 autocomplete="off"></textarea> 
+						 </div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span class="dividerClass">:</span>
+						<div class="col-sm-8 col-xs-8">
+						<textarea class=" form-control"
+						 id="approverRemarks" type="text" ng-model="projectMaster.approverRemarks"
+						 autocomplete="off"></textarea> 
+						 </div>
+					</div>
+					   
+					<div class="form-group row" ng-show="filePresent == 'true'">
+						<label class="col-sm-4 col-xs-4 col-form-label">Attatchment</label><span class="dividerClass">:</span>
+						<div class="col-sm-8 col-xs-8" id="fileName">
+
+						</div>
+					</div>
+					<div class="item" ng-if="filePresent != 'true'">
+						<label>
+								<div>
+									<h2 ng-if="resultObj.uploadFileName" ng-click="downloadAttachmnent(resultObj)" style="font-size: 0.8em;color:blue;">Tap to download:&nbsp;&nbsp;{{resultObj.uploadFileName}} </h2> 
+								</div>
+									<br>
+								<div class="row" >Attachment:</div>
+								<div class="row" >
+									<button col="col-80"  Style="text-align: left; margin-bottom:0%;background-color: white;   border: none;color:blue;" 
+									onclick="document.getElementById('inputFileUpload').click()">Select from device</button>
+									<input col="col-80" type="file" name="inputFileUpload" id="inputFileUpload"  
+									ng-model="somemodel" style="height:0px ; width:0px" 
+									onchange="angular.element(this).scope().SelectedFile(event)" />
+									<span style="margin-left:-40%;margin-top:5%;"><br>{{selectedFileNameFromDevice}}</span>
+								</div>
+								<div class="row" >
+									<button col="col-80" id="btncamera" Style="text-align: left; margin-bottom:0%;background-color: white;   border: none;color:blue;"  
+									on-tap="cameraTakePicture('camera');">Take Photo</button>
+								</div>
+								<img class="col-30" id="showImg" 
+									style="width:50px;height:50px;visibility:hidden;margin-left:30%;margin-top: -10%;"
+									src="" on-tap="removeAttachment()">
+								</img>
+							
+						</label>
+						
+					</div> 
+					      
+				   <br>
+					<div class="text-center">
+					<div ng-show="(pageType=='approvePage' && (projectMaster.status=='SENT FOR APPROVAL' || projectMaster.status=='SENT FOR CANCELLATION')) ">
+					 <button type="button" name="approveBtn" id="approveBtn"	class="btn btn-success mr-10"
+									ng-click="sendForApproval('approve')">Approve</button>
+									<button type="button" name="rejectBtn" id="rejectBtn" class="btn btn-danger mr-10"
+									ng-click="goReject()">	Reject</button>
+					</div>
+					<button type="button" name="sentBtn" id="sentBtn" class="btn btn-primary mr-10"
+									ng-click="sendForApproval('sendForApproval')"
+									ng-if="pageType=='editPage' && !(statusFromEdit=='SENT FOR APPROVAL') "	>
+									<i class="fa fa-paper-plane mr-10" aria-hidden="true"></i> Send For
+									Approval
+					</button>
+					<button type="button" name="sentBtn" id="sentBtn"
+					class="btn btn-primary mr-10" ng-click="sendForApproval('sendForApproval')"	ng-if="pageType=='addPage'">
+					<i class="fa fa-paper-plane mr-10" aria-hidden="true"></i> Send For Approval
+					</button>
+					</div>
+                </div>
+			</div>
+			
+           <input type="hidden" id="sendMsg" value="Do you want to send for approval ?"> <input type="hidden" id="saveMsg" value="Do you want to save?">
+			<input type="hidden" id="sendMsgApprove" value="Do you want to Approve ?">
+									<input type="hidden" id="sendMsgReject"
+									value="Do you want to Rejected ?"> <input type="hidden"
+									name="projectConfigurationId"id="projectConfigId" value="${projectConfigId" /> <input
+									type="hidden" name="mailType" value="${mailType" /> <input
+									type="hidden" name="companyId" id="companyId"
+									value="${userCompany.companyId"> <input
+									type="hidden" id="createdId" name="createdId"
+									value="createdId" /> <input type="hidden"
+									id="createdDate" name="createdDate" value="createdDate" />
+								<input type="hidden" name="projectManagerId"
+									id="projectManagerId" value="projectManagerId" />
+									<input type="hidden" name="keyContactPersonId"
+									id="keyContactPersonId" value="" />
+									 <input
+									type="hidden" name="accountManagerId" id="accountManagerId"
+									value="accountManagerId" /> 
+									<input type="hidden"
+									name="projectManagerName" id="projectManagerName"
+									value="projectManagerName" /> 
+									<input type="hidden"
+									name="accountmanagerName" id="accountmanagerName"
+									value="accountmanagerName" />
+									<input type="hidden" id="detailFlag"
+									value="detailFlag">
+									<input type="hidden" value="${navigation" id="navigation" name="navigation"> 	
+									<input type="hidden" value="${fromSelfGrid" id="fromSelfGrid" name="fromSelfGrid"> 	
+									<input type="hidden" value="${AllButtonHide" id="AllButtonHide" name="AllButtonHide"> 
+									 <input type="hidden" value="teamEmpIdsList" id="teamEmpIdsList" name="teamEmpIdsList"> 
+									 <input type="hidden" value="team" id="team" name="team">   
+									 <input type="hidden" name="delete" id="deleteMsg" value="Do you want to delete?">
+									 <br><br><br>
+        </form>
+<script>
+	$(document).ready(
+	function() {
+	$(function() {
+	$("#projectManager").autocomplete({
+	minLength : 3,
+	selectfirst : true,
+	minChars : 1,
+	matchSubset : 1,
+	matchContains : 1,
+	cacheLength : 10,
+	autoFill : false,
+	search : function(e, u) {
+	console.log("fetched project manager list")
+},
+source : function(request,response) {
+		
+	$.ajax({
+		url : baseURL + '/common/searchByNameAndCodeForEisCompany.spr',
+		type : "POST",
+		data : {
+		name : $('#projectManager').val(),
+		companyId : $('#companyId').val(),
+		},
+		dataType : "json",
+		success : function(
+		data) {
+		if (!data.length) {
+		var result = [ {
+		label : "No matches found",
+		value : ''
+		} ];
+		response(result);
+		} else {
+		response(jQuery
+		.map(data,function(item) {
+			return {
+		label : (item.name).split("@@")[1],
+		value : (item.name).split("@@")[1],
+		comId : (item.name).split("@@")[0],
+	};
+	
+	}));
+	}
+	}
+															});
+												},
+												select : function(event, ui) {
+													var val = "";
+													var lable = "";
+													var comId = "";
+													var hCatId = "";
+													this.value = ui.item.label;
+													document.getElementById('projectManagerId').value = ui.item.comId;
+													
+													
+													return true;
+												}
+											});
+						});
+					});
+
+	$(document)
+			.ready(
+					function() {
+						$(function() {
+							$("#accountmanager")
+									.autocomplete(
+											{
+												minLength : 3,
+												selectfirst : true,
+												minChars : 1,
+												matchSubset : 1,
+												matchContains : 1,
+												cacheLength : 10,
+												autoFill : true,
+												search : function(e, u) {
+													console.log(1)
+
+												},
+												source : function(request,
+														response) {
+													$
+															.ajax({
+																url : baseURL + '/common/searchByNameAndCodeForEisCompany.spr',
+																type : "POST",
+																data : {
+																	name : $(
+																			'#accountmanager')
+																			.val(),
+																	companyId : $(
+																			'#companyId')
+																			.val(),
+
+																},
+																dataType : "json",
+																success : function(
+																		data) {
+																	if (!data.length) {
+																		var result = [ {
+																			label : "No matches found",
+																			value : ''
+																		} ];
+																		response(result);
+																	} else {
+																		response(jQuery
+																				.map(
+																						data,
+																						function(
+																								item) {
+																							return {
+																								label : (item.name)
+																										.split("@@")[1],
+																								value : (item.name)
+																										.split("@@")[0],
+																								comId : (item.name)
+																										.split("@@")[2],
+
+																							};
+																						}));
+																	}
+																}
+															});
+												},
+												select : function(event, ui) {
+													var val = "";
+													var lable = "";
+													var comId = "";
+													var hCatId = "";
+													this.value = ui.item.label;
+													document.getElementById('accountManagerId').value= ui.item.value;
+													
+													return false;
+													if (ui.item != null
+															&& trim(ui.item.value) != "") {
+														val = ui.item.value;
+														label = ui.item.label;
+														comId = ui.item.comId;
+														
+													}
+													if (val != "") {
+														$('#accountmanager')
+																.html(label);
+														$("#accountmanagerId")
+																.val(val);
+														$("#companyId1").val(
+																comId);
+														$("#tab1Btn").show();
+													}
+
+													// update what is displayed in the textbox
+													this.value = label;
+													return false;
+												}
+											});
+						});
+					});
+
+	//   comma separated  autocomplete start
+	$(document)
+			.ready(
+					function() {
+						function split(val) {
+							return val.split(/,\s*/);
+						}
+						function extractLast(term) {
+							return split(term).pop();
+						}
+						$(function() {
+							$("#keyContactPerson")
+									.autocomplete(
+											{
+												minLength : 3,
+												selectfirst : true,
+												minChars : 1,
+												matchSubset : 1,
+												matchContains : 1,
+												cacheLength : 10,
+												autoFill : true,
+												search : function(e, u) {
+													console.log(1)
+
+												},
+												source : function(request,
+														response) {
+													$
+															.ajax({
+																url : baseURL +'/common/searchByNameAndCodeForEisCompany.spr',
+																type : "POST",
+																data : {
+																	name : extractLast(request.term),
+																	companyId : $(
+																			'#companyId')
+																			.val(),
+
+																},
+																dataType : "json",
+																success : function(
+																		data) {
+																	if (!data.length) {
+																		var result = [ {
+																			label : "No matches found",
+																			value : ''
+																		} ];
+																		response(result);
+																	} else {
+																		response(jQuery
+																				.map(
+																						data,
+																						function(
+																								item) {
+																									
+																							return {
+																								label : (item.name)
+																										.split("@@")[1],
+																								value : (item.name)
+																										.split("@@")[0],
+																								empId : (item.name)
+																										.split("@@")[2],
+																							};
+																							
+																						}));
+																	}
+																}
+															});
+												},
+												focus : function() {
+
+													return false;
+												},
+												select : function(event, ui) {
+													var val = "";
+													var lable = "";
+													var empId = "";
+													var hCatId = "";
+													var terms = split(this.value);
+													document.getElementById('keyContactPerson').value = ui.item.label
+													document.getElementById('keyContactPersonId').value = ui.item.value
+													
+													// remove the current input
+													terms.pop();
+													if (ui.item != null
+															&& trim(ui.item.value) != "") {
+														val = ui.item.value;
+														label = ui.item.label;
+														empId = ui.item.empid;
+
+													}
+													if (val != "") {
+													//this.value = ui.item.value;
+													
+													//document.getElementById('keyContactPersonId').value= ui.item.empid;
+														
+														// add the selected item  ,terms will not contain any duplicates
+														if($.inArray(val, terms ) === -1) 
+														terms.push(val);
+													}
+
+													// update what is displayed in the textbox
+													
+													//this.value = label;
+													terms.push("");
+													this.value = terms
+															.join(", ");
+													return false;
+												}
+											});
+						});
+					});
+						</script>		
+						<!-- rajesh -->
+    </ion-content>
+</ion-view>

@@ -1,0 +1,1082 @@
+<style>
+    .customRadio {
+        display: none;
+    }
+
+    .customRadio+label {
+        display: inline-block;
+        margin: -2px;
+        padding: 4px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        line-height: 20px;
+        color: #333;
+        text-align: center;
+        text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+        vertical-align: middle;
+        cursor: pointer;
+        background-color: #f5f5f5;
+        background-color: #f5f5f5;
+        background-image: -moz-linear-gradient(top, #fff, #e6e6e6);
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#e6e6e6));
+        background-image: -webkit-linear-gradient(top, #fff, #e6e6e6);
+        background-image: -o-linear-gradient(top, #fff, #e6e6e6);
+        background-image: linear-gradient(to bottom, #fff, #e6e6e6);
+        background-repeat: repeat-x;
+        border: 1px solid #ccc;
+        border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+        border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+        border-bottom-color: #b3b3b3;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+        filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+        -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+        -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    .customRadio:checked+label {
+        background-image: none;
+        outline: 0;
+        -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+        -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+        /*        background-color:#0066ff;
+                color: white;*/
+    }
+
+    input[type="radio"] {
+        margin-top: -1px;
+        vertical-align: middle;
+    }
+
+    #check,
+    #check1 {
+        cursor: pointer;
+        -webkit-appearance: none;
+        appearance: none;
+        background: white;
+        border-radius: 1px;
+        box-sizing: border-box;
+        position: relative;
+        box-sizing: content-box;
+        width: 20px;
+        height: 20px;
+        border-width: 0;
+        transition: all .3s linear;
+        border: 2px solid
+    }
+
+    #check:checked,
+    #check1:checked {
+        background: url("img/tick.jpg");
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+
+    #check:focus,
+    #check1:focus {
+        outline: 0 none;
+        box-shadow: none;
+    }
+
+    .textareaBox {
+        margin-left: 2%;
+        width: 96%;
+        padding-bottom: 5%;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .custom-card {
+        margin-top: 0px;
+        margin-bottom: 20px;
+        border-radius: 9px;
+        border: 1px solid #007ec1;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .item-select select {
+        max-width: 68%;
+    }
+    button.button-block {
+    width: 100% !important;
+}
+    .itemSection{
+padding: 16px 5px;
+}
+ul.ctcClaimList li{
+    font-size:0.8em;
+    padding: 5px 0px 0px 0px;
+    min-width: 435px;
+  }
+  .ctcClaimList b {
+  display: inline-block;
+  width: 31.5%;
+  position: relative;
+  padding-right: 10px;
+}
+ol,ul{
+  margin-bottom:0px!important;
+}
+
+.ctcClaimList b::after {
+  content: ":";
+  position: absolute;
+  right: 10px;
+}
+</style>
+<ion-view>
+    <!-- <ion-nav-bar class="bar-stable" style="background-color: white">
+        <ion-nav-buttons side="left">
+            <button class="button button-clear" ng-click="redirectOnBack()">
+                <i class="icon ion-ios-arrow-back"></i>
+                Back</button>
+        </ion-nav-buttons> -->
+
+    </ion-nav-bar>
+    <div class="bar bar-footer hide-on-keyboard-open"
+        style="background-color:#000; background-size: 100% 0px;">
+        <div class="title" style="height: 20px;">
+            <h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px;
+                margin-bottom: 5px;">Powered by HR Align</h6>
+        </div>
+    </div>
+    <ion-content has-bouncing="false" class="item-divider grayBackColor" style="overflow-y: auto;">
+       
+        <!-- <div class="custom-header" style="padding: 0px;padding-left:
+            15px;margin-top:-8px;">
+            <h4 class="custom-header" style="padding-top:5px;">
+                <b>Claim Details- Approve </b> 
+            </h4>
+        </div> -->
+        <div class="custom-header" style="padding-top: 0px;padding-bottom: 0px;">
+            <h4 class="subHeaderClass" style="margin: 0px;"> <span class="backIcon">
+              <i class="icon ion-ios-arrow-back" ng-click="redirectOnBack()"></i></span>
+               <b style="vertical-align: super;">Claim Details - Approve </b></h4>
+         
+           </div>
+
+        <form name="travelForm">
+            <!--            tab 1 start 
+			ng-class="{active: isTab1Shown(tab)}"-->
+			<!--
+            <div class="sectionClass">
+                <button id="1" class="button button-block button-positive
+                    item-button-right" Style="text-align: left;
+                    margin-bottom:0%;" ng-click="toggleTab1(tab)"
+                    ng-class="{active: isTab1Shown(tab)}">
+                    <b> Employee Details&nbsp;&nbsp; </b>
+                    <span style="float: right"><i class="icon-right"
+                            ng-class="isTab1Shown(tab) || defaultTabs1Open=='Y' ? 'ion-chevron-down' :
+                            'ion-chevron-right'"></i></span>
+                </button>
+                <div class="list card item-accordion" ng-show="isTab1Shown(tab) || defaultTabs1Open=='Y'"
+                    style="margin:auto;border-radius:5px">
+               
+                    <div class="item">
+                        <ul class="ctcClaimList">
+                          <li ng-if="empDetailslist[0].companyName"><b>Company</b>{{empDetailslist[0].companyName}}</li>
+                          <li ng-if="empDetailslist[0].empName"><b>Employee Name</b>{{empDetailslist[0].empName}}</li>
+                          <li ng-if="empDetailslist[0].location"><b>Office</b>{{empDetailslist[0].location}}</li>
+                          <li ng-if="empDetailslist[0].grade"><b>Grade</b>{{empDetailslist[0].grade}}</li>
+                          <li ng-if="empDetailslist[0].band"><b>Band</b>{{empDetailslist[0].band}}</li>
+                          <li ng-if="empDetailslist[0].passportNum"><b>Passport No</b>{{empDetailslist[0].passportNum}}</li>
+                          <li  ng-if="empDetailslist[0].passportExpiryDate"><b>Passport Expiry Date</b>
+                            {{empDetailslist[0].passportExpiryDate | date : "dd-MMM-yyyy"}}</li>
+                            <li ng-if="travelClaimForm.travelClaimVo.travelTransId"><b>Travel Application Id</b>
+								{{travelTransIdForClaimApply}}</li>
+                        </ul>
+                      </div>
+                    
+                </div>
+            </div>
+			-->
+            <!--tab 2 start  -->
+            <div class="sectionClass">
+                <button id="2" class="button button-block button-positive
+                    item-button-right" Style="text-align: left;
+                    margin-bottom:0%;" ng-click="toggleTab2(tab)"
+                    ng-class="{active: isTab2Shown(tab)}">
+                    <b> Travel Summary &nbsp;&nbsp; </b>
+                    <span style="float: right"><i class="icon-right"
+                            ng-class="isTab2Shown(tab)|| defaultTabs2Open=='Y' ? 'ion-chevron-down' :
+                            'ion-chevron-right'"></i></span>
+                </button>
+                <div class="list card item-accordion" ng-show="isTab2Shown(tab)|| defaultTabs2Open=='Y'"
+                    style="margin:auto;border-radius:5px">
+                    <!--tab 2 content start -->
+                    <div class="itemSection">
+                        <!-- <div class="row">
+                            <h5 class="col-100"
+                                style="font-size:0.9em;margin-top:3px;">Type
+                                of Travel:{{travelClaimForm.travelClaimVo.travelType}} </h5>
+                        </div> -->
+                        <div class="form-group row">
+                            <label  class="col-sm-4 col-xs-4 col-form-label">Type of Travel  </label><span class="dividerClass">:</span>
+                            <div  class="col-sm-8 col-xs-8">{{travelClaimForm.travelClaimVo.travelType}} </div>
+                          </div>
+            <!-- <div class="row">
+                            <h5 class="col-100"
+                                style="font-size:0.9em;margin-top:3px;">Purpose
+                                of Visit:{{travelClaimForm.travelClaimVo.pov}}</h5>
+                        </div> -->
+                        <div class="form-group row">
+                            <label  class="col-sm-4 col-xs-4 col-form-label">Purpose of Visit</label><span class="dividerClass">:</span>
+                            <div  class="col-sm-8 col-xs-8">{{travelClaimForm.travelClaimVo.pov}}</div>
+                          </div>
+                       
+                        <!-- <div class="row">
+                            <h5 class="col-100"
+                                style="font-size:0.9em;margin-top:3px;">Cost
+                                Borne By:{{travelClaimForm.travelClaimVo.costBorneBy}}
+                            </h5>
+                        </div> -->
+                        <div class="form-group row">
+                            <label  class="col-sm-4 col-xs-4 col-form-label">Cost Borne By</label><span class="dividerClass">:</span>
+                            <div  class="col-sm-8 col-xs-8">{{travelClaimForm.travelClaimVo.costBorneBy}}</div>
+                          </div>
+						  <div class="form-group row">
+                            <label  class="col-sm-4 col-xs-4 col-form-label">Travel Objective</label><span class="dividerClass">:</span>
+                            <div  class="col-sm-8 col-xs-8">{{travelClaimForm.travelClaimVo.additionalInfo}}</div>
+                          </div>
+						  
+						<!-- <div class="row">
+                            <h5 class="col-100"
+                                style="font-size:0.9em;margin-top:3px;color:blue;"
+                                ng-if="travelClaimForm.travelClaimVo.uploadFileName" 
+                                 ng-click="downloadAttachmnent(travelClaimForm.travelClaimVo)" >
+                                 Tap to download:&nbsp;&nbsp;{{travelClaimForm.travelClaimVo.uploadFileName}}
+                            </h5>
+                            
+                        </div> -->
+                        <div class="form-group row">
+                            <label  class="col-sm-4 col-xs-4 col-form-label" style="font-size:0.9em;margin-top:3px;color:blue;"
+                            ng-if="travelClaimForm.travelClaimVo.uploadFileName" 
+                             >Attachment:</label><span ng-if="travelClaimForm.travelClaimVo.uploadFileName">:</span>
+                            <div  class="col-sm-8 col-xs-8" style="font-size:0.9em;color:blue;"
+							ng-click="downloadAttachmnent(travelClaimForm.travelClaimVo)">{{travelClaimForm.travelClaimVo.uploadFileName}}</div>
+                          </div>
+                    </div>
+                    <!--tab 2 content over -->
+                </div>
+            </div>
+
+            <!--            tab 3 start -->
+            <div class="sectionClass">
+                <button id="3" class="button button-block button-positive
+                    item-button-right" Style="text-align: left;
+                    margin-bottom:0%;" ng-click="toggleTab3(tab)"
+                    ng-class="{active: isTab3Shown(tab)}">
+                    <b> Travel&nbsp;&nbsp; </b>
+                    <span style="float: right"><i class="icon-right"
+                            ng-class="isTab3Shown(tab) || defaultTabs3Open=='Y'? 'ion-chevron-down' :
+                            'ion-chevron-right'"></i></span>
+                </button>
+                <div class="list card item-accordion" ng-show="isTab3Shown(tab) || defaultTabs3Open=='Y'"
+                    style="margin:auto;border-radius:5px">
+                    <!--tab 3 content start -->
+                    <div class="itemSection">
+                        <div 
+						ng-repeat="grid1 in travelClaimForm.travelRuleGridChildVOList">
+						<div id="trGrid1_{{$index}}" ng-show="countGrid1>$index" style="height:auto;"> 
+							
+								<!-- <div class="row" ng-show="countGrid1>$index">
+                                    <h5 class="col-100"
+                                style="font-size:0.9em;margin-top:3px;">Travel Date:{{grid1.travelDate}}
+                                 </h5>
+                                </div> -->
+                                <div class="form-group row" ng-show="countGrid1>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Travel Date</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">{{grid1.travelDate}}</div>
+                                  </div>
+
+                                  <div class="form-group row" ng-show="countGrid1>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Travel Date</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">{{grid1.travelToDate}}</div>
+                                  </div>
+								
+								<!-- <div class="row" ng-show="countGrid1>$index">
+								<h5 class="col-100"
+									style="font-size:0.9em;margin-top:3px;">From Place:{{grid1.fromPlace}}
+								</h5>
+                                </div> -->
+                                <div class="form-group row" ng-show="countGrid1>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">From Place</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">{{grid1.fromPlace}}</div>
+                                  </div>
+							
+								
+								<!-- <div class="row" ng-show="countGrid1>$index">
+									<h5 class="col-100"
+									style="font-size:0.9em;margin-top:3px;">To Place:{{grid1.toPlace}}
+								</h5>
+                                </div> -->
+                                <div class="form-group row" ng-show="countGrid1>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">To Place</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">{{grid1.toPlace}}</div>
+                                  </div>
+								
+								<!-- <div class="row" ng-show="countGrid1>$index">
+									<h5 class="col-100"
+									style="font-size:0.9em;margin-top:3px;">Travel Mode:{{grid1.travelMode}}
+								</h5>
+                                </div>	 -->
+                                <div class="form-group row" ng-show="countGrid1>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Travel Mode</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">{{grid1.travelMode}}</div>
+                                  </div>
+									
+								<!-- <div class="row" ng-show="countGrid1>$index">
+									<h5 class="col-100"
+									style="font-size:0.9em;margin-top:3px;">Travel Class:{{grid1.travelClass}}
+								</h5>
+                                </div> -->
+                                <div class="form-group row" ng-show="countGrid1>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Travel Class</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">{{grid1.travelClass}}</div>
+                                  </div>
+									
+								<!-- <div class="row" ng-show="countGrid1>$index">
+									<h5 class="col-100"
+									style="font-size:0.9em;margin-top:3px;">Amount:{{grid1.travelChTdAmount}}
+									</h5>
+                                </div> -->
+                                <div class="form-group row" ng-show="countGrid1>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Amount</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">{{grid1.travelChTdAmount}}</div>
+                                  </div>
+							
+								<!-- <div class="row" ng-show="countGrid1>$index">
+									<h5 class="col-100"
+									style="font-size:0.9em;margin-top:3px;">Currency:{{grid1.currencyName}}
+								</h5>
+                                </div>-->
+                                <div class="form-group row" ng-show="countGrid1>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Currency</label><span class="dividerClass">:</span>
+									<div  ng-if="grid1.currencyType.indexOf('8377')>-1" class="col-sm-8 col-xs-8">&#8377;</div>
+									<div  ng-if="grid1.currencyType.indexOf('8377')<=-1" class="col-sm-8 col-xs-8">{{grid1.currencyType}}</div>
+                                  </div>
+								
+								<!-- <div  ng-show="countGrid1>$index" >Tap to download:<br>
+								<ul>
+								<li ng-repeat="fileList in grid1.fileTdList"  >
+								 <h5 id="{{$parent.$index}}_tdFilelist_{{$index}}" class="col-100"
+								  style="font-size:0.9em;margin-top:3px;color:blue;"
+                                  onclick="angular.element(this).scope().selectedValues.fileToDownload = this;
+								  angular.element(this).scope().selectedValues.elem = this;
+								  angular.element(this).scope().openFileTd(event)" >{{fileList}}
+								 </h5>
+								</li>
+								</ul>
+                                </div> -->
+                                <div class="form-group row" ng-show="countGrid1>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Receipt / Invoice<br>Tap to download</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">
+                                        <ul>
+                                            <li ng-repeat="fileList in grid1.fileTdList"  >
+                                             <h5 id="{{$parent.$index}}_tdFilelist_{{$index}}" class="col-100"
+                                              style="font-size:0.9em;margin-top:3px;color:blue;"
+                                              onclick="angular.element(this).scope().selectedValues.fileToDownload = this;
+                                              angular.element(this).scope().selectedValues.elem = this;
+                                              angular.element(this).scope().openFileTd(event)" >{{fileList}}
+                                             </h5>
+                                            </li>
+                                            </ul>
+                                    </div>
+                                  </div>
+							
+							
+								<div>	
+								<hr></hr>
+								</div>														
+						</div>
+
+                        </div> <!-- ng repeat -->
+                    </div>  <!--tab 3 content over -->
+                </div><!-- accordion -->
+            </div><!-- tab 3-->
+
+            <!--            tab 4 start -->
+            <div class="sectionClass">
+                <button id="4" class="button button-block button-positive
+                    item-button-right" Style="text-align: left;
+                    margin-bottom:0%;" ng-click="toggleTab4(tab)"
+                    ng-class="{active: isTab4Shown(tab)}">
+                    <b> Stay Arrangements &nbsp;&nbsp; </b>
+                    <span style="float: right"><i class="icon-right"
+                            ng-class="isTab4Shown(tab) || defaultTabs4Open=='Y' ? 'ion-chevron-down' :
+                            'ion-chevron-right'"></i></span>
+                </button>
+                <div class="list card item-accordion" ng-show="isTab4Shown(tab) || defaultTabs4Open=='Y'"
+                    style="margin:auto;border-radius:5px">
+                     <!--tab 4 content start -->
+                     <div class="itemSection">
+                        <div 
+						ng-repeat="grid2 in travelClaimForm.travelRuleGridChildVOList1">
+							<div id="trGrid2_{{$index}}" ng-show="countGrid2>$index" style="height:auto;"> 
+
+								<!-- <div class="row" ng-show="countGrid2>$index">
+								<h5 class="col-100"
+									style="font-size:0.9em;margin-top:3px;">Stay Location:{{grid2.stayLocation}}
+								</h5>
+                                </div> -->
+                                <div class="form-group row" ng-show="countGrid2>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Stay Location</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">{{grid2.stayLocation}}</div>
+                                  </div>
+							
+								<!-- <div class="row" ng-show="countGrid2>$index">
+								<h5 class="col-100"
+									style="font-size:0.9em;margin-top:3px;">From Travel Date:{{grid2.travelFromDate}}
+								</h5>
+								</div> -->
+                                <div class="form-group row" ng-show="countGrid2>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">From Travel Date</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">{{grid2.travelFromDate}}</div>
+                                  </div>
+								<!-- <div class="row" ng-show="countGrid2>$index">
+								<h5 class="col-100"
+									style="font-size:0.9em;margin-top:3px;">To Travel Date:{{grid2.travelToDate}}
+								</h5>
+                                </div> -->
+                                <div class="form-group row" ng-show="countGrid2>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">To Travel Date</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">{{grid2.travelToDate}}</div>
+                                  </div>
+								
+								<!-- <div class="row" ng-show="countGrid2>$index">
+								<h5 class="col-100"
+									style="font-size:0.9em;margin-top:3px;">Remarks:{{grid2.remarks}}
+                                </h5></div>	 -->
+                                <div class="form-group row" ng-show="countGrid2>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Remarks</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">{{grid2.remarks}}</div>
+                                  </div>
+								<div>	
+								<hr></hr>
+								</div>
+							</div>
+						
+                        </div> <!-- ng repeat -->
+                    </div>  <!--tab 4 content over -->
+                    <!--tab 4 content over -->
+                </div>
+            </div>
+
+            <!--            tab 5 start -->
+            <div class="sectionClass">
+                <button id="5" class="button button-block button-positive
+                    item-button-right" Style="text-align: left;
+                    margin-bottom:0%;" ng-click="toggleTab5(tab)"
+                    ng-class="{active: isTab5Shown(tab)}">
+                   <b> Food, Lodging and Boarding Expense</b>
+                    <span style="float: right"><i class="icon-right"
+                            ng-class="isTab5Shown(tab) || defaultTabs5Open=='Y'? 'ion-chevron-down' :
+                            'ion-chevron-right'"></i></span>
+                </button>
+                <div class="list card item-accordion" ng-show="isTab5Shown(tab) || defaultTabs5Open=='Y'"
+                    style="margin:auto;border-radius:5px">
+                    <!--tab 5 content start -->
+                     <div class="itemSection">
+                        <div 
+						ng-repeat="grid3 in travelClaimForm.travelExpenseGridvoList">
+							<div id="trGrid3_{{$index}}" ng-show="countGrid3>$index" style="height:auto;"> 
+
+								<!-- <div class="row" ng-show="$index==0">
+								<div class="col-80" id="group_{{$index}}" style="margin-top: 6px;">	 
+								<h5 style="font-size:0.9em;margin-top:3px;">Own Arrangement &nbsp;</h5>
+								</div>
+								<div class="col-20" id="group_{{$index}}" style="margin-top: 6px;">	 
+								<input id="ownarr{{$index}}" type="radio" ng-checked="travelClaimForm.travelClaimVo.isActiveOwnArrg=='Y'" >
+								
+								</div>
+                                </div> -->
+                                <div class="form-group row" ng-show="$index==0">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label" id="group_{{$index}}">Own Arrangement</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8" id="group_{{$index}}">
+                                        <input id="ownarr{{$index}}" type="radio" ng-checked="travelClaimForm.travelClaimVo.isActiveOwnArrg=='Y'" >
+                                    </div>
+                                  </div>
+
+								<!-- <div class="row" ng-show="$index==0">
+								
+								<div class="col-80" id="group_{{$index}}" style="margin-top: 6px;">	 
+								<h5 style="font-size:0.9em;margin-top:3px;">Company Arrangement</h5>
+								</div>
+								<div class="col-20" id="group_{{$index}}" style="margin-top: 6px;">	 
+								
+								<input id="comparr{{$index}}" type="radio" ng-checked="travelClaimForm.travelClaimVo.isActiveCompArrg=='Y'"  > 
+								</div>
+								</div> -->
+                                <div class="form-group row" ng-show="$index==0">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label" id="group_{{$index}}">Company Arrangement</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8" id="group_{{$index}}">
+                                        <input id="comparr{{$index}}" type="radio" ng-checked="travelClaimForm.travelClaimVo.isActiveCompArrg=='Y'"  > 
+                                    </div>
+                                  </div>
+								<!-- <div class="row" ng-show="countGrid3>$index">
+									<h5 class="col-100"
+									style="font-size:0.9em;margin-top:3px;">Expense Type:{{grid3.expenseName}}
+								</h5>
+							
+								</div>	 -->
+
+                                <div class="form-group row" ng-show="countGrid3>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Expense Type</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">{{grid3.expenseName}}</div>
+                                  </div>
+
+								<!-- <div class="row" ng-show="countGrid3>$index">
+								<h5 class="col-100"
+									style="font-size:0.9em;margin-top:3px;">From Date: {{grid3.expenseFromDate}}
+								</h5>
+                              </div>-->
+                              <div class="form-group row" ng-show="countGrid3>$index">
+                                <label  class="col-sm-4 col-xs-4 col-form-label">From Date</label><span class="dividerClass">:</span>
+                                <div  class="col-sm-8 col-xs-8">{{grid3.expenseFromDate}}</div>
+                              </div>
+								
+								<!-- <div class="row" ng-show="countGrid3>$index">
+                                <h5 class="col-100"
+									style="font-size:0.9em;margin-top:3px;">To Date:{{grid3.expenseToDate}}
+								</h5>                           
+                                </div>-->
+                                <div class="form-group row" ng-show="countGrid3>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">To Date</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">{{grid3.expenseToDate}}</div>
+                                  </div>
+								
+								<!-- <div class="row" ng-show="countGrid3>$index">
+                                <h5 class="col-100"
+									style="font-size:0.9em;margin-top:3px;">Amount:{{grid3.expenseAmount}}
+								</h5>
+                                </div> -->
+                                <div class="form-group row" ng-show="countGrid3>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Amount</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">{{grid3.expenseAmount}}</div>
+                                  </div>
+								<!-- <div class="row" ng-show="countGrid3>$index">
+									<h5 class="col-100"
+									style="font-size:0.9em;margin-top:3px;">Currency:{{grid3.currencyType}}
+								</h5>
+                                </div>	 -->
+                                <div class="form-group row" ng-show="countGrid3>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Currency</label><span class="dividerClass">:</span>
+									<div  ng-if="grid3.currencyType.indexOf('8377')>-1" class="col-sm-8 col-xs-8">&#8377;</div>
+									<div  ng-if="grid3.currencyType.indexOf('8377')<=-1" class="col-sm-8 col-xs-8">{{grid3.currencyType}}</div>
+                                  </div>
+								<!-- <div  ng-show="countGrid3>$index" >Tap to download:<br>
+								<ul>
+								<li ng-repeat="fileList in grid3.fileExList">
+								 <h5 id="{{$parent.$index}}_exFilelist_{{$index}}" class="col-100"
+								  style="font-size:0.9em;margin-top:3px;color:blue;"
+                                  onclick="angular.element(this).scope().selectedValues.fileToDownload = this;
+								  angular.element(this).scope().selectedValues.elem = this;
+								  angular.element(this).scope().openFileEx(event)" >{{fileList}}
+								 </h5>
+								</li>
+								</ul>
+								</div> -->
+                                <div class="form-group row" ng-show="countGrid3>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Receipt / Invoice<br>Tap to download</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">
+                                        <ul>
+                                            <li ng-repeat="fileList in grid3.fileExList">
+                                             <h5 id="{{$parent.$index}}_exFilelist_{{$index}}" class="col-100"
+                                              style="font-size:0.9em;margin-top:3px;color:blue;"
+                                              onclick="angular.element(this).scope().selectedValues.fileToDownload = this;
+                                              angular.element(this).scope().selectedValues.elem = this;
+                                              angular.element(this).scope().openFileEx(event)" >{{fileList}}
+                                             </h5>
+                                            </li>
+                                            </ul>
+                                    </div>
+                                  </div>
+								
+								<!-- <div class="row" ng-show="countGrid3>$index">
+                                <h5 class="col-40"
+									style="font-size:0.9em;margin-top:3px;">Remarks:{{grid3.expenseRemarks}}
+								</h5>
+                               </div> -->
+                               <div class="form-group row" ng-show="countGrid3>$index">
+                                <label  class="col-sm-4 col-xs-4 col-form-label">Remarks</label><span class="dividerClass">:</span>
+                                <div  class="col-sm-8 col-xs-8">{{grid3.expenseRemarks}}</div>
+                              </div>
+								<div>	
+								<hr></hr>
+								</div>														
+
+							</div>
+
+                        </div> <!-- ng repeat -->
+						<!--
+						<div>
+								<center>
+								<button id="btnAddRowGrid3" class="button" style="background-color:green;color:white;width:27%;margin-top:-50%;"   ng-click="addRowGrid3()">Add</button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<button id="btnRemRowGrid3" class="button" style="background-color:red;color:white;width:27%;margin-top:-50%;"   ng-click="remRowGrid3()">Remove</button>
+								</center>
+						</div> 
+						-->
+                        
+                    </div> 
+                    <!--tab 5 content over -->
+                </div>
+            </div>
+
+            <!--            tab 6 start -->
+            <div class="sectionClass">
+                <button id="6" class="button button-block button-positive
+                    item-button-right" Style="text-align: left;
+                    margin-bottom:0%;" ng-click="toggleTab6(tab)"
+                    ng-class="{active: isTab6Shown(tab)}">
+                    <b> Local Conveyance&nbsp;&nbsp; </b>
+                    <span style="float: right"><i class="icon-right"
+                            ng-class="isTab6Shown(tab) || defaultTabs6Open=='Y'? 'ion-chevron-down' :
+                            'ion-chevron-right'"></i></span>
+                </button>
+                <div class="list card item-accordion" ng-show="isTab6Shown(tab) || defaultTabs6Open=='Y'"
+                    style="margin:auto;border-radius:5px">
+                    <!--tab 5 content start -->
+                     <div class="item">
+                        <div 
+						ng-repeat="grid4 in travelClaimForm.travelLocalConveyanceGridvoList">
+							<div id="trGrid4_{{$index}}" ng-show="countGrid4>$index" style="height:auto;"> 
+
+								<!-- <div class="row" ng-show="countGrid4>$index">
+									<h5 class="col-100"
+									style="font-size:0.9em;margin-top:3px;">Conv. Mode:{{grid4.lcTravelMode}}
+								</h5>
+                                </div> -->
+                                <div class="form-group row" ng-show="countGrid4>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Conv. Mode</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">{{grid4.lcTravelMode}}</div>
+                                  </div>
+
+								<!-- <div class="row" ng-show="countGrid4>$index">
+								<h5 class="col-100"
+									style="font-size:0.9em;margin-top:3px;">From Date:{{grid4.lcDate}}
+								</h5>
+                             
+                                </div> -->
+                                <div class="form-group row" ng-show="countGrid4>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">From Date</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">{{grid4.lcDate}}</div>
+                                  </div>
+								
+								<!-- <div class="row" ng-show="countGrid4>$index">
+                                <h5 class="col-100"
+									style="font-size:0.9em;margin-top:3px;">To Date:{{grid4.lcToDate}}
+								</h5>
+                                </div> -->
+                                <div class="form-group row" ng-show="countGrid4>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">To Date</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">{{grid4.lcToDate}}</div>
+                                  </div>
+							
+								<!-- <div class="row" ng-show="countGrid4>$index">
+                                <h5 class="col-100"
+									style="font-size:0.9em;margin-top:3px;">Amount:{{grid4.lcApplicableAmount}}
+								</h5>
+                                </div> -->
+                                <div class="form-group row" ng-show="countGrid4>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Amount</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">{{grid4.lcApplicableAmount}}</div>
+                                  </div>
+							
+								
+								<!-- <div class="row" ng-show="countGrid4>$index">
+									<h5 class="col-100"
+									style="font-size:0.9em;margin-top:3px;">Currency:{{grid4.currencyType}}
+								</h5>
+                                </div>	 -->
+                                <div class="form-group row" ng-show="countGrid4>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Currency</label><span class="dividerClass">:</span>
+									<div  ng-if="grid4.currencyType.indexOf('8377')>-1" class="col-sm-8 col-xs-8">&#8377;</div>
+									<div  ng-if="grid4.currencyType.indexOf('8377')<=-1" class="col-sm-8 col-xs-8">{{grid4.currencyType}}</div>
+                                  </div>
+
+								<!-- <div  ng-show="countGrid4>$index" >Receipt / Invoice:<br>Tap to download:<br>
+								<ul>
+								<li ng-repeat="fileList in grid4.fileLCList"  >
+								 <h5 id="{{$parent.$index}}_lcFilelist_{{$index}}" class="col-100"
+								  style="font-size:0.9em;margin-top:3px;color:blue;"
+                                  onclick="angular.element(this).scope().selectedValues.fileToDownload = this;
+								  angular.element(this).scope().selectedValues.elem = this;
+								  angular.element(this).scope().openFileLc(event)" >{{fileList}}
+								 </h5>
+								</li>
+								</ul>
+                                </div> -->
+                                <div class="form-group row" ng-show="countGrid4>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Receipt / Invoice<br>Tap to download</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">
+                                        <ul>
+                                            <li ng-repeat="fileList in grid4.fileLCList"  >
+                                             <h5 id="{{$parent.$index}}_lcFilelist_{{$index}}" class="col-100"
+                                              style="font-size:0.9em;margin-top:3px;color:blue;"
+                                              onclick="angular.element(this).scope().selectedValues.fileToDownload = this;
+                                              angular.element(this).scope().selectedValues.elem = this;
+                                              angular.element(this).scope().openFileLc(event)" >{{fileList}}
+                                             </h5>
+                                            </li>
+                                            </ul>
+                                    </div>
+                                  </div>
+							
+
+								<!--
+							<div class="row" >
+								<button col="col-40" id="btnfile"  Style="text-align: left;
+									margin-bottom:0%;" ng-click="cameraTakePicture('file','local_conv');">
+									<b> Upload File &nbsp;&nbsp; </b>
+								</button>
+								<button col="col-40" id="btncamera"  Style="text-align: left;
+									margin-bottom:0%;" ng-click="cameraTakePicture('camera','local_conv');">
+									<b> Take Picture &nbsp;&nbsp; </b>
+								</button>
+							</div>
+							
+							<div class="row" ng-show="countGrid4>$index">
+							<br>				
+							<img class="col-30" id="myImage1" style="width:50px;height:50px;" src="" >
+							</img>
+							<img class="col-30" id="myImage2" style="width:50px;height:50px;" src="" >
+							</img>
+							<img class="col-30" id="myImage3" style="width:50px;height:50px;" src="" >
+							</img>
+							</div>					
+								-->
+							
+								<!-- <div class="row" ng-show="countGrid4>$index">
+								
+                                <h5 class="col-100"
+									style="font-size:0.9em;margin-top:3px;">Travel Distance (if Own Vehicle):
+								</h5>
+								</div> -->
+                                <div class="form-group row" ng-show="countGrid4>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Travel Distance <br>(if Own Vehicle)</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">{{grid4.lcDistance}}</div>
+                                  </div>
+
+								<div>	
+								<hr></hr>
+								</div>														
+								</div>
+								</div>
+						</div> <!-- ng repeat -->
+ </div> 
+                    <!--tab 6 content over -->
+                </div>
+            </div>			
+			
+            <!--            tab 7 start -->
+            <div class="sectionClass"> 
+                <button id="7" class="button button-block button-positive
+                    item-button-right" Style="text-align: left;
+                    margin-bottom:0%;" ng-click="toggleTab7(tab)"
+                    ng-class="{active: isTab7Shown(tab)}">
+                    <b> Daily Allowance&nbsp;&nbsp; </b>
+                    <span style="float: right"><i class="icon-right"
+                            ng-class="isTab7hown(tab) || defaultTabs7Open=='Y'? 'ion-chevron-down' :
+                            'ion-chevron-right'"></i></span>
+                </button>
+                <div class="list card item-accordion" ng-show="isTab7Shown(tab) || defaultTabs7Open=='Y'"
+                    style="margin:auto;border-radius:5px">
+                    <!--tab 5 content start -->
+					
+                     <div class="itemSection">
+                        <div 
+						ng-repeat="grid5 in travelClaimForm.travelClaimDAChildList">
+							<div id="trGrid7_{{$index}}" ng-show="countGrid5>$index" style="height:auto;"> 
+
+								<!-- <div class="row" ng-show="countGrid5>$index">
+									<h5 class="col-100"
+									style="font-size:0.9em;margin-top:3px;">Daily Allowance: {{grid5.dailyAllowance}}
+								</h5>
+                                </div>	 -->
+                                <div class="form-group row" ng-show="countGrid5>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Daily Allowance</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">{{grid5.dailyAllowance}}</div>
+                                  </div>
+
+								<!-- <div class="row" ng-show="countGrid5>$index">
+								<h5 class="col-100"
+									style="font-size:0.9em;margin-top:3px;">From Date:{{grid5.daFromDate}}
+								</h5>
+                              </div> -->
+                              <div class="form-group row" ng-show="countGrid5>$index">
+                                <label  class="col-sm-4 col-xs-4 col-form-label">From Date</label><span class="dividerClass">:</span>
+                                <div  class="col-sm-8 col-xs-8">{{grid5.daFromDate}}</div>
+                              </div>
+								
+								<!-- <div class="row" ng-show="countGrid5>$index">
+                                <h5 class="col-100"
+									style="font-size:0.9em;margin-top:3px;">To Date:{{grid5.daToDate}}
+								</h5>
+                               </div>-->
+                               <div class="form-group row" ng-show="countGrid5>$index">
+                                <label  class="col-sm-4 col-xs-4 col-form-label">To Date</label><span class="dividerClass">:</span>
+                                <div  class="col-sm-8 col-xs-8">{{grid5.daToDate}}</div>
+                              </div>
+								
+								<!-- <div class="row" ng-show="countGrid5>$index">
+                                <h5 class="col-100"
+									style="font-size:0.9em;margin-top:3px;">Amount:{{grid5.daAmount}}
+								</h5>
+                                </div> -->
+                                <div class="form-group row" ng-show="countGrid5>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Amount</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">{{grid5.daAmount}}</div>
+                                  </div>
+								
+								
+								<!-- <div class="row" ng-show="countGrid5>$index">
+									<h5 class="col-100"
+									style="font-size:0.9em;margin-top:3px;">Currency:{{grid5.currencyType}}
+								</h5>
+                                </div>	 -->
+                                <div class="form-group row" ng-show="countGrid5>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Currency</label><span class="dividerClass">:</span>
+									<div  ng-if="grid5.currencyType.indexOf('8377')>-1" class="col-sm-8 col-xs-8">&#8377;</div>
+									<div  ng-if="grid5.currencyType.indexOf('8377')<=-1" class="col-sm-8 col-xs-8">{{grid5.currencyType}}</div>
+                                  </div>
+								
+								<!-- <div class="row" ng-show="countGrid5>$index">
+                                <h5 class="col-100"
+									style="font-size:0.9em;margin-top:3px;">Remarks:{{grid5.daRemarks}}
+								</h5>
+                               </div> -->
+                               <div class="form-group row" ng-show="countGrid5>$index">
+                                <label  class="col-sm-4 col-xs-4 col-form-label">Remarks</label><span class="dividerClass">:</span>
+                                <div  class="col-sm-8 col-xs-8">{{grid5.daRemarks}}</div>
+                              </div>
+								<div>	
+								<hr></hr>
+								</div>														
+
+							</div>
+
+                        </div> <!-- ng repeat -->
+						
+                        
+                    </div> 
+                    <!--tab 7 content over -->
+                </div>
+            </div>	
+<!--            tab 8 start -->
+            <div class="sectionClass">
+                <button id="8" class="button button-block button-positive
+                    item-button-right" Style="text-align: left;
+                    margin-bottom:0%;" ng-click="toggleTab8(tab)"
+                    ng-class="{active: isTab8Shown(tab)}">
+                    <b> Currency Wise Total &nbsp; </b>
+                    <span style="float: right"><i class="icon-right"
+                            ng-class="isTab8Shown(tab) || defaultTabs8Open=='Y'? 'ion-chevron-down' :
+                            'ion-chevron-right'"></i></span>
+                </button>
+                <div class="list card item-accordion" ng-show="isTab8Shown(tab) || defaultTabs8Open=='Y'"
+                    style="margin:auto;border-radius:5px">
+                    <!--tab 3 content start -->
+                    <div class="itemSection">
+                        <div 
+						ng-repeat="grid6 in travelClaimForm.travelClaimCurrencyWiseTotalVOList">
+						<div id="trGrid6_{{$index}}" ng-show="countGrid6>$index" style="height:auto;"> 
+								<!-- <div class="row" ng-show="countGrid6>$index">
+                                    <h5 class="col-100"
+                                style="font-size:0.9em;margin-top:3px;">Currency Name:{{grid6.currencyType}}
+                                 </h5>
+                                </div> -->
+                                <div class="form-group row" ng-show="countGrid6>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Currency Name</label><span class="dividerClass">:</span>
+									<div  ng-if="grid6.currencyType.indexOf('8377')>-1" class="col-sm-8 col-xs-8">&#8377;</div>
+									<div  ng-if="grid6.currencyType.indexOf('8377')<=-1" class="col-sm-8 col-xs-8">{{grid6.currencyType}}</div>
+                                  </div>
+								
+								<!-- <div class="row" ng-show="countGrid6>$index">
+								<h5 class="col-100"
+									style="font-size:0.9em;margin-top:3px;">Currecny Total:{{grid6.currencyWiseTotal}}
+								</h5>
+								</div> -->
+                                <div class="form-group row" ng-show="countGrid6>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Currecny Total</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">{{grid6.currencyWiseTotal}}</div>
+                                  </div>	
+								
+								<!-- <div class="row" ng-show="countGrid6>$index">
+									<h5 class="col-100"
+									style="font-size:0.9em;margin-top:3px;">Accountant Currency Total:{{grid6.accountCurrencyWiseTotal}}
+								</h5>
+								</div> -->
+                                <div class="form-group row" ng-show="countGrid6>$index">
+                                    <label  class="col-sm-4 col-xs-4 col-form-label">Accountant Currency Total</label><span class="dividerClass">:</span>
+                                    <div  class="col-sm-8 col-xs-8">{{grid6.accountCurrencyWiseTotal}}</div>
+                                  </div>
+								<div>	
+								<hr></hr>
+								</div>														
+						</div>
+
+                        </div> <!-- ng repeat -->
+						</div>
+						</div>
+						</div>
+			
+			
+
+			
+            <!--            tab 9 start -->
+            <div class="sectionClass">
+                <button id="9" class="button button-block button-positive
+                    item-button-right" Style="text-align: left;
+                    margin-bottom:0%;" ng-click="toggleTab9(tab)"
+                    ng-class="{active: isTab9Shown(tab)}">
+                    <b> Applicant Remarks &nbsp;&nbsp; </b>
+                    <span style="float: right"><i class="icon-right"
+                            ng-class="isTab9Shown(tab) || defaultTabs9Open=='Y' ? 'ion-chevron-down' :
+                            'ion-chevron-right'"></i></span>
+                </button>
+                <div class="list card item-accordion" ng-show="isTab9Shown(tab) || defaultTabs9Open=='Y'"
+                    style="margin:auto;border-radius:5px">
+                    <!--tab 6 content start -->
+						<div class="item">
+                            <h5 style="font-size:0.9em;margin-top:3px;font-weight:500;">Applicant Remarks:</h5>
+						</div>
+						<div class="col-sm-8 col-xs-8">{{travelClaimForm.travelClaimVo.applicantRemark}}</div>
+                            <!--
+							<textarea id="addi" rows="4" cols="50" disabled style="background-color:silver;border: 1px solid #b3b3b3;text-align:left;width:100%">{{travelClaimForm.travelClaimVo.additionalInfo}}
+							</textarea>
+							-->
+						
+						                 
+                    <!--tab 9 content over -->
+                </div>
+				<div class="item">
+                            <h5 style="font-size:0.9em;margin-top:3px;font-weight:500;">Approver Remarks:</h5>
+							<div ng-if="travelClaimForm.approverAllRemarks && 
+								statusForClaimDetials == 'SENT FOR APPROVAL' " >
+                            <span style="white-space: pre-wrap" disabled >Previous Remarks<br>{{travelClaimForm.approverAllRemarks}}</span>
+							</div>
+							
+							<div ng-if="travelClaimForm.approverAllRemarks && 
+								statusForClaimDetials != 'SENT FOR APPROVAL' " >
+                            <span style="white-space: pre-wrap" disabled >{{travelClaimForm.approverAllRemarks}}</span>
+							</div>
+							
+							<textarea  
+							id="approverRemarks" ng-show="statusForClaimDetials == 'SENT FOR APPROVAL' " 
+							rows="4" cols="50"
+							style="background-color:white;border: 1px solid #b3b3b3;text-align:left;width:100%;"></textarea>
+                        </div>
+                        <br>
+				<div id="apprRejButtons" > <!-- buttons -->
+								<!-- <center>
+								<button id="btnApprove" class="button" style="background-color:green;color:white;width:27%;"   ng-click="approveClaim()">Approve</button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<button id="btnRemove" class="button" style="background-color:red;color:white;width:27%;"   ng-click="rejectClaim()">Reject</button>
+                                </center> -->
+                                <div class="text-center">
+                                    <button type="button" id="btnApprove" ng-click="approveClaim()" class="btn btn-success mr-10">
+                             <i class="fa fa-check mr-5" aria-hidden="true"></i> Approve</button>
+                                    <button type="button" id="btnRemove" ng-click="rejectClaim()" class="btn btn-danger">
+                                        <i class="fa fa-times mr-5" aria-hidden="true"></i> Reject</button>
+                         </div>  
+								<br>
+					</div> 
+				
+				<div class="itemSection" >
+                    <div ng-repeat="payDetls in travelClaimForm.travelClaimPaymentDetailsVOList">
+                        <div class="form-group row">
+                            <label  class="col-sm-4 col-xs-4 col-form-label">Trans. Type</label><span class="dividerClass">:</span>
+                            <div  class="col-sm-8 col-xs-8">
+                                <select ng-init="selectedValues.selectedTransType='-1'"
+                                id="paytransType{{$index}}" class="form-control" ng-model="selectedValues.selectedTransType">                                
+                            </select>
+                            </div>
+                        </div>
+					
+                        <div class="form-group row">
+                            <label  class="col-sm-4 col-xs-4 col-form-label">Payment Mode</label><span class="dividerClass">:</span>
+                            <div  class="col-sm-8 col-xs-8">
+                                <select ng-init="selectedValues.paymentMode='-1'"
+                                id="modeOfPayment{{$index}}" class="form-control" ng-model="selectedValues.paymentMode">                                
+                            </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-4 col-xs-4 col-form-label">Account Details</label><span class="dividerClass">:</span>
+                            <div  class="col-sm-8 col-xs-8">
+                                <input  id="accountDetailsCol{{$index}}"  type="text" class="form-control"
+                                 ng-model="selectedValues.accountDetails" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-4 col-xs-4 col-form-label">Cheque No.</label><span class="dividerClass">:</span>
+                            <div  class="col-sm-8 col-xs-8">
+                                <input class="form-control" id="chequeNo{{$index}}" 
+                                type="text"  ng-model="selectedValues.chequeNo" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-4 col-xs-4 col-form-label">Amount</label><span class="dividerClass">:</span>
+                            <div  class="col-sm-8 col-xs-8">
+                                <input class="form-control" id="payAmount{{$index}}" 
+                                type="text" ng-model="selectedValues.amount" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-4 col-xs-4 col-form-label">Currecny Type</label><span class="dividerClass">:</span>
+                            <div  class="col-sm-8 col-xs-8">
+                                <select ng-init="selectedValues.currType='-1'"
+                                id="modeOfPaymentCurrency{{$index}}" class="form-control" ng-model="selectedValues.currType">
+                            </select>
+                            </div>
+                        </div>
+						<br>
+						<div id="saveCloseButtons"> <!-- buttons -->
+								<!-- <center>
+								<button id="btnSave" class="button button-positive" style="color:white;width:27%;"   ng-click="savePaymentDtls()">Save</button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<button id="btnCloseClaim" class="button button-positive " style="color:white;width:47%;"   ng-click="goClose()">Close Claim</button>
+                                </center> -->
+                                <div class="text-center">
+                                    <!--<button type="hidden" id="btnSave" ng-click="savePaymentDtls()" class="btn btn-success mr-10">
+                             <i class="fa fa-check mr-5" aria-hidden="true"></i> Save</button> -->
+                                    <button type="button" id="btnCloseClaim" ng-click="goClose()" class="btn btn-danger">
+                                        <i class="fa fa-times mr-5" aria-hidden="true"></i> Close Claim</button>
+                            </div>  
+								<br>
+						</div> 		
+					<br>
+					</div>
+                </div>
+					
+					
+            </div>
+			
+			
+			
+
+            
+<!------------------------------------------------------- hidden field Start-------------------------------------------------------------- -->
+		<input type="hidden" name="buttonRights" id="buttonRights" value="{{requestObject.buttonRights}}">
+
+		<input type="hidden" name="reqtrack" id="reqtrack" value="{{requestObject.TRACKERID}}">
+		<input type="hidden" name="menuId" id="menuId" value="{{requestObject.menuId}}">
+		
+
+
+		<input type="hidden" name="countGrid" id="countGrid" value="0">
+		<input type="hidden" name="empId" id="empId" value="{{requestObject.empId}}">
+		<input type="hidden" name="countGrid1" id="countGrid1" value="0">
+		<input type="hidden" name="countGrid2" id="countGrid2" value="0">
+		<input type="hidden" id="empName" name="empName" value="{{requestObject.empName}}">
+       	<input type="hidden" id="empCode" name="empCode" value="{{requestObject.empCode}}">
+		<input type="hidden" name="DateFormat" id="DateFormat" value="{{requestObject.dateFormat}}">
+		<input type="hidden" name="smallestTravelDate" id="smallestTravelDate" value="">
+		<input type="hidden" name="largeTravelDate" id="largeTravelDate" value="">
+			
+        </form>
+    </ion-content>
+</ion-view>

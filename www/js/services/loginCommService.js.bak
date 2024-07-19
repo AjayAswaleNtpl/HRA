@@ -1,0 +1,824 @@
+mainModule.factory("loginService", ['$resource', function ($resource) {
+    return $resource((baseURL + '/api/j_spring_security_check'), {}, {
+        'save': {
+            method: 'POST',
+            timeout: commonRequestTimeout
+        }
+    }, {});
+}]);
+mainModule.factory("getLoginDataService", ['$resource', function ($resource) {
+    return $resource((baseURL + '/api/eisCompany/getOnLoginData.spr'), {}, {
+        'save': {
+            method: 'POST',
+            timeout: commonRequestTimeout
+        }
+    }, {});
+}]);
+mainModule.factory("getDonutDataService", ['$resource', function ($resource) {
+    return $resource((baseURL + '/api/homeDashboard/getDoughnutChartData.spr'), {}, {
+        'save': {
+            method: 'POST'
+
+        }
+    }, {});
+}]);
+
+
+mainModule.factory("loginCommService", function ($rootScope, $filter, $ionicPopup, getDonutDataService, $ionicLoading, $state, loginService, getLoginDataService, commonService, ionicLoadingService) {
+	
+	var ref;
+	var  loadStartCallBack = function (event) {
+	// Close InAppBrowser if loading the predefined close URL
+	
+
+		if(event.url == 'https://demo.myhralign.com/portal/hrportal.spr')  {
+			ref.close();
+			//alert("close")
+		}
+		if(event.url == 'https://demo.myhralign.com/portal/hrportal.spr#')  {
+			ref.close();
+			//alert("close candidate")
+			navigator.app.exitApp();
+		}
+		if(event.url.indexOf('https://demo.myhralign.com/login.spr')>-1)  {
+			ref.close();
+			//alert("close1 candidate")
+			navigator.app.exitApp();
+		}
+		if(event.url == 'https://demo.myhralign.com/login.spr')  {
+			ref.close();
+			//alert("close1 candidate")
+			navigator.app.exitApp();
+		}
+	};
+	
+	
+    showAlert = function (title, template) {
+        $ionicPopup.alert({
+            title: title,
+            template: template
+        });
+    };
+    var object = {};
+    var odApplicationInProcessCount = 0
+    var leaveAppliInProcessCount = 0
+    var attendRegularInProcessCount = 0
+    var shiftChangeCount = 0
+
+
+	
+var appAvailability = {
+    
+    check: function(urlScheme, successCallback, errorCallback) {
+        cordova.exec(
+            successCallback,
+            errorCallback,
+            "AppAvailability",
+            "checkAvailability",
+            [urlScheme]
+        );
+    },
+    
+    checkBool: function(urlScheme, callback) {
+        cordova.exec(
+            function(success) { callback(success); },
+            function(error) { callback(error); },
+            "AppAvailability",
+            "checkAvailability",
+            [urlScheme]
+        );
+    }
+    
+};
+
+
+
+var chcekIfInstalledAppLatest = function (acvList, domainVersion) {
+ 
+ // this method will check if the installed version is latest for the domain
+ // if not, it will prompt user to download lateest version
+	/*var foundCompatibility = false;
+    for (var i = 0; i < acvList.length; i++) {
+        if (acvList[i].mobileVersion == appVersion &&
+            acvList[i].domainVersion == domainVersion) {
+            foundCompatibility = true
+            return "COMPATIBLE"
+        }
+    }
+	*/
+
+    
+    //find latest appversion for the domain
+    compatipleMobileAppVersions = []
+    for (var i = 0; i < acvList.length; i++) {
+
+
+        if (device.platform === 'iOS') {
+            if (domainVersion == acvList[i].domainVersion &&
+                acvList[i].appStoreBuildId != null) {
+                compatipleMobileAppVersions.push(acvList[i])
+            }
+        }
+        if (device.platform === 'Android') {
+            if (domainVersion == acvList[i].domainVersion &&
+                acvList[i].playStoreBuildId != null) {
+                compatipleMobileAppVersions.push(acvList[i])
+            }
+        }
+    }
+
+    if (compatipleMobileAppVersions.length==0){
+        return "NO_NEW_VERSION_AVAILABLE"
+    }
+
+    //sort to get the latest app for domain
+    compatipleMobileAppVersions.sort(dynamicSort("releaseDate"));
+
+    if (device.platform === 'Android') {
+        if (compatipleMobileAppVersions[compatipleMobileAppVersions.length - 1].playStoreUrl === undefined) {
+            showAlert("HRAlign","This version of app is not supported,\r\nPlease contact app admin.")
+            return "NO_NEW_VERSION_AVAILABLE"
+        } else {
+            sessionStorage.setItem("NEWAPPURL",
+                compatipleMobileAppVersions[compatipleMobileAppVersions.length - 1].playStoreUrl)
+			sessionStorage.setItem("NEWAPPVER",
+                compatipleMobileAppVersions[compatipleMobileAppVersions.length - 1].mobileVersion)	
+        }
+    }
+    if (device.platform === 'iOS') {
+        if (compatipleMobileAppVersions[compatipleMobileAppVersions.length - 1].appStoreUrl === undefined) {
+            showAlert("HRAlign","This version of app is not supported,\r\nPlease contact app admin.")
+            return "NO_NEW_VERSION_AVAILABLE"
+        } else {
+            sessionStorage.setItem("NEWAPPURL",
+                compatipleMobileAppVersions[compatipleMobileAppVersions.length - 1].appStoreUrl)
+			sessionStorage.setItem("NEWAPPVER",
+                compatipleMobileAppVersions[compatipleMobileAppVersions.length - 1].mobileVersion)	
+        }
+    }
+
+	//check if the latest version is same as insatlled version if yes do nothing otherwise send 
+	// user to download latest version 
+	
+    if (appVersion ==  compatipleMobileAppVersions[compatipleMobileAppVersions.length - 1].mobileVersion){
+		return "YES"
+	}
+	else{
+		return "NO"
+	}
+}
+
+
+
+
+var checkPrevVerAppAvailable = function (data,i) {
+	var avcList=[]
+	avcList = data.avcList
+		if (avcList[i].mobileVersion != appVersion) {
+            if (device.platform === "Android"){
+				//avcList[i].playStoreBuildId
+                appAvailability.check(avcList[i].playStoreBuildId, function () {
+                    // is available
+                    sessionStorage.setItem("old_version_build_url", avcList[i].playStoreUrl)
+					sessionStorage.setItem("old_version_data", avcList[i])
+						$ionicLoading.hide()
+                        $state.go('uninstallOldAppVersion')
+                    return "AVAILABLE"
+                }, function () {
+                    // not available
+					if (i<avcList.length-1){
+						i++;
+						return checkPrevVerAppAvailable(data,i)
+					}else{
+						onLoginData(data.presonalInfo.Gender);
+					}
+					
+                });
+            }else if (device.platform==="iOS"){
+                appAvailability.check(avcList[i].appStoreBuildId, function () {
+                    // is available
+                    sessionStorage.setItem("old_version_build_url", avcList[i].appStoreUrl)
+                    return "AVAILABLE"
+                }, function () {
+					if (i<avcList.length-1){
+						i++;
+						return checkPrevVerAppAvailable(data,i)
+					}else{
+						onLoginData(data.presonalInfo.Gender);
+					}
+                });
+            }
+        }else{
+					// this build is itself
+					if (i<avcList.length-1){
+						i++;
+						return checkPrevVerAppAvailable(data,i)
+					}else if (i ==avcList.length-1){
+						//this is last element
+						onLoginData(data.presonalInfo.Gender);
+					}
+		}
+
+
+
+/*
+    for (var i = 0; i < avcList.length; i++) {
+		
+        if (avcList[i].mobileVersion != appVersion) {
+
+            if (device.platform === "Android"){
+				//avcList[i].playStoreBuildId
+                appAvailability.check('com.neterson.hralign91_6', function () {
+                    // is available
+					alert("111")
+                    sessionStorage.setItem("old_version_build_url", avcList[i].playStoreUrl)
+                    return "AVAILABLE"
+                }, function () {
+                    // not available
+                });
+            }else if (device.platform==="iOS"){
+                appAvailability.check(avcList[i].appStoreBuildId, function () {
+                    // is available
+                    sessionStorage.setItem("old_version_build_url", avcList[i].appStoreUrl)
+                    return "AVAILABLE"
+                }, function () {
+                    // not available
+                });
+            }
+        }
+    }*/
+	
+    return "NOTAVAILABLE"
+}
+
+
+
+
+function dynamicSort(property) {
+    var sortOrder = 1;
+
+    if (property[0].toString() === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+    }
+
+    return function (a, b) {
+        if (sortOrder == -1) {
+            return b[property].toString().localeCompare(a[property]).toString();
+        } else {
+            return a[property].toString().localeCompare(b[property].toString());
+        }
+    }
+}
+	
+	
+    //////////// app exit pop up in case of no updated version available ///////////////
+	$rootScope.appVersion = appVersion;
+    $rootScope.exitPopupNoUpdateAvlbl = function () {
+        var exitPopupNoUpdateAvlbl = $ionicPopup.show({
+            template:
+                '<p style="white-space: pre-wrap !important;word-wrap: break-word;padding:3px;" ><strong>Quitting...</strong></p><p style="white-space: pre-wrap !important;word-wrap: break-word;">This version ({{appVersion}})of app is no longer supported. Please contact admin for support.</p>',
+            title: '',
+            scope: $rootScope,
+            buttons: [
+                {
+                    text: '<b>Exit App</b>',
+                    type: 'button-positive',
+                    onTap: function (e) {
+                        localStorage.setItem('rememberMeFlag', 0);
+                        navigator.app.exitApp();
+                    }
+                }
+            ]
+        });
+    }
+    $rootScope.closeModal = function (index) {
+        if (index == 1)
+            $rootScope.exitPopupNoUpdateAvlbl.hide();
+    };
+    /////////////////////////////////////////////////			                
+
+
+    object.userLogin = function (loginDetails, success, error) {
+        $rootScope.loggedInNew = "Y"
+        var LoginService = new loginService();
+        LoginService.$save(loginDetails, function (data) {
+			if (demoOnboarding=='true'){
+				if (data.userStatus=="CANDIDATE"){
+					//alert(loginDetails.username)
+					//alert(loginDetails.password)
+					localStorage.setItem('rememberMeFlag', 0);
+					$rootScope.userStatus="CANDIDATE"
+					
+					//alert("this is candidate");
+				
+		
+			
+					
+					
+					ref = cordova.InAppBrowser.open('https://demo.myhralign.com/customLogin1.spr?username='+loginDetails.username+'&password='+loginDetails.password, '_blank', 'location=no,zoom=no');
+					//ref = cordova.InAppBrowser.open('https://demo.myhralign.com/customLogin1.spr?username=Ravindra27&password=31071986', '_blank', 'location=no,zoom=no');
+					//ref = cordova.InAppBrowser.open('http://172.17.4.167:8090/admin/customLogin1.spr?username='+loginDetails.username+'&password='+loginDetails.password, '_blank', 'location=no,zoom=no');
+			
+				
+						ref.addEventListener('loadstart', loadStartCallBack);
+						return
+			
+					}
+			}
+			
+            if (data.portalModule.length == 0) {                                     // to check if user has at-least one access rights.
+                $ionicLoading.hide();
+                showAlert("", "You are not authorized to Login");
+                localStorage.setItem('rememberMeFlag', 0);
+            } else {
+				
+				
+			/// call here for userStatus
+			
+			var tmpObj = {};
+			tmpObj.empId=data.presonalInfo.EmpId
+			
+				$.ajax({
+				url: baseURL + '/api/eis/eisPersonal/getUserStatus.spr',
+				data: tmpObj,
+				async:false,
+				type: 'POST',
+				contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+				processData: false, // NEEDED, DON'T OMIT THIS
+				success : function(result) {
+					
+					$rootScope.userStatus = result.userStatus;
+					//alert(loginDetails.username)
+					//alert(loginDetails.password)
+					if (demoOnboarding=='true'){
+					
+					//alert($rootScope.userStatus)
+					
+					if ($rootScope.userStatus=="CONFIRM_NOT_CLICKED"){
+						localStorage.setItem('rememberMeFlag', 0);
+							
+							ref = cordova.InAppBrowser.open('https://demo.myhralign.com/customLogin1.spr?username='+loginDetails.username+'&password='+loginDetails.password, '_blank', 'location=no,zoom=no');
+							
+							//ref = cordova.InAppBrowser.open('https://demo.myhralign.com/customLogin1.spr?username=UG2003&password=Pass@1234', '_blank', 'location=no,zoom=no');
+							
+							//ref = cordova.InAppBrowser.open('https://demo.myhralign.com/customLogin1.spr?username=Ravindra27&password=31071986', '_blank', 'location=no,zoom=no');
+							
+							//ref = cordova.InAppBrowser.open('http://172.17.4.167:8090/admin/customLogin1.spr?username='+loginDetails.username+'&password='+loginDetails.password, '_blank', 'location=no,zoom=no');
+							ref.addEventListener('loadstart', loadStartCallBack);
+							return
+						}
+					}
+				}
+				
+				});
+				
+			
+			/*
+			var getUserStatusService = new getUserStatusService();
+            getUserStatusService.$save(tmpObj, function (data) {
+                alert(data)
+                
+            }, function (data) {
+                alert(data)
+                commonService.getErrorMessage(data);
+                $ionicLoading.hide();
+
+            });
+				*/
+
+                $rootScope.connectionErrorCounter = 0;
+
+                sessionStorage.setItem('appVersion', data.appVersion);
+                //session appversion and session domainversion are samething
+                //and appVersion (non session, defined in config.js) is mobile app version
+                sessionStorage.setItem('domainVersion', data.appVersion);
+                sessionStorage.setItem('dbVersion', data.dbVersion);
+
+                sessionStorage.setItem('IsARTorFRT', data.presonalInfo.IsARTorFRT)
+                if (data.presonalInfo.isGroupMasterReportee === undefined) {
+                    sessionStorage.setItem('isGroupMasterReportee', false)
+                } else {
+                    sessionStorage.setItem('isGroupMasterReportee', data.presonalInfo.isGroupMasterReportee)
+                }
+                sessionStorage.setItem('phoneNumber', data.presonalInfo.phoneNumber)
+                //below changes replacing data.authentication.principal. to  presonalInfo 
+                //sessionStorage.setItem('empCode', data.authentication.principal.empCode);
+                sessionStorage.setItem('empCode', data.presonalInfo.EmpCode);
+
+                //sessionStorage.setItem('companyId', data.authentication.principal.companyId);
+                sessionStorage.setItem('companyId', data.presonalInfo.CompanyId);
+
+
+
+                sessionStorage.setItem('googleMapAppApiKey', data.googleMapAppApiKey);
+
+                //localStorage.setItem('companyId', data.authentication.principal.companyId);
+                localStorage.setItem('companyId', data.presonalInfo.CompanyId);
+
+                //sessionStorage.setItem('locationId', data.authentication.principal.locationId);
+                sessionStorage.setItem('locationId', data.presonalInfo.LocationId);
+                //sessionStorage.setItem('empName', data.authentication.principal.empName);
+                sessionStorage.setItem('empName', data.presonalInfo.FullName);
+                //sessionStorage.setItem('empId', data.authentication.principal.empId);
+                sessionStorage.setItem('empId', data.presonalInfo.EmpId);
+				$rootScope.myEmpId = data.presonalInfo.EmpId;
+
+                sessionStorage.setItem('portalModule', JSON.stringify(data.portalModule));
+                sessionStorage.setItem('displayDeptName', JSON.stringify(data.displayDeptName));
+                var IsLeaveAccessible = false;
+                IsLeaveAccessible = MenuRightsCheck(data.portalModule, "Leave Management", "Leave Application");
+                sessionStorage.setItem('IsLeaveAccessible', IsLeaveAccessible);
+
+                var IsPayslipAccessible = false;
+                IsPayslipAccessible = MenuRightsCheck(data.portalModule, "Mobile", "Payslip");
+                sessionStorage.setItem('IsPayslipAccessible', IsPayslipAccessible);
+
+                var IsClockInAccessible = false;
+                IsClockInAccessible = MenuRightsCheck(data.portalModule, "Mobile", "Clock In");
+                sessionStorage.setItem('IsClockInAccessible', IsClockInAccessible);
+
+                var IsPushNotificationsAccessible = false;
+                IsPushNotificationsAccessible = MenuRightsCheck(data.portalModule, "Mobile", "Push Notifications");
+                sessionStorage.setItem('IsPushNotificationsAccessible', IsPushNotificationsAccessible);
+
+                var IsShiftChangeAccessible = false;
+				IsShiftChangeAccessible = MenuRightsCheck(data.portalModule, "Attendance Management", "Shift Change");
+                sessionStorage.setItem('IsShiftChangeAccessible', IsShiftChangeAccessible);
+                
+				
+				var IsODAccessible = false;
+                IsODAccessible = MenuRightsCheck(data.portalModule, "Attendance Management", "OD Application");
+                sessionStorage.setItem('IsODAccessible', IsODAccessible);
+				
+                var IsRegularizationAccessible = false;
+                IsRegularizationAccessible = MenuRightsCheck(data.portalModule, "Attendance Management", "My Attendance Record");
+                sessionStorage.setItem('IsRegularizationAccessible', IsRegularizationAccessible);
+
+					
+				var IsTravelAccessible = false;
+                IsTravelAccessible = MenuRightsCheck(data.portalModule, "Travel Management", "Travel Application");
+                sessionStorage.setItem('IsTravelAccessible', IsTravelAccessible);
+				
+				var IsClaimAccessible = false;
+                IsClaimAccessible = MenuRightsCheck(data.portalModule,  "Travel Management","Travel Claim Requisition");
+                sessionStorage.setItem('IsClaimAccessible', IsClaimAccessible);
+				
+                sessionStorage.setItem('profilePhoto', baseURL + '/api/eisCompany/viewPhoto.spr?empId=' + sessionStorage.getItem('empId') + '');
+				
+				// as checkPrevVerAppAvailable method is asynch 
+				// shifted below line onLoginData to that function or if applyAppVersionCompatibiliyModule="N" then
+				//  call onLoginData
+				//onLoginData(data.presonalInfo.Gender);
+                //
+				
+                ///// app version compatibility module start 
+                if (applyAppVersionCompatibiliyModule == "Y") {
+					
+                    var isInstalledAppLatest = chcekIfInstalledAppLatest(data.avcList, data.appVersion) //passing list and domain version
+                    if (isInstalledAppLatest == "NO") {
+                        $ionicLoading.hide()
+                        $state.go('getNewAppVersion')
+                        return
+                    } else if (isInstalledAppLatest == "NO_NEW_VERSION_AVAILABLE") {
+                        $ionicLoading.hide()
+                        $rootScope.exitPopupNoUpdateAvlbl()
+                        return
+                    }else if (isInstalledAppLatest == "YES") {
+                        $ionicLoading.hide()
+						checkPrevVerAppAvailable(data,0)
+					}
+					
+                }else{
+				
+					onLoginData(data.presonalInfo.Gender);
+				
+				}
+                ///// app version compatibility module over
+				
+
+				$rootScope.myAppVersion = getMyHrapiVersionNumber()
+		
+                if (loginDetails.rememberMeFlag) {
+                    localStorage.setItem('userName', loginDetails.username);
+                    localStorage.setItem('password', loginDetails.password);
+                    localStorage.setItem('rememberMeFlag', 1);
+                }
+				myHrapiVersion = getMyHrapiVersionNumber();
+				
+            }
+        }, function (data) {
+            error(data);
+            $ionicLoading.hide();
+        });
+    };
+
+    function MenuRightsCheck(portalModule, moduleName, menuName) {
+        var modules = $.grep(portalModule, function (v) {
+            return v.moduleName === moduleName;
+        });
+
+        if (modules.length <= 0) {
+            return false;
+        }
+        var menus = $.grep(modules[0].masterMenuBeanList, function (v) {
+            return v.menuName === menuName;
+        });
+        if (menus.length > 0) {
+            if (menus[0].isAdd === "Y") {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function processDonutData(tmpData) {
+        if (tmpData == "") {
+            data = $rootScope.donutData
+        }
+        else {
+            data = tmpData
+            $rootScope.donutData = data
+        }
+        sessionStorage.setItem('PresentCount', data[0].PresentCount);
+        sessionStorage.setItem('AbsentCount', data[0].AbsentCount);
+        sessionStorage.setItem('ODCount', data[0].ODCount);
+        sessionStorage.setItem('LeaveCount', data[0].LeaveCount);
+        sessionStorage.setItem('WeeklyOffCount', data[0].WeeklyOffCount);
+        sessionStorage.setItem('HolidayCount', data[0].HolidayCount);
+        sessionStorage.setItem('NACount', data[0].NACount);
+        sessionStorage.setItem('OthersCount', data[0].OthersCount);
+        if ((parseInt(data[0].PresentCount) + parseInt(data[0].AbsentCount) + parseInt(data[0].ODCount) + parseInt(data[0].LeaveCount) + parseInt(data[0].WeeklyOffCount) + parseInt(data[0].HolidayCount) + parseInt(data[0].NACount) + parseInt(data[0].OthersCount)) == 1) {
+            $rootScope.HomeDashBoard = false;
+            $state.go('app.home.selfService');
+
+        } else {
+
+			
+
+        }
+        $ionicLoading.hide();
+    }
+
+
+
+    function onLoginData(gender) {
+        //   ionicLoadingService.showLoading();
+			$ionicLoading.show();
+        var requestObject = {};
+        var pushRegisterFirebase = function () {
+            window.FirebasePlugin.getInstanceId(function (token) {
+				
+                if (token == null) {
+                    pushRegisterFirebase();
+                } else {
+                    localStorage.setItem('fireBasePushRegKey', token);
+                    localStorage.setItem('empId', sessionStorage.getItem('empId'));
+                    requestObject.username = sessionStorage.getItem('empId');
+                }
+            }, function (error) {
+            });
+        }
+		
+        if (!localStorage.getItem('fireBasePushRegKey') || !(localStorage.getItem('empId') == sessionStorage.getItem('empId'))) {
+            pushRegisterFirebase();
+        }
+        requestObject.pushRegKey = localStorage.getItem('fireBasePushRegKey');
+        requestObject.empId = sessionStorage.getItem('empId');
+        requestObject.companyId = sessionStorage.getItem('companyId');
+        requestObject.locationId = sessionStorage.getItem('locationId');
+        requestObject.fromDate = $filter('date')(new Date(), 'dd/MM/yyyy');
+        requestObject.toDate = $filter('date')(new Date(), 'dd/MM/yyyy');
+		var st = new Date()
+        $rootScope.getLoginDataService = new getLoginDataService();
+        $rootScope.getLoginDataService.$save(requestObject, function (success) {
+			var endd = new Date()
+			//alert((endd -  st)/1000 )
+		
+            //////////// app exit pop up  ///////////////
+            $rootScope.exitPopup = function () {
+                var exitPopup = $ionicPopup.show({
+                    template:
+                        '<p style="white-space: pre-wrap !important;word-wrap: break-word;padding:3px;" ><strong>Quitting...</strong></p><p style="white-space: pre-wrap !important;word-wrap: break-word;">Please change password from web to continue using Mobile App.</p>',
+                    title: '',
+                    scope: $rootScope,
+                    buttons: [
+                        {
+                            text: '<b>Exit App</b>',
+                            type: 'button-positive',
+                            onTap: function (e) {
+                                localStorage.setItem('rememberMeFlag', 0);
+                                navigator.app.exitApp();
+                            }
+                        }
+                    ]
+                });
+            }
+            $rootScope.closeModal = function (index) {
+                if (index == 1)
+                    $rootScope.exitPopup.hide();
+            };
+            /////////////////////////////////////////////////		
+			
+            if (success.isNewEmployee == "Y") {
+                //alert that he has to login first into web
+                //exit from app.
+                $ionicLoading.hide();
+                $rootScope.exitPopup()
+                return;
+            }
+			
+            sessionStorage.setItem('photoFileName', success.MenuInfo.photoFileName);
+            if (!success.MenuInfo.photoFileName) {
+                if (gender == 'M') {
+                    sessionStorage.setItem('photoFileName', "Male-Default.png");
+                    sessionStorage.setItem('profilePhoto', "./img/Male.png");
+                }
+                else {
+                    sessionStorage.setItem('photoFileName', "Female-Default.png");
+                    sessionStorage.setItem('profilePhoto', "./img/Female.png");
+                }
+            }
+            sessionStorage.setItem('designation', success.MenuInfo.designationName);
+            if (success.MenuInfo.departmentName)
+                sessionStorage.setItem('department', success.MenuInfo.departmentName);
+            sessionStorage.setItem('holidayCategoryId', success.MenuInfo.holidayCategoryId);
+            sessionStorage.setItem('holidayCategoryName', success.MenuInfo.holidayCategoryName);
+            sessionStorage.setItem('employeeCategoryId', success.MenuInfo.employeeCategoryId);
+            sessionStorage.setItem('employeeCategoryName', success.MenuInfo.employeeCategoryName);
+            sessionStorage.setItem('employeeCategoryName', success.MenuInfo.employeeCategoryName);
+            sessionStorage.setItem('dateOfJoining', success.MenuInfo.dateOfJoining);
+			
+            // For Requisition Count :
+            {
+                if (success.RequisitionCount.odApplication && (sessionStorage.getItem('IsRegularizationAccessible') == 'true')) {
+                    attendRegularInProcessCount = success.RequisitionCount.odApplication.inProcess;
+                } else {
+                    attendRegularInProcessCount = '0'
+                }
+                if (success.RequisitionCount.leaveApplication && (sessionStorage.getItem('IsLeaveAccessible') == 'true')) {
+                    leaveAppliInProcessCount = success.RequisitionCount.leaveApplication.inProcess;
+                } else {
+                    leaveAppliInProcessCount = '0'
+                }
+                if (success.RequisitionCount.attendanceRegularisation && (sessionStorage.getItem('IsODAccessible') == 'true')) {
+                    odApplicationInProcessCount = success.RequisitionCount.attendanceRegularisation.inProcess;
+                } else {
+                    odApplicationInProcessCount = '0'
+                }
+                if (success.RequisitionCount.shiftChange && (sessionStorage.getItem('IsShiftChangeAccessible') == 'true')) {
+                    shiftChangeCount = success.RequisitionCount.shiftChange.inProcess;
+                } else {
+                    shiftChangeCount = '0'
+                }
+				//if (success.RequisitionCount.listTravelApplicationCount && (sessionStorage.getItem('IsTravelAccessible') == 'true')) {
+				if (success.RequisitionCount.listTravelApplicationCount>0){
+                    travelApplicationCount = success.RequisitionCount.listTravelApplicationCount.inProcess;
+                } else {
+                    travelApplicationCount = '0'
+                }				
+
+                $rootScope.totalRequestCount = parseInt(attendRegularInProcessCount) + parseInt(leaveAppliInProcessCount) + parseInt(odApplicationInProcessCount) + parseInt(shiftChangeCount);
+                $rootScope.attendance = attendRegularInProcessCount;
+                $rootScope.leave = leaveAppliInProcessCount;
+                $rootScope.od = odApplicationInProcessCount;
+                $rootScope.shift = shiftChangeCount;
+				$rootScope.travelApplicationCount = travelApplicationCount
+            }
+            //For Doughnut Chart :
+
+            if (success.attendanceCount[0] == undefined) {
+                //$state.go('app.home.selfService');
+                //$rootScope.HomeDashBoard = false;
+                alert("Exiting App..\n\nError getting attendance data.")
+                navigator.app.exitApp();
+                return;
+            } else {
+                sessionStorage.setItem('AbsentCount', success.attendanceCount[0].AbsentCount);
+                sessionStorage.setItem('ODCount', success.attendanceCount[0].ODCount);
+                sessionStorage.setItem('PresentCount', success.attendanceCount[0].PresentCount);
+                sessionStorage.setItem('LeaveCount', success.attendanceCount[0].LeaveCount);
+
+                var doj = new Date(success.MenuInfo.dateOfJoining);
+                var todayDate = new Date();
+
+                // for date of joining as future , dasboard not to be shown
+                if (((parseInt(success.attendanceCount[0].PresentCount) + parseInt(success.attendanceCount[0].AbsentCount) + parseInt(success.attendanceCount[0].ODCount) + parseInt(success.attendanceCount[0].LeaveCount)) == 1) || doj > todayDate) {
+
+                    $rootScope.HomeDashBoard = false;
+                    $state.go('app.home.selfService');
+
+                } else {
+
+					//$state.go('app.RequestList');
+					$state.go('app.RequisitionTravelAndClaim');
+					//$state.go('travelApplication');
+					
+                    $rootScope.HomeDashBoard = true;
+                    //$state.go('app.home.dashboard');
+                }
+            }
+            //            
+            //for Locking Peroid:
+			if (success.lockingPeroid.list === undefined){
+				
+			}else{
+				sessionStorage.setItem('lockingPeriod', success.lockingPeroid.list);
+			}
+			
+			
+			
+            //For Inbox Count:
+			
+			$rootScope.UnreadMessages = success.cntInbox;
+			//alert("inbox\n"+ success.cntInbox)
+            if (success.emailList) {
+				
+                $rootScope.inboxList = success.emailList;
+                $rootScope.UnreadMessages = 0;
+                for (var i = 0; i < $rootScope.inboxList.length; i++) {
+                    if ($rootScope.inboxList[i].status == 'N') {
+                        $rootScope.UnreadMessages++;
+                    }
+                }
+            }
+            //For Update Push Registeration Key:
+            // service called in controller.
+            //            $state.go('app.home.dashboard');
+			
+			
+        }, function (data) {
+            //            ionicLoadingService.hideLoading(1);
+            $ionicLoading.hide();
+            commonService.getErrorMessage(data);
+        });
+        object.getDoNutChartCount = function (dateDetails, success, error) {
+            var obj = {};
+            //            obj.fromDate = $filter('date')(dateDetails.fromDate, 'dd/MM/yyyy');
+            obj.fromDate = dateDetails.fromDate;
+            obj.presentDayFlag = dateDetails.presentDayFlag;
+            obj.doughnutChartCountOrListFlag = dateDetails.doughnutChartCountOrListFlag;
+            obj.offset = 0;
+            obj.maxData = 0;
+            obj.searchData = "";
+
+            // below commented as donut data should always retrieve
+
+            if (obj.fromDate == $rootScope.DonutDataDate) {
+
+            } else {
+                $rootScope.DonutDataDate = obj.fromDate
+            }
+
+            var GetDonutDataService = new getDonutDataService();
+            GetDonutDataService.$save(obj, function (data) {
+                processDonutData(data)
+                success();
+            }, function (data) {
+                commonService.getErrorMessage(data);
+                $ionicLoading.hide();
+
+            });
+            return object;
+        }
+
+		/*
+        object.getDoNutChartCount = function (dateDetails, success, error) {
+            var obj = {};
+//            obj.fromDate = $filter('date')(dateDetails.fromDate, 'dd/MM/yyyy');
+            obj.fromDate = dateDetails.fromDate;
+            obj.presentDayFlag = dateDetails.presentDayFlag;
+            obj.doughnutChartCountOrListFlag = dateDetails.doughnutChartCountOrListFlag;
+            obj.offset =0;
+            obj.maxData = 0;
+            obj.searchData = "";
+            var GetDonutDataService = new getDonutDataService();
+            GetDonutDataService.$save(obj, function (data) {
+                sessionStorage.setItem('PresentCount', data[0].PresentCount);
+                sessionStorage.setItem('AbsentCount', data[0].AbsentCount);
+                sessionStorage.setItem('ODCount', data[0].ODCount);
+                sessionStorage.setItem('LeaveCount', data[0].LeaveCount);
+                sessionStorage.setItem('WeeklyOffCount', data[0].WeeklyOffCount);
+                sessionStorage.setItem('HolidayCount', data[0].HolidayCount);
+                sessionStorage.setItem('NACount', data[0].NACount);
+                sessionStorage.setItem('OthersCount', data[0].OthersCount);
+                if ((parseInt(data[0].PresentCount) + parseInt(data[0].AbsentCount) + parseInt(data[0].ODCount) + parseInt(data[0].LeaveCount) + parseInt(data[0].WeeklyOffCount) + parseInt(data[0].HolidayCount) + parseInt(data[0].NACount) + parseInt(data[0].OthersCount)) == 1)
+                {
+                    $state.go('app.home.selfService');
+                    $rootScope.HomeDashBoard = false;
+                } else
+                {
+                    $state.go('app.home.dashboard');
+                    $rootScope.HomeDashBoard = true;
+                }
+                success();
+            }, function (data) {
+                commonService.getErrorMessage(data);
+                $ionicLoading.hide();
+            });
+            return object;
+        }*/
+    };
+
+    return object;
+});

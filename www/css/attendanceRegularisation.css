@@ -1,0 +1,44 @@
+.button-center{
+    margin-left: 5%;
+}
+.custom-card {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    border: 1px solid #007ec1;
+
+}
+.popup-container .popup {
+    border-radius: 10px;
+}
+.card-margin{
+    margin-left: 15%;
+
+}
+.att-pad{
+    padding-bottom: 3%;
+}
+
+.att-pading{
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.card-width{
+    width: 80%;
+}
+
+.container {
+    text-align: center;
+}
+
+.flip-clock{
+    max-width: 460px;
+    margin: 3em auto 2em;
+}
+.att-card{
+    margin: 2%;
+}
+.att-leftmargin{
+    margin-left: 1%;
+}

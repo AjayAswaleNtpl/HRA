@@ -1,0 +1,990 @@
+<style>
+  .popover {
+    height: auto;
+    width: auto;
+  }
+
+  .popstyle {
+    border: 0px;
+    width: 10%;
+    height: 1.5em;
+  }
+
+  .custom-card1 {
+    border-top: 1px solid lightgrey;
+  }
+
+  .item1 {
+    border-color: grey;
+    color: #940909;
+    position: relative;
+    z-index: 2;
+    display: block;
+    padding: 16px;
+    border-style: solid;
+    font-size: 16px;
+  }
+
+  .wrapper {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 230%;
+    background-color: rgba(0, 0, 0, 0.72);
+  }
+
+  /* CSS talk bubble */
+  .talk-bubble {
+    position: relative;
+    width: 200px;
+    height: auto;
+    font-size: 0.9em;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .border {
+    border: 8px solid #666;
+  }
+
+  .round {
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+
+  }
+
+  /* Right triangle placed top left flush. */
+  .tri-right.border.left-top:before {
+    content: ' ';
+
+    width: 0;
+    height: 0;
+    left: -40px;
+    right: auto;
+    top: -8px;
+    bottom: auto;
+    border: 32px solid;
+    border-color: #666 transparent transparent transparent;
+  }
+
+  .tri-right.left-top:after {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: -20px;
+    right: auto;
+    top: 0px;
+    bottom: auto;
+    border: 22px solid;
+    border-color: rgba(0, 0, 0, 0.6) transparent transparent transparent;
+  }
+
+  /* Right triangle, left side slightly down */
+  .tri-right.border.left-in:before {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: -40px;
+    right: auto;
+    top: 30px;
+    bottom: auto;
+    border: 20px solid;
+    border-color: #666 #666 transparent transparent;
+  }
+
+  .tri-right.left-in:after {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: -20px;
+    right: auto;
+    top: 38px;
+    bottom: auto;
+    border: 12px solid;
+    border-color: rgba(0, 0, 0, 0.6) rgba(0, 0, 0, 0.6) transparent transparent;
+  }
+
+  /*Right triangle, placed bottom left side slightly in*/
+  .tri-right.border.btm-left:before {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: -8px;
+    right: auto;
+    top: auto;
+    bottom: -40px;
+    border: 32px solid;
+    border-color: transparent transparent transparent #666;
+  }
+
+  .tri-right.btm-left:after {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 0px;
+    right: auto;
+    top: auto;
+    bottom: -20px;
+    border: 22px solid;
+    border-color: transparent transparent transparent rgba(0, 0, 0, 0.6);
+  }
+
+  /*Right triangle, placed bottom left side slightly in*/
+  .tri-right.border.btm-left-in:before {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 30px;
+    right: auto;
+    top: auto;
+    bottom: -40px;
+    border: 20px solid;
+    border-color: #666 transparent transparent #666;
+  }
+
+  .tri-right.btm-left-in:after {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 38px;
+    right: auto;
+    top: auto;
+    bottom: -20px;
+    border: 12px solid;
+    border-color: rgba(0, 0, 0, 0.6) transparent transparent rgba(0, 0, 0, 0.6);
+  }
+
+  /*Right triangle, placed bottom right side slightly in*/
+  .tri-right.border.btm-right-in:before {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: auto;
+    right: 30px;
+    bottom: -40px;
+    border: 20px solid;
+    border-color: #666 #666 transparent transparent;
+  }
+
+  .tri-right.btm-right-in:after {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: auto;
+    right: 38px;
+    bottom: -20px;
+    border: 12px solid;
+    border-color: rgba(0, 0, 0, 0.6) rgba(0, 0, 0, 0.6) transparent transparent;
+  }
+
+  /*
+	left: -8px;
+  right: auto;
+  top: auto;
+	bottom: -40px;
+	border: 32px solid;
+	border-color: transparent transparent transparent #666;
+	left: 0px;
+  right: auto;
+  top: auto;
+	bottom: -20px;
+	border: 22px solid;
+	border-color: transparent transparent transparent rgba(0,0,0,0.6);
+
+/*Right triangle, placed bottom right side slightly in*/
+  .tri-right.border.btm-right:before {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: auto;
+    right: -8px;
+    bottom: -40px;
+    border: 20px solid;
+    border-color: #666 #666 transparent transparent;
+  }
+
+  .tri-right.btm-right:after {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: auto;
+    right: 0px;
+    bottom: -20px;
+    border: 12px solid;
+    border-color: rgba(0, 0, 0, 0.6) rgba(0, 0, 0, 0.6) transparent transparent;
+  }
+
+  /* Right triangle, right side slightly down*/
+  .tri-right.border.right-in:before {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: auto;
+    right: -40px;
+    top: 30px;
+    bottom: auto;
+    border: 20px solid;
+    border-color: #666 transparent transparent #666;
+  }
+
+  .tri-right.right-in:after {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: auto;
+    right: -24px;
+    top: 30px;
+    bottom: auto;
+    border: 12px solid;
+    border-color: rgba(0, 0, 0, 0.6) transparent transparent rgba(0, 0, 0, 0.6);
+  }
+
+  /* Right triangle placed top right flush. */
+  .tri-right.border.right-top:before {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: auto;
+    right: -40px;
+    top: -8px;
+    bottom: auto;
+    border: 32px solid;
+    border-color: #666 transparent transparent transparent;
+  }
+
+  .tri-right.right-top:after {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: auto;
+    right: -20px;
+    top: 0px;
+    bottom: auto;
+    border: 20px solid;
+    border-color: rgba(0, 0, 0, 0.6) transparent transparent transparent;
+  }
+
+  /* talk bubble contents */
+  .talktext {
+    padding: 0.7em;
+    text-align: left;
+    line-height: 1.5em;
+  }
+
+  .talktext p {
+    /* remove webkit p margins */
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+  }
+
+  .item-checkbox .checkbox {
+    right: 0px;
+    left: 0px;
+  }
+
+  .candHeader {
+    font-size: 16px;
+    white-space: pre-wrap !important;
+    word-wrap: break-word;
+    margin-bottom: 5px;
+  }
+
+  .regurizeStatus {
+    background-color: rgba(0, 0, 0, 0.6);
+    margin-top: -8%;
+    margin-left: 49%;
+    width: 49%;
+    color: white;
+  }
+
+  .regurizeClass {
+    width: 42%;
+    background-color: rgba(0, 0, 0, 0.6);
+    margin-top: 50%;
+    margin-left: 4%;
+    color: white;
+  }
+
+  @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    .hintCloseBtn {
+      font-size: 23px;
+      margin-right: 30px;
+    }
+
+    .tri-right.right-in:after {
+      top: 12px;
+    }
+
+    .talktext p {
+      font-size: 17px;
+      padding: 10px;
+    }
+
+    .regurizeStatus {
+      margin-top: 1%;
+    }
+
+    .regurizeClass {
+      margin-top: 13%;
+      margin-left: 2%;
+    }
+  }
+
+  input {}
+
+  .ui-autocomplete.ui-menu.ui-widget.ui-widget-content.ui-corner-all {
+    height: 100px;
+    overflow: auto;
+  }
+
+  pre {
+    display: inline-block;
+    padding: 9px;
+    width: 72%;
+    vertical-align: middle;
+
+  }
+</style>
+<ion-view id="top">
+  <ion-content style="top:10px;" has-bouncing="false">
+    <!--////// overlay help from here	-->
+    <div class="wrapper" id="ol_help" ng-if="showOverlayHint=='true'  && loggedInNew == 'Y'">
+
+      <div class="talk-bubble tri-right right-in regurizeClass" style="margin-top: 5%; margin-left: 38%;"
+        ng-if="IsClockInAccessible == 'true'">
+        <div class="talktext">
+          <p>Tap on marker to go to 'Clock In/Out'</p>
+        </div>
+      </div>
+
+
+      <div class="talk-bubble tri-right btm-right-in" ng-if="IsClockInAccessible == 'true'"
+        style="width: 42%; background-color: rgba(0,0,0,0.6); margin-top: 44%; margin-left: 4%; color: white;">
+        <div class="talktext">
+          <p>Long Press on the date to Regularize</p>
+        </div>
+      </div>
+
+      <div class="talk-bubble tri-right btm-right-in regurizeStatus" ng-if="IsClockInAccessible == 'true'">
+        <div class="talktext">
+          <p>Tap on the date to check your day status</p>
+        </div>
+      </div>
+
+
+      <div ng-if="IsClockInAccessible == 'true'">
+
+        <label class="item item-checkbox" ng-click="toggleShowHint()" ng-checked="true" ng-modal="chkBoxValue"
+          style="width: 53%;background-color: rgba(0,0,0,1);margin-top: 15%;margin-left: 5%;color: white;font-size: 12px;border: none;"
+          checked="checked">
+          <div class="checkbox checkbox-input-hidden disable-pointer-events checkbox-square">
+            <input id="ssChkHint" type="checkbox" ng-checked="true" checked="checked" value="on"><i
+              class="checkbox-icon"></i>
+          </div>
+          <div class="item-content disable-pointer-events">
+            <span style="margin-left: 35px;"> Show next time</span>
+          </div>
+        </label>
+
+        <button text="Close" class="btn btn-default hintCloseBtn" ng-click="closeOverLay()"
+          style="margin-top: -45px;">Close</button>
+
+      </div>
+
+
+
+      <div class="talk-bubble tri-right btm-right-in regurizeClass" ng-if="IsClockInAccessible == 'false'">
+        <div class="talktext">
+          <p>Long Press on the date to Regularize</p>
+        </div>
+      </div>
+
+      <div class="talk-bubble tri-right btm-right-in regurizeStatus" ng-if="IsClockInAccessible == 'false'">
+        <div class="talktext">
+          <p>Tap on the date to check your day status</p>
+        </div>
+      </div>
+
+
+      <div ng-if="IsClockInAccessible == 'false'">
+
+        <label class="item item-checkbox" ng-click="toggleShowHint()" ng-checked="true" ng-modal="chkBoxValue"
+          style="width: 53%;background-color: rgba(0,0,0,1);margin-top: 30%;margin-left: 5%;color: white;font-size: 12px;border: none;"
+          checked="checked">
+          <div class="checkbox checkbox-input-hidden disable-pointer-events checkbox-square">
+            <input id="ssChkHint1" type="checkbox" ng-checked="true" checked="checked" value="on"><i
+              class="checkbox-icon"></i>
+          </div>
+          <div class="item-content disable-pointer-events">
+            <span style="margin-left: 35px;">Show Hint always.</span>
+          </div>
+        </label>
+
+        <button text="Close" class="btn btn-default hintCloseBtn" ng-click="closeOverLay()"
+          style="margin-top: -45px;">Close</button>
+
+      </div>
+    </div>
+    <!--////// cust-avatar from here	-->
+    <!-- <div id="avtarCard" class="item item-avatar item-avatar-custom" >
+
+            <img ng-if="attendanceDetail.photoFileName" ng-src="{{attendanceDetail.image1}}" style="top:20px;" class="cust-avatar" ng-click="showMyCalendar()">
+            <img ng-if="!attendanceDetail.photoFileName" ng-src="./img/Male.png" style="top:20px;" class="cust-avatar" ng-click="showMyCalendar()">
+
+            <h2 id="nameOfEmployee" style="margin-left: 17%; margin-top: 16px;white-space: pre-wrap !important;word-wrap: break-word;">{{attendanceDetail.name}}</h2>
+			<p  style="margin-left: 17%;">{{attendanceDetail.designation | limitTo: 60}}
+				<a ng-if="hideCheckIn == '1' && IsClockInAccessible == 'true'" href="#/app/checkIn" >
+					<img  src="./img/clockin3.png"  style="width:35px;height:35px;margin-right:3px;text-align: right;"/> 	
+				</a>
+				<a ng-if="hideCheckIn == '0' && IsClockInAccessible == 'true'" href="#/app/checkIn" >
+					<img  src="./img/clockin2.png"  style="width:35px;height:35px;margin-right:3px;text-align: right;"/> 	
+				</a>
+			</p>
+        </div> -->
+
+
+
+    <div class="form-group row dashboardMainSection" id="avtarCard">
+      <label class="col-sm-2 col-xs-2 col-form-label" ng-show="showEmployeeDropDown=='true'"
+        onclick="angular.element(this).scope().showMyCalendar()">
+        <img ng-if="attendanceDetail.photoFileName" ng-src="{{attendanceDetail.image1}}"
+          onerror="this.src='./img/blankemp.jpg'" class="custAvatarImg">
+        <img ng-if="!attendanceDetail.photoFileName" ng-src="./img/Male.png" class="custAvatarImg">
+      </label>
+      <label class="col-sm-2 col-xs-2 col-form-label" ng-show="showEmployeeSearchPopupFeature=='true'"
+        onclick="angular.element(this).scope().showMyCalendarWithPopupFeature()">
+        <img ng-if="attendanceDetail.photoFileName" ng-src="{{attendanceDetail.image1}}"
+          onerror="this.src='./img/blankemp.jpg'" class="custAvatarImg">
+        <img ng-if="!attendanceDetail.photoFileName" ng-src="./img/Male.png" class="custAvatarImg">
+      </label>
+      <label class="col-sm-2 col-xs-2 col-form-label"
+        ng-show="showEmployeeSearchPopupFeature=='false' && showEmployeeDropDown=='false'">
+        <img ng-if="attendanceDetail.photoFileName" ng-src="{{attendanceDetail.image1}}"
+          onerror="this.src='./img/blankemp.jpg'" class="custAvatarImg">
+        <img ng-if="!attendanceDetail.photoFileName" ng-src="./img/Male.png" class="custAvatarImg">
+      </label>
+      <div class="col-sm-7 col-xs-7" style="padding: 6px;">
+        <h2 class="candHeader">{{attendanceDetail.name}}</h2>
+        <p style="padding: 0px;">{{attendanceDetail.designation | limitTo: 60}}</p>
+      </div>
+      <div class="col-sm-3 col-xs-3">
+        <a ng-if="hideCheckIn == '1' && IsClockInAccessible == 'true'" href="#/app/checkIn">
+          <img src="./img/clockin3.png" class="locationImg" />
+          <b style="color:darkgray" ;>Clock in/out </b>
+        </a>
+        <a ng-if="hideCheckIn == '0' && IsClockInAccessible == 'true'" href="#/app/checkIn">
+          <img src="./img/clockin2.png" class="locationImg" />
+          <b style="color:darkgray" ;>Clock in/out </b>
+        </a>
+      </div>
+    </div>
+
+    <!--//////// cust-avatar to here	-->
+    <div ng-click="listView()" ng-show="showEmployeeDropDown=='false' && showEmployeeSearchPopupFeature == 'false'">
+      <i style="font-size: 3em; position:absolute; z-index:5; right:3px;" ng-if="calenderHideandShow == false"
+        class="ion-ios-list-outline"></i>
+      <i style="font-size: 3em; position:absolute; z-index:5; right:3px;" ng-if="calenderHideandShow == true"
+        class="icon ion-grid"></i>
+    </div>
+
+    <!--reportee drop dwon -->
+    <div ng-show="showEmployeeDropDown=='true'" style="margin-top: 10px !important;">
+      <div ng-click="listView()">
+        <i ng-if="calenderHideandShow == false" class="ion-ios-list-outline selfServiceToggelIcon"></i>
+        <i ng-if="calenderHideandShow == true" class="icon ion-grid selfServiceToggelIcon"></i>
+      </div>
+
+      <div class="row" ng-show="showEmployeeDropDown=='true'" style="margin-top: 10px !important;">
+        <select id="reporteeList" class="form-control"
+          ng-options="emp.name + ' (' + emp.empCode +')'  for emp in empList" ng-model="selectedValues.selectedEmp"
+          ng-change="empChanged()">
+        </select>
+        <img class="col-45" src="{{selectedEmpPicSrc}}" style="width:60px;height:60px;margin-left:9px;margin-top:3px;"
+          onerror="this.src='./img/blankemp.jpg';" />
+      </div>
+      <div style="width:80%;margin-bottom: 6px;margin-bottom: 3px;">
+        <label class="item-input serchBoxCustomClass">
+          <i class="icon ion-funnel placeholder-icon" style="text-align:left;"></i>
+          <input id="searchEmpTxt" class="form-control" type="text" placeholder="Filter Employee List"
+            ng-model="searchEmp" ng-change="searchEmpChange()" />
+        </label>
+
+        <!--<input id="searchEmpTxtForChangeEvent" type="hidden" ng-model="someobj" value="nochange"  ng-change="searchEmpChange()"/> -->
+      </div>
+
+
+    </div>
+    <div class="row" style="width:80%;margin-bottom: 6px;margin-bottom: 3px;"
+      ng-show="showEmployeeSearchPopupFeature == 'true'">
+      <div ng-click="listView()">
+        <i ng-if="calenderHideandShow == false" class="ion-ios-list-outline selfServiceToggelIcon"
+          style="margin-top:20%"></i>
+        <i ng-if="calenderHideandShow == true" class="icon ion-grid selfServiceToggelIcon" style="margin-top:20%"></i>
+      </div>
+      <input type="text" ng-model="selectedValues.searchEmpTxt" name="search_emp" id="search_emp"
+        style="margin-top:8px;font-style: italic;" placeholder="Search employee to view his/her data" maxlength="100"
+        class=" form-control" onclick="this.focus();this.select()" />
+
+      <img id="popufeatureImag" class="col-45" src="{{selectedEmpPicSrc}}"
+        style="width:60px;height:60px;margin-left:9px;margin-top:3px; margin-right: -25%;"
+        onerror="this.src='./img/blankemp.jpg';" />
+      <input type="hidden" name="companyId" value="1" id="companyId" class="form-control" />
+      <input type="hidden" name="selectedEmpIdFromPopUp" value="" id="selectedEmpIdFromPopUp" class="form-control"
+        onchange="empChangedByPopUpSelection()" />
+      <input type="hidden" name="jwtt" value="1" id="jwtt" />
+
+    </div>
+    <!-- reportee drop down over -->
+
+
+    <div class="item gray_background" ng-hide="calenderHideandShow"
+      style="padding-bottom:0%; padding-top: 0%; margin-left: -3%;">
+      <div ng-if="!setPartialDirective">
+        <my-calendar display="dateValue" dateformat="'dd-MMM-yyyy'" get-colours="getLeaveColours"
+          set-fn="setDirectiveFn(theDirFn)"></my-calendar>
+      </div>
+    </div>
+    <div class="item" ng-show="calenderHideandShow" style="padding: 0px;background-color: whitesmoke">
+      <!-- <div ng-if="setPartialDirective">
+        <my-cal display="dateValue" dateformat="'dd-MMM-yyyy'" get-colours="getLeaveColours"
+          set-fn="setDirectiveFn(theDirFn)"></my-cal>
+      </div> -->
+
+      <div id="ss1" class="custom-card1" ng-repeat="listObj in listOfTitle">
+        <div class="item1" style="padding-top: 0px;padding-bottom: 0px;">
+          <div class="row">
+            <div>
+              <h3 style="font-size: 22px;color:black;">{{listObj.Date}}</h3>
+            </div>
+
+            <div class="col"
+              style="white-space: normal;padding-left: 5%;padding-top: 0px;word-wrap: break-word;border: none;">
+              <pre style="border: none;padding-top: 0px;word-break: break-word;font-size:1.0em;font-family: sans-serif;
+										color: maroon;">{{listObj.AttDesc}}</pre>
+              <br>
+              <div
+                style="white-space: normal;word-wrap: break-word;color:black;font-size:0.8em;font-family: sans-serif;border: none;margin-top:-7%;">
+                <!-- <pre style="border: none;font-family: sans-serif;">{{listObj.PunchTimings}}</pre> -->
+                <pre ng-if="listObj.PunchTimingsList[0]"
+                  style="border: none;font-family: sans-serif;">{{listObj.PunchTimingsList[0]}}</pre>
+                <div class="imgSection " ng-if="listObj.PunchTimingsList[1]">
+                  <pre id="punch1{{$index}}" ng-if="listObj.PunchTimingsList[1]"
+                    style="border: none;font-family: sans-serif;">{{listObj.PunchTimingsList[1]}}</pre>
+                  <img id="img1{{$index}}" onerror="this.onerror=null;this.style.display='none'"
+                    ng-src="{{listObj.PunchSelfieSrcList[1]}}" style="max-width: 50px;padding:0px;margin-top:-5%" />
+                </div>
+                <div class="imgSection " ng-if="listObj.PunchTimingsList[2]">
+                  <pre id="punch2{{$index}}" ng-if="listObj.PunchTimingsList[2]"
+                    style="border: none;font-family: sans-serif;">{{listObj.PunchTimingsList[2]}}</pre>
+                  <img id="img2{{$index}}" onerror="this.onerror=null;this.style.display='none'"
+                    ng-src="{{listObj.PunchSelfieSrcList[2]}}" style="max-width: 50px;padding:0px;margin-top:-5%" />
+                </div>
+                <div class="imgSection " ng-if="listObj.PunchTimingsList[3]">
+                  <pre id="punch3{{$index}}" ng-if="listObj.PunchTimingsList[3]"
+                    style="border: none;font-family: sans-serif;">{{listObj.PunchTimingsList[3]}}</pre>
+                  <img id="img3{{$index}}" onerror="this.onerror=null;this.style.display='none'"
+                    ng-src="{{listObj.PunchSelfieSrcList[3]}}" style="max-width: 50px;padding:0px;margin-top:-5%" />
+                </div>
+                <div class="imgSection" ng-if="listObj.PunchTimingsList[4]">
+                  <pre id="punch4{{$index}}" ng-if="listObj.PunchTimingsList[4]"
+                    style="border: none;font-family: sans-serif;">{{listObj.PunchTimingsList[4]}}</pre>
+                  <img id="img4{{$index}}" onerror="this.onerror=null;this.style.display='none'"
+                    ng-src="{{listObj.PunchSelfieSrcList[4]}}" style="max-width: 50px;padding:0px;margin-top:-5%" />
+                </div>
+                <div class="imgSection " ng-if="listObj.PunchTimingsList[5]">
+                  <pre id="punch5{{$index}}" ng-if="listObj.PunchTimingsList[5]"
+                    style="border: none;font-family: sans-serif;">{{listObj.PunchTimingsList[5]}}</pre>
+                  <img id="img5{{$index}}" onerror="this.onerror=null;this.style.display='none'"
+                    ng-src="{{listObj.PunchSelfieSrcList[5]}}" style="max-width: 50px;padding:0px;margin-top:-5%" />
+                </div>
+                <div class="imgSection " ng-if="listObj.PunchTimingsList[6]">
+                  <pre id="punch6{{$index}}" ng-if="listObj.PunchTimingsList[6]"
+                    style="border: none;font-family: sans-serif;">{{listObj.PunchTimingsList[6]}}</pre>
+                  <img id="img6{{$index}}" onerror="this.onerror=null;this.style.display='none'"
+                    ng-src="{{listObj.PunchSelfieSrcList[6]}}" style="max-width: 50px;padding:0px;margin-top:-5%" />
+                </div>
+                <div class="imgSection " ng-if="listObj.PunchTimingsList[7]">
+                  <pre id="punch7{{$index}}" ng-if="listObj.PunchTimingsList[7]"
+                    style="border: none;font-family: sans-serif;">{{listObj.PunchTimingsList[7]}}</pre>
+                  <img id="img7{{$index}}" onerror="this.onerror=null;this.style.display='none'"
+                    ng-src="{{listObj.PunchSelfieSrcList[7]}}" style="max-width: 50px;padding:0px;margin-top:-5%" />
+                </div>
+                <div class="imgSection " ng-if="listObj.PunchTimingsList[8]">
+                  <pre id="punch8{{$index}}" ng-if="listObj.PunchTimingsList[8]"
+                    style="border: none;font-family: sans-serif;">{{listObj.PunchTimingsList[8]}}</pre>
+                  <img id="img8{{$index}}" onerror="this.onerror=null;this.style.display='none'"
+                    ng-src="{{listObj.PunchSelfieSrcList[8]}}" style="max-width: 50px;padding:0px;margin-top:-5%" />
+                </div>
+                <div class="imgSection " ng-if="listObj.PunchTimingsList[9]">
+                  <pre id="punch9{{$index}}" ng-if="listObj.PunchTimingsList[9]"
+                    style="border: none;font-family: sans-serif;">{{listObj.PunchTimingsList[9]}}</pre>
+                  <img id="img9{{$index}}" onerror="this.onerror=null;this.style.display='none'"
+                    ng-src="{{listObj.PunchSelfieSrcList[9]}}" style="max-width: 50px;padding:0px;margin-top:-5%" />
+                </div>
+                <div class="imgSection " ng-if="listObj.PunchTimingsList[10]">
+                  <pre id="punch10{{$index}}" ng-if="listObj.PunchTimingsList[10]"
+                    style="border: none;font-family: sans-serif;">{{listObj.PunchTimingsList[10]}}</pre>
+                  <img id="img10{{$index}}" onerror="this.onerror=null;this.style.display='none'"
+                    ng-src="{{listObj.PunchSelfieSrcList[10]}}" style="max-width: 50px;padding:0px;margin-top:-5%" />
+                </div>
+                <div class="imgSection " ng-if="listObj.PunchTimingsList[11]">
+                  <pre id="punch11{{$index}}" ng-if="listObj.PunchTimingsList[11]"
+                    style="border: none;font-family: sans-serif;">{{listObj.PunchTimingsList[11]}}</pre>
+                  <img id="img11{{$index}}" onerror="this.onerror=null;this.style.display='none'"
+                    ng-src="{{listObj.PunchSelfieSrcList[11]}}" style="max-width: 50px;padding:0px;margin-top:-5%" />
+                </div>
+                <div class="imgSection " ng-if="listObj.PunchTimingsList[12]">
+                  <pre id="punch12{{$index}}" ng-if="listObj.PunchTimingsList[12]"
+                    style="border: none;font-family: sans-serif;">{{listObj.PunchTimingsList[12]}}</pre>
+                  <img id="img12{{$index}}" onerror="this.onerror=null;this.style.display='none'"
+                    ng-src="{{listObj.PunchSelfieSrcList[12]}}" style="max-width: 50px;padding:0px;margin-top:-5%" />
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <b>
+          <p style="color:#1533a1;white-space: normal;padding-left: 5%;word-wrap: break-word;">Legend
+          <p>
+        </b>
+        <p style="color:#1533a1;white-space: normal;padding-left: 5%;word-wrap: break-word;"> M: Mobile
+          &nbsp;&nbsp;&nbsp;D: Desktop&nbsp;&nbsp;&nbsp; B: Biometric</p>
+        <p style="color:#1533a1;white-space: normal;padding-left: 5%;word-wrap: break-word;"> OD: On
+          Duty&nbsp;&nbsp;&nbsp;AR: Attendance Regularisation;</p>
+        <p style="color:#1533a1;white-space: normal;padding-left: 5%;word-wrap: break-word;">I: In&nbsp;&nbsp;&nbsp; O:
+          Out&nbsp;&nbsp;&nbsp; T: Total</p>
+      </div>
+    </div>
+
+    <!--
+        <div   class="item" ng-show="calenderHideandShow" style="height:360px;overflow-x: hidden;overflow-y: auto;padding: 0px;background-color: whitesmoke">
+            <ion-scroll scrollY="true" style="display:inline; top:0; right:0; bottom:0; left:0; white-space: nowrap;">
+
+                <div  ng-if="setPartialDirective">
+                    <my-cal display="dateValue" dateformat="'dd-MMM-yyyy'" get-colours="getLeaveColours"  set-fn="setDirectiveFn(theDirFn)"></my-cal>
+                </div>
+
+                <div  class="custom-card1" ng-repeat="listObj in listOfTitle">
+                    <div  class="item1">
+                        <div class="row">
+                            <div>
+                                <h3 style="font-size: 22px;">{{listObj.Date}}</h3>
+                            </div>
+                            <div class="col" style="white-space: normal;padding-left: 5%;word-wrap: break-word;">
+                                <pre>{{listObj.AttDesc}}</pre>
+								<p style="color:blue;">{{listObj.PunchTimings}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ion-scroll>
+        </div>
+-->
+    <div class="list card modal-payslip">
+      <h5 style="padding: 4px 13px;margin-top:18px">Date&nbsp; {{userSelectedDate}}&nbsp : {{description.AttDesc}}</h5>
+    </div>
+    <div id="todaysClockInOutDataDiv" class="list  modal-payslip" ng-show="listOfClockInOutForTable.length > 0">
+      <b>
+        <p id="todayText" style="padding: 13px;margin-left:4%;">Punch Details for {{userSelectedDate}}</p>
+      </b>
+      <div class="list card modal-payslip customBorderRadius"
+        ng-repeat="clockPunch in listOfClockInOutForTable | orderBy:'inTimeMinStr' | orderBy:'inTimeHourStr'">
+        <!--<a style="margin-bottom: 10px;"  class="item custom-item custom-paddingBottom item-text-wrap"> -->
+        <div class="row">
+          <div class="col col-10">
+            <img ng-if="clockPunch.source=='WEB'" style="width:23px;height:23px;" src="./img/newicons/desktop.png" />
+            <img ng-if="clockPunch.source=='MOBILE'" style="width:23px;height:23px;" src="./img/newicons/mobile.png" />
+            <img ng-if="clockPunch.source=='Swipe Card'" style="width:23px;height:23px;"
+              src="./img/newicons/fingureprint.png" />
+
+          </div>
+          <div class="col col-20" style="width: 75px;">
+            <h2 style="font-size: 1em;width: 75px;">
+              <strong>{{clockPunch.inTimeHourStr}}:{{clockPunch.inTimeMinStr}}</strong></h2>
+          </div>
+          <div class="col col-20">
+            <!--<strong><i ng-if="clockPunch.punchType=='IN'" class="icon ion-log-in"></i></strong> -->
+            <img ng-if="$index % 2 == 0" src="./img/newicons/login.png" style="width:23px;height:23px;" />
+            <img ng-if="$index % 2 > 0" src="./img/newicons/logout.png" style="width:23px;height:23px;" />
+            <!--<strong><i ng-if="clockPunch.punchType=='OUT'" class="icon ion-log-out"></i></strong> -->
+          </div>
+          <div class="col col-55" style="word-wrap: break-word;">
+            <p ng-show="clockPunch.comments!=''"
+              style="font-size: 0.9em;text-align:left;white-space: pre-wrap !important;word-wrap: break-word;">
+              {{clockPunch.comments}}</p>
+            <p ng-show="clockPunch.comments==''"
+              style="font-size: 0.9em;text-align:center;white-space: pre-wrap !important;word-wrap: break-word;">-</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-9">
+            <p ng-if="clockPunch.geoLocationAddress"
+              style="margin-left:18px; word-break: break-word;text-overflow: inherit; white-space: normal;">
+              {{clockPunch.geoLocationAddress}} </p>
+          </div>
+          <div class="col col-3">
+            <img id="img{{$index}}" onerror="this.onerror=null;this.style.display='none'"
+              ng-src="{{clockPunch.selfieSrc}}" style="max-width: 65px;padding:0px;margin-top:-5%" />
+          </div>
+          <!-- </a> -->
+        </div>
+        <p ng-if="displayLegentPending=='true'">(P) Pending</p>
+
+      </div>
+    </div>
+
+    <div class="list card modal-payslip" ng-hide="calenderHideandShow">
+      <div class="white_background font_size">
+        <div class="row" style="border:0%; padding:0%;margin:0%; padding-left:5%">
+          <div class="col">
+            <i class="icon ion-record list_bullet_1" style="font-size:medium; vertical-align: middle"></i><span
+              class="list_element"
+              style="font-size:small; vertical-align: middle">&nbsp;{{attendenceManagement[0]}}</span>
+          </div>
+          <div class="col" style="font-size:small">
+            <i class="icon ion-record list_bullet_2" style="font-size:medium; vertical-align: middle"></i><span
+              class="list_element"
+              style="font-size:small; vertical-align: middle">&nbsp;{{attendenceManagement[1]}}</span>
+          </div>
+          <div class="col" style="font-size:small">
+            <i class="icon ion-record list_bullet_3" style="font-size:medium; vertical-align: middle"></i><span
+              class="list_element"
+              style="font-size:small; vertical-align: middle">&nbsp;{{attendenceManagement[2]}}</span>
+          </div>
+          <div class="col" style="font-size:small">
+            <i class="icon ion-record list_bullet_7" style="font-size:medium; vertical-align: middle"></i><span
+              class="list_element"
+              style="font-size:small; vertical-align: middle">&nbsp;{{attendenceManagement[6]}}</span>
+          </div>
+        </div>
+        <div class="row" style="border:0%; padding:0%;margin:0%; padding-left:5%">
+          <div class="col">
+            <i class="icon ion-record list_bullet_4" style="font-size:medium; vertical-align: middle"></i><span
+              class="list_element"
+              style="font-size:small; vertical-align: middle">&nbsp;{{attendenceManagement[3]}}</span>
+          </div>
+          <div class="col" style="font-size:small">
+            <i class="icon ion-record list_bullet_5" style="font-size:medium; vertical-align: middle"></i><span
+              class="list_element"
+              style="font-size:small; vertical-align: middle">&nbsp;{{attendenceManagement[4]}}</span>
+          </div>
+          <div class="col" style="font-size:small">
+            <i class="icon ion-record list_bullet_6" style="font-size:medium; vertical-align: middle"></i><span
+              class="list_element"
+              style="font-size:small; vertical-align: middle">&nbsp;{{attendenceManagement[5]}}</span>
+          </div>
+          <div class="col" style="font-size:small">
+            <i class="icon ion-record list_bullet_8" style="font-size:medium; vertical-align: middle"></i><span
+              class="list_element"
+              style="font-size:small; vertical-align: middle">&nbsp;{{attendenceManagement[7]}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row gray_background" style="margin:0%">
+      <div class="col">
+        <div class="card modal-payslip"
+          style="border-style: solid; border-width: thin; margin-top:auto;margin-right: auto;   margin-left: auto; margin-bottom:auto; border-radius: 10px">
+          <div class="card-block">
+            <h2 class="card-title "
+              style="text-align:center; padding-top:10%; margin-bottom:0%; font-size: x-large; font-weight:bold">
+              {{attendanceTypeCount["WorkingDay"]}}</h2>
+            <p class="card-text" style="text-align:center">{{timeFormat}}</p>
+            <h4 class="card-title" style="text-align:center; margin-bottom:5%">{{attendenceType[0]}}</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card modal-payslip"
+          style="border-style: solid; border-width: thin; margin-top:auto;margin-right: auto;   margin-left: auto; margin-bottom:auto; border-radius: 10px">
+          <div class="card-block">
+            <h2 class="card-title"
+              style="text-align:center; padding-top:10%; margin-bottom:0%; font-size: x-large; font-weight:bold">
+              {{attendanceTypeCount["PresentDay"]}}</h2>
+            <p class="card-text" style="text-align:center">{{timeFormat}}</p>
+            <h4 class="card-title" style="text-align:center; margin-bottom:5%">{{attendenceType[1]}}</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card modal-payslip"
+          style="border-style: solid; border-width: thin; margin-top:auto;margin-right: auto;   margin-left: auto; margin-bottom:auto; border-radius: 10px">
+          <div class="card-block">
+            <h2 class="card-title"
+              style="text-align:center; padding-top:10%; margin-bottom:0%; font-size: x-large; font-weight:bold">
+              {{attendanceTypeCount["HoliDay"]}}</h2>
+            <p class="card-text" style="text-align:center">{{timeFormat}}</p>
+            <h4 class="card-title" style="text-align:center; margin-bottom:5%">{{attendenceType[2]}}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row gray_background" style="margin:0%">
+      <div class="col col-12">
+        <div class="card modal-payslip"
+          style="border-style: solid; border-width: thin; margin-top:auto; margin-right: auto;   margin-left: auto; margin-bottom:auto; border-radius: 10px">
+          <div class="card-block">
+            <h2 class="card-title "
+              style="text-align:center; padding-top:10%; margin-bottom:0%; font-size: x-large; font-weight:bold">
+              {{attendanceTypeCount["WeeklyOff"]}}</h2>
+            <p class="card-text" style="text-align:center">{{timeFormat}}</p>
+            <h4 class="card-title" style="text-align:center; margin-bottom:5%">{{attendenceType[3]}}</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col col-12">
+        <div class="card modal-payslip"
+          style="border-style: solid; border-width: thin; margin-top:auto;margin-right: auto;   margin-left: auto; margin-bottom:auto; border-radius: 10px">
+          <div class="card-block">
+            <h2 class="card-title"
+              style="text-align:center; padding-top:10%; margin-bottom:0%; font-size: x-large; font-weight:bold">
+              {{attendanceTypeCount["Leave"]}}</h2>
+            <p class="card-text" style="text-align:center">{{timeFormat}}</p>
+            <h4 class="card-title" style="text-align:center; margin-bottom:5%">{{attendenceType[4]}}</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col col-12">
+        <div class="card modal-payslip"
+          style="border-style: solid; border-width: thin;  margin-right: auto;   margin-left: auto;margin-top:auto; margin-bottom:auto; border-radius: 10px">
+          <div class="card-block">
+            <h2 class="card-title"
+              style="text-align:center; padding-top:10%; margin-bottom:0%; font-size: x-large; font-weight:bold">
+              {{attendanceTypeCount["AbsentDay"]}}</h2>
+            <p class="card-text" style="text-align:center">{{timeFormat}}</p>
+            <h4 class="card-title" style="text-align:center; margin-bottom:5%">{{attendenceType[5]}}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+    </div>
+    <div class="item button-block">
+      <center>
+        <div class="button-bar">
+          <!--
+					<button ng-if="hideCheckIn == '0' && IsClockInAccessible == 'true'" class="button button-positive" ng-click="openCheckIn()" style="border-radius: 4px 4px 4px 4px !important;">Clock In</button>
+                    <button ng-if="hideCheckIn == '1' && IsClockInAccessible == 'true'" class="button button-positive" ng-click="openCheckIn()" style="border-radius: 4px 4px 4px 4px !important;">Clock Out</button>&emsp;
+					-->
+          <button class="button button-positive" ng-show="IsLeaveAccessible == 'true'" ng-click="openRequisitions()"
+            style="border-radius: 4px 4px 4px 4px !important;color: #fff;">Regularize</button>
+        </div>
+      </center>
+    </div>
+    <br>
+    <script id="homePopup.html" type="text/ng-template">
+            <ion-popover-view class="popover">
+            <div class="list" style="margin-bottom: 0px;">
+            <!--<a href="#/attendanceRegularisation" ng-show="showAttenRegular"  ng-click="openAttendanceRegularization('directivecall')"> -->
+            <a class="item" style="padding: 11px;" ng-show="showLeave" href="#/leaveApplication"  target="_blank">
+            <h4>Apply for Leave</h4>
+            </a>
+            <a class="item" style="padding: 11px;" ng-show="showOD" href="#/odApplication" target="_blank">
+            <h4>Apply for OD</h4>
+            </a>
+			<a class="item" style="padding: 11px;" ng-show="showAttenRegular" href="#/attendanceRegularisation">
+            <h4>Apply to Regularize</h4>
+            </a>
+			<a class="item" style="padding: 11px;" ng-show="showShift" href="#/shiftChange" target="_blank">
+            <h4>Apply for Shift Change</h4>
+            </a>
+            </div>
+            </ion-popover-view>
+        </script>
+    <script>
+      //url : baseURL + '/common/searchByNameAndCodeForEisCompany.spr',
+      $(document).ready(
+        function () {
+          $(function () {
+            $("#search_emp").autocomplete({
+              minLength: 3,
+              selectfirst: true,
+              minChars: 1,
+              matchSubset: 1,
+              matchContains: 1,
+              cacheLength: 10,
+              autoFill: false,
+              search: function (e, u) {
+                console.log("fetched project manager list")
+              },
+              source: function (request, response) {
+
+                $.ajax({
+                  url: baseURL + '/api/homeDashboard/getReporteeEmployeeDirectoryListWithSeperator.spr',
+                  type: "POST",
+                  data: {
+                    searchText: $('#search_emp').val(),
+                  },
+                  dataType: "json",
+                  headers: {
+                    'Authorization': 'Bearer ' + $('#jwtt').val()
+                  },
+                  success: function (
+                    data) {
+                    if (!data.length) {
+                      var result = [{
+                        label: "No matches found",
+                        value: ''
+                      }];
+                      response(result);
+                    } else {
+                      response(jQuery
+                        .map(data, function (item) {
+                          return {
+                            label: (item.name).split("@@")[1],
+                            value: (item.name).split("@@")[1],
+                            comId: (item.name).split("@@")[0],
+                          };
+
+                        }));
+                    }
+                  }
+                });
+              },
+              select: function (event, ui) {
+                var val = "";
+                var lable = "";
+                var comId = "";
+                var hCatId = "";
+                this.value = ui.item.label;
+                //alert(ui.item.comId + "   -   "+ ui.item.label)
+                document.getElementById('selectedEmpIdFromPopUp').value = ui.item.comId;
+                document.getElementById('searchEmpTxt').value = ui.item.comId;
+                angular.element(document.getElementById('selectedEmpIdFromPopUp')).scope().empChangedByPopUpSelection();
+                //document.getElementById('searchEmpTxt').value = ui.item.comId;
+
+                return true;
+              }
+            });
+          });
+        });
+
+      $(document).ready(function () {
+        //$("input[id='sarch_emp']").focus().select();
+      });
+    </script>
+
+  </ion-content>
+</ion-view>

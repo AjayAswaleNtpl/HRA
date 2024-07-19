@@ -1,0 +1,358 @@
+<style>
+    
+    .custom-item {
+        border: none;
+    }
+
+    .custom-row {
+        padding: 0px;
+    }
+
+    .cust-col-50 {
+        text-align: center;
+        color: black;
+    }
+
+    .cust-card {
+        padding: 50px 0px 0px 0px;
+    }
+    .has-header {
+        top: 0px;
+    }
+    .bar-subheader{
+        top: 0px;
+    }
+    .textareaBox{
+        margin-left: 2%;
+        width: 96%;
+        padding-bottom: 5%;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    .buttonCenter{
+        margin-left: 30%;
+        margin-right: 30%;
+        margin-top: 11%;
+    }
+    .custom-grayColor
+    {
+        color: #666;
+    }
+    .custom-p
+    {
+        color: #666;
+        font-size: 14px;
+    }
+    .custom_OD1
+    {
+        padding-top : 11px;
+        padding-bottom: 0px;
+        min-height: 60px;
+    }
+    .custom_OD
+    {
+        padding-top : 11px;
+        padding-bottom: 0px;
+
+    }
+    .custom-paddingBottom
+    {
+        padding: 10px;
+        padding-bottom: 0px;
+    }
+    .custom-padding{
+        padding: 10px;
+    }
+    .customBorderRadius
+    {
+        border-top-right-radius: 1em;
+        border-bottom-right-radius: 1em;
+        border-top-left-radius: 1em;
+        border-bottom-left-radius: 1em;
+    }
+    .has-footer {
+    bottom: 0px;
+}
+    .custom-requestApprove
+    {
+        font-size: 11px;
+        color: green;
+    }
+    .custom-requestRejcted
+    {
+        font-size: 11px;
+        color: red;
+    }
+    .custom-requestOther
+    {
+        font-size: 11px;
+        color: orange;
+    }
+
+
+    .modal-wrapper {
+        position: absolute;
+        top: 25%;
+        display: block;
+        width: 90%;
+        min-height: 45%;
+        padding:  5%;
+    }
+
+    .modal-backdrop-bg {
+        background-color: rgba(255,255,255,0.85);
+    }
+
+    .cust-modal-footer {
+        box-shadow: 0px 0px 0px;
+        border: 0px;
+        background-image: none;
+        height: auto;
+    }
+
+    .modal-ion-content {
+        padding: 15px; font-size: 0.85em;
+    }
+    .boxAlign{
+        text-align: left;
+        vertical-align: middle;
+        line-height: 50px;
+    }
+    .custom-header {
+    padding-bottom: 0px !important;
+    padding-top: 55px !important;
+}
+
+.modal-backdrop.in {
+    opacity: 0 !important;
+    z-index: -1;
+}
+.modal-header {
+    padding: 10px 10px 0px 10px;
+    border-bottom: 1px solid #e5e5e5;
+    color: #fff;
+}
+.modal-title {
+    display: inline-block;
+}
+.needHeader{
+    margin: 0px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.viewPaySlipBtn{
+    position: relative;
+    top: 10%;
+}
+</style>
+<ion-view>
+    <ion-content has-bouncing="false" style="overflow-y: auto;">
+<!--      
+			<div class="custom-header" style="margin-bottom: 40px;padding: 0px;padding-left: 15px;padding-top: 10px;margin-top:-8px;">
+				<h4 class="custom-header" style="margin-top: 8px;"><b>Payslip</b></h4> 
+			</div> -->
+    
+            <div class="custom-header">
+                <h4 class="subHeaderClass" style="margin: 0px;"> <b style="vertical-align: super;">My Remuneration</b></h4>
+               </div>
+        <!-- <center>
+		<div class="list card custom-card-payslip"   ng-click="openModal()" style="width: 64%; margin-right: 3%; border-radius: 9px; height: 60px">
+                <i class="icon ion-clipboard boxAlign cust-col-50" >&nbsp;Payslip</i>
+            </div></center> -->
+			<div class="form-group row" >
+			<label  class="col-sm-4 col-xs-4 col-form-label">Remuneration Type</label><span class="dividerClass">:</span>
+			<div class="col-sm-8 col-xs-8">
+			<select id="typeId" class="form-control"
+			onchange="angular.element(this).scope().hideDiv();"
+			style="background:white;margin-left:-3%;" 
+			ng-options="remu for remu in remunerationList"
+			ng-model="selectedValues.remuType">
+			<option value=""> Select</option>
+
+			</select> 
+			</div>
+			</div>
+		
+
+			
+		   <div class="form-group row" id="yearDiv">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Year</label><span class="dividerClass">:</span>
+                <div class="col-sm-8 col-xs-8">
+                    <select id="yearId" class = "form-control" 
+					ng-options="f_year for f_year in f_yearList" 
+                     ng-model = "paySlipObj.selYear" required >
+                        <option value=""> Select</option>
+                        </select>
+                </div>
+              </div>
+			
+		   <div class="form-group row" id="monthDiv">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Month</label><span class="dividerClass">:</span>
+                <div class="col-sm-8 col-xs-8">
+				<select id="monthId" class = "form-control">
+                    <option value="" selected="selected"> Select</option>
+                    <option value="01">January</option>
+                    <option value="02">February</option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                    <option value="07">July</option>
+                    <option value="08">August</option>
+                    <option value="09">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+                </div>
+              </div>		
+			
+<div class="text-center viewPaySlipBtn">
+	<div class="row">
+		<div class="col-50">
+        <button id="btnViewPayslip" class="btn btn-primary" ng-click="goPaySlip()">
+            <i class="fa fa-file-text mr-5" style="margin-right:10px;"></i>&nbsp;Download
+        </button>
+		</div>
+		<div class="col-50" id="mailNotSend">
+		<button id="btnViewPayslip" class="btn btn-primary" ng-click="sendPaySlipOnMail()" >
+            <i class="fa fa-file-text mr-5" style="margin-right:10px;"></i>&nbsp;Send On mail
+        </button>
+		</div>
+	</div>
+</div>
+
+        <!-- <script id="my-modal.html" type="text/ng-template">
+            <ion-modal-view class="modal-payslip">
+            <ion-content has-bouncing="false"  class="modal-ion-content" has-footer>
+			<div style="text-align:right;margin-right:8px;" >
+			<img id="imgcrossnoti" ng-src="./img/cross.png" src="./img/cross.png" ng-click="closeModal()">
+			</div>
+
+            <center style="font-size: 20px;">View Payslip</center>
+<br><br>
+            <div class="row">
+            <div class="col" >
+            <h4>Month:</h4>
+            </div>
+            <div class="col">
+            <select class = "form-control cust-col-50" ng-options="month.monthValue as month.monthName for month in monthList"  
+            ng-model = "paySlipObj.selMonth" required >
+            <option value=""> Select</option>
+            </select>
+            </div>                    
+            </div>
+            <div class="row">
+            <div class="col" >
+            <h4>Year:</h4>
+            </div>
+            <div class="col">
+            <select id="f_year" class = "form-control cust-col-50" name="LeaveType" ng-options="f_year for f_year in f_yearList"  ng-model = "paySlipObj.selYear" required style=" background:white;margin-top: 10px; margin-bottom: 10px; width:108%; height: 24px">
+            <option value=""> Select</option>
+            </select>
+            </div>                    
+            </div>
+    <br><br>
+            </ion-content>
+            <ion-footer-bar class="cust-modal-footer">
+            <div class="col"></div>
+            <button class="button button-block button-positive" ng-click="downloadPaySlip(1)" style="margin-top: 0%; margin-bottom: 2%;width: 50%;">
+             View
+            </button>
+            <div class="col"></div>
+            </ion-footer-bar> 
+            </ion-modal-view>
+        </script> -->
+
+        <!-- <script id="my-tax-modal.html" type="text/ng-template">
+            <ion-modal-view class="modal-payslip">
+            <ion-content has-bouncing="false"  class="modal-ion-content" has-footer>
+            <center style="font-size: 20px;">View Taxslip</center>
+<br><br>
+            <div class="row">
+            <div class="col">
+            <h4>Month:</h4>
+            </div>
+            <div class="col">
+            <select class = "form-control cust-col-50" ng-options="month.monthValue as month.monthName for month in monthList"  ng-model = "taxSlipObj.selMonth" required style=" background:white; margin-top: 10px; margin-bottom: 10px; width:108%; height: 24px">
+            <option value=""> Select</option>
+            </select>
+            </div>                    
+            </div>
+            <div class="row">
+            <div class="col" >
+            <h4>Year:</h4>
+            </div>
+            <div class="col">
+            <select id="f_year" class = "form-control cust-col-50" name="LeaveType" ng-options="f_year for f_year in f_yearList"  ng-model = "taxSlipObj.selYear" required style=" background:white; margin-top: 10px; margin-bottom: 10px; width:108%; height: 24px">
+            <option value=""> Select</option>
+            </select>
+            </div>                    
+            </div>
+    <br><br>
+            </ion-content>
+            <ion-footer-bar class="cust-modal-footer">
+            <div class="col"></div>
+            <button class="button button-block button-positive" ng-click="downloadTaxSlip(2)" style="margin-top: 0%; margin-bottom: 2%;width: 50%;">
+            View
+            </button>
+            <div class="col"></div>
+            </ion-footer-bar> 
+            </ion-modal-view>
+        </script> -->
+    </ion-content>
+</ion-view>
+<!-- Modal -->
+<div class="modal fade" id="payslipID" tabindex="-1" role="dialog" 
+aria-labelledby="exampleModalLabel" style="top:15%;margin-top:15%;"
+ aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">View Payslip</h5>
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button> -->
+          <i class="icon ion-close-circled close-modal"  style="float: right;font-size: 150%;" data-dismiss="modal" aria-label="Close"></i>
+        </div>
+        <div class="modal-body">
+        
+            <div class="form-group row" >
+                <label  class="col-sm-4 col-xs-4 col-form-label">Month</label><span class="dividerClass">:</span>
+                <div class="col-sm-8 col-xs-8">
+                    <select class = "form-control" ng-options="month.monthValue as month.monthName for month in monthList"  
+                    ng-model = "paySlipObj.selMonth" required >
+                    <option value=""> Select</option>
+                </select>
+                </div>
+              </div>
+
+              <div class="form-group row" >
+                <label  class="col-sm-4 col-xs-4 col-form-label">Year</label><span class="dividerClass">:</span>
+                <div class="col-sm-8 col-xs-8">
+                    <select id="f_year" class = "form-control" name="LeaveType" ng-options="f_year for f_year in f_yearList" 
+                     ng-model = "paySlipObj.selYear" required >
+                        <option value=""> Select</option>
+                        </select>
+                </div>
+              </div>
+           <br>
+              <div class="text-center">
+                <button class="btn btn-primary mr-10" ng-click="downloadPaySlip(1)">
+                <i class="fa fa-file-text mr-5" aria-hidden="true"></i>View</button>
+              </div>
+           
+           
+            </div>
+       </div>
+    </div>
+  </div>
+  <!------------------------   Hidden Fields------------------------>	
+		
+		
+		
+		<input type="hidden" name="reqtrack" id="reqtrack"
+			value="${TRACKERID}">
+		<input type="hidden" name="DateFormat" id="DateFormat"
+			value="${dateFormat}">
+	<!------------------------   Hidden Fields------------------------>

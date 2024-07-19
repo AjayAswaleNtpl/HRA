@@ -1,0 +1,551 @@
+<style>
+    .popover{
+        height: auto;
+        width: auto;
+    }
+    .popstyle {
+        border: 0px;
+        width: 10%;
+        height: 1.5em;
+    }
+    .custom-card1
+    {
+        border-top: 1px solid lightgrey;
+    }
+    .item1
+    {
+        border-color: grey;
+        color: #940909;
+        position: relative;
+        z-index: 2;
+        display: block;
+        padding: 16px;
+        border-style: solid;
+        font-size: 16px;
+    }
+
+.wrapper {
+    z-index : 10;
+    position : absolute;
+    top : 0;
+    left : 0;
+	width:100%;
+	height:160%;
+	background-color: rgba(0,0,0,0.72);
+}
+
+/* CSS talk bubble */
+.talk-bubble {
+	position:relative;
+	width: 200px;
+	height: auto;
+	font-size:0.9em;
+	background-color: rgba(0,0,0,0.6);
+}
+.border{
+  border: 8px solid #666;
+}
+.round{
+  border-radius: 30px;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+
+}
+
+/* Right triangle placed top left flush. */
+.tri-right.border.left-top:before {
+	content: ' ';
+	
+	width: 0;
+	height: 0;
+  left: -40px;
+	right: auto;
+  top: -8px;
+	bottom: auto;
+	border: 32px solid;
+	border-color: #666 transparent transparent transparent;
+}
+.tri-right.left-top:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: -20px;
+	right: auto;
+  top: 0px;
+	bottom: auto;
+	border: 22px solid;
+	border-color: rgba(0,0,0,0.6) transparent transparent transparent;
+}
+
+/* Right triangle, left side slightly down */
+.tri-right.border.left-in:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: -40px;
+	right: auto;
+  top: 30px;
+	bottom: auto;
+	border: 20px solid;
+	border-color: #666 #666 transparent transparent;
+}
+.tri-right.left-in:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: -20px;
+	right: auto;
+  top: 38px;
+	bottom: auto;
+	border: 12px solid;
+	border-color: rgba(0,0,0,0.6) rgba(0,0,0,0.6) transparent transparent;
+}
+
+/*Right triangle, placed bottom left side slightly in*/
+.tri-right.border.btm-left:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: -8px;
+  right: auto;
+  top: auto;
+	bottom: -40px;
+	border: 32px solid;
+	border-color: transparent transparent transparent #666;
+}
+.tri-right.btm-left:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: 0px;
+  right: auto;
+  top: auto;
+	bottom: -20px;
+	border: 22px solid;
+	border-color: transparent transparent transparent rgba(0,0,0,0.6);
+}
+
+/*Right triangle, placed bottom left side slightly in*/
+.tri-right.border.btm-left-in:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: 30px;
+  right: auto;
+  top: auto;
+	bottom: -40px;
+	border: 20px solid;
+	border-color: #666 transparent transparent #666;
+}
+.tri-right.btm-left-in:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: 38px;
+  right: auto;
+  top: auto;
+	bottom: -20px;
+	border: 12px solid;
+	border-color: rgba(0,0,0,0.6) transparent transparent rgba(0,0,0,0.6);
+}
+
+/*Right triangle, placed bottom right side slightly in*/
+.tri-right.border.btm-right-in:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: 30px;
+	bottom: -40px;
+	border: 20px solid;
+	border-color: #666 #666 transparent transparent;
+}
+.tri-right.btm-right-in:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: 38px;
+	bottom: -20px;
+	border: 12px solid;
+	border-color: rgba(0,0,0,0.6) rgba(0,0,0,0.6) transparent transparent;
+}
+/*
+	left: -8px;
+  right: auto;
+  top: auto;
+	bottom: -40px;
+	border: 32px solid;
+	border-color: transparent transparent transparent #666;
+	left: 0px;
+  right: auto;
+  top: auto;
+	bottom: -20px;
+	border: 22px solid;
+	border-color: transparent transparent transparent rgba(0,0,0,0.6);
+
+/*Right triangle, placed bottom right side slightly in*/
+.tri-right.border.btm-right:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: -8px;
+	bottom: -40px;
+	border: 20px solid;
+	border-color: #666 #666 transparent transparent;
+}
+.tri-right.btm-right:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: 0px;
+	bottom: -20px;
+	border: 12px solid;
+	border-color: rgba(0,0,0,0.6) rgba(0,0,0,0.6) transparent transparent;
+}
+
+/* Right triangle, right side slightly down*/
+.tri-right.border.right-in:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: -40px;
+  top: 30px;
+	bottom: auto;
+	border: 20px solid;
+	border-color: #666 transparent transparent #666;
+}
+.tri-right.right-in:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: -24px;
+  top: 30px;
+	bottom: auto;
+	border: 12px solid;
+	border-color: rgba(0,0,0,0.6) transparent transparent rgba(0,0,0,0.6);
+}
+
+/* Right triangle placed top right flush. */
+.tri-right.border.right-top:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: -40px;
+  top: -8px;
+	bottom: auto;
+	border: 32px solid;
+	border-color: #666 transparent transparent transparent;
+}
+.tri-right.right-top:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: -20px;
+  top: 0px;
+	bottom: auto;
+	border: 20px solid;
+	border-color: rgba(0,0,0,0.6) transparent transparent transparent;
+}
+
+/* talk bubble contents */
+.talktext{
+  padding: 0.7em;
+	text-align: left;
+  line-height: 1.5em;
+}
+.talktext p{
+  /* remove webkit p margins */
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+}	
+	
+</style>
+<ion-view id="top">
+    <ion-content style="top:10px;" has-bouncing="false">
+<!--////// overlay help from here	-->
+				<div class="wrapper" id="ol_help" ng-if="showOverlayHint=='true'  && loggedInNew == 'Y'">
+
+					<div class="talk-bubble tri-right right-in"  ng-if="IsClockInAccessible == 'true'"
+					style="    background-color: rgba(0,0,0,0.6);margin-top: 15%;margin-left: 29%;width: 52%;color: white;">
+					<div class="talktext">
+						<p>Tap on marker to go to 'Clock In/Out'</p>
+					  </div>
+					</div>
+
+			
+					<div class="talk-bubble tri-right btm-right-in" ng-if="IsClockInAccessible == 'true'"
+					style="width: 42%;    background-color: rgba(0,0,0,0.6);    margin-top: 16%;    margin-left: 4%;    color: white;">						  <div class="talktext">
+						<p>Long Press on the date to Regularize</p>
+					  </div>
+					</div>
+					
+					<div class="talk-bubble tri-right btm-right-in" ng-if="IsClockInAccessible == 'true'"
+					style="    background-color: rgba(0,0,0,0.6);    margin-top: -20%;    margin-left: 49%;    width: 49%;    color: white;">		
+					  <div class="talktext">
+						<p>Tap on the date to check your day status</p>
+					  </div>
+					</div>
+
+					
+					<div ng-if="IsClockInAccessible == 'true'">
+					
+					<label class="item item-checkbox" ng-click="toggleShowHint()" ng-checked="true" ng-modal="chkBoxValue" style="width: 53%;background-color: rgba(0,0,0,1);margin-top: 30%;margin-left: 5%;color: white;font-size: 12px;border: none;" checked="checked">
+					<div class="checkbox checkbox-input-hidden disable-pointer-events checkbox-square"><input type="checkbox" ng-checked="true" checked="checked" value="on"><i class="checkbox-icon"></i></div><div class="item-content disable-pointer-events" ><span> 
+					Show next time</span></div></label>
+					
+					<button text="Close" class="button button-block button-positive" ng-click="closeOverLay()" 
+					style=" margin-top: -16%;   width: 24%;    margin-left: 69%;">Close</button> 
+					
+					</div>
+
+
+
+					<div class="talk-bubble tri-right btm-right-in" ng-if="IsClockInAccessible == false"
+					style="width: 42%;    background-color: rgba(0,0,0,0.6);    margin-top: 50%;    margin-left: 4%;    color: white;">						  <div class="talktext">
+						<p>Long Press on the date to Regularize</p>
+					  </div>
+					</div>
+					
+					<div class="talk-bubble tri-right btm-right-in" ng-if="IsClockInAccessible == false"
+					style="    background-color: rgba(0,0,0,0.6);    margin-top: -8%;    margin-left: 49%;    width: 49%;    color: white;">		
+					  <div class="talktext">
+						<p>Tap on the date to check your day status</p>
+					  </div>
+					</div>
+
+					
+					<div ng-if="IsClockInAccessible == false">
+					
+					<label class="item item-checkbox" ng-click="toggleShowHint()" ng-checked="true" ng-modal="chkBoxValue" style="width: 53%;background-color: rgba(0,0,0,1);margin-top: 30%;margin-left: 5%;color: white;font-size: 12px;border: none;" checked="checked">
+					<div class="checkbox checkbox-input-hidden disable-pointer-events checkbox-square"><input type="checkbox" ng-checked="true" checked="checked" value="on"><i class="checkbox-icon"></i></div><div class="item-content disable-pointer-events" ><span> 
+					Show Hint always.</span></div></label>
+					
+					<button text="Close" class="button button-block button-positive" ng-click="closeOverLay()" 
+					style="    margin-top: -14%;   width: 24%;    margin-left: 69%;">Close</button> 
+					
+					</div>					
+				</div>
+<!--////// cust-avatar from here	-->
+       <div id="avtarCard" class="item item-avatar item-avatar-custom">
+
+            <img ng-if="attendanceDetail.photoFileName" ng-src="{{attendanceDetail.image1}}" style="top:20px;" class="cust-avatar">
+            <img ng-if="!attendanceDetail.photoFileName" ng-src="./img/Male.png" style="top:20px;" class="cust-avatar">
+
+            <h2 id="nameOfEmployee" style="margin-left: 17%; margin-top: 16px;white-space: pre-wrap !important;word-wrap: break-word;">{{attendanceDetail.name}}</h2>
+            <!--<p  style="margin-left: 17%;white-space: pre-wrap !important;word-wrap: break-word;">{{attendanceDetail.designation | limitTo: 60}} -->
+			<p  style="margin-left: 17%;">{{attendanceDetail.designation | limitTo: 60}}
+				<a ng-if="hideCheckIn == '1' && IsClockInAccessible == 'true'" href="#/app/checkIn" >
+					<img  src="./img/clockin3.png" align="right" style="width:35px;height:35px;margin-right:3px;"/> 	
+				</a>
+				<a ng-if="hideCheckIn == '0' && IsClockInAccessible == 'true'" href="#/app/checkIn" >
+					<img  src="./img/clockin2.png" align="right" style="width:35px;height:35px;margin-right:3px;"/> 	
+				</a>
+			</p>
+            <!--<p ng-if="attendanceDetail.department"  style="margin-left: 17%;white-space: pre-wrap !important;word-wrap: break-word;">{{ attendanceDetail.department | limitTo: 60 }}{{attendanceDetail.department.length > 60 ? '...' : ''}}</p>-->
+        </div>
+		
+<!--//////// cust-avatar to here	-->	
+        <div ng-click="listView()">
+            <i style="font-size: 3em; position:absolute; z-index:5; right:3px;" ng-if="calenderHideandShow == false" class="ion-ios-list-outline" ></i>
+            <i style="font-size: 3em; position:absolute; z-index:5; right:3px;" ng-if="calenderHideandShow == true" class="icon ion-grid"></i>
+        </div>
+
+        <div  class="item gray_background" ng-hide="calenderHideandShow" style="padding-bottom:0%; padding-top: 0%;">
+            <div ng-if="!setPartialDirective">
+                <my-calendar display="dateValue" dateformat="'dd-MMM-yyyy'" get-colours="getLeaveColours"  set-fn="setDirectiveFn(theDirFn)"></my-calendar>
+            </div>
+        </div>
+        <div   class="item" ng-show="calenderHideandShow" style="padding: 0px;background-color: whitesmoke">
+                <div  ng-if="setPartialDirective">
+                    <my-cal display="dateValue" dateformat="'dd-MMM-yyyy'" get-colours="getLeaveColours"  set-fn="setDirectiveFn(theDirFn)"></my-cal>
+                </div>
+
+                <div  class="custom-card1" ng-repeat="listObj in listOfTitle">
+                    <div  class="item1">
+                        <div class="row">
+                            <div>
+                                <h3 style="font-size: 22px;">{{listObj.Date}}</h3>
+                            </div>
+                            <div class="col" style="white-space: normal;padding-left: 5%;word-wrap: break-word;">
+								<pre>{{listObj.AttDesc}}</pre>
+								<!--<pre style="color:#1533a1;font-size:0.9em;" ng-if="$index==listOfTitle.length-1">{{listObj.AttDesc}}</pre>-->
+								<div style="white-space: normal;word-wrap: break-word;color:black;font-size:0.8em">
+									<pre>{{listObj.PunchTimings}}</pre>
+								</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				<div>
+				<b><p style="color:#1533a1;white-space: normal;padding-left: 5%;word-wrap: break-word;">Legend<p></b>
+				<p style="color:#1533a1;white-space: normal;padding-left: 5%;word-wrap: break-word;"> M: Mobile &nbsp;&nbsp;&nbsp;D: Desktop&nbsp;&nbsp;&nbsp;    SC: SwipeCard</p>
+				<p style="color:#1533a1;white-space: normal;padding-left: 5%;word-wrap: break-word;">I: In&nbsp;&nbsp;&nbsp;     O: Out&nbsp;&nbsp;&nbsp;     T: Total</p>
+				</div>
+        </div>
+		
+<!--
+        <div   class="item" ng-show="calenderHideandShow" style="height:360px;overflow-x: hidden;overflow-y: auto;padding: 0px;background-color: whitesmoke">
+            <ion-scroll scrollY="true" style="display:inline; top:0; right:0; bottom:0; left:0; white-space: nowrap;">
+
+                <div  ng-if="setPartialDirective">
+                    <my-cal display="dateValue" dateformat="'dd-MMM-yyyy'" get-colours="getLeaveColours"  set-fn="setDirectiveFn(theDirFn)"></my-cal>
+                </div>
+
+                <div  class="custom-card1" ng-repeat="listObj in listOfTitle">
+                    <div  class="item1">
+                        <div class="row">
+                            <div>
+                                <h3 style="font-size: 22px;">{{listObj.Date}}</h3>
+                            </div>
+                            <div class="col" style="white-space: normal;padding-left: 5%;word-wrap: break-word;">
+                                <pre>{{listObj.AttDesc}}</pre>
+								<p style="color:blue;">{{listObj.PunchTimings}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ion-scroll>
+        </div>
+-->		
+        <div class="list card modal-payslip" ng-if="!calenderHideandShow && showWhenDateView">
+            <h5>&nbsp;Day {{day}}: {{description.AttDesc}}</h5>
+        </div>
+        <div  class="list card modal-payslip" ng-hide="calenderHideandShow">
+            <div class="white_background font_size">
+                <div class="row" style="border:0%; padding:0%;margin:0%; padding-left:5%">
+                    <div class="col">
+                        <i class="icon ion-record list_bullet_1" style="font-size:medium; vertical-align: middle"></i><span class="list_element" style="font-size:small; vertical-align: middle">&nbsp;{{attendenceManagement[0]}}</span>
+                    </div>
+                    <div class="col" style="font-size:small">
+                        <i class="icon ion-record list_bullet_2" style="font-size:medium; vertical-align: middle"></i><span class="list_element" style="font-size:small; vertical-align: middle">&nbsp;{{attendenceManagement[1]}}</span>
+                    </div>
+                    <div class="col" style="font-size:small">
+                        <i class="icon ion-record list_bullet_3" style="font-size:medium; vertical-align: middle"></i><span class="list_element" style="font-size:small; vertical-align: middle">&nbsp;{{attendenceManagement[2]}}</span>
+                    </div>
+                </div>
+                <div class="row" style="border:0%; padding:0%;margin:0%; padding-left:5%">
+                    <div class="col">
+                        <i class="icon ion-record list_bullet_4" style="font-size:medium; vertical-align: middle"></i><span class="list_element" style="font-size:small; vertical-align: middle">&nbsp;{{attendenceManagement[3]}}</span>
+                    </div>
+                    <div class="col" style="font-size:small">
+                        <i class="icon ion-record list_bullet_5" style="font-size:medium; vertical-align: middle"></i><span class="list_element" style="font-size:small; vertical-align: middle">&nbsp;{{attendenceManagement[4]}}</span>
+                    </div>
+                    <div class="col" style="font-size:small">
+                        <i class="icon ion-record list_bullet_6" style="font-size:medium; vertical-align: middle"></i><span class="list_element" style="font-size:small; vertical-align: middle">&nbsp;{{attendenceManagement[5]}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row gray_background" style="margin:0%">
+            <div class="col">
+                <div class="card modal-payslip" style="border-style: solid; border-width: thin; margin-top:auto;margin-right: auto;   margin-left: auto; margin-bottom:auto; border-radius: 10px">
+                    <div class="card-block">
+                        <h2 class="card-title " style="text-align:center; padding-top:10%; margin-bottom:0%; font-size: x-large; font-weight:bold">{{attendanceTypeCount["WorkingDay"]}}</h2>
+                        <p class="card-text" style="text-align:center">{{timeFormat}}</p>
+                        <h4 class="card-title" style="text-align:center; margin-bottom:5%">{{attendenceType[0]}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card modal-payslip" style="border-style: solid; border-width: thin; margin-top:auto;margin-right: auto;   margin-left: auto; margin-bottom:auto; border-radius: 10px">
+                    <div class="card-block">
+                        <h2 class="card-title" style="text-align:center; padding-top:10%; margin-bottom:0%; font-size: x-large; font-weight:bold">{{attendanceTypeCount["PresentDay"]}}</h2>
+                        <p class="card-text" style="text-align:center">{{timeFormat}}</p>
+                        <h4 class="card-title" style="text-align:center; margin-bottom:5%">{{attendenceType[1]}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card modal-payslip" style="border-style: solid; border-width: thin; margin-top:auto;margin-right: auto;   margin-left: auto; margin-bottom:auto; border-radius: 10px">
+                    <div class="card-block">
+                        <h2 class="card-title" style="text-align:center; padding-top:10%; margin-bottom:0%; font-size: x-large; font-weight:bold">{{attendanceTypeCount["HoliDay"]}}</h2>
+                        <p class="card-text" style="text-align:center">{{timeFormat}}</p>
+                        <h4 class="card-title" style="text-align:center; margin-bottom:5%">{{attendenceType[2]}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row gray_background" style="margin:0%">
+            <div class="col col-12">
+                <div class="card modal-payslip" style="border-style: solid; border-width: thin; margin-top:auto; margin-right: auto;   margin-left: auto; margin-bottom:auto; border-radius: 10px">
+                    <div class="card-block">
+                        <h2 class="card-title " style="text-align:center; padding-top:10%; margin-bottom:0%; font-size: x-large; font-weight:bold">{{attendanceTypeCount["WeeklyOff"]}}</h2>
+                        <p class="card-text" style="text-align:center">{{timeFormat}}</p>
+                        <h4 class="card-title" style="text-align:center; margin-bottom:5%">{{attendenceType[3]}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-12">
+                <div class="card modal-payslip" style="border-style: solid; border-width: thin; margin-top:auto;margin-right: auto;   margin-left: auto; margin-bottom:auto; border-radius: 10px">
+                    <div class="card-block">
+                        <h2 class="card-title" style="text-align:center; padding-top:10%; margin-bottom:0%; font-size: x-large; font-weight:bold">{{attendanceTypeCount["Leave"]}}</h2>
+                        <p class="card-text" style="text-align:center">{{timeFormat}}</p>
+                        <h4 class="card-title" style="text-align:center; margin-bottom:5%">{{attendenceType[4]}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-12">
+                <div class="card modal-payslip" style="border-style: solid; border-width: thin;  margin-right: auto;   margin-left: auto;margin-top:auto; margin-bottom:auto; border-radius: 10px">
+                    <div class="card-block">
+                        <h2 class="card-title" style="text-align:center; padding-top:10%; margin-bottom:0%; font-size: x-large; font-weight:bold">{{attendanceTypeCount["AbsentDay"]}}</h2>
+                        <p class="card-text" style="text-align:center">{{timeFormat}}</p>
+                        <h4 class="card-title" style="text-align:center; margin-bottom:5%">{{attendenceType[5]}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+        </div>
+        <div class="item button-block">
+            <center>
+                <div class="button-bar">
+					<!--
+					<button ng-if="hideCheckIn == '0' && IsClockInAccessible == 'true'" class="button button-positive" ng-click="openCheckIn()" style="border-radius: 4px 4px 4px 4px !important;">Clock In</button>
+                    <button ng-if="hideCheckIn == '1' && IsClockInAccessible == 'true'" class="button button-positive" ng-click="openCheckIn()" style="border-radius: 4px 4px 4px 4px !important;">Clock Out</button>&emsp;
+					-->
+                    <button class="button button-positive" ng-show="IsLeaveAccessible == 'true'" ng-click="openRequisitions()" style="border-radius: 4px 4px 4px 4px !important;">Regularize</button>
+                </div>
+            </center>
+        </div>
+        <br>
+        <script id="homePopup.html"  type="text/ng-template">
+            <ion-popover-view class="popover">
+            <div class="list" style="margin-bottom: 0px;">
+            <!--<a href="#/attendanceRegularisation" ng-show="showAttenRegular"  ng-click="openAttendanceRegularization('directivecall')">-->
+            <a class="item" style="padding: 11px;" ng-show="showAttenRegular" href="#/attendanceRegularisation">
+            <h4>Regularize Attendance</h4>
+            </a>
+            <a class="item" style="padding: 11px;" ng-show="showLeave" href="#/leaveApplication"  target="_blank">
+            <h4>Apply For Leave</h4>
+            </a>
+            <a class="item" style="padding: 11px;" ng-show="showOD" href="#/odApplication" target="_blank">
+            <h4>Apply For OD</h4>
+            </a>
+            </div>
+            </ion-popover-view>
+        </script>
+    </ion-content>
+</ion-view>

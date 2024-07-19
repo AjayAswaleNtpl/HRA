@@ -1,0 +1,384 @@
+<style>
+    .customRadio {
+        display: none;
+    }
+    .item1{
+      border-color: #ddd;
+      border-bottom: white;
+      background-color: #fff;
+      color: #444;
+      position: relative;
+      z-index: 2;
+      display: block;
+      margin: -1px;
+      padding: 8px 1px 0px 4px;
+      border-width: 1px;
+      border-style: solid;
+      font-size: 16px;
+      margin-top:10px;
+   }
+  
+    .customRadio+label {
+        display: inline-block;
+        margin: -2px;
+        padding: 4px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        line-height: 20px;
+        color: #333;
+        text-align: center;
+        text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+        vertical-align: middle;
+        cursor: pointer;
+        background-color: #f5f5f5;
+        background-color: #f5f5f5;
+        background-image: -moz-linear-gradient(top, #fff, #e6e6e6);
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#e6e6e6));
+        background-image: -webkit-linear-gradient(top, #fff, #e6e6e6);
+        background-image: -o-linear-gradient(top, #fff, #e6e6e6);
+        background-image: linear-gradient(to bottom, #fff, #e6e6e6);
+        background-repeat: repeat-x;
+        border: 1px solid #ccc;
+        border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+        border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+        border-bottom-color: #b3b3b3;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+        filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+        -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+        -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+  
+    .customRadio:checked+label {
+        background-image: none;
+        outline: 0;
+        -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+        -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+        /*        background-color:#0066ff;
+                color: white;*/
+    }
+  
+    input[type="radio"] {
+        margin-top: -1px;
+        vertical-align: middle;
+    }
+  
+    #check,
+    #check1 {
+        cursor: pointer;
+        -webkit-appearance: none;
+        appearance: none;
+        background: white;
+        border-radius: 1px;
+        box-sizing: border-box;
+        position: relative;
+        box-sizing: content-box;
+        width: 20px;
+        height: 20px;
+        border-width: 0;
+        transition: all .3s linear;
+        border: 2px solid
+    }
+  
+    #check:checked,
+    #check1:checked {
+        background: url("img/tick.jpg");
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+  
+    #check:focus,
+    #check1:focus {
+        outline: 0 none;
+        box-shadow: none;
+    }
+  
+    .textareaBox {
+        margin-left: 2%;
+        width: 96%;
+        padding-bottom: 5%;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+  
+    .custom-card {
+        margin-top: 0px;
+        margin-bottom: 20px;
+        border-radius: 9px;
+        border: 1px solid #007ec1;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+  
+    .item-select select {
+        max-width: 68%;
+    }
+    .col-xs-2,
+    .col-xs-4  {
+      padding: 0 !important;
+  }
+  .row {
+      margin: 0px 0 5px 0 !important;
+  }
+  .backIcon{
+    font-size: 34px;
+      margin-right: 10px;
+  }
+  #payHeadDtls{
+    border: 1px solid #c9c9c9;
+      border-radius: 6px;
+      padding: 8px;
+  }
+  .takeImgSection img{
+    width: 80px;
+      height: 80px;
+      display: none;
+      margin-left: 2px;
+  }
+  </style>
+  
+  <ion-view>
+    <!-- <ion-nav-bar class="bar-stable" style="background-color: white">
+        <ion-nav-buttons side="left">
+            <button class="button button-clear" ng-click="redirectOnCtcClaimR()">
+                <i class="icon ion-ios-arrow-back"></i>
+                Back</button>
+        </ion-nav-buttons>
+    </ion-nav-bar> -->
+    <div class="bar bar-footer hide-on-keyboard-open" style="background-color:#000; background-size: 100% 0px;">
+      <div class="title" style="height: 20px;">
+        <h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px; margin-bottom: 5px;">Powered by HR Align</h6>
+      </div>
+    </div>
+    <ion-content has-bouncing="false" class="grayBackColor" style="overflow-y: auto;">
+      <div class="custom-header" style="padding-top: 0px;">
+       <h4 class="subHeaderClass" style="margin: 0px;"> <span ng-click="redirectOnBack()" class="backIcon">
+         <i class="icon ion-ios-arrow-back"></i></span> <b style="vertical-align: super;">CTC Claim Approval</b></h4>
+    
+      </div>
+      <div class="card" style="margin: 0px; padding: 10px 5px;">
+        <form name="newCTCForm">
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Employee Name </label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{claimForm_Form.empName}}
+           </div >       
+          </div>
+  
+           <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Financial Year </label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{periodfromDt}} - {{periodtoDt}} 
+           </div >       
+          </div>
+       
+          <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Pay Head </label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              {{ctcclaimApplForApprove.ctcPayHeadName}} 
+           </div >       
+          </div>
+  
+  
+               <div class="form-group row" id="payHeadDtls">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Pay Head Details</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  <ul class="ctcClaimList">
+                    <li> <b>Eligibility(YTD)(A):</b>{{claimForm_Form.yearlyClaim}}</li>
+                    <li> <b>In-Process(B):</b>{{claimForm_Form.inprocessClaim}}</li>
+                    <li> <b>Approved Amount(C):</b>{{claimForm_Form.approvedClaim}}</li>
+                    <li> <b>Reimbursed Amount(D):</b>{{claimForm_Form.reimbursment}}</li>
+                    <li> <b>Balance Payment to be Received(E=C-D):</b>{{claimForm_Form.accumulatedAmount}}</li>
+                    <li> <b>Balance yet to claim(F=A-[B+C]):</b>{{claimForm_Form.balanceAmount}}</li>
+                  </ul>
+               </div ></div>
+               <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Claim Date </label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">{{ctcclaimApplForApprove.attDate}}
+               </div >       
+              </div>
+              <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Applicant Remarks</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">{{ctcclaimApplForApprove.remarks}}
+               </div >       
+              </div>
+                
+  
+                <div class="form-group row" >
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Claim For Month </label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    <select id="month" class="form-control item-select select">
+                      <option value="" selected="selected">Please Select</option>
+                      <option value="01">January</option>
+                      <option value="02">February</option>
+                      <option value="03">March</option>
+                      <option value="04">April</option>
+                      <option value="05">May</option>
+                      <option value="06">June</option>
+                      <option value="07">July</option>
+                      <option value="08">August</option>
+                      <option value="09">September</option>
+                      <option value="10">October</option>
+                      <option value="11">November</option>
+                      <option value="12">December</option>
+                    </select>
+                  </div>           
+                </div>
+  
+  
+  
+                <div class="form-group row" >
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Year </label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    <select id="yearId" class="form-control item-select select"
+                    ng-options="year as year for year in claimForm_Form.yearList"
+                                      ng-model="selectedValues.yearName">
+                      <option value="">Please Select</option>
+                  
+                    </select>
+                  </div>           
+                </div>
+  
+                <div class="form-group row">
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Claim Amount </label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">{{claimForm_Form.claimFormVOList[0].claimAmount}}
+                 </div >       
+                </div>
+                <div class="form-group row" >
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Approved Amount</label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                      <input id="revisedClaimAmount"
+                      type="text" maxlength = "7" class="form-control" />
+                  </div>
+                </div>
+                
+                <div class="form-group row" >
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Payment Month </label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    <select id="paymentMonth" class="form-control item-select select">
+                      <option value="" selected="selected">Please Select</option>
+                      <option value="01">January</option>
+                      <option value="02">February</option>
+                      <option value="03">March</option>
+                      <option value="04">April</option>
+                      <option value="05">May</option>
+                      <option value="06">June</option>
+                      <option value="07">July</option>
+                      <option value="08">August</option>
+                      <option value="09">September</option>
+                      <option value="10">October</option>
+                      <option value="11">November</option>
+                      <option value="12">December</option>
+                    </select>
+                  </div>           
+                </div>
+
+              <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Bill Amount </label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">{{claimForm_Form.claimFormVOList[0].billAmount}}
+               </div >       
+              </div>
+  
+               <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Remarks </label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                <textarea class="form-control" name="remarks" rows="3"  id="remarks"
+                         ng-maxlength="500"></textarea>
+               </div >       
+              </div> 
+
+
+              <div ng-if="claimForm_Form.lastLevel =='last' ">
+                <div class="form-group row" >
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Payment Mode </label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    <select id="paymentMode" class="form-control item-select select"
+                    ng-change="onChangePayMode(this)"
+                    ng-options="pmode as pmode for pmode in claimForm_Form.paymentModeList"
+                                      ng-model="selectedValues.paymode">
+                      <option value="">Please Select</option>
+                    </select>
+                  </div>           
+                </div>
+              </div>
+
+
+              <div ng-show="paymode=='cash'">
+                <div class="form-group row" >
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Year </label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    <select id="disburseYear" class="form-control item-select select"
+                    ng-options="year as year for year in claimForm_Form.yearList"
+                                      ng-model="selectedValues.disbYear">
+                      <option value="">Please Select</option>
+                  
+                    </select>
+                  </div>           
+                </div>
+  
+                <div class="form-group row" >
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Disburse Month </label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                    <select id="disburseMonth" class="form-control item-select select">
+                      <option value="" selected="selected">Please Select</option>
+                      <option value="01">January</option>
+                      <option value="02">February</option>
+                      <option value="03">March</option>
+                      <option value="04">April</option>
+                      <option value="05">May</option>
+                      <option value="06">June</option>
+                      <option value="07">July</option>
+                      <option value="08">August</option>
+                      <option value="09">September</option>
+                      <option value="10">October</option>
+                      <option value="11">November</option>
+                      <option value="12">December</option>
+                    </select>
+                  </div>           
+                </div>
+              </div>  <!-- paymentMode cash over -->
+              <div ng-show="paymode=='payroll' ">
+                
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Disb. Date </label><span class="dividerClass">:</span>
+                  <div  class="col-sm-6 col-xs-6">
+                 <input  class="form-control" id="disburseDate" 
+                     ng-click="setDate()" type="text" ng-readonly="true" required/>
+                  </div >
+                 <div class="col-sm-2 col-xs-2">
+                  <i style="padding-left: 3%; font-size: 193%;margin-top: -10px;"  ng-click="setDate()" class="ion-calendar">&emsp;</i>
+                 </div>
+                
+                 <div class="form-group row">
+                  <label  class="col-sm-4 col-xs-4 col-form-label">Remarks </label><span class="dividerClass">:</span>
+                  <div  class="col-sm-8 col-xs-8">
+                  <textarea class="form-control" id="disburseRemark" name="disburseRemark" rows="3"  
+                           ng-maxlength="500"></textarea>
+                 </div >       
+                </div>
+              </div>
+              <div class="form-group row" >
+                <label  class="col-sm-4 col-xs-4 col-form-label">Disbursed Amount</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                    <input id="disburseAmount"
+                    type="text" maxlength = "7" class="form-control" />
+                </div>
+              </div>
+              <div><b>{{claimForm_Form.status }}</b></div>
+
+          <center>
+          <div class="form-group row">
+            <div class="text-center" style="margin: 0 auto;">
+              <button id="btnAppr" class="button button-block button-positive" style="width: 100%;"  ng-click="approveOrRejectPendingCClaim('APPROVE')">Approve</button>
+          </div>  
+          <div class="text-center" style="margin: 0 auto;">
+            <button id="btnRej" class="button button-block button-positive" style="width: 100%;" ng-click="approveOrRejectPendingCClaim('REJECT')">Reject</button>
+        </div>  
+        </div>
+      </center>      
+        
+      </div>
+      </form>
+    </ion-content>
+  </ion-view>
+  

@@ -1,0 +1,808 @@
+<style>
+    .custom-item {
+      border: none;
+    }
+    .anchorRRedirect {
+      position: absolute;
+      top: 212px;
+      right: 14px;
+      font-size: 15px;
+      color: #3b5998;
+    }
+    .listTopMargin {
+      margin-top: 10px;
+    }
+    .travelListTopMargin {
+      margin-top: -40px;
+    }
+    #outer {
+      width: 100%;
+      text-align: center;
+    }
+    .inner {
+      display: inline-block;
+    }
+    ul.ctcClaimList {
+      margin-top: 20px;
+    }
+    ul.ctcClaimList li {
+      font-size: 0.8em;
+      padding: 5px 0px 0px 0px;
+      min-width: 435px;
+    }
+    .ctcClaimList b {
+      display: inline-block;
+      width: 40%;
+      position: relative;
+      padding-right: 10px;
+    }
+    .ctcClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ul.travelClaimList {
+      width: 125%;
+    }
+    ul.travelClaimList li {
+      font-size: 0.8em;
+      padding: 5px 0px 0px 0px;
+      min-width: 435px;
+    }
+    .travelClaimList b {
+      display: inline-block;
+      width: 32%;
+      position: relative;
+      padding-right: 10px;
+    }
+    .travelClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ul.odClaimList {
+      margin-top: 20px;
+    }
+    ul.odClaimList li {
+      font-size: 0.8em;
+      padding: 5px 0px 0px 0px;
+      min-width: 435px;
+    }
+    .odClaimList b {
+      display: inline-block;
+      width: 35%;
+      position: relative;
+      padding-right: 10px;
+    }
+    .odClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ul.attClaimList {
+      width: 125%;
+    }
+    ul.attClaimList li {
+      font-size: 0.8em;
+      padding: 5px 0px 0px 0px;
+      min-width: 435px;
+    }
+    .attClaimList b {
+      display: inline-block;
+      width: 38%;
+      position: relative;
+      padding-right: 10px;
+    }
+    .attClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ol,
+    ul {
+      margin-bottom: 0px !important;
+    }
+    a:focus,
+    a:hover {
+      text-decoration: none;
+    }
+    .tab-item.tab-item-active,
+    .tab-item.active,
+    .tab-item.activated {
+      opacity: 1;
+    }
+    .tab-item {
+      opacity: 0.7;
+    }
+    .custom-row {
+      padding: 0px;
+    }
+    .custom-padding {
+      padding: 5px 10px;
+    }
+    .custom-top {
+      top: 10px;
+      left: 13px;
+    }
+    .custom-paddingTop {
+      padding-top: 11px;
+    }
+    .custom_OD {
+      padding-top: 11px;
+      padding-bottom: 0px;
+    }
+    .custom-paddingBottom {
+      padding-bottom: 0px;
+    }
+    .cust-card {
+      padding: 50px 0px 0px 0px;
+    }
+    .custom-requestApprove {
+      font-size: 11px;
+      color: green;
+    }
+    .custom-requestRejcted {
+      font-size: 11px;
+      color: red;
+    }
+    .custom-requestOther {
+      font-size: 11px;
+      color: orange;
+    }
+    
+    .custom-fontSize {
+      font-size: 12px;
+    }
+    .modal-wrapper {
+      position: absolute;
+      top: 25%;
+      display: block;
+      width: 90%;
+      min-height: 45%;
+      padding: 5%;
+    }
+  
+    .modal-backdrop-bg {
+      background-color: rgba(255, 255, 255, 0.85);
+    }
+  
+    .modal {
+      border-top-right-radius: 1em;
+      border-bottom-right-radius: 1em;
+      border-top-left-radius: 1em;
+      border-bottom-left-radius: 1em;
+    }
+  
+    .modal-ion-content {
+      padding: 15px;
+      font-size: 0.85em;
+    }
+  
+  
+    .badge.badgeCustom {
+      width: 22px;
+      height: 22px;
+      text-align: center;
+      line-height: 18px;
+      display: block;
+      position: absolute;
+      top: 0;
+      color: #fff !important;
+      font-size: 10px !important;
+      padding: 0;
+    }
+    a:focus,
+    a:hover {
+      text-decoration: none;
+    }
+    .tab-item.tab-item-active,
+    .tab-item.active,
+    .tab-item.activated {
+      opacity: 1;
+    }
+    .tab-item {
+      opacity: 0.7;
+    }
+    /* .slick-slide .slide-content {
+    margin: 0 3%;
+    padding: 10px 5px;
+  
+  } */
+  
+    .slick-prev,
+    .slick-next {
+      position: absolute;
+      right: 10%;
+      background: #777;
+      border: none;
+      color: transparent;
+      width: 30px;
+      height: 30px;
+    }
+  
+    .slick-prev:before,
+    .slick-next:before {
+      content: ">";
+      color: #fff;
+      font-size: 25px;
+    }
+  
+    .slick-prev {
+      left: 10%;
+    }
+  
+    .slick-prev:before {
+      content: "<";
+    }
+  
+    .slick-dots {
+      list-style: none;
+      margin: 0 auto;
+      text-align: center;
+      margin-top: 10px;
+    }
+  
+    .slick-dots li {
+      display: inline-block;
+    }
+  
+    .slick-dots li button {
+      transition: 0.2s background-color ease-in-out 0s;
+      border: none;
+      padding: 0;
+      color: transparent;
+      width: 10px;
+      height: 10px;
+      background-color: #777;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+  
+    .slick-dots li.slick-active button {
+      background-color: #0a9dc7;
+    }
+    /* .slick-slider {
+      width: 100%;
+      position: relative;
+      transform: translate(-50%, -50%);
+      top: 0%;
+      left: 50%;
+  } */
+    .slick-slider {
+      width: 100%;
+      position: relative;
+      top: 0%;
+    }
+    /* ===form List=== */
+    /* .customBorderRadius .dividerClass {
+      line-height: 1.5 !important;
+  }
+  .customBorderRadius label {
+      font-size: 13px !important;
+      line-height: 1.5 !important;
+  }
+  .customBorderRadius .row {
+      margin: 0 5px !important;
+      padding: 0 5px !important;
+  }
+  .customBorderRadius.col-xs-8 {
+      font-size: 13px !important;
+  }
+  .customBorderRadius .item-note {
+      padding: 10px 10px 0 0 !important;
+      margin-bottom: 2px !important;
+  } */
+  .inner .btn-pad.claimClass{
+    margin: 14px 4px 5px 10px;
+      padding: 0 8px;
+  }
+  .inner .badge{
+    position: relative;
+    margin: 0 -8px;
+    float: right;
+  }
+  .slick-carousel .fa{
+    font-size: 40px;
+    color: #777676;
+  }
+  .slick-carousel p {
+      color: #212121;
+      margin: 0 0 10px;
+      font-size: 0.83em;
+      text-align: center;
+      margin-left: -2%;
+      margin-top: 0%;
+      margin-bottom: 2px;
+      font-weight: 400;
+  }
+  #noData, .noDataAvailavle {
+    position: relative;
+    /* transform: translate(0%,0%) !important; */
+    top: 9px !important;
+    text-align: center;
+  }
+  </style>
+  <ion-view>
+    <div class="bar bar-footer hide-on-keyboard-open" style="background-color:#000; background-size: 100% 0px;">
+        <div class="title" style="height: 20px;">
+            <h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px;
+                margin-bottom: 5px;">Powered by HR Align</h6>
+        </div>
+    </div>
+    <ion-content has-bouncing="false" style="overflow-y: auto;top:0%" class="requisionSection">
+        <div class="custom-header" style="padding-top: 0px;padding-bottom: -20px;">
+            <h4 class="subHeaderClass" style="margin: 0px;"> <span class="backIcon">
+              <i class="icon ion-ios-arrow-back" ng-click="redirectOnBack()"></i></span>
+                <b style="vertical-align: super;"> Investment Declaration </b></h4>
+                
+        </div>
+        
+        <div>
+            <form id="yearSelect">
+                <div class="form-group row">
+                    <label  class="col-sm-4 col-xs-4 col-form-label">Financial Year</label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8">
+                        <select id="financialYear"
+                            class="form-control"
+                            ng-change="reloadForm()"
+                            ng-options="key as value for (key,value) in listYear"
+                            ng-model="selectedValues.financialYear"
+                        >
+                        <!-- ng-options="year in investmentForm.listYear" -->
+                            <option value="" selected> Please Select </option>
+    
+                        </select>
+                    </div>
+                  </div>
+            </form>
+        </div>
+        <!-- <button ng-click="openAddEmployeeRent()">
+          ADD RENT 
+        </button> -->
+        <div id="invest">
+            <!-- ng-if="investmentForm.financialYear != 0" -->
+            <div ng-if="investmentForm.investmentVOList.length > 0">
+                <!-- ng-show="investmentForm.investmentVOList.length > 0" -->
+                <!-- <div class="pull-right mb-10">
+                    <c:if test="${buttonRights.add eq ''}">
+                    <c:if test="${investmentForm.isExemption ne '-1' }"> -->
+                    <div>
+                      <h5>Investment Declaration : {{employeeName}}-{{employeeCode}}</h5>
+                    </div>
+                    
+                    <button class="btn btn-primary" style="margin-left: 70%;" ng-click="openAddInvestment()">
+                      <i class="fa fa-plus" style="color: #fff"></i> ADD
+                  </button>
+                
+                <div>
+
+                  <div 
+                  class="list card customBorderRadius animated slideInUp"
+                  style="padding: 10px;"
+                  ng-repeat="investment in investmentVOList">
+
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-xs-4">Deduction Description</label>
+                      <div class="col-sm-8-xs-8">
+                        {{investment.displayName}}
+                      </div>
+                      <!-- ng-model="investmentVOList[$index].investmentSectionId" -->
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-xs-4">Deduction Amount </label>
+                    <input class="col-sm-6 col-xs-6 form-control" 
+                    id="deductionAmount_{{$index}}"
+                    maxlength="499"
+                    value="{{investment.deductionAmount}}"
+                    disabled="true"/>
+                    <!-- ng-model="investmentVOList[$index].investmentSectionId" -->
+                </div>
+                <div class="form-group row">
+                   
+                  <label class="col-sm-4 col-xs-4">Proposed Contribution</label>
+                  <!-- ng-if="showActualContribution =='false'" -->
+                  <input class="col-sm-6 col-xs-6 form-control" 
+                  ng-if="showActualContribution =='false'"
+                  id="proposedAmount_{{$index}}"
+                  value="{{investment.proposedAmount}}"
+                  type="number"
+                  maxlength="10"
+                  />
+                  <!-- ng-model="investmentVOList[$index].proposedAmount" -->
+                  <!-- ng-if="showActualContribution =='true'" -->
+                  <input class="col-sm-6 col-xs-6 form-control" 
+                  ng-if="showActualContribution =='true'"
+                  id="proposedAmount_{{$index}}"
+                  type="number"
+                  maxlength="10"
+                  readonly="true"
+                  />
+                  
+              </div>
+              <div class="form-group row">
+                    
+                <label class="col-sm-4 col-xs-4">Actual Contribution</label>
+                <!-- ng-if="showActualContribution =='true'" -->
+                <input class="col-sm-6 col-xs-6 form-control"
+                ng-if="showActualContribution =='true'" 
+                id="MaxDeductionAllowed_{{$index}}"
+                type="number"
+                value="{{investment.investmentAmount}}"
+                maxlength="10"
+                />
+                <!-- ng-model="investmentVOList[$index].investmentAmount" -->
+                <!-- ng-if="showActualContribution =='false'" -->
+                <input class="col-sm-6 col-xs-6 form-control" 
+                id="MaxDeductionAllowed_{{$index}}"
+                ng-if="showActualContribution =='false'"
+                maxlength="10"
+                type="number"
+                readonly="true"
+                />
+                
+            </div>
+            <div ng-if="investment.investmentDocumentVo.length > 0">
+            <div class="form-group row"
+            
+            >   
+            <label class="col-sm-4 col-xs-4">Supporting document : </label>
+                <div class="col-xs-8 col-sm-8" ng-repeat="document in investment.investmentDocumentVo">
+                  <div class="row">
+                    <div>
+                     {{document.fileName}}
+                    </div>
+                    <div>
+                    <a  ng-if="buttonRights.delete == ''" ng-click="deleteFile(document.employeeInvestmentDocumentId)">
+                      <i class="glyphicon glyphicon-trash text-danger periodsICon"></i>
+                    </a>
+                    <a  ng-if="buttonRights.delete != ''" disabled="disabled">
+                      <i class="glyphicon glyphicon-trash text-danger periodsICon"></i>
+                    </a>
+                  </div>
+                  </div>
+                </div>
+                
+            
+            </div>
+            
+          </div>
+            <div ng-if="investment.investmentDocumentVo.length == 0">
+              <div class="form-group row" ng-if="!(investment.proofReceived)">
+                <div class="item">
+                  <label>
+            
+              <br>
+            <div class="row" >Attachment:</div>
+            <div class="row" >
+              <button col="col-80"  Style="text-align: left; margin-bottom:0%;background-color: white;   border: none;color:blue;" 
+              ng-click="document.getElementById('inputFileUpload_{{$index}}').click()">Select from device</button>
+              <input col="col-80" type="file" name="inputFileUpload_{{$index}}" id="inputFileUpload_{{$index}}"  
+                              ng-model="somemodel" style="height:0px ; width:0px" 
+                              onchange="angular.element(this).scope().selectedValues.elem = this;  angular.element(this).scope().SelectedFile(event)" />
+              <span style="margin-left:-40%;margin-top:5%;" id="fileName_{{$index}}"><br><br>{{selectedFileNameFromDevice}}</span><br>
+            </div>
+            <div class="row" >
+              <button col="col-80" id="btncamera_{{$index}}" Style="text-align: left; margin-bottom:0%;background-color: white;   border: none;color:blue;"  
+              on-tap="cameraTakePicture('camera',$index);">Take Photo</button>
+            </div>
+            <img class="col-30" id="showImg_{{$index}}" 
+              style="width:50px;height:50px;visibility:hidden;margin-left:30%;margin-top: -10%;"
+              src="" on-tap="removeAttachment($index)">
+            </img>
+                      
+                  </label>
+                
+               
+
+            </div>
+              </div>
+              <div class="form-group row" ng-if="investment.proofReceived">
+                <label class="col-sm-4 col-xs-4">Supporting document</label>
+
+                <button class="btn-primary col-xs-8 col-sm-8"><i class="fa fa-upload mr-10"></i> Upload </button>
+                
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-4 col-xs-4">Proof Submit</label>
+              <input class="col-xs-8 col-sm-8" type="checkbox" id="check1_{{$index}}" disabled="true"/>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-4 col-xs-4"> Sanction </label>
+              <input class="col-xs-8 col-sm-8" type="checkbox" id="check2_{{$index}}" disabled="true"/>
+            </div>
+            <div class="row" style="margin-left: 10%;">
+              <div class="col-50">
+            <div ng-if="investment.sanction == true">
+              <div class="form-group row" ng-if="buttonRights.edit ==''">
+                <button class="btn btn-primary" style="color: #fff;margin-left: 29%;"disabled="disabled" >
+                  <i class="fa fa-pencil-square-o style="color: #fff;"></i>
+                  Update 
+                </button>
+              </div>
+              <div class="form-group row" ng-if="buttonRights.edit != ''">
+                <button class="btn btn-primary"style="color: #fff;margin-left: 29%;" disabled="disabled" >
+                  <i class="fa fa-pencil-square-o " style="color: #fff"></i>
+                  Update 
+                </button>
+              </div>
+            </div>
+            <div ng-if="investment.sanction == false">
+              <div class="form-group row" ng-if="buttonRights.edit ==''">
+                <button class="btn btn-primary"style="color: #fff;margin-left: 29%;" ng-click="goUpdate(investment.employeeInvestmentID,$index)">
+                  <i class="fa fa-pencil-square-o " style="color: #fff"></i>
+                  Update 
+                </button>
+              </div>
+              <div class="form-group row" ng-if="buttonRights.edit != ''">
+                <button class="btn btn-primary"style="color: #fff;margin-left: 29%;" >
+                  <i class="fa fa-pencil-square-o " style="color: #fff"></i>
+                  Update 
+                </button>
+              </div>
+            </div>
+          </div>
+            
+          <div class="col-50">
+            <div ng-if="investment.sanction == true">
+              <div class="form-group row" ng-if="buttonRights.delete ==''">
+                <button class="btn btn-danger"style="color: #fff;" disabled="disabled" >
+                  <i class="glyphicon glyphicon-trash periodsICon"style="color: #fff">  </i>
+                  Delete
+                </a>
+              </div>
+              <div class="form-group row" ng-if="buttonRights.delete != ''">
+                <button class="btn btn-danger" style="color: #fff;"disabled="disabled" >
+                  <i class="glyphicon glyphicon-trash periodsICon"style="color: #fff">  </i>
+                  Delete
+                </button>
+              </div>
+            </div>
+            <div ng-if="investment.sanction == false">
+              <div class="form-group row" ng-if="buttonRights.edit ==''">
+                <button class="btn btn-danger" style="color: #fff;" ng-click="goDelete(investment.employeeInvestmentID)">
+                  <i class="glyphicon glyphicon-trash periodsICon"style="color: #fff">  </i>
+                  Delete
+                </button>
+              </div>
+              <div class="form-group row" ng-if="buttonRights.edit != ''">
+                <button class="btn btn-danger" style="color: #fff;" >
+                  <i class="glyphicon glyphicon-trash periodsICon"style="color: #fff">  </i>
+                  Delete
+                </button>
+              </div>
+
+              </div>
+            </div>
+          </div>
+
+                
+
+                  </div>
+                </div>
+                
+            </div>
+            <div class="noDataAvailavle"  ng-if="investmentForm.investmentVOList.length == 0">
+              <!-- <center><h4>No Data Available</h4></center> -->
+              <div>
+                <h5>Investment Declaration : {{employeeName}}-{{employeeCode}}</h5>
+              </div>
+              <button class="btn btn-primary"  ng-click="openAddInvestment()">
+                <i class="fa fa-plus" style="color: #fff"></i> ADD Investment
+            </button>
+            <br><br>
+              <img src="./img/no-result.png" alt="">
+            </div> 
+            <form></form>
+        </div>
+
+        <div id="rent">
+          <div ng-if="investmentForm.employeeRentPaidList.length > 0">
+          <div>
+            <h5>House Rent Allowances : {{employeeName}}-{{employeeCode}}</h5>
+          </div>
+          
+          <button class="btn btn-primary" style="margin-left: 70%;" ng-click="openAddEmployeeRent()">
+            <i class="fa fa-plus" style="color: #fff"></i> ADD HRA
+        </button>
+          <div
+          class="list card customBorderRadius animated slideInUp"
+          style="padding: 5px;"
+          ng-repeat="rent in employeeRentPaidList"
+          >
+          <!-- ng-repeat="investmentVOList in investmentForm.investmentVOList" -->
+              <!-- ng-if="investmentForm.investmentVOList.length > 0" -->
+              <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4">From Date </label>
+                  <input class="col-sm-6 col-xs-6 form-control" 
+                  id="rentFromDate_{{$index}}"
+                  value="{{rent.fromDt}}"
+                  maxlength="10"
+                  readonly="true"/>
+                  
+              </div>
+              <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4">To Date </label>
+                  <input class="col-sm-6 col-xs-6 form-control" 
+                  id="rentToDate_{{$index}}"
+                  value="{{rent.toDt}}"
+                  maxlength="10"
+                  readonly="true"/>
+                  
+              </div>
+              <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4">Remarks</label>
+                  <textarea name="remark123_{{$index}}" id="remark123_{{$index}}" value="{{rent.remark}}"
+                  maxlength="499" cols="3"  ></textarea>
+                  <!-- ng-model="investmentVOList[$index].investmentSectionId" -->
+              </div>
+              <div class="form-group row">
+                  <label class="col-sm-4 col-xs-4">Monthly Contribution</label>
+                  <input class="col-sm-6 col-xs-6 form-control" 
+                  id="amount_{{$index}}"
+                  value="{{rent.amount}}"
+                  type="number"
+                  maxlength="7"
+                  />
+                  <!-- ng-model="investmentVOList[$index].investmentId" -->
+              </div>
+             
+             <div ng-if="rent.fileName.length > 0">
+              <label class="col-sm-4 col-xs-4">Supporting Document</label>
+              <div class="col-xs-6 col-sm-6">
+                {{rent.fileName}}
+              </div>
+              <div class="col-xs-2 col-sm-2" ng-if="buttonRights.delete == '' && rent.proffReceived==false">
+                <a ng-click="deleteFileRent(rent.rentPaidId)" >
+                  <i class="glyphicon glyphicon-trash text-danger periodsICon"></i>
+              </a>
+              </div>
+              <div class="col-xs-2 col-sm-2" ng-if="buttonRights.delete != ''">
+                <a ng-click="deleteFile1(rent.rentPaidId)" >
+                  <i class="glyphicon glyphicon-trash text-danger periodsICon"></i>
+              </a>
+              </div>
+              
+                  
+             </div>
+             <div ng-if="rent.fileName.length==0 || rent.fileName==null">
+              <div class="item" ng-if="rent.proffReceived==false">
+                <label>
+          
+            <br>
+          <div class="row" >Document:</div>
+          <div class="row" >
+            <button col="col-80"  Style="text-align: left; margin-bottom:0%;background-color: white;   border: none;color:blue;" 
+            ng-click="document.getElementById('inputFileUploadRent_{{$index}}').click()">Select from device</button>
+            <input col="col-80" type="file" name="inputFileUploadRent_{{$index}}" id="inputFileUploadRent_{{$index}}"  
+                            ng-model="somemodel" style="height:0px ; width:0px" 
+                            onchange="angular.element(this).scope().selectedValues.elem = this;  angular.element(this).scope().SelectedFileRent(event)" />
+            <span style="margin-left:-40%;margin-top:5%;" id="fileNameRent_{{$index}}"><br><br>{{selectedFileNameFromDeviceRent}}</span><br>
+          </div>
+          <div class="row" >
+            <button col="col-80" id="btncameraRent_{{$index}}" Style="text-align: left; margin-bottom:0%;background-color: white;   border: none;color:blue;"  
+            on-tap="cameraTakePictureRent('camera',$index);">Take Photo</button>
+          </div>
+          <img class="col-30" id="showImgRent_{{$index}}" 
+            style="width:50px;height:50px;visibility:hidden;margin-left:30%;margin-top: -10%;"
+            src="" on-tap="removeAttachmentRent($index)">
+          </img>
+                    
+                </label>
+              
+             
+
+          </div>
+          <div ng-if="rent.proffReceived==true">
+            <label class="col-sm-4 col-xs-4">Supporting Document</label>
+            <button class="btn btn-primary col-xs-8 col-sm-8"><i class="fa fa-upload mr-10"></i>Upload</button>
+          </div>
+             </div>
+
+             <div class="form-group row">
+              <label class="col-sm-4 col-xs-4">Proof Submit</label>
+              <input class="col-xs-8 col-sm-8" type="checkbox" id="check1_{{$index}}" disabled="true"/>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-4 col-xs-4"> Sanction </label>
+              <input class="col-xs-8 col-sm-8" type="checkbox" id="check2_{{$index}}" disabled="true"/>
+            </div>
+            <div class="row" style="margin-left: 10%;">
+              <div class="col-50">
+            <div ng-if="rent.sanction">
+              <div ng-if="buttonRights.edit == ''">
+                <button class="btn btn-primary" style="color: #fff;margin-left: 29%;"disabled="disabled" >
+                  <i class="fa fa-pencil-square-o" style="color: #fff;"></i>
+                  Update 
+                </button>
+              </div>
+              <div ng-if="buttonRights.edit != ''">
+                <button class="btn btn-primary" style="color: #fff;margin-left: 29%;"disabled="disabled" >
+                  <i class="fa fa-pencil-square-o" style="color: #fff;"></i>
+                  Update 
+                </button>
+              </div>
+            </div>
+            
+            <div ng-if="!(rent.sanction)">
+              <div ng-if="buttonRights.edit == ''">
+                <button class="btn btn-primary" style="color: #fff;margin-left: 29%;"
+                ng-click="goUpdateEmployeeRent(rent.rentPaidId,$index)"
+              >
+                <i class="fa fa-pencil-square-o" style="color: #fff;"></i>
+                Update 
+              </button>
+              </div>
+              <div ng-if="buttonRights.edit != ''">
+                <button class="btn btn-primary" style="color: #fff;margin-left: 29%;"
+              >
+                <i class="fa fa-pencil-square-o" style="color: #fff;"></i>
+                Update 
+              </button>
+              </div>
+              
+            </div>
+            </div>
+            
+            <div class="col-50">
+            <div ng-if="rent.sanction">
+              <div ng-if="buttonRights.delete == ''">
+                <button class="btn btn-danger" style="color: #fff;"disabled="disabled" >
+                  <i class="glyphicon glyphicon-trash periodsICon"style="color: #fff"></i>
+                  Delete 
+                </button>
+              </div>
+              <div ng-if="buttonRights.delete != ''">
+                <button class="btn btn-danger" style="color: #fff;"disabled="disabled" >
+                  <i class="glyphicon glyphicon-trash periodsICon"style="color: #fff"></i>
+                  Delete 
+                </button>
+              </div>
+            </div>
+            <div ng-if="!(rent.sanction)">
+              <div ng-if="buttonRights.delete == ''">
+                <button class="btn btn-danger" style="color: #fff;"
+                ng-click="goDeleteEmployeeRent(rent.rentPaidId)"
+              >
+              <i class="glyphicon glyphicon-trash periodsICon"style="color: #fff"></i>
+                Delete 
+              </button>
+              </div>
+              <div ng-if="buttonRights.delete != ''">
+                <button class="btn btn-danger" style="color: #fff;"
+              >
+              <i class="glyphicon glyphicon-trash periodsICon"style="color: #fff"></i>
+                Delete 
+              </button>
+              </div>
+              
+            </div>
+          </div>  
+            </div>
+              
+
+        </div>
+      </div>
+        <div class="noDataAvailavle"  ng-if="investmentForm.employeeRentPaidList == 0">
+          <div>
+            <h5>House Rent Allowances : {{employeeName}}-{{employeeCode}}</h5>
+          </div>
+          <!-- <center><h4>No Data Available</h4></center> -->
+          <button class="btn btn-primary"  ng-click="openAddEmployeeRent()">
+            <i class="fa fa-plus" style="color: #fff"></i> ADD HRA
+        </button>
+        <br><br>
+          <img src="./img/no-result.png" alt="">
+        </div> 
+         <br><br>
+      </div>
+        
+
+
+    </ion-content>
+
+  </ion-view>

@@ -1,0 +1,405 @@
+<style>
+  .customRadio {
+    display: none;
+  }
+
+  .nonCtcHeader {
+    padding-top: 5px;
+    margin-left: -5px;
+  }
+
+  .topHeader {
+    padding: 0px;
+    padding-left: 15px;
+    margin-top: -8px;
+  }
+
+  .paddingTwo {
+    padding-left: 2%;
+  }
+
+  .btnGroup {
+    padding: 2px 16px 2px 16px;
+  }
+
+  .claimDate {
+    min-width: 40%;
+    margin-left: -10px;
+    font-weight: normal;
+  }
+
+  .customInput {
+    padding-left: 3%;
+    margin-left: 117px;
+    max-width: 25% !important;
+    background-color: white;
+    border: 1px solid #b3b3b3;
+    width: 85%;
+  }
+
+  .fromDate {
+    padding-left: 0px;
+    padding-right: 0px;
+    background-color: white;
+    border: 1px solid #b3b3b3;
+    text-align: center;
+    width: 120px
+  }
+
+  .btnStyle {
+    float: left;
+    padding: 5px 70px 5px 70px;
+  }
+
+  .marginInput {
+    margin-left: -5px;
+    font-weight: normal;
+  }
+
+  .marginInputLabel {
+    margin-left: 60px;
+    font-weight: normal;
+  }
+
+  input[type="radio"] {
+    margin-top: -1px;
+    vertical-align: middle;
+  }
+
+  .textareaBox {
+    margin-left: 2%;
+    width: 96%;
+    padding-bottom: 5%;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .custom-card {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    border-radius: 9px;
+    border: 1px solid #007ec1;
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+
+  .item-select select {
+    max-width: 68%;
+  }
+
+  .poweredHR {
+    font-size: 0.5em;
+    color: #fff;
+    margin-top: 5px;
+    height: 10px;
+    margin-bottom: 5px;
+  }
+
+  .standardHeader {
+    background-color: #000;
+    background-size: 100% 0px;
+  }
+
+  .headerHeight {
+    height: 20px;
+  }
+
+  .colorHeader {
+    background-color: white
+  }
+
+  #btnSearch,
+  #btnClear {
+    display: inline-block;
+    vertical-align: top;
+  }
+</style>
+
+<ion-view>
+  <!-- <ion-nav-bar class="bar-stable colorHeader">
+    <ion-nav-buttons side="left">
+      <button class="button button-clear" ng-click="redirectTononctcApproval()">
+        <i class="icon ion-ios-arrow-back"></i>
+        Back</button>
+    </ion-nav-buttons>
+  </ion-nav-bar> -->
+  <div class="bar bar-footer hide-on-keyboard-open standardHeader">
+    <div class="title headerHeight">
+      <h6 class="poweredHR">Powered by HR Align</h6>
+    </div>
+  </div>
+  <ion-content has-bouncing="false" class="item-divider grayBackColor" style="overflow-y: auto;">
+    <!-- <div class="custom-header topHeader">
+      <h4 class="custom-header nonCtcHeader">
+        <b>Non CTC Claim Application</b>
+      </h4>
+    </div> -->
+    <div class="custom-header" style="padding-top: 0px;padding-bottom: 0px;">
+      <h4 class="subHeaderClass" style="margin: 0px;"> <span class="backIcon">
+        <i class="icon ion-ios-arrow-back" ng-click="redirectOnBack()"></i></span>
+         <b style="vertical-align: super;">Non CTC Claim Application</b></h4>
+   
+     </div>
+    <!-- <div class="item item-input">
+      <div class="input-label marginInput">Employee Name :</div>
+      <div class="input-label marginInputLabel">{{nonctcApprForm.empName}} </div>
+    </div> -->
+    <div class="cardList">
+    <div class="form-group row" >
+      <label  class="col-sm-4 col-xs-4 col-form-label">Employee Name</label><span class="dividerClass">:</span>
+      <div  class="col-sm-8 col-xs-8">{{nonctcApprForm.empName}}</div >
+    </div>
+
+    <!-- <div class="item item-input">
+      <div class="input-label marginInput">Period :</div>
+      <div class="input-label marginInputLabel">{{nonctcApprForm.ctcPeriodVO.fromDt}} -
+        {{nonctcApprForm.ctcPeriodVO.toDt}}</div>
+    </div> -->
+    <div class="form-group row" >
+      <label  class="col-sm-4 col-xs-4 col-form-label">Period</label><span class="dividerClass">:</span>
+      <div  class="col-sm-8 col-xs-8">{{nonctcApprForm.ctcPeriodVO.fromDt}} - {{nonctcApprForm.ctcPeriodVO.toDt}}</div >
+    </div>
+
+    <div ng-repeat="nonctcclaimApp in nonCTCClaimApprList | filter:searchObj.searchQuery">
+      <form name="credentialsForm">
+
+        <!-- <div class="item item-input">
+          <div class="input-label marginInput">Claim Type :</div>
+          <div class="input-label marginInputLabel">{{nonctcclaimApp.ctcPayHeadName}}</div>
+        </div> -->
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Claim Type</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">{{nonctcclaimApp.ctcPayHeadName}}</div >
+        </div>
+        <!-- <div class="item item-input">
+          <div class="input-label marginInput">Application Date :</div>
+          <div class="input-label marginInputLabel">{{nonctcclaimApp.reqDate}}</div>
+        </div> -->
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Application Date</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">{{nonctcclaimApp.reqDate}}</div >
+        </div>
+        <!-- <div class="item item-input item-select">
+          <div class="input-label marginInput">Claim For Month*</div>
+          <div class="input-label marginInputLabel">{{nonctcclaimApp.monthIdName}}</div>
+        </div> -->
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Claim For Month</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">{{nonctcclaimApp.monthIdName}}</div >
+        </div>
+        <!-- <div class="item item-input item-select">
+          <div class="input-label marginInput">Year*</div>
+          <div class="input-label marginInputLabel">{{nonctcclaimApp.yearId}}</div>
+        </div> -->
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Year</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">{{nonctcclaimApp.yearId}}</div >
+        </div>
+        <!-- <div class="item item-input">
+          <span class="input-label claimDate">Claim Date* </span>
+          <input class="fromDate form-control" id="fromDate" type="text" value="{{nonctcclaimApp.claimDate}}"
+            disabled />
+        </div> -->
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Claim Date</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            <input class="fromDate form-control" id="fromDate" type="text" value="{{nonctcclaimApp.claimDate}}"
+            disabled />
+          </div >
+        </div>
+        <!-- <div class="item item-input">
+          <div class="input-label marginInput">Claim Amount*</div>
+          <input class="input-label customInput form-control" value="{{nonctcclaimApp.claimAmount}}" disabled />
+        </div> -->
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Claim Amount</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            <input class="form-control" value="{{nonctcclaimApp.claimAmount}}" disabled />
+          </div >
+        </div>
+
+        <!-- <div class="item item-input">
+          <div class="input-label marginInput">Bill Amount*</div>
+          <input type="tel" id="billAmount{{$index}}" name="billAmount{{$index}}"
+            class="input-label customInput form-control" value="{{nonctcclaimApp.billAmount}}" disabled />
+        </div> -->
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Bill Amount</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            <input type="tel" id="billAmount{{$index}}" name="billAmount{{$index}}"
+            class="form-control" value="{{nonctcclaimApp.billAmount}}" disabled />
+          </div >
+        </div>
+        <!-- <div class="item item-input" ng-click="openFileFromRow('a','b');">
+          <div class="input-label marginInput">Attached Docuemnt:</div>
+          <div class="input-label marginInput" style="color:blue;">{{nonctcclaimApp.fileNameNew}}</div>
+        </div> -->
+        
+
+		  <div class="form-group row" ng-repeat="file in nonctcclaimApp.fileNameNew">
+			<label  class="col-sm-4 col-xs-4 col-form-label">Attachment</label><span class="dividerClass">:</span>
+			<div id="fileName{{$index}}" class="col-sm-8 col-xs-8" style="font-size:0.9em;color:blue;" onclick="angular.element(this).scope().selectedValues.elem = this; angular.element(this).scope().openAttachment(event)">{{file}} </div>
+		  </div>
+    
+
+        <!-- <div class="item item-input">
+          <div class="input-label marginInput">Employee Remarks</div>
+          <input class="input-label marginInputLabel form-control" value="{{nonctcclaimApp.remarks}}" disabled />
+        </div> -->
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Employee Remarks</label><span class="dividerClass">:</span>
+          <div class="col-sm-8 col-xs-8">
+            <input class="form-control" value="{{nonctcclaimApp.remarks}}" disabled />
+          </div>
+        </div>
+
+
+        <!-- <div class="item item-input">
+          <div class="input-label marginInput">Approved Amount*</div>
+          <input type="tel" id="approvedBillAmount{{$index}}" name="approvedBillAmount{{$index}}"
+            class="input-label customInput form-control" value="{{nonctcclaimApp.approvedBillAmount}}" required />
+        </div> -->
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Approved Amount</label><span class="dividerClass">:</span>
+          <div class="col-sm-8 col-xs-8">
+            <input type="tel" id="approvedBillAmount{{$index}}" name="approvedBillAmount{{$index}}"
+            class="form-control" value="{{nonctcclaimApp.approvedBillAmount}}" required />
+          </div>
+        </div>
+
+        <!-- <div class="item item-input">
+          <div class="input-label marginInput">Approved Remarks</div>
+          <textarea id="apprem{{$index}}" class="input-label form-control" colspan="5"
+            ng-maxlength="200">{{nonctcclaimApp.hiddenRemarks}}</textarea>
+        </div> -->
+
+        <div class="form-group row" >
+          <label  class="col-sm-4 col-xs-4 col-form-label">Approver Remarks</label><span class="dividerClass">:</span>
+          <div class="col-sm-8 col-xs-8">
+            <textarea ng-if="claimPendingNObject.status != 'SENT FOR CANCELLATION' && claimPendingNObject.status != 'SENT FOR APPROVAL'" 
+			id="apprem{{$index}}" class="form-control" colspan="5" ng-maxlength="200">{{nonctcclaimApp.hiddenRemarks}}</textarea>
+			<textarea ng-if="claimPendingNObject.status == 'SENT FOR CANCELLATION' || claimPendingNObject.status == 'SENT FOR APPROVAL'" 
+			id="apprem{{$index}}" class="form-control" colspan="5" ng-maxlength="200"></textarea>
+          </div>
+        </div>
+        <center>
+          <span class="error" style="color:red" ng-show="credentialsForm.txt.$error.maxlength">No more text can be
+            entered.</span>
+        </center>
+
+        <div ng-if="nonctcApprForm.lastLevel =='last'">
+          <div class="form-group row" >
+            <label  class="col-sm-4 col-xs-4 col-form-label">Payment Mode </label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              <select id="paymentMode" class="form-control item-select select"
+              ng-change="onChangePayMode(this)"
+              ng-options="pmode as pmode for pmode in nonctcApprForm.paymentModeList"
+                                ng-model="selectedValues.paymode">
+                <option value="">Please Select</option>
+              </select>
+            </div>           
+          </div>
+        </div>
+
+
+        <div ng-show="paymode=='cash'" ng-if="nonctcApprForm.lastLevel =='last'">
+          <div class="form-group row" >
+            <label  class="col-sm-4 col-xs-4 col-form-label">Year </label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              <select id="disburseYear" class="form-control item-select select"
+              ng-options="year as year for year in nonctcApprForm.yearList"
+                                ng-model="selectedValues.disbYear">
+                <option value="">Please Select</option>
+            
+              </select>
+            </div>           
+          </div>
+
+          <div class="form-group row" >
+            <label  class="col-sm-4 col-xs-4 col-form-label">Payment Month </label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+              <select id="disburseMonth" class="form-control item-select select">
+                <option value="" selected="selected">Please Select</option>
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+              </select>
+            </div>           
+          </div>
+        </div>  <!-- paymentMode cash over -->
+        <div ng-show="paymode=='payroll' ">
+          
+            <label  class="col-sm-4 col-xs-4 col-form-label">Disb. Date </label><span class="dividerClass">:</span>
+            <div  class="col-sm-6 col-xs-6">
+           <input  class="form-control" id="disburseDate" 
+               ng-click="setDate()" type="text" ng-readonly="true" required/>
+            </div >
+           <div class="col-sm-2 col-xs-2">
+            <i style="padding-left: 3%; font-size: 193%;margin-top: -10px;"  ng-click="setDate()" class="ion-calendar">&emsp;</i>
+           </div>
+          
+           <div class="form-group row">
+            <label  class="col-sm-4 col-xs-4 col-form-label">Remarks </label><span class="dividerClass">:</span>
+            <div  class="col-sm-8 col-xs-8">
+            <textarea class="form-control" id="disburseRemark" name="disburseRemark" rows="3" ng-model="resultObj.remarks" 
+                     ng-maxlength="500"></textarea>
+           </div >       
+          </div>
+        </div>
+        <div class="form-group row" ng-if="nonctcApprForm.lastLevel =='last'">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Disbursed Amount</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+              <input id="disburseAmount"
+              type="text" maxlength = "7" class="form-control" />
+          </div>
+        </div>
+
+        <br>
+        <!-- <div class="item btnGroup">
+            <div class="" style="float:left;">
+              <button class="button button-block button-positive btnStyle">Approve</button>
+            </div>
+            <div class="" style="float:right;">
+              <button class="button button-block button-positive btnStyle">Reject</button>
+            </div>
+          </div> -->
+
+
+      </form>
+    </div>
+    
+	
+	
+	<!--
+    <div class="form-group row" >
+      <label  class="col-sm-4 col-xs-4 col-form-label">Payment Mode</label><span class="dividerClass">:</span>
+      <div class="col-sm-8 col-xs-8">
+        <select id="payMode" class="form-control"
+        ng-options="paymode.pm for paymode in paymentModeList" ng-model="selectedValues.selectedPOV">
+        <option value="" selected="selected">Please Select</option>
+      </select>
+      </div>
+    </div>
+-->
+   
+  </div>
+
+    <div id="divAppRejButtons" class="text-center">
+      <button type="button" ng-click="approveOrRejectPendingNClaim('APPROVE');" id="btnApprove" class="btn btn-success mr-10">
+<i class="fa fa-check mr-5" aria-hidden="true"></i> Approve</button>
+      <button type="button" ng-click="approveOrRejectPendingNClaim('REJECT');" id="btnReject" class="btn btn-danger">
+     <i class="fa fa-times mr-5" aria-hidden="true"></i> Reject</button>
+</div>  
+<br><br>
+
+  </ion-content>
+</ion-view>

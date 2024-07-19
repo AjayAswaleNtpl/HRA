@@ -1,0 +1,73 @@
+<style>
+    .custom-card {
+        border-radius: 5%;
+        border: 1px solid #007ec1;
+    }
+    .custom-item {
+        border: none;
+    }
+    .custom-paddingBottom
+    {
+        padding: 10px;
+        padding-bottom: 0px;
+    }
+    .customBorderRadius
+    {
+        border-top-right-radius: 1em;
+        border-bottom-right-radius: 1em;
+        border-top-left-radius: 1em;
+        border-bottom-left-radius: 1em;
+    }
+    .custom-row {
+        padding: 0px;
+    }
+
+    .cust-col-50 {
+        text-align: center;
+        color: #007ec1;
+    }
+
+    .cust-card {
+        padding: 0px 10px 0px 10px;
+    }
+    .has-header {
+        top: 0px;
+    }
+    .custom-header {
+    padding-bottom: 0px !important;
+    padding-top: 40px !important;
+
+}
+</style>
+<ion-view>
+    <ion-content has-bouncing="false" style="overflow-y:auto">
+
+		<!-- <div class="custom-header" style="margin-bottom: 40px;padding: 0px;padding-left: 15px;padding-top: 10px;margin-top:-8px;">
+                <h4 class="custom-header" style="margin-top: 8px;"><b>Your Holidays</b></h4>
+             </div> -->
+             <div class="custom-header">
+                <h4 class="subHeaderClass"><b>Your Holidays</b></h4></div>
+            
+        <div class="cust-card">         
+            
+               <div class="list card  customBorderRadius" ng-repeat="holiday in holidayList" id="holidayCard2__{{$index}}" >
+                <a id="holidayCard__{{$index}}"  style="margin-bottom: 10px;"  class="item custom-item custom-paddingBottom item-text-wrap">
+                    <div class="row custom-row" >
+                        <div class="col col-67">
+                            <h2 style="font-size: 0.9em;margin-top:9%;"> <strong>{{holiday.holiday}}</strong></h2></div>
+                        <div class="col col-33" style="text-align-last: end;"><h2 style="font-size: 0.8em;">{{holiday.frmtDate}}</h2></div>
+                    </div>
+                    <div class="row custom-row" >
+                        <div class="col col-100"><h2 style="font-size: 0.7em;" ng-if="holiday.description">  {{holiday.description}}</h2>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <br>
+            <div ng-if="holidayList.length == 0">
+                <center><h4>No Holiday Assigned</h4></center>
+            </div>
+        </div><br>
+    </ion-content>
+</ion-view>

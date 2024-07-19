@@ -1,0 +1,135 @@
+<style>
+    .col-xs-2 {
+    padding: 0 !important;
+}
+.row {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+label {
+    font-weight: normal !important;
+}
+ .col-xs-4, .col-sm-4 {
+    padding: 0 4px !important;
+}
+</style>
+
+<ion-view>
+    
+    </ion-nav-bar> -->
+    <div class="bar bar-footer hide-on-keyboard-open" style="background-color:#000; background-size: 100% 0px;">
+        <div class="title" style="height: 20px;">
+            <h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px; margin-bottom: 5px;">Powered by HR Align</h6>
+        </div>
+    </div>
+    <ion-content has-bouncing="false" class="item-divider grayBackColor" style="overflow-y: auto;">
+        <div class="custom-header" style="padding-top: 0px;padding-bottom: 0px;">
+            <h4 class="subHeaderClass" style="margin: 0px;"> <span class="backIcon" ng-click="redirectOnBack()">
+              <i class="icon ion-ios-arrow-back" ></i></span>
+               <b style="vertical-align: super;">Grievance/Suggestion Details - Approval</b></h4>
+           </div>
+        
+        <form name="credentialsForm">
+            <!-- href="javascript:openFile1('${grievanceSuggestionFileList.grievanceSuggestionApplicationFileId}')">${fn:escapeXml(grievanceSuggestionFileList.fileName)} -->
+            
+            <div class="cardList">
+                <div class="form-group row">
+                    <label  class="col-sm-4 col-xs-4 col-form-label">Application Date  </label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8">{{grievanceObject.raisedDate | date : "dd-MMM-yyyy"}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label  class="col-sm-4 col-xs-4 col-form-label">Name  </label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8">{{grievanceObject.raisedByName}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label  class="col-sm-4 col-xs-4 col-form-label">Application Type  </label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8">{{grievanceObject.applicationType}}
+                    </div>
+                </div>
+
+                  <div class="form-group row">
+                    <label  class="col-sm-4 col-xs-4 col-form-label">Category  </label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8">
+                        {{grievanceObject.categoryName}}
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label  class="col-sm-4 col-xs-4 col-form-label">Attachment  </label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8" style="color:blue"
+                    onclick="angular.element(this).scope().openFile(event)" >
+                        {{grievanceObject.fileList[0].fileName}}
+                    </div>
+                  </div>
+
+                  <div class="form-group row" >
+                    <label  class="col-sm-4 col-xs-4 col-form-label">Grievance / Suggestion</label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8">
+                    <textarea id="remarks" 
+                     rows="2" ng-model="selectedValues.remarks" 
+                        class="form-control" ></textarea>
+                    </div >
+                  </div>
+
+                  <div class="form-group row" >
+                    <label  class="col-sm-4 col-xs-4 col-form-label">is Confidential ?</label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8" id="group">
+                        {{grievanceObject.isConfidencial}}
+                    </div >
+                  </div>
+                  <div class="form-group row" >
+                    <label  class="col-sm-4 col-xs-4 col-form-label"></label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8" id="group">
+                        <input id="optOpen" type="radio"   ng-click="toggleOpenClosed('O')">
+                        <span ng-click="toggleOpenClosed('O')">Open &nbsp;</span>
+                        <input id="optClosed" type="radio" checked="true" ng-click="toggleOpenClosed('C')" >
+                        <span ng-click="toggleOpenClosed('C')" >Closed&nbsp;</span>
+                    </div >
+                  </div>                  
+
+                  <div class="form-group row" >
+                    <label  class="col-sm-4 col-xs-4 col-form-label">Minutes of Discussion</label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8" id="group">
+                        <textarea id="minutesOfDiscussion" 
+                     rows="4" ng-model="selectedValues.mod"  
+                        class="form-control" ></textarea>
+                    </div >
+                  </div>
+
+                  <div class="form-group row" >
+                    <label  class="col-sm-4 col-xs-4 col-form-label">Action Taken</label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8" id="group">
+                        <textarea id="at" 
+                     rows="4" ng-model="selectedValues.ataken" 
+                        class="form-control" ></textarea>
+                    </div >
+                  </div>
+                  <div class="form-group row" style="display: none;">
+                    <label  class="col-sm-4 col-xs-4 col-form-label">Category  </label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8">
+                        <select id="panelMemberDD" class="form-control item-select select"
+                        ng-model="selectedValues.selectedpPm">
+                    </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label  class="col-sm-4 col-xs-4 col-form-label">Panel Members </label><span class="dividerClass">:</span>
+                    <div  class="col-sm-8 col-xs-8">
+                        <p id="panelMemberNames" style="align-content: center;"> </p>
+                    </div>
+                  </div>    
+                  <br>
+                  <div class="text-center" ng-show="requesObject.status == 'OPEN'">
+                  <button type="button" id="btnSave" ng-click="goResolve()" class="btn btn-primary mr-10">
+                      <i class="fa fa-paper-plane mr-10" aria-hidden="true"></i>Submit Relove
+                  </button>
+                  </div>
+                  <br><br><br>
+                </div>
+                
+            
+        </form>
+    </ion-content>
+</ion-view>

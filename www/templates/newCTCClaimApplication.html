@@ -1,0 +1,634 @@
+<style>
+  .customRadio {
+      display: none;
+  }
+  .item1{
+    border-color: #ddd;
+    border-bottom: white;
+    background-color: #fff;
+    color: #444;
+    position: relative;
+    z-index: 2;
+    display: block;
+    margin: -1px;
+    padding: 8px 1px 0px 4px;
+    border-width: 1px;
+    border-style: solid;
+    font-size: 16px;
+    margin-top:10px;
+ }
+
+  .customRadio+label {
+      display: inline-block;
+      margin: -2px;
+      padding: 4px 12px;
+      margin-bottom: 0;
+      font-size: 14px;
+      line-height: 20px;
+      color: #333;
+      text-align: center;
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #f5f5f5;
+      background-color: #f5f5f5;
+      background-image: -moz-linear-gradient(top, #fff, #e6e6e6);
+      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#e6e6e6));
+      background-image: -webkit-linear-gradient(top, #fff, #e6e6e6);
+      background-image: -o-linear-gradient(top, #fff, #e6e6e6);
+      background-image: linear-gradient(to bottom, #fff, #e6e6e6);
+      background-repeat: repeat-x;
+      border: 1px solid #ccc;
+      border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+      border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+      border-bottom-color: #b3b3b3;
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+      filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+      -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+      -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  .customRadio:checked+label {
+      background-image: none;
+      outline: 0;
+      -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+      -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+      /*        background-color:#0066ff;
+              color: white;*/
+  }
+
+  input[type="radio"] {
+      margin-top: -1px;
+      vertical-align: middle;
+  }
+
+  #check,
+  #check1 {
+      cursor: pointer;
+      -webkit-appearance: none;
+      appearance: none;
+      background: white;
+      border-radius: 1px;
+      box-sizing: border-box;
+      position: relative;
+      box-sizing: content-box;
+      width: 20px;
+      height: 20px;
+      border-width: 0;
+      transition: all .3s linear;
+      border: 2px solid
+  }
+
+  #check:checked,
+  #check1:checked {
+      background: url("img/tick.jpg");
+      background-size: 100%;
+      background-repeat: no-repeat;
+  }
+
+  #check:focus,
+  #check1:focus {
+      outline: 0 none;
+      box-shadow: none;
+  }
+
+  .textareaBox {
+      margin-left: 2%;
+      width: 96%;
+      padding-bottom: 5%;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .custom-card {
+      margin-top: 0px;
+      margin-bottom: 20px;
+      border-radius: 9px;
+      border: 1px solid #007ec1;
+      margin-left: 2%;
+      margin-right: 2%;
+  }
+
+  .item-select select {
+      max-width: 68%;
+  }
+  .col-xs-2,
+  .col-xs-4  {
+    padding: 0 !important;
+}
+.row {
+    margin: 0px 0 5px 0 !important;
+}
+.backIcon{
+  font-size: 34px;
+    margin-right: 10px;
+}
+#payHeadDtls{
+  border: 1px solid #c9c9c9;
+    border-radius: 6px;
+    padding: 8px;
+}
+.takeImgSection img{
+  width: 80px;
+    height: 80px;
+    display: none;
+    margin-left: 2px;
+}
+</style>
+
+<ion-view>
+  <!-- <ion-nav-bar class="bar-stable" style="background-color: white">
+      <ion-nav-buttons side="left">
+          <button class="button button-clear" ng-click="redirectOnCtcClaimR()">
+              <i class="icon ion-ios-arrow-back"></i>
+              Back</button>
+      </ion-nav-buttons>
+  </ion-nav-bar> -->
+  <div class="bar bar-footer hide-on-keyboard-open" style="background-color:#000; background-size: 100% 0px;">
+    <div class="title" style="height: 20px;">
+      <h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px; margin-bottom: 5px;">Powered by HR Align</h6>
+    </div>
+  </div>
+  <ion-content has-bouncing="false" class="grayBackColor" style="overflow-y: auto;">
+    <div class="custom-header" style="padding-top: 0px;">
+     <h4 class="subHeaderClass" style="margin: 0px;"> <span ng-click="redirectOnBack()" class="backIcon">
+       <i class="icon ion-ios-arrow-back"></i></span> <b style="vertical-align: super;">CTC Claim Application</b></h4>
+  
+    </div>
+    <div class="card" style="margin: 0px; padding: 10px 5px;">
+      <form name="newCTCForm">
+        <!-- <div class="item item-input">
+           <div class="input-label" style="margin-left: -5px;font-weight: normal;">CTC Period :</div>
+           <div class="input-label" style="margin-left: 60px;font-weight: normal;">{{periodfromDt}} - {{periodtoDt}}</div>
+         </div> -->
+
+         <div class="form-group row">
+          <label  class="col-sm-4 col-xs-4 col-form-label">CTC Period </label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            {{periodfromDt}} - {{periodtoDt}} 
+         </div >       
+        </div>
+
+        <!-- <div class="item item-input item-select">
+            <div class="input-label " style=" margin-left: -5px;font-weight: normal;">Claim Pay Head*</div>
+              <select id="payhead" style="padding-left: 2%;" class="form-control item-select select"
+              ng-change="payHeadChanged()"
+              ng-options="payh.ctcPayHeadId as payh.ctcPayHeadName for payh in listCtcPayHeadList"
+              ng-model="selectedValues.ctcPayHeadId">
+                 <option value="" selected="selected">Please Select</option>
+              </select>
+            </div>
+            <div id="payHeadDtls">
+              PAY HEAD DETAILS
+              <ul class="ctcClaimList">
+                <li> <b>Yearly Claim:</b>{{phdYearlyClaim}}</li>
+                <li> <b>In-Process Claim Amount:</b>{{phdIpCA}}</li>
+                <li> <b>Approved Claim Amount:</b>{{phdAppCA}}</li>
+                <li> <b>Reimbursed Claim Amount:</b>{{phdRiCA}}</li>
+                <li> <b>Accumulated Balance:</b>{{phdAB}}</li>
+                <li> <b>Balance For the Year:</b>{{phdBforY}}</li>
+              </ul>
+            </div>  -->
+            <div class="form-group row">
+              <label  class="col-sm-4 col-xs-4 col-form-label">Claim Pay Head </label><span class="dividerClass">:</span>
+              <div  class="col-sm-8 col-xs-8">
+                <select id="payhead" style="padding-left: 2%;" class="form-control item-select select"
+              ng-change="payHeadChanged()"
+              ng-options="payh.ctcPayHeadId as payh.ctcPayHeadName for payh in listCtcPayHeadList"
+              ng-model="selectedValues.ctcPayHeadId">
+                 <option value="" selected="selected">Please Select</option>
+              </select>
+             </div >   </div>
+
+
+             <div class="form-group row" id="payHeadDtls">
+              <label  class="col-sm-4 col-xs-4 col-form-label">Pay Head Details</label><span class="dividerClass">:</span>
+              <div  class="col-sm-8 col-xs-8">
+                <ul class="ctcClaimList">
+                  <li> <b>Yearly Claim:</b>{{actualYearlyClaim}}</li>
+                  <li> <b>Eligibility(YTD)(A):</b>{{phdYearlyClaim}}</li>
+                  <li> <b>In-Process(B):</b>{{phdIpCA}}</li>
+                  <li> <b>Approved Amount(C):</b>{{phdAppCA}}</li>
+                  <li> <b>Reimbursed Amount(D):</b>{{phdRiCA}}</li>
+                  <li> <b>Balance Payment to be Received(E=C-D):</b>{{phdAB}}</li>
+                  <li> <b>Balance yet to claim(F=A-[B+C]):</b>{{phdBforY}}</li>
+                </ul>
+             </div ></div>
+
+             <!-- <div id="payHeadDtls">
+              PAY HEAD DETAILS
+              <ul class="ctcClaimList">
+                <li> <b>Yearly Claim:</b>{{phdYearlyClaim}}</li>
+                <li> <b>In-Process Claim Amount:</b>{{phdIpCA}}</li>
+                <li> <b>Approved Claim Amount:</b>{{phdAppCA}}</li>
+                <li> <b>Reimbursed Claim Amount:</b>{{phdRiCA}}</li>
+                <li> <b>Accumulated Balance:</b>{{phdAB}}</li>
+                <li> <b>Balance For the Year:</b>{{phdBforY}}</li>
+              </ul>
+            </div>     
+            </div> -->
+
+
+
+            <!-- <div class="item item-input">
+                <div class="input-label " style=" margin-left: -5px;font-weight: normal;">Claim Amount*</div>
+                <input type="tel" name="phone" class="input-label" placeholder="0.0" id="claimAmount"
+                            style="padding-left: 3%;margin-left: 117px;max-width: 25%!important;background-color:white;border: 1px solid #b3b3b3; width:85%"
+                            ng-model="resultObj.claimAmount" ng-maxlength="20" required />
+              </div> -->
+              <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Claim Amount </label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  <input type="tel" name="phone" class="form-control" placeholder="0.0" id="claimAmount" ng-model="resultObj.claimAmount" ng-maxlength="20" required />
+               </div >       
+              </div>
+
+
+
+            <!-- <div ng-disabled="isValidateForLppeave" class="item item-input item-select">
+              <div class="input-label" style=" margin-left: -5px;font-weight: normal;">Claim For Month*</div>
+                  <select id="month" style="padding-left: 2%;" class="form-control item-select select">
+                  <option value="" selected="selected">Please Select</option>
+                  <option value="01">January</option>
+                  <option value="02">February</option>
+                  <option value="03">March</option>
+                  <option value="04">April</option>
+                  <option value="05">May</option>
+                  <option value="06">June</option>
+                  <option value="07">July</option>
+                  <option value="08">August</option>
+                  <option value="09">September</option>
+                  <option value="10">October</option>
+                  <option value="11">November</option>
+                  <option value="12">December</option>
+                </select>
+              </div> -->
+              <div class="form-group row" ng-disabled="isValidateForLppeave">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Claim For Month </label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  <select id="month" class="form-control item-select select">
+                    <option value="" selected="selected">Please Select</option>
+                    <option value="01">January</option>
+                    <option value="02">February</option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                    <option value="07">July</option>
+                    <option value="08">August</option>
+                    <option value="09">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                  </select>
+                </div>           
+              </div>
+
+
+              <!-- <div ng-disabled="isValidateForLeave" class="item item-input item-select">
+                  <div class="input-label " style=" margin-left: -5px;font-weight: normal;">Year*</div>
+                  <select id="year" style="padding-left: 2%;" class="form-control item-select select"
+                  ng-options="year as year for year in listYear"
+									ng-model="selectedValues.yearName[$index]">
+                    <option value="">Please Select</option>
+                
+                  </select>
+              </div> -->
+
+              <div class="form-group row" ng-disabled="isValidateForLeave">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Year </label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  <select id="year" class="form-control item-select select"
+                  ng-options="year as year for year in listYear"
+									ng-model="selectedValues.yearName[$index]">
+                    <option value="">Please Select</option>
+                
+                  </select>
+                </div>           
+              </div>
+
+
+            <!-- <div ng-if="resultObj.fromLeaveType == 'Short Leave'">
+                <div class="item item-input">
+                    <span class="input-label" style="min-width: 40%; margin-left: -10px;font-weight: normal;">&nbsp;From Time* </span>
+                    <input style="padding-left:5px;background-color:white;border: 1px solid #b3b3b3;text-align:left;" ng-click="setFromTime()" id="toDate" type="text" ng-model="resultObj.fromLvHr" ng-readonly="true" required />
+                    <i style="padding-left: 3%; font-size: 193%;" ng-click="setFromTime()" class="ion-clock">&emsp;</i>
+                </div>
+            </div> -->
+            <!-- <div class="item item-input">
+              <div class="input-label " style=" margin-left: -5px;font-weight: normal;">Bill Amount*</div>
+              <input type="tel" name="phone" class="input-label" placeholder="0.0" id="billAmount"
+                          style="padding-left: 3%;margin-left: 117px;max-width: 25%!important;background-color:white;border: 1px solid #b3b3b3; width:85%"
+                          ng-model="resultObj.billAmount" ng-maxlength="20" required />
+            </div> -->
+
+            <div class="form-group row">
+              <label  class="col-sm-4 col-xs-4 col-form-label">Bill Amount </label><span class="dividerClass">:</span>
+              <div  class="col-sm-8 col-xs-8">
+             <input type="tel" name="phone" class="form-control" placeholder="0.0" id="billAmount" ng-model="resultObj.billAmount" ng-maxlength="20" required />
+             </div >       
+            </div>
+
+            <div class="form-group row">
+              <label  class="col-sm-4 col-xs-4 col-form-label">Remarks </label><span class="dividerClass">:</span>
+              <div  class="col-sm-8 col-xs-8">
+            
+              <textarea class="form-control" name="txt" rows="3" ng-model="resultObj.remarks" id="remarks"
+                       ng-maxlength="500"></textarea>
+             </div >       
+            </div>
+
+
+          <div class="" style="margin-top: 15px;">
+            <!-- <span style="font-size: 16px; font-weight: normal; margin-left: 11px;">Remarks</span>
+             <textarea style="padding-left: 3%;padding-right: 3%;background-color: white;border: 1px solid rgb(179, 179, 179);margin-left: 3%;
+                       margin-top: 3%;width: 92%;" name="txt" rows="3" ng-model="resultObj.remarks" id="remarks"
+                       ng-maxlength="500">
+             </textarea> -->
+          <!--   multi attachment starts  -->
+          <!-- <div class="row" >
+            <input id="inputFileUpload_" col="col-100" type="file" name="inputFileUpload_" 
+            onchange="angular.element(this).scope().selectedValues.elem = this;angular.element(this).scope().SelectedFile(event)"  
+             />
+          </div> -->
+          <div class="form-group row">
+          <div class="col-sm-4 col-xs-4 col-form-label">Attachment  </div>
+        </label><span class="dividerClass">:</span>
+        <div  class="col-sm-6 col-xs-6"></div>
+        </div>
+      <div class="form-group row">
+       
+        <label  class="col-sm-5 col-xs-5 col-form-label">
+          <button  Style="text-align: left; margin-bottom:0%;background-color: white;   border: none;color:blue;" 
+          onclick="document.getElementById('inputFileUpload').click()">Select from device</button>
+
+        </label><span class="dividerClass">:</span>
+        <div  class="col-sm-7 col-xs-7">
+          <input id="inputFileUpload" class="" type="file" name="inputFileUpload" style="width:0px;height:0px;display:hidden"
+          onchange="angular.element(this).scope().selectedValues.elem = this;angular.element(this).scope().SelectedFile(event)"/>
+       </div >       
+      </div>
+      <!-- <div class="row" >Attachment:</div>
+          <div class="row">
+			<button  Style="width:100%;text-align: left; margin-bottom:0%;background-color: white;   border: none;color:blue;" 
+							onclick="document.getElementById('inputFileUpload').click()">Select from device</button>
+            <div  class="col-sm-12 col-xs-12"> 
+              <input id="inputFileUpload" class="" type="file" name="inputFileUpload" style="width:0px;height:0px"
+              onchange="angular.element(this).scope().selectedValues.elem = this;angular.element(this).scope().SelectedFile(event)"/>
+           </div >       
+          </div> -->
+
+
+          <!-- <div class="row" >
+            <button col="col-40" id="btncamera"  Style="text-align: left;
+              margin-bottom:0%;" on-tap="cameraTakePicture('camera','CLAIM');">
+              <b> Take Picture &nbsp;&nbsp; </b>
+            </button>
+          </div> -->
+          <div class="form-group row">
+            <label class="col-sm-5 col-xs-5 col-form-label">
+              <button  on-tap="cameraTakePicture('camera','CLAIM');" id="btncamera"	Style="text-align: left; margin-bottom:0%;background-color: white;   border: none;color:blue; margin-left: 14px;" 
+              >Take Photo</button>
+            </label>
+            <div class="col-sm-7 col-xs-7 takeImgSection">
+              <img class="col-30" id="img_1" src="" on-tap="removePic('CLAIM','img_1',1);" style="display:none;"> </img>
+              <img  class="col-30" id="img_2" src="" on-tap="removePic('CLAIM','img_2',2);" style="display:none;"> </img>
+              <img class="col-30" id="img_3" src="" on-tap="removePic('CLAIM','img_3',3);" style="display:none;"> </img>
+              <img class="col-30" id="img_4" src="" on-tap="removePic('CLAIM','img_4',4);" style="display:none;"> </img>
+              <img class="col-30" id="img_5" src="" on-tap="removePic('CLAIM','img_5',5);" style="display:none;"> </img>				
+              <img class="col-30" id="img_6" src="" on-tap="removePic('CLAIM','img_6',6);" style="display:none;"></img>
+              <img class="col-30" id="img_7" src="" on-tap="removePic('CLAIM','img_7',7);" style="display:none;"></img>
+              <img class="col-30" id="img_8" src="" on-tap="removePic('CLAIM','img_8',8);" style="display:none;"> </img>
+              <img class="col-30" id="img_9" src="" on-tap="removePic('CLAIM','img_9',9);" style="display:none;"></img>
+              <img class="col-30" id="img_10" src="" on-tap="removePic('CLAIM','img_10',10);" style="display:none;"> </img>
+            </div>
+          </div>
+          <!-- <div class="row">
+              <button  on-tap="cameraTakePicture('camera','CLAIM');" id="btncamera"	Style="text-align: left; margin-bottom:0%;background-color: white;   border: none;color:blue; margin-left: 14px;" 
+                 >Take Photo</button>
+          </div> -->
+
+         <!--file list start -->
+            <!-- <div class="row" id="rowFile_1">
+              <input  id="file_1" readonly type="text" placeholder="file name"
+              style="margin-left:2px;background-color:lightgray;margin-top:2px;display:none;width:80%;">
+              </input>
+              <img  on-tap="removeFile('CLAIM','file_1',1)" id="delIconClaim_1" src="./img/del1.png" style="margin-left:15px;width:30px;height:auto;display:none" />
+            </div>  -->
+
+            <div class="form-group row" id="rowFile_1" style="display:none;">
+              <div  class="col-sm-10 col-xs-10" >
+                <input  id="file_1" class="form-control" readonly type="text" placeholder="file name"
+                style="display:none;"/>
+             </div >    
+             <div  class="col-sm-2 col-xs-2">  
+               <img  on-tap="removeFile('CLAIM','file_1',1)" id="delIconClaim_1" src="./img/del1.png" style="display:none;" /> 
+            </div>
+          </div>
+
+            <!-- <div class="row" id="rowFile_2">
+              <input   id="file_2" readonly type="text" placeholder="file name"
+              style="margin-left:2px;background-color:lightgray;margin-top:2px;display:none;width:80%">
+              </input>
+              <img  on-tap="removeFile('CLAIM','file_2',2)" id="delIconClaim_2" src="./img/del1.png" style="margin-left:15px; width:30px;height:auto;display:none" />
+            </div> -->
+            <div class="form-group row" id="rowFile_2" style="display:none;">
+              <div  class="col-sm-10 col-xs-10" >
+                <input  id="file_2" class="form-control" readonly type="text" placeholder="file name"
+                style="display:none;" />
+             </div >    
+             <div  class="col-sm-2 col-xs-2" style="display:none;">  
+               <img  on-tap="removeFile('CLAIM','file_2',2)" id="delIconClaim_2" src="./img/del1.png" style="display:none" /> 
+            </div>
+          </div>
+
+
+
+            <!-- <div class="row" id="rowFile_3">
+              <input   id="file_3" readonly type="text" placeholder="file name"
+              style="margin-left:2px;background-color:lightgray;margin-top:2px;display:none;width:80%">
+              </input>
+              <img  on-tap="removeFile('CLAIM','file_3',3)" id="delIconClaim_3" src="./img/del1.png" style="margin-left:15px; width:30px;height:auto;display:none" />
+            </div> -->
+
+            <div class="form-group row" id="rowFile_3" style="display:none;">
+              <div  class="col-sm-10 col-xs-10">
+                <input  id="file_3" class="form-control" readonly type="text" placeholder="file name"
+                style="display:none;" />
+             </div >    
+             <div  class="col-sm-2 col-xs-2">  
+               <img  on-tap="removeFile('CLAIM','file_3',3)" id="delIconClaim_3" src="./img/del1.png" style="display:none" /> 
+            </div>
+          </div>
+
+            <!-- <div class="row" id="rowFile_4">
+              <input   id="file_4" readonly type="text" placeholder="file name"
+              style="margin-left:2px;background-color:lightgray;margin-top:2px;display:none;width:80%">
+              </input>
+              <img  on-tap="removeFile('CLAIM','file_4',4)" id="delIconClaim_4" src="./img/del1.png" style="margin-left:15px; width:30px;height:auto;display:none" />
+            </div> -->
+
+            <div class="form-group row" id="rowFile_4" style="display:none;">
+              <div  class="col-sm-10 col-xs-10">
+                <input  id="file_4" class="form-control" readonly type="text" placeholder="file name"
+                style="display:none;" />
+             </div >    
+             <div  class="col-sm-2 col-xs-2">   
+               <img  on-tap="removeFile('CLAIM','file_4',4)" id="delIconClaim_4" src="./img/del1.png" style="display:none" /> 
+            </div>
+          </div>
+
+            <!-- <div class="row" id="rowFile_5">
+              <input   id="file_5" readonly type="text" placeholder="file name"
+              style="margin-left:2px;background-color:lightgray;margin-top:2px;display:none;width:80%">
+              </input>
+              <img  on-tap="removeFile('CLAIM','file_5',5)" id="delIconClaim_5" src="./img/del1.png" style="margin-left:15px; width:30px;height:auto;display:none" />
+            </div> -->
+            <div class="form-group row" id="rowFile_5" style="display:none;">
+              <div  class="col-sm-10 col-xs-10">
+                <input  id="file_5" class="form-control" readonly type="text" placeholder="file name"
+                style="display:none;" />
+             </div >    
+             <div  class="col-sm-2 col-xs-2">   
+               <img  on-tap="removeFile('CLAIM','file_5',5)" id="delIconClaim_5" src="./img/del1.png" style="display:none" /> 
+            </div>
+          </div>
+
+
+            <!-- <div class="row" id="rowFile_6">
+              <input   id="file_6" readonly type="text" placeholder="file name"
+              style="margin-left:2px;background-color:lightgray;margin-top:2px;display:none;width:80%">
+              </input>
+              <img  on-tap="removeFile('CLAIM','file_6',6)" id="delIconClaim_6" src="./img/del1.png" style="margin-left:15px; width:30px;height:auto;display:none" />
+            </div> -->
+
+            <div class="form-group row" id="rowFile_6" style="display:none;">
+              <div  class="col-sm-10 col-xs-10">
+                <input  id="file_6" class="form-control" readonly type="text" placeholder="file name"
+                style="display:none;" />
+             </div >    
+             <div  class="col-sm-2 col-xs-2">  
+               <img  on-tap="removeFile('CLAIM','file_6',6)" id="delIconClaim_6" src="./img/del1.png" style="display:none" /> 
+            </div>
+          </div>
+
+            <!-- <div class="row" id="rowFile_7">
+              <input   id="file_7" readonly type="text" placeholder="file name"
+              style="margin-left:2px;background-color:lightgray;margin-top:2px;display:none;width:80%">
+              </input>
+              <img  on-tap="removeFile('CLAIM','file_7',7)" id="delIconClaim_7" src="./img/del1.png" style="margin-left:15px; width:30px;height:auto;display:none" />
+            </div> -->
+
+            <div class="form-group row" id="rowFile_7" style="display:none;">
+              <div  class="col-sm-10 col-xs-10">
+                <input  id="file_7" class="form-control" readonly type="text" placeholder="file name"
+                style="display:none;" />
+             </div >    
+             <div  class="col-sm-2 col-xs-2">   
+               <img  on-tap="removeFile('CLAIM','file_7',7)" id="delIconClaim_7" src="./img/del1.png" style="display:none" /> 
+            </div>
+          </div>
+            
+            <!-- <div class="row" id="rowFile_8">
+              <input   id="file_8" readonly type="text" placeholder="file name"
+              style="margin-left:2px;background-color:lightgray;margin-top:2px;display:none;width:80%">
+              </input>
+              <img  on-tap="removeFile('CLAIM','file_8',8)" id="delIconClaim_8" src="./img/del1.png" style="margin-left:15px; width:30px;height:auto;display:none" />
+            </div> -->
+
+            <div class="form-group row" id="rowFile_8" style="display:none;">
+              <div  class="col-sm-10 col-xs-10">
+                <input  id="file_8" class="form-control" readonly type="text" placeholder="file name"
+                style="display:none;" />
+             </div >    
+             <div  class="col-sm-2 col-xs-2">   
+               <img  on-tap="removeFile('CLAIM','file_8',8)" id="delIconClaim_8" src="./img/del1.png" style="display:none" /> 
+            </div>
+          </div>
+
+            <!-- <div class="row" id="rowFile_9">
+              <input   id="file_9" readonly type="text" placeholder="file name"
+              style="margin-left:2px;background-color:lightgray;margin-top:2px;display:none;width:80%">
+              </input>
+              <img  on-tap="removeFile('CLAIM','file_9',9)" id="delIconClaim_9" src="./img/del1.png" style="margin-left:15px; width:30px;height:auto;display:none" />
+            </div> -->
+
+            <div class="form-group row" id="rowFile_9" style="display:none;">
+              <div  class="col-sm-10 col-xs-10">
+                <input  id="file_9" class="form-control" readonly type="text" placeholder="file name"
+                style="display:none;"/>
+             </div >    
+             <div  class="col-sm-2 col-xs-2">    
+               <img  on-tap="removeFile('CLAIM','file_9',9)" id="delIconClaim_9" src="./img/del1.png" style="display:none" /> 
+            </div>
+          </div>
+
+            <!-- <div class="row" id="rowFile_10" style="display:none;">
+              <input   id="file_10" readonly type="text" placeholder="file name"
+              style="margin-left:2px;background-color:lightgray;margin-top:2px;display:none;width:80%">
+              </input>
+              <img  on-tap="removeFile('CLAIM','file_10',10)" id="delIconClaim_10" src="./img/del1.png" style="margin-left:15px; width:30px;height:auto;display:none" />
+            </div> -->
+            <div class="form-group row" id="rowFile_10" style="display:none;">
+              <div  class="col-sm-10 col-xs-10">
+                <input  id="file_10" class="form-control" readonly type="text" placeholder="file name"
+                style="display:none;"/>
+             </div >    
+             <div  class="col-sm-2 col-xs-2">    
+               <img  on-tap="removeFile('CLAIM','file_10',10)" id="delIconClaim_10" src="./img/del1.png" style="display:none" /> 
+            </div>
+          </div>
+
+          </div>
+          <!--file list over -->
+          <!-- <div class="row takeImgSection"> 
+          <br>				
+          <img class="col-30" id="img_1" src="" on-tap="removePic('CLAIM','img_1',1);" style="display:none;">
+          </img>
+          <img  class="col-30" id="img_2" src="" on-tap="removePic('CLAIM','img_2',2);" style="display:none;">
+          </img>
+          <img class="col-30" id="img_3" src="" on-tap="removePic('CLAIM','img_3',3);" style="display:none;">
+          </img>
+          <img class="col-30" id="img_4" src="" on-tap="removePic('CLAIM','img_4',4);" style="display:none;">
+          </img>
+          <img class="col-30" id="img_5" src="" on-tap="removePic('CLAIM','img_5',5);" style="display:none;">
+          </img>				
+          <img class="col-30" id="img_6" src="" on-tap="removePic('CLAIM','img_6',6);" style="display:none;">
+          </img>
+          <img class="col-30" id="img_7" src="" on-tap="removePic('CLAIM','img_7',7);" style="display:none;">
+          </img>
+          <img class="col-30" id="img_8" src="" on-tap="removePic('CLAIM','img_8',8);" style="display:none;">
+          </img>
+          <img class="col-30" id="img_9" src="" on-tap="removePic('CLAIM','img_9',9);" style="display:none;">
+          </img>
+          <img class="col-30" id="img_10" src="" on-tap="removePic('CLAIM','img_10',10);" style="display:none;">
+          </img>
+          </div> -->
+          <!-- multi attachement over -->
+      
+
+      <!--         
+        <div class="item" style="padding: 2px 16px 2px 16px;">
+          <label class="grayBackColor">
+            <button class="button button-block button-positive">Save</button>
+          </label>
+        </div>
+         -->
+        <!-- <div class="item" style="padding: 2px 16px 2px 16px;">
+          <label class="grayBackColor">
+            <button class="button button-block button-positive" ng-disabled="newCTCForm.$invalid" ng-click="sendCTCForm('SENT FOR APPROVAL')">Send For Approval</button>
+          </label>
+        </div> -->
+
+        <div class="form-group row">
+          <div class="text-center" style="margin: 0 auto;">
+            <button id="submitForm" class="button button-block button-positive" style="width: 100%;" ng-disabled="newCTCForm.$invalid" ng-click="sendCTCForm('SENT FOR APPROVAL')">Send For Approval</button>
+        </div>  
+      </div>
+      
+    </div>
+    </form>
+  </ion-content>
+</ion-view>

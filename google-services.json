@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1071988124207",
+    "firebase_url": "https://hralign-b2071.firebaseio.com",
+    "project_id": "hralign-b2071",
+    "storage_bucket": "hralign-b2071.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1071988124207:android:094198483e3bca6b",
+        "android_client_info": {
+          "package_name": "com.neterson.hralign"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1071988124207-idbp1na0s5ih9fhpom14kslgcf9l40g3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgf05BKeGM7ekIQnbJ1G6vrRx7zdOcnHk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1071988124207-idbp1na0s5ih9fhpom14kslgcf9l40g3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1071988124207-mu9oa8t4f1qabcr2p913acsmpvhan2f8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.neterson.hralign"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

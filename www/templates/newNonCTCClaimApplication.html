@@ -1,0 +1,392 @@
+<!-- <style>
+    .customRadio {
+        display: none;
+    }
+
+    .customRadio+label {
+        display: inline-block;
+        margin: -2px;
+        padding: 4px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        line-height: 20px;
+        color: #333;
+        text-align: center;
+        text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+        vertical-align: middle;
+        cursor: pointer;
+        background-color: #f5f5f5;
+        background-color: #f5f5f5;
+        background-image: -moz-linear-gradient(top, #fff, #e6e6e6);
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#e6e6e6));
+        background-image: -webkit-linear-gradient(top, #fff, #e6e6e6);
+        background-image: -o-linear-gradient(top, #fff, #e6e6e6);
+        background-image: linear-gradient(to bottom, #fff, #e6e6e6);
+        background-repeat: repeat-x;
+        border: 1px solid #ccc;
+        border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+        border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+        border-bottom-color: #b3b3b3;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+        filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+        -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+        -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    .customRadio:checked+label {
+        background-image: none;
+        outline: 0;
+        -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+        -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+        /*        background-color:#0066ff;
+                color: white;*/
+    }
+
+    input[type="radio"] {
+        margin-top: -1px;
+        vertical-align: middle;
+    }
+
+    #check,
+    #check1 {
+        cursor: pointer;
+        -webkit-appearance: none;
+        appearance: none;
+        background: white;
+        border-radius: 1px;
+        box-sizing: border-box;
+        position: relative;
+        box-sizing: content-box;
+        width: 20px;
+        height: 20px;
+        border-width: 0;
+        transition: all .3s linear;
+        border: 2px solid
+    }
+
+    #check:checked,
+    #check1:checked {
+        background: url("img/tick.jpg");
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+
+    #check:focus,
+    #check1:focus {
+        outline: 0 none;
+        box-shadow: none;
+    }
+
+    .textareaBox {
+        margin-left: 2%;
+        width: 96%;
+        padding-bottom: 5%;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .custom-card {
+        margin-top: 0px;
+        margin-bottom: 20px;
+        border-radius: 9px;
+        border: 1px solid #007ec1;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .item-select select {
+        max-width: 68%;
+    }
+  </style> -->
+<ion-view>
+  <!-- <ion-nav-bar class="bar-stable" style="background-color: white">
+    <ion-nav-buttons side="left">
+      <button class="button button-clear" ng-click="redirectOnNonCtcClaim()">
+        <i class="icon ion-ios-arrow-back"></i>
+        Back</button>
+    </ion-nav-buttons>
+  </ion-nav-bar> -->
+  <div class="bar bar-footer hide-on-keyboard-open"
+    style="background-color:#000; background-size: 100% 0px;">
+    <div class="title" style="height: 20px;">
+      <h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px;
+        margin-bottom: 5px;">Powered by HR Align</h6>
+    </div>
+  </div>
+  <ion-content has-bouncing="false" class="item-divider grayBackColor"  style="overflow-y: auto;">
+
+        <!-- <div class="custom-header" style="padding: 0px;padding-left:
+          15px;margin-top:-8px;">
+          <h4 class="custom-header" style="padding-top:5px;margin-left: -5px;">
+            <b>Non CTC Claim Application</b>
+          </h4>
+        </div> -->
+        <div class="custom-header" style="padding-top: 0px;padding-bottom: 0px;">
+          <h4 class="subHeaderClass" style="margin: 0px;"> <span ng-click="redirectOnBack()" class="backIcon">
+            <i class="icon ion-ios-arrow-back"></i></span> <b style="vertical-align: super;">Non CTC Claim Application</b></h4>
+         </div>
+        <div class="cardList" style="margin-top: 0px;">
+          <form name="credentialsForm">
+            <!-- <div class="item item-input">
+              <div class="input-label" style="margin-left: -5px;font-weight:
+                normal;">Period :</div>
+              <div class="input-label" style="margin-left: 60px;font-weight:
+                normal;">{{periodfromDt}} - {{periodtoDt}}</div>
+            </div> -->
+            <div class="form-group row">
+              <label  class="col-sm-4 col-xs-4 col-form-label">Period</label><span class="dividerClass">:</span>
+              <div  class="col-sm-8 col-xs-8">
+                {{periodfromDt}} - {{periodtoDt}}
+              </div>
+            </div>
+
+            <div ng-repeat="grid1 in claimFormVOList">
+			<div id="trGrid1_{{$index}}" ng-show="countGrid1>$index" style="height:auto;">
+
+              <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Claim Type</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  <select id="claimType{{$index}}" class="form-control"
+                  ng-options="payh.ctcPayHeadId as payh.ctcPayHeadName for payh in listNonCtcPayHeadList"
+				  ng-change="getBalanceOfPayHeadForNonCtc(selectedValues.ctcPayHeadId[$index],$index)"
+                  ng-model="selectedValues.ctcPayHeadId[$index]">
+                  <option value="" selected="selected">Please Select</option>
+                </select>
+                </div>
+              </div>
+              <!-- <div>
+                <div class="input-label" style="margin-left: -5px;font-weight:
+                  normal;">Claim For Month*</div>
+                <select id="claimMonth{{$index}}" style="padding-left: 2%;" class="form-control item-select select">
+                  <option value="" selected="selected">Please Select</option>
+                  <option value="01">January</option>
+                  <option value="02">February</option>
+                  <option value="03">March</option>
+                  <option value="04">April</option>
+                  <option value="05">May</option>
+                  <option value="06">June</option>
+                  <option value="07">July</option>
+                  <option value="08">August</option>
+                  <option value="09">September</option>
+                  <option value="10">October</option>
+                  <option value="11">November</option>
+                  <option value="12">December</option>
+                </select>
+              </div> -->
+              <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Claim Month</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  <select id="claimMonth{{$index}}" class="form-control">
+                    <option value="" selected="selected">Please Select</option>
+                    <option value="01">January</option>
+                    <option value="02">February</option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                    <option value="07">July</option>
+                    <option value="08">August</option>
+                    <option value="09">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                  </select>
+                </div>
+              </div>
+              <!-- <div>
+                <div class="input-label" style="margin-left: -5px;font-weight:
+                  normal;">Year*</div>
+                <select id="claimYear{{$index}}" style="padding-left: 2%;"
+                  class="form-control item-select select"
+                  ng-options="year as year for year in listYear"
+                  ng-model="selectedValues.yearName[$index]">
+                  <option value="">Please Select</option>
+                
+                </select>
+              </div> -->
+              <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Year</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  <select id="claimYear{{$index}}"
+                  class="form-control" ng-options="year as year for year in listYear" ng-model="selectedValues.yearName[$index]">
+                  <option value="">Please Select</option>
+                </select>
+                </div>
+              </div>
+              <!-- <div>
+                <span class="input-label" style="min-width: 40%; margin-left:
+                  -10px;font-weight: normal;">&nbsp;Claim Date* </span>
+                <input  id="claimDate{{$index}}" 
+                  style="padding-left:0px;padding-right:0px;background-color:white;border:
+                  1px solid #b3b3b3;text-align:center;width:120px"
+                  placeholder="DD/MM/YYYY" ng-click="setDate(grid1)"
+                   type="text" ng-model="selectedValues.claimDate[$index]"
+                   readonly/>
+                <i style="padding-left: 3%;margin-right: -15px;font-size: 193%;"
+                  ng-click="setDate()" class="ion-calendar">&emsp;</i>
+              </div> -->
+              <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Claim Date</label><span class="dividerClass">:</span>
+                <div  class="col-sm-6 col-xs-6">
+                  <input  id="claimDate{{$index}}" class="form-control" placeholder="DD/MM/YYYY" ng-click="setDate(grid1)"
+                   type="text" ng-model="selectedValues.claimDate[$index]"
+                   readonly/>
+                </div>
+                <div  class="col-sm-2 col-xs-2">
+                  <i style="padding-left: 3%;margin-right: -15px;font-size: 193%;" ng-click="setDate(grid1)" class="ion-calendar">&emsp;</i>
+                </div>
+              </div>
+			  <!-- <div>
+                <span class="input-label" style="min-width: 40%; margin-left:
+                  -10px;font-weight: normal;">&nbsp;Bill Amount* </span>
+                  <input  id="billAmount{{$index}}" 
+                  style="padding-left:0px;padding-right:0px;background-color:white;border:
+                  1px solid #b3b3b3;text-align:center;width:120px"
+                  placeholder="0.0" 
+                  type="text" />
+              </div> -->
+              <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Bill Amount</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  <input  id="billAmount{{$index}}" class="form-control" placeholder="0.0"  type="text" />
+                </div>
+              </div>
+			  <!-- <div>
+                <span class="input-label" style="min-width: 40%; margin-left:
+                  -10px;font-weight: normal;">&nbsp;Claim Amount* </span>
+                <input  id="claimAmount{{$index}}" 
+                  style="padding-left:0px;padding-right:0px;background-color:white;border:
+                  1px solid #b3b3b3;text-align:center;width:120px"
+                  placeholder="0.0" 
+                   type="text" 
+                   />
+              </div> -->
+              <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Amount</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                  <input  id="claimAmount{{$index}}" class="form-control" placeholder="0.0"  type="text"  />
+                </div>
+               
+              </div>
+			  <!-- hidden values -->
+			   <!-- <div>
+            <input  id="ctcConfigurationExistFlag{{$index}}" class="form-control" placeholder="0.0"  type="text"  />
+              </div>  -->
+              <div class="form-group row" style="display:none">
+                <label  class="col-sm-4 col-xs-4 col-form-label"></label><span></span>
+                <div  class="col-sm-8 col-xs-8" style="display:none">
+                  <input  id="ctcConfigurationExistFlag{{$index}}" class="form-control" placeholder="0.0"  type="text"  />
+                </div>
+              </div>
+              
+			  <!-- <div>
+                  <input  id="yearlyClaim{{$index}}" class="form-control" placeholder="0.0"  type="text" value="50000"/>
+              </div> -->
+              <div class="form-group row" style="display:none">
+                <label  class="col-sm-4 col-xs-4 col-form-label"></label><span></span>
+                <div  class="col-sm-8 col-xs-8" style="display:none">
+                  <input  id="yearlyClaim{{$index}}" class="form-control" placeholder="0.0"  type="text" style="display:none" />
+                </div>
+              </div>
+			  <!-- hidden over -->
+				<!-- <div class="item">
+             <h5 style="font-size:0.9em;margin-top:3px;font-weight:500;">Remarks:</h5>
+							<br>
+                            <textarea id="remarks{{$index}}"  rows="4" cols="50"  
+							style="background-color:white;border: 1px solid #b3b3b3;text-align:left;width:100%"></textarea>
+        </div> -->
+        <div class="form-group row">
+          <label  class="col-sm-4 col-xs-4 col-form-label">Remarks</label><span class="dividerClass">:</span>
+          <div  class="col-sm-8 col-xs-8">
+            <textarea id="remarks{{$index}}"  rows="3" cols="50" class="form-control"></textarea>
+          </div>
+        </div>
+				
+				<!-- <div class="row">
+                <span class="col col-50" style="font-weight: normal;">
+                  Attachment *
+                </span>
+              </div>
+			
+                    <label class="" >
+							<div class="row" >
+								<input col="col-80" type="file" name="inputFileUpload_{{$index}}" id="inputFileUpload_{{$index}}"  
+         ng-model="somemodel" 
+       onchange="angular.element(this).scope().selectedValues.elem = this; angular.element(this).scope().SelectedFile(event)" />
+							</div>
+							<div class="row" >
+	
+								<button col="col-80" id="btncamera_{{$index}}"  Style="text-align: left;
+									margin-bottom:0%;" on-tap="cameraTakePicture('camera',{{$index}});">
+									<b> Take Picture &nbsp;&nbsp; </b>
+								</button>
+							</div>
+							<img class="col-30" id="showImg_{{$index}}" 
+								style="width:50px;height:50px;visibility:hidden;margin-left:2px;"
+								src="" on-tap="removeAttachment({{$index}})">
+							</img>
+                    document.getElementById('inputFileUpload_'$index').click()    
+                    </label> -->
+
+                    
+                      <div  >Attachment:</div>
+                      <div  class="row">
+						<button  id="delegateBtn_{{$index}}"    Style="width:100%;text-align: left; margin-bottom:0%;background-color: white;   border: none;color:blue;" 
+							onclick="angular.element(this).scope().selectedValues.elem = this; angular.element(this).scope().selectFromDeviceClicked(event);">Select from device</button>
+                        <input type="file"  id="inputFileUpload_{{$index}}"  
+						style="width:0px;height:0px;"
+                        ng-model="somemodel" 
+                      onchange="angular.element(this).scope().selectedValues.elem = this; angular.element(this).scope().SelectedFile(event)" />
+					  <span style="margin-left:-98%;margin-top:5%;"><br>{{FileNames[$index]}}</span>
+                      </div>
+                    
+                    <div class="row" >
+                      <button id="btncamera_{{$index}}"  Style="width:100%;text-align: left; margin-bottom:0%;background-color: white;   border: none;color:blue;"  on-tap="cameraTakePicture('camera',{{$index}});">
+                         Take Photo &nbsp;&nbsp; 
+                      </button>
+                    </div>
+                    <img class="col-30" id="showImg_{{$index}}" 
+                      style="width:50px;height:50px;visibility:hidden;margin-left:100px;margin-top:-8%"
+                      src="" on-tap="removeAttachment({{$index}})">
+                    </img>
+                    
+                
+              </div>
+			  </div>
+            </div>
+            
+              <div> <!-- buttons -->
+						
+                <!-- <button id="btnAddRowGrid3" class="button" style="background-color:green;color:white;width:27%;"
+                     ng-click="addRowGrid1()">Add</button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button id="btnRemRowGrid3" class="button" style="background-color:red;color:white;width:40%;" 
+                  ng-click="remRowGrid1()">Remove</button> -->
+                  <br>
+                <div class="text-center">
+                  <button type="button" id="btnAddRowGrid3" ng-click="addRowGrid1()" class="btn btn-success mr-10">
+               <i class="fa fa-plus mr-5" aria-hidden="true"></i> Add</button>
+                  <button type="button" id="btnRemRowGrid3" ng-click="remRowGrid1()" class="btn btn-danger">
+                    <i class="fa fa-times mr-5" aria-hidden="true"></i> Remove</button>
+             </div>
+						</div> 
+              <div>
+                <br>
+			  <!-- <center>
+                <label class="grayBackColor">
+                  <button class="button button-positive" ng-click="sendNonNONCTCForm()">Send For Approval</button>
+                </label>
+        </center> -->
+        <div class="text-center" class="item">
+       <button type="button" class="btn btn-primary mr-10" ng-click="sendNonNONCTCForm()">
+     <i class="fa fa-paper-plane mr-10" aria-hidden="true"></i>Send for Approval  </button>
+     </div>
+     <br> <br> <br>
+              </div>
+			  
+          </div>
+        </form>
+      </ion-content>
+    </ion-view>

@@ -1,0 +1,503 @@
+<style>
+    .custom-item {
+      border: none;
+    }
+    .anchorRRedirect {
+      position: absolute;
+      top: 212px;
+      right: 14px;
+      font-size: 15px;
+      color: #3b5998;
+    }
+    .listTopMargin {
+      margin-top: 10px;
+    }
+    .travelListTopMargin {
+      margin-top: -40px;
+    }
+    #outer {
+      width: 100%;
+      text-align: center;
+    }
+    .inner {
+      display: inline-block;
+    }
+    ul.ctcClaimList {
+      margin-top: 20px;
+    }
+    ul.ctcClaimList li {
+      font-size: 0.8em;
+      padding: 5px 0px 0px 0px;
+      min-width: 435px;
+    }
+    .ctcClaimList b {
+      display: inline-block;
+      width: 40%;
+      position: relative;
+      padding-right: 10px;
+    }
+    .ctcClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ul.travelClaimList {
+      width: 125%;
+    }
+    ul.travelClaimList li {
+      font-size: 0.8em;
+      padding: 5px 0px 0px 0px;
+      min-width: 435px;
+    }
+    .travelClaimList b {
+      display: inline-block;
+      width: 32%;
+      position: relative;
+      padding-right: 10px;
+    }
+    .travelClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ul.odClaimList {
+      margin-top: 20px;
+    }
+    ul.odClaimList li {
+      font-size: 0.8em;
+      padding: 5px 0px 0px 0px;
+      min-width: 435px;
+    }
+    .odClaimList b {
+      display: inline-block;
+      width: 35%;
+      position: relative;
+      padding-right: 10px;
+    }
+    .odClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ul.attClaimList {
+      width: 125%;
+    }
+    ul.attClaimList li {
+      font-size: 0.8em;
+      padding: 5px 0px 0px 0px;
+      min-width: 435px;
+    }
+    table, th, td {
+  border: 1px solid black;
+}
+    .attClaimList b {
+      display: inline-block;
+      width: 38%;
+      position: relative;
+      padding-right: 10px;
+    }
+    .attClaimList b::after {
+      content: ":";
+      position: absolute;
+      right: 10px;
+    }
+  
+    ol,
+    ul {
+      margin-bottom: 0px !important;
+    }
+    a:focus,
+    a:hover {
+      text-decoration: none;
+    }
+    .tab-item.tab-item-active,
+    .tab-item.active,
+    .tab-item.activated {
+      opacity: 1;
+    }
+    .tab-item {
+      opacity: 0.7;
+    }
+    .custom-row {
+      padding: 0px;
+    }
+    .custom-padding {
+      padding: 5px 10px;
+    }
+    .custom-top {
+      top: 10px;
+      left: 13px;
+    }
+    .custom-paddingTop {
+      padding-top: 11px;
+    }
+    .custom_OD {
+      padding-top: 11px;
+      padding-bottom: 0px;
+    }
+    .custom-paddingBottom {
+      padding-bottom: 0px;
+    }
+    /* .cust-card {
+      padding: 50px 0px 0px 0px;
+    } */
+    .custom-requestApprove {
+      font-size: 11px;
+      color: green;
+    }
+    .custom-requestRejcted {
+      font-size: 11px;
+      color: red;
+    }
+    .custom-requestOther {
+      font-size: 11px;
+      color: orange;
+    }
+    
+    .custom-fontSize {
+      font-size: 12px;
+    }
+    .modal-wrapper {
+      position: absolute;
+      top: 25%;
+      display: block;
+      width: 90%;
+      min-height: 45%;
+      padding: 5%;
+    }
+  
+    .modal-backdrop-bg {
+      background-color: rgba(255, 255, 255, 0.85);
+    }
+  
+    .modal {
+      border-top-right-radius: 1em;
+      border-bottom-right-radius: 1em;
+      border-top-left-radius: 1em;
+      border-bottom-left-radius: 1em;
+    }
+  
+    .modal-ion-content {
+      padding: 15px;
+      font-size: 0.85em;
+    }
+  
+  
+    .badge.badgeCustom {
+      width: 22px;
+      height: 22px;
+      text-align: center;
+      line-height: 18px;
+      display: block;
+      position: absolute;
+      top: 0;
+      color: #fff !important;
+      font-size: 10px !important;
+      padding: 0;
+    }
+    a:focus,
+    a:hover {
+      text-decoration: none;
+    }
+    .tab-item.tab-item-active,
+    .tab-item.active,
+    .tab-item.activated {
+      opacity: 1;
+    }
+    .tab-item {
+      opacity: 0.7;
+    }
+    /* .slick-slide .slide-content {
+    margin: 0 3%;
+    padding: 10px 5px;
+  
+  } */
+  
+    .slick-prev,
+    .slick-next {
+      position: absolute;
+      right: 10%;
+      background: #777;
+      border: none;
+      color: transparent;
+      width: 30px;
+      height: 30px;
+    }
+  
+    .slick-prev:before,
+    .slick-next:before {
+      content: ">";
+      color: #fff;
+      font-size: 25px;
+    }
+  
+    .slick-prev {
+      left: 10%;
+    }
+  
+    .slick-prev:before {
+      content: "<";
+    }
+  
+    .slick-dots {
+      list-style: none;
+      margin: 0 auto;
+      text-align: center;
+      margin-top: 10px;
+    }
+  
+    .slick-dots li {
+      display: inline-block;
+    }
+  
+    .slick-dots li button {
+      transition: 0.2s background-color ease-in-out 0s;
+      border: none;
+      padding: 0;
+      color: transparent;
+      width: 10px;
+      height: 10px;
+      background-color: #777;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+  
+    .slick-dots li.slick-active button {
+      background-color: #0a9dc7;
+    }
+    /* .slick-slider {
+      width: 100%;
+      position: relative;
+      transform: translate(-50%, -50%);
+      top: 0%;
+      left: 50%;
+  } */
+    .slick-slider {
+      width: 100%;
+      position: relative;
+      top: 0%;
+    }
+    /* ===form List=== */
+    /* .customBorderRadius .dividerClass {
+      line-height: 1.5 !important;
+  }
+  .customBorderRadius label {
+      font-size: 13px !important;
+      line-height: 1.5 !important;
+  }
+  .customBorderRadius .row {
+      margin: 0 5px !important;
+      padding: 0 5px !important;
+  }
+  .customBorderRadius.col-xs-8 {
+      font-size: 13px !important;
+  }
+  .customBorderRadius .item-note {
+      padding: 10px 10px 0 0 !important;
+      margin-bottom: 2px !important;
+  } */
+  .inner .btn-pad.claimClass{
+    margin: 14px 4px 5px 10px;
+      padding: 0 8px;
+  }
+  .inner .badge{
+    position: relative;
+    margin: 0 -8px;
+    float: right;
+  }
+  .slick-carousel .fa{
+    font-size: 40px;
+    color: #777676;
+  }
+  .slick-carousel p {
+      color: #212121;
+      margin: 0 0 10px;
+      font-size: 0.83em;
+      text-align: center;
+      margin-left: -2%;
+      margin-top: 0%;
+      margin-bottom: 2px;
+      font-weight: 400;
+  }
+  /*-------Color Code--------------*/
+.colorClegend {
+	display: block;
+	list-style: none;
+  margin: 11px 0;
+    overflow: hidden;
+    padding: 15px 0px;;
+	text-align: left;
+  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+  -webkit-box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+  -moz-box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+  -o-box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+}
+
+.colorClegend li {
+	position: relative;
+	display: inline-block;
+	/* font-size: 12px; */
+	line-height: 1;
+	color: #aaa;
+	margin-right: 10px;
+}
+
+.colorClegend li:before {
+	display: block;
+	width: 16px;
+	height: 16px;
+	background: #ddd;
+	content: '';
+	float: left;
+	margin-right: 6px;
+}
+
+.colorClegend li.leave:before {
+	background: #8A2BE2;
+}
+
+.colorClegend li.weekoff:before {
+	background: #FFA07A;
+}
+
+.colorClegend li.holiday:before {
+	background: #ff75d0;
+}
+.colorClegend li.app:before {
+	background: #ccffcc;
+}
+
+.colorClegend li.rej:before {
+	background: #ff9999;
+}
+
+.colorClegend li.sent:before {
+	background: #ffffb3;
+}
+.colorClegend li.save:before {
+	background: #b3e6ff;
+}
+.alert {
+    padding: 10px 10px !important;
+    margin-bottom: 0px !important;
+
+}
+select{
+    width: 80%;
+}
+input{
+}
+ .ui-autocomplete.ui-menu.ui-widget.ui-widget-content.ui-corner-all
+{
+    height: 100px;
+    overflow: auto;
+}
+  </style>
+  <ion-view>
+
+    <div class="bar bar-footer hide-on-keyboard-open" style="background-color:#000; background-size: 100% 0px;">
+        <div class="title" style="height: 20px;">
+            <h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px;
+                margin-bottom: 5px;">Powered by HR Align</h6>
+        </div>
+    </div>
+    <ion-content has-bouncing="false" style="overflow-y: auto;top:0%" class="requisionSection">
+        <div class="custom-header" style="padding-top: 0px;padding-bottom: -20px;">
+            <h4 class="subHeaderClass" style="margin: 0px;"> <span class="backIcon">
+              <i class="icon ion-ios-arrow-back" ng-click="redirectOnBack()"></i></span>
+                <b style="vertical-align: super;">Withdrawl Of Resignation </b></h4>
+                
+        </div>
+        <!-- <div class="form-group row">
+            <label class="col-xs-4 col-sm-4">With Effect From</label><span class="dividerClass">:</span>
+            <div class="form-group row">
+                <input id="withEffectFrom" class="col-xs-8 col-sm-8" value=""
+                ng-change="setWEF()"
+               
+                ng-model="selectedValue.wef"
+                />
+                <span class="col-xs-2 col-sm-2" >
+                  <i ng-click="setWEF()" class="ion-calendar"></i>
+                </span>
+              </div>
+        </div> -->
+        <div style="padding: 10px;">
+           
+
+
+
+            <div class="item">
+                <label>
+                        <!-- <div>
+                            <h2 ng-if="resultObj.uploadFileName" ng-click="downloadAttachmnent(resultObj)" style="font-size: 0.8em;color:blue;">Tap to download:&nbsp;&nbsp;{{resultObj.uploadFileName}} </h2> 
+                        </div>
+                            <br> -->
+                        <div class="row" >Attachment:</div>
+                        <div class="row" >
+                            <button col="col-80"  Style="text-align: left; margin-bottom:0%;background-color: white;   border: none;color:blue;" 
+                            onclick="document.getElementById('inputFileUpload').click()">Select from device</button>
+                            <input col="col-80" type="file" name="inputFileUpload" id="inputFileUpload"  
+                            ng-model="somemodel" style="height:0px ; width:0px" 
+                            onchange="angular.element(this).scope().SelectedFile(event)" />
+                            <span style="margin-left:-40%;margin-top:5%;"><br>{{selectedFileNameFromDevice}}</span>
+                        </div>
+                        <div class="row" >
+                            <button col="col-80" id="btncamera" Style="text-align: left; margin-bottom:0%;background-color: white;   border: none;color:blue;"  
+                            on-tap="cameraTakePicture('camera');">Take Photo</button>
+                        </div>
+                        <img class="col-30" id="showImg" 
+                            style="width:50px;height:50px;visibility:hidden;margin-left:30%;margin-top: -10%;"
+                            src="" on-tap="removeAttachment()">
+                        </img>
+                    
+                </label>
+                
+            </div> 
+
+            
+
+           
+           
+
+            <div class="form-group row">
+              <label class="col-xs-4 col-sm-4">Remarks </label><span class="dividerClass">:</span>
+              <div class="col-xs-8 col-sm-8">
+                <textarea id="remarks" cols="6" rows="5"></textarea>
+              </div>
+              
+            </div>
+
+            <div class="form-group row">
+              <label class="col-xs-4 col-sm-4">Approvers</label><span class="dividerClass">:</span>
+              <div class="col-xs-8 col-sm-8">
+                <div ng-repeat="(key,value) in transRequisitionForm.approverList">
+                  {{value}}
+                </div>
+              </div>
+            </div>
+
+            
+
+            
+            <div class="form-group row">
+                <div class="col-xs-4 col-sm-4">
+                
+                </div>
+              <div class="col-xs-4 col-sm-4">
+                <button class="btn btn-success" ng-click="goSave()">
+                  <i class="fa fa-check"></i>
+                  Send For Approval</button>
+              </div>
+              <div class="col-xs-4 col-sm-4">
+                
+              </div>
+            </div>
+
+            </div>          
+
+    </ion-content>
+  </ion-view>
+  

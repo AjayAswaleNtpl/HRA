@@ -1,0 +1,432 @@
+<style>
+    .customRadio {
+        display: none;
+    }
+
+    .customRadio+label {
+        display: inline-block;
+        margin: -2px;
+        padding: 4px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        line-height: 20px;
+        color: #333;
+        text-align: center;
+        text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+        vertical-align: middle;
+        cursor: pointer;
+        background-color: #f5f5f5;
+        background-color: #f5f5f5;
+        background-image: -moz-linear-gradient(top, #fff, #e6e6e6);
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#e6e6e6));
+        background-image: -webkit-linear-gradient(top, #fff, #e6e6e6);
+        background-image: -o-linear-gradient(top, #fff, #e6e6e6);
+        background-image: linear-gradient(to bottom, #fff, #e6e6e6);
+        background-repeat: repeat-x;
+        border: 1px solid #ccc;
+        border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+        border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+        border-bottom-color: #b3b3b3;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+        filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+        -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+        -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    .customRadio:checked+label {
+        background-image: none;
+        outline: 0;
+        -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+        -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+        /*        background-color:#0066ff;
+                color: white;*/
+    }
+
+    input[type="radio"] {
+        margin-top: -1px;
+        vertical-align: middle;
+    }
+
+    #check,
+    #check1 {
+        cursor: pointer;
+        -webkit-appearance: none;
+        appearance: none;
+        background: white;
+        border-radius: 1px;
+        box-sizing: border-box;
+        position: relative;
+        box-sizing: content-box;
+        width: 20px;
+        height: 20px;
+        border-width: 0;
+        transition: all .3s linear;
+        border: 2px solid
+    }
+
+    #check:checked,
+    #check1:checked {
+        background: url("img/tick.jpg");
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+
+    #check:focus,
+    #check1:focus {
+        outline: 0 none;
+        box-shadow: none;
+    }
+
+    .textareaBox {
+        margin-left: 2%;
+        width: 96%;
+        padding-bottom: 5%;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .custom-card {
+        margin-top: 0px;
+        margin-bottom: 20px;
+        border-radius: 9px;
+        border: 1px solid #007ec1;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .item-select select {
+        max-width: 68%;
+    }
+	button.button-block {
+    width: 100% !important;
+}
+.itemSection{
+padding: 16px 5px;
+}
+ul.ctcClaimList li{
+    font-size:0.8em;
+    padding: 5px 0px 0px 0px;
+    min-width: 435px;
+  }
+  .ctcClaimList b {
+  display: inline-block;
+  width: 31.5%;
+  position: relative;
+  padding-right: 10px;
+}
+ol,ul{
+  margin-bottom:0px!important;
+}
+
+.ctcClaimList b::after {
+  content: ":";
+  position: absolute;
+  right: 10px;
+}
+.aprroverejectBtn button{
+    font-size: 13px !important;
+}
+</style>
+<ion-view>
+    <div class="bar bar-footer hide-on-keyboard-open" style="background-color:#000; background-size: 100% 0px;">
+        <div class="title" style="height: 20px;">
+            <h6 style="font-size: 0.5em;color:#fff;margin-top: 5px;height: 10px;
+                margin-bottom: 5px;">Powered by HR Align</h6>
+        </div>
+    </div>
+    <ion-content has-bouncing="false" class="item-divider grayBackColor" style="overflow-y: auto;">
+        <div class="custom-header" style="padding-top: 0px;padding-bottom: 0px;">
+            <h4 class="subHeaderClass" style="margin: 0px;"> <span class="backIcon">
+              <i class="icon ion-ios-arrow-back" ng-click = "redirectOnBack()"></i></span>
+                <b style="vertical-align: super;"> Add Timesheet </b></h4>
+
+        </div>
+
+        <form name="timeSheetEmployeeDailyForm">
+            <!-- <div class="form-group row">
+                <label class="col-sm-4 col-xs-4 col-form-label">Company Name </label><span class="dividerClass">:</span>
+                <label class="col-sm-8 col-xs-8 col-form-label" id="companyName"  ></label>
+            </div> -->
+            <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Company Name</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                    <label class="col-form-label" id="companyName"  ></label>
+                </div>
+              </div>
+
+
+            <div ng-repeat="mapData in dateWiseHoLeaveWoMap"></div>
+            <!-- <div class="form-group row">
+                <label class="col-sm-4 col-xs-4 col-form-label">Actual Attendance Hours</label><span class="dividerClass">:</span>
+                <label class="col-sm-8 col-xs-8 col-form-label" id="attHours"  ></label>
+            </div> -->
+            <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Actual Attendance Hours</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                    <label class="col-form-label" id="attHours"></label>
+                </div>
+              </div>
+
+            <!-- <div class="form-group row">
+                <label class="col-sm-4 col-xs-4 col-form-label">Shift Hours</label><span class="dividerClass">:</span>
+                <div class="col-sm-8 col-xs-8">
+                    <label id="reqHrs"  ></label>
+                 </div>
+            </div> -->
+            <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Shift Hours</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                    <label class="col-form-label" id="reqHrs"></label>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label  class="col-sm-4 col-xs-4 col-form-label">Status</label><span class="dividerClass">:</span>
+                <div  class="col-sm-8 col-xs-8">
+                    <label class="col-form-label" id="status"></label>
+                </div>
+              </div>
+
+            <!-- <div class="form-group row">
+                <label class="col-sm-4 col-xs-4 col-form-label">Status</label><span class="dividerClass">:</span>
+                <label class="col-sm-8 col-xs-8 col-form-label" id="status"  ></label>
+                <div class="col-sm-8 col-xs-8">
+                    <div class="form-group row" ng-if="status == 'SENT FOR APPROVAL' || status == 'SENT FOR CANCELLATION'">
+                        <span class="" style="font-weight:700;color:red"  ng-model="status" ><i class="fa fa-paper-plane mr-10"></i></span>
+                    </div>
+                    <div class="form-group row" ng-if="status == 'APPROVED' ||status == 'CANCELLATION APPROVED'">
+                        <span class="" style="font-weight:700;color:green"  ng-model="status" ><i class="fa fa-check mr-10"></i></span>
+                        
+                    </div>
+                    <div class="form-group row" ng-if="status == 'REJECTED' || status == 'CANCELLED' || status == 'CANCELLATION REJECTED'">
+                        <span class="" style="font-weight:700;color:red"  ng-model="status" ><i class="fa fa-times mr-10"></i></span>
+                       
+                    </div>
+                    <div class="form-group row" ng-if="status == 'SAVED'">
+                        <span class="" style="font-weight:700;color:green"  ng-model="status" ><i class="fa fa-check mr-10"></i></span>
+                        
+                    </div>
+                    <div class="form-group row" ng-if="status == ''">
+                        <span class="" style="font-weight:700;"  ng-model="status" ></span>
+                       
+                    </div>
+                </div>
+            </div> -->
+            <div class="form-group row">
+                <label class="col-sm-4 col-xs-4 col-form-label"> Date </label><span class="dividerClass">:</span>
+                <div class="col-sm-6 col-xs-6">
+                    <input class="form-control" id="date" ng-readonly="true" ng-click="setDate()" />
+                </div>
+                    <div class="col-sm-2 col-xs-2">
+                        <i style="padding-left: 3%; font-size: 193%;" ng-click="setDate()" class="ion-calendar"></i>
+                    </div>
+               
+            </div>
+            <hr style="height: 2px;color: black;"/>
+            <div ng-repeat="tsRowObject in timeSheetEmployeeChildGridList">
+                
+                <div id="grid3_{{$index}}" style="height:auto;" ng-if="ts_row > $index">
+                    <div class="form-group row">
+                        <!--ng-options="promaster.projectConfigurationId as promaster.projectName for promaster in projectMasterList track by $index"-->
+                        <label class="col-sm-4 col-xs-4 col-form-label">Project </label><span class="dividerClass">:</span>
+                        <div class="col-sm-8 col-xs-8" ng-show="ts_row>$index">
+                            <select 
+                            id="projectMasterId_{{$index}}" 
+                           
+                            ng-model="selectedValues.timeSheetEmployeeChildGridList[$index].projectMaster.projectConfigurationId"
+                            ng-options="promaster.projectName for promaster in projectMasterList "
+                            ng-change="doChangeProject($index);" 
+                            class="form-control" 
+                            style="background:white;margin-left:-3%;"  
+                            ng-show="ts_row > $index"
+                                >
+
+                                <option value=""  selected="selected">Please Select</option>
+                                
+                                <!-- ng-options="promaster.projectConfigurationId as promaster.projectName for promaster in projectMasterList track by $index" -->
+                                <!-- ng-model="timeSheetEmployeeChildGridList[$index].projectMaster.projectConfigurationId" -->
+                                <!-- <option value="p1">Proj1</option>
+                                <option value=p2>Proj2</option>
+                                <option value="p3">Proj3</option> -->
+                            
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-xs-4 col-form-label">Activity </label><span class="dividerClass">:</span>
+                        <div class="col-sm-8 col-xs-8">
+                            <select 
+                            id="activityMasterId_{{$index}}" 
+                            
+                            ng-options="actMaster.activityMasterName for actMaster in activityMasterList "
+                            class="form-control" style="background:white;margin-left:-3%;" 
+                            
+                            ng-model="selectedValues.timeSheetEmployeeChildGridList[$index].activityMaster.activityMasterId" ng-show="ts_row > $index"
+                            ng-change="doChangeActivity($index)"
+                                >
+                                <option value=""  selected="selected">Please Select</option>
+                                <!-- ng-options="actMaster.activityMasterId as actMaster.activityMasterName for actMaster in activityMasterList track by $index" -->
+                                <!-- <option value="a1">Act1</option>
+                                <option value="a2">Act2</option>
+                                <option value="a3">Act3</option> -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-xs-4 col-form-label"> Sub Activity </label><span class="dividerClass">:</span>
+                        <div class="col-sm-8 col-xs-8">
+                            <select id="subactivityMasterId_{{$index}}"
+                            ng-options="subActMas.subActivityMasterName for subActMas in subActivityMasterList{{$index}}"
+                            class="form-control" style="background:white;margin-left:-3%;" ng-model="selectedValues.timeSheetEmployeeChildGridList[$index].subActivityMaster.subActivityMasterId" 
+                                                       
+                            >
+                            <option value=""  selected="selected">Please Select</option>
+                            <!--ng-options="subActMas.subActivityMasterId as subActMas.subActivityMasterName for subActMas in subActivityMaster track by $index"-->
+                                <!-- <option value="sa1">sAct1</option>
+                                <option value="sa2">sAct2</option>
+                                <option value="sa3">sAct3</option> -->
+                            </select>
+                        </div>
+                    </div>
+                    <!-- <div class="form-group row">
+                        <label class="col-sm-4 col-xs-4 col-form-label"> Hours (hh:mm) </label><span class="dividerClass">:</span>
+                        <input id="noOfHours_{{$index}}" ng-model="selectedValues.timeSheetEmployeeChildGridList[$index].noOfHrs"
+                         class="col-sm-6 col-xs-6 form-control" type="text" name="hours" placeholder="hh:mm" />
+                    </div> -->
+                    <div class="form-group row">
+                        <label  class="col-sm-4 col-xs-4 col-form-label">Hours (hh:mm)</label><span class="dividerClass">:</span>
+                        <div  class="col-sm-8 col-xs-8">
+                            <input id="noOfHoursForRow_{{$index}}" maxlength="5" ng-model="selectedValues.timeSheetEmployeeChildGridList[$index].noOfHrs"
+                            class=" form-control" type="text" name="noOfHoursForRow_{{$index}}" placeholder="hh:mm" 
+                            ng-blur="timeLostFocus($index)" ng-change="timeFormat($index)"/>
+                        </div>
+                    </div>
+
+                    <!-- <div class="from-group row">
+                        <label class="col-sm-4 col-xs-4 col-form-label"> Remarks </label><span class="dividerClass">:</span>
+                        <input id="remark_{{$index}}" 
+                        ng-model="selectedValues.timeSheetEmployeeChildGridList[$index].remaks"
+                         class="col-sm-6 col-xs-6 form-control" type="text" name="remark_{{$index}}" value="Remarks" />
+                    </div> -->
+                    <div class="form-group row">
+                        <label  class="col-sm-4 col-xs-4 col-form-label">Remarks</label><span class="dividerClass">:</span>
+                        <div  class="col-sm-8 col-xs-8">
+                            <textarea id="remark_{{$index}}" rows="4"
+                            ng-model="selectedValues.timeSheetEmployeeChildGridList[$index].remaks"
+                             class="form-control" type="text" name="remark_{{$index}}" value="Remarks" ></textarea>
+                        </div>
+                    </div>
+
+					<!-- <div class="form-group row" style="display:none">
+                        <label style="display: none;"class="col-sm-4 col-xs-4 col-form-label"> child id </label><span class="dividerClass">:</span>
+                        <input type="hidden"id="childId_{{$index}}" 
+                        ng-model="selectedValues.timeSheetEmployeeChildGridList[$index].childId" 
+                        class="col-sm-6 col-xs-6 form-control" name="hours" placeholder="hh:mm" />
+                    </div> -->
+                    <div class="form-group row" style="display:none">
+                        <label  class="col-sm-4 col-xs-4 col-form-label" style="display: none;"> child id</label><span class="dividerClass">:</span>
+                        <div  class="col-sm-8 col-xs-8">
+                            <input type="hidden"id="childId_{{$index}}" 
+                            ng-model="selectedValues.timeSheetEmployeeChildGridList[$index].childId" 
+                            class="form-control" name="hours" placeholder="hh:mm" />
+                        </div>
+                    </div>
+                    <hr style="height: 2px;color: black;"/>
+                </div>
+               
+            </div>
+            
+            <!--ng-repeat ends-->
+
+            <div class="form-group row">
+                <div class="col-sm-4 col-xs-4 col-form-label">
+                <button type="button" value="calTotHrs" id="calTotHrs" class=" btn btn-primary "
+                 ng-click="doChangeNoOfhrs()"><i class="fa fa-check"></i>Calculate Total Hours</button> <span class="divider-class"></span>
+                 </div>
+                 <div  class="col-sm-4 col-xs-4" style="margin-left: 15%;">
+                <input class="form-control" type="text" name="totalHrs" id="totalHrs" ng-readonly="true" />
+                <!-- <label name="totalHrs" class=" col-sm-6 col-xs-6 col-form-label" id="totalHrs" ng-model="totalHrs"></label> -->
+                </div>
+            </div>
+            <div id="warningID" class="form-group row" style="display:hidden;"></div>
+            <div class="text-center">
+                <button type="button" name="addbutton" id="addbutton" class="btn btn-success mr-10" ng-click="addGrid()" ng-if="fromEmail !='Y'">
+                    <i class="fa fa-check mr-5" aria-hidden="true"></i> Add Task
+                </button>
+                <button type="button" ng-click="removeGrid()" name="removebutton" id="removebutton" ng-if="fromEmail !='Y' " class="btn btn-danger mr-10">
+                    <i class="fa fa-times mr-5" aria-hidden="true"></i> Remove Task
+                </button>
+
+
+            </div>
+            <div class="form-group row"></div>
+            <div class="text-center bar-footer" ng-if="(editFlag == null || editFlag == '' || editFlag == 'N' || editFlag == 'fromAdd') && (timeSheetEmployeeId == 0 || timeSheetEmployeeId == '' ||timeSheetEmployeeId == null)">
+                <button type="button" name="saveBtn" value="Save" id="saveBtn" ng-if="fromEmail!='Y' " ng-click="validation()" class="btn btn-primary mr-10">
+                    <i class="fa fa-paper-plane mr-10" aria-hidden="true"></i>Save
+                </button>
+                <button type="button" name="sendBtn" value="Save" id="sendBtn"  class="btn btn-primary mr-10" ng-click="sendForApproval('add')">
+                    <i class="fa fa-paper-plane mr-10" aria-hidden="true"></i>Send For Approval
+                </button>
+
+            </div>
+            <!--
+                <div class="text-center bar-footer" ng-if="(editFlag == null || editFlag == '' || editFlag == 'N' || editFlag == 'fromAdd') && timeSheetEmployeeId > 0">
+                <button type="button" name="updateBtn" value="Save" id="updateBtn" ng-if="fromEmail !='Y' " ng-click="update()" class="btn btn-primary mr-10">
+                    <i class="fa fa-paper-plane mr-10"></i>Update
+                </button>
+                <button type="button" name="sendBtn" value="Save" id="sendBtn" ng-if="fromEmail !='Y' " class="btn btn-primary mr-10" ng-click="sendForApproval('edit')">
+                    <i class="fa fa-paper-plane mr-10" ></i>Send For Approval
+                </button>
+
+            </div>
+        -->
+            <div class="text-center bar-footer" 
+            ng-if="editFlag != null && editFlag != '' && editFlag == 'Y' && timeSheetEmployeeId != null && timeSheetEmployeeId != '' && timeSheetEmployeeId > 0">
+                <button type="button" name="updateBtn"  id="updateBtn"  ng-click="update()" class="btn btn-primary mr-10">
+                    <i class="fa fa-paper-plane mr-10"></i>Update
+                 <!-- ng-if="${fromEmail}!=Y " -->
+                </button>
+            
+                <button type="button" name="save" value="Save" id="sendBtn" 
+                 class="btn btn-primary mr-10" ng-click="sendForApproval('edit')">
+                    <i class="fa fa-paper-plane mr-10"></i>Send For Approval
+                    <!-- ng-if="fromEmail !='Y' " -->
+                </button>
+                
+                <input type="hidden" id="sendMsgApprove" value="Do you want to send for approval ?">
+                <input type="hidden" id="saveMsg" value="Do you want to save?">
+
+                <input type="hidden" id="updateMsg" value="Do you want to update ?">
+
+            </div>
+            <br/><br/><br/>
+
+            <!-----------------------------Hidden Fields--------------------------------------------------------------------->
+
+            <input type="hidden" name="countGrid" id="countGrid" value="{{size}}">
+            <input type="hidden" id="editFlag" value="{{editFlag}}">
+            <input type="hidden" id="onBehalfFlag" value="{{onBehalfFlag}}">
+
+            <input type="hidden" id="timeSheetEmpId" name="timeSheetEmployeeId" value="{{timeSheetEmployeeId}}" />
+            <input type="hidden" value="{{size}}" name="size" id="size" />
+            <input type="hidden" value="{{status}}" name="finalstatus" id="finalstatus" />
+            <input type="hidden" value="{{gridSize}}" name="gridSize" id="gridSize" />
+            <input type="hidden" id="sendMsgApprove" value="Do you want to send for approval ?">
+            <input type="hidden" id="msg" name="msg" value="{{msg}}">
+            <input type="hidden" value="{{menuId}}" name="menuId" id="menuId " />
+            <input type="hidden" id="reporteeId " value="{{reporteeId}} ">
+            <input type="hidden" id="fromEmail " name="fromEmail " value="{{fromEmail}} " />
+            <input type="hidden" name="companyId " id="companyId " value="{{companyId}} ">
+
+
+        </form>
+
+
+
+    </ion-content>
+
+
+
+</ion-view>

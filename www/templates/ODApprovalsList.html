@@ -1,0 +1,170 @@
+<style>
+    .custom-card {
+        border-radius: 5%;
+        border: 1px solid #007ec1;
+    }
+    .custom-item {
+        border: none;
+    }
+
+    .custom-row {
+        padding: 0px;
+    }
+    .custom-padding{
+        padding: 10px;
+    }
+    /*    .custom-top
+        {
+            top:10px;
+            left: 13px;
+        }*/
+    /*    .custom-paddingTop
+        {
+            padding-top : 11px;
+        }*/
+    .custom_OD1
+    {
+        padding-top : 11px;
+        padding-bottom: 0px;
+    }
+    .custom-paddingBottom
+    {
+        padding-bottom: 0px;
+    }
+    .cust-col-50 {
+        text-align: center;
+        color: #007ec1;
+    }
+    /*    .custom-grayColor
+        {
+            color: #666;
+        }*/
+    .custom-p
+    {
+        color: #666;
+        font-size: 14px;
+    }
+    .cust-card {
+        padding: 50px 0px 0px 0px;
+    }
+    /*    .has-header {
+            top: 0px;
+        }*/
+    /*    .bar-subheader{
+            top: 0px;
+        }*/
+    .custom-requestApprove
+    {
+        font-size: 11px;
+        color: green;
+    }
+    .custom-requestRejcted
+    {
+        font-size: 11px;
+        color: red;
+    }
+    .custom-requestOther
+    {
+        font-size: 11px;
+        color: orange;
+    }
+    .custom-fontSize
+    {
+        font-size: 12px;
+    }
+    .customBorderRadius
+    {
+        border-top-right-radius: 1em;
+        border-bottom-right-radius: 1em;
+        border-top-left-radius: 1em;
+        border-bottom-left-radius: 1em;
+    }
+
+    .modal-wrapper {
+        position: absolute;
+        top: 25%;
+        display: block;
+        width: 90%;
+        min-height: 45%;
+        padding:  5%;
+    }
+
+    .modal-backdrop-bg {
+        background-color: rgba(255,255,255,0.85);
+    }
+
+    .modal {
+        border: 1px solid #007ec1;
+        border-top-right-radius: 1em;
+        border-bottom-right-radius: 1em;
+        border-top-left-radius: 1em;
+        border-bottom-left-radius: 1em;
+    }
+
+    .modal-ion-content {
+        padding: 15px; font-size: 0.85em;
+    }
+    .cust-modal-footer {
+        box-shadow: 0px 0px 0px;
+        border: 0px;
+        background-image: none;
+        margin-bottom: 15px;
+    }
+    .textareaBox{
+        margin-left: 2%;
+        width: 96%;
+        padding-bottom: 5%;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+</style>
+<ion-view view-title="ODApprovalsList">
+    <ion-content>
+        <label class="item item-input">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="search" placeholder="search" ng-model="searchObj.searchODManager"/>
+        </label>
+        <div id="ODPendingApplicationID" class="cust-card" style="padding: 0px 0px 0px 0px; ">
+            <!--            <div>
+                            <div class="custom-header" style="margin-bottom: 55px;">Approvals</div>
+                        </div>-->
+          
+           
+            <div class="list card custom-card customBorderRadius" ng-repeat="ODPending in ODPendingApplList| filter: searchObj.searchODManager">
+                <div class="item custom-item custom-paddingBottom item-text-wrap">
+                    <div class="row custom-row">
+                        <div class="col col-100">
+                            <h2 style="font-size: 0.8em;">{{ODPending.travelDate}}-{{ODPending.travelDate_new}}&nbsp;|&nbsp;<span class="custom-grayColor">{{ODPending.fromTime}} to {{ODPending.toTime}}</span></h2>
+                            <h2 style="font-size: 0.8em;">From Place: {{ODPending.fromPlace}} to {{ODPending.toPlace}}</h2>
+                            <h3 style="font-size: 0.7em;">{{ODPending.purpose}}</h3>
+                        </div>
+                    </div>
+                    <div class="row custom-row" ng-if="ODPending.remarks">
+                        <div class="col col-100">
+                            <p>{{ODPending.remarks}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item custom-item custom_OD1 item-avatar">
+                    <img style="top:10px;" ng-if="ODPending.photoFileName" ng-src="{{ODPending.profilePhoto}}">
+                    <img style="top:10px;" ng-if="!ODPending.photoFileName" ng-src="./img/defaultProfileImg.png">
+                    <h3 style="font-size: 0.8em;">{{ODPending.empName}}</h3>
+                </div>
+                <div  ng-show="ODPending.status == 'SENT FOR APPROVAL' || ODPending.status == 'SENT FOR CANCELLATION'">
+                    <div class="row custom-row">
+                        <div  ng-click="approveOrRejectPendingOD(ODPending, 'APPROVE')" class="col col-50 cust-col-50">
+                            Approve
+                        </div>|
+                        <div  ng-click="approveOrRejectPendingOD(ODPending, 'REJECT')" class="col col-50 cust-col-50">
+                            Reject
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="ODPendingApplList.length == 0">
+                <center><h4>No Data Available</h4></center>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

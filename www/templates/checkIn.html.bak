@@ -1,0 +1,92 @@
+<style>
+    #map {
+        height: 250px;
+        width: 100%;
+    }
+
+</style>
+<!--
+<script type="text/javascript" src={{mapSrc}}></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?key="+{{googleMapAppApiKey}}+"&sensor=true"></script> 
+-->
+
+<!--<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDL3DajTpLdJsrwwOsJtLMIe5zRJU2KssQ&sensor=true"></script>  -->
+
+<!--<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key="+{{googleMapAppApiKey}}></script>-->
+<ion-view view-title="">
+    <ion-content has-bouncing="false" style="top:44px;">
+		
+        <div class="custom-header item-button-right" style="overflow-y: auto;padding-left: 15px; ">
+            <h4 class="custom-header"><b>Clock In/Out & My Location</b></h4>
+            <a  ng-click="refreshpage()"  class="button" style="background-color:lightgrey;color:red"> 
+			<img  style="width:30px;height:30px;" src="./img/target.png" />
+			</a>
+        </div>
+		
+        <!-- <div class="button-bar item-button-right" ><a  ng-click="refreshpage()" class="button">Reload</a></div> -->
+        
+        <!--<div class="backgroundcolor" id= "map" data-tap-disabled="true"></div>-->
+		<div class="backgroundcolor" id= "map" data-tap-disabled="false"></div>
+        <div class="item backgroundcolor">
+            for Today&nbsp;{{currentDate}}
+            <br><br><h3>&nbsp;Comments </h3>
+            <label class="card item item-input">
+                <textarea ng-model="punchIn.userComment"> </textarea>
+            </label>
+            <div ng-if="hideCheckIn == '0'"><button class="button button-full button-positive"  ng-click="postPunchIn()">Clock In</button></div>
+            <div ng-if="hideCheckIn == '1'" > <button id="divOut"  class="button button-full button-positive" ng-click="postPunchOut()"></button></div><br/>
+            <!--<h4 ng-if="hideCheckIn >= '1' && hideCheckOut >= '1' && punchOutCnt == 0 && punchInCnt == 0">Clock-In/Clock-Out done for the day.</h4>-->
+            <table>
+                <tr  ng-show="punchInCnt">
+                    <td><b>Offline Clock In Count</b></td><td>&nbsp;&nbsp;<b>:</b></td><td>&nbsp;&nbsp;{{punchInCnt}}</td>
+                </tr>
+                <tr></tr>
+                <tr ng-show="punchOutCnt">
+                    <td><b>Offline Clock Out Count</b></td><td>&nbsp;&nbsp;<b>:</b></td><td>&nbsp;&nbsp;{{punchOutCnt}}</td>
+                </tr>
+            </table>
+            <center>
+                <div class="button-bar" ng-if="punchInCnt > 0 || punchOutCnt > 0" >  
+                    <button class="button button-block button-positive"   ng-click="syncCheckIn()"><h2 style="color:white;"> Sync</h2></button>
+                </div>
+            </center>
+        </div>
+		<div id="todaysClockInOutDataDiv" class="item backgroundcolor">
+			<b><p>Today's Clock In / Out Data </p></b>
+            <div class="list card modal-payslip customBorderRadius" ng-repeat="clockPunch in listOfClockInOut | orderBy:'inTimeMinStr' | orderBy:'inTimeHourStr'" >
+                <!--<a style="margin-bottom: 10px;"  class="item custom-item custom-paddingBottom item-text-wrap"> -->
+                    <div class="row" >
+                        <div class="col col-10">
+						<img  ng-if="clockPunch.source=='WEB'"  style="width:23px;height:23px;" src="./img/newicons/desktop.png"/>
+						<img  ng-if="clockPunch.source=='MOBILE'"  style="width:23px;height:23px;" src="./img/newicons/mobile.png"/>
+						<img  ng-if="clockPunch.source=='Swipe Card'"  style="width:23px;height:23px;" src="./img/newicons/fingureprint.png"/>
+							
+						</div>
+                        <div class="col col-25" style="width: 60px;">
+                            <h2 style="font-size: 0.9em;width: 60px;"> <strong>{{clockPunch.inTimeHourStr}}:{{clockPunch.inTimeMinStr}}</strong></h2>
+						</div>
+                        <div class="col col-10">
+							<!--<strong><i ng-if="clockPunch.punchType=='IN'" class="icon ion-log-in"></i></strong> -->
+							<img ng-if="$index % 2 == 0" src="./img/newicons/login.png" style="width:23px;height:23px;"/> 
+							<img ng-if="$index % 2 > 0" src="./img/newicons/logout.png" style="width:23px;height:23px;"/> 
+							<!--<strong><i ng-if="clockPunch.punchType=='OUT'" class="icon ion-log-out"></i></strong> -->
+						</div>
+                        <div class="col col-150" style="word-wrap: break-word;">
+                            <p  ng-show="clockPunch.comments!=''"style="font-size: 0.9em;text-align:left;white-space: pre-wrap !important;word-wrap: break-word;">{{clockPunch.comments}}</p>
+							<p  ng-show="clockPunch.comments==''"style="font-size: 0.9em;text-align:center;white-space: pre-wrap !important;word-wrap: break-word;">-</p>
+						</div>
+                    </div>
+					<div>
+					
+					<p ng-if="clockPunch.geoLocationAddress" style="margin-top:-8px;margin-left:10px;word-break: break-word;text-overflow: inherit; white-space: normal;">{{clockPunch.geoLocationAddress}} </p>
+					<!--<h4 style="margin-top:-8px;">&nbsp;&nbsp;&nbsp;&nbsp; block No3, Shanti Villa, kerala. </h4> -->
+					</div>
+               <!-- </a> -->
+            </div>
+		</div>
+		<script>
+ 
+</script>
+
+    </ion-content>
+</ion-view>
